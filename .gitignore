@@ -1,0 +1,33 @@
+# 환경변수 파일: 실제 비밀번호와 API 키
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# 개인별 Spring Boot 설정
+application-local.yml
+application-local.yaml
+application-local.properties
+
+# Java / Gradle 빌드 결과와 캐시
+.gradle/
+/backend/build/
+/backend/target/
+/backend/out/
+*.class
+
+# 프런트엔드 의존성과 빌드 결과
+node_modules/
+/frontend/dist/
+/frontend/coverage/
+*.tsbuildinfo
+
+# 개인 IDE 설정
+.idea/
+.vscode/
+*.iml
+
+# 운영체제 임시 파일과 로그
+.DS_Store
+Thumbs.db
+*.log
