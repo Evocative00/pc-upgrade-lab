@@ -31,3 +31,6 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.log
+
+# IntelliJ의 최상위 컴파일 출력 폴더
+/out/
