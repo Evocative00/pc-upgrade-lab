@@ -20,13 +20,13 @@
 6. 프런트엔드 의존성을 설치하고 개발 서버를 실행
 7. 화면의 API 연결과 백엔드의 DB 연결 상태를 각각 확인
 
-이미 마친 단계는 다시 할 필요가 없습니다. 특히 정상적으로 사용하는 DB나 계정을 삭제하거나 새로 만들기 X
+이미 마친 단계는 다시 할 필요 X 특히 정상적으로 사용하는 DB나 계정을 삭제하거나 새로 만들기 X
 
 ## 기술 스택과 폴더 안내
 
 |구분|사용하는 기술|역할|
 |-|-|-|
-|프런트엔드|React, TypeScript, Vite|브라우저에서 보이는 화면|
+|프론트엔드|React, TypeScript, Vite|브라우저에서 보이는 화면|
 |백엔드|Java 21, Spring Boot 4.1.1|API 요청 처리와 DB 연결|
 |백엔드 빌드|Gradle Wrapper|프로젝트에 맞는 Gradle 실행|
 |데이터베이스|MySQL 8.4|프로젝트 데이터 저장|
@@ -40,11 +40,11 @@
 |`docs/`|요구사항, 설계, 회의 기록|
 |`README.md`|이 문서. 팀원이 처음 읽는 실행 안내|
 
-프런트엔드 패키지의 정확한 버전은 `frontend/package-lock.json`, 백엔드 의존성은 `backend/build.gradle`을 기준으로 합니다. Gradle과 Vite를 별도로 전역 설치할 필요는 없습니다.
+프론트엔드 패키지의 정확한 버전은 `frontend/package-lock.json`, 백엔드 의존성은 `backend/build.gradle`을 기준으로 합니다. Gradle과 Vite를 별도로 전역 설치할 필요는 없습니다.
 
 ## 1\. 설치 준비
 
-아래 안내는 **Windows PowerShell과 한글 IntelliJ IDEA** 기준입니다. IntelliJ 버전에 따라 메뉴 번역이나 위치가 조금 다를 수 있습니다.
+아래 안내는 **Windows PowerShell과 한글 IntelliJ IDEA** 기준. IntelliJ 버전에 따라 메뉴 번역이나 위치가 조금 다를 수 있음.
 
 |프로그램|맞출 버전|확인 방법|
 |-|-|-|
@@ -55,9 +55,9 @@
 |MySQL Server|8.4.x|아래 DB 접속 명령으로 확인|
 |IntelliJ IDEA|JDK 21을 사용할 수 있는 버전|**도움말 → 정보**|
 
-초기 설정 PC에서는 MySQL 8.4.11과 Vite 8.3.0으로 연결 및 프런트엔드 빌드를 확인했습니다. 팀원은 저장소에 있는 설정과 잠금 파일을 그대로 사용해 주세요.
+초기 설정 PC에서는 MySQL 8.4.11과 Vite 8.3.0으로 연결 및 프런트엔드 빌드를 확인. 개개인은 저장소에 있는 설정과 잠금 파일을 그대로 사용해 주세요.
 
-MySQL은 데이터베이스 서버가 실제로 설치되어 있어야 합니다. Workbench만 설치한 경우에는 MySQL Server 설치도 필요합니다.
+MySQL은 데이터베이스 서버가 실제로 설치되어 있어야 함. Workbench만 설치한 경우에는 MySQL Server 설치도 필요.
 
 IntelliJ Ultimate는 선택 사항입니다. 이 문서의 Gradle 실행 방식은 Ultimate 전용 실행 구성에 의존하지 않습니다.
 
@@ -354,9 +354,7 @@ IntelliJ 실행 구성에 입력한 환경 변수는 해당 실행에서 사용�
 
 ### 합류와 권한
 
-팀원은 GitHub 사용자 이름을 저장소 관리자에게 전달합니다. 관리자는 저장소의 \*\*Settings(설정) → Collaborators(공동 작업자) → Add people(사용자 추가)\*\*에서 초대합니다. 초대를 받은 팀원은 본인 계정으로 수락합니다.
-
-공개 저장소는 링크만으로 읽고 복제할 수 있지만, 같은 저장소에 본인 작업 브랜치를 올리려면 쓰기 권한이 필요합니다. 초대 절차는 [GitHub 공식 안내](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository)를 참고하세요.
+제가 레포의 \*\*Settings(설정) → Collaborators(공동 작업자) → Add people(사용자 추가)\*\*에서 초대할게요.
 
 ### 브랜치 역할
 
