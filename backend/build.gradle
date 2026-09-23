@@ -17,6 +17,19 @@ repositories {
 	mavenCentral()
 }
 
+sourceSets {
+    mysqlTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+configurations {
+    mysqlTestImplementation.extendsFrom testImplementation
+    // Use the MySQL driver from main; do not inherit testRuntimeOnly's H2.
+    mysqlTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
@@ -29,8 +42,27 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-flyway'
     runtimeOnly 'org.flywaydb:flyway-mysql'
     testRuntimeOnly 'com.h2database:h2'
+    mysqlTestRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+// Explicitly requested only: normal test/build tasks keep using H2.
+tasks.register('mysqlTest', Test) {
+    group = 'verification'
+    description = 'Verify PC persistence and application restart against local MySQL.'
+    dependsOn tasks.named('mysqlTestClasses')
+    testClassesDirs = sourceSets.mysqlTest.output.classesDirs
+    classpath = sourceSets.mysqlTest.runtimeClasspath
+    useJUnitPlatform()
+    maxParallelForks = 1
+    shouldRunAfter tasks.named('test')
+    // External database state must be checked again on every invocation.
+    outputs.upToDateWhen { false }
+    outputs.cacheIf { false }
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+    }
 }
