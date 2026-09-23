@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { PcScanPanel } from './features/pc-scan/PcScanPanel'
 
 type HealthResponse = {
   status: string
@@ -71,6 +72,7 @@ function App() {
       {result && <pre>{JSON.stringify(result, null, 2)}</pre>}
 
       <p>이 화면은 백엔드 API 통신을 확인합니다. DB 연결 상태는 /actuator/health에서 확인할 수 있습니다.</p>
+      <PcScanPanel />
     </main>
   )
 }

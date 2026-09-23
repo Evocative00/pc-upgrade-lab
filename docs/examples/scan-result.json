@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "collectorVersion": "0.1.0",
+  "collectedAt": "2026-09-23T00:00:00Z",
+  "parts": [
+    {
+      "type": "CPU",
+      "displayName": "TEST CPU",
+      "rawName": "Fixture CPU",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "cores": 8,
+        "logicalProcessors": 16
+      }
+    },
+    {
+      "type": "GPU",
+      "displayName": "TEST GPU",
+      "rawName": "Fixture GPU",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "vramBytes": null
+      }
+    },
+    {
+      "type": "RAM",
+      "displayName": "TEST RAM 16 GiB",
+      "rawName": "Fixture RAM",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "capacityBytes": 17179869184,
+        "slot": "DIMM A"
+      }
+    },
+    {
+      "type": "RAM",
+      "displayName": "TEST RAM 16 GiB",
+      "rawName": "Fixture RAM",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "capacityBytes": 17179869184,
+        "slot": "DIMM B"
+      }
+    },
+    {
+      "type": "STORAGE",
+      "displayName": "TEST SSD A",
+      "rawName": "Fixture SSD A",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "capacityBytes": 1000000000000
+      }
+    },
+    {
+      "type": "STORAGE",
+      "displayName": "TEST SSD B",
+      "rawName": "Fixture SSD B",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "capacityBytes": 1000000000000
+      }
+    },
+    {
+      "type": "MOTHERBOARD",
+      "displayName": "TEST BOARD",
+      "rawName": "Fixture Board",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {}
+    }
+  ],
+  "warnings": [
+    {
+      "scope": "GPU",
+      "code": "VRAM_UNAVAILABLE",
+      "message": "VRAM capacity was not determined by this collector."
+    }
+  ]
+}
