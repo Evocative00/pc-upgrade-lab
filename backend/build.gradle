@@ -17,6 +17,7 @@ repositories {
 	mavenCentral()
 }
 
+// sourceSet은 함께 컴파일·실행할 코드 묶음이다. 실제 MySQL 검사는 일반 test와 별도 폴더/작업으로 분리한다.
 sourceSets {
     mysqlTest {
         compileClasspath += sourceSets.main.output
@@ -26,7 +27,7 @@ sourceSets {
 
 configurations {
     mysqlTestImplementation.extendsFrom testImplementation
-    // Use the MySQL driver from main; do not inherit testRuntimeOnly's H2.
+    // 실제 MySQL 검사에는 main의 MySQL 드라이버를 사용한다. testRuntimeOnly의 H2는 상속하지 않는다.
     mysqlTestRuntimeOnly.extendsFrom runtimeOnly
 }
 
@@ -49,7 +50,7 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-// Explicitly requested only: normal test/build tasks keep using H2.
+// mysqlTest를 직접 실행할 때만 실제 DB를 검사한다. 일반 test/build는 H2를 사용하며 이 작업을 포함하지 않는다.
 tasks.register('mysqlTest', Test) {
     group = 'verification'
     description = 'Verify PC persistence and application restart against local MySQL.'
@@ -59,7 +60,7 @@ tasks.register('mysqlTest', Test) {
     useJUnitPlatform()
     maxParallelForks = 1
     shouldRunAfter tasks.named('test')
-    // External database state must be checked again on every invocation.
+    // DB 상태는 소스 파일 밖에서 바뀔 수 있으므로, 이전 성공 결과를 재사용하지 않고 매번 검사한다.
     outputs.upToDateWhen { false }
     outputs.cacheIf { false }
     testLogging {

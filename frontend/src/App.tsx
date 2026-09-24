@@ -72,6 +72,7 @@ function App() {
       {result && <pre>{JSON.stringify(result, null, 2)}</pre>}
 
       <p>이 화면은 백엔드 API 통신을 확인합니다. DB 연결 상태는 /actuator/health에서 확인할 수 있습니다.</p>
+      {/* 현재는 자동 인식 확인용 패널이다. PC 입력 화면을 만들면 onApply로 해당 폼에 결과를 연결한다. */}
       <PcScanPanel />
     </main>
   )

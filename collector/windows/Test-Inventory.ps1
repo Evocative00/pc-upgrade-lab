@@ -1,3 +1,5 @@
+﻿# 실제 장치 대신 고정된 가짜 데이터(fixture)를 넣어 수집 결과의 변환 규칙을 확인한다.
+# 이 검사가 통과해도 실제 Windows의 CIM 조회나 브라우저 링크 실행까지 확인한 것은 아니다.
 $ErrorActionPreference = 'Stop'
 Import-Module (Join-Path $PSScriptRoot 'PcInventory.psm1') -Force
 $checks = 0
@@ -6,6 +8,7 @@ function Assert($Condition, [string]$Message) {
     $script:checks++
 }
 
+# 같은 이름의 RAM 2개, 서로 다른 저장장치 2개, 큰 용량과 누락값을 의도적으로 포함한다.
 $fixture = {
     param($ClassName)
     switch ($ClassName) {
@@ -35,6 +38,7 @@ $json = ConvertTo-Json -InputObject $result -Depth 12
 Assert ($json -notmatch 'DO_NOT_EMIT|ProcessorId|SerialNumber') 'A hardware identifier leaked.'
 Assert (@($result.parts | Where-Object quantity -ne 1).Count -eq 0) 'Quantity must count individual devices.'
 
+# 일부 조회 실패와 전체 빈 결과를 따로 확인한다. 읽은 항목이 사라지거나 경고가 누락되지 않아야 한다.
 $partial = Get-PcInventory -Query {
     param($ClassName)
     if ($ClassName -eq 'Win32_Processor') { throw 'Fixture query failure' }

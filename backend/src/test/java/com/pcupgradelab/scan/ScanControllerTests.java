@@ -9,6 +9,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/** MockMvc로 HTTP 요청·응답 규격을 검사한다. 실제 브라우저나 Windows 수집기를 실행하는 테스트는 아니다. */
 class ScanControllerTests {
     private ScanService service;
     private MockMvc mvc;
@@ -18,6 +19,7 @@ class ScanControllerTests {
                 .setControllerAdvice(new ApiExceptionHandler()).build();
     }
 
+    // 필수 헤더와 생성 응답의 캐시 금지 설정을 확인한다.
     @Test void requiresCustomCreationHeaderAndDisablesCaching() throws Exception {
         mvc.perform(post("/api/scan-sessions")).andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value("INVALID_INPUT"));
@@ -26,6 +28,7 @@ class ScanControllerTests {
                 .andExpect(jsonPath("$.launchUri").isString()).andExpect(jsonPath("$.readToken").isString());
     }
 
+    // 부품 내부의 잘못된 수량도 거절하고, 올바른 부분 결과는 한글 원문과 경고를 보존해야 한다.
     @Test void validatesNestedPartsAndAcceptsPartialResults() throws Exception {
         var scan = service.create();
         var auth = "Bearer " + scan.launchUri().split("token=")[1];
