@@ -16,8 +16,13 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/** Opt-in check: requires the existing V1 schema and local MySQL credentials. */
+/**
+ * mysqlTest로 선택 실행하는 실제 DB 검사. 기존 V1 테이블과 로컬 MySQL 접속 설정이 필요하다.
+ * PC 저장 → 수정 → Spring 컨텍스트 종료 → 새 컨텍스트에서 재조회 → 검증용 데이터 정리를 확인한다.
+ * 웹 서버는 실행하지 않으므로 HTTP API·화면 전체 흐름이나 별도 bootRun 프로세스를 재시작하는 검사는 아니다.
+ */
 class MySqlPersistenceTests {
+    // 실행마다 고유한 소유자 값을 사용해 기존 사용자 데이터와 이번 검증 데이터를 구분한다.
     private final String ownerKey = "mysql-verification-" + UUID.randomUUID();
     private Long pcId;
 
@@ -38,7 +43,7 @@ class MySqlPersistenceTests {
                     part(PartType.STORAGE, "검증 SSD B", 2000000000000L)))).getId());
             assertThat(pcId).isNotNull();
 
-            // A separate committed transaction reads and replaces the saved aggregate.
+            // 저장 트랜잭션이 반영된 뒤 별도 트랜잭션으로 조회·수정한다. 메모리 객체만 바꾼 검사가 되지 않게 한다.
             transactions.executeWithoutResult(status -> {
                 var pc = repository.findByIdAndOwnerKey(pcId, ownerKey).orElseThrow();
                 assertThat(pc.getParts()).hasSize(4);
@@ -49,7 +54,7 @@ class MySqlPersistenceTests {
             });
         }
 
-        // The first Spring context and connection pool have been closed completely.
+        // 첫 번째 컨텍스트와 DB 연결 풀을 닫은 뒤 새로 시작한다. DB에 남은 수정 결과를 다시 읽어야 한다.
         try (var restarted = application()) {
             var repository = restarted.getBean(PcConfigurationRepository.class);
             var transactions = restarted.getBean(TransactionTemplate.class);
@@ -75,6 +80,7 @@ class MySqlPersistenceTests {
         }
     }
 
+    // 검사가 끝나면 이번 pcId와 ownerKey에 해당하는 데이터만 지운다. 전체 테이블을 초기화하지 않는다.
     @AfterEach
     void removeOnlyThisRunsRecord() {
         if (pcId == null) return;
@@ -91,6 +97,7 @@ class MySqlPersistenceTests {
         }
     }
 
+    // 기존 스키마만 검증한다. 여기서는 마이그레이션을 실행하거나 테이블을 새로 만들지 않는다.
     private ConfigurableApplicationContext application() {
         return new SpringApplicationBuilder(BackendApplication.class)
                 .profiles("local")

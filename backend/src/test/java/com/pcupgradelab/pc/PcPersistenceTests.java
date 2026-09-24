@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import static org.assertj.core.api.Assertions.*;
 
+/** H2에서 PC/부품 저장 규칙을 확인한다. 실제 MySQL 검사는 src/mysqlTest에 따로 있다. */
 @SpringBootTest
 @ActiveProfiles("test")
 class PcPersistenceTests {
@@ -17,6 +18,7 @@ class PcPersistenceTests {
     @Autowired TransactionTemplate transactions;
     @Autowired JdbcTemplate jdbc;
 
+    // 여러 부품과 미연결 원문을 저장한 뒤 같은 PC를 수정해, 이전 부품 행이 중복으로 남지 않는지 확인한다.
     @Test
     void preservesMultipleDevicesUnknownCatalogAndReplacesWithoutDuplication() {
         var id = transactions.execute(status -> repository.saveAndFlush(new PcConfiguration(
@@ -42,6 +44,7 @@ class PcPersistenceTests {
         });
     }
 
+    // 잘못된 교체 요청은 기존 이름과 부품을 변경하기 전에 거절해야 한다.
     @Test
     void rejectsInvalidReplacementBeforeChangingSavedAggregate() {
         var pc = new PcConfiguration("owner", "PC", List.of(part(PartType.RAM, "Original")));

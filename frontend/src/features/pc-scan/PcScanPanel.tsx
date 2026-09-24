@@ -14,6 +14,7 @@ const labels = {
   CONNECTION_ERROR: '서버와 연결하지 못했습니다.',
 }
 
+// 수집기의 경고 코드를 화면 안내로 바꾼다. 새로운 코드는 아래 렌더링에서 서버의 message를 대신 표시한다.
 const warningLabels: Record<string, string> = {
   NO_DEVICE: 'Windows가 장치 정보를 반환하지 않았습니다.',
   CIM_QUERY_FAILED: '장치 조회에 실패했습니다. 직접 입력해 주세요.',
@@ -22,10 +23,16 @@ const warningLabels: Record<string, string> = {
   VRAM_UNAVAILABLE: '그래픽 메모리 용량은 직접 확인해 주세요.',
 }
 
-/** Jaehun: pass onApply to copy the result into your PC form only when the user chooses. */
+/**
+ * 자동 인식 실행·상태·결과를 보여 주는 패널. 입력 폼과 연결할 때 부모 화면이 onApply를 전달한다.
+ * 사용자가 '입력란에 반영'을 눌러야 콜백이 호출된다. 콜백을 생략하면 결과 확인용으로만 사용할 수 있다.
+ * 부모 화면은 기존 MANUAL 부품을 보존하고 AUTO 항목을 교체하며, 편집 내용을 덮어쓸 때 사용자의 확인을 받는다.
+ * 여기서는 폼 병합이나 PC 저장 API 호출을 하지 않는다. 연결 예시는 docs/week1-contract.md를 참고한다.
+ */
 export function PcScanPanel({ onApply }: { onApply?: (result: ScanResult) => void }) {
   const scan = usePcScan()
   const busy = ['PREPARING', 'CREATED', 'RUNNING'].includes(scan.status)
+  // 일부 제원이 없어도 읽은 부품은 활용할 수 있으므로 경고가 있는 완료 상태도 반영을 허용한다.
   const canApply = scan.status === 'COMPLETED' || scan.status === 'COMPLETED_WITH_WARNINGS'
   return (
     <section className="pc-scan" aria-labelledby="pc-scan-title">
@@ -34,6 +41,7 @@ export function PcScanPanel({ onApply }: { onApply?: (result: ScanResult) => voi
       <p>부품 이름과 제원을 실행 중인 서버로 보냅니다. 기기 일련번호는 보내지 않습니다.</p>
       <div className="pc-scan-actions">
         {!busy && <button type="button" onClick={() => { void scan.prepare() }}>내 PC 불러오기</button>}
+        {/* 브라우저에서 사용자가 직접 링크를 눌러 설치된 Windows 프로그램을 연다. */}
         {scan.launchUri && <a className="pc-scan-launch" href={scan.launchUri}>보조 프로그램 실행</a>}
         {busy && <button type="button" onClick={scan.reset}>화면에서 취소</button>}
       </div>
