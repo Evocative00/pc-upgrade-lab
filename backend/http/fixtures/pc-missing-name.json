@@ -1,0 +1,129 @@
+{
+  "parts": [
+    {
+      "type": "CPU",
+      "displayName": "TEST CPU",
+      "rawName": "Fixture CPU",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "cores": 8,
+        "logicalProcessors": 16
+      }
+    },
+    {
+      "type": "GPU",
+      "displayName": "TEST GPU",
+      "rawName": "Fixture GPU",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "vramBytes": null
+      }
+    },
+    {
+      "type": "RAM",
+      "displayName": "TEST RAM 16 GiB",
+      "rawName": "Fixture RAM",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "capacityBytes": 17179869184,
+        "slot": "DIMM A"
+      }
+    },
+    {
+      "type": "RAM",
+      "displayName": "TEST RAM 16 GiB",
+      "rawName": "Fixture RAM",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "capacityBytes": 17179869184,
+        "slot": "DIMM B"
+      }
+    },
+    {
+      "type": "STORAGE",
+      "displayName": "TEST SSD A",
+      "rawName": "Fixture SSD A",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "capacityBytes": 1000000000000
+      }
+    },
+    {
+      "type": "STORAGE",
+      "displayName": "TEST SSD B",
+      "rawName": "Fixture SSD B",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {
+        "capacityBytes": 1000000000000
+      }
+    },
+    {
+      "type": "MOTHERBOARD",
+      "displayName": "TEST BOARD",
+      "rawName": "Fixture Board",
+      "quantity": 1,
+      "source": "AUTO",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {}
+    },
+    {
+      "type": "PSU",
+      "displayName": "TEST PSU",
+      "rawName": null,
+      "quantity": 1,
+      "source": "MANUAL",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {}
+    },
+    {
+      "type": "CASE",
+      "displayName": "TEST CASE",
+      "rawName": null,
+      "quantity": 1,
+      "source": "MANUAL",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {}
+    },
+    {
+      "type": "COOLER",
+      "displayName": "TEST COOLER",
+      "rawName": null,
+      "quantity": 1,
+      "source": "MANUAL",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {}
+    },
+    {
+      "type": "MONITOR",
+      "displayName": "TEST MONITOR",
+      "rawName": null,
+      "quantity": 1,
+      "source": "MANUAL",
+      "catalogProductId": null,
+      "matchStatus": "UNMATCHED",
+      "specs": {}
+    }
+  ]
+}
