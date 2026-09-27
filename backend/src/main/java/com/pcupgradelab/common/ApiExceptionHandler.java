@@ -40,4 +40,11 @@ public class ApiExceptionHandler {
         // 잘못된 JSON·헤더 등의 원문과 내부 예외를 그대로 반환하면 토큰이나 내부 정보가 노출될 수 있다.
         return ResponseEntity.badRequest().body(new ApiError("INVALID_INPUT", "요청 형식이 올바르지 않습니다.", List.of()));
     }
+
+    // 엔티티의 @Version 동시 수정 충돌 감지 시 409 응답으로 변환한다.
+    @ExceptionHandler(org.springframework.dao.OptimisticLockingFailureException.class)
+    ResponseEntity<ApiError> conflict(Exception exception) {
+        return ResponseEntity.status(org.springframework.http.HttpStatus.CONFLICT)
+                .body(new ApiError("CONCURRENT_MODIFICATION", "다른 요청에 의해 이미 변경되었습니다. 최신 정보를 다시 확인해 주세요.", List.of()));
+    }
 }
