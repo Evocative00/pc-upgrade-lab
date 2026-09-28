@@ -9,3 +9,6 @@
 .pc-scan caption { text-align: left; padding: 12px 0; }
 .pc-scan th, .pc-scan td { padding: 10px; border-bottom: 1px solid var(--border); text-align: left; }
 .pc-scan details { margin: 16px 0; }
+.pc-scan-setup summary { cursor: pointer; }
+.pc-scan-setup li { margin: 8px 0; }
+.pc-scan-setup pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: 12px; border: 1px solid var(--border); border-radius: 8px; }
