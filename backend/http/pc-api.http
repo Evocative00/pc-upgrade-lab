@@ -48,6 +48,9 @@ GET {{baseUrl}}/api/pcs/{{pcId}}
 ### N08 수정 후 목록 — 200, 수정 이름과 정렬 확인
 GET {{baseUrl}}/api/pcs?page=0&size=20
 
+### N09 허용되는 조회 위치 상한 — 200, 빈 items (검증용 소규모 DB 기준)
+GET {{baseUrl}}/api/pcs?page=2147483647&size=1
+
 ### E01 빈 이름 등록 — 400, INVALID_INPUT. 등록되지 않아야 함
 POST {{baseUrl}}/api/pcs
 Content-Type: application/json
@@ -95,6 +98,9 @@ POST {{baseUrl}}/api/pcs
 Content-Type: application/json
 
 {"name": "JSON 오류", "parts": [}
+
+### E10 조회 위치 범위 초과 — 400, INVALID_INPUT (500이 발생했던 회귀 사례)
+GET {{baseUrl}}/api/pcs?page=21474837&size=100
 
 ### R01 서버 정지/재시작 후 실행 — 200, 같은 id와 N04 수정값 유지
 # 재시작 전 pcId를 기록한다. 새 등록 요청을 먼저 실행하지 않는다.

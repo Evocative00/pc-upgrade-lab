@@ -55,6 +55,10 @@ public class PcService {
         if (size < 1 || size > 100) {
             throw new ApiException(HttpStatus.BAD_REQUEST, "INVALID_INPUT", "size는 1에서 100 사이여야 합니다.");
         }
+        // JPA의 조회 시작 위치는 int 범위다. 곱셈 전에 long으로 바꿔 계산 자체의 넘침도 방지한다.
+        if ((long) page * size > Integer.MAX_VALUE) {
+            throw new ApiException(HttpStatus.BAD_REQUEST, "INVALID_INPUT", "요청한 페이지 범위가 너무 큽니다.");
+        }
         var pageable = PageRequest.of(page, size, Sort.by(Sort.Order.desc("updatedAt"), Sort.Order.desc("id")));
         var result = repository.findAllByOwnerKey(DEFAULT_OWNER_KEY, pageable);
         var items = result.getContent().stream().map(Summary::from).toList();

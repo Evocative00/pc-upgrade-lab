@@ -271,6 +271,25 @@ class PcControllerTests {
     }
 
     @Test
+    @DisplayName("JPA 조회 위치의 상한을 넘으면 공통 400 응답을 반환하고 허용 범위는 정상 조회한다")
+    void rejectsPageOffsetsBeyondJpaLimit() throws Exception {
+        // 두 입력 모두 int지만 곱은 int 범위를 넘는다. int로 곱하면 음수로 돌아가는 경우도 검사한다.
+        for (String query : new String[]{"page=21474837&size=100", "page=2147483647&size=100"}) {
+            mvc.perform(get("/api/pcs?" + query))
+                    .andExpect(status().isBadRequest())
+                    .andExpect(jsonPath("$.code").value("INVALID_INPUT"))
+                    .andExpect(jsonPath("$.message").isString())
+                    .andExpect(jsonPath("$.errors").isArray());
+        }
+        // 경계 바로 아래와 정확한 상한은 유효하다. 해당 위치에 PC가 없으면 빈 목록이다.
+        for (String query : new String[]{"page=21474836&size=100", "page=2147483647&size=1"}) {
+            mvc.perform(get("/api/pcs?" + query))
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.items", hasSize(0)));
+        }
+    }
+
+    @Test
     @DisplayName("존재하지 않는 PC ID 조회 및 수정 시 404 PC_NOT_FOUND를 반환한다")
     void returns404WhenNotFound() throws Exception {
         mvc.perform(get("/api/pcs/99999999"))

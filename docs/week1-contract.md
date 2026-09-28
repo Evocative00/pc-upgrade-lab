@@ -45,6 +45,9 @@ PC 요청: `{ "name": "내 PC", "parts": [...] }`. `name`은 공백만 사용할
 
 상세 `parts`는 위 부품 규격 그대로다. DB 내부 부품 행 ID는 이번 공통 응답에서 생략한다. 날짜는 ISO 8601 UTC 문자열. 목록 정렬은 `updatedAt DESC, id DESC`다.
 
+페이지 번호는 0 이상이며, JPA의 조회 시작 위치 제한에 따라 `page × size`가 2147483647 이하여야 한다.
+범위를 초과하면 `400 INVALID_INPUT`을 반환한다. 허용 범위 내에서 데이터가 없는 페이지는 200과 빈 `items`를 반환한다.
+
 요청 DTO의 `parts`에 `@NotEmpty @Size(max=64) List<@Valid @NotNull PartInput>`을 사용한다. `name`에는 `@NotBlank @Size(max=100)`을 적용한다. 컨트롤러에서 `@Valid`를 사용한다. 엔티티를 직접 JSON으로 반환하지 않는다.
 
 Repository 사용 예:
