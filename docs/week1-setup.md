@@ -79,6 +79,9 @@ if (-not (Test-Path .\backend\src\main\resources\application-local.properties)) 
 
 ## 3. Windows 보조 프로그램 설치
 
+**노트북과 데스크톱, Windows 사용자 계정마다 각각 설치한다.** Git pull만으로 설치되지는 않는다.
+현재 개발 버전의 '보조 프로그램 실행'은 설치된 수집기를 여는 링크다. 자동 다운로드 기능은 아직 없으며 아래 설치 스크립트를 사용한다.
+
 프로젝트 루트의 PowerShell에서 아래를 실행한다.
 
 ```powershell
@@ -99,6 +102,25 @@ powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File .\collector\window
 ```
 
 설치·삭제는 각자의 Windows PC에서 실행한다. 설치한 계정과 다른 Windows 사용자에게는 자동 등록되지 않는다.
+
+### 실행되지 않을 때
+
+프로젝트 루트에서 설치를 다시 실행한 뒤, 다음 명령으로 설치 파일·버전·링크 등록·8080 서버 연결을 확인한다.
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File .\collector\windows\Test-CollectorSetup.ps1
+```
+
+- `[FAIL] 설치 파일` / `수집기 등록`: 이 PC의 현재 Windows 계정에서 설치 명령을 실행한다.
+- `[FAIL] 최신 설치본` / `실행 경로`: pull 또는 패치 적용 후 설치 명령을 다시 실행한다.
+- `[FAIL] 백엔드 연결`: 같은 PC의 IntelliJ에서 백엔드를 켜고 8080 포트인지 확인한다.
+- `[FAIL] 검사 준비`: `SPRING_PROFILES_ACTIVE=local`로 백엔드를 다시 실행한다.
+- 설치 명령부터 실행 정책·서명 오류로 차단되면 `Get-ExecutionPolicy -List` 결과와 오류를 확인한다. 조직 정책은 우회하지 않는다.
+- 진단이 통과해도 브라우저가 프로그램 열기를 취소·차단하면 실행되지 않는다. 화면에서 취소 후 새 검사를 시작하고 실행 확인을 허용한다.
+
+진단 도구는 하드웨어 수집 없이 빈 검사 세션 하나만 만든다. 이 세션은 2분 뒤 만료되며 실제 화면에서는 새 검사를 시작한다.
+새 설치본은 실행 중 오류가 발생하면 안내와 함께 Enter 입력을 기다린다. 오류 안내를 기록해 원인을 구분한다.
+설정 파일·DB 비밀번호·검사 실행 링크/토큰은 공유하지 않는다.
 
 ## 4. 화면에서 실제 사양 읽기
 

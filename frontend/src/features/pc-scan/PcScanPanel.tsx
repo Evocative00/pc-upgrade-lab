@@ -37,7 +37,19 @@ export function PcScanPanel({ onApply }: { onApply?: (result: ScanResult) => voi
   return (
     <section className="pc-scan" aria-labelledby="pc-scan-title">
       <h2 id="pc-scan-title">내 PC 불러오기</h2>
-      <p>처음에는 Windows 보조 프로그램 설치가 필요합니다. 파워·케이스·쿨러·모니터는 직접 입력해 주세요.</p>
+      <p>이 PC의 Windows 사용자 계정에 보조 프로그램을 먼저 설치해 주세요. 파워·케이스·쿨러·모니터는 직접 입력해 주세요.</p>
+      <details className="pc-scan-setup">
+        <summary>처음 설치하거나 보조 프로그램이 열리지 않을 때</summary>
+        <p>노트북과 데스크톱에서는 각각 설치해야 합니다. 현재 개발 버전은 프로젝트에 포함된 설치 스크립트를 사용합니다.</p>
+        <ol>
+          <li>프로젝트 폴더(pc-upgrade-lab)에서 PowerShell을 엽니다.</li>
+          <li>아래 설치 명령을 실행합니다. 수집기 코드를 갱신했을 때도 다시 실행해 주세요.</li>
+        </ol>
+        <pre><code>{'powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File .\\collector\\windows\\Install-Collector.ps1'}</code></pre>
+        <p>설치 후 이 PC의 백엔드를 실행하고, 아래에서 새 검사를 시작해 주세요. 브라우저의 프로그램 열기 확인 창에서는 실행을 허용합니다.</p>
+        <p>실행되지 않으면 아래 명령으로 설치와 서버 연결 상태를 확인해 주세요.</p>
+        <pre><code>{'powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File .\\collector\\windows\\Test-CollectorSetup.ps1'}</code></pre>
+      </details>
       <p>부품 이름과 제원을 실행 중인 서버로 보냅니다. 기기 일련번호는 보내지 않습니다.</p>
       <div className="pc-scan-actions">
         {!busy && <button type="button" onClick={() => { void scan.prepare() }}>내 PC 불러오기</button>}
@@ -46,7 +58,7 @@ export function PcScanPanel({ onApply }: { onApply?: (result: ScanResult) => voi
         {busy && <button type="button" onClick={scan.reset}>화면에서 취소</button>}
       </div>
       <p role="status" aria-live="polite">{labels[scan.status]}</p>
-      {scan.status === 'CREATED' && <p>브라우저의 프로그램 열기 확인 창에서 실행을 허용해 주세요.</p>}
+      {scan.status === 'CREATED' && <p>브라우저의 프로그램 열기 확인 창에서 실행을 허용해 주세요. 반응이 없으면 위의 설치 안내를 확인해 주세요.</p>}
       {scan.error && <p role="alert">{scan.error}</p>}
       {scan.result && <>
         <div className="pc-scan-table-wrap">
