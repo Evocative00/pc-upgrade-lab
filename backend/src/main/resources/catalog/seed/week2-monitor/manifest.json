@@ -1,0 +1,204 @@
+{
+  "seedName": "week2-monitor",
+  "revision": "b6fc3a559b871106ba89d9d8b8ad4beeb886a799",
+  "buildcoresRetrievedAt": "2026-09-29T11:52:35Z",
+  "items": [
+    {
+      "externalId": "14e27680-a5f9-481e-b9c7-7942d4a427fa",
+      "category": "Monitor",
+      "rawSha256": "313a607eb25668e68e48b12b01948a325aa035fdd37f6cfa4e0b9761f900624a",
+      "product": {
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "24GN650-B",
+        "partNumber": "24GN650-B"
+      },
+      "specification": {
+        "screenSizeInches": 23.8,
+        "nativeWidthPx": 1920,
+        "nativeHeightPx": 1080,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 144,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.lg.com/ca_en/monitors/gaming/24gn650-b/",
+          "retrievedAt": "2026-09-29T11:55:32Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected product specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "LG",
+              "model": "24GN650-B",
+              "part_number": "24GN650-B"
+            },
+            "source_region": "CA",
+            "normalized_specification": {
+              "screenSizeInches": 23.8,
+              "nativeWidthPx": 1920,
+              "nativeHeightPx": 1080,
+              "panelType": "IPS",
+              "nativeStandardRefreshHz": 144,
+              "hasRefreshOverclock": null,
+              "nativeOcRefreshHz": null,
+              "activePowerW": null,
+              "activePowerBasis": null,
+              "activePowerConditions": null
+            },
+            "additional_panel_technology": null,
+            "published_power": {
+              "manufacturer_typical_w": 32,
+              "maximum_w": 34,
+              "measurement_conditions": null
+            },
+            "refresh_connection_conditions": null,
+            "notes": [
+              "Manufacturer diagonal is 23.8 inches; BuildCores rounds it to 24. The original record remains unchanged.",
+              "No separate overclock specification was confirmed; support and OC frequency remain null, not false.",
+              "Only the exact base model is selected; regional suffixes in the original record are not automatically treated as aliases.",
+              "Power values retain their source region and published meanings. Detailed measurement conditions were not confirmed, so all three normalized active-power fields remain null.",
+              "Published refresh capabilities do not establish the current Windows setting, expected game FPS or support through every GPU, port and cable combination."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "23f9bbc9-05c9-45a5-830f-60b4056baa15",
+      "category": "Monitor",
+      "rawSha256": "fcfe0381d61aba4e1e936a0315e0eee281ca7c05dc685e0e932e0323a14598c5",
+      "product": {
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "27GP850-B",
+        "partNumber": "27GP850-B"
+      },
+      "specification": {
+        "screenSizeInches": 27,
+        "nativeWidthPx": 2560,
+        "nativeHeightPx": 1440,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 165,
+        "hasRefreshOverclock": true,
+        "nativeOcRefreshHz": 180,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.lg.com/hk_en/monitors/gaming/27gp850-b/",
+          "retrievedAt": "2026-09-29T11:55:32Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected product specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "LG",
+              "model": "27GP850-B",
+              "part_number": "27GP850-B"
+            },
+            "source_region": "HK",
+            "normalized_specification": {
+              "screenSizeInches": 27,
+              "nativeWidthPx": 2560,
+              "nativeHeightPx": 1440,
+              "panelType": "IPS",
+              "nativeStandardRefreshHz": 165,
+              "hasRefreshOverclock": true,
+              "nativeOcRefreshHz": 180,
+              "activePowerW": null,
+              "activePowerBasis": null,
+              "activePowerConditions": null
+            },
+            "additional_panel_technology": "Nano IPS",
+            "published_power": {
+              "manufacturer_typical_w": 48,
+              "maximum_w": 65,
+              "measurement_conditions": null
+            },
+            "refresh_connection_conditions": null,
+            "notes": [
+              "The manufacturer separates 165 Hz from 180 Hz overclock; the two frequencies are stored separately.",
+              "27GP850P-B.BEU also appears in the original part-number array. That different P model is not adopted or registered as an alias.",
+              "Nano IPS is retained as an additional technology; the normalized base panel type is IPS.",
+              "Power values retain their source region and published meanings. Detailed measurement conditions were not confirmed, so all three normalized active-power fields remain null.",
+              "Published refresh capabilities do not establish the current Windows setting, expected game FPS or support through every GPU, port and cable combination."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "76c380ec-5f68-4ed7-a9d2-cb94a83908fb",
+      "category": "Monitor",
+      "rawSha256": "6f4aa69efd9d94171196739732690c5e2655ddc3beeb021234387be46c701737",
+      "product": {
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "27UL500-W",
+        "partNumber": "27UL500-W"
+      },
+      "specification": {
+        "screenSizeInches": 27,
+        "nativeWidthPx": 3840,
+        "nativeHeightPx": 2160,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 60,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.lg.com/us/support/products/documents/27UL500-W%20Spec%20Sheet.pdf",
+          "retrievedAt": "2026-09-29T11:55:32Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected product specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "LG",
+              "model": "27UL500-W",
+              "part_number": "27UL500-W",
+              "regional_part_number": "27UL500-W.AUS",
+              "upc": "719192629813"
+            },
+            "source_region": "US",
+            "normalized_specification": {
+              "screenSizeInches": 27,
+              "nativeWidthPx": 3840,
+              "nativeHeightPx": 2160,
+              "panelType": "IPS",
+              "nativeStandardRefreshHz": 60,
+              "hasRefreshOverclock": null,
+              "nativeOcRefreshHz": null,
+              "activePowerW": null,
+              "activePowerBasis": null,
+              "activePowerConditions": null
+            },
+            "additional_panel_technology": null,
+            "published_power": {
+              "manufacturer_typical_w": 36,
+              "maximum_w": 41,
+              "measurement_conditions": null
+            },
+            "refresh_connection_conditions": null,
+            "notes": [
+              "The official sheet identifies regional model 27UL500-W.AUS and UPC 719192629813; the UPC matches the selected BuildCores record.",
+              "The base model 27UL500-W is the catalog identity. The regional suffix is retained as source evidence.",
+              "No separate overclock specification was confirmed; support and OC frequency remain null, not false.",
+              "Power values retain their source region and published meanings. Detailed measurement conditions were not confirmed, so all three normalized active-power fields remain null.",
+              "Published refresh capabilities do not establish the current Windows setting, expected game FPS or support through every GPU, port and cable combination."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,506 @@
+{
+  "seedName": "week2-initial",
+  "revision": "b6fc3a559b871106ba89d9d8b8ad4beeb886a799",
+  "buildcoresRetrievedAt": "2026-09-29T06:55:27Z",
+  "items": [
+    {
+      "externalId": "f34f9bc1-0136-43ee-bd78-a9efbd0e5f17",
+      "category": "CPU",
+      "rawSha256": "bd201603cc6077545b0e1354316d18a9302f3f2fba90f65c1d5ffa8aabf13177",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 3600",
+        "partNumber": "100-100000031BOX"
+      },
+      "specification": {
+        "socketCode": "AM4",
+        "coreCount": 6,
+        "threadCount": 12,
+        "baseClockMhz": 3600,
+        "boostClockMhz": 4200,
+        "tdpW": 65,
+        "hasIntegratedGraphics": false,
+        "integratedGraphicsModel": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-5-3600.html",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "socketCode": "AM4",
+              "coreCount": 6,
+              "threadCount": 12,
+              "baseClockMhz": 3600,
+              "boostClockMhz": 4200,
+              "tdpW": 65,
+              "hasIntegratedGraphics": false,
+              "integratedGraphicsModel": null
+            },
+            "notes": [
+              "AMD specifies discrete graphics required. TDP is not measured or peak system power.",
+              "The normalized part number is the verified boxed SKU; other source aliases are not adopted."
+            ],
+            "supported_memory_types": [
+              "DDR4"
+            ],
+            "verified_part_number": "100-100000031BOX"
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "04984638-674b-4384-8866-a7b20d55f8b4",
+      "category": "CPU",
+      "rawSha256": "a25964e06e910012887ee7d0ca51473ef381b5eaeea4994306d0302bd3d0790a",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 5600",
+        "partNumber": "100-100000927BOX"
+      },
+      "specification": {
+        "socketCode": "AM4",
+        "coreCount": 6,
+        "threadCount": 12,
+        "baseClockMhz": 3500,
+        "boostClockMhz": 4400,
+        "tdpW": 65,
+        "hasIntegratedGraphics": false,
+        "integratedGraphicsModel": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-5-5600.html",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "socketCode": "AM4",
+              "coreCount": 6,
+              "threadCount": 12,
+              "baseClockMhz": 3500,
+              "boostClockMhz": 4400,
+              "tdpW": 65,
+              "hasIntegratedGraphics": false,
+              "integratedGraphicsModel": null
+            },
+            "notes": [
+              "AMD specifies discrete graphics required. Socket matching alone does not establish motherboard BIOS support."
+            ],
+            "supported_memory_types": [
+              "DDR4"
+            ],
+            "verified_part_number": "100-100000927BOX"
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "6b03b443-7b22-491c-b301-7e2a285359df",
+      "category": "CPU",
+      "rawSha256": "10c6fb8eeeef3287952978e2865c74c46cffea89cc4c639e6063b4c58cc789d8",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 7600",
+        "partNumber": "100-100001015BOX"
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "coreCount": 6,
+        "threadCount": 12,
+        "baseClockMhz": 3800,
+        "boostClockMhz": 5100,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "integratedGraphicsModel": "AMD Radeon Graphics"
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7600.html",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "socketCode": "AM5",
+              "coreCount": 6,
+              "threadCount": 12,
+              "baseClockMhz": 3800,
+              "boostClockMhz": 5100,
+              "tdpW": 65,
+              "hasIntegratedGraphics": true,
+              "integratedGraphicsModel": "AMD Radeon Graphics"
+            },
+            "notes": [
+              "Clock values are stored in MHz. The bundled cooler is not a column in this initial catalog."
+            ],
+            "supported_memory_types": [
+              "DDR5"
+            ],
+            "verified_part_number": "100-100001015BOX"
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "ab4fadad-e3a1-41ff-82fd-e16e5af8a324",
+      "category": "CPU",
+      "rawSha256": "a36fffbbabf891f934e7c1745eb73662a482a285d188cd1280706d0754bc0df4",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 7700",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "coreCount": 8,
+        "threadCount": 16,
+        "baseClockMhz": 3800,
+        "boostClockMhz": 5300,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "integratedGraphicsModel": "AMD Radeon Graphics"
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7700.html",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "socketCode": "AM5",
+              "coreCount": 8,
+              "threadCount": 16,
+              "baseClockMhz": 3800,
+              "boostClockMhz": 5300,
+              "tdpW": 65,
+              "hasIntegratedGraphics": true,
+              "integratedGraphicsModel": "AMD Radeon Graphics"
+            },
+            "notes": [
+              "The selected BuildCores record lists a boxed SKU. The current manufacturer page lists other boxed identifiers, so normalized partNumber remains null; no packaging equivalence is asserted."
+            ],
+            "supported_memory_types": [
+              "DDR5"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "95b1e5e5-1aeb-48dd-8eb7-9efc4ad00512",
+      "category": "Motherboard",
+      "rawSha256": "e5328d2205b3273e96ee46bdf9db326f568d936bded74d0aaae4a1e2f0da8754",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "B550M PRO-VDH WIFI",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "AM4",
+        "chipset": "B550",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR4",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 137438953472,
+        "supportsEcc": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Motherboard/B550M-PRO-VDH-WIFI/Specification",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "socketCode": "AM4",
+              "chipset": "B550",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR4",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 137438953472,
+              "supportsEcc": null
+            },
+            "notes": [
+              "128 GB memory capacity is normalized as 128 GiB in bytes.",
+              "The page states ECC UDIMM module support. End-to-end ECC error-correction operation is not verified, so supportsEcc remains null.",
+              "Per-CPU minimum BIOS versions are not verified. Regional SKU aliases are not adopted as a confirmed partNumber."
+            ],
+            "ecc_udimm_module_support": true,
+            "ecc_operation_verified": false,
+            "cpu_bios_support_verified": false
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "f24caa89-27bd-4797-899c-2bb76b608971",
+      "category": "Motherboard",
+      "rawSha256": "f307cb7a6faa80eafc8f6c4cdf92f388c12134ad4dd357eb48348811c6e7bb63",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO B650M-A WIFI",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "chipset": "B650",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Motherboard/PRO-B650M-A-WIFI/Specification",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "socketCode": "AM5",
+              "chipset": "B650",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR5",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 274877906944,
+              "supportsEcc": null
+            },
+            "notes": [
+              "The manufacturer currently specifies a 256 GB maximum, normalized as 256 GiB in bytes.",
+              "Non-ECC unbuffered memory is declared; ECC operation is not verified, so supportsEcc remains null.",
+              "Per-CPU minimum BIOS versions are not verified. Maximum memory capability can depend on BIOS and memory configuration."
+            ],
+            "declared_memory_class": [
+              "NON_ECC",
+              "UNBUFFERED"
+            ],
+            "ecc_operation_verified": false,
+            "cpu_bios_support_verified": false
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "1693ade8-baa6-4635-86ec-ef3af308cbe4",
+      "category": "RAM",
+      "rawSha256": "9f4fff23926ce10614ca876c38ce59bccdd8d9c59aa1d917793621dd43cb9d3a",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 16GB (2x8GB)",
+        "partNumber": "KF432C16BBK2/16"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 8589934592,
+        "moduleCount": 2,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": 34
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.kingston.com/datasheets/KF432C16BBK2_16.pdf",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "memoryType": "DDR4",
+              "moduleCapacityBytes": 8589934592,
+              "moduleCount": 2,
+              "dataRateMts": 3200,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.35,
+              "heightMm": 34
+            },
+            "notes": [
+              "Capacity is stored per physical module in bytes; this catalog product contains two modules.",
+              "dataRateMts and voltageV use the same advertised memory profile. They do not represent the user's detected operating settings.",
+              "Only the exact verified part number is adopted; other BuildCores aliases are not treated as equivalent."
+            ],
+            "profile_basis": "XMP_PROFILE_1",
+            "default_jedec_data_rate_mts": 2400,
+            "default_jedec_voltage_v": 1.2,
+            "profile_speed_is_not_guaranteed_in_all_systems": true
+          }
+        },
+        {
+          "url": "https://www.kingston.com/en/memory/search?partid=KF432C16BBK2%2F16",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "verified_part_number": "KF432C16BBK2/16",
+            "memory_class": "NON_ECC_UNBUFFERED_DIMM",
+            "module_count": 2,
+            "system_ecc": false,
+            "notes": [
+              "Exact-SKU manufacturer listing used to confirm product identity and memory class."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "38b0687e-02a1-4863-b1b3-af0eab884a05",
+      "category": "RAM",
+      "rawSha256": "5a77b79402c00dce58d2694bb364b478cb4d44aa18783f7784eb5b823581c869",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 32GB (2x16GB)",
+        "partNumber": "KF432C16BBK2/32"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": 34
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.kingston.com/datasheets/KF432C16BBK2_32.pdf",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "memoryType": "DDR4",
+              "moduleCapacityBytes": 17179869184,
+              "moduleCount": 2,
+              "dataRateMts": 3200,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.35,
+              "heightMm": 34
+            },
+            "notes": [
+              "Capacity is stored per physical module in bytes; this catalog product contains two modules.",
+              "dataRateMts and voltageV use the same advertised memory profile. They do not represent the user's detected operating settings.",
+              "Only the exact verified part number is adopted; other BuildCores aliases are not treated as equivalent."
+            ],
+            "profile_basis": "XMP_PROFILE_1",
+            "default_jedec_data_rate_mts": 2400,
+            "default_jedec_voltage_v": 1.2,
+            "profile_speed_is_not_guaranteed_in_all_systems": true
+          }
+        },
+        {
+          "url": "https://www.kingston.com/en/memory/search?partid=KF432C16BBK2%2F32",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "verified_part_number": "KF432C16BBK2/32",
+            "memory_class": "NON_ECC_UNBUFFERED_DIMM",
+            "module_count": 2,
+            "system_ecc": false,
+            "notes": [
+              "Exact-SKU manufacturer listing used to confirm product identity and memory class."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "fbcba504-1ad4-49bc-86c4-9ad3143d0e46",
+      "category": "RAM",
+      "rawSha256": "b2c89a08f3e179431ba1225cdb087db1792984cf8dc6209fb707a13a1c5b431e",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "KF560C36BBEK2-32"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "dataRateMts": 6000,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": 34.9
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.kingston.com/datasheets/KF560C36BBEK2-32.pdf",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "memoryType": "DDR5",
+              "moduleCapacityBytes": 17179869184,
+              "moduleCount": 2,
+              "dataRateMts": 6000,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.35,
+              "heightMm": 34.9
+            },
+            "notes": [
+              "Capacity is stored per physical module in bytes; this catalog product contains two modules.",
+              "dataRateMts and voltageV use the same advertised memory profile. They do not represent the user's detected operating settings.",
+              "Only the exact verified part number is adopted; other BuildCores aliases are not treated as equivalent.",
+              "On-die ECC is not system ECC. The manufacturer lists this kit as non-ECC.",
+              "This exact SKU is discontinued; it is retained for existing-PC simulation and has no assumed current price."
+            ],
+            "profile_basis": "EXPO_PROFILE_0_AND_XMP_PROFILE_1",
+            "default_jedec_data_rate_mts": 4800,
+            "default_jedec_voltage_v": 1.1,
+            "profile_speed_is_not_guaranteed_in_all_systems": true
+          }
+        },
+        {
+          "url": "https://www.kingston.com/en/memory/search/discontinuedmodels?partId=KF560C36BBEK2-32",
+          "retrievedAt": "2026-09-29T06:58:09Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "verified_part_number": "KF560C36BBEK2-32",
+            "memory_class": "NON_ECC_UNBUFFERED_DIMM",
+            "module_count": 2,
+            "system_ecc": false,
+            "notes": [
+              "Exact-SKU manufacturer listing used to confirm product identity and memory class."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
