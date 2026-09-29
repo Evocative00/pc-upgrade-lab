@@ -1,0 +1,575 @@
+{
+  "seedName": "week2-gpu",
+  "revision": "b6fc3a559b871106ba89d9d8b8ad4beeb886a799",
+  "buildcoresRetrievedAt": "2026-09-29T10:17:49Z",
+  "items": [
+    {
+      "externalId": "c4c44fc0-9231-4578-b947-0ccd887d97e1",
+      "category": "GPU",
+      "rawSha256": "528f9ced633bafdb0533067e80903c448657ba12a15ab673d0e3c95087574334",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 3060 VENTUS 2X 12G OC",
+        "partNumber": null
+      },
+      "specification": {
+        "chipVendor": "NVIDIA",
+        "chipset": "GeForce RTX 3060",
+        "vramBytes": 12884901888,
+        "memoryType": "GDDR6",
+        "pcieVersion": "4.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": null,
+        "lengthMm": 235,
+        "heightMm": null,
+        "thicknessMm": null,
+        "slotWidth": null,
+        "cardPowerW": 170,
+        "cardPowerBasis": "POWER_CONSUMPTION",
+        "psuRequirementW": 550,
+        "psuRequirementBasis": "RECOMMENDED",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Graphics-Card/GeForce-RTX-3060-VENTUS-2X-12G-OC/Specification",
+          "retrievedAt": "2026-09-29T10:21:31Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "GeForce RTX 3060 VENTUS 2X 12G OC",
+              "part_number": null
+            },
+            "normalized_specification": {
+              "chipVendor": "NVIDIA",
+              "chipset": "GeForce RTX 3060",
+              "vramBytes": 12884901888,
+              "memoryType": "GDDR6",
+              "pcieVersion": "4.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": null,
+              "lengthMm": 235,
+              "heightMm": null,
+              "thicknessMm": null,
+              "slotWidth": null,
+              "cardPowerW": 170,
+              "cardPowerBasis": "POWER_CONSUMPTION",
+              "psuRequirementW": 550,
+              "psuRequirementBasis": "RECOMMENDED",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 1
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              235,
+              124,
+              42
+            ],
+            "published_dimension_axis_labels": null,
+            "dimension_mapping": {
+              "lengthMm": "BuildCores length; matches first manufacturer dimension",
+              "heightMm": null,
+              "thicknessMm": null
+            },
+            "published_card_power_label": "Power consumption",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Card power retains the manufacturer definition; it is not measured workload power.",
+              "Motherboard slot requirements do not establish the physical edge connector size.",
+              "The manufacturer does not label dimension axes; height and thickness remain null. Length uses the explicit BuildCores field cross-checked against the first published dimension.",
+              "No global part number or slot occupancy is confirmed in the cited specification; both remain null.",
+              "Exact OC model only; non-OC, V1 and XS variants are separate products. Electrical lane count is not stated on the cited page."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "1b48c3ec-6fc0-416e-83e4-cc6f671084f5",
+      "category": "GPU",
+      "rawSha256": "26f04f5e355f1e790f055d26ec618307501f8432bde99247b83ae04c512c4b01",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 4060 VENTUS 2X BLACK 8G OC",
+        "partNumber": null
+      },
+      "specification": {
+        "chipVendor": "NVIDIA",
+        "chipset": "GeForce RTX 4060",
+        "vramBytes": 8589934592,
+        "memoryType": "GDDR6",
+        "pcieVersion": "4.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 8,
+        "lengthMm": 199,
+        "heightMm": null,
+        "thicknessMm": null,
+        "slotWidth": null,
+        "cardPowerW": null,
+        "cardPowerBasis": null,
+        "psuRequirementW": 550,
+        "psuRequirementBasis": "RECOMMENDED",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Graphics-Card/GeForce-RTX-4060-VENTUS-2X-BLACK-8G-OC/Specification",
+          "retrievedAt": "2026-09-29T10:21:31Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "GeForce RTX 4060 VENTUS 2X BLACK 8G OC",
+              "part_number": null
+            },
+            "normalized_specification": {
+              "chipVendor": "NVIDIA",
+              "chipset": "GeForce RTX 4060",
+              "vramBytes": 8589934592,
+              "memoryType": "GDDR6",
+              "pcieVersion": "4.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": 8,
+              "lengthMm": 199,
+              "heightMm": null,
+              "thicknessMm": null,
+              "slotWidth": null,
+              "cardPowerW": null,
+              "cardPowerBasis": null,
+              "psuRequirementW": 550,
+              "psuRequirementBasis": "RECOMMENDED",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 1
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              199,
+              120,
+              41
+            ],
+            "published_dimension_axis_labels": null,
+            "dimension_mapping": {
+              "lengthMm": "BuildCores length; matches first manufacturer dimension",
+              "heightMm": null,
+              "thicknessMm": null
+            },
+            "published_card_power_label": "Power consumption",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Card power retains the manufacturer definition; it is not measured workload power.",
+              "Motherboard slot requirements do not establish the physical edge connector size.",
+              "The manufacturer does not label dimension axes; height and thickness remain null. Length uses the explicit BuildCores field cross-checked against the first published dimension.",
+              "No global part number or slot occupancy is confirmed in the cited specification; both remain null.",
+              "Conflicting alternatives are not collapsed into one wattage; cardPowerW and cardPowerBasis remain null."
+            ],
+            "published_card_power_raw": "115 W or 120 W"
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "dfa683ba-c635-4709-bb33-b12cd6f2e0bc",
+      "category": "GPU",
+      "rawSha256": "335636a31c58c5dcbe51afa11b96a8094a799fcc8749d19354392a875d9bffad",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 4070 SUPER 12G VENTUS 2X OC",
+        "partNumber": null
+      },
+      "specification": {
+        "chipVendor": "NVIDIA",
+        "chipset": "GeForce RTX 4070 SUPER",
+        "vramBytes": 12884901888,
+        "memoryType": "GDDR6X",
+        "pcieVersion": "4.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": null,
+        "lengthMm": 242,
+        "heightMm": null,
+        "thicknessMm": null,
+        "slotWidth": null,
+        "cardPowerW": 220,
+        "cardPowerBasis": "POWER_CONSUMPTION",
+        "psuRequirementW": 650,
+        "psuRequirementBasis": "RECOMMENDED",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_16PIN_UNSPECIFIED",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Graphics-Card/GeForce-RTX-4070-SUPER-12G-VENTUS-2X-OC/Specification",
+          "retrievedAt": "2026-09-29T10:21:31Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "GeForce RTX 4070 SUPER 12G VENTUS 2X OC",
+              "part_number": null
+            },
+            "normalized_specification": {
+              "chipVendor": "NVIDIA",
+              "chipset": "GeForce RTX 4070 SUPER",
+              "vramBytes": 12884901888,
+              "memoryType": "GDDR6X",
+              "pcieVersion": "4.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": null,
+              "lengthMm": 242,
+              "heightMm": null,
+              "thicknessMm": null,
+              "slotWidth": null,
+              "cardPowerW": 220,
+              "cardPowerBasis": "POWER_CONSUMPTION",
+              "psuRequirementW": 650,
+              "psuRequirementBasis": "RECOMMENDED",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_16PIN_UNSPECIFIED",
+                  "connectorCount": 1
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              242,
+              125,
+              43
+            ],
+            "published_dimension_axis_labels": null,
+            "dimension_mapping": {
+              "lengthMm": "BuildCores length; matches first manufacturer dimension",
+              "heightMm": null,
+              "thicknessMm": null
+            },
+            "published_card_power_label": "Power consumption",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Card power retains the manufacturer definition; it is not measured workload power.",
+              "Motherboard slot requirements do not establish the physical edge connector size.",
+              "The manufacturer does not label dimension axes; height and thickness remain null. Length uses the explicit BuildCores field cross-checked against the first published dimension.",
+              "No global part number or slot occupancy is confirmed in the cited specification; both remain null.",
+              "Only a 16-pin connector is confirmed; its revision and electrical PCIe lane count remain unspecified."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "2e251feb-b38f-46f3-9cff-1c7adb286e7c",
+      "category": "GPU",
+      "rawSha256": "fae1498609ad94af19862455f26f8780dac8de79965099347534832199b1850d",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 6600 8GB",
+        "partNumber": "11310-01-20G"
+      },
+      "specification": {
+        "chipVendor": "AMD",
+        "chipset": "Radeon RX 6600",
+        "vramBytes": 8589934592,
+        "memoryType": "GDDR6",
+        "pcieVersion": "4.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 8,
+        "lengthMm": 193,
+        "heightMm": 120.05,
+        "thicknessMm": 40.05,
+        "slotWidth": 2,
+        "cardPowerW": 140,
+        "cardPowerBasis": "BOARD_POWER",
+        "psuRequirementW": 500,
+        "psuRequirementBasis": "MINIMUM",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-6600-8g-gddr6",
+          "retrievedAt": "2026-09-29T10:21:31Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Sapphire",
+              "model": "PULSE Radeon RX 6600 8GB",
+              "part_number": "11310-01-20G"
+            },
+            "normalized_specification": {
+              "chipVendor": "AMD",
+              "chipset": "Radeon RX 6600",
+              "vramBytes": 8589934592,
+              "memoryType": "GDDR6",
+              "pcieVersion": "4.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": 8,
+              "lengthMm": 193,
+              "heightMm": 120.05,
+              "thicknessMm": 40.05,
+              "slotWidth": 2,
+              "cardPowerW": 140,
+              "cardPowerBasis": "BOARD_POWER",
+              "psuRequirementW": 500,
+              "psuRequirementBasis": "MINIMUM",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 1
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              193,
+              120.05,
+              40.05
+            ],
+            "published_dimension_axis_labels": [
+              "L",
+              "W",
+              "H"
+            ],
+            "dimension_mapping": {
+              "lengthMm": "L",
+              "heightMm": "W",
+              "thicknessMm": "H"
+            },
+            "published_card_power_label": "Board Power",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Card power retains the manufacturer definition; it is not measured workload power.",
+              "Motherboard slot requirements do not establish the physical edge connector size.",
+              "Use the standard 11310-01-20G tab, not the 11310-04-20G LITE EDITION tab."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "851fb40e-318a-47e0-bfee-1b4f2b2c9608",
+      "category": "GPU",
+      "rawSha256": "a642ccbbe65a1e8f99b445272483abef12bf7d1761a57abff55954036328f949",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 7800 XT 16GB",
+        "partNumber": "11330-02-20G"
+      },
+      "specification": {
+        "chipVendor": "AMD",
+        "chipset": "Radeon RX 7800 XT",
+        "vramBytes": 17179869184,
+        "memoryType": "GDDR6",
+        "pcieVersion": "4.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 16,
+        "lengthMm": 280,
+        "heightMm": 128.75,
+        "thicknessMm": 52.57,
+        "slotWidth": 2.5,
+        "cardPowerW": 266,
+        "cardPowerBasis": "TOTAL_BOARD_POWER",
+        "psuRequirementW": 700,
+        "psuRequirementBasis": "MINIMUM",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 2
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-7800-xt-16g-gddr6",
+          "retrievedAt": "2026-09-29T10:21:31Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Sapphire",
+              "model": "PULSE Radeon RX 7800 XT 16GB",
+              "part_number": "11330-02-20G"
+            },
+            "normalized_specification": {
+              "chipVendor": "AMD",
+              "chipset": "Radeon RX 7800 XT",
+              "vramBytes": 17179869184,
+              "memoryType": "GDDR6",
+              "pcieVersion": "4.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": 16,
+              "lengthMm": 280,
+              "heightMm": 128.75,
+              "thicknessMm": 52.57,
+              "slotWidth": 2.5,
+              "cardPowerW": 266,
+              "cardPowerBasis": "TOTAL_BOARD_POWER",
+              "psuRequirementW": 700,
+              "psuRequirementBasis": "MINIMUM",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 2
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              280,
+              128.75,
+              52.57
+            ],
+            "published_dimension_axis_labels": [
+              "L",
+              "W",
+              "H"
+            ],
+            "dimension_mapping": {
+              "lengthMm": "L",
+              "heightMm": "W",
+              "thicknessMm": "H"
+            },
+            "published_card_power_label": "Total Board Power",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Card power retains the manufacturer definition; it is not measured workload power.",
+              "Motherboard slot requirements do not establish the physical edge connector size.",
+              "Manufacturer data corrects the original slot width of 3 and zero power connectors to 2.5 slots and two 8-pin connectors."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "918c2184-0e24-4512-b93d-1c959539d590",
+      "category": "GPU",
+      "rawSha256": "b2db2aa44623f399a6582cd922a112afb14a81ba112dfec2d224cf2483fe97c9",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "ASRock",
+        "modelName": "Intel Arc B580 Challenger 12GB OC",
+        "partNumber": "B580 CL 12GO"
+      },
+      "specification": {
+        "chipVendor": "INTEL",
+        "chipset": "Arc B580",
+        "vramBytes": 12884901888,
+        "memoryType": "GDDR6",
+        "pcieVersion": "4.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 8,
+        "lengthMm": 249,
+        "heightMm": null,
+        "thicknessMm": null,
+        "slotWidth": 2,
+        "cardPowerW": null,
+        "cardPowerBasis": null,
+        "psuRequirementW": 650,
+        "psuRequirementBasis": "RECOMMENDED",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.asrock.com/Graphics-Card/Intel/Intel%20Arc%20B580%20Challenger%2012GB%20OC/index.us.asp",
+          "retrievedAt": "2026-09-29T10:21:31Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "ASRock",
+              "model": "Intel Arc B580 Challenger 12GB OC",
+              "part_number": "B580 CL 12GO"
+            },
+            "normalized_specification": {
+              "chipVendor": "INTEL",
+              "chipset": "Arc B580",
+              "vramBytes": 12884901888,
+              "memoryType": "GDDR6",
+              "pcieVersion": "4.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": 8,
+              "lengthMm": 249,
+              "heightMm": null,
+              "thicknessMm": null,
+              "slotWidth": 2,
+              "cardPowerW": null,
+              "cardPowerBasis": null,
+              "psuRequirementW": 650,
+              "psuRequirementBasis": "RECOMMENDED",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 1
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              249,
+              132,
+              41
+            ],
+            "published_dimension_axis_labels": null,
+            "dimension_mapping": {
+              "lengthMm": "BuildCores length; matches first manufacturer dimension",
+              "heightMm": null,
+              "thicknessMm": null
+            },
+            "published_card_power_label": null,
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Card power retains the manufacturer definition; it is not measured workload power.",
+              "Motherboard slot requirements do not establish the physical edge connector size.",
+              "The manufacturer does not label dimension axes; height and thickness remain null. Length uses the explicit BuildCores field cross-checked against the first published dimension.",
+              "The cited card page has no board power value. BuildCores 190W is not adopted as confirmed card power."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
