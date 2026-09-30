@@ -15,7 +15,7 @@ export function PartStatusLegend() {
         <PartStatusBadge key={status} status={status} />
       ))}
       <span className="muted">
-        미연결 부품도 입력한 이름과 검출 원문을 그대로 저장합니다.
+        카탈로그 연결은 호환성 확인과 별개입니다. 미연결 부품도 입력한 이름과 검출 원문을 그대로 저장합니다.
       </span>
     </p>
   )

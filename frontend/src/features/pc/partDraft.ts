@@ -60,11 +60,16 @@ export function renameDraft(draft: PartDraft, displayName: string): PartDraft {
 
 export function linkCatalog(
   draft: PartDraft,
-  product: { id: string; name: string },
+  product: { id: string; modelName: string; type: PartType },
 ): PartDraft {
+  if (product.type !== draft.type || !product.id.trim() || product.id.length > 128 ||
+    !product.modelName.trim() || product.modelName.length > 255) {
+    throw new Error('현재 항목에 연결할 수 없는 부품입니다.')
+  }
+  // 장착 수량과 수집 제원은 사용자 PC의 사실이다. 카탈로그의 RAM 묶음 수량 등을 복사하지 않는다.
   return {
     ...draft,
-    displayName: product.name,
+    displayName: product.modelName,
     catalogProductId: product.id,
     matchStatus: 'MATCHED',
     edited: true,

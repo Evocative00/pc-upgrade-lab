@@ -10,6 +10,7 @@ import {
   toDraft,
   toPartInputs,
   toPersistedDraft,
+  unlinkCatalog,
   validatePcRequest,
   withEmptyRows,
 } from '../src/features/pc/partDraft.ts'
@@ -86,15 +87,41 @@ test('부분 스캔은 빠진 종류와 MANUAL 값을 유지하고 AUTO 종류�
   assert.equal(inputs.filter((item) => item.source === 'AUTO' && item.type === 'CPU').length, 1)
 })
 
-test('예시 모델명 입력은 카탈로그 연결을 해제하면서 AUTO 원문을 보존한다', () => {
+test('모델명 직접 수정은 카탈로그 연결을 해제하면서 AUTO 원문을 보존한다', () => {
   const original = part('CPU')
-  const linked = linkCatalog(toDraft(original), { id: 'real-id', name: '실제 카탈로그 CPU' })
+  const linked = linkCatalog(toDraft(original), { id: 'real-id', modelName: '실제 카탈로그 CPU', type: 'CPU' })
   const renamed = renameDraft(linked, '예시 CPU 모델명')
   assert.equal(renamed.catalogProductId, null)
   assert.equal(renamed.matchStatus, 'UNMATCHED')
   assert.equal(renamed.source, original.source)
   assert.equal(renamed.rawName, original.rawName)
   assert.equal(planScanApply([renamed], scan([original])).editedReplaced, 1)
+})
+
+test('실제 RAM 제품 연결은 장착 수량·제원·원문을 유지하고 ID를 저장 요청에 담는다', () => {
+  const original = part('RAM', { quantity: 1, specs: { capacityBytes: 16 * 1024 ** 3, slot: 'DIMM A' } })
+  const linked = linkCatalog(toDraft(original), { id: 'db-product-id', type: 'RAM', modelName: 'FURY Beast 32GB (2x16GB)' })
+  const [request] = toPartInputs([linked])
+  assert.equal(request.catalogProductId, 'db-product-id')
+  assert.equal(request.matchStatus, 'MATCHED')
+  assert.equal(request.quantity, 1)
+  assert.deepEqual(request.specs, original.specs)
+  assert.equal(request.rawName, original.rawName)
+  assert.equal(request.source, 'AUTO')
+  const reopened = toPersistedDraft(JSON.parse(JSON.stringify(request)))
+  assert.equal(reopened.catalogProductId, request.catalogProductId)
+  const unlinked = unlinkCatalog(reopened)
+  assert.equal(unlinked.catalogProductId, null)
+  assert.equal(unlinked.matchStatus, 'UNMATCHED')
+  assert.equal(unlinked.displayName, request.displayName)
+  assert.deepEqual(unlinked.specs, original.specs)
+})
+
+test('다른 종류나 ID가 없는 제품은 현재 항목에 연결할 수 없다', () => {
+  const draft = toDraft(part('CPU'))
+  assert.throws(() => linkCatalog(draft, { id: 'gpu-id', type: 'GPU', modelName: 'RTX 3060' }))
+  assert.throws(() => linkCatalog(draft, { id: '', type: 'CPU', modelName: 'Ryzen 5 5600' }))
+  assert.equal(draft.catalogProductId, null)
 })
 
 test('API 요청에는 화면 전용 key·edited·persisted·capacityText를 보내지 않는다', () => {

@@ -6,6 +6,7 @@ import {
   getCapacityBytes,
   getPartStatus,
   isKnownCapacityValid,
+  linkCatalog,
   renameDraft,
   setCapacityInput,
   unlinkCatalog,
@@ -109,7 +110,7 @@ export function PartRow({ draft, index, count, onChange, onRemove }: Props) {
           onClick={() => setPickerOpen((open) => !open)}
           aria-expanded={pickerOpen}
         >
-          예시 모델명 찾기
+          부품 검색
         </button>
         {draft.matchStatus === 'MATCHED' && (
           <button
@@ -146,8 +147,7 @@ export function PartRow({ draft, index, count, onChange, onRemove }: Props) {
           initialQuery={draft.displayName}
           onClose={() => setPickerOpen(false)}
           onSelect={(product) => {
-            // 예시 데이터의 ID를 실제 제품 연결로 저장하지 않고 모델명만 입력한다.
-            onChange(renameDraft(draft, product.name))
+            onChange(linkCatalog(draft, product))
             setPickerOpen(false)
           }}
         />
