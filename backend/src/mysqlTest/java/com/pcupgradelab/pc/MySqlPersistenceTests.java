@@ -17,7 +17,7 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * mysqlTest로 선택 실행하는 실제 DB 검사. 기존 V1 테이블과 로컬 MySQL 접속 설정이 필요하다.
+ * mysqlTest로 선택 실행하는 실제 DB 검사. 현재 버전의 테이블과 로컬 MySQL 접속 설정이 필요하다.
  * PC 저장 → 수정 → Spring 컨텍스트 종료 → 새 컨텍스트에서 재조회 → 검증용 데이터 정리를 확인한다.
  * 웹 서버는 실행하지 않으므로 HTTP API·화면 전체 흐름이나 별도 bootRun 프로세스를 재시작하는 검사는 아니다.
  */
@@ -106,7 +106,8 @@ class MySqlPersistenceTests {
                         "--spring.main.banner-mode=off",
                         "--spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver",
                         "--spring.jpa.hibernate.ddl-auto=validate",
-                        "--spring.flyway.enabled=false");
+                        "--spring.flyway.enabled=false",
+                        "--catalog.seed.enabled=false");
     }
 
     private PartInput part(PartType type, String name, long capacityBytes) {

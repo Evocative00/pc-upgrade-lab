@@ -1,0 +1,35 @@
+# local 프로필로 백엔드를 실행한 뒤 한 요청씩 확인한다.
+# 기존 seed 18종이 등록된 DB 기준이다. 이 파일의 요청은 데이터를 변경하지 않는다.
+@baseUrl = http://localhost:8080
+# C01 응답의 items 중 한 제품의 id로 바꾼다. 외부 BuildCores ID가 아닌 우리 DB의 id다.
+@productId = replace-with-product-id
+
+### C01 전체 목록: 200, totalElements=18, items에 미검증 상태와 null 가격 유지
+GET {{baseUrl}}/api/catalog/products
+
+### C02 GPU: 200, totalElements=6
+GET {{baseUrl}}/api/catalog/products?type=GPU
+
+### C03 모니터: 200, totalElements=3
+GET {{baseUrl}}/api/catalog/products?type=MONITOR
+
+### C04 모델명 검색: 200, totalElements=1
+GET {{baseUrl}}/api/catalog/products?type=CPU&q=Ryzen%205%205600
+
+### C05 부품번호 검색: 200, totalElements=1
+GET {{baseUrl}}/api/catalog/products?type=RAM&q=KF432C16BBK2%2F32
+
+### C06 페이지 구분: 200, items=2개, totalElements=6, totalPages=3
+GET {{baseUrl}}/api/catalog/products?type=GPU&page=0&size=2
+
+### C07 상세: 200, product/specification/sources/attributions, rawPayload 제외
+GET {{baseUrl}}/api/catalog/products/{{productId}}
+
+### C08 아직 등록하지 않은 종류: 200, items=[], totalElements=0
+GET {{baseUrl}}/api/catalog/products?type=STORAGE
+
+### C09 잘못된 입력: 400, code=INVALID_INPUT
+GET {{baseUrl}}/api/catalog/products?size=101
+
+### C10 없는 제품: 404, code=CATALOG_PRODUCT_NOT_FOUND
+GET {{baseUrl}}/api/catalog/products/00000000-0000-0000-0000-000000000000

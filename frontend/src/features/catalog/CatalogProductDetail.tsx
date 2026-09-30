@@ -1,0 +1,61 @@
+import { useId } from 'react'
+import { formatCatalogPrice, ramKitLabel, specificationRows, VERIFICATION_LABEL } from './catalogPresentation.ts'
+import type { CatalogAttribution, CatalogDetail, CatalogProduct } from './catalogTypes.ts'
+
+export function CatalogAttributions({ items }: { items: CatalogAttribution[] }) {
+  return (
+    <div className="catalog-attribution muted">
+      {items.map((item) => (
+        <p key={`${item.url}-${item.license}`}>
+          {item.notice}{' '}
+          <a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}</a>
+          {' · '}<a href={item.licenseUrl} target="_blank" rel="noopener noreferrer">{item.license}</a>
+        </p>
+      ))}
+    </div>
+  )
+}
+
+export function CatalogProductDetail({ detail, onSelect }: {
+  detail: CatalogDetail
+  onSelect: (product: CatalogProduct) => void
+}) {
+  const headingId = useId()
+  const { product, specification, sources } = detail
+  const sourceNames = { BUILDCORES: 'BuildCores 원본', MANUFACTURER: '제조사 자료', MANUAL: '확인 자료' }
+
+  return (
+    <section className="catalog-detail" aria-labelledby={headingId}>
+      <div>
+        <p className="muted">{product.manufacturer} · {VERIFICATION_LABEL[product.verificationStatus]}{!product.active && ' · 검토용'}</p>
+        <h3 id={headingId}>{product.modelName}</h3>
+        <p className="muted">부품번호: {product.partNumber ?? '미확인'} · 기준가격: {formatCatalogPrice(product.referencePrice)}</p>
+      </div>
+
+      {product.type === 'RAM' && (
+        <p className="notice">
+          제품 구성: {ramKitLabel(specification)}. 내 PC의 수량에는 실제 장착한 모듈 수를 입력해 주세요.
+        </p>
+      )}
+      <dl className="catalog-specs">
+        {specificationRows(product.type, specification).map(([label, value]) => (
+          <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+        ))}
+      </dl>
+      {(product.type === 'GPU' || product.type === 'CPU') && (
+        <p className="muted">공표 전력·TDP·권장 파워 용량은 실제 사용 전력과 다를 수 있습니다.</p>
+      )}
+
+      <div className="catalog-sources">
+        <span className="muted">제원 출처</span>
+        {sources.map((source, index) => (
+          <a key={`${source.sourceUrl}-${index}`} href={source.sourceUrl} target="_blank" rel="noopener noreferrer">
+            {sourceNames[source.sourceName]} {index + 1}
+          </a>
+        ))}
+      </div>
+      <p className="muted">연결하면 모델명과 제품 ID가 반영됩니다. 현재 입력한 장착 수량·제원과 자동 인식 원문은 유지됩니다.</p>
+      <button type="button" className="button button--primary" onClick={() => onSelect(product)}>이 부품 연결</button>
+    </section>
+  )
+}
