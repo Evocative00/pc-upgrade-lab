@@ -3,6 +3,7 @@ import { useSyncExternalStore } from 'react'
 // 라우터 라이브러리를 넣기 전까지 쓰는 간단한 해시 라우팅
 export type Route =
   | { name: 'list' }
+  | { name: 'build' }
   | { name: 'new' }
   | { name: 'detail'; id: number }
   | { name: 'edit'; id: number }
@@ -10,6 +11,7 @@ export type Route =
 
 export const paths = {
   list: () => '#/pcs',
+  build: () => '#/build',
   new: () => '#/pcs/new',
   detail: (id: number) => `#/pcs/${id}`,
   edit: (id: number) => `#/pcs/${id}/edit`,
@@ -20,6 +22,10 @@ export function parseRoute(hash: string): Route {
 
   if (segments.length === 0) {
     return { name: 'list' }
+  }
+
+  if (segments[0] === 'build' && segments.length === 1) {
+    return { name: 'build' }
   }
 
   if (segments[0] !== 'pcs') {

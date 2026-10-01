@@ -1,5 +1,6 @@
 import './App.css'
 import { BackendStatus } from './components/BackendStatus.tsx'
+import { PcBuilderPage } from './features/builder/PcBuilderPage.tsx'
 import { PcDetailPage } from './features/pc/pages/PcDetailPage.tsx'
 import { PcEditPage, PcNewPage } from './features/pc/pages/PcFormPages.tsx'
 import { PcListPage } from './features/pc/pages/PcListPage.tsx'
@@ -10,6 +11,8 @@ function Page({ route }: { route: Route }) {
   switch (route.name) {
     case 'list':
       return <PcListPage />
+    case 'build':
+      return <PcBuilderPage />
     case 'new':
       return <PcNewPage />
     case 'detail':
@@ -35,6 +38,10 @@ function App() {
         <a href={paths.list()} className="app-title">
           PC 업그레이드 실험실
         </a>
+        <nav className="app-nav">
+          <a href={paths.list()}>내 PC</a>
+          <a href={paths.build()}>PC 구성하기</a>
+        </nav>
       </header>
       <main className="app-main">
         <Page route={route} />
