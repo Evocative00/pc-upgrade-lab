@@ -126,6 +126,56 @@ export function PcForm({ initial, submitLabel, onSubmit, onCancel, visual = fals
     return status === 'auto' || status === 'manual'
   }).length
 
+  // 구성 화면에서는 이 입력란이 케이스 그림 왼쪽(부품 선택 칸 자리)에 들어간다.
+  const partsPanel = (
+    <section className="panel">
+      <div className="panel__head">
+        <h2>부품 구성</h2>
+        {unlinkedCount > 0 && (
+          <span className="muted">카탈로그 미연결 {unlinkedCount}개</span>
+        )}
+      </div>
+      <PartStatusLegend />
+
+      {PART_TYPES.map((info) => {
+        const rows = partsOfType(drafts, info.type)
+
+        return (
+          <fieldset key={info.type} className="part-group">
+            <legend className="visually-hidden">{info.label}</legend>
+            {rows.map((draft, index) => (
+              <PartRow
+                key={draft.key}
+                draft={draft}
+                index={index}
+                count={rows.length}
+                onChange={updateDraft}
+                onSearch={visual
+                  ? () => setPickTarget({ slot: slotOfDraft(drafts, draft), draftKey: draft.key })
+                  : undefined}
+                // 여러 항목을 쓰는 종류이거나, 자동 인식으로 한 종류에 항목이 여러 개 생긴 경우 제거할 수 있다.
+                onRemove={
+                  info.multiple || rows.length > 1
+                    ? () => removeDraft(draft.key)
+                    : undefined
+                }
+              />
+            ))}
+            {info.multiple && (
+              <button
+                type="button"
+                className="button button--ghost"
+                onClick={() => addDraft(info.type)}
+              >
+                + {info.label} 추가
+              </button>
+            )}
+          </fieldset>
+        )
+      })}
+    </section>
+  )
+
   return (
     <form className="pc-form" onSubmit={handleSubmit} noValidate aria-busy={saving}>
       {/* disabled는 입력·버튼을, inert는 수집기 실행 링크 등 나머지 조작도 잠근다. */}
@@ -156,56 +206,10 @@ export function PcForm({ initial, submitLabel, onSubmit, onCancel, visual = fals
           </p>
         )}
 
-        {visual && (
-          <PcBuilder drafts={drafts} updateDrafts={updateDrafts} target={pickTarget} onTarget={setPickTarget} />
-        )}
-
-        <section className="panel">
-          <div className="panel__head">
-            <h2>부품 구성</h2>
-            {unlinkedCount > 0 && (
-              <span className="muted">카탈로그 미연결 {unlinkedCount}개</span>
-            )}
-          </div>
-          <PartStatusLegend />
-
-          {PART_TYPES.map((info) => {
-            const rows = partsOfType(drafts, info.type)
-
-            return (
-              <fieldset key={info.type} className="part-group">
-                <legend className="visually-hidden">{info.label}</legend>
-                {rows.map((draft, index) => (
-                  <PartRow
-                    key={draft.key}
-                    draft={draft}
-                    index={index}
-                    count={rows.length}
-                    onChange={updateDraft}
-                    onSearch={visual
-                      ? () => setPickTarget({ slot: slotOfDraft(drafts, draft), draftKey: draft.key })
-                      : undefined}
-                    // 여러 항목을 쓰는 종류이거나, 자동 인식으로 한 종류에 항목이 여러 개 생긴 경우 제거할 수 있다.
-                    onRemove={
-                      info.multiple || rows.length > 1
-                        ? () => removeDraft(draft.key)
-                        : undefined
-                    }
-                  />
-                ))}
-                {info.multiple && (
-                  <button
-                    type="button"
-                    className="button button--ghost"
-                    onClick={() => addDraft(info.type)}
-                  >
-                    + {info.label} 추가
-                  </button>
-                )}
-              </fieldset>
-            )
-          })}
-        </section>
+        {visual ? (
+          <PcBuilder drafts={drafts} updateDrafts={updateDrafts} target={pickTarget} onTarget={setPickTarget}
+            parts={partsPanel} />
+        ) : partsPanel}
 
         <div className="actions">
           <button

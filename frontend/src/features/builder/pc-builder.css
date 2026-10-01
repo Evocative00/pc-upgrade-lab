@@ -4,62 +4,27 @@
   gap: 16px;
 }
 
-/* 부품 선택 | 구성 그림 | 요약·상태·기준가격 */
+/* 부품 구성 입력 | 구성 그림 | 요약·상태·기준가격 */
 .builder__layout {
   display: grid;
-  grid-template-columns: 200px minmax(0, 1fr) 240px;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 300px) 220px;
   gap: 16px;
   align-items: start;
 
-  @media (max-width: 860px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
 }
 
-.builder__parts ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
+/* 입력란이 길어도 그림과 요약은 화면에 남아 있게 한다. */
+.builder__visual,
+.builder__summary {
+  position: sticky;
+  top: 16px;
 
-.builder__part {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  padding: 8px 10px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--bg);
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-
-  .muted {
-    font-size: 12px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 100%;
+  @media (max-width: 900px) {
+    position: static;
   }
-
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-  }
-}
-
-.builder__part--active {
-  border-color: var(--accent);
-  background: var(--accent-bg);
-}
-
-.builder__part-label {
-  color: var(--text-h);
-  font-weight: 600;
 }
 
 .builder__visual {

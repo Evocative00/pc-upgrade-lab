@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { CatalogPicker } from '../catalog/CatalogPicker.tsx'
 import { formatCatalogPrice } from '../catalog/catalogPresentation.ts'
 import type { CatalogProduct } from '../catalog/catalogTypes.ts'
@@ -5,7 +6,7 @@ import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { createManualDraft, getPartStatus, linkCatalog, withEmptyRows } from '../pc/partDraft.ts'
 import type { PartDraft } from '../pc/types.ts'
 import {
-  assignSlots, priceTotal, ramLabel, ramSlotCount, SLOTS, slotInfo, type SlotId,
+  assignSlots, priceTotal, ramLabel, ramSlotCount, slotInfo, type SlotId,
 } from './buildSlots.ts'
 import { CaseView, type SlotView } from './CaseView.tsx'
 import { useCatalogDetails } from './useCatalogDetails.ts'
@@ -19,10 +20,12 @@ type Props = {
   updateDrafts: (update: (drafts: PartDraft[]) => PartDraft[]) => void
   target: PickTarget | null
   onTarget: (target: PickTarget | null) => void
+  // 왼쪽 칸에 넣을 부품 입력란 (PC 입력 폼의 '부품 구성')
+  parts: ReactNode
 }
 
-// 2D 구성 화면: 부품 선택 | 케이스 그림 | 요약·상태·기준가격. 내용은 PC 입력 폼의 부품 항목과 같은 데이터다.
-export function PcBuilder({ drafts, updateDrafts, target, onTarget }: Props) {
+// 2D 구성 화면: 부품 구성 입력 | 케이스 그림 | 요약·상태·기준가격. 내용은 PC 입력 폼의 부품 항목과 같은 데이터다.
+export function PcBuilder({ drafts, updateDrafts, target, onTarget, parts }: Props) {
   const slots = assignSlots(drafts)
   const named = drafts.filter((draft) => getPartStatus(draft) !== 'empty')
   const details = useCatalogDetails(named.flatMap((draft) => draft.catalogProductId ?? []))
@@ -69,23 +72,7 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget }: Props) {
   return (
     <section className="builder" aria-label="PC 구성">
       <div className="builder__layout">
-        <div className="builder__parts" role="group" aria-label="부품 종류">
-          <ul>
-            {SLOTS.map((slot) => {
-              const active = target?.slot === slot.id && target.draftKey === null
-              return (
-                <li key={slot.id}>
-                  <button type="button" aria-pressed={active}
-                    className={`builder__part${active ? ' builder__part--active' : ''}`}
-                    onClick={() => pickSlot(slot.id)}>
-                    <span className="builder__part-label">{slot.label}</span>
-                    <span className="muted">{slots[slot.id]?.displayName ?? '선택 안 함'}</span>
-                  </button>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+        <div className="builder__parts">{parts}</div>
 
         <div className="builder__visual">
           <CaseView slots={views} ramSlots={ramSlots} ramText={ramText}
