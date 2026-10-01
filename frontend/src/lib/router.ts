@@ -3,7 +3,6 @@ import { useSyncExternalStore } from 'react'
 // 라우터 라이브러리를 넣기 전까지 쓰는 간단한 해시 라우팅
 export type Route =
   | { name: 'list' }
-  | { name: 'build' }
   | { name: 'new' }
   | { name: 'detail'; id: number }
   | { name: 'edit'; id: number }
@@ -11,7 +10,6 @@ export type Route =
 
 export const paths = {
   list: () => '#/pcs',
-  build: () => '#/build',
   new: () => '#/pcs/new',
   detail: (id: number) => `#/pcs/${id}`,
   edit: (id: number) => `#/pcs/${id}/edit`,
@@ -24,8 +22,9 @@ export function parseRoute(hash: string): Route {
     return { name: 'list' }
   }
 
+  // 예전 PC 구성하기 주소. 구성 화면은 새 PC 등록 화면으로 합쳤다.
   if (segments[0] === 'build' && segments.length === 1) {
-    return { name: 'build' }
+    return { name: 'new' }
   }
 
   if (segments[0] !== 'pcs') {

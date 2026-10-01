@@ -31,6 +31,7 @@ export function PcNewPage() {
       <PcForm
         initial={{ name: '', parts: [] }}
         submitLabel="등록"
+        visual
         onCancel={() => navigate(paths.list())}
         onSubmit={async (request) => {
           const pc = await pcRepository.create(request)

@@ -1,11 +1,18 @@
 import type { KeyboardEvent, ReactNode } from 'react'
-import { chipLabel, ramLabel, ramSlotCount, SLOTS, type Build, type BuildPart, type SlotId } from './buildSlots.ts'
+import { chipLabel, slotInfo, type SlotId } from './buildSlots.ts'
 
 type Box = { x: number; y: number; w: number; h: number }
-type Props = { build: Build; active: SlotId | null; onPick: (slot: SlotId) => void }
+// fadeKey가 바뀐 자리만 다시 그려지고 페이드가 걸린다.
+export type SlotView = { name: string; fadeKey: string }
+type Props = {
+  slots: Partial<Record<SlotId, SlotView>>
+  ramSlots: number
+  ramText: [string, string]
+  active: SlotId | null
+  onPick: (slot: SlotId) => void
+}
 
 const FILLED_TEXT = '#10300a'
-const slotLabel = (id: SlotId) => SLOTS.find((slot) => slot.id === id)?.label ?? id
 
 function EmptyBox({ x, y, w, h, text, vertical = false }: Box & { text: string; vertical?: boolean }) {
   const cx = x + w / 2
@@ -36,16 +43,16 @@ function Lines({ x, y, lines, size = 13 }: { x: number; y: number; lines: string
   )
 }
 
-// 자리 하나. key가 제품 ID라서 바뀐 자리만 다시 그려지고 페이드가 걸린다.
+// 자리 하나. 키보드(Enter·Space)로도 고를 수 있다.
 function Slot({ id, part, active, onPick, empty, filled }: {
   id: SlotId
-  part: BuildPart | undefined
+  part: SlotView | undefined
   active: boolean
   onPick: (slot: SlotId) => void
   empty: ReactNode
-  filled: (part: BuildPart) => ReactNode
+  filled: (part: SlotView) => ReactNode
 }) {
-  const label = slotLabel(id)
+  const label = slotInfo(id).label
   function handleKey(event: KeyboardEvent<SVGGElement>) {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
@@ -54,9 +61,9 @@ function Slot({ id, part, active, onPick, empty, filled }: {
   }
   return (
     <g role="button" tabIndex={0} className={`case-slot${active ? ' case-slot--active' : ''}`}
-      aria-label={part ? `${label}: ${part.product.modelName} (변경)` : `${label} 추가`}
+      aria-label={part ? `${label}: ${part.name} (변경)` : `${label} 추가`}
       aria-pressed={active} onClick={() => onPick(id)} onKeyDown={handleKey}>
-      <g key={part?.product.id ?? 'empty'} className={part ? 'case-slot__fade' : undefined}>
+      <g key={part?.fadeKey ?? 'empty'} className={part ? 'case-slot__fade' : undefined}>
         {part ? filled(part) : empty}
       </g>
     </g>
@@ -65,11 +72,9 @@ function Slot({ id, part, active, onPick, empty, filled }: {
 
 const FANS = [140, 240, 340]
 
-export function CaseView({ build, active, onPick }: Props) {
-  const slot = (id: SlotId) => ({ id, part: build[id], active: active === id, onPick })
-  const ram = build.RAM
-  const ramSlots = ram ? ramSlotCount(ram.specs) : 0
-  const [ramSize, ramType] = ramLabel(ram?.specs ?? null)
+export function CaseView({ slots, ramSlots, ramText, active, onPick }: Props) {
+  const slot = (id: SlotId) => ({ id, part: slots[id], active: active === id, onPick })
+  const [ramSize, ramType] = ramText
 
   return (
     <svg viewBox="0 0 480 640" className="case-view" role="group" aria-label="PC 구성 그림. 자리를 누르면 해당 부품을 고릅니다.">
@@ -102,7 +107,7 @@ export function CaseView({ build, active, onPick }: Props) {
           <rect x={68} y={72} width={344} height={378} rx={12} fill="#2f5a1f" stroke="#62b23c" strokeWidth={3}
             filter="url(#case-glow)" />
           <text x={240} y={426} textAnchor="middle" dominantBaseline="middle" fill="#b9e89e" fontSize={12} fontWeight={700}>
-            {part.product.modelName.length > 30 ? `${part.product.modelName.slice(0, 29)}…` : part.product.modelName}
+            {part.name.length > 30 ? `${part.name.slice(0, 29)}…` : part.name}
           </text>
         </>} />
 
@@ -125,7 +130,7 @@ export function CaseView({ build, active, onPick }: Props) {
         empty={<EmptyBox x={150} y={86} w={180} h={36} text="쿨러" />}
         filled={(part) => <>
           <FilledBox x={150} y={86} w={180} h={36} />
-          <Lines x={240} y={104} lines={[part.product.modelName]} size={12} />
+          <Lines x={240} y={104} lines={[part.name]} size={12} />
         </>} />
 
       {/* CPU 소켓 테두리는 항상 보이고, 칩 자리만 바뀐다. */}
@@ -134,7 +139,7 @@ export function CaseView({ build, active, onPick }: Props) {
         empty={<EmptyBox x={200} y={146} w={80} h={80} text="CPU" />}
         filled={(part) => <>
           <FilledBox x={200} y={146} w={80} h={80} rx={4} />
-          <Lines x={240} y={186} lines={chipLabel(part.product.modelName)} size={13} />
+          <Lines x={240} y={186} lines={chipLabel(part.name)} size={13} />
         </>} />
 
       <Slot {...slot('RAM')}
@@ -158,7 +163,7 @@ export function CaseView({ build, active, onPick }: Props) {
         empty={<EmptyBox x={96} y={250} w={92} h={28} text="SSD" />}
         filled={(part) => <>
           <FilledBox x={96} y={250} w={92} h={28} rx={4} />
-          <Lines x={142} y={264} lines={[part.product.modelName]} size={10} />
+          <Lines x={142} y={264} lines={[part.name]} size={10} />
         </>} />
 
       <Slot {...slot('GPU')}
@@ -169,7 +174,7 @@ export function CaseView({ build, active, onPick }: Props) {
             <circle cx={cx} cy={336} r={27} fill="#4e9a2d" stroke={FILLED_TEXT} strokeWidth={2} />
             <circle cx={cx} cy={336} r={6} fill={FILLED_TEXT} />
           </g>)}
-          <Lines x={240} y={381} lines={[part.product.modelName]} size={12} />
+          <Lines x={240} y={381} lines={[part.name]} size={12} />
         </>} />
 
       <Slot {...slot('PSU')}
@@ -178,14 +183,14 @@ export function CaseView({ build, active, onPick }: Props) {
           <FilledBox x={84} y={468} w={176} h={88} />
           <circle cx={128} cy={512} r={32} fill="#4e9a2d" stroke={FILLED_TEXT} strokeWidth={2} />
           <path d="M128 482 V542 M98 512 H158 M107 491 L149 533 M149 491 L107 533" stroke={FILLED_TEXT} strokeWidth={1.5} />
-          <Lines x={208} y={512} lines={chipLabel(part.product.modelName)} size={11} />
+          <Lines x={208} y={512} lines={chipLabel(part.name)} size={11} />
         </>} />
 
       <Slot {...slot('HDD')}
         empty={<EmptyBox x={276} y={468} w={120} h={88} text="HDD" />}
         filled={(part) => <>
           <FilledBox x={276} y={468} w={120} h={88} />
-          <Lines x={336} y={512} lines={chipLabel(part.product.modelName)} size={11} />
+          <Lines x={336} y={512} lines={chipLabel(part.name)} size={11} />
         </>} />
     </svg>
   )
