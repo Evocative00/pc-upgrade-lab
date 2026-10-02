@@ -87,6 +87,23 @@ class CatalogEntryServiceTests {
     }
 
     @Test
+    void commitsAndReloadsAllEightCpuExtensionFieldsWithoutChangingTdpOrPrice() {
+        var hybrid = new CatalogSpecification.Cpu("LGA1700", 14, 20, null, 5100, null, false, null,
+                new BigDecimal("125"), new BigDecimal("181"), 6, 8, 3500, 2600, 5100, 3900);
+        var created = service.create(request(hybrid, List.of(manufacturerSource())));
+        var reloaded = service.findById(created.product().id()).orElseThrow();
+        assertThat(reloaded.specification()).isEqualTo(hybrid);
+        assertThat(reloaded.product().referencePrice().amountKrw()).isNull();
+        var stored = jdbc.queryForMap("SELECT * FROM cpu_spec WHERE product_id = ?", created.product().id());
+        assertThat(stored.get("TDP_W")).isNull();
+        assertThat(stored.get("BASE_CLOCK_MHZ")).isNull();
+        assertThat(((Number) stored.get("PERFORMANCE_CORE_COUNT")).intValue()).isEqualTo(6);
+        assertThat(((Number) stored.get("EFFICIENT_CORE_COUNT")).intValue()).isEqualTo(8);
+        assertThat(stored.get("PROCESSOR_BASE_POWER_W")).isEqualTo(new BigDecimal("125.00"));
+        assertThat(stored.get("MAXIMUM_TURBO_POWER_W")).isEqualTo(new BigDecimal("181.00"));
+    }
+
+    @Test
     void rawPayloadSurvivesCallerMutationAndPreservesNestedNumbersNullsAndLists() {
         String externalId = UUID.randomUUID().toString();
         var memory = new LinkedHashMap<String, Object>();

@@ -14,9 +14,13 @@ export function formatCatalogPrice(price: CatalogProduct['referencePrice']): str
 type Field = [key: string, label: string, unit?: string]
 const FIELDS: Partial<Record<PartType, Field[]>> = {
   CPU: [
-    ['socketCode', '소켓'], ['coreCount', '코어', '개'], ['threadCount', '스레드', '개'],
+    ['socketCode', '소켓'], ['coreCount', '총 코어', '개'], ['threadCount', '스레드', '개'],
+    ['performanceCoreCount', 'P코어 (성능 코어)', '개'], ['efficientCoreCount', 'E코어 (효율 코어)', '개'],
     ['baseClockMhz', '기본 클럭', 'MHz'], ['boostClockMhz', '최대 부스트', 'MHz'],
-    ['tdpW', 'TDP', 'W'], ['hasIntegratedGraphics', '내장 그래픽 지원'], ['integratedGraphicsModel', '내장 그래픽 모델'],
+    ['performanceCoreBaseClockMhz', 'P코어 기본 클럭', 'MHz'], ['efficientCoreBaseClockMhz', 'E코어 기본 클럭', 'MHz'],
+    ['performanceCoreBoostClockMhz', 'P코어 최대 터보', 'MHz'], ['efficientCoreBoostClockMhz', 'E코어 최대 터보', 'MHz'],
+    ['tdpW', 'TDP', 'W'], ['processorBasePowerW', '기본 전력 (PBP)', 'W'], ['maximumTurboPowerW', '최대 터보 전력 (MTP)', 'W'],
+    ['hasIntegratedGraphics', '내장 그래픽 지원'], ['integratedGraphicsModel', '내장 그래픽 모델'],
   ],
   MOTHERBOARD: [
     ['socketCode', '소켓'], ['chipset', '칩셋'], ['formFactor', '규격'],
@@ -63,7 +67,15 @@ export function ramKitLabel(specs: CatalogSpecification): string {
 }
 
 export function specificationRows(type: PartType, specs: CatalogSpecification): [string, string][] {
-  const rows: [string, string][] = (FIELDS[type] ?? []).map(([key, label, unit]) => [label, formatValue(specs[key], unit)])
+  const fields = (FIELDS[type] ?? []).filter(([key]) => !(type === 'CPU' && key === 'baseClockMhz'
+    && typeof specs.performanceCoreCount === 'number' && specs.performanceCoreCount > 0
+    && typeof specs.efficientCoreCount === 'number' && specs.efficientCoreCount > 0))
+  const rows: [string, string][] = fields.map(([key, label, unit]) => {
+    const absentCoreClock = type === 'CPU' && key.endsWith('ClockMhz') && (
+      key.startsWith('performanceCore') && specs.performanceCoreCount === 0
+      || key.startsWith('efficientCore') && specs.efficientCoreCount === 0)
+    return [label, absentCoreClock ? '해당 없음' : formatValue(specs[key], unit)]
+  })
   if (type === 'MONITOR') {
     rows.splice(1, 0, ['기본 해상도', typeof specs.nativeWidthPx === 'number' && typeof specs.nativeHeightPx === 'number'
       ? `${specs.nativeWidthPx} × ${specs.nativeHeightPx}` : '미확인'])

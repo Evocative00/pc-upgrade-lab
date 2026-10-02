@@ -12,9 +12,29 @@ public sealed interface CatalogSpecification permits CatalogSpecification.Cpu,
         CatalogSpecification.Monitor {
     PartType type();
 
+    /**
+     * TDP, Intel PBP, Intel MTP는 별도 공표값이며 실측 소비전력이 아니다.
+     * coreCount/threadCount는 CPU 전체 수치다. P/E 개수는 NULL=미확인, 0=없음 확인이다.
+     * baseClockMhz는 단일 코어 유형의 기본 클럭이며, P/E가 함께 있으면 각 기본 클럭만 쓴다.
+     * boostClockMhz는 제조사 공표 CPU 최대 부스트로, 모든 코어의 동시 동작 클럭이 아니다.
+     */
     record Cpu(String socketCode, Integer coreCount, Integer threadCount,
                Integer baseClockMhz, Integer boostClockMhz, BigDecimal tdpW,
-               Boolean hasIntegratedGraphics, String integratedGraphicsModel) implements CatalogSpecification {
+               Boolean hasIntegratedGraphics, String integratedGraphicsModel,
+               BigDecimal processorBasePowerW, BigDecimal maximumTurboPowerW,
+               Integer performanceCoreCount, Integer efficientCoreCount,
+               Integer performanceCoreBaseClockMhz, Integer efficientCoreBaseClockMhz,
+               Integer performanceCoreBoostClockMhz, Integer efficientCoreBoostClockMhz)
+            implements CatalogSpecification {
+        /** 기존 Java 호출부와 8항목 제원은 추가 정보를 추정하지 않고 계속 사용한다. */
+        public Cpu(String socketCode, Integer coreCount, Integer threadCount,
+                   Integer baseClockMhz, Integer boostClockMhz, BigDecimal tdpW,
+                   Boolean hasIntegratedGraphics, String integratedGraphicsModel) {
+            this(socketCode, coreCount, threadCount, baseClockMhz, boostClockMhz,
+                    tdpW, hasIntegratedGraphics, integratedGraphicsModel,
+                    null, null, null, null, null, null, null, null);
+        }
+
         public Cpu {
             socketCode = CatalogSpecificationValues.compactCode(socketCode, "socketCode", 32);
             coreCount = CatalogSpecificationValues.positiveSmallInt(coreCount, "coreCount");
@@ -26,6 +46,57 @@ public sealed interface CatalogSpecification permits CatalogSpecification.Cpu,
                     "integratedGraphicsModel", 128);
             if (Boolean.FALSE.equals(hasIntegratedGraphics) && integratedGraphicsModel != null) {
                 throw new IllegalArgumentException("integratedGraphicsModel must be null when integrated graphics is absent");
+            }
+            processorBasePowerW = CatalogSpecificationValues.positiveDecimal(processorBasePowerW,
+                    "processorBasePowerW", 8, 2);
+            maximumTurboPowerW = CatalogSpecificationValues.positiveDecimal(maximumTurboPowerW,
+                    "maximumTurboPowerW", 8, 2);
+            if (processorBasePowerW != null && maximumTurboPowerW != null
+                    && maximumTurboPowerW.compareTo(processorBasePowerW) < 0) {
+                throw new IllegalArgumentException("maximumTurboPowerW must not be less than processorBasePowerW");
+            }
+            performanceCoreCount = CatalogSpecificationValues.nonNegativeSmallInt(performanceCoreCount,
+                    "performanceCoreCount");
+            efficientCoreCount = CatalogSpecificationValues.nonNegativeSmallInt(efficientCoreCount,
+                    "efficientCoreCount");
+            if (coreCount != null && ((performanceCoreCount != null && performanceCoreCount > coreCount)
+                    || (efficientCoreCount != null && efficientCoreCount > coreCount))) {
+                throw new IllegalArgumentException("A P/E core count must not exceed coreCount");
+            }
+            if (performanceCoreCount != null && efficientCoreCount != null) {
+                int total = performanceCoreCount + efficientCoreCount;
+                if (total == 0 || (coreCount != null && coreCount != total)) {
+                    throw new IllegalArgumentException("Known P/E core counts must have a positive sum matching coreCount");
+                }
+                if (performanceCoreCount > 0 && efficientCoreCount > 0 && baseClockMhz != null) {
+                    throw new IllegalArgumentException("A hybrid CPU must use separate P/E base clocks");
+                }
+            }
+            performanceCoreBaseClockMhz = CatalogSpecificationValues.positiveInt(performanceCoreBaseClockMhz,
+                    "performanceCoreBaseClockMhz");
+            efficientCoreBaseClockMhz = CatalogSpecificationValues.positiveInt(efficientCoreBaseClockMhz,
+                    "efficientCoreBaseClockMhz");
+            performanceCoreBoostClockMhz = CatalogSpecificationValues.positiveInt(performanceCoreBoostClockMhz,
+                    "performanceCoreBoostClockMhz");
+            efficientCoreBoostClockMhz = CatalogSpecificationValues.positiveInt(efficientCoreBoostClockMhz,
+                    "efficientCoreBoostClockMhz");
+            if (boostClockMhz != null && ((performanceCoreBoostClockMhz != null
+                    && performanceCoreBoostClockMhz > boostClockMhz) || (efficientCoreBoostClockMhz != null
+                    && efficientCoreBoostClockMhz > boostClockMhz))) {
+                throw new IllegalArgumentException("A P/E boost clock must not exceed the CPU maximum boost clock");
+            }
+            validateCoreClocks(performanceCoreCount, performanceCoreBaseClockMhz,
+                    performanceCoreBoostClockMhz, "P");
+            validateCoreClocks(efficientCoreCount, efficientCoreBaseClockMhz,
+                    efficientCoreBoostClockMhz, "E");
+        }
+
+        private static void validateCoreClocks(Integer count, Integer base, Integer boost, String kind) {
+            if (Integer.valueOf(0).equals(count) && (base != null || boost != null)) {
+                throw new IllegalArgumentException(kind + " core clocks must be null when that core type is absent");
+            }
+            if (base != null && boost != null && boost < base) {
+                throw new IllegalArgumentException(kind + " core boost clock must not be less than its base clock");
             }
         }
 

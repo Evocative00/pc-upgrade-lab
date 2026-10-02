@@ -36,6 +36,22 @@ public class CpuSpec {
     private Integer boostClockMhz;
     @Column(name = "tdp_w", precision = 8, scale = 2)
     private BigDecimal tdpW;
+    @Column(name = "processor_base_power_w", precision = 8, scale = 2)
+    private BigDecimal processorBasePowerW;
+    @Column(name = "maximum_turbo_power_w", precision = 8, scale = 2)
+    private BigDecimal maximumTurboPowerW;
+    @Column(name = "performance_core_count")
+    private Short performanceCoreCount;
+    @Column(name = "efficient_core_count")
+    private Short efficientCoreCount;
+    @Column(name = "performance_core_base_clock_mhz")
+    private Integer performanceCoreBaseClockMhz;
+    @Column(name = "efficient_core_base_clock_mhz")
+    private Integer efficientCoreBaseClockMhz;
+    @Column(name = "performance_core_boost_clock_mhz")
+    private Integer performanceCoreBoostClockMhz;
+    @Column(name = "efficient_core_boost_clock_mhz")
+    private Integer efficientCoreBoostClockMhz;
     @Column(name = "has_integrated_graphics")
     private Boolean hasIntegratedGraphics;
     @Column(name = "integrated_graphics_model", length = 128)
@@ -55,6 +71,14 @@ public class CpuSpec {
         baseClockMhz = specification.baseClockMhz();
         boostClockMhz = specification.boostClockMhz();
         tdpW = specification.tdpW();
+        processorBasePowerW = specification.processorBasePowerW();
+        maximumTurboPowerW = specification.maximumTurboPowerW();
+        performanceCoreCount = CatalogSpecificationValues.toShort(specification.performanceCoreCount());
+        efficientCoreCount = CatalogSpecificationValues.toShort(specification.efficientCoreCount());
+        performanceCoreBaseClockMhz = specification.performanceCoreBaseClockMhz();
+        efficientCoreBaseClockMhz = specification.efficientCoreBaseClockMhz();
+        performanceCoreBoostClockMhz = specification.performanceCoreBoostClockMhz();
+        efficientCoreBoostClockMhz = specification.efficientCoreBoostClockMhz();
         hasIntegratedGraphics = specification.hasIntegratedGraphics();
         integratedGraphicsModel = specification.integratedGraphicsModel();
     }
@@ -64,6 +88,11 @@ public class CpuSpec {
     public CatalogSpecification.Cpu toSpecification() {
         return new CatalogSpecification.Cpu(socketCode, CatalogSpecificationValues.toInteger(coreCount),
                 CatalogSpecificationValues.toInteger(threadCount), baseClockMhz, boostClockMhz,
-                tdpW, hasIntegratedGraphics, integratedGraphicsModel);
+                tdpW, hasIntegratedGraphics, integratedGraphicsModel,
+                processorBasePowerW, maximumTurboPowerW,
+                CatalogSpecificationValues.toInteger(performanceCoreCount),
+                CatalogSpecificationValues.toInteger(efficientCoreCount),
+                performanceCoreBaseClockMhz, efficientCoreBaseClockMhz,
+                performanceCoreBoostClockMhz, efficientCoreBoostClockMhz);
     }
 }

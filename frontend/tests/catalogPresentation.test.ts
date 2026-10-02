@@ -35,3 +35,44 @@ test('GPU 보조전원 미확인·없음·알려진 규격을 구분한다', () 
   assert.equal(format({ powerConnectorsKnown: true, powerConnectors: [] }), '없음')
   assert.equal(format({ powerConnectorsKnown: true, powerConnectors: [{ connectorType: 'PCIE_12VHPWR', connectorCount: 1 }] }), '12VHPWR 16핀 × 1')
 })
+
+test('CPU는 총 코어·P/E 코어·각 클럭과 TDP·PBP·MTP를 구분한다', () => {
+  const rows = Object.fromEntries(specificationRows('CPU', {
+    coreCount: 14, threadCount: 20, baseClockMhz: null, boostClockMhz: 5100,
+    performanceCoreCount: 6, efficientCoreCount: 8,
+    performanceCoreBaseClockMhz: 3500, efficientCoreBaseClockMhz: 2600,
+    performanceCoreBoostClockMhz: 5100, efficientCoreBoostClockMhz: 3900,
+    tdpW: null, processorBasePowerW: 125, maximumTurboPowerW: 181,
+  }))
+  assert.equal(rows['총 코어'], '14 개')
+  assert.equal(rows['스레드'], '20 개')
+  assert.equal(rows['P코어 (성능 코어)'], '6 개')
+  assert.equal(rows['E코어 (효율 코어)'], '8 개')
+  assert.equal(rows['기본 클럭'], undefined)
+  assert.equal(rows['최대 부스트'], '5,100 MHz')
+  assert.equal(rows['P코어 기본 클럭'], '3,500 MHz')
+  assert.equal(rows['E코어 기본 클럭'], '2,600 MHz')
+  assert.equal(rows['P코어 최대 터보'], '5,100 MHz')
+  assert.equal(rows['E코어 최대 터보'], '3,900 MHz')
+  assert.equal(rows['TDP'], '미확인')
+  assert.equal(rows['기본 전력 (PBP)'], '125 W')
+  assert.equal(rows['최대 터보 전력 (MTP)'], '181 W')
+})
+
+test('기존 CPU와 코어 유형 없음·미확인을 표시할 때 추가 수치를 추정하지 않는다', () => {
+  const legacy = Object.fromEntries(specificationRows('CPU', { coreCount: 6, baseClockMhz: 3600, tdpW: 65 }))
+  assert.equal(legacy['기본 클럭'], '3,600 MHz')
+  assert.equal(legacy['TDP'], '65 W')
+  assert.equal(legacy['기본 전력 (PBP)'], '미확인')
+  assert.equal(legacy['최대 터보 전력 (MTP)'], '미확인')
+  assert.equal(legacy['P코어 (성능 코어)'], '미확인')
+  assert.equal(legacy['E코어 (효율 코어)'], '미확인')
+  const noEfficient = Object.fromEntries(specificationRows('CPU', {
+    performanceCoreCount: 6, efficientCoreCount: 0, baseClockMhz: 2500,
+    efficientCoreBaseClockMhz: null, efficientCoreBoostClockMhz: null,
+  }))
+  assert.equal(noEfficient['E코어 (효율 코어)'], '0 개')
+  assert.equal(noEfficient['기본 클럭'], '2,500 MHz')
+  assert.equal(noEfficient['E코어 기본 클럭'], '해당 없음')
+  assert.equal(noEfficient['E코어 최대 터보'], '해당 없음')
+})

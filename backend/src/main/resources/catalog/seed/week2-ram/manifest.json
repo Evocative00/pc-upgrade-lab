@@ -1,0 +1,566 @@
+{
+  "seedName": "week2-ram",
+  "revision": "b6fc3a559b871106ba89d9d8b8ad4beeb886a799",
+  "buildcoresRetrievedAt": "2026-09-30T08:52:46.202Z",
+  "items": [
+    {
+      "externalId": "4067c61b-7153-41a5-ade0-8097c961e9a3",
+      "category": "RAM",
+      "rawSha256": "afa81af1c16f76abfe9d2b1572c9f4b6564218e72261b253095ae99887ee8b93",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 8GB (1x8GB)",
+        "partNumber": "KF432C16BB/8"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 8589934592,
+        "moduleCount": 1,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": 34
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.kingston.com/datasheets/KF432C16BB_8.pdf",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields and documented normalization only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "memoryType": "DDR4",
+              "moduleCapacityBytes": 8589934592,
+              "moduleCount": 1,
+              "dataRateMts": 3200,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.35,
+              "heightMm": 34
+            },
+            "notes": [
+              "Capacity is stored per physical module in bytes; moduleCount is the number of modules in this catalog product.",
+              "dataRateMts and voltageV use the same advertised memory profile, not the user's detected operating settings.",
+              "Only the exact verified part number is adopted; other BuildCores aliases are not treated as equivalent.",
+              "heightMm includes the heatsink; the bare PCB dimension is not substituted.",
+              "HX432C16FB3/8 in the raw aliases is a different HyperX SKU and is not adopted."
+            ],
+            "profile_basis": "XMP_PROFILE_1",
+            "default_jedec_data_rate_mts": 2400,
+            "default_jedec_voltage_v": 1.2,
+            "profile_speed_is_not_guaranteed_in_all_systems": true
+          }
+        },
+        {
+          "url": "https://www.kingston.com/en/memory/search?partid=KF432C16BB%2F8",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "verified_part_number": "KF432C16BB/8",
+            "memory_class": "NON_ECC_UNBUFFERED_DIMM",
+            "module_count": 1,
+            "system_ecc": false,
+            "notes": [
+              "Exact-SKU manufacturer listing confirms product identity, module count and memory class."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "7f126456-6214-4e58-b807-b678edbbe15a",
+      "category": "RAM",
+      "rawSha256": "d45faae74f9f7afad55d815dc6c6160a59bd6f1a24a35a50c625029d4d4598d7",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 16GB (1x16GB)",
+        "partNumber": "KF432C16BB/16"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 1,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": 34
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.kingston.com/datasheets/KF432C16BB_16.pdf",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields and documented normalization only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "memoryType": "DDR4",
+              "moduleCapacityBytes": 17179869184,
+              "moduleCount": 1,
+              "dataRateMts": 3200,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.35,
+              "heightMm": 34
+            },
+            "notes": [
+              "Capacity is stored per physical module in bytes; moduleCount is the number of modules in this catalog product.",
+              "dataRateMts and voltageV use the same advertised memory profile, not the user's detected operating settings.",
+              "Only the exact verified part number is adopted; other BuildCores aliases are not treated as equivalent.",
+              "heightMm includes the heatsink; the bare PCB dimension is not substituted."
+            ],
+            "profile_basis": "XMP_PROFILE_1",
+            "default_jedec_data_rate_mts": 2400,
+            "default_jedec_voltage_v": 1.2,
+            "profile_speed_is_not_guaranteed_in_all_systems": true
+          }
+        },
+        {
+          "url": "https://www.kingston.com/en/memory/search?partid=KF432C16BB%2F16",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "verified_part_number": "KF432C16BB/16",
+            "memory_class": "NON_ECC_UNBUFFERED_DIMM",
+            "module_count": 1,
+            "system_ecc": false,
+            "notes": [
+              "Exact-SKU manufacturer listing confirms product identity, module count and memory class."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "81793251-0d7e-48c2-a0f5-38e1bdd191e1",
+      "category": "RAM",
+      "rawSha256": "2c7bdf3049fa9ccc469b03abb47a158a6a75281f9a1e0058dab41082e2de5135",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3600 CL18 16GB (1x16GB)",
+        "partNumber": "KF436C18BB/16"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 1,
+        "dataRateMts": 3600,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": 34
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.kingston.com/datasheets/KF436C18BB_16.pdf",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields and documented normalization only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "memoryType": "DDR4",
+              "moduleCapacityBytes": 17179869184,
+              "moduleCount": 1,
+              "dataRateMts": 3600,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.35,
+              "heightMm": 34
+            },
+            "notes": [
+              "Capacity is stored per physical module in bytes; moduleCount is the number of modules in this catalog product.",
+              "dataRateMts and voltageV use the same advertised memory profile, not the user's detected operating settings.",
+              "Only the exact verified part number is adopted; other BuildCores aliases are not treated as equivalent.",
+              "heightMm includes the heatsink; the bare PCB dimension is not substituted."
+            ],
+            "profile_basis": "XMP_PROFILE_1",
+            "default_jedec_data_rate_mts": 2400,
+            "default_jedec_voltage_v": 1.2,
+            "profile_speed_is_not_guaranteed_in_all_systems": true
+          }
+        },
+        {
+          "url": "https://www.kingston.com/en/memory/search?partid=KF436C18BB%2F16",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "verified_part_number": "KF436C18BB/16",
+            "memory_class": "NON_ECC_UNBUFFERED_DIMM",
+            "module_count": 1,
+            "system_ecc": false,
+            "notes": [
+              "Exact-SKU manufacturer listing confirms product identity, module count and memory class."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "33ea75ed-50a5-41bc-b548-95ae5ac54528",
+      "category": "RAM",
+      "rawSha256": "f8ab75821dfa1cdbc52474740af59b8b8c89d627e8e6cf3adfc74d911c634d55",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3600 CL18 32GB (2x16GB)",
+        "partNumber": "KF436C18BBK2/32"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "dataRateMts": 3600,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": 34
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.kingston.com/datasheets/KF436C18BBK2_32.pdf",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields and documented normalization only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "memoryType": "DDR4",
+              "moduleCapacityBytes": 17179869184,
+              "moduleCount": 2,
+              "dataRateMts": 3600,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.35,
+              "heightMm": 34
+            },
+            "notes": [
+              "Capacity is stored per physical module in bytes; moduleCount is the number of modules in this catalog product.",
+              "dataRateMts and voltageV use the same advertised memory profile, not the user's detected operating settings.",
+              "Only the exact verified part number is adopted; other BuildCores aliases are not treated as equivalent.",
+              "heightMm includes the heatsink; the bare PCB dimension is not substituted."
+            ],
+            "profile_basis": "XMP_PROFILE_1",
+            "default_jedec_data_rate_mts": 2400,
+            "default_jedec_voltage_v": 1.2,
+            "profile_speed_is_not_guaranteed_in_all_systems": true
+          }
+        },
+        {
+          "url": "https://www.kingston.com/en/memory/search?partid=KF436C18BBK2%2F32",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "verified_part_number": "KF436C18BBK2/32",
+            "memory_class": "NON_ECC_UNBUFFERED_DIMM",
+            "module_count": 2,
+            "system_ecc": false,
+            "notes": [
+              "Exact-SKU manufacturer listing confirms product identity, module count and memory class."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "c7c35e8b-849f-447e-accf-381c7d5575a1",
+      "category": "RAM",
+      "rawSha256": "913b3b123d1d10cb5d03d3f25f3c90cee4d700c4a7ce1ad135108ae83208ebf4",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 CL40 16GB (1x16GB)",
+        "partNumber": "KF552C40BB-16"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 1,
+        "dataRateMts": 5200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.25,
+        "heightMm": 34.9
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.kingston.com/datasheets/KF552C40BB-16.pdf",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields and documented normalization only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "memoryType": "DDR5",
+              "moduleCapacityBytes": 17179869184,
+              "moduleCount": 1,
+              "dataRateMts": 5200,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.25,
+              "heightMm": 34.9
+            },
+            "notes": [
+              "Capacity is stored per physical module in bytes; moduleCount is the number of modules in this catalog product.",
+              "dataRateMts and voltageV use the same advertised memory profile, not the user's detected operating settings.",
+              "Only the exact verified part number is adopted; other BuildCores aliases are not treated as equivalent.",
+              "heightMm includes the heatsink; the bare PCB dimension is not substituted.",
+              "On-die ECC is not system ECC. The manufacturer lists this product as non-ECC unbuffered DIMM.",
+              "The manufacturer publishes 1.25 V for XMP profile 1; raw voltage 1.35 V is preserved only in BuildCores evidence. EXPO support in the raw record is not adopted."
+            ],
+            "profile_basis": "XMP_PROFILE_1",
+            "default_jedec_data_rate_mts": 4800,
+            "default_jedec_voltage_v": 1.1,
+            "profile_speed_is_not_guaranteed_in_all_systems": true
+          }
+        },
+        {
+          "url": "https://www.kingston.com/en/memory/search?partid=KF552C40BB-16",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "verified_part_number": "KF552C40BB-16",
+            "memory_class": "NON_ECC_UNBUFFERED_DIMM",
+            "module_count": 1,
+            "system_ecc": false,
+            "notes": [
+              "Exact-SKU manufacturer listing confirms product identity, module count and memory class."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "e8766fc7-6bff-4d30-b63b-6b31c6208d39",
+      "category": "RAM",
+      "rawSha256": "dbb2ea440bc13feaffa61842f59b41f6e56227cf5b2de73c41e23c182fcf4b04",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 16GB (1x16GB)",
+        "partNumber": "KF560C36BBE-16"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 1,
+        "dataRateMts": 6000,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": 34.9
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.kingston.com/datasheets/KF560C36BBE-16.pdf",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields and documented normalization only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "memoryType": "DDR5",
+              "moduleCapacityBytes": 17179869184,
+              "moduleCount": 1,
+              "dataRateMts": 6000,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.35,
+              "heightMm": 34.9
+            },
+            "notes": [
+              "Capacity is stored per physical module in bytes; moduleCount is the number of modules in this catalog product.",
+              "dataRateMts and voltageV use the same advertised memory profile, not the user's detected operating settings.",
+              "Only the exact verified part number is adopted; other BuildCores aliases are not treated as equivalent.",
+              "heightMm includes the heatsink; the bare PCB dimension is not substituted.",
+              "On-die ECC is not system ECC. The manufacturer lists this product as non-ECC unbuffered DIMM.",
+              "The manufacturer marks this exact SKU discontinued and lists KF560C36BBE2-16 as its replacement. The replacement is not an alias; the approved older model is retained for existing-PC simulation."
+            ],
+            "profile_basis": "EXPO_PROFILE_0_AND_XMP_PROFILE_1",
+            "default_jedec_data_rate_mts": 4800,
+            "default_jedec_voltage_v": 1.1,
+            "profile_speed_is_not_guaranteed_in_all_systems": true
+          }
+        },
+        {
+          "url": "https://www.kingston.com/en/memory/search/discontinuedmodels?partId=KF560C36BBE-16",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "verified_part_number": "KF560C36BBE-16",
+            "memory_class": "NON_ECC_UNBUFFERED_DIMM",
+            "module_count": 1,
+            "system_ecc": false,
+            "notes": [
+              "Exact-SKU manufacturer listing confirms product identity, module count and memory class."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "45adbb33-9ace-451b-b8c4-b4a90bd67e22",
+      "category": "RAM",
+      "rawSha256": "564b93e6502f1e3d2a934378a1a0ef60c1b74ff141ad9763f6fa354221ec0003",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 32GB (1x32GB)",
+        "partNumber": "KF560C36BBE-32"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 34359738368,
+        "moduleCount": 1,
+        "dataRateMts": 6000,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": 34.9
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.kingston.com/datasheets/KF560C36BBE-32.pdf",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields and documented normalization only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "memoryType": "DDR5",
+              "moduleCapacityBytes": 34359738368,
+              "moduleCount": 1,
+              "dataRateMts": 6000,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.35,
+              "heightMm": 34.9
+            },
+            "notes": [
+              "Capacity is stored per physical module in bytes; moduleCount is the number of modules in this catalog product.",
+              "dataRateMts and voltageV use the same advertised memory profile, not the user's detected operating settings.",
+              "Only the exact verified part number is adopted; other BuildCores aliases are not treated as equivalent.",
+              "heightMm includes the heatsink; the bare PCB dimension is not substituted.",
+              "On-die ECC is not system ECC. The manufacturer lists this product as non-ECC unbuffered DIMM."
+            ],
+            "profile_basis": "EXPO_PROFILE_0_AND_XMP_PROFILE_1",
+            "default_jedec_data_rate_mts": 4800,
+            "default_jedec_voltage_v": 1.1,
+            "profile_speed_is_not_guaranteed_in_all_systems": true
+          }
+        },
+        {
+          "url": "https://www.kingston.com/en/memory/search?partid=KF560C36BBE-32",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "verified_part_number": "KF560C36BBE-32",
+            "memory_class": "NON_ECC_UNBUFFERED_DIMM",
+            "module_count": 1,
+            "system_ecc": false,
+            "notes": [
+              "Exact-SKU manufacturer listing confirms product identity, module count and memory class."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "e67e9f94-ff0e-4bb6-9e6f-cdf03446cc6e",
+      "category": "RAM",
+      "rawSha256": "bc325a98db900981ae9232fc031a246adfeb5b23c38a11a59807ef3442df4f63",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 64GB (2x32GB)",
+        "partNumber": "KF560C36BBEK2-64"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 34359738368,
+        "moduleCount": 2,
+        "dataRateMts": 6000,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": 34.9
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.kingston.com/datasheets/KF560C36BBEK2-64.pdf",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Normalized catalog fields and documented normalization only; not a full page snapshot or a compatibility certification.",
+            "normalized_specification": {
+              "memoryType": "DDR5",
+              "moduleCapacityBytes": 34359738368,
+              "moduleCount": 2,
+              "dataRateMts": 6000,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.35,
+              "heightMm": 34.9
+            },
+            "notes": [
+              "Capacity is stored per physical module in bytes; moduleCount is the number of modules in this catalog product.",
+              "dataRateMts and voltageV use the same advertised memory profile, not the user's detected operating settings.",
+              "Only the exact verified part number is adopted; other BuildCores aliases are not treated as equivalent.",
+              "heightMm includes the heatsink; the bare PCB dimension is not substituted.",
+              "On-die ECC is not system ECC. The manufacturer lists this product as non-ECC unbuffered DIMM."
+            ],
+            "profile_basis": "EXPO_PROFILE_0_AND_XMP_PROFILE_1",
+            "default_jedec_data_rate_mts": 4800,
+            "default_jedec_voltage_v": 1.1,
+            "profile_speed_is_not_guaranteed_in_all_systems": true
+          }
+        },
+        {
+          "url": "https://www.kingston.com/en/memory/search?partid=KF560C36BBEK2-64",
+          "retrievedAt": "2026-09-30T09:23:44.096231Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "verified_part_number": "KF560C36BBEK2-64",
+            "memory_class": "NON_ECC_UNBUFFERED_DIMM",
+            "module_count": 2,
+            "system_ecc": false,
+            "notes": [
+              "Exact-SKU manufacturer listing confirms product identity, module count and memory class."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
