@@ -95,6 +95,13 @@ final class CatalogSpecificationValues {
         return value;
     }
 
+    static Integer nonNegativeSmallInt(Integer value, String field) {
+        if (value != null && (value < 0 || value > Short.MAX_VALUE)) {
+            throw new IllegalArgumentException(field + " must be between 0 and " + Short.MAX_VALUE);
+        }
+        return value;
+    }
+
     static Long positiveLong(Long value, String field) {
         if (value != null && value <= 0) {
             throw new IllegalArgumentException(field + " must be positive");

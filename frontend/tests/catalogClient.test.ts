@@ -63,6 +63,18 @@ test('빈 목록은 정상 응답이며 미확정 가격을 0으로 바꾸지 �
   assert.equal((await client.search('GPU', '')).items[0].referencePrice.amountKrw, null)
 })
 
+test('CPU 상세의 추가 전력·P/E 제원을 누락하거나 기존 TDP로 환산하지 않는다', async () => {
+  const detail: CatalogDetail = { ...details[0], specification: {
+    socketCode: 'LGA1700', coreCount: 14, threadCount: 20, baseClockMhz: null, boostClockMhz: 5100,
+    tdpW: null, hasIntegratedGraphics: false, integratedGraphicsModel: null,
+    processorBasePowerW: 125, maximumTurboPowerW: 181, performanceCoreCount: 6, efficientCoreCount: 8,
+    performanceCoreBaseClockMhz: 3500, efficientCoreBaseClockMhz: 2600,
+    performanceCoreBoostClockMhz: 5100, efficientCoreBoostClockMhz: 3900,
+  } }
+  const client = createHttpCatalogClient(async () => json(detail))
+  assert.deepEqual((await client.get(detail.product.id)).specification, detail.specification)
+})
+
 test('다른 종류·페이지·제품 ID가 오면 연결 후보로 받아들이지 않는다', async () => {
   const badPages = [page([details[0].product]), page(gpu, { page: 1 }), page(gpu, { size: 30 }),
     page([{ ...gpu[0], id: '' }]), page([{ ...gpu[0], referencePrice: { ...gpu[0].referencePrice, amountKrw: 0 } }])]

@@ -1,0 +1,793 @@
+{
+  "seedName": "week2-gpu-expand",
+  "revision": "b6fc3a559b871106ba89d9d8b8ad4beeb886a799",
+  "buildcoresRetrievedAt": "2026-10-01T05:49:27.452Z",
+  "items": [
+    {
+      "externalId": "9d8059a4-9758-428f-b573-ffdb4b526f94",
+      "category": "GPU",
+      "rawSha256": "2d7355f2a53b5653a907554e89f1c1e2720658d8d0c7df833ff8d7a133bd3c30",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce GTX 1660 SUPER VENTUS XS OC",
+        "partNumber": null
+      },
+      "specification": {
+        "chipVendor": "NVIDIA",
+        "chipset": "GeForce GTX 1660 SUPER",
+        "vramBytes": 6442450944,
+        "memoryType": "GDDR6",
+        "pcieVersion": "3.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 16,
+        "lengthMm": 204,
+        "heightMm": null,
+        "thicknessMm": null,
+        "slotWidth": null,
+        "cardPowerW": 125,
+        "cardPowerBasis": "POWER_CONSUMPTION",
+        "psuRequirementW": 450,
+        "psuRequirementBasis": "RECOMMENDED",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Graphics-Card/GeForce-GTX-1660-SUPER-VENTUS-XS-OC/Specification",
+          "retrievedAt": "2026-10-01T05:52:36.842Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "GeForce GTX 1660 SUPER VENTUS XS OC",
+              "part_number": null
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "chipVendor": "NVIDIA",
+              "chipset": "GeForce GTX 1660 SUPER",
+              "vramBytes": 6442450944,
+              "memoryType": "GDDR6",
+              "pcieVersion": "3.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": 16,
+              "lengthMm": 204,
+              "heightMm": null,
+              "thicknessMm": null,
+              "slotWidth": null,
+              "cardPowerW": 125,
+              "cardPowerBasis": "POWER_CONSUMPTION",
+              "psuRequirementW": 450,
+              "psuRequirementBasis": "RECOMMENDED",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 1
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              204,
+              128,
+              42
+            ],
+            "published_dimension_axis_labels": null,
+            "dimension_mapping": {
+              "lengthMm": "BuildCores explicit length cross-checked against the first manufacturer dimension",
+              "heightMm": null,
+              "thicknessMm": null
+            },
+            "published_card_power_label": "Power consumption",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Exact desktop card model only; chipset identity does not merge different manufacturer boards or variants.",
+              "Card power retains the manufacturer definition and is not measured workload power or the complete PC power requirement.",
+              "Minimum/recommended PSU wattage is kept separately from card power; it does not certify a complete PC configuration.",
+              "The manufacturer interface is used for electrical lanes only when explicitly specified. Physical edge-connector lane size remains unknown.",
+              "Unlabelled manufacturer dimension axes: normalize length only, cross-checked with explicit BuildCores length; keep height/thickness null.",
+              "No official global part number or slot occupancy on cited specification."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "5b3e86a3-ecf9-44f9-87c1-cd44340fae95",
+      "category": "GPU",
+      "rawSha256": "fdfbd8033f231c1b473161817ebeaed48929c76dfb218bbeb12393eea63e3e4c",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 2060 VENTUS 6G",
+        "partNumber": null
+      },
+      "specification": {
+        "chipVendor": "NVIDIA",
+        "chipset": "GeForce RTX 2060",
+        "vramBytes": 6442450944,
+        "memoryType": "GDDR6",
+        "pcieVersion": "3.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 16,
+        "lengthMm": 226,
+        "heightMm": null,
+        "thicknessMm": null,
+        "slotWidth": null,
+        "cardPowerW": 160,
+        "cardPowerBasis": "POWER_CONSUMPTION",
+        "psuRequirementW": 500,
+        "psuRequirementBasis": "RECOMMENDED",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Graphics-Card/GeForce-RTX-2060-VENTUS-6G/Specification",
+          "retrievedAt": "2026-10-01T05:52:36.842Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "GeForce RTX 2060 VENTUS 6G",
+              "part_number": null
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "chipVendor": "NVIDIA",
+              "chipset": "GeForce RTX 2060",
+              "vramBytes": 6442450944,
+              "memoryType": "GDDR6",
+              "pcieVersion": "3.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": 16,
+              "lengthMm": 226,
+              "heightMm": null,
+              "thicknessMm": null,
+              "slotWidth": null,
+              "cardPowerW": 160,
+              "cardPowerBasis": "POWER_CONSUMPTION",
+              "psuRequirementW": 500,
+              "psuRequirementBasis": "RECOMMENDED",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 1
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              226,
+              128,
+              41
+            ],
+            "published_dimension_axis_labels": null,
+            "dimension_mapping": {
+              "lengthMm": "BuildCores explicit length cross-checked against the first manufacturer dimension",
+              "heightMm": null,
+              "thicknessMm": null
+            },
+            "published_card_power_label": "Power consumption",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Exact desktop card model only; chipset identity does not merge different manufacturer boards or variants.",
+              "Card power retains the manufacturer definition and is not measured workload power or the complete PC power requirement.",
+              "Minimum/recommended PSU wattage is kept separately from card power; it does not certify a complete PC configuration.",
+              "The manufacturer interface is used for electrical lanes only when explicitly specified. Physical edge-connector lane size remains unknown.",
+              "Exact 6G non-OC model only; 12G, GP and OC are distinct.",
+              "Keep unlabelled height/thickness, global part number and unspecified slot occupancy null."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "815e7428-b2a5-4983-85d0-340a5a25d5c0",
+      "category": "GPU",
+      "rawSha256": "ffddeb69aa5ef1129e916c81d34b194067df4d8f6ea97e39814d4cf4e2e2dbcc",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 3070 VENTUS 2X 8G OC LHR",
+        "partNumber": null
+      },
+      "specification": {
+        "chipVendor": "NVIDIA",
+        "chipset": "GeForce RTX 3070",
+        "vramBytes": 8589934592,
+        "memoryType": "GDDR6",
+        "pcieVersion": "4.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": null,
+        "lengthMm": 232,
+        "heightMm": null,
+        "thicknessMm": null,
+        "slotWidth": null,
+        "cardPowerW": 220,
+        "cardPowerBasis": "POWER_CONSUMPTION",
+        "psuRequirementW": 650,
+        "psuRequirementBasis": "RECOMMENDED",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 2
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Graphics-Card/GeForce-RTX-3070-VENTUS-2X-8G-OC-LHR/Specification",
+          "retrievedAt": "2026-10-01T05:52:36.842Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "GeForce RTX 3070 VENTUS 2X 8G OC LHR",
+              "part_number": null
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "chipVendor": "NVIDIA",
+              "chipset": "GeForce RTX 3070",
+              "vramBytes": 8589934592,
+              "memoryType": "GDDR6",
+              "pcieVersion": "4.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": null,
+              "lengthMm": 232,
+              "heightMm": null,
+              "thicknessMm": null,
+              "slotWidth": null,
+              "cardPowerW": 220,
+              "cardPowerBasis": "POWER_CONSUMPTION",
+              "psuRequirementW": 650,
+              "psuRequirementBasis": "RECOMMENDED",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 2
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              232,
+              124,
+              52
+            ],
+            "published_dimension_axis_labels": null,
+            "dimension_mapping": {
+              "lengthMm": "BuildCores explicit length cross-checked against the first manufacturer dimension",
+              "heightMm": null,
+              "thicknessMm": null
+            },
+            "published_card_power_label": "Power consumption",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Exact desktop card model only; chipset identity does not merge different manufacturer boards or variants.",
+              "Card power retains the manufacturer definition and is not measured workload power or the complete PC power requirement.",
+              "Minimum/recommended PSU wattage is kept separately from card power; it does not certify a complete PC configuration.",
+              "The manufacturer interface is used for electrical lanes only when explicitly specified. Physical edge-connector lane size remains unknown.",
+              "Exact OC LHR model; do not combine non-OC, non-LHR, V1 or 3X variants.",
+              "Manufacturer says Gen 4 without lane count; do not infer from raw x16.",
+              "Do not derive slot occupancy from thickness or adopt raw 2.6 when manufacturer only gives unlabelled dimensions."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "ad2dd5e9-8853-49cb-857e-f1d80e3a5d13",
+      "category": "GPU",
+      "rawSha256": "d89bf6aceedb79510a040e34da058880c53eab3b85e169675d914f415d7a8fa5",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5070 12G VENTUS 2X OC",
+        "partNumber": "G5070-12V2C"
+      },
+      "specification": {
+        "chipVendor": "NVIDIA",
+        "chipset": "GeForce RTX 5070",
+        "vramBytes": 12884901888,
+        "memoryType": "GDDR7",
+        "pcieVersion": "5.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": null,
+        "lengthMm": 236,
+        "heightMm": null,
+        "thicknessMm": null,
+        "slotWidth": null,
+        "cardPowerW": 250,
+        "cardPowerBasis": "POWER_CONSUMPTION",
+        "psuRequirementW": 650,
+        "psuRequirementBasis": "RECOMMENDED",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_16PIN_UNSPECIFIED",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Graphics-Card/GeForce-RTX-5070-12G-VENTUS-2X-OC/Specification",
+          "retrievedAt": "2026-10-01T05:52:36.842Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "GeForce RTX 5070 12G VENTUS 2X OC",
+              "part_number": "G5070-12V2C"
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "chipVendor": "NVIDIA",
+              "chipset": "GeForce RTX 5070",
+              "vramBytes": 12884901888,
+              "memoryType": "GDDR7",
+              "pcieVersion": "5.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": null,
+              "lengthMm": 236,
+              "heightMm": null,
+              "thicknessMm": null,
+              "slotWidth": null,
+              "cardPowerW": 250,
+              "cardPowerBasis": "POWER_CONSUMPTION",
+              "psuRequirementW": 650,
+              "psuRequirementBasis": "RECOMMENDED",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_16PIN_UNSPECIFIED",
+                  "connectorCount": 1
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              236,
+              126,
+              50
+            ],
+            "published_dimension_axis_labels": null,
+            "dimension_mapping": {
+              "lengthMm": "BuildCores explicit length cross-checked against the first manufacturer dimension",
+              "heightMm": null,
+              "thicknessMm": null
+            },
+            "published_card_power_label": "Power consumption",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Exact desktop card model only; chipset identity does not merge different manufacturer boards or variants.",
+              "Card power retains the manufacturer definition and is not measured workload power or the complete PC power requirement.",
+              "Minimum/recommended PSU wattage is kept separately from card power; it does not certify a complete PC configuration.",
+              "The manufacturer interface is used for electrical lanes only when explicitly specified. Physical edge-connector lane size remains unknown.",
+              "Manufacturer model code confirmed as G5070-12V2C; exclude WHITE alias incorrectly present in raw part_numbers.",
+              "Manufacturer confirms 16-pin x1 and recommends ATX3.1; connector subtype not confirmed on cited page, so don't import raw 12V_2x6 as certified fact.",
+              "Manufacturer says Gen5 only: electrical/physical lane counts remain unknown.",
+              "Unlabelled height/thickness and unspecified slot occupancy remain null."
+            ],
+            "published_power_connector_description": "16-pin x 1 (ATX 3.1 PSU recommended)"
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "01110bc3-78da-4304-8bb6-ec8f0e56fb0e",
+      "category": "GPU",
+      "rawSha256": "98daa16123342f53f6267f61faedab3e43481f7b9e730de18e84d2497f9a6f8e",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 7600 8GB",
+        "partNumber": "11324-01-20G"
+      },
+      "specification": {
+        "chipVendor": "AMD",
+        "chipset": "Radeon RX 7600",
+        "vramBytes": 8589934592,
+        "memoryType": "GDDR6",
+        "pcieVersion": "4.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 8,
+        "lengthMm": 240,
+        "heightMm": 107.1,
+        "thicknessMm": 44.07,
+        "slotWidth": 2,
+        "cardPowerW": 185,
+        "cardPowerBasis": "TOTAL_BOARD_POWER",
+        "psuRequirementW": 550,
+        "psuRequirementBasis": "MINIMUM",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-7600-8g-gddr6",
+          "retrievedAt": "2026-10-01T05:52:36.842Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Sapphire",
+              "model": "PULSE Radeon RX 7600 8GB",
+              "part_number": "11324-01-20G"
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "chipVendor": "AMD",
+              "chipset": "Radeon RX 7600",
+              "vramBytes": 8589934592,
+              "memoryType": "GDDR6",
+              "pcieVersion": "4.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": 8,
+              "lengthMm": 240,
+              "heightMm": 107.1,
+              "thicknessMm": 44.07,
+              "slotWidth": 2,
+              "cardPowerW": 185,
+              "cardPowerBasis": "TOTAL_BOARD_POWER",
+              "psuRequirementW": 550,
+              "psuRequirementBasis": "MINIMUM",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 1
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              240,
+              107.1,
+              44.07
+            ],
+            "published_dimension_axis_labels": [
+              "L",
+              "W",
+              "H"
+            ],
+            "dimension_mapping": {
+              "lengthMm": "Published L",
+              "heightMm": "Published W, card height across the PCB",
+              "thicknessMm": "Published H, card thickness across expansion slots"
+            },
+            "published_card_power_label": "Total Board Power",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Exact desktop card model only; chipset identity does not merge different manufacturer boards or variants.",
+              "Card power retains the manufacturer definition and is not measured workload power or the complete PC power requirement.",
+              "Minimum/recommended PSU wattage is kept separately from card power; it does not certify a complete PC configuration.",
+              "The manufacturer interface is used for electrical lanes only when explicitly specified. Physical edge-connector lane size remains unknown.",
+              "Manufacturer corrects raw power_connectors all-zero to one 8-pin, slot width3 to2, and missing PCIe generation/active8.",
+              "Sapphire mapping follows existing GPU seed: published L=length,W=height,H=thickness; motherboard x16 slot requirement does not establish physical edge connector lanes."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+      "category": "GPU",
+      "rawSha256": "f6b18e67b2efb5356687618483e03a214dc0e5aee835c3de104a56961b7a94b2",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+        "partNumber": "11350-03-20G"
+      },
+      "specification": {
+        "chipVendor": "AMD",
+        "chipset": "Radeon RX 9060 XT",
+        "vramBytes": 17179869184,
+        "memoryType": "GDDR6",
+        "pcieVersion": "5.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 16,
+        "lengthMm": 240,
+        "heightMm": 111.25,
+        "thicknessMm": 46.08,
+        "slotWidth": 2.3,
+        "cardPowerW": 170,
+        "cardPowerBasis": "TYPICAL_BOARD_POWER",
+        "psuRequirementW": 450,
+        "psuRequirementBasis": "MINIMUM",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9060-xt-16g-gddr6",
+          "retrievedAt": "2026-10-01T05:52:36.842Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Sapphire",
+              "model": "PULSE Radeon RX 9060 XT OC 16GB",
+              "part_number": "11350-03-20G"
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "chipVendor": "AMD",
+              "chipset": "Radeon RX 9060 XT",
+              "vramBytes": 17179869184,
+              "memoryType": "GDDR6",
+              "pcieVersion": "5.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": 16,
+              "lengthMm": 240,
+              "heightMm": 111.25,
+              "thicknessMm": 46.08,
+              "slotWidth": 2.3,
+              "cardPowerW": 170,
+              "cardPowerBasis": "TYPICAL_BOARD_POWER",
+              "psuRequirementW": 450,
+              "psuRequirementBasis": "MINIMUM",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 1
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              240,
+              111.25,
+              46.08
+            ],
+            "published_dimension_axis_labels": [
+              "L",
+              "W",
+              "H"
+            ],
+            "dimension_mapping": {
+              "lengthMm": "Published L",
+              "heightMm": "Published W, card height across the PCB",
+              "thicknessMm": "Published H, card thickness across expansion slots"
+            },
+            "published_card_power_label": "Typical Board Power",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Exact desktop card model only; chipset identity does not merge different manufacturer boards or variants.",
+              "Card power retains the manufacturer definition and is not measured workload power or the complete PC power requirement.",
+              "Minimum/recommended PSU wattage is kept separately from card power; it does not certify a complete PC configuration.",
+              "The manufacturer interface is used for electrical lanes only when explicitly specified. Physical edge-connector lane size remains unknown.",
+              "Exact 16GB OC SKU; 8GB is distinct.",
+              "Manufacturer defines Typical Board Power, not raw TDP or Total Board Power.",
+              "Do not store raw GPU clocks as new normalized fields in this batch."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "a01cd62d-86e3-42d0-bd28-5b1f6abb486c",
+      "category": "GPU",
+      "rawSha256": "671f70b5a8e301aed779a9a548313a16f341dc7eefe04763ba46aa6f9912d9f0",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9070 16GB",
+        "partNumber": "11349-03-20G"
+      },
+      "specification": {
+        "chipVendor": "AMD",
+        "chipset": "Radeon RX 9070",
+        "vramBytes": 17179869184,
+        "memoryType": "GDDR6",
+        "pcieVersion": "5.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 16,
+        "lengthMm": 280,
+        "heightMm": 120.25,
+        "thicknessMm": 51.5,
+        "slotWidth": 2.5,
+        "cardPowerW": 220,
+        "cardPowerBasis": "TYPICAL_BOARD_POWER",
+        "psuRequirementW": 650,
+        "psuRequirementBasis": "MINIMUM",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 2
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9070-16g-gddr6",
+          "retrievedAt": "2026-10-01T05:52:36.842Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Sapphire",
+              "model": "PULSE Radeon RX 9070 16GB",
+              "part_number": "11349-03-20G"
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "chipVendor": "AMD",
+              "chipset": "Radeon RX 9070",
+              "vramBytes": 17179869184,
+              "memoryType": "GDDR6",
+              "pcieVersion": "5.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": 16,
+              "lengthMm": 280,
+              "heightMm": 120.25,
+              "thicknessMm": 51.5,
+              "slotWidth": 2.5,
+              "cardPowerW": 220,
+              "cardPowerBasis": "TYPICAL_BOARD_POWER",
+              "psuRequirementW": 650,
+              "psuRequirementBasis": "MINIMUM",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 2
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              280,
+              120.25,
+              51.5
+            ],
+            "published_dimension_axis_labels": [
+              "L",
+              "W",
+              "H"
+            ],
+            "dimension_mapping": {
+              "lengthMm": "Published L",
+              "heightMm": "Published W, card height across the PCB",
+              "thicknessMm": "Published H, card thickness across expansion slots"
+            },
+            "published_card_power_label": "Typical Board Power",
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Exact desktop card model only; chipset identity does not merge different manufacturer boards or variants.",
+              "Card power retains the manufacturer definition and is not measured workload power or the complete PC power requirement.",
+              "Minimum/recommended PSU wattage is kept separately from card power; it does not certify a complete PC configuration.",
+              "The manufacturer interface is used for electrical lanes only when explicitly specified. Physical edge-connector lane size remains unknown.",
+              "Exact non-XT, non-GRE SKU.",
+              "Manufacturer defines Typical Board Power; maintain basis separate from minimum PSU wattage."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "d9b0932b-2cc1-4fba-893e-96bd88264924",
+      "category": "GPU",
+      "rawSha256": "890a4ea848956d5b67b23bfec417d5450557c9fb3570533109666a338fb442b4",
+      "product": {
+        "type": "GPU",
+        "manufacturer": "ASRock",
+        "modelName": "Intel Arc A750 Challenger D 8GB OC",
+        "partNumber": "A750 CLD 8GO"
+      },
+      "specification": {
+        "chipVendor": "INTEL",
+        "chipset": "Arc A750",
+        "vramBytes": 8589934592,
+        "memoryType": "GDDR6",
+        "pcieVersion": "4.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 16,
+        "lengthMm": 271,
+        "heightMm": null,
+        "thicknessMm": null,
+        "slotWidth": 2.4,
+        "cardPowerW": null,
+        "cardPowerBasis": null,
+        "psuRequirementW": 650,
+        "psuRequirementBasis": "RECOMMENDED",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 2
+          }
+        ]
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.asrock.com/Graphics-Card/Intel/Intel%20Arc%20A750%20Challenger%20D%208GB%20OC/index.asp",
+          "retrievedAt": "2026-10-01T05:52:36.842Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "ASRock",
+              "model": "Intel Arc A750 Challenger D 8GB OC",
+              "part_number": "A750 CLD 8GO"
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "chipVendor": "INTEL",
+              "chipset": "Arc A750",
+              "vramBytes": 8589934592,
+              "memoryType": "GDDR6",
+              "pcieVersion": "4.0",
+              "pcieConnectorLanes": null,
+              "pcieActiveLanes": 16,
+              "lengthMm": 271,
+              "heightMm": null,
+              "thicknessMm": null,
+              "slotWidth": 2.4,
+              "cardPowerW": null,
+              "cardPowerBasis": null,
+              "psuRequirementW": 650,
+              "psuRequirementBasis": "RECOMMENDED",
+              "powerConnectorsKnown": true,
+              "powerConnectors": [
+                {
+                  "connectorType": "PCIE_8PIN",
+                  "connectorCount": 2
+                }
+              ]
+            },
+            "published_dimensions_mm": [
+              271,
+              132,
+              48
+            ],
+            "published_dimension_axis_labels": null,
+            "dimension_mapping": {
+              "lengthMm": "BuildCores explicit length cross-checked against the first manufacturer dimension",
+              "heightMm": null,
+              "thicknessMm": null
+            },
+            "published_card_power_label": null,
+            "memory_unit_rule": "Manufacturer GB is normalized as GiB for catalog byte capacity.",
+            "notes": [
+              "Exact desktop card model only; chipset identity does not merge different manufacturer boards or variants.",
+              "Card power retains the manufacturer definition and is not measured workload power or the complete PC power requirement.",
+              "Minimum/recommended PSU wattage is kept separately from card power; it does not certify a complete PC configuration.",
+              "The manufacturer interface is used for electrical lanes only when explicitly specified. Physical edge-connector lane size remains unknown.",
+              "Official part number A750 CLD 8GO corrects concatenated raw alias; do not import malformed A750 CLD 8GO90-GA3HZZ-00UANF.",
+              "No manufacturer card power published on cited page; raw225/reference Intel GPU rating not accepted as exact board power.",
+              "Unlabelled dimensions preserve length only; manufacturer explicitly gives2.4slots versus raw3."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

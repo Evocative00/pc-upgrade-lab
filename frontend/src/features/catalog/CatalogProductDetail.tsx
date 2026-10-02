@@ -42,8 +42,11 @@ export function CatalogProductDetail({ detail, onSelect }: {
           <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
         ))}
       </dl>
-      {(product.type === 'GPU' || product.type === 'CPU') && (
-        <p className="muted">공표 전력·TDP·권장 파워 용량은 실제 사용 전력과 다를 수 있습니다.</p>
+      {product.type === 'CPU' && (
+        <p className="muted">TDP·기본 전력(PBP)·최대 터보 전력(MTP)은 서로 다른 공표값이며 실제 사용 전력과 다를 수 있습니다. 최대 부스트는 모든 코어의 동시 동작 클럭을 뜻하지 않습니다.</p>
+      )}
+      {product.type === 'GPU' && (
+        <p className="muted">카드 공표 전력·권장 파워 용량은 실제 사용 전력과 다를 수 있습니다.</p>
       )}
 
       <div className="catalog-sources">

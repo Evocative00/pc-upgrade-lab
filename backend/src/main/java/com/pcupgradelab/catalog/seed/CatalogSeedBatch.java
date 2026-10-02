@@ -7,7 +7,11 @@ import java.util.Set;
 public enum CatalogSeedBatch {
     INITIAL("week2-initial", 9, Set.of(PartType.CPU, PartType.MOTHERBOARD, PartType.RAM)),
     GPU("week2-gpu", 6, Set.of(PartType.GPU)),
-    MONITOR("week2-monitor", 3, Set.of(PartType.MONITOR));
+    MONITOR("week2-monitor", 3, Set.of(PartType.MONITOR)),
+    INTEL("week2-intel", 8, Set.of(PartType.CPU, PartType.MOTHERBOARD)),
+    RAM("week2-ram", 8, Set.of(PartType.RAM)),
+    AMD("week2-amd", 8, Set.of(PartType.CPU, PartType.MOTHERBOARD)),
+    GPU_EXPANSION("week2-gpu-expand", 8, Set.of(PartType.GPU));
 
     private final String resourceName;
     private final int expectedCount;
@@ -30,6 +34,6 @@ public enum CatalogSeedBatch {
         for (CatalogSeedBatch batch : values()) {
             if (batch.resourceName.equals(name)) return batch;
         }
-        throw new IllegalArgumentException("Catalog seed batch must be week2-initial, week2-gpu or week2-monitor");
+        throw new IllegalArgumentException("Catalog seed batch must be week2-initial, week2-gpu, week2-monitor, week2-intel, week2-ram, week2-amd or week2-gpu-expand");
     }
 }

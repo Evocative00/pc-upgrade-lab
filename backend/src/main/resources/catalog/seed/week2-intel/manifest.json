@@ -1,0 +1,614 @@
+{
+  "seedName": "week2-intel",
+  "revision": "b6fc3a559b871106ba89d9d8b8ad4beeb886a799",
+  "buildcoresRetrievedAt": "2026-09-30T07:21:33.375Z",
+  "items": [
+    {
+      "externalId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60",
+      "category": "CPU",
+      "rawSha256": "0c591824e9043caf46111a5728240b722f84674f3392dc8baa8e8de6e824526d",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i3-12100F",
+        "partNumber": "BX8071512100F"
+      },
+      "specification": {
+        "socketCode": "LGA1700",
+        "coreCount": 4,
+        "threadCount": 8,
+        "baseClockMhz": 3300,
+        "boostClockMhz": 4300,
+        "tdpW": null,
+        "hasIntegratedGraphics": false,
+        "integratedGraphicsModel": null,
+        "processorBasePowerW": 58,
+        "maximumTurboPowerW": 89,
+        "performanceCoreCount": 4,
+        "efficientCoreCount": 0,
+        "performanceCoreBaseClockMhz": 3300,
+        "efficientCoreBaseClockMhz": null,
+        "performanceCoreBoostClockMhz": 4300,
+        "efficientCoreBoostClockMhz": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/132223/intel-core-i312100f-processor-12m-cache-up-to-4-30-ghz/specifications.html",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Intel",
+              "model": "Core i3-12100F",
+              "sku": "132223"
+            },
+            "source_region": "US",
+            "normalized_specification": {
+              "socketCode": "LGA1700",
+              "coreCount": 4,
+              "threadCount": 8,
+              "baseClockMhz": 3300,
+              "boostClockMhz": 4300,
+              "tdpW": null,
+              "processorBasePowerW": 58,
+              "maximumTurboPowerW": 89,
+              "performanceCoreCount": 4,
+              "efficientCoreCount": 0,
+              "performanceCoreBaseClockMhz": 3300,
+              "efficientCoreBaseClockMhz": null,
+              "performanceCoreBoostClockMhz": 4300,
+              "efficientCoreBoostClockMhz": null
+            },
+            "published_memory_limits": {
+              "types": [
+                "DDR4",
+                "DDR5"
+              ],
+              "ddr4_max_data_rate_mt_s": 3200,
+              "ddr5_max_data_rate_mt_s": 4800,
+              "max_capacity_bytes": 137438953472
+            },
+            "notes": [
+              "Clocks are converted from GHz to MHz. Overall maximum turbo is not an all-core clock.",
+              "Manufacturer PBP and MTP remain separate; TDP is null. None is measured consumption.",
+              "No E-cores is recorded as zero; absent E-core clocks are null.",
+              "BuildCores also lists BX8071513100F, a different 13100F model. It is not adopted as an alias."
+            ]
+          }
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Intel",
+              "model": "Core i3-12100F",
+              "part_number": "BX8071512100F"
+            },
+            "source_region": "US",
+            "normalized_fields": {
+              "hasIntegratedGraphics": false,
+              "integratedGraphicsModel": null
+            },
+            "notes": [
+              "Intel lists this exact boxed SKU among processors without processor graphics. Packaging variants do not create separate CPU models."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+      "category": "CPU",
+      "rawSha256": "0b17e5137350984784840e31008e0dfd4a4c1992c4187896b97dcef31c72f9ba",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-12400F",
+        "partNumber": "BX8071512400F"
+      },
+      "specification": {
+        "socketCode": "LGA1700",
+        "coreCount": 6,
+        "threadCount": 12,
+        "baseClockMhz": 2500,
+        "boostClockMhz": 4400,
+        "tdpW": null,
+        "hasIntegratedGraphics": false,
+        "integratedGraphicsModel": null,
+        "processorBasePowerW": 65,
+        "maximumTurboPowerW": 117,
+        "performanceCoreCount": 6,
+        "efficientCoreCount": 0,
+        "performanceCoreBaseClockMhz": 2500,
+        "efficientCoreBaseClockMhz": null,
+        "performanceCoreBoostClockMhz": 4400,
+        "efficientCoreBoostClockMhz": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/134587/intel-core-i512400f-processor-18m-cache-up-to-4-40-ghz/specifications.html",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Intel",
+              "model": "Core i5-12400F",
+              "sku": "134587"
+            },
+            "source_region": "US",
+            "normalized_specification": {
+              "socketCode": "LGA1700",
+              "coreCount": 6,
+              "threadCount": 12,
+              "baseClockMhz": 2500,
+              "boostClockMhz": 4400,
+              "tdpW": null,
+              "processorBasePowerW": 65,
+              "maximumTurboPowerW": 117,
+              "performanceCoreCount": 6,
+              "efficientCoreCount": 0,
+              "performanceCoreBaseClockMhz": 2500,
+              "efficientCoreBaseClockMhz": null,
+              "performanceCoreBoostClockMhz": 4400,
+              "efficientCoreBoostClockMhz": null
+            },
+            "published_memory_limits": {
+              "types": [
+                "DDR4",
+                "DDR5"
+              ],
+              "ddr4_max_data_rate_mt_s": 3200,
+              "ddr5_max_data_rate_mt_s": 4800,
+              "max_capacity_bytes": 137438953472
+            },
+            "notes": [
+              "Clocks are converted from GHz to MHz. Overall maximum turbo is not an all-core clock.",
+              "Manufacturer PBP and MTP remain separate; TDP is null. None is measured consumption.",
+              "No E-cores is recorded as zero; absent E-core clocks are null.",
+              "BuildCores also lists BX8071512400, the non-F model. It is not adopted as an alias."
+            ]
+          }
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Intel",
+              "model": "Core i5-12400F",
+              "part_number": "BX8071512400F"
+            },
+            "source_region": "US",
+            "normalized_fields": {
+              "hasIntegratedGraphics": false,
+              "integratedGraphicsModel": null
+            },
+            "notes": [
+              "Intel lists this exact boxed SKU among processors without processor graphics. Packaging variants do not create separate CPU models."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "a58188f8-e9da-4ead-8d52-74117306545c",
+      "category": "CPU",
+      "rawSha256": "5acbc6371efb6b2a8a5df4fdba993eb6c863daece5c7d95ce68eed1b641c634a",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-13600KF",
+        "partNumber": "BX8071513600KF"
+      },
+      "specification": {
+        "socketCode": "LGA1700",
+        "coreCount": 14,
+        "threadCount": 20,
+        "baseClockMhz": null,
+        "boostClockMhz": 5100,
+        "tdpW": null,
+        "hasIntegratedGraphics": false,
+        "integratedGraphicsModel": null,
+        "processorBasePowerW": 125,
+        "maximumTurboPowerW": 181,
+        "performanceCoreCount": 6,
+        "efficientCoreCount": 8,
+        "performanceCoreBaseClockMhz": 3500,
+        "efficientCoreBaseClockMhz": 2600,
+        "performanceCoreBoostClockMhz": 5100,
+        "efficientCoreBoostClockMhz": 3900
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/230494/intel-core-i513600kf-processor-24m-cache-up-to-5-10-ghz/specifications.html",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Intel",
+              "model": "Core i5-13600KF",
+              "sku": "230494"
+            },
+            "source_region": "US",
+            "normalized_specification": {
+              "socketCode": "LGA1700",
+              "coreCount": 14,
+              "threadCount": 20,
+              "baseClockMhz": null,
+              "boostClockMhz": 5100,
+              "tdpW": null,
+              "processorBasePowerW": 125,
+              "maximumTurboPowerW": 181,
+              "performanceCoreCount": 6,
+              "efficientCoreCount": 8,
+              "performanceCoreBaseClockMhz": 3500,
+              "efficientCoreBaseClockMhz": 2600,
+              "performanceCoreBoostClockMhz": 5100,
+              "efficientCoreBoostClockMhz": 3900
+            },
+            "published_memory_limits": {
+              "types": [
+                "DDR4",
+                "DDR5"
+              ],
+              "ddr4_max_data_rate_mt_s": 3200,
+              "ddr5_max_data_rate_mt_s": 5600,
+              "max_capacity_bytes": 206158430208
+            },
+            "notes": [
+              "Clocks are converted from GHz to MHz. Overall maximum turbo is not an all-core clock.",
+              "Manufacturer PBP and MTP remain separate; TDP is null. None is measured consumption.",
+              "No E-cores is recorded as zero; absent E-core clocks are null.",
+              "Generic base clock remains null for a hybrid CPU; P-core and E-core base clocks are separate."
+            ]
+          }
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Intel",
+              "model": "Core i5-13600KF",
+              "part_number": "BX8071513600KF"
+            },
+            "source_region": "US",
+            "normalized_fields": {
+              "hasIntegratedGraphics": false,
+              "integratedGraphicsModel": null
+            },
+            "notes": [
+              "Intel lists this exact boxed SKU among processors without processor graphics. Packaging variants do not create separate CPU models."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "c2900762-11b6-49bc-a728-566b56db3638",
+      "category": "CPU",
+      "rawSha256": "79e1250b78d184e3be30e8281d0ab58827a2c37eaa316b18cd0bd95d3516e664",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-14700F",
+        "partNumber": "BX8071514700F"
+      },
+      "specification": {
+        "socketCode": "LGA1700",
+        "coreCount": 20,
+        "threadCount": 28,
+        "baseClockMhz": null,
+        "boostClockMhz": 5400,
+        "tdpW": null,
+        "hasIntegratedGraphics": false,
+        "integratedGraphicsModel": null,
+        "processorBasePowerW": 65,
+        "maximumTurboPowerW": 219,
+        "performanceCoreCount": 8,
+        "efficientCoreCount": 12,
+        "performanceCoreBaseClockMhz": 2100,
+        "efficientCoreBaseClockMhz": 1500,
+        "performanceCoreBoostClockMhz": 5300,
+        "efficientCoreBoostClockMhz": 4200
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/236854/intel-core-i7-processor-14700f-33m-cache-up-to-5-40-ghz/specifications.html",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Intel",
+              "model": "Core i7-14700F",
+              "sku": "236854"
+            },
+            "source_region": "US",
+            "normalized_specification": {
+              "socketCode": "LGA1700",
+              "coreCount": 20,
+              "threadCount": 28,
+              "baseClockMhz": null,
+              "boostClockMhz": 5400,
+              "tdpW": null,
+              "processorBasePowerW": 65,
+              "maximumTurboPowerW": 219,
+              "performanceCoreCount": 8,
+              "efficientCoreCount": 12,
+              "performanceCoreBaseClockMhz": 2100,
+              "efficientCoreBaseClockMhz": 1500,
+              "performanceCoreBoostClockMhz": 5300,
+              "efficientCoreBoostClockMhz": 4200
+            },
+            "published_memory_limits": {
+              "types": [
+                "DDR4",
+                "DDR5"
+              ],
+              "ddr4_max_data_rate_mt_s": 3200,
+              "ddr5_max_data_rate_mt_s": 5600,
+              "max_capacity_bytes": 206158430208
+            },
+            "notes": [
+              "Clocks are converted from GHz to MHz. Overall maximum turbo is not an all-core clock.",
+              "Manufacturer PBP and MTP remain separate; TDP is null. None is measured consumption.",
+              "No E-cores is recorded as zero; absent E-core clocks are null.",
+              "Intel publishes 5.4 GHz as overall maximum turbo and 5.3 GHz as P-core maximum turbo. The original P-core boost of 5.4 GHz is preserved only in the raw record.",
+              "Generic base clock remains null for a hybrid CPU; P-core and E-core base clocks are separate."
+            ]
+          }
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Intel",
+              "model": "Core i7-14700F",
+              "part_number": "BX8071514700F"
+            },
+            "source_region": "US",
+            "normalized_fields": {
+              "hasIntegratedGraphics": false,
+              "integratedGraphicsModel": null
+            },
+            "notes": [
+              "Intel lists this exact boxed SKU among processors without processor graphics. Packaging variants do not create separate CPU models."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "3a4791ed-2415-439c-a97e-43dd1e761880",
+      "category": "Motherboard",
+      "rawSha256": "60d0116aca653086fdde7addfdd177458a7f1574111cba183ed8026a9a884fee",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO B760M-A WIFI DDR4",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "LGA1700",
+        "chipset": "B760",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR4",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 137438953472,
+        "supportsEcc": false
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://us.msi.com/Motherboard/PRO-B760M-A-WIFI-DDR4/Specification",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "PRO B760M-A WIFI DDR4",
+              "part_number": null
+            },
+            "source_region": "US",
+            "normalized_specification": {
+              "socketCode": "LGA1700",
+              "chipset": "B760",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR4",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 137438953472,
+              "supportsEcc": false
+            },
+            "notes": [
+              "Only the exact named model is selected; DDR4 and DDR5 versions are separate products.",
+              "A verified regional hardware SKU was not confirmed; partNumber remains null.",
+              "Published memory GB is normalized as GiB to bytes. CPU, BIOS and memory configuration can limit usable capacity.",
+              "Socket and chipset alone do not certify an individual CPU/BIOS combination.",
+              "Non-ECC unbuffered memory is published; DDR5 on-die ECC is not system ECC."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "dc95c90b-60d3-4bec-a73c-ef5eb799ae46",
+      "category": "Motherboard",
+      "rawSha256": "ece1f13c442ec7d5126d35901e3a8689cfd7aaf599d63f00dce16cf7d86c3497",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO B760M-A WIFI",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "LGA1700",
+        "chipset": "B760",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": false
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Motherboard/PRO-B760M-A-WIFI/Specification",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "PRO B760M-A WIFI",
+              "part_number": null
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "socketCode": "LGA1700",
+              "chipset": "B760",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR5",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 274877906944,
+              "supportsEcc": false
+            },
+            "notes": [
+              "Only the exact named model is selected; DDR4 and DDR5 versions are separate products.",
+              "A verified regional hardware SKU was not confirmed; partNumber remains null.",
+              "Published memory GB is normalized as GiB to bytes. CPU, BIOS and memory configuration can limit usable capacity.",
+              "Socket and chipset alone do not certify an individual CPU/BIOS combination.",
+              "Non-ECC unbuffered memory is published; DDR5 on-die ECC is not system ECC."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "d60171cb-1cef-4614-a4f7-e7f145f07e30",
+      "category": "Motherboard",
+      "rawSha256": "d3ab17aa2cd11b81c8f04165347ed455e17f6f3bf1cf92cad15735161901757d",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B760M-A D4",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "LGA1700",
+        "chipset": "B760",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR4",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 137438953472,
+        "supportsEcc": false
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-b760m-a-d4/techspec/",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "ASUS",
+              "model": "PRIME B760M-A D4",
+              "part_number": null
+            },
+            "source_region": "US",
+            "normalized_specification": {
+              "socketCode": "LGA1700",
+              "chipset": "B760",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR4",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 137438953472,
+              "supportsEcc": false
+            },
+            "notes": [
+              "Only the exact named model is selected; DDR4 and DDR5 versions are separate products.",
+              "A verified regional hardware SKU was not confirmed; partNumber remains null.",
+              "Published memory GB is normalized as GiB to bytes. CPU, BIOS and memory configuration can limit usable capacity.",
+              "Socket and chipset alone do not certify an individual CPU/BIOS combination.",
+              "Non-ECC unbuffered memory is published; DDR5 on-die ECC is not system ECC."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "135b5ebe-0105-4515-abd4-97f0a4f15276",
+      "category": "Motherboard",
+      "rawSha256": "23f5d86db929599673e3d975a21a189c46d2ffa0f298c46397a65c9d8e69cf7c",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B760M-A",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "LGA1700",
+        "chipset": "B760",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": false
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-b760m-a/techspec/",
+          "retrievedAt": "2026-09-30T07:24:55.352Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "ASUS",
+              "model": "PRIME B760M-A",
+              "part_number": null
+            },
+            "source_region": "US",
+            "normalized_specification": {
+              "socketCode": "LGA1700",
+              "chipset": "B760",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR5",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 274877906944,
+              "supportsEcc": false
+            },
+            "notes": [
+              "Only the exact named model is selected; DDR4 and DDR5 versions are separate products.",
+              "A verified regional hardware SKU was not confirmed; partNumber remains null.",
+              "Published memory GB is normalized as GiB to bytes. CPU, BIOS and memory configuration can limit usable capacity.",
+              "Socket and chipset alone do not certify an individual CPU/BIOS combination.",
+              "Non-ECC unbuffered memory is published; DDR5 on-die ECC is not system ECC.",
+              "The current manufacturer maximum is 256 GB; BuildCores lists 128 GB. The raw record remains unchanged.",
+              "PRIME B760M-A AX D4 in the original part-number array is a different model and is not adopted as an alias."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

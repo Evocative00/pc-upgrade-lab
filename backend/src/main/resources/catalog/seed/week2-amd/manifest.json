@@ -1,0 +1,510 @@
+{
+  "seedName": "week2-amd",
+  "revision": "b6fc3a559b871106ba89d9d8b8ad4beeb886a799",
+  "buildcoresRetrievedAt": "2026-10-01T03:27:36.237Z",
+  "items": [
+    {
+      "externalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+      "category": "CPU",
+      "rawSha256": "ea31f5049c69d8053f34a96a3799506070610a97aef7131adc8013c83366eb6b",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 5600X",
+        "partNumber": "100-100000065BOX"
+      },
+      "specification": {
+        "socketCode": "AM4",
+        "coreCount": 6,
+        "threadCount": 12,
+        "baseClockMhz": 3700,
+        "boostClockMhz": 4600,
+        "tdpW": 65,
+        "hasIntegratedGraphics": false,
+        "integratedGraphicsModel": null,
+        "processorBasePowerW": null,
+        "maximumTurboPowerW": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "performanceCoreBaseClockMhz": null,
+        "efficientCoreBaseClockMhz": null,
+        "performanceCoreBoostClockMhz": null,
+        "efficientCoreBoostClockMhz": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-5-5600x.html",
+          "retrievedAt": "2026-10-01T03:26:11.700Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "AMD",
+              "model": "Ryzen 5 5600X",
+              "part_number": "100-100000065BOX"
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "socketCode": "AM4",
+              "coreCount": 6,
+              "threadCount": 12,
+              "baseClockMhz": 3700,
+              "boostClockMhz": 4600,
+              "tdpW": 65,
+              "hasIntegratedGraphics": false,
+              "integratedGraphicsModel": null,
+              "processorBasePowerW": null,
+              "maximumTurboPowerW": null,
+              "performanceCoreCount": null,
+              "efficientCoreCount": null,
+              "performanceCoreBaseClockMhz": null,
+              "efficientCoreBaseClockMhz": null,
+              "performanceCoreBoostClockMhz": null,
+              "efficientCoreBoostClockMhz": null
+            },
+            "notes": [
+              "Base and maximum boost clocks are converted from GHz to MHz. Maximum boost is not an all-core clock.",
+              "Default TDP is a manufacturer thermal specification, not measured electrical consumption.",
+              "Intel PBP, MTP and P/E fields are not assigned to these AMD models and remain null. Raw P/E zeros are not adopted.",
+              "The BuildCores PPT value is retained only in the original payload; it is not mapped to Intel MTP.",
+              "One manufacturer-confirmed boxed ID identifies the CPU model. Packaging and tray variants are not inserted separately.",
+              "The truncated raw part number 100-100000065BO is not adopted as a catalog alias."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b",
+      "category": "CPU",
+      "rawSha256": "4bc3d800c7be5b95584bf5ab4d52c469738e5d82414677d0e1a279592f5d64ca",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5700X",
+        "partNumber": "100-100000926WOF"
+      },
+      "specification": {
+        "socketCode": "AM4",
+        "coreCount": 8,
+        "threadCount": 16,
+        "baseClockMhz": 3400,
+        "boostClockMhz": 4600,
+        "tdpW": 65,
+        "hasIntegratedGraphics": false,
+        "integratedGraphicsModel": null,
+        "processorBasePowerW": null,
+        "maximumTurboPowerW": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "performanceCoreBaseClockMhz": null,
+        "efficientCoreBaseClockMhz": null,
+        "performanceCoreBoostClockMhz": null,
+        "efficientCoreBoostClockMhz": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700x.html",
+          "retrievedAt": "2026-10-01T03:26:11.700Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "AMD",
+              "model": "Ryzen 7 5700X",
+              "part_number": "100-100000926WOF"
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "socketCode": "AM4",
+              "coreCount": 8,
+              "threadCount": 16,
+              "baseClockMhz": 3400,
+              "boostClockMhz": 4600,
+              "tdpW": 65,
+              "hasIntegratedGraphics": false,
+              "integratedGraphicsModel": null,
+              "processorBasePowerW": null,
+              "maximumTurboPowerW": null,
+              "performanceCoreCount": null,
+              "efficientCoreCount": null,
+              "performanceCoreBaseClockMhz": null,
+              "efficientCoreBaseClockMhz": null,
+              "performanceCoreBoostClockMhz": null,
+              "efficientCoreBoostClockMhz": null
+            },
+            "notes": [
+              "Base and maximum boost clocks are converted from GHz to MHz. Maximum boost is not an all-core clock.",
+              "Default TDP is a manufacturer thermal specification, not measured electrical consumption.",
+              "Intel PBP, MTP and P/E fields are not assigned to these AMD models and remain null. Raw P/E zeros are not adopted.",
+              "The BuildCores PPT value is retained only in the original payload; it is not mapped to Intel MTP.",
+              "One manufacturer-confirmed boxed ID identifies the CPU model. Packaging and tray variants are not inserted separately."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "e11970e8-4f2c-426d-872c-92c0f4160ec4",
+      "category": "CPU",
+      "rawSha256": "36ea0665a786b726196d3a8a6130253a0079478fd76c969ac2dfc3ee0ed30f94",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5700X3D",
+        "partNumber": "100-100001503WOF"
+      },
+      "specification": {
+        "socketCode": "AM4",
+        "coreCount": 8,
+        "threadCount": 16,
+        "baseClockMhz": 3000,
+        "boostClockMhz": 4100,
+        "tdpW": 105,
+        "hasIntegratedGraphics": false,
+        "integratedGraphicsModel": null,
+        "processorBasePowerW": null,
+        "maximumTurboPowerW": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "performanceCoreBaseClockMhz": null,
+        "efficientCoreBaseClockMhz": null,
+        "performanceCoreBoostClockMhz": null,
+        "efficientCoreBoostClockMhz": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700x3d.html",
+          "retrievedAt": "2026-10-01T03:26:11.700Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "AMD",
+              "model": "Ryzen 7 5700X3D",
+              "part_number": "100-100001503WOF"
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "socketCode": "AM4",
+              "coreCount": 8,
+              "threadCount": 16,
+              "baseClockMhz": 3000,
+              "boostClockMhz": 4100,
+              "tdpW": 105,
+              "hasIntegratedGraphics": false,
+              "integratedGraphicsModel": null,
+              "processorBasePowerW": null,
+              "maximumTurboPowerW": null,
+              "performanceCoreCount": null,
+              "efficientCoreCount": null,
+              "performanceCoreBaseClockMhz": null,
+              "efficientCoreBaseClockMhz": null,
+              "performanceCoreBoostClockMhz": null,
+              "efficientCoreBoostClockMhz": null
+            },
+            "notes": [
+              "Base and maximum boost clocks are converted from GHz to MHz. Maximum boost is not an all-core clock.",
+              "Default TDP is a manufacturer thermal specification, not measured electrical consumption.",
+              "Intel PBP, MTP and P/E fields are not assigned to these AMD models and remain null. Raw P/E zeros are not adopted.",
+              "The BuildCores PPT value is retained only in the original payload; it is not mapped to Intel MTP.",
+              "One manufacturer-confirmed boxed ID identifies the CPU model. Packaging and tray variants are not inserted separately.",
+              "The raw alias AMD Ryzen 5 5700X3D is a family-name typo and is not adopted. Manufacturer identity is Ryzen 7 5700X3D."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "4dcfffec-423b-4052-8aca-db6c0f84bb43",
+      "category": "CPU",
+      "rawSha256": "e26215570b9880589ab3c98c0d760975513860dc2e152ec8391faf754e5cf368",
+      "product": {
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 7800X3D",
+        "partNumber": "100-100000910WOF"
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "coreCount": 8,
+        "threadCount": 16,
+        "baseClockMhz": 4200,
+        "boostClockMhz": 5000,
+        "tdpW": 120,
+        "hasIntegratedGraphics": true,
+        "integratedGraphicsModel": "AMD Radeon Graphics",
+        "processorBasePowerW": null,
+        "maximumTurboPowerW": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "performanceCoreBaseClockMhz": null,
+        "efficientCoreBaseClockMhz": null,
+        "performanceCoreBoostClockMhz": null,
+        "efficientCoreBoostClockMhz": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7800x3d.html",
+          "retrievedAt": "2026-10-01T03:26:11.700Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "AMD",
+              "model": "Ryzen 7 7800X3D",
+              "part_number": "100-100000910WOF"
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "socketCode": "AM5",
+              "coreCount": 8,
+              "threadCount": 16,
+              "baseClockMhz": 4200,
+              "boostClockMhz": 5000,
+              "tdpW": 120,
+              "hasIntegratedGraphics": true,
+              "integratedGraphicsModel": "AMD Radeon Graphics",
+              "processorBasePowerW": null,
+              "maximumTurboPowerW": null,
+              "performanceCoreCount": null,
+              "efficientCoreCount": null,
+              "performanceCoreBaseClockMhz": null,
+              "efficientCoreBaseClockMhz": null,
+              "performanceCoreBoostClockMhz": null,
+              "efficientCoreBoostClockMhz": null
+            },
+            "notes": [
+              "Base and maximum boost clocks are converted from GHz to MHz. Maximum boost is not an all-core clock.",
+              "Default TDP is a manufacturer thermal specification, not measured electrical consumption.",
+              "Intel PBP, MTP and P/E fields are not assigned to these AMD models and remain null. Raw P/E zeros are not adopted.",
+              "The BuildCores PPT value is retained only in the original payload; it is not mapped to Intel MTP.",
+              "One manufacturer-confirmed boxed ID identifies the CPU model. Packaging and tray variants are not inserted separately."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "d3705541-0247-4869-bc6a-93023a638f03",
+      "category": "Motherboard",
+      "rawSha256": "26c5fb96b1849b287fae5f47803230a8508d98030f6e98715ae3127256f8332b",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "B450M PRO-VDH MAX",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "AM4",
+        "chipset": "B450",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR4",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 137438953472,
+        "supportsEcc": false
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Motherboard/B450M-PRO-VDH-MAX/Specification",
+          "retrievedAt": "2026-10-01T03:26:11.700Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "B450M PRO-VDH MAX",
+              "part_number": null
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "socketCode": "AM4",
+              "chipset": "B450",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR4",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 137438953472,
+              "supportsEcc": false
+            },
+            "notes": [
+              "Board memory capacity is the manufacturer-published maximum. Installed CPU, BIOS and DIMM configuration can impose additional limits.",
+              "Socket and chipset do not certify support for every CPU; consult the exact board CPU-support list and required BIOS.",
+              "The product is identified by its exact manufacturer model name. Unconfirmed regional or retailer part-number aliases are not adopted.",
+              "ECC UDIMMs are listed for non-ECC operation only. supportsEcc is false for error-correction operation.",
+              "Global manufacturer specification confirms a maximum of 128 GiB with ComboPI 1.0.0.3-based or later BIOS. The raw 64 GiB value is retained in the original payload.",
+              "The raw PCIe 4.0, M.2-slot and zero-SATA claims are not used to populate normalized fields."
+            ],
+            "published_memory_capacity_condition": {
+              "max_memory_bytes": 137438953472,
+              "required_bios_family": "ComboPI",
+              "minimum_bios_base_version": "1.0.0.3",
+              "later_versions_allowed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "4b3e292e-4a0d-4261-85d4-5fb64e0af75e",
+      "category": "Motherboard",
+      "rawSha256": "ac6732ed49de506221e4dc6d35f1d9d5d9300b7563a8ff082acb600f097799dd",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "B550-A PRO",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "AM4",
+        "chipset": "B550",
+        "formFactor": "ATX",
+        "memoryType": "DDR4",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 137438953472,
+        "supportsEcc": false
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Motherboard/B550-A-PRO/Specification",
+          "retrievedAt": "2026-10-01T03:26:11.700Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "B550-A PRO",
+              "part_number": null
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "socketCode": "AM4",
+              "chipset": "B550",
+              "formFactor": "ATX",
+              "memoryType": "DDR4",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 137438953472,
+              "supportsEcc": false
+            },
+            "notes": [
+              "Board memory capacity is the manufacturer-published maximum. Installed CPU, BIOS and DIMM configuration can impose additional limits.",
+              "Socket and chipset do not certify support for every CPU; consult the exact board CPU-support list and required BIOS.",
+              "The product is identified by its exact manufacturer model name. Unconfirmed regional or retailer part-number aliases are not adopted.",
+              "ECC UDIMMs are listed for non-ECC operation only. supportsEcc is false for error-correction operation.",
+              "This is the standard B550-A PRO model; the separate CEC variant is not registered or used as an alias."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "303429d5-887f-4cf2-84a6-fd6c96e40d0c",
+      "category": "Motherboard",
+      "rawSha256": "4cfcd1fc779b05cf6b614d881458872c01305bc73387869d82d808af4cbc2fc7",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO A620M-E",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "chipset": "A620",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 2,
+        "maxMemoryBytes": 137438953472,
+        "supportsEcc": false
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Motherboard/PRO-A620M-E/Specification",
+          "retrievedAt": "2026-10-01T03:26:11.700Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "PRO A620M-E",
+              "part_number": null
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "socketCode": "AM5",
+              "chipset": "A620",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR5",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 2,
+              "maxMemoryBytes": 137438953472,
+              "supportsEcc": false
+            },
+            "notes": [
+              "Board memory capacity is the manufacturer-published maximum. Installed CPU, BIOS and DIMM configuration can impose additional limits.",
+              "Socket and chipset do not certify support for every CPU; consult the exact board CPU-support list and required BIOS.",
+              "The product is identified by its exact manufacturer model name. Unconfirmed regional or retailer part-number aliases are not adopted.",
+              "The manufacturer lists non-ECC unbuffered memory. supportsEcc is false."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "e8a66e2e-c53b-49d3-a31c-49a9ee8fe389",
+      "category": "Motherboard",
+      "rawSha256": "5dde0c842619f37563f72cd006867b3666bbb786d74420a6c2cf72671bf2ed9d",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650 TOMAHAWK WIFI",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "chipset": "B650",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": false
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/Specification",
+          "retrievedAt": "2026-10-01T03:26:11.700Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected specifications and documented normalization; not a full page snapshot or a compatibility certification.",
+            "product_identity": {
+              "manufacturer": "MSI",
+              "model": "MAG B650 TOMAHAWK WIFI",
+              "part_number": null
+            },
+            "source_region": "GLOBAL",
+            "normalized_specification": {
+              "socketCode": "AM5",
+              "chipset": "B650",
+              "formFactor": "ATX",
+              "memoryType": "DDR5",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 274877906944,
+              "supportsEcc": false
+            },
+            "notes": [
+              "Board memory capacity is the manufacturer-published maximum. Installed CPU, BIOS and DIMM configuration can impose additional limits.",
+              "Socket and chipset do not certify support for every CPU; consult the exact board CPU-support list and required BIOS.",
+              "The product is identified by its exact manufacturer model name. Unconfirmed regional or retailer part-number aliases are not adopted.",
+              "The manufacturer lists non-ECC unbuffered memory. supportsEcc is false."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
