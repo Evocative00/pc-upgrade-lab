@@ -1,0 +1,289 @@
+{
+  "seedName": "cpu-memory-v1",
+  "items": [
+    {
+      "externalId": "f34f9bc1-0136-43ee-bd78-a9efbd0e5f17",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 3600",
+      "partNumber": "100-100000031BOX",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": null,
+        "channelCount": 2,
+        "capacityConditions": "공식 페이지에서 최대 용량이 공표되지 않아 미확인(NULL)으로 보존한다. 다른 CPU나 메인보드의 용량으로 추정하지 않는다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "공식 페이지가 공표한 상한은 3200 MT/s이다. 이 근거에는 DIMM 개수/rank별 속도 표가 없어 장착 구성별 달성 속도는 미확인이다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-5-3600.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    },
+    {
+      "externalId": "04984638-674b-4384-8866-a7b20d55f8b4",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 5600",
+      "partNumber": "100-100000927BOX",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "제조사 공표 GB를 기존 카탈로그와 동일하게 GiB(2^30 bytes)로 정규화했다. 실제 최대 용량은 메인보드, BIOS, 메모리 종류와 구성에 따라 달라질 수 있다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "2개 DIMM: 1R/2R 모두 3200 MT/s. 4개 DIMM: 1R 2933 MT/s, 2R 2667 MT/s. 1R/2R는 모듈 rank 수이며 현재 RAM 제원만으로 확정할 수 없다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-5-5600.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    },
+    {
+      "externalId": "6b03b443-7b22-491c-b301-7e2a285359df",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 7600",
+      "partNumber": "100-100001015BOX",
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "제조사 공표 GB를 기존 카탈로그와 동일하게 GiB(2^30 bytes)로 정규화했다. 실제 최대 용량은 메인보드, BIOS, 메모리 종류와 구성에 따라 달라질 수 있다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5200,
+            "dataRateConditions": "2개 DIMM: 1R/2R 모두 5200 MT/s. 4개 DIMM: 1R/2R 모두 3600 MT/s. 1R/2R는 모듈 rank 수이며 현재 RAM 제원만으로 확정할 수 없다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7600.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    },
+    {
+      "externalId": "ab4fadad-e3a1-41ff-82fd-e16e5af8a324",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 7700",
+      "partNumber": null,
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "제조사 공표 GB를 기존 카탈로그와 동일하게 GiB(2^30 bytes)로 정규화했다. 실제 최대 용량은 메인보드, BIOS, 메모리 종류와 구성에 따라 달라질 수 있다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5200,
+            "dataRateConditions": "2개 DIMM: 1R/2R 모두 5200 MT/s. 4개 DIMM: 1R/2R 모두 3600 MT/s. 1R/2R는 모듈 rank 수이며 현재 RAM 제원만으로 확정할 수 없다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7700.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    },
+    {
+      "externalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 5600X",
+      "partNumber": "100-100000065BOX",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": null,
+        "channelCount": null,
+        "capacityConditions": "공식 페이지에서 최대 용량이 공표되지 않아 미확인(NULL)으로 보존한다. 다른 CPU나 메인보드의 용량으로 추정하지 않는다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "공식 페이지가 공표한 상한은 3200 MT/s이다. 이 근거에는 DIMM 개수/rank별 속도 표가 없어 장착 구성별 달성 속도는 미확인이다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-5-5600x.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    },
+    {
+      "externalId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5700X",
+      "partNumber": "100-100000926WOF",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "제조사 공표 GB를 기존 카탈로그와 동일하게 GiB(2^30 bytes)로 정규화했다. 실제 최대 용량은 메인보드, BIOS, 메모리 종류와 구성에 따라 달라질 수 있다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "2개 DIMM: 1R/2R 모두 3200 MT/s. 4개 DIMM: 1R 2933 MT/s, 2R 2667 MT/s. 1R/2R는 모듈 rank 수이며 현재 RAM 제원만으로 확정할 수 없다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700x.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    },
+    {
+      "externalId": "e11970e8-4f2c-426d-872c-92c0f4160ec4",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5700X3D",
+      "partNumber": "100-100001503WOF",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "제조사 공표 GB를 기존 카탈로그와 동일하게 GiB(2^30 bytes)로 정규화했다. 실제 최대 용량은 메인보드, BIOS, 메모리 종류와 구성에 따라 달라질 수 있다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "2개 DIMM: 1R/2R 모두 3200 MT/s. 4개 DIMM: 1R 2933 MT/s, 2R 2667 MT/s. 1R/2R는 모듈 rank 수이며 현재 RAM 제원만으로 확정할 수 없다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700x3d.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    },
+    {
+      "externalId": "4dcfffec-423b-4052-8aca-db6c0f84bb43",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 7800X3D",
+      "partNumber": "100-100000910WOF",
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "제조사 공표 GB를 기존 카탈로그와 동일하게 GiB(2^30 bytes)로 정규화했다. 실제 최대 용량은 메인보드, BIOS, 메모리 종류와 구성에 따라 달라질 수 있다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5200,
+            "dataRateConditions": "2개 DIMM: 1R/2R 모두 5200 MT/s. 4개 DIMM: 1R/2R 모두 3600 MT/s. 1R/2R는 모듈 rank 수이며 현재 RAM 제원만으로 확정할 수 없다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7800x3d.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    },
+    {
+      "externalId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60",
+      "manufacturer": "Intel",
+      "modelName": "Core i3-12100F",
+      "partNumber": "BX8071512100F",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "제조사 공표 GB를 기존 카탈로그와 동일하게 GiB(2^30 bytes)로 정규화했다. 실제 최대 용량은 메인보드, BIOS, 메모리 종류와 구성에 따라 달라질 수 있다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Intel ARK의 해당 DDR 종류에 대한 공표 상한이다. 실제 속도는 메인보드, DIMM 개수/rank 및 설정에 의존한다. DDR4와 DDR5는 보드가 지원하는 한 종류를 사용하며 혼용하지 않는다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 4800,
+            "dataRateConditions": "Intel ARK의 해당 DDR 종류에 대한 공표 상한이다. 실제 속도는 메인보드, DIMM 개수/rank 및 설정에 의존한다. DDR4와 DDR5는 보드가 지원하는 한 종류를 사용하며 혼용하지 않는다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/132223/intel-core-i312100f-processor-12m-cache-up-to-4-30-ghz/specifications.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    },
+    {
+      "externalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-12400F",
+      "partNumber": "BX8071512400F",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "제조사 공표 GB를 기존 카탈로그와 동일하게 GiB(2^30 bytes)로 정규화했다. 실제 최대 용량은 메인보드, BIOS, 메모리 종류와 구성에 따라 달라질 수 있다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Intel ARK의 해당 DDR 종류에 대한 공표 상한이다. 실제 속도는 메인보드, DIMM 개수/rank 및 설정에 의존한다. DDR4와 DDR5는 보드가 지원하는 한 종류를 사용하며 혼용하지 않는다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 4800,
+            "dataRateConditions": "Intel ARK의 해당 DDR 종류에 대한 공표 상한이다. 실제 속도는 메인보드, DIMM 개수/rank 및 설정에 의존한다. DDR4와 DDR5는 보드가 지원하는 한 종류를 사용하며 혼용하지 않는다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/134587/intel-core-i512400f-processor-18m-cache-up-to-4-40-ghz/specifications.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    },
+    {
+      "externalId": "a58188f8-e9da-4ead-8d52-74117306545c",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-13600KF",
+      "partNumber": "BX8071513600KF",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "제조사 공표 GB를 기존 카탈로그와 동일하게 GiB(2^30 bytes)로 정규화했다. 실제 최대 용량은 메인보드, BIOS, 메모리 종류와 구성에 따라 달라질 수 있다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Intel ARK의 해당 DDR 종류에 대한 공표 상한이다. 실제 속도는 메인보드, DIMM 개수/rank 및 설정에 의존한다. DDR4와 DDR5는 보드가 지원하는 한 종류를 사용하며 혼용하지 않는다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "Intel ARK의 해당 DDR 종류에 대한 공표 상한이다. 실제 속도는 메인보드, DIMM 개수/rank 및 설정에 의존한다. DDR4와 DDR5는 보드가 지원하는 한 종류를 사용하며 혼용하지 않는다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230494/intel-core-i513600kf-processor-24m-cache-up-to-5-10-ghz/specifications.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    },
+    {
+      "externalId": "c2900762-11b6-49bc-a728-566b56db3638",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-14700F",
+      "partNumber": "BX8071514700F",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "제조사 공표 GB를 기존 카탈로그와 동일하게 GiB(2^30 bytes)로 정규화했다. 실제 최대 용량은 메인보드, BIOS, 메모리 종류와 구성에 따라 달라질 수 있다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Intel ARK의 해당 DDR 종류에 대한 공표 상한이다. 실제 속도는 메인보드, DIMM 개수/rank 및 설정에 의존한다. DDR4와 DDR5는 보드가 지원하는 한 종류를 사용하며 혼용하지 않는다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "Intel ARK의 해당 DDR 종류에 대한 공표 상한이다. 실제 속도는 메인보드, DIMM 개수/rank 및 설정에 의존한다. DDR4와 DDR5는 보드가 지원하는 한 종류를 사용하며 혼용하지 않는다. XMP/EXPO/오버클럭 속도는 별도 조건이다. RAM 표기 속도만으로 장착 불가를 판정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/236854/intel-core-i7-processor-14700f-33m-cache-up-to-5-40-ghz/specifications.html",
+      "retrievedAt": "2026-10-02T01:25:49Z"
+    }
+  ]
+}

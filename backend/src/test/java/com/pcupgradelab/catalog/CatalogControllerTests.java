@@ -568,6 +568,124 @@ class CatalogControllerTests {
     }
 
     @Test
+    void boardRamExpansionPagesSixtyOneAndSeparatesSingleModulesBoardVariantsAndUnknowns() throws Exception {
+        for (var batch : List.of(CatalogSeedBatch.INTEL, CatalogSeedBatch.RAM,
+                CatalogSeedBatch.AMD, CatalogSeedBatch.GPU_EXPANSION)) seeds.seed(batch);
+        var oldPage = body(mvc.perform(get(URL).param("size", "100"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.items", hasSize(50))).andReturn());
+        var oldDetails = new ArrayList<JsonNode>();
+        for (String id : ids(oldPage)) {
+            oldDetails.add(body(mvc.perform(get(URL + "/{id}", id)).andExpect(status().isOk()).andReturn()));
+        }
+        var seeded = seeds.seed(CatalogSeedBatch.BOARD_RAM);
+        assertThat(seeded.created()).isEqualTo(11);
+        assertThat(seeded.skipped()).isZero();
+        var combined = new ArrayList<String>();
+        for (int page = 0; page < 4; page++) {
+            var response = body(mvc.perform(get(URL).param("page", Integer.toString(page)))
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.items", hasSize(page < 3 ? 20 : 1)))
+                    .andExpect(jsonPath("$.totalElements").value(61))
+                    .andExpect(jsonPath("$.totalPages").value(4)).andReturn());
+            combined.addAll(ids(response));
+        }
+        var all = body(mvc.perform(get(URL).param("size", "100"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.items", hasSize(61))).andReturn());
+        assertThat(combined).containsExactlyElementsOf(ids(all)).doesNotHaveDuplicates();
+        mvc.perform(get(URL).param("page", "4"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.items", hasSize(0)))
+                .andExpect(jsonPath("$.totalElements").value(61));
+        for (var count : Map.of(PartType.CPU, 12, PartType.MOTHERBOARD, 16,
+                PartType.RAM, 16, PartType.GPU, 14, PartType.MONITOR, 3).entrySet()) {
+            mvc.perform(get(URL).param("type", count.getKey().name()))
+                    .andExpect(status().isOk()).andExpect(jsonPath("$.totalElements").value(count.getValue()));
+        }
+        assertSearch("MOTHERBOARD", "MSI", 8);
+        assertSearch("MOTHERBOARD", "ASUS", 3);
+        assertSearch("MOTHERBOARD", "ASRock", 3);
+        assertSearch("MOTHERBOARD", "Gigabyte", 2);
+        assertSearch("MOTHERBOARD", "B650M Pro RS WiFi", 0);
+        assertSearch("MOTHERBOARD", "B760M Pro RS/D4", 0);
+        assertSearch("MOTHERBOARD", "PRIME B550M-A WIFI II", 0);
+        assertSearch("MOTHERBOARD", "B650M DS3H (rev. 1.3)", 0);
+        assertSearch("RAM", "Kingston", 11);
+        assertSearch("RAM", "Samsung", 3);
+        assertSearch("RAM", "SK Hynix", 2);
+        assertSearch("RAM", "M323R1GB4PB0-CWM", 1);
+        assertSearch("RAM", "HMA82GU6CJR8N-XN", 0);
+        assertSearch("RAM", "M378A2K43CB1-CTD DDR4-2666 16GB (2x8GB)", 0);
+        assertSearch("RAM", "Samsung OEM UDIMM", 0);
+        for (var item : seeded.items()) {
+            var detail = body(mvc.perform(get(URL + "/{id}", item.productId()))
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.product.verificationStatus").value("UNVERIFIED"))
+                    .andExpect(jsonPath("$.product.active").value(false))
+                    .andExpect(jsonPath("$.product.referencePrice.status").value("UNCONFIRMED"))
+                    .andExpect(jsonPath("$.sources", hasSize(2)))
+                    .andExpect(jsonPath("$.attributions[0].license").value("ODC-By-1.0")).andReturn());
+            assertNullField(detail.get("product").get("referencePrice"), "amountKrw");
+            for (int i = 0; i < detail.get("sources").size(); i++) {
+                assertThat(detail.get("sources").get(i).has("rawPayload")).isFalse();
+            }
+            if (detail.get("product").get("type").stringValue().equals("RAM")) {
+                assertThat(detail.get("specification").get("moduleCount").intValue()).isEqualTo(1);
+                assertThat(detail.get("specification").get("pinCount").intValue()).isEqualTo(288);
+                assertThat(detail.get("specification").get("isEcc").booleanValue()).isFalse();
+                assertThat(detail.get("specification").get("bufferType").stringValue()).isEqualTo("UNBUFFERED");
+                assertNullField(detail.get("specification"), "heightMm");
+            }
+        }
+        var b550 = body(mvc.perform(get(URL + "/{id}", findId("MOTHERBOARD", "B550M Pro4")))
+                .andExpect(status().isOk()).andReturn());
+        assertNullField(b550.get("specification"), "supportsEcc");
+        var asus = body(mvc.perform(get(URL + "/{id}", findId("MOTHERBOARD", "PRIME B550M-A (WI-FI)")))
+                .andExpect(status().isOk()).andReturn());
+        assertNullField(asus.get("specification"), "supportsEcc");
+        mvc.perform(get(URL + "/{id}", findId("MOTHERBOARD", "B650M DS3H (rev. 1.0)")))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.product.partNumber").value("B650M DS3H (rev. 1.0)"))
+                .andExpect(jsonPath("$.specification.socketCode").value("AM5"))
+                .andExpect(jsonPath("$.specification.memoryType").value("DDR5"))
+                .andExpect(jsonPath("$.specification.maxMemoryBytes").value(274877906944L))
+                .andExpect(jsonPath("$.specification.supportsEcc").value(false));
+        mvc.perform(get(URL + "/{id}", findId("MOTHERBOARD", "B760M DS3H DDR4")))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.specification.socketCode").value("LGA1700"))
+                .andExpect(jsonPath("$.specification.memoryType").value("DDR4"))
+                .andExpect(jsonPath("$.specification.supportsEcc").value(false));
+        mvc.perform(get(URL + "/{id}", findId("RAM", "M378A2K43CB1-CTD")))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.specification.moduleCapacityBytes").value(17179869184L))
+                .andExpect(jsonPath("$.specification.dataRateMts").value(2666))
+                .andExpect(jsonPath("$.specification.voltageV").value(1.2));
+        mvc.perform(get(URL + "/{id}", findId("RAM", "HMAA2GU6CJR8N-XN")))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.specification.moduleCapacityBytes").value(17179869184L))
+                .andExpect(jsonPath("$.specification.dataRateMts").value(3200))
+                .andExpect(jsonPath("$.specification.voltageV").value(1.2));
+        var ddr5 = body(mvc.perform(get(URL + "/{id}", findId("RAM", "M323R1GB4PB0-CWM")))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.product.manufacturer").value("Samsung"))
+                .andExpect(jsonPath("$.product.modelName").value("M323R1GB4PB0-CWM DDR5-5600 8GB (1x8GB)"))
+                .andExpect(jsonPath("$.specification.memoryType").value("DDR5"))
+                .andExpect(jsonPath("$.specification.moduleCapacityBytes").value(8589934592L))
+                .andExpect(jsonPath("$.specification.dataRateMts").value(5600)).andReturn());
+        assertNullField(ddr5.get("specification"), "voltageV");
+        assertThat(ddr5.get("specification").has("profileSupport")).isFalse();
+        assertThat(ddr5.get("product").get("modelName").stringValue()).doesNotContain("EXPO", "CL36");
+        var repeated = seeds.seed(CatalogSeedBatch.BOARD_RAM);
+        assertThat(repeated.created()).isZero();
+        assertThat(repeated.skipped()).isEqualTo(11);
+        assertThat(repeated.items().stream().map(item -> item.productId()).toList())
+                .containsExactlyElementsOf(seeded.items().stream().map(item -> item.productId()).toList());
+        for (var old : oldDetails) {
+            assertThat(body(mvc.perform(get(URL + "/{id}", old.get("product").get("id").stringValue()))
+                    .andExpect(status().isOk()).andReturn())).isEqualTo(old);
+        }
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM catalog_product_source", Integer.class)).isEqualTo(137);
+    }
+
+    @Test
     void ramDetailKeepsPerModuleCapacityAndKitCountSeparate() throws Exception {
         mvc.perform(get(URL + "/{id}", findId("RAM", "KF432C16BBK2/32")))
                 .andExpect(status().isOk())

@@ -1,0 +1,629 @@
+{
+  "seedName": "week2-board-ram",
+  "revision": "b6fc3a559b871106ba89d9d8b8ad4beeb886a799",
+  "buildcoresRetrievedAt": "2026-10-02T00:28:07.582Z",
+  "items": [
+    {
+      "externalId": "eb69638a-40e5-4e10-b550-e6780e11ec32",
+      "category": "Motherboard",
+      "rawSha256": "6515d2d0f35f77423210fb53994b1b4db41ff61e3182346ae2525b77bdc59f8c",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASRock",
+        "modelName": "B550M Pro4",
+        "partNumber": "B550M Pro4"
+      },
+      "specification": {
+        "socketCode": "AM4",
+        "chipset": "AMD B550",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR4",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 137438953472,
+        "supportsEcc": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://asrock.com/MB/AMD/B550M%20Pro4/index.asp",
+          "retrievedAt": "2026-10-02T00:55:00Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected primary manufacturer facts and documented normalization; not a full page snapshot, price review or compatibility certification.",
+            "product_identity": {
+              "manufacturer": "ASRock",
+              "model": "B550M Pro4",
+              "part_number": "B550M Pro4"
+            },
+            "document_author": "ASRock",
+            "document_description": "Manufacturer product specification page",
+            "normalized_specification": {
+              "socketCode": "AM4",
+              "chipset": "AMD B550",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR4",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 137438953472,
+              "supportsEcc": null
+            },
+            "related_document_sections": [],
+            "memory_unit_rule": "Published GB capacity is normalized as GiB bytes.",
+            "notes": [
+              "The page lists ECC UDIMM operation for selected CPU families; supported APUs require PRO CPUs. The unconditional supportsEcc flag remains null because the installed CPU is unknown.",
+              "Raw ecc_support=false is retained only in the upstream source; it is not treated as confirmed absence of ECC capability."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "33fce89e-3db3-470e-a03e-29a091a62c9a",
+      "category": "Motherboard",
+      "rawSha256": "5b89d11220a6af6b69559d49c1bc282075dba1c9ced2bb1e2ca09f0623f6d706",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B550M-A (WI-FI)",
+        "partNumber": "PRIME B550M-A (WI-FI)"
+      },
+      "specification": {
+        "socketCode": "AM4",
+        "chipset": "AMD B550",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR4",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 137438953472,
+        "supportsEcc": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://dlcdnets.asus.com/pub/ASUS/mb/SocketAM4/PRIME_B550M-A_(WI-FI)/E16551_PRIME_B550M-A_WI-FI_UM_WEB.pdf",
+          "retrievedAt": "2026-10-02T00:55:00Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected primary manufacturer facts and documented normalization; not a full page snapshot, price review or compatibility certification.",
+            "product_identity": {
+              "manufacturer": "ASUS",
+              "model": "PRIME B550M-A (WI-FI)",
+              "part_number": "PRIME B550M-A (WI-FI)"
+            },
+            "document_author": "ASUS",
+            "document_description": "E16551, First Edition April 2020; specification summary and layout, PDF pages 6, 9, 11",
+            "normalized_specification": {
+              "socketCode": "AM4",
+              "chipset": "AMD B550",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR4",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 137438953472,
+              "supportsEcc": null
+            },
+            "related_document_sections": [],
+            "memory_unit_rule": "Published GB capacity is normalized as GiB bytes.",
+            "notes": [
+              "This is the original (WI-FI) board, not WIFI II, AC or the plain B550M-A.",
+              "The manual states that ECC mode varies by CPU. supportsEcc is null rather than a claim of unconditional ECC support or no ECC support."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "92c363b9-65ac-4955-b88b-888704569ee6",
+      "category": "Motherboard",
+      "rawSha256": "082f442205b7a91d5d0bffdf483c946dfe58cf727dba933eef0e6f44ec5eb3df",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASRock",
+        "modelName": "B650M Pro RS",
+        "partNumber": "B650M Pro RS"
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "chipset": "AMD B650",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": true
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.asrock.com/mb/AMD/B650M%20Pro%20RS/index.asp",
+          "retrievedAt": "2026-10-02T00:55:00Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected primary manufacturer facts and documented normalization; not a full page snapshot, price review or compatibility certification.",
+            "product_identity": {
+              "manufacturer": "ASRock",
+              "model": "B650M Pro RS",
+              "part_number": "B650M Pro RS"
+            },
+            "document_author": "ASRock",
+            "document_description": "Manufacturer product specification page",
+            "normalized_specification": {
+              "socketCode": "AM5",
+              "chipset": "AMD B650",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR5",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 274877906944,
+              "supportsEcc": true
+            },
+            "related_document_sections": [],
+            "memory_unit_rule": "Published GB capacity is normalized as GiB bytes.",
+            "notes": [
+              "Non-WiFi model only. The page lists ECC and non-ECC unbuffered DIMMs; ECC capability is a board specification, not certification of a complete PC."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "7d51c1fe-d7c3-4967-8c23-56f43a68085b",
+      "category": "Motherboard",
+      "rawSha256": "a38c6164a7dac3a6aa92bf71ca5d37838d7699c3f3989987140a572732a708e3",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "Gigabyte",
+        "modelName": "B650M DS3H (rev. 1.0)",
+        "partNumber": "B650M DS3H (rev. 1.0)"
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "chipset": "AMD B650",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": false
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.gigabyte.com/kr/Motherboard/B650M-DS3H-rev-10-11-12/sp",
+          "retrievedAt": "2026-10-02T00:55:00Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected primary manufacturer facts and documented normalization; not a full page snapshot, price review or compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Gigabyte",
+              "model": "B650M DS3H (rev. 1.0)",
+              "part_number": "B650M DS3H (rev. 1.0)"
+            },
+            "document_author": "GIGABYTE",
+            "document_description": "Manufacturer product specification page",
+            "normalized_specification": {
+              "socketCode": "AM5",
+              "chipset": "AMD B650",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR5",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 274877906944,
+              "supportsEcc": false
+            },
+            "related_document_sections": [],
+            "memory_unit_rule": "Published GB capacity is normalized as GiB bytes.",
+            "notes": [
+              "The source covers revisions 1.0/1.1/1.2; the upstream record explicitly identifies revision 1.0.",
+              "Current manufacturer maximum is 256GB with four 64GB DIMMs. The upstream 192GB value remains in the raw record. This capacity is not a guarantee for every BIOS, CPU or module combination."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "f5b7becd-f2da-4c14-a74a-d34e3bf51d26",
+      "category": "Motherboard",
+      "rawSha256": "c09f5cbac4a67448851eda2866778f6a83278cded34e5df3600e3cb2122ce44f",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASRock",
+        "modelName": "B760M Pro RS",
+        "partNumber": "B760M Pro RS"
+      },
+      "specification": {
+        "socketCode": "LGA1700",
+        "chipset": "Intel B760",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": false
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.asrock.com/mb/Intel/B760M%20Pro%20RS/index.asp",
+          "retrievedAt": "2026-10-02T00:55:00Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected primary manufacturer facts and documented normalization; not a full page snapshot, price review or compatibility certification.",
+            "product_identity": {
+              "manufacturer": "ASRock",
+              "model": "B760M Pro RS",
+              "part_number": "B760M Pro RS"
+            },
+            "document_author": "ASRock",
+            "document_description": "Manufacturer product specification page",
+            "normalized_specification": {
+              "socketCode": "LGA1700",
+              "chipset": "Intel B760",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR5",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 274877906944,
+              "supportsEcc": false
+            },
+            "related_document_sections": [],
+            "memory_unit_rule": "Published GB capacity is normalized as GiB bytes.",
+            "notes": [
+              "DDR5 model only; D4, WiFi and White variants are separate products.",
+              "Native memory data rates depend on DIMMs per channel and ranks. Board overclocking profiles do not establish a RAM module profile."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "63798832-19d3-43e3-9c10-61806081b716",
+      "category": "Motherboard",
+      "rawSha256": "f8856816758de535b14d829d048d6b6e71571b039d6f5900942e3af3203129f5",
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "Gigabyte",
+        "modelName": "B760M DS3H DDR4",
+        "partNumber": "B760M DS3H DDR4"
+      },
+      "specification": {
+        "socketCode": "LGA1700",
+        "chipset": "Intel B760",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR4",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 137438953472,
+        "supportsEcc": false
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.gigabyte.com/Motherboard/B760M-DS3H-DDR4-rev-10/sp",
+          "retrievedAt": "2026-10-02T00:55:00Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected primary manufacturer facts and documented normalization; not a full page snapshot, price review or compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Gigabyte",
+              "model": "B760M DS3H DDR4",
+              "part_number": "B760M DS3H DDR4"
+            },
+            "document_author": "GIGABYTE",
+            "document_description": "Manufacturer product specification page",
+            "normalized_specification": {
+              "socketCode": "LGA1700",
+              "chipset": "Intel B760",
+              "formFactor": "MICRO_ATX",
+              "memoryType": "DDR4",
+              "memoryFormFactor": "DIMM",
+              "memorySlotCount": 4,
+              "maxMemoryBytes": 137438953472,
+              "supportsEcc": false
+            },
+            "related_document_sections": [],
+            "memory_unit_rule": "Published GB capacity is normalized as GiB bytes.",
+            "notes": [
+              "The manufacturer reference is revision 1.0. The upstream record does not confirm a physical board revision; no revision is added to its product identity.",
+              "ECC DIMMs are stated to operate in non-ECC mode on this board. Physical acceptance is not ECC error correction; supportsEcc remains false."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "fa910565-8e5d-40f4-b9ae-b185f70d2192",
+      "category": "RAM",
+      "rawSha256": "9b1487755e4d752ac3edfd449576f30ba30776ca749931c2ea74670257782682",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Samsung",
+        "modelName": "M378A1K43CB2-CRC DDR4-2400 8GB (1x8GB)",
+        "partNumber": "M378A1K43CB2-CRC"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 8589934592,
+        "moduleCount": 1,
+        "dataRateMts": 2400,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.2,
+        "heightMm": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.alldatasheet.com/html-pdf/1643695/SAMSUNG/M378A1K43CB2/3887/11/M378A1K43CB2.html",
+          "retrievedAt": "2026-10-02T00:55:00Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected primary manufacturer facts and documented normalization; not a full page snapshot, price review or compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Samsung",
+              "model": "M378A1K43CB2-CRC DDR4-2400 8GB (1x8GB)",
+              "part_number": "M378A1K43CB2-CRC"
+            },
+            "document_author": "Samsung",
+            "document_description": "Samsung DDR4 Product Guide, May 2018, pages 4 and 11; manufacturer-authored document mirrored by Alldatasheet",
+            "normalized_specification": {
+              "memoryType": "DDR4",
+              "moduleCapacityBytes": 8589934592,
+              "moduleCount": 1,
+              "dataRateMts": 2400,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.2,
+              "heightMm": null
+            },
+            "related_document_sections": [
+              "https://www.alldatasheet.com/html-pdf/1643695/SAMSUNG/M378A1K43CB2/1409/4/M378A1K43CB2.html"
+            ],
+            "memory_unit_rule": "Published GB capacity is normalized as GiB bytes.",
+            "notes": [
+              "The ordering table identifies the exact M378A1K43CB2 CRC module and 8GB x64 non-ECC UDIMM capacity.",
+              "The module naming key confirms M378 is x64 288-pin unbuffered DIMM, A is DDR4 at 1.2V and RC is 2400 MT/s.",
+              "The guide table heading mentions 260 pins inconsistently; the module naming key explicitly specifies 288 for M378. The 30mm guide height and 31.25mm CRC00 SPD document are not collapsed into a confirmed model height."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "d1646419-63d9-487c-9641-1619ece92eb6",
+      "category": "RAM",
+      "rawSha256": "f02cf894225342ad408104262e7d61ba4eceeb41fa6be6467eab9c0a955c2bb2",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Samsung",
+        "modelName": "M378A2K43CB1-CTD DDR4-2666 16GB (1x16GB)",
+        "partNumber": "M378A2K43CB1-CTD"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 1,
+        "dataRateMts": 2666,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.2,
+        "heightMm": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.alldatasheet.com/html-pdf/1643695/SAMSUNG/M378A1K43CB2/3887/11/M378A1K43CB2.html",
+          "retrievedAt": "2026-10-02T00:55:00Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected primary manufacturer facts and documented normalization; not a full page snapshot, price review or compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Samsung",
+              "model": "M378A2K43CB1-CTD DDR4-2666 16GB (1x16GB)",
+              "part_number": "M378A2K43CB1-CTD"
+            },
+            "document_author": "Samsung",
+            "document_description": "Samsung DDR4 Product Guide, May 2018, pages 4 and 11; manufacturer-authored document mirrored by Alldatasheet",
+            "normalized_specification": {
+              "memoryType": "DDR4",
+              "moduleCapacityBytes": 17179869184,
+              "moduleCount": 1,
+              "dataRateMts": 2666,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.2,
+              "heightMm": null
+            },
+            "related_document_sections": [
+              "https://www.alldatasheet.com/html-pdf/1643695/SAMSUNG/M378A1K43CB2/1409/4/M378A1K43CB2.html"
+            ],
+            "memory_unit_rule": "Published GB capacity is normalized as GiB bytes.",
+            "notes": [
+              "The ordering table identifies M378A2K43CB1 CTD as a 16GB 2Gx64 non-ECC UDIMM. TD is 2666 MT/s, and the M378/A naming keys specify 288-pin unbuffered DIMM and 1.2V DDR4.",
+              "Upstream height=0 is invalid as a measured dimension and is not imported. Height remains unknown; no heat-spreader or timing claim is inferred."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "2081be35-4e30-4885-afd8-8c31a9b8f39c",
+      "category": "RAM",
+      "rawSha256": "78039c3fb8142f5ee82e810088b462d70d9ee522deec5430f14e0559c8a95bb3",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "SK Hynix",
+        "modelName": "HMA81GU6MFR8N-UH DDR4-2400 8GB (1x8GB)",
+        "partNumber": "HMA81GU6MFR8N-UH"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 8589934592,
+        "moduleCount": 1,
+        "dataRateMts": 2400,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.2,
+        "heightMm": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.alldatasheetcn.com/html-pdf/1179055/HYNIX/HMA81GU6MFR8N/554/3/HMA81GU6MFR8N.html",
+          "retrievedAt": "2026-10-02T00:55:00Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected primary manufacturer facts and documented normalization; not a full page snapshot, price review or compatibility certification.",
+            "product_identity": {
+              "manufacturer": "SK Hynix",
+              "model": "HMA81GU6MFR8N-UH DDR4-2400 8GB (1x8GB)",
+              "part_number": "HMA81GU6MFR8N-UH"
+            },
+            "document_author": "SK hynix",
+            "document_description": "SK hynix DDR4 SDRAM Unbuffered DIMM based on 8Gb M-die, Rev. 1.2, March 2016, pages 1, 3, 4; manufacturer-authored document mirrored by Alldatasheet",
+            "normalized_specification": {
+              "memoryType": "DDR4",
+              "moduleCapacityBytes": 8589934592,
+              "moduleCount": 1,
+              "dataRateMts": 2400,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.2,
+              "heightMm": null
+            },
+            "related_document_sections": [
+              "https://www.alldatasheet.com/html-pdf/1179063/HYNIX/HMA81GU6MFR8N-UH/183/1/HMA81GU6MFR8N-UH.html",
+              "https://www.alldatasheetcn.com/html-pdf/1179055/HYNIX/HMA81GU6MFR8N/741/4/HMA81GU6MFR8N.html"
+            ],
+            "memory_unit_rule": "Published GB capacity is normalized as GiB bytes.",
+            "notes": [
+              "HMA81GU6MFR8N-TF/UH is 8GB 1Gx64; GU7 x72 ECC modules in the same document are different products. GU6 is the non-ECC module.",
+              "The UH grade maps to 2400 MT/s. The document gives 288 pins and VDD/VDDQ of 1.2V. Height is not normalized without a verified exact-model outline."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "384c3029-1406-4f9c-8473-5268ab1feb8e",
+      "category": "RAM",
+      "rawSha256": "a0366dc2be94602fde2c7d1b757f82bb07f0cfe6d8b442136508fd5791405f5a",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "SK Hynix",
+        "modelName": "HMAA2GU6CJR8N-XN DDR4-3200 16GB (1x16GB)",
+        "partNumber": "HMAA2GU6CJR8N-XN"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 1,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.2,
+        "heightMm": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://mis-prod-koce-producthomepage-cdn-01-blob-ep.azureedge.net/web/TR-20201119010111006.pdf",
+          "retrievedAt": "2026-10-02T00:55:00Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected primary manufacturer facts and documented normalization; not a full page snapshot, price review or compatibility certification.",
+            "product_identity": {
+              "manufacturer": "SK Hynix",
+              "model": "HMAA2GU6CJR8N-XN DDR4-3200 16GB (1x16GB)",
+              "part_number": "HMAA2GU6CJR8N-XN"
+            },
+            "document_author": "SK hynix",
+            "document_description": "SK hynix DDR4 SDRAM UDIMM based on 16Gb C-die, Rev. 1.5, July 2020, pages 3, 4 and 6",
+            "normalized_specification": {
+              "memoryType": "DDR4",
+              "moduleCapacityBytes": 17179869184,
+              "moduleCount": 1,
+              "dataRateMts": 3200,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": 1.2,
+              "heightMm": null
+            },
+            "related_document_sections": [],
+            "memory_unit_rule": "Published GB capacity is normalized as GiB bytes.",
+            "notes": [
+              "The exact HMAA2GU6CJR8N family is 16GB 2Gx64. XN maps to 3200 MT/s; GU7 x72 modules and HMA82 modules are separate products.",
+              "VDD/VDDQ is 1.2V. The pin table runs through 288; no height is inferred. The module is recorded as one UDIMM rather than a kit."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "externalId": "846aa6ea-2550-460a-9fc3-2684e4f3231c",
+      "category": "RAM",
+      "rawSha256": "2edc797bb8e2d99309766ca525c455fcdf463d605d0c118c5a4e7651cd34a634",
+      "product": {
+        "type": "RAM",
+        "manufacturer": "Samsung",
+        "modelName": "M323R1GB4PB0-CWM DDR5-5600 8GB (1x8GB)",
+        "partNumber": "M323R1GB4PB0-CWM"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 8589934592,
+        "moduleCount": 1,
+        "dataRateMts": 5600,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": null,
+        "heightMm": null
+      },
+      "manufacturerSources": [
+        {
+          "url": "https://www.dell.com/community/en/conversations/xps-desktops/faq-xps-8960/647fa22df4ccf8a8de79bd28",
+          "retrievedAt": "2026-10-02T00:55:00Z",
+          "payload": {
+            "record_kind": "CURATED_SPEC_EXTRACT",
+            "review_scope": "Selected primary manufacturer facts and documented normalization; not a full page snapshot, price review or compatibility certification.",
+            "product_identity": {
+              "manufacturer": "Samsung",
+              "model": "M323R1GB4PB0-CWM DDR5-5600 8GB (1x8GB)",
+              "part_number": "M323R1GB4PB0-CWM"
+            },
+            "document_author": "Dell",
+            "document_description": "XPS 8960 FAQ, validated OEM memory GDGT0 entry, posted by Dell employee DELL-Chris M",
+            "normalized_specification": {
+              "memoryType": "DDR5",
+              "moduleCapacityBytes": 8589934592,
+              "moduleCount": 1,
+              "dataRateMts": 5600,
+              "moduleFormFactor": "DIMM",
+              "pinCount": 288,
+              "isEcc": false,
+              "bufferType": "UNBUFFERED",
+              "voltageV": null,
+              "heightMm": null
+            },
+            "related_document_sections": [],
+            "memory_unit_rule": "Published GB capacity is normalized as GiB bytes.",
+            "notes": [
+              "This is a PC manufacturer OEM specification, not a Samsung model datasheet or a retailer description. The GDGT0 entry explicitly lists Samsung M323R1GB4PB0-CWM as 8GB DDR5-5600, unbuffered, 288-pin, single-rank and non-ECC.",
+              "The upstream EXPO and CL36 claims are not confirmed by this evidence and are not adopted in product name or normalized specifications.",
+              "The exact-model source does not specify voltage or height. Both remain null even though the upstream record supplies 1.1V. OEM validation does not establish compatibility with the newly added boards."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1231 @@
+{
+  "seedName": "motherboard-cpu-v1",
+  "cpus": [
+    {
+      "externalId": "f34f9bc1-0136-43ee-bd78-a9efbd0e5f17",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 3600",
+      "partNumber": "100-100000031BOX",
+      "socketCode": "AM4"
+    },
+    {
+      "externalId": "04984638-674b-4384-8866-a7b20d55f8b4",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 5600",
+      "partNumber": "100-100000927BOX",
+      "socketCode": "AM4"
+    },
+    {
+      "externalId": "6b03b443-7b22-491c-b301-7e2a285359df",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 7600",
+      "partNumber": "100-100001015BOX",
+      "socketCode": "AM5"
+    },
+    {
+      "externalId": "ab4fadad-e3a1-41ff-82fd-e16e5af8a324",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 7700",
+      "partNumber": null,
+      "socketCode": "AM5"
+    },
+    {
+      "externalId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60",
+      "manufacturer": "Intel",
+      "modelName": "Core i3-12100F",
+      "partNumber": "BX8071512100F",
+      "socketCode": "LGA1700"
+    },
+    {
+      "externalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-12400F",
+      "partNumber": "BX8071512400F",
+      "socketCode": "LGA1700"
+    },
+    {
+      "externalId": "a58188f8-e9da-4ead-8d52-74117306545c",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-13600KF",
+      "partNumber": "BX8071513600KF",
+      "socketCode": "LGA1700"
+    },
+    {
+      "externalId": "c2900762-11b6-49bc-a728-566b56db3638",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-14700F",
+      "partNumber": "BX8071514700F",
+      "socketCode": "LGA1700"
+    },
+    {
+      "externalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 5600X",
+      "partNumber": "100-100000065BOX",
+      "socketCode": "AM4"
+    },
+    {
+      "externalId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5700X",
+      "partNumber": "100-100000926WOF",
+      "socketCode": "AM4"
+    },
+    {
+      "externalId": "e11970e8-4f2c-426d-872c-92c0f4160ec4",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5700X3D",
+      "partNumber": "100-100001503WOF",
+      "socketCode": "AM4"
+    },
+    {
+      "externalId": "4dcfffec-423b-4052-8aca-db6c0f84bb43",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 7800X3D",
+      "partNumber": "100-100000910WOF",
+      "socketCode": "AM5"
+    }
+  ],
+  "items": [
+    {
+      "board": {
+        "externalId": "95b1e5e5-1aeb-48dd-8eb7-9efc4ad00512",
+        "manufacturer": "MSI",
+        "modelName": "B550M PRO-VDH WIFI",
+        "partNumber": null,
+        "socketCode": "AM4"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사 목록이 모델 기준으로 제시되어 별도 PCB 리비전 범위를 추정하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "04984638-674b-4384-8866-a7b20d55f8b4",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 5600",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C95v2A",
+            "manufacturerBiosLabel": "7C95v2A.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550M-PRO-VDH-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 5600X",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C95v24",
+            "manufacturerBiosLabel": "7C95v24.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550M-PRO-VDH-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 5600X",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C95v28",
+            "manufacturerBiosLabel": "7C95v28.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550M-PRO-VDH-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "e11970e8-4f2c-426d-872c-92c0f4160ec4",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 5700X3D",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C95v2I",
+            "manufacturerBiosLabel": "7C95v2I.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550M-PRO-VDH-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 5700X",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C95v2A",
+            "manufacturerBiosLabel": "7C95v2A.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550M-PRO-VDH-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "f34f9bc1-0136-43ee-bd78-a9efbd0e5f17",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 3600",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C95v20",
+            "manufacturerBiosLabel": "7C95v20.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550M-PRO-VDH-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.msi.com/Motherboard/B550M-PRO-VDH-WIFI/support",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "f24caa89-27bd-4797-899c-2bb76b608971",
+        "manufacturer": "MSI",
+        "modelName": "PRO B650M-A WIFI",
+        "partNumber": null,
+        "socketCode": "AM5"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사 목록이 모델 기준으로 제시되어 별도 PCB 리비전 범위를 추정하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "4dcfffec-423b-4052-8aca-db6c0f84bb43",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 7800X3D",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D77v16",
+            "manufacturerBiosLabel": "7D77v16.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B650M-A-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "6b03b443-7b22-491c-b301-7e2a285359df",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 7600",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D77v12",
+            "manufacturerBiosLabel": "7D77v12.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B650M-A-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "ab4fadad-e3a1-41ff-82fd-e16e5af8a324",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 7700",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D77v12",
+            "manufacturerBiosLabel": "7D77v12.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B650M-A-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.msi.com/Motherboard/PRO-B650M-A-WIFI/support",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "3a4791ed-2415-439c-a97e-43dd1e761880",
+        "manufacturer": "MSI",
+        "modelName": "PRO B760M-A WIFI DDR4",
+        "partNumber": null,
+        "socketCode": "LGA1700"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사 목록이 모델 기준으로 제시되어 별도 PCB 리비전 범위를 추정하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60",
+            "variantKey": "H0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i3-12100F",
+            "cpuStepping": "H0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D99v10",
+            "manufacturerBiosLabel": "7D99v10.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B760M-A-WIFI-DDR4&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+            "variantKey": "C0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i5-12400F",
+            "cpuStepping": "C0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D99v10",
+            "manufacturerBiosLabel": "7D99v10.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B760M-A-WIFI-DDR4&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+            "variantKey": "H0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i5-12400F",
+            "cpuStepping": "H0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D99v10",
+            "manufacturerBiosLabel": "7D99v10.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B760M-A-WIFI-DDR4&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "a58188f8-e9da-4ead-8d52-74117306545c",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i5-13600KF",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D99v10",
+            "manufacturerBiosLabel": "7D99v10.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B760M-A-WIFI-DDR4&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "c2900762-11b6-49bc-a728-566b56db3638",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i7-14700F",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D99v16",
+            "manufacturerBiosLabel": "7D99v16.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B760M-A-WIFI-DDR4&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.msi.com/Motherboard/PRO-B760M-A-WIFI-DDR4/support",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "dc95c90b-60d3-4bec-a73c-ef5eb799ae46",
+        "manufacturer": "MSI",
+        "modelName": "PRO B760M-A WIFI",
+        "partNumber": null,
+        "socketCode": "LGA1700"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사 목록이 모델 기준으로 제시되어 별도 PCB 리비전 범위를 추정하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60",
+            "variantKey": "H0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i3-12100F",
+            "cpuStepping": "H0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D99vA0",
+            "manufacturerBiosLabel": "7D99vA0.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B760M-A-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+            "variantKey": "C0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i5-12400F",
+            "cpuStepping": "C0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D99vA0",
+            "manufacturerBiosLabel": "7D99vA0.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B760M-A-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+            "variantKey": "H0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i5-12400F",
+            "cpuStepping": "H0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D99vA0",
+            "manufacturerBiosLabel": "7D99vA0.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B760M-A-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "a58188f8-e9da-4ead-8d52-74117306545c",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i5-13600KF",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D99vA0",
+            "manufacturerBiosLabel": "7D99vA0.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B760M-A-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "c2900762-11b6-49bc-a728-566b56db3638",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i7-14700F",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D99vA4",
+            "manufacturerBiosLabel": "7D99vA4.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-B760M-A-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.msi.com/Motherboard/PRO-B760M-A-WIFI/support",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "d60171cb-1cef-4614-a4f7-e7f145f07e30",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B760M-A D4",
+        "partNumber": null,
+        "socketCode": "LGA1700"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사 목록이 모델 기준으로 제시되어 별도 PCB 리비전 범위를 추정하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60",
+            "variantKey": "H_0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "i3-12100F",
+            "cpuStepping": "H-0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "0245",
+            "manufacturerBiosLabel": "0245",
+            "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b760m-a-d4/helpdesk_qvl_cpu?model2Name=PRIME-B760M-A-D4",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+            "variantKey": "H_0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "i5-12400F",
+            "cpuStepping": "H-0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "0245",
+            "manufacturerBiosLabel": "0245",
+            "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b760m-a-d4/helpdesk_qvl_cpu?model2Name=PRIME-B760M-A-D4",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "a58188f8-e9da-4ead-8d52-74117306545c",
+            "variantKey": "B_0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "i5-13600KF",
+            "cpuStepping": "B-0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "0245",
+            "manufacturerBiosLabel": "0245",
+            "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b760m-a-d4/helpdesk_qvl_cpu?model2Name=PRIME-B760M-A-D4",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "c2900762-11b6-49bc-a728-566b56db3638",
+            "variantKey": "B_0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "I7-14700F",
+            "cpuStepping": "B-0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "1205",
+            "manufacturerBiosLabel": "1205",
+            "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b760m-a-d4/helpdesk_qvl_cpu?model2Name=PRIME-B760M-A-D4",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b760m-a-d4/helpdesk_qvl_cpu?model2Name=PRIME-B760M-A-D4",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "135b5ebe-0105-4515-abd4-97f0a4f15276",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B760M-A",
+        "partNumber": null,
+        "socketCode": "LGA1700"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사 목록이 모델 기준으로 제시되어 별도 PCB 리비전 범위를 추정하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60",
+            "variantKey": "H_0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "i3-12100F",
+            "cpuStepping": "H-0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "0245",
+            "manufacturerBiosLabel": "0245",
+            "sourceUrl": "https://www.asus.com/kr/motherboards-components/motherboards/prime/prime-b760m-a/helpdesk_qvl_cpu?model2Name=PRIME-B760M-A",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+            "variantKey": "H_0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "i5-12400F",
+            "cpuStepping": "H-0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "0245",
+            "manufacturerBiosLabel": "0245",
+            "sourceUrl": "https://www.asus.com/kr/motherboards-components/motherboards/prime/prime-b760m-a/helpdesk_qvl_cpu?model2Name=PRIME-B760M-A",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "a58188f8-e9da-4ead-8d52-74117306545c",
+            "variantKey": "B_0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "i5-13600KF",
+            "cpuStepping": "B-0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "0245",
+            "manufacturerBiosLabel": "0245",
+            "sourceUrl": "https://www.asus.com/kr/motherboards-components/motherboards/prime/prime-b760m-a/helpdesk_qvl_cpu?model2Name=PRIME-B760M-A",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "c2900762-11b6-49bc-a728-566b56db3638",
+            "variantKey": "B_0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "I7-14700F",
+            "cpuStepping": "B-0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "1205",
+            "manufacturerBiosLabel": "1205",
+            "sourceUrl": "https://www.asus.com/kr/motherboards-components/motherboards/prime/prime-b760m-a/helpdesk_qvl_cpu?model2Name=PRIME-B760M-A",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.asus.com/kr/motherboards-components/motherboards/prime/prime-b760m-a/helpdesk_qvl_cpu?model2Name=PRIME-B760M-A",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "d3705541-0247-4869-bc6a-93023a638f03",
+        "manufacturer": "MSI",
+        "modelName": "B450M PRO-VDH MAX",
+        "partNumber": null,
+        "socketCode": "AM4"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사 목록이 모델 기준으로 제시되어 별도 PCB 리비전 범위를 추정하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "04984638-674b-4384-8866-a7b20d55f8b4",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 5600",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7A38vBE",
+            "manufacturerBiosLabel": "7A38vBE.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B450M-PRO-VDH-MAX&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 5600X",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7A38vBB",
+            "manufacturerBiosLabel": "7A38vBB.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B450M-PRO-VDH-MAX&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 5600X",
+            "cpuStepping": "B2",
+            "biosRequirement": "UNKNOWN",
+            "minimumBiosVersion": null,
+            "manufacturerBiosLabel": "Latest Beta BIOS",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B450M-PRO-VDH-MAX&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 제조사가 특정 버전 대신 Latest Beta BIOS를 지시하므로 고정 최소 BIOS는 미확인(NULL)이다. 베타 BIOS 적용 여부는 사용자 확인이 필요하다."
+          },
+          {
+            "cpuExternalId": "e11970e8-4f2c-426d-872c-92c0f4160ec4",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 5700X3D",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7A38vBL",
+            "manufacturerBiosLabel": "7A38vBL.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B450M-PRO-VDH-MAX&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 5700X",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7A38vBE",
+            "manufacturerBiosLabel": "7A38vBE.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B450M-PRO-VDH-MAX&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "f34f9bc1-0136-43ee-bd78-a9efbd0e5f17",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 3600",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7A38vB0",
+            "manufacturerBiosLabel": "7A38vB0.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B450M-PRO-VDH-MAX&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.msi.com/Motherboard/B450M-PRO-VDH-MAX/support",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "4b3e292e-4a0d-4261-85d4-5fb64e0af75e",
+        "manufacturer": "MSI",
+        "modelName": "B550-A PRO",
+        "partNumber": null,
+        "socketCode": "AM4"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사 목록이 모델 기준으로 제시되어 별도 PCB 리비전 범위를 추정하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "04984638-674b-4384-8866-a7b20d55f8b4",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 5600",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C56vA9",
+            "manufacturerBiosLabel": "7C56vA9.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550-A-PRO&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 5600X",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C56vA4",
+            "manufacturerBiosLabel": "7C56vA4.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550-A-PRO&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 5600X",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C56vA7",
+            "manufacturerBiosLabel": "7C56vA7.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550-A-PRO&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "e11970e8-4f2c-426d-872c-92c0f4160ec4",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 5700X3D",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C56vAD",
+            "manufacturerBiosLabel": "7C56vAD.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550-A-PRO&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 5700X",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C56vA9",
+            "manufacturerBiosLabel": "7C56vA9.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550-A-PRO&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "f34f9bc1-0136-43ee-bd78-a9efbd0e5f17",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 3600",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7C56vA0",
+            "manufacturerBiosLabel": "7C56vA0.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=B550-A-PRO&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.msi.com/Motherboard/B550-A-PRO/support",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "303429d5-887f-4cf2-84a6-fd6c96e40d0c",
+        "manufacturer": "MSI",
+        "modelName": "PRO A620M-E",
+        "partNumber": null,
+        "socketCode": "AM5"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사 목록이 모델 기준으로 제시되어 별도 PCB 리비전 범위를 추정하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "4dcfffec-423b-4052-8aca-db6c0f84bb43",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 7800X3D",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7E28v10",
+            "manufacturerBiosLabel": "7E28v10.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-A620M-E&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "6b03b443-7b22-491c-b301-7e2a285359df",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 7600",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7E28v10",
+            "manufacturerBiosLabel": "7E28v10.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-A620M-E&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "ab4fadad-e3a1-41ff-82fd-e16e5af8a324",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 7700",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7E28v10",
+            "manufacturerBiosLabel": "7E28v10.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=PRO-A620M-E&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.msi.com/Motherboard/PRO-A620M-E/support",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "e8a66e2e-c53b-49d3-a31c-49a9ee8fe389",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650 TOMAHAWK WIFI",
+        "partNumber": null,
+        "socketCode": "AM5"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사 목록이 모델 기준으로 제시되어 별도 PCB 리비전 범위를 추정하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "4dcfffec-423b-4052-8aca-db6c0f84bb43",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 7800X3D",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D75v13",
+            "manufacturerBiosLabel": "7D75v13.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B650-TOMAHAWK-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "6b03b443-7b22-491c-b301-7e2a285359df",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 7600",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D75v10",
+            "manufacturerBiosLabel": "7D75v10.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B650-TOMAHAWK-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "ab4fadad-e3a1-41ff-82fd-e16e5af8a324",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 7700",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "7D75v10",
+            "manufacturerBiosLabel": "7D75v10.zip",
+            "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B650-TOMAHAWK-WIFI&type=cpu",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "eb69638a-40e5-4e10-b550-e6780e11ec32",
+        "manufacturer": "ASRock",
+        "modelName": "B550M Pro4",
+        "partNumber": "B550M Pro4",
+        "socketCode": "AM4"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사의 CPU별 Support Models 표에서 정확히 이 메인보드 모델의 Support BIOS를 대조했다. 별도 보드 리비전 표시는 없어 모델 범위로 남긴다.",
+        "entries": [
+          {
+            "cpuExternalId": "04984638-674b-4384-8866-a7b20d55f8b4",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "5600(100-000000927)",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "P2.30",
+            "manufacturerBiosLabel": "P2.30",
+            "sourceUrl": "https://www.asrock.com/support/cpu.kr.asp?s=AM4&u=695",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다."
+          },
+          {
+            "cpuExternalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "5600X (100-000000065-00)",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "P1.20",
+            "manufacturerBiosLabel": "P1.20",
+            "sourceUrl": "https://www.asrock.com/support/cpu.jp.asp?s=AM4&u=654",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+            "variantKey": "B2",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "5600X(100-000000065)",
+            "cpuStepping": "B2",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "P1.20",
+            "manufacturerBiosLabel": "P1.20",
+            "sourceUrl": "https://www.asrock.com/support/cpu.kr.asp?s=AM4&u=677",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "e11970e8-4f2c-426d-872c-92c0f4160ec4",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "5700X3D(100-000001503)",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "P3.20",
+            "manufacturerBiosLabel": "P3.20",
+            "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=AM4&u=759",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다."
+          },
+          {
+            "cpuExternalId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "5700X(100-000000926)",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "P2.30",
+            "manufacturerBiosLabel": "P2.30",
+            "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=AM4&u=694",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다."
+          },
+          {
+            "cpuExternalId": "f34f9bc1-0136-43ee-bd78-a9efbd0e5f17",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "3600 (100-000000031)",
+            "cpuStepping": "B0",
+            "biosRequirement": "ALL",
+            "minimumBiosVersion": null,
+            "manufacturerBiosLabel": "All",
+            "sourceUrl": "https://www.asrock.com/support/cpu.kr.asp?s=AM4&u=607",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 제조사 표기의 All은 해당 목록 조건에서 모든 BIOS를 뜻하며 미확인 값과 구분한다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.asrock.com/MB/AMD/B550M%20Pro4/index.asp#CPU",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "33fce89e-3db3-470e-a03e-29a091a62c9a",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B550M-A (WI-FI)",
+        "partNumber": "PRIME B550M-A (WI-FI)",
+        "socketCode": "AM4"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사 CPU 목록의 Validated since PCB 표기는 ALL이다. BIOS 열의 숫자와 PCB의 ALL을 구분해 저장한다.",
+        "entries": [
+          {
+            "cpuExternalId": "04984638-674b-4384-8866-a7b20d55f8b4",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 5600",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "2423",
+            "manufacturerBiosLabel": "2423",
+            "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a-wi-fi/helpdesk_cpu?model2Name=PRIME-B550M-A-WI-FI",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다. 제조사 Validated since PCB: ALL"
+          },
+          {
+            "cpuExternalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 5600X",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "1004",
+            "manufacturerBiosLabel": "1004",
+            "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a-wi-fi/helpdesk_cpu?model2Name=PRIME-B550M-A-WI-FI",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다. 제조사 Validated since PCB: ALL"
+          },
+          {
+            "cpuExternalId": "e11970e8-4f2c-426d-872c-92c0f4160ec4",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 5700X3D",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "2803",
+            "manufacturerBiosLabel": "2803",
+            "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a-wi-fi/helpdesk_cpu?model2Name=PRIME-B550M-A-WI-FI",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다. 제조사 Validated since PCB: ALL"
+          },
+          {
+            "cpuExternalId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 5700X",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "2423",
+            "manufacturerBiosLabel": "2423",
+            "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a-wi-fi/helpdesk_cpu?model2Name=PRIME-B550M-A-WI-FI",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다. 제조사 Validated since PCB: ALL"
+          },
+          {
+            "cpuExternalId": "f34f9bc1-0136-43ee-bd78-a9efbd0e5f17",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 3600",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "0236",
+            "manufacturerBiosLabel": "0236",
+            "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a-wi-fi/helpdesk_cpu?model2Name=PRIME-B550M-A-WI-FI",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 제조사 Validated since PCB: ALL"
+          }
+        ]
+      },
+      "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a-wi-fi/helpdesk_cpu?model2Name=PRIME-B550M-A-WI-FI",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "92c363b9-65ac-4955-b88b-888704569ee6",
+        "manufacturer": "ASRock",
+        "modelName": "B650M Pro RS",
+        "partNumber": "B650M Pro RS",
+        "socketCode": "AM5"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사의 CPU별 Support Models 표에서 정확히 이 메인보드 모델의 Support BIOS를 대조했다. 별도 보드 리비전 표시는 없어 모델 범위로 남긴다.",
+        "entries": [
+          {
+            "cpuExternalId": "4dcfffec-423b-4052-8aca-db6c0f84bb43",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "7800X3D(100-000000910)",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "1.21",
+            "manufacturerBiosLabel": "1.21",
+            "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=AM5&u=711",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다."
+          },
+          {
+            "cpuExternalId": "6b03b443-7b22-491c-b301-7e2a285359df",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "7600(100-000001015)",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "1.18",
+            "manufacturerBiosLabel": "1.18",
+            "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=AM5&u=705",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다."
+          },
+          {
+            "cpuExternalId": "ab4fadad-e3a1-41ff-82fd-e16e5af8a324",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "7700(100-000000592)",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "1.18",
+            "manufacturerBiosLabel": "1.18",
+            "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=AM5&u=704",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.asrock.com/mb/AMD/B650M%20Pro%20RS/index.asp#CPU",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "7d51c1fe-d7c3-4967-8c23-56f43a68085b",
+        "manufacturer": "Gigabyte",
+        "modelName": "B650M DS3H (rev. 1.0)",
+        "partNumber": "B650M DS3H (rev. 1.0)",
+        "socketCode": "AM5"
+      },
+      "support": {
+        "revisionScope": "EXACT",
+        "hardwareRevision": "1.0",
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 이번 발췌는 PCB rev. 1.0에만 연결한다. 제조사 목록 표제는 1.0/1.1/1.2이지만 카탈로그 제품은 rev. 1.0이다. rev. 1.3에는 확대 적용하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "4dcfffec-423b-4052-8aca-db6c0f84bb43",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 7800X3D",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "F1",
+            "manufacturerBiosLabel": "F1",
+            "sourceUrl": "https://www.gigabyte.com/iisApplicationNuxt/api/proxy/api/v1.0/Consumer/global/GetSupportContentAjaxAsync/CpuSupport/8462",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다."
+          },
+          {
+            "cpuExternalId": "6b03b443-7b22-491c-b301-7e2a285359df",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 5 7600",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "F1",
+            "manufacturerBiosLabel": "F1",
+            "sourceUrl": "https://www.gigabyte.com/iisApplicationNuxt/api/proxy/api/v1.0/Consumer/global/GetSupportContentAjaxAsync/CpuSupport/8462",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다."
+          },
+          {
+            "cpuExternalId": "ab4fadad-e3a1-41ff-82fd-e16e5af8a324",
+            "variantKey": "UNSPECIFIED",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Ryzen 7 7700",
+            "cpuStepping": null,
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "F1",
+            "manufacturerBiosLabel": "F1",
+            "sourceUrl": "https://www.gigabyte.com/iisApplicationNuxt/api/proxy/api/v1.0/Consumer/global/GetSupportContentAjaxAsync/CpuSupport/8462",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다. 이 항목에는 CPU 스테핑이 공표되지 않아 다른 제조사 값으로 추정하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.gigabyte.com/Motherboard/B650M-DS3H-rev-10-11-12/support#support-cpu",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "f5b7becd-f2da-4c14-a74a-d34e3bf51d26",
+        "manufacturer": "ASRock",
+        "modelName": "B760M Pro RS",
+        "partNumber": "B760M Pro RS",
+        "socketCode": "LGA1700"
+      },
+      "support": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 제조사의 CPU별 Support Models 표에서 정확히 이 메인보드 모델의 Support BIOS를 대조했다. 별도 보드 리비전 표시는 없어 모델 범위로 남긴다.",
+        "entries": [
+          {
+            "cpuExternalId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60",
+            "variantKey": "H0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "i3-12100F(H0)",
+            "cpuStepping": "H0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "1.13",
+            "manufacturerBiosLabel": "1.13",
+            "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=1700&u=1335",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+            "variantKey": "C0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "i5-12400F(C0)",
+            "cpuStepping": "C0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "1.13",
+            "manufacturerBiosLabel": "1.13",
+            "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=1700&u=1323",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+            "variantKey": "H0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "i5-12400F(H0)",
+            "cpuStepping": "H0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "1.13",
+            "manufacturerBiosLabel": "1.13",
+            "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=1700&u=1334",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "a58188f8-e9da-4ead-8d52-74117306545c",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "i5-13600KF(B0)",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "1.13",
+            "manufacturerBiosLabel": "1.13",
+            "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=1700&u=1351",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "c2900762-11b6-49bc-a728-566b56db3638",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "i7-14700F(B0)",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "4.07",
+            "manufacturerBiosLabel": "4.07",
+            "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=1700&u=1407",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.asrock.com/mb/Intel/B760M%20Pro%20RS/index.asp#CPU",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    },
+    {
+      "board": {
+        "externalId": "63798832-19d3-43e3-9c10-61806081b716",
+        "manufacturer": "Gigabyte",
+        "modelName": "B760M DS3H DDR4",
+        "partNumber": "B760M DS3H DDR4",
+        "socketCode": "LGA1700"
+      },
+      "support": {
+        "revisionScope": "EXACT",
+        "hardwareRevision": "1.0",
+        "conditions": "현재 카탈로그의 CPU만 발췌했다. 제조사 전체 목록이 아니며 기록 부재는 미지원이 아니다. 현재 BIOS와 실제 보드/CPU 리비전은 별도로 확인한다. 최소 지원 BIOS는 최신 권장 BIOS 또는 성능/안정성 보증이 아니다. 이번 발췌는 PCB rev. 1.0에만 연결한다. 카탈로그 모델명에는 리비전이 없으므로 사용자의 실제 PCB가 1.0인지 확인해야 한다. 다른 리비전에 확대 적용하지 않는다.",
+        "entries": [
+          {
+            "cpuExternalId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60",
+            "variantKey": "H0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i3-12100F",
+            "cpuStepping": "H0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "F1",
+            "manufacturerBiosLabel": "F1",
+            "sourceUrl": "https://www.gigabyte.com/iisApplicationNuxt/api/proxy/api/v1.0/Consumer/global/GetSupportContentAjaxAsync/CpuSupport/8701",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+            "variantKey": "C0_H0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core i5-12400F",
+            "cpuStepping": "C0 / H0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "F1",
+            "manufacturerBiosLabel": "F1",
+            "sourceUrl": "https://www.gigabyte.com/iisApplicationNuxt/api/proxy/api/v1.0/Consumer/global/GetSupportContentAjaxAsync/CpuSupport/8701",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "a58188f8-e9da-4ead-8d52-74117306545c",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core I5-13600KF",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "F1",
+            "manufacturerBiosLabel": "F1",
+            "sourceUrl": "https://www.gigabyte.com/iisApplicationNuxt/api/proxy/api/v1.0/Consumer/global/GetSupportContentAjaxAsync/CpuSupport/8701",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          },
+          {
+            "cpuExternalId": "c2900762-11b6-49bc-a728-566b56db3638",
+            "variantKey": "B0",
+            "supportStatus": "LISTED",
+            "reportedCpuName": "Core I7-14700F",
+            "cpuStepping": "B0",
+            "biosRequirement": "VERSION",
+            "minimumBiosVersion": "F15",
+            "manufacturerBiosLabel": "F15",
+            "sourceUrl": "https://www.gigabyte.com/iisApplicationNuxt/api/proxy/api/v1.0/Consumer/global/GetSupportContentAjaxAsync/CpuSupport/8701",
+            "conditions": "제조사의 지원 목록 항목을 발췌했다. BIOS 버전 문자열은 자동 비교하지 않는다."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.gigabyte.com/Motherboard/B760M-DS3H-DDR4-rev-10/support#support-cpu",
+      "retrievedAt": "2026-10-02T02:18:11Z"
+    }
+  ]
+}
