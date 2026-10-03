@@ -7,7 +7,7 @@ import java.net.URI;
 import static com.pcupgradelab.pc.PcDtos.*;
 
 /**
- * PC 등록·조회·수정 REST Controller.
+ * PC 등록·조회·수정·삭제 REST Controller. 로그인 회원의 PC만 다룬다(PcService).
  * docs/week1-contract.md의 공통 API 규격을 준수한다.
  */
 @RestController
@@ -59,5 +59,15 @@ public class PcController {
             @PathVariable Long id,
             @Valid @RequestBody Request request) {
         return ResponseEntity.ok(service.update(id, request));
+    }
+
+    /**
+     * DELETE /api/pcs/{id} : 저장된 PC 삭제
+     * 성공 시 204 No Content를 반환한다. 다른 회원의 PC나 없는 PC는 404 PC_NOT_FOUND.
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

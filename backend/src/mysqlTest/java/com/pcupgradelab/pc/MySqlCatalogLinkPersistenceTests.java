@@ -5,9 +5,15 @@ import java.util.EnumMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import javax.sql.DataSource;
+import com.pcupgradelab.auth.SessionCurrentUser;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -26,7 +32,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MySqlCatalogLinkPersistenceTests {
     private final String pcName = "mysql-catalog-check-" + UUID.randomUUID();
     private final JsonMapper mapper = JsonMapper.builder().build();
+    // 실행마다 고유한 회원 ID. users 테이블 FK가 추가되면 검증용 회원 행을 먼저 만들어야 한다.
+    private final long userId = ThreadLocalRandom.current().nextLong(1_000_000_000_000L, Long.MAX_VALUE);
     private Long pcId;
+
+    // PcService는 HTTP 세션의 로그인 회원을 사용한다. 웹 서버 없이 호출하므로 로그인된 요청을 직접 만든다.
+    @BeforeEach
+    void signInAsVerificationUser() {
+        var request = new MockHttpServletRequest();
+        request.getSession(true).setAttribute(SessionCurrentUser.SESSION_ATTRIBUTE, userId);
+        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+    }
 
     @Test
     void keepsRealCatalogLinksAndDeviceValuesAfterUpdateAndContextRestart() throws Exception {
@@ -86,11 +102,12 @@ class MySqlCatalogLinkPersistenceTests {
 
     @AfterEach
     void removeOnlyThisRunsPc() {
+        RequestContextHolder.resetRequestAttributes();
         if (pcId == null) return;
         try (var app = application()) {
             var repository = app.getBean(PcConfigurationRepository.class);
             app.getBean(TransactionTemplate.class).executeWithoutResult(status ->
-                    repository.findByIdAndOwnerKey(pcId, PcService.DEFAULT_OWNER_KEY).ifPresent(pc -> {
+                    repository.findByIdAndUserId(pcId, userId).ifPresent(pc -> {
                         assertThat(pc.getName()).isIn(pcName, pcName + "-updated");
                         repository.delete(pc);
                     }));

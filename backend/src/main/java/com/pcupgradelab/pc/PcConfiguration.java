@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * 사용자가 저장한 PC 한 대. pc_configuration 테이블의 한 행에 대응하는 JPA 엔티티다.
@@ -15,11 +16,15 @@ import java.util.List;
 public class PcConfiguration {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // 소유자 구분 값은 서버가 결정한다. 현재 로컬 개발용 값 자체가 로그인 인증을 제공하지는 않는다.
-    @Column(name = "owner_key", nullable = false, length = 128)
-    private String ownerKey;
+    // 소유 회원(users.id). 서버가 로그인 정보로 결정하며 요청에서 받지 않는다.
+    // 로그인 도입 전 local-dev 데이터는 NULL로 남아 어느 회원에게도 조회되지 않는다.
+    @Column(name = "user_id")
+    private Long userId;
     @Column(nullable = false, length = 100)
     private String name;
+    // 회원 안의 이름 중복 검사용 값. DB의 (user_id, name_normalized) 유니크 제약과 함께 사용한다.
+    @Column(name = "name_normalized", nullable = false, length = 100)
+    private String nameNormalized;
     // JPA가 갱신할 때 버전을 비교해 동시 수정 충돌을 감지한다. HTTP 오류 변환은 API 계층의 역할이다.
     @Version
     private long version;
@@ -36,12 +41,17 @@ public class PcConfiguration {
     // JPA가 DB 조회 결과로 엔티티를 만들 때 사용하는 기본 생성자.
     protected PcConfiguration() { }
 
-    public PcConfiguration(String ownerKey, String name, List<PartInput> parts) {
-        if (ownerKey == null || ownerKey.isBlank() || ownerKey.length() > 128) {
-            throw new IllegalArgumentException("ownerKey is required (max 128 characters)");
+    public PcConfiguration(Long userId, String name, List<PartInput> parts) {
+        if (userId == null || userId <= 0) {
+            throw new IllegalArgumentException("userId is required");
         }
-        this.ownerKey = ownerKey;
+        this.userId = userId;
         update(name, parts);
+    }
+
+    /** 이름 중복 비교 기준: 앞뒤 공백 제거 + 소문자. V10 마이그레이션의 기존 행 변환과 같은 규칙이다. */
+    public static String normalizeName(String name) {
+        return name.strip().toLowerCase(Locale.ROOT);
     }
 
     /**
@@ -59,6 +69,7 @@ public class PcConfiguration {
         // PcPart 생성자가 각 항목을 검증한다. 하나라도 잘못되면 아래의 이름·목록 변경 전 예외가 발생한다.
         var next = replacement.stream().map(input -> new PcPart(this, input)).toList();
         this.name = name.strip();
+        this.nameNormalized = normalizeName(name);
         // JPA가 추적 중인 목록 객체는 유지한다. 트랜잭션 반영 시 이전 부품 행은 삭제되고 새 행이 저장된다.
         this.parts.clear();
         this.parts.addAll(next);
@@ -70,7 +81,7 @@ public class PcConfiguration {
     void onCreate() { createdAt = updatedAt = Instant.now(); }
 
     public Long getId() { return id; }
-    public String getOwnerKey() { return ownerKey; }
+    public Long getUserId() { return userId; }
     public String getName() { return name; }
     public long getVersion() { return version; }
     public Instant getCreatedAt() { return createdAt; }
