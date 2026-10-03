@@ -47,7 +47,7 @@ PC 등록·조회·수정 API와 전체 입력 화면은 이 기반에 연결할
 - `UNMATCHED`는 카탈로그 미연결 상태다. 자동 수집 실패를 뜻하지 않는다.
 - 수집 결과를 폼에 반영할 때 기존 `MANUAL` 부품은 보존하고 `AUTO` 항목은 교체한다. 편집 내용을 덮어쓸 때는 확인을 받는다. 이 처리는 부모 화면에서 구현한다.
 - '화면에서 취소'는 화면의 대기를 끝낸다. 실행된 Windows 프로그램을 종료하거나 서버 세션을 취소하는 기능은 아니다.
-- `ownerKey`는 서버가 정한다. 로컬용 `local-dev` 값을 로그인 인증으로 간주하거나 요청 본문에서 소유자를 받지 않는다.
+- PC 소유자는 서버가 로그인 정보로 정한다(`user_id`). 요청 본문에서 소유자를 받지 않는다. 자세한 규칙은 [인증 ↔ PC 연결 규격](week2-auth-pc-contract.md).
 - Java의 `PartInput`/`ScanDtos`, 프런트 `types.ts`, PowerShell 수집기, 공통 규격 문서는 같은 필드 이름과 의미를 사용한다.
 
 ## DB와 테스트를 읽을 때
@@ -69,6 +69,9 @@ H2 검사가 실제 MySQL 검사를 대신하지 않으며, 저장 계층 검사
 검사별 실행 방법은 [실행 안내](week1-setup.md)와 [MySQL 검사 안내](week1-mysql-verification.md)를 참고한다.
 
 ## 그 밖의 문서
+
+- [인증 ↔ PC 연결 규격](week2-auth-pc-contract.md): 로그인 회원 전달, 인증 API, 리다이렉트, CSRF, 접근 규칙 (2주차, 이슈 #18).
+- [회원별 PC 관리 인계](week2-pc-ownership-handoff.md): 이슈 #18에서 완료한 것과 이어서 할 일.
 
 - [부품 데이터 조사](week1-data-review.md): 후보 데이터의 필드와 한계, 공동 선정할 사항.
 - [스캔 결과 예시](examples/scan-result.json): 자동 인식 JSON 형식을 이해하기 위한 개발용 샘플.

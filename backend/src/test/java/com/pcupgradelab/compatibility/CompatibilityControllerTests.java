@@ -10,12 +10,15 @@ import java.util.ArrayList;
 import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
+import com.pcupgradelab.auth.SessionCurrentUser;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -23,6 +26,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 
@@ -65,6 +70,15 @@ class CompatibilityControllerTests {
         memorySeeds.seed();
         supportSeeds.seed();
         mvc = MockMvcBuilders.webAppContextSetup(context).build();
+        // PcService를 HTTP 요청 없이 직접 호출하므로 로그인한 회원의 요청을 만들어 둔다.
+        var request = new MockHttpServletRequest();
+        request.getSession(true).setAttribute(SessionCurrentUser.SESSION_ATTRIBUTE, 1L);
+        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+    }
+
+    @AfterEach
+    void signOut() {
+        RequestContextHolder.resetRequestAttributes();
     }
 
     @Test
