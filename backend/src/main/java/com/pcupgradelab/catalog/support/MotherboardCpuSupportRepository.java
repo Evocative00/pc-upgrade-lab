@@ -40,14 +40,29 @@ public class MotherboardCpuSupportRepository {
                     hardware_revision, conditions, evidence_source_id) VALUES (?, ?, ?, ?, ?, ?)
                 """, id, support.revisionKey(), support.revisionScope().name(), support.hardwareRevision(), support.conditions(), evidenceSourceId);
         for (var entry : support.entries()) {
+            insertEntry(id, support.revisionKey(), entry);
+        }
+    }
+
+    /** 기존 행은 수정하지 않는다. 새 행과 새 전체 발췌 출처 연결은 호출 서비스의 트랜잭션에 참여한다. */
+    public void append(String id, long evidenceSourceId, MotherboardCpuSupport expected,
+                       List<MotherboardCpuSupport.Entry> entries) {
+        for (var entry : entries) insertEntry(id, expected.revisionKey(), entry);
+        int updated = jdbc.update("""
+                UPDATE motherboard_cpu_support_profile SET evidence_source_id = ?
+                WHERE motherboard_product_id = ? AND revision_key = ?
+                """, evidenceSourceId, id, expected.revisionKey());
+        if (updated != 1) throw new IllegalStateException("Support profile changed during expansion");
+    }
+
+    private void insertEntry(String id, String revisionKey, MotherboardCpuSupport.Entry entry) {
             jdbc.update("""
                     INSERT INTO motherboard_cpu_support (motherboard_product_id, revision_key, cpu_product_id, variant_key,
                         support_status, reported_cpu_name, cpu_stepping, bios_requirement, minimum_bios_version,
                         manufacturer_bios_label, source_url, conditions) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    """, id, support.revisionKey(), entry.cpuProductId(), entry.variantKey(), entry.supportStatus().name(),
+                    """, id, revisionKey, entry.cpuProductId(), entry.variantKey(), entry.supportStatus().name(),
                     entry.reportedCpuName(), entry.cpuStepping(), entry.biosRequirement().name(), entry.minimumBiosVersion(),
                     entry.manufacturerBiosLabel(), entry.sourceUrl(), entry.conditions());
-        }
     }
 
     public record Stored(String motherboardProductId, long evidenceSourceId, MotherboardCpuSupport support) { }
