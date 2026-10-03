@@ -1,6 +1,17 @@
 .app-header {
   padding: 16px 24px;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.auth-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
 }
 
 .app-title {
@@ -469,4 +480,36 @@ ul.error {
 
 .table-wrap {
   overflow-x: auto;
+}
+
+/* 로그인 안내·결과 화면 */
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 520px;
+}
+
+.login__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login__button {
+  justify-content: center;
+  padding: 10px 16px;
+  font-size: 15px;
+}
+
+.login__button--google {
+  background: #fff;
+  color: #1f1f1f;
+  border-color: #747775;
+}
+
+.login__button--kakao {
+  background: #fee500;
+  color: rgba(0, 0, 0, 0.85);
+  border-color: #fee500;
 }

@@ -1,3 +1,4 @@
+import { csrfHeaders } from '../../lib/csrf.ts'
 import type { PcDetail, PcPage, PcRequest, PcSummary } from './types.ts'
 
 // 화면은 이 인터페이스만 사용한다. 실제 저장·조회는 Spring Boot의 /api/pcs가 담당한다.
@@ -6,6 +7,7 @@ export interface PcRepository {
   get(id: number): Promise<PcDetail | null>
   create(request: PcRequest): Promise<PcDetail>
   update(id: number, request: PcRequest): Promise<PcDetail>
+  delete(id: number): Promise<void>
 }
 
 type FieldError = { field: string; message: string }
@@ -34,10 +36,11 @@ function isSummary(value: unknown): value is PcSummary {
     typeof value.updatedAt === 'string'
 }
 
-function isDetail(value: unknown): value is PcDetail {
-  if (!isSummary(value) || !('parts' in value) || !Array.isArray(value.parts)) return false
+// 다른 서버의 HTML/JSON을 저장 성공으로 처리하지 않도록 화면에 필요한 응답 구조를 확인한다.
+// 브라우저에 임시 보관한 초안을 다시 읽을 때도 같은 기준을 사용한다.
+export function isPcRequest(value: unknown): value is PcRequest {
+  if (!isObject(value) || typeof value.name !== 'string' || !Array.isArray(value.parts)) return false
 
-  // 다른 서버의 HTML/JSON을 저장 성공으로 처리하지 않도록 화면에 필요한 응답 구조를 확인한다.
   const types = ['CPU', 'COOLER', 'MOTHERBOARD', 'RAM', 'GPU', 'STORAGE', 'PSU', 'CASE', 'MONITOR']
   return value.parts.every((part: unknown) => isObject(part) &&
     typeof part.type === 'string' && types.includes(part.type) &&
@@ -48,6 +51,15 @@ function isDetail(value: unknown): value is PcDetail {
     (part.matchStatus === 'MATCHED' || part.matchStatus === 'UNMATCHED') &&
     (part.catalogProductId === null || typeof part.catalogProductId === 'string') &&
     isObject(part.specs))
+}
+
+function isDetail(value: unknown): value is PcDetail {
+  return isSummary(value) && isPcRequest(value)
+}
+
+// 삭제 성공(204)은 본문이 없다. 본문 읽기 실패는 null로 처리된다.
+function isEmpty(value: unknown): value is null {
+  return value === null
 }
 
 function isPage(value: unknown): value is PcPage {
@@ -64,7 +76,9 @@ function responseError(status: number, body: unknown): PcApiError {
     ? data.errors.filter((item): item is FieldError => isObject(item) &&
         typeof item.field === 'string' && typeof item.message === 'string')
     : []
-  const fallback = status === 409
+  const fallback = status === 401
+    ? '로그인이 필요합니다. 작성 중인 내용은 유지됩니다.'
+    : status === 409
     ? '다른 요청과 수정이 겹쳤습니다. 입력 내용을 복사해 두고 최신 PC 정보를 확인해 주세요.'
     : `서버 요청에 실패했습니다 (HTTP ${status}). 입력 내용은 유지됩니다.`
   return new PcApiError(
@@ -76,14 +90,16 @@ function responseError(status: number, body: unknown): PcApiError {
 }
 
 // 테스트에서는 fetch와 주소를 바꿀 수 있다. 화면에서는 같은 출처의 /api만 사용한다.
+// onUnauthorized: 401(로그인 필요·세션 만료)을 받으면 호출한다. 화면은 로그인 상태를 비우는 데 사용한다.
 export function createHttpPcRepository(
   fetcher: typeof fetch = globalThis.fetch,
   baseUrl = '/api/pcs',
   timeoutMs = 10_000,
+  onUnauthorized: () => void = () => {},
 ): PcRepository {
   async function request<T>(
     path: string,
-    method: 'GET' | 'POST' | 'PUT',
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE',
     expectedStatus: number,
     isValid: (value: unknown) => value is T,
     payload?: PcRequest,
@@ -95,7 +111,11 @@ export function createHttpPcRepository(
     try {
       const response = await fetcher(`${baseUrl}${path}`, {
         method,
-        headers: { Accept: 'application/json', ...(isWrite ? { 'Content-Type': 'application/json' } : {}) },
+        headers: {
+          Accept: 'application/json',
+          ...(payload !== undefined ? { 'Content-Type': 'application/json' } : {}),
+          ...(isWrite ? csrfHeaders() : {}),
+        },
         body: payload === undefined ? undefined : JSON.stringify(payload),
         signal: controller.signal,
         cache: 'no-store',
@@ -103,6 +123,7 @@ export function createHttpPcRepository(
       const body: unknown = await response.json().catch(() => null)
       // 헤더를 받은 뒤 본문 읽기가 지연된 경우도 시간 초과로 구분한다.
       if (controller.signal.aborted) throw new DOMException('Request timed out', 'AbortError')
+      if (response.status === 401) onUnauthorized()
       if (!response.ok) throw responseError(response.status, body)
       if (response.status !== expectedStatus || !isValid(body)) {
         throw new PcApiError(
@@ -140,8 +161,9 @@ export function createHttpPcRepository(
     },
     create: (payload) => request('', 'POST', 201, isDetail, payload),
     update: (id, payload) => request(`/${id}`, 'PUT', 200, isDetail, payload),
+    async delete(id) {
+      await request(`/${id}`, 'DELETE', 204, isEmpty)
+    },
   }
 }
 
-// localStorage로 대체 저장하지 않는다. 서버 오류를 숨기면 실제 DB 저장 여부를 알 수 없기 때문이다.
-export const pcRepository = createHttpPcRepository()
