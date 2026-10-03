@@ -1,0 +1,100 @@
+# local profile / 61-product catalog / CPU memory and motherboard CPU enrichment required.
+# Run the four GET requests first, then the POST requests.
+# quantity is the number of actual RAM modules. These are virtual test configurations.
+@baseUrl = http://localhost:8080
+
+### Resolve CPU ID
+GET {{baseUrl}}/api/catalog/products?type=CPU&q=Core%20i5-12400F&size=100
+
+> {%
+    client.assert(response.status === 200, "Catalog query must succeed");
+    const product = response.body.items.find(p => p.modelName === "Core i5-12400F");
+    client.assert(product !== undefined, "Seed the Intel catalog batch first");
+    client.global.set("compatCpuId", product.id);
+%}
+
+### Resolve DDR4 motherboard ID
+GET {{baseUrl}}/api/catalog/products?type=MOTHERBOARD&q=PRO%20B760M-A%20WIFI%20DDR4&size=100
+
+> {%
+    client.assert(response.status === 200, "Catalog query must succeed");
+    const product = response.body.items.find(p => p.modelName === "PRO B760M-A WIFI DDR4");
+    client.assert(product !== undefined, "Seed the Intel catalog batch first");
+    client.global.set("compatBoardId", product.id);
+%}
+
+### Resolve DDR4 RAM ID
+GET {{baseUrl}}/api/catalog/products?type=RAM&q=FURY%20Beast%20DDR4-3200%20CL16%2032GB&size=100
+
+> {%
+    client.assert(response.status === 200, "Catalog query must succeed");
+    const product = response.body.items.find(p => p.modelName === "FURY Beast DDR4-3200 CL16 32GB (2x16GB)");
+    client.assert(product !== undefined, "Seed the initial catalog batch first");
+    client.global.set("compatDdr4Id", product.id);
+%}
+
+### Resolve DDR5 RAM ID
+GET {{baseUrl}}/api/catalog/products?type=RAM&q=FURY%20Beast%20DDR5-6000%20CL36%2032GB&size=100
+
+> {%
+    client.assert(response.status === 200, "Catalog query must succeed");
+    const product = response.body.items.find(p => p.modelName === "FURY Beast DDR5-6000 CL36 32GB (2x16GB)");
+    client.assert(product !== undefined, "Seed the initial catalog batch first");
+    client.global.set("compatDdr5Id", product.id);
+%}
+
+### Known applicable stepping and exact minimum BIOS -> COMPATIBLE within checked scope
+POST {{baseUrl}}/api/compatibility/check
+Content-Type: application/json
+
+{
+  "cpuProductId": "{{compatCpuId}}",
+  "motherboardProductId": "{{compatBoardId}}",
+  "ram": [{"catalogProductId": "{{compatDdr4Id}}", "quantity": 2}],
+  "motherboardRevision": null,
+  "cpuStepping": "H0",
+  "currentBiosVersion": "7D99v10"
+}
+
+> {%
+    client.test("Compatible within CPU/motherboard/RAM scope", function () {
+        client.assert(response.status === 200 && response.body.status === "COMPATIBLE");
+        client.assert(response.body.fullPcCompatibilityChecked === false);
+        client.assert(response.body.memory.installedModuleCount === 2);
+        client.assert(response.body.memory.totalCapacityBytes === 34359738368);
+    });
+%}
+
+### Unknown actual stepping and BIOS -> NEEDS_CHECK
+POST {{baseUrl}}/api/compatibility/check
+Content-Type: application/json
+
+{
+  "cpuProductId": "{{compatCpuId}}",
+  "motherboardProductId": "{{compatBoardId}}",
+  "ram": [{"catalogProductId": "{{compatDdr4Id}}", "quantity": 2}]
+}
+
+> {%
+    client.test("Missing conditions require review", function () {
+        client.assert(response.status === 200 && response.body.status === "NEEDS_CHECK");
+    });
+%}
+
+### DDR5 RAM with a DDR4 motherboard -> INCOMPATIBLE
+POST {{baseUrl}}/api/compatibility/check
+Content-Type: application/json
+
+{
+  "cpuProductId": "{{compatCpuId}}",
+  "motherboardProductId": "{{compatBoardId}}",
+  "ram": [{"catalogProductId": "{{compatDdr5Id}}", "quantity": 2}],
+  "cpuStepping": "H0",
+  "currentBiosVersion": "7D99v10"
+}
+
+> {%
+    client.test("DDR generation mismatch takes precedence", function () {
+        client.assert(response.status === 200 && response.body.status === "INCOMPATIBLE");
+    });
+%}

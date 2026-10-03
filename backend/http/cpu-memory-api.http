@@ -1,0 +1,14 @@
+@baseUrl = http://localhost:8080
+
+### local 프로필 + catalog.cpu-memory.seed.enabled=true 적재 후 CPU를 검색해 items[0].id를 아래에 넣는다.
+GET {{baseUrl}}/api/catalog/products?type=CPU&q=14700F&page=0&size=10
+
+### CPU 메모리 지원. 적재 전에는 dataAvailable=false로 응답한다.
+@cpuId = REPLACE_WITH_CATALOG_CPU_ID
+GET {{baseUrl}}/api/catalog/products/{{cpuId}}/memory-support
+
+### 실제 Flyway 적용 여부는 IDE 아이콘 대신 DB에서 확인한다.
+# SELECT version, description, success FROM flyway_schema_history WHERE version IN ('7', '8');
+# SELECT COUNT(*) FROM cpu_memory_support; -- 12
+# SELECT COUNT(*) FROM cpu_memory_type_support; -- 16
+# SELECT COUNT(*) FROM catalog_product; -- 기존 61종 유지

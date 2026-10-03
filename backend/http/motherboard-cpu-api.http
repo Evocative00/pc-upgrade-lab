@@ -1,0 +1,22 @@
+@baseUrl = http://localhost:8080
+@motherboardId = replace-with-motherboard-product-id
+@cpuId = replace-with-cpu-product-id
+
+### local 프로필에서 카탈로그 내부 ID 확인
+GET {{baseUrl}}/api/catalog/products?type=MOTHERBOARD&page=0&size=100
+
+### CPU 내부 ID 확인
+GET {{baseUrl}}/api/catalog/products?type=CPU&page=0&size=100
+
+### 보드별 지원 목록 발췌 조회 (listComplete=false)
+GET {{baseUrl}}/api/catalog/products/{{motherboardId}}/cpu-support
+
+### 특정 CPU의 스테핑별 BIOS 조건 조회
+# 기록 없음/UNVERIFIED는 미지원 판정이 아니다. 최소 BIOS를 하나로 합치지 않는다.
+GET {{baseUrl}}/api/catalog/products/{{motherboardId}}/cpu-support?cpuProductId={{cpuId}}
+
+### 없는 제품은 404
+GET {{baseUrl}}/api/catalog/products/absent-id/cpu-support
+
+### CPU를 보드 ID에 넣으면 400
+GET {{baseUrl}}/api/catalog/products/{{cpuId}}/cpu-support

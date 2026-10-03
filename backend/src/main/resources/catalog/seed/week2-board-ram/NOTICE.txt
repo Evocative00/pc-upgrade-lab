@@ -1,0 +1,31 @@
+Contains data from BuildCores OpenDB, made available under the Open Data Commons Attribution License (ODC-By) v1.0.
+Database: https://github.com/buildcores/buildcores-open-db
+Pinned source revision: b6fc3a559b871106ba89d9d8b8ad4beeb886a799
+License: https://opendatacommons.org/licenses/by/1-0/
+The complete upstream license is included in BUILDCORES-LICENSE.txt.
+
+The buildcores directory contains eleven unchanged JSON records from that revision.
+The manifest contains PC Upgrade Lab normalized fields and curated primary
+manufacturer specification extracts labelled CURATED_SPEC_EXTRACT. These are not
+copies of complete manufacturer pages. Some original manufacturer documents are
+accessed through document mirrors; the author, revision and related sections are
+identified in their payloads. The Samsung DDR5 identity is supported by a Dell
+employee's manufacturer OEM memory list; it is not presented as a Samsung datasheet.
+Source URLs and retrieval times are recorded for every item.
+
+Retain BuildCores attribution and its license reference when displaying or
+redistributing this database or derived material. Public catalog UIs must expose
+appropriate attribution. Manufacturer trademarks belong to their owners.
+
+This batch adds six desktop motherboards and five single non-ECC unbuffered
+288-pin DIMMs: Samsung DDR4 8GB/16GB and DDR5 8GB, SK hynix DDR4 8GB/16GB.
+DDR4 and DDR5 remain distinct. Module count is one; ranks are not kit quantities.
+B650M DS3H revision 1.0 uses the manufacturer's current 256GB memory maximum
+instead of the upstream 192GB. Original board variants remain separate identities.
+Conditional ECC operation is documented rather than asserted unconditionally for
+the B550 boards. ECC DIMM operation in non-ECC mode is not ECC error correction.
+RAM heights, and the Samsung DDR5 exact-model voltage, remain null. Height zero
+and unconfirmed DDR5 EXPO/CL36 are not adopted. No board/RAM/CPU combination,
+operating data rate or BIOS support is certified by this seed. New products stay
+UNVERIFIED and inactive; reference prices stay null and UNCONFIRMED.
+Existing seed batches, product reviews, IDs, source rows and prices are preserved.
