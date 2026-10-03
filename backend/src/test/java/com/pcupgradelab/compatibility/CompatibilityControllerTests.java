@@ -61,7 +61,7 @@ class CompatibilityControllerTests {
         try (var connection = jdbc.getDataSource().getConnection()) {
             assertThat(connection.getMetaData().getURL()).startsWith("jdbc:h2:mem:compatibility-api-test");
         }
-        for (var batch : CatalogSeedBatch.values()) seeds.seed(batch);
+        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100) seeds.seed(batch);
         memorySeeds.seed();
         supportSeeds.seed();
         mvc = MockMvcBuilders.webAppContextSetup(context).build();

@@ -103,7 +103,7 @@ class MotherboardCpuSeedServiceTests {
         assertThat(repeated.items().stream().map(MotherboardCpuSeedService.Item::productId).toList())
                 .containsExactlyElementsOf(first.items().stream().map(MotherboardCpuSeedService.Item::productId).toList());
         assertThat(memorySeeds.seed().created()).isZero();
-        for (var batch : CatalogSeedBatch.values()) assertThat(originalSeeds.seed(batch).created()).isZero();
+        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100) assertThat(originalSeeds.seed(batch).created()).isZero();
         assertUnchanged(before);
         assertCounts();
     }
@@ -208,7 +208,7 @@ class MotherboardCpuSeedServiceTests {
     }
 
     private void seedExistingCatalog() {
-        for (var batch : CatalogSeedBatch.values()) originalSeeds.seed(batch);
+        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100) originalSeeds.seed(batch);
         memorySeeds.seed();
         assertThat(count("catalog_product")).isEqualTo(61);
         assertThat(count("catalog_product_source")).isEqualTo(149);

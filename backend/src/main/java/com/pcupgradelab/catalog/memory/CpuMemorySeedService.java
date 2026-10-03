@@ -37,17 +37,22 @@ public class CpuMemorySeedService {
 
     @Transactional
     public Result seed() {
-        var expected = loader.load();
+        return seed(CpuMemorySeedLoader.INITIAL);
+    }
+
+    @Transactional
+    public Result seed(String batch) {
+        var expected = loader.load(batch);
         var items = new ArrayList<Item>();
         for (var input : expected) {
             var product = resolve(input);
             var stored = memory.findByProductId(product.getId());
             boolean created = stored.isEmpty();
             if (created) {
-                var source = sources.saveAndFlush(new CatalogProductSource(product, input.source()));
+                var source = sources.saveAndFlush(new CatalogProductSource(product, input.source(batch)));
                 memory.insert(product.getId(), source.getId(), input.support());
             } else {
-                assertMatches(input, stored.orElseThrow());
+                assertMatches(input, stored.orElseThrow(), batch);
             }
             items.add(new Item(product.getId(), product.getModelName(), created));
         }
@@ -55,7 +60,7 @@ public class CpuMemorySeedService {
         entityManager.clear();
         // JDBC 자료와 JPA 출처를 모두 DB에서 다시 읽어 커밋 전에 확인한다.
         for (int i = 0; i < items.size(); i++) {
-            assertMatches(expected.get(i), memory.findByProductId(items.get(i).productId()).orElseThrow());
+            assertMatches(expected.get(i), memory.findByProductId(items.get(i).productId()).orElseThrow(), batch);
         }
         int created = (int) items.stream().filter(Item::created).count();
         return new Result(created, items.size() - created, items);
@@ -76,9 +81,9 @@ public class CpuMemorySeedService {
         return product;
     }
 
-    private void assertMatches(CpuMemorySeedLoader.Item expected, CpuMemorySupportRepository.Stored actual) {
+    private void assertMatches(CpuMemorySeedLoader.Item expected, CpuMemorySupportRepository.Stored actual, String batch) {
         var source = sources.findById(actual.evidenceSourceId()).orElseThrow(() -> conflict(expected.modelName(), "evidence is missing"));
-        CatalogSourceInput input = expected.source();
+        CatalogSourceInput input = expected.source(batch);
         if (!expected.support().equals(actual.support()) || !actual.productId().equals(source.getProduct().getId())
                 || source.getSourceName() != input.sourceName() || !Objects.equals(source.getExternalId(), input.externalId())
                 || !Objects.equals(source.getSourceRevision(), input.sourceRevision())
