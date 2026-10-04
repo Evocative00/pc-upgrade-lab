@@ -1,0 +1,57 @@
+{
+  "opendb_id": "3b6325c3-1fd1-4eb7-aac3-192f15e7e65b",
+  "chipset_manufacturer": "NVIDIA",
+  "chipset": "GeForce RTX 2060 SUPER",
+  "core_base_clock": 1470,
+  "core_boost_clock": 1665,
+  "memory": 8,
+  "memory_type": "GDDR6",
+  "effective_memory_clock": 14000,
+  "memory_bus": 0,
+  "tdp": 175,
+  "interface": "PCIe x16",
+  "color": ["BLACK", "GREY"],
+  "lighting": [],
+  "length": 231,
+  "total_slot_width": 2,
+  "cooling": "2 Fans",
+  "power_connectors": {
+    "pcie_6_pin": 0,
+    "pcie_8_pin": 1,
+    "pcie_12VHPWR": 0,
+    "pcie_12V_2x6": 0
+  },
+  "video_outputs": {
+    "hdmi_2_1": 0,
+    "hdmi_2_0": 1,
+    "displayport_2_1": 0,
+    "displayport_2_1a": 0,
+    "displayport_1_4a": 3,
+    "dvi_d": 0,
+    "vga": 0
+  },
+  "metadata": {
+    "name": "MSI GeForce RTX 2060 SUPER VENTUS OC 8GB GDDR6 Black / Silver",
+    "manufacturer": "MSI",
+    "part_numbers": ["RTX 2060 SUPER VENTUS OC", "GeForce RTX 2060 SUPER VENTUS OC"],
+    "series": "GeForce RTX 2060 SUPER",
+    "variant": "MSI"
+  },
+  "general_product_information": {},
+  "identifiers": {
+    "version": 1,
+    "identifiers": [
+      {
+        "type": "mpn",
+        "value": "GeForce RTX 2060 SUPER VENTUS OC",
+        "region": "all"
+      },
+      {
+        "type": "mpn",
+        "value": "RTX 2060 SUPER VENTUS OC",
+        "region": "all"
+      }
+    ],
+    "retailer_listings": []
+  }
+}

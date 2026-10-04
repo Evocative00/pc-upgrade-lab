@@ -1,0 +1,53 @@
+{
+  "opendb_id": "875be446-3259-43f3-9a19-d9a959821a4a",
+  "chipset_manufacturer": "AMD",
+  "chipset": "Radeon RX 6500 XT",
+  "core_count": 1024,
+  "core_base_clock": 2310,
+  "core_boost_clock": 2815,
+  "memory": 4,
+  "memory_type": "GDDR6",
+  "effective_memory_clock": 18000,
+  "memory_bus": 0,
+  "tdp": 107,
+  "interface": "PCIe x16",
+  "color": ["BLACK"],
+  "lighting": [],
+  "length": 179,
+  "total_slot_width": 2,
+  "cooling": "1 Fan",
+  "power_connectors": {
+    "pcie_6_pin": 0,
+    "pcie_8_pin": 1,
+    "pcie_12VHPWR": 0,
+    "pcie_12V_2x6": 0
+  },
+  "video_outputs": {
+    "hdmi_2_1": 0,
+    "hdmi_2_0": 1,
+    "displayport_2_1": 0,
+    "displayport_2_1a": 0,
+    "displayport_1_4a": 1,
+    "dvi_d": 0,
+    "vga": 0
+  },
+  "metadata": {
+    "name": "ASRock CLI Radeon RX 6500 XT 4GB GDDR6 Black",
+    "manufacturer": "ASRock",
+    "part_numbers": ["RX6500XT CLI 4G"],
+    "series": "Radeon RX 6500 XT",
+    "variant": "ASRock"
+  },
+  "general_product_information": {},
+  "identifiers": {
+    "version": 1,
+    "identifiers": [
+      {
+        "type": "mpn",
+        "value": "RX6500XT CLI 4G",
+        "region": "all"
+      }
+    ],
+    "retailer_listings": []
+  }
+}

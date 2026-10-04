@@ -14,6 +14,8 @@ public enum CatalogSeedBatch {
     GPU_EXPANSION("week2-gpu-expand", 8, Set.of(PartType.GPU)),
     BOARD_RAM("week2-board-ram", 11, Set.of(PartType.MOTHERBOARD, PartType.RAM)),
     EXPAND_100("week2-expand100", 100,
+            Set.of(PartType.CPU, PartType.MOTHERBOARD, PartType.RAM, PartType.GPU, PartType.MONITOR)),
+    EXPAND_300("week2-expand300", 139,
             Set.of(PartType.CPU, PartType.MOTHERBOARD, PartType.RAM, PartType.GPU, PartType.MONITOR));
 
     private final String resourceName;

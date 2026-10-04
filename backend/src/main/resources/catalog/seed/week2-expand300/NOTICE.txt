@@ -1,0 +1,11 @@
+Contains 139 raw records from BuildCores Open DB.
+Database: https://github.com/buildcores/buildcores-open-db
+Revision: b6fc3a559b871106ba89d9d8b8ad4beeb886a799
+License: Open Data Commons Attribution License 1.0 (ODC-By-1.0).
+The original raw records are retained; catalog specifications are separately curated manufacturer facts.
+Manufacturer facts are limited extracts, not full copyrighted page snapshots.
+No upstream retailer price is imported.
+RAM module capacities use GiB bytes and kits preserve their physical module count.
+RAM tested profile speeds are not guaranteed system speeds; JEDEC/profile facts remain in source payloads.
+GPU electrical lanes, generic 16-pin power connectors, card power and system PSU recommendations are distinct.
+Monitor native standard and OC refresh rates are separate.
