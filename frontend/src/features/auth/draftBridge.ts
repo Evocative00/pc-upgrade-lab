@@ -15,6 +15,25 @@ export type PcDraft = {
 
 const KEY = 'pc-upgrade-lab:pc-draft:v1'
 
+type DraftSnapshot = Pick<PcDraft, 'request' | 'pcId'>
+let activeDraft: (() => DraftSnapshot) | null = null
+
+// 현재 작성 폼만 등록한다. 화면을 떠나면 해제하며, 서버 저장은 하지 않는다.
+export function registerActiveDraft(read: () => DraftSnapshot): () => void {
+  activeDraft = read
+  return () => {
+    if (activeDraft === read) activeDraft = null
+  }
+}
+
+// 상단 로그인 링크처럼 폼 밖에서 이동해도 최신 입력을 먼저 보관한다.
+export function saveActiveDraft(storage = defaultStorage()): boolean {
+  if (activeDraft === null) return true
+  const draft = activeDraft()
+  // 복원할 수 없는 수량 입력은 이동을 막아 원래 폼에 남긴다.
+  return isPcRequest(draft.request) && saveDraft(draft.request, draft.pcId, storage)
+}
+
 type DraftStorage = Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>
 
 function defaultStorage(): DraftStorage | null {
@@ -30,7 +49,14 @@ export function saveDraft(request: PcRequest, pcId: number | null, storage = def
   if (storage === null) return false
   const draft: PcDraft = { request, pcId, savedAt: new Date().toISOString() }
   try {
-    storage.setItem(KEY, JSON.stringify(draft))
+    // JSON은 NaN/Infinity를 null로 바꾼다. 용량 오류를 미확인 값으로 바꾸지 않는다.
+    const serialized = JSON.stringify(draft, (_key, value) => {
+      if (typeof value === 'number' && !Number.isFinite(value)) {
+        throw new RangeError('Draft contains a non-finite number')
+      }
+      return value
+    })
+    storage.setItem(KEY, serialized)
     return true
   } catch {
     return false
@@ -62,7 +88,16 @@ export function clearDraft(storage = defaultStorage()) {
   }
 }
 
-// 저장에 성공한 구성의 초안만 지운다. 다른 PC나 새 구성 초안은 남긴다.
+// 사용자가 초기화하거나 삭제한 PC의 초안만 지운다. 다른 PC의 초안은 남긴다.
 export function clearDraftFor(pcId: number | null, storage = defaultStorage()) {
   if (loadDraft(storage)?.pcId === pcId) clearDraft(storage)
+}
+
+// 늦게 도착한 저장 성공이 그 사이 작성한 다른 초안을 지우지 않게 한다.
+export function clearSavedDraftFor(pcId: number | null, request: PcRequest, storage = defaultStorage()) {
+  const draft = loadDraft(storage)
+  if (draft?.pcId !== pcId) return
+  const saved = JSON.stringify([draft.request.name.trim(), draft.request.parts])
+  const submitted = JSON.stringify([request.name.trim(), request.parts])
+  if (saved === submitted) clearDraft(storage)
 }

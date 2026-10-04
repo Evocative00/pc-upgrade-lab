@@ -1,4 +1,5 @@
-import { useEffect, useId, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent } from 'react'
+import { registerActiveDraft } from '../../auth/draftBridge.ts'
 import { PcScanPanel } from '../../pc-scan/PcScanPanel.tsx'
 import type { ScanResult } from '../../pc-scan/types.ts'
 import { PART_TYPES } from '../partCategories.ts'
@@ -19,12 +20,13 @@ import { PartStatusLegend } from './PartStatusBadge.tsx'
 
 type Props = {
   initial: PcRequest
+  pcId?: number | null
   submitLabel: string
   onSubmit: (request: PcRequest) => Promise<void>
   onCancel: () => void
 }
 
-export function PcForm({ initial, submitLabel, onSubmit, onCancel }: Props) {
+export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel }: Props) {
   const nameId = useId()
   const nameErrorId = useId()
   const nameInputRef = useRef<HTMLInputElement>(null)
@@ -37,6 +39,11 @@ export function PcForm({ initial, submitLabel, onSubmit, onCancel }: Props) {
     if (nameError !== null) nameInputRef.current?.focus()
   }, [nameError])
   const [drafts, setDrafts] = useState(() => withEmptyRows(initial.parts.map(toPersistedDraft)))
+  // 다음 클릭 전에 최신 값을 등록한다. 편집 초안은 기존 PC ID를 유지한다.
+  useLayoutEffect(() => registerActiveDraft(() => ({
+    request: { name, parts: toPartInputs(drafts) },
+    pcId,
+  })), [name, drafts, pcId])
   const [notice, setNotice] = useState<string | null>(null)
   const [errors, setErrors] = useState<string[]>([])
   const [saving, setSaving] = useState(false)

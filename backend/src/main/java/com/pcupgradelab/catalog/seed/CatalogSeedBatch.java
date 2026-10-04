@@ -12,7 +12,11 @@ public enum CatalogSeedBatch {
     RAM("week2-ram", 8, Set.of(PartType.RAM)),
     AMD("week2-amd", 8, Set.of(PartType.CPU, PartType.MOTHERBOARD)),
     GPU_EXPANSION("week2-gpu-expand", 8, Set.of(PartType.GPU)),
-    BOARD_RAM("week2-board-ram", 11, Set.of(PartType.MOTHERBOARD, PartType.RAM));
+    BOARD_RAM("week2-board-ram", 11, Set.of(PartType.MOTHERBOARD, PartType.RAM)),
+    EXPAND_100("week2-expand100", 100,
+            Set.of(PartType.CPU, PartType.MOTHERBOARD, PartType.RAM, PartType.GPU, PartType.MONITOR)),
+    EXPAND_300("week2-expand300", 139,
+            Set.of(PartType.CPU, PartType.MOTHERBOARD, PartType.RAM, PartType.GPU, PartType.MONITOR));
 
     private final String resourceName;
     private final int expectedCount;
@@ -35,6 +39,6 @@ public enum CatalogSeedBatch {
         for (CatalogSeedBatch batch : values()) {
             if (batch.resourceName.equals(name)) return batch;
         }
-        throw new IllegalArgumentException("Catalog seed batch must be week2-initial, week2-gpu, week2-monitor, week2-intel, week2-ram, week2-amd, week2-gpu-expand or week2-board-ram");
+        throw new IllegalArgumentException("Unknown catalog seed batch: " + name);
     }
 }

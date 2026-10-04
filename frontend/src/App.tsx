@@ -1,7 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { BackendStatus } from './components/BackendStatus.tsx'
 import { logout, refreshAuth, useAuth } from './features/auth/authStore.ts'
+import { saveActiveDraft } from './features/auth/draftBridge.ts'
 import { LoginFailurePage, LoginPage, LoginSuccessPage } from './features/auth/pages/LoginPages.tsx'
 import { PcDetailPage } from './features/pc/pages/PcDetailPage.tsx'
 import { PcEditPage, PcNewPage } from './features/pc/pages/PcFormPages.tsx'
@@ -38,6 +39,22 @@ function Page({ route }: { route: Route }) {
 // 로그인 상태. 인증 API가 아직 없는 서버(unavailable)에서는 아무것도 표시하지 않는다.
 function AuthStatus() {
   const auth = useAuth()
+  const [error, setError] = useState<string | null>(null)
+  const [loggingOut, setLoggingOut] = useState(false)
+
+  async function handleLogout() {
+    if (loggingOut) return
+    setLoggingOut(true)
+    setError(null)
+    try {
+      await logout()
+      navigate(paths.list())
+    } catch (logoutError) {
+      setError(logoutError instanceof Error ? logoutError.message : '로그아웃하지 못했습니다. 다시 시도해 주세요.')
+    } finally {
+      setLoggingOut(false)
+    }
+  }
 
   if (auth.status === 'signedIn') {
     return (
@@ -46,22 +63,34 @@ function AuthStatus() {
         <button
           type="button"
           className="link-button"
-          onClick={() => {
-            // 이전 회원의 목록은 비우고, 작성 중인 비회원 초안은 남긴다.
-            logout().catch(() => {}).finally(() => navigate(paths.list()))
-          }}
+          onClick={handleLogout}
+          disabled={loggingOut}
         >
-          로그아웃
+          {loggingOut ? '로그아웃 중…' : '로그아웃'}
         </button>
+        {error !== null && <span role="alert" className="error">{error}</span>}
       </div>
     )
   }
 
   if (auth.status === 'signedOut') {
     return (
-      <a className="auth-status" href={paths.login()}>
-        로그인
-      </a>
+      <div className="auth-status">
+        <a
+          href={paths.login()}
+          onClick={(event) => {
+            if (saveActiveDraft()) {
+              setError(null)
+              return
+            }
+            event.preventDefault()
+            setError('작성 중인 구성을 임시 보관하지 못했습니다. 부품 용량·수량과 브라우저 저장소 설정을 확인한 뒤 다시 시도해 주세요.')
+          }}
+        >
+          로그인
+        </a>
+        {error !== null && <span role="alert" className="error">{error}</span>}
+      </div>
     )
   }
 

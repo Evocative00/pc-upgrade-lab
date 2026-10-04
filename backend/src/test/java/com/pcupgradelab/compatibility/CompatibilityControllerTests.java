@@ -33,6 +33,7 @@ import tools.jackson.databind.json.JsonMapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.nullValue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -66,7 +67,7 @@ class CompatibilityControllerTests {
         try (var connection = jdbc.getDataSource().getConnection()) {
             assertThat(connection.getMetaData().getURL()).startsWith("jdbc:h2:mem:compatibility-api-test");
         }
-        for (var batch : CatalogSeedBatch.values()) seeds.seed(batch);
+        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100 && batch != CatalogSeedBatch.EXPAND_300) seeds.seed(batch);
         memorySeeds.seed();
         supportSeeds.seed();
         mvc = MockMvcBuilders.webAppContextSetup(context).build();
@@ -79,6 +80,37 @@ class CompatibilityControllerTests {
     @AfterEach
     void signOut() {
         RequestContextHolder.resetRequestAttributes();
+    }
+
+    @Test
+    void guestsCanBrowseCatalogAndCheckCompatibilityButCannotReadOrSavePersonalPcs() throws Exception {
+        // Remove the direct-service fixture login so this test also starts without a logged-in context.
+        RequestContextHolder.resetRequestAttributes();
+        String cpu = id("Ryzen 5 5600X"), board = id("B550-A PRO");
+
+        mvc.perform(get("/api/catalog/products").param("size", "1"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.totalElements").value(61))
+                .andExpect(result -> assertThat(result.getRequest().getSession(false)).isNull());
+        mvc.perform(get("/api/catalog/products/{id}", cpu))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.product.id").value(cpu))
+                .andExpect(result -> assertThat(result.getRequest().getSession(false)).isNull());
+
+        var candidate = new CompatibilityDtos.Request(cpu, board,
+                List.of(new CompatibilityDtos.RamInput(
+                        id("FURY Beast DDR4-3200 CL16 16GB (2x8GB)"), 2)), null, null, null);
+        mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(candidate)))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.scope").value("CPU_MOTHERBOARD_RAM_V1"))
+                .andExpect(result -> assertThat(result.getRequest().getSession(false)).isNull());
+
+        mvc.perform(get("/api/pcs"))
+                .andExpect(status().isUnauthorized()).andExpect(jsonPath("$.code").value("UNAUTHORIZED"));
+        var pc = new PcDtos.Request("Guest candidate", List.of(new PartInput(PartType.CPU,
+                "Guest CPU", null, 1, InputSource.MANUAL, cpu, MatchStatus.MATCHED, Map.of())));
+        mvc.perform(post("/api/pcs").contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(pc)))
+                .andExpect(status().isUnauthorized()).andExpect(jsonPath("$.code").value("UNAUTHORIZED"));
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM pc_configuration", Long.class)).isZero();
     }
 
     @Test

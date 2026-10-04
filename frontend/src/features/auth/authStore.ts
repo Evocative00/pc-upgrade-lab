@@ -32,12 +32,10 @@ export function markSignedOut() {
 }
 
 export async function logout() {
-  try {
-    await authClient.logout()
-  } finally {
-    // 비회원 초안(draftBridge)은 지우지 않는다.
-    setState({ status: 'signedOut' })
-  }
+  // 실패하면 서버 세션이 남아 있을 수 있으므로 현재 회원 상태를 유지한다.
+  await authClient.logout()
+  // 비회원 초안(draftBridge)은 지우지 않는다.
+  setState({ status: 'signedOut' })
 }
 
 function subscribe(listener: () => void) {

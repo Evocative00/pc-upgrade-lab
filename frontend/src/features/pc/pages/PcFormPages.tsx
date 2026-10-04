@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { navigate, paths } from '../../../lib/router.ts'
-import { clearDraftFor, loadDraft, saveDraft } from '../../auth/draftBridge.ts'
+import { clearDraftFor, clearSavedDraftFor, loadDraft, saveDraft } from '../../auth/draftBridge.ts'
 import { PcForm } from '../components/PcForm.tsx'
 import { pcRepository } from '../pcApi.ts'
 import { PcApiError } from '../pcRepository.ts'
@@ -73,6 +73,7 @@ export function PcNewPage() {
           <h1>새 PC 등록</h1>
         </div>
       </div>
+      <p className="muted">로그인 없이 PC 구성을 작성할 수 있습니다. 계정에 저장할 때 로그인이 필요합니다.</p>
       {draft !== null && (
         <RestoredDraftNotice
           onReset={() => {
@@ -85,11 +86,11 @@ export function PcNewPage() {
       <PcForm
         key={formKey}
         initial={draft ?? { name: '', parts: [] }}
-        submitLabel="저장"
+        submitLabel="계정에 저장"
         onCancel={() => navigate(paths.list())}
         onSubmit={(request) => saveOrAskLogin(request, null, async () => {
           const pc = await pcRepository.create(request)
-          clearDraftFor(null)
+          clearSavedDraftFor(null, request)
           // 서버 저장은 계속될 수 있지만, 이미 떠난 화면의 응답으로 현재 화면을 바꾸지 않는다.
           if (mounted.current) navigate(paths.detail(pc.id))
         })}
@@ -158,11 +159,12 @@ export function PcEditPage({ id }: { id: number }) {
       <PcForm
         key={formKey}
         initial={draft ?? pc}
+        pcId={pc.id}
         submitLabel="저장"
         onCancel={() => navigate(paths.detail(pc.id))}
         onSubmit={(request) => saveOrAskLogin(request, pc.id, async () => {
           await pcRepository.update(pc.id, request)
-          clearDraftFor(pc.id)
+          clearSavedDraftFor(pc.id, request)
           if (mounted.current) navigate(paths.detail(pc.id))
         })}
       />

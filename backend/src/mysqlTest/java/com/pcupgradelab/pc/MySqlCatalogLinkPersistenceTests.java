@@ -25,7 +25,7 @@ import tools.jackson.databind.json.JsonMapper;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * mysqlTest 전용 검사. V6까지 적용한 로컬 MySQL과 CPU/보드/RAM/GPU/모니터 초기 자료가 필요하다.
+ * mysqlTest 전용 검사. V10까지 적용한 로컬 MySQL과 CPU/보드/RAM/GPU/모니터 초기 자료가 필요하다.
  * 실제 PcService로 저장·수정한 뒤 연결 풀과 Spring 컨텍스트를 닫고 새 컨텍스트에서 재조회한다.
  * 카탈로그는 읽기만 하며 이번 검사에서 만든 PC 한 건만 정리한다. HTTP·브라우저 검사는 별도다.
  */

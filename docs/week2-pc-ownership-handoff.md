@@ -29,11 +29,11 @@
 
 1. [연결 규격](week2-auth-pc-contract.md) 1~6 구현: Spring Security, Google OAuth2, `users`/`social_accounts`(V11 + FK), `/api/auth/me`·`logout`·`providers`, 401 JSON, CSRF, Vite 프록시
 2. 실제 Google 계정 A/B로 아래 완료 기준 확인 → 이슈 #18 체크
-3. 재훈 초안 기능이 나오면 `frontend/src/features/auth/draftBridge.ts`의 `saveDraft`/`loadDraft`/`clearDraft`/`clearDraftFor`만 교체
+3. 재훈 초안 기능이 나오면 `frontend/src/features/auth/draftBridge.ts`의 보관·복구·삭제 구현을 교체한다. 로그인 직전 최신 입력 보관(`registerActiveDraft`/`saveActiveDraft`)과 성공한 요청의 초안만 삭제하는 규칙(`clearSavedDraftFor`)을 유지한다.
 4. 재훈 삭제 확인 모달이 나오면 `PcDetailPage.tsx`의 `DeletePcButton`(지금은 `window.confirm`)을 교체
 5. 실제 로그인이 연결되면 개발용 `X-Dev-User-Id`(백엔드 `SessionCurrentUser`, 프런트 `vite.config.ts`의 `DEV_USER_ID`)를 유지할지 결정
 6. FK 추가 후 `Verify-MySql.ps1`의 검증용 회원 ID(무작위)가 FK에 걸리므로 검증용 `users` 행을 만들도록 `src/mysqlTest`를 수정
-7. 기존 local-dev 데이터 처리 방법을 상준과 결정 (지금은 숨김 상태)
+7. 기존 local-dev 데이터는 `user_id = NULL`로 보존하고 회원 목록에서 숨김(상준 확정, 2026-10-04). 필요 시 실제 계정과 소유자를 확인한 뒤 별도 이관하며, 첫 로그인 회원에게 자동 귀속하지 않는다.
 
 ## 완료 기준 (A/B 두 계정)
 
@@ -68,3 +68,19 @@ $env:DEV_USER_ID = '1'; npm run dev
 | `npm test` / `npm run lint` / `npm run build` | 통과 |
 | 브라우저: 로그인 안내 → 취소 화면 → 작성 화면 초안 복구 | 확인 (백엔드 없이) |
 | `Verify-MySql.ps1` (실제 MySQL에 V10 적용) | 미실행 — DB 비밀번호가 필요해 각자 PC에서 실행 |
+
+## 최신 dev 통합 검증 (2026-10-04)
+
+300종 카탈로그가 반영된 dev와 합쳐 검증했다. 비회원은 브라우저에서 PC를 구성하고 부품·호환 검사를 이용하며, 계정에 저장할 때만 로그인한다. 실제 SNS 인증 연결과 업그레이드 추천 화면은 각각의 후속 작업 범위다.
+
+| 검사 | 결과 |
+| --- | --- |
+| 백엔드 전체 H2 테스트 | 229개 통과. 카탈로그 확장 보존 테스트의 로그인 설정을 보완하고 비회원 접근 경계 테스트 추가 |
+| 프런트 테스트 / lint / build | 58개 통과 / 통과 / 통과 |
+| 로그아웃·최신 초안 회귀 | 실패 시 회원·현재 화면 유지, 로그인 직전 최신 입력 보관, 비유한 용량 거절, 늦은 저장 성공 시 다른 초안 보존 |
+| 실제 MySQL 8.4.11 V9→V10 | 임시 독립 DB에서 기존 PC·부품·카탈로그·가격 보존, 회원별 중복 이름 제약, FK 및 재실행 검증 통과 |
+| 실제 MySQL `mysqlTest` | 2개 통과. PC 및 카탈로그 연결 저장·수정·컨텍스트 재시작 후 재조회 확인 |
+| 실제 서버 `Verify-Catalog300.ps1` | 300종 및 CPU 메모리 70·보드 70·CPU 연결 1,638·variant 1,807·미검증 32행 확인 |
+| 실제 HTTP PC API | 비회원 401, 회원 간 접근 404, 중복 409, 소유자 삭제 204 확인 |
+
+프런트 이벤트·라우트 회귀는 Node에서 실제 컴포넌트 소스를 실행한 검사이며 브라우저 E2E 또는 실제 SNS 로그인 검증은 아니다. 실제 MySQL 검증용 PC·부품은 정리했고 사용자 로컬 DB는 변경하지 않았다.

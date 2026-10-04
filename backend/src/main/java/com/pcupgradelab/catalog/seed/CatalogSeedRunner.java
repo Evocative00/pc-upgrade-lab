@@ -23,6 +23,8 @@ public class CatalogSeedRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        // 확장은 전용 runner가 제원·호환 자료를 한 트랜잭션으로 함께 적재한다.
+        if (batch == CatalogSeedBatch.EXPAND_100 || batch == CatalogSeedBatch.EXPAND_300) return;
         // 별도 서비스의 트랜잭션 커밋까지 성공한 뒤에만 완료 로그를 남긴다.
         var result = service.seed(batch);
         log.info("Catalog seed {} committed: created={}, skipped={}, checked={}",
