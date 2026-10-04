@@ -126,7 +126,7 @@ class CatalogExpansionServiceTests {
         assertThat(result.boardSupport().extended()).isZero();
         assertThat(result.boardSupport().skipped()).isEqualTo(41);
         memory.seed(); boards.seed();
-        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100) products.seed(batch);
+        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100 && batch != CatalogSeedBatch.EXPAND_300) products.seed(batch);
         assertThat(snapshot()).isEqualTo(before);
         assertCounts();
     }
@@ -247,7 +247,7 @@ class CatalogExpansionServiceTests {
     }
 
     private void baseline() {
-        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100) products.seed(batch);
+        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100 && batch != CatalogSeedBatch.EXPAND_300) products.seed(batch);
         memory.seed(); boards.seed();
     }
     private CompatibilityDtos.Result checkKnown(String cpu,String board,String ram,int modules) {

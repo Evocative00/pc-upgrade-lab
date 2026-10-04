@@ -21,6 +21,7 @@ public class MotherboardCpuSeedLoader {
     public static final String REVISION = "b6fc3a559b871106ba89d9d8b8ad4beeb886a799";
     public static final String SEED_NAME = "motherboard-cpu-v1";
     public static final String EXPANSION = "motherboard-cpu-expand100";
+    public static final String EXPANSION_300 = "motherboard-cpu-expand300";
     private final JsonMapper mapper = JsonMapper.builder()
             .enable(DeserializationFeature.FAIL_ON_READING_DUP_TREE_KEY)
             .enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS)
@@ -34,18 +35,25 @@ public class MotherboardCpuSeedLoader {
     }
 
     public Manifest load(String batch) {
-        expansion(batch);
+        expectedCounts(batch);
         try (var input = new ClassPathResource("catalog/enrichment/" + batch + ".json").getInputStream()) {
-            return read(input.readAllBytes());
+            return read(input.readAllBytes(), batch);
         } catch (IOException ex) { throw new IllegalStateException("Cannot read motherboard CPU enrichment resource", ex); }
     }
 
     Manifest read(byte[] data) {
+        return read(data, null);
+    }
+
+    private Manifest read(byte[] data, String requestedBatch) {
         try {
             var manifest = mapper.treeToValue(mapper.readTree(data), Manifest.class);
-            boolean expanded = expansion(manifest.seedName());
-            if (manifest.cpus() == null || manifest.cpus().size() != (expanded ? 37 : 12)
-                    || manifest.items() == null || manifest.items().size() != (expanded ? 41 : 16)) {
+            if (requestedBatch != null && !requestedBatch.equals(manifest.seedName())) {
+                throw new IllegalArgumentException("motherboard CPU seed name differs from the requested resource");
+            }
+            var counts = expectedCounts(manifest.seedName());
+            if (manifest.cpus() == null || manifest.cpus().size() != counts.cpus()
+                    || manifest.items() == null || manifest.items().size() != counts.boards()) {
                 throw new IllegalArgumentException("Unexpected CPU identity or board profile count for " + manifest.seedName());
             }
             var cpuIds = new HashSet<String>();
@@ -64,7 +72,7 @@ public class MotherboardCpuSeedLoader {
                 if (!expected.equals(actual)) throw new IllegalArgumentException("each board must account for every current CPU of its socket");
                 pairs += actual.size();
             }
-            if (pairs != (expanded ? 505 : 64)) throw new IllegalArgumentException("Unexpected same-socket board/CPU pair count");
+            if (pairs != counts.pairs()) throw new IllegalArgumentException("Unexpected same-socket board/CPU pair count");
             return manifest;
         } catch (RuntimeException ex) { throw new IllegalStateException("Invalid motherboard CPU enrichment: " + ex.getMessage(), ex); }
     }
@@ -76,11 +84,14 @@ public class MotherboardCpuSeedLoader {
         }
     }
 
-    private static boolean expansion(String batch) {
-        if (SEED_NAME.equals(batch)) return false;
-        if (EXPANSION.equals(batch)) return true;
+    private static Counts expectedCounts(String batch) {
+        if (SEED_NAME.equals(batch)) return new Counts(12, 16, 64);
+        if (EXPANSION.equals(batch)) return new Counts(37, 41, 505);
+        if (EXPANSION_300.equals(batch)) return new Counts(70, 70, 1638);
         throw new IllegalArgumentException("Unknown motherboard CPU seed batch: " + batch);
     }
+
+    private record Counts(int cpus, int boards, int pairs) { }
 
     public record Identity(String externalId, String manufacturer, String modelName, String partNumber, String socketCode) {
         public Identity {
@@ -145,7 +156,7 @@ public class MotherboardCpuSeedLoader {
 
         @SuppressWarnings("unchecked")
         public CatalogSourceInput source(String batch) {
-            expansion(batch);
+            expectedCounts(batch);
             return new CatalogSourceInput(CatalogSourceName.MANUFACTURER, null, batch, sourceUrl,
                     Map.of("payloadKind", "CURATED_SUPPORT_EXTRACT", "scope", "CURRENT_CATALOG_SUBSET",
                             "listComplete", false, "board", JsonMapper.builder().build().convertValue(board, Map.class),

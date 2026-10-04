@@ -1,6 +1,7 @@
 package com.pcupgradelab.catalog.seed;
 
 import com.pcupgradelab.catalog.memory.CpuMemorySeedLoader;
+import com.pcupgradelab.catalog.support.MotherboardCpuSeedLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,13 +24,15 @@ public class CatalogExpansionRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        if (batch != CatalogSeedBatch.EXPAND_100) return;
-        var result = service.seed();
+        if (batch != CatalogSeedBatch.EXPAND_100 && batch != CatalogSeedBatch.EXPAND_300) return;
+        var result = batch == CatalogSeedBatch.EXPAND_300 ? service.seed300() : service.seed();
         log.info("Catalog expansion {} committed: created={}, skipped={}, checked={}", batch.resourceName(),
                 result.products().created(), result.products().skipped(), result.products().items().size());
-        log.info("CPU memory support {} committed: created={}, skipped={}, checked={}", CpuMemorySeedLoader.EXPANSION,
+        String memoryBatch = batch == CatalogSeedBatch.EXPAND_300 ? CpuMemorySeedLoader.EXPANSION_300 : CpuMemorySeedLoader.EXPANSION;
+        log.info("CPU memory support {} committed: created={}, skipped={}, checked={}", memoryBatch,
                 result.cpuMemory().created(), result.cpuMemory().skipped(), result.cpuMemory().items().size());
-        log.info("Motherboard CPU support expansion committed: created={}, extended={}, skipped={}, checked={}, cpuPairs={}, variantRows={}",
+        String boardBatch = batch == CatalogSeedBatch.EXPAND_300 ? MotherboardCpuSeedLoader.EXPANSION_300 : MotherboardCpuSeedLoader.EXPANSION;
+        log.info("Motherboard CPU support {} committed: created={}, extended={}, skipped={}, checked={}, cpuPairs={}, variantRows={}", boardBatch,
                 result.boardSupport().created(), result.boardSupport().extended(), result.boardSupport().skipped(),
                 result.boardSupport().items().size(), result.boardSupport().cpuPairs(), result.boardSupport().variantRows());
         for (var item : result.products().items()) {

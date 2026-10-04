@@ -102,7 +102,7 @@ class CpuMemorySeedServiceTests {
         assertThat(repeated.skipped()).isEqualTo(12);
         assertThat(repeated.items().stream().map(CpuMemorySeedService.Item::productId).toList())
                 .containsExactlyElementsOf(first.items().stream().map(CpuMemorySeedService.Item::productId).toList());
-        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100) assertThat(originalSeeds.seed(batch).created()).isZero();
+        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100 && batch != CatalogSeedBatch.EXPAND_300) assertThat(originalSeeds.seed(batch).created()).isZero();
         for (int i = 0; i < allTables().size(); i++) assertThat(rows(allTables().get(i))).isEqualTo(before.get(i));
         assertCounts();
     }
@@ -192,7 +192,7 @@ class CpuMemorySeedServiceTests {
     }
 
     private void seedOriginalCatalog() {
-        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100) originalSeeds.seed(batch);
+        for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100 && batch != CatalogSeedBatch.EXPAND_300) originalSeeds.seed(batch);
         assertThat(count("catalog_product")).isEqualTo(61);
         assertThat(count("catalog_product_source")).isEqualTo(137);
         // 실제 검토 상태/가격을 먼저 변경한 후 보완 적재가 그대로 보존하는지 검사한다.

@@ -42,6 +42,16 @@ public class CpuMemorySeedService {
 
     @Transactional
     public Result seed(String batch) {
+        return apply(batch, true);
+    }
+
+    /** 이미 승인된 프로필의 존재와 전체 출처를 확인하며 누락을 복구하지 않는다. */
+    @Transactional(readOnly = true)
+    public Result verify(String batch) {
+        return apply(batch, false);
+    }
+
+    private Result apply(String batch, boolean allowCreate) {
         var expected = loader.load(batch);
         var items = new ArrayList<Item>();
         for (var input : expected) {
@@ -49,6 +59,7 @@ public class CpuMemorySeedService {
             var stored = memory.findByProductId(product.getId());
             boolean created = stored.isEmpty();
             if (created) {
+                if (!allowCreate) throw conflict(input.modelName(), "approved memory support is missing; verify the previous expansion first");
                 var source = sources.saveAndFlush(new CatalogProductSource(product, input.source(batch)));
                 memory.insert(product.getId(), source.getId(), input.support());
             } else {
@@ -56,7 +67,7 @@ public class CpuMemorySeedService {
             }
             items.add(new Item(product.getId(), product.getModelName(), created));
         }
-        entityManager.flush();
+        if (allowCreate) entityManager.flush();
         entityManager.clear();
         // JDBC 자료와 JPA 출처를 모두 DB에서 다시 읽어 커밋 전에 확인한다.
         for (int i = 0; i < items.size(); i++) {

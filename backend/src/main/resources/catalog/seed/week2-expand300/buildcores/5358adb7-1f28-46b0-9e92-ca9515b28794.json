@@ -1,0 +1,216 @@
+{
+  "opendb_id": "5358adb7-1f28-46b0-9e92-ca9515b28794",
+  "chipset_manufacturer": "NVIDIA",
+  "chipset": "GeForce GTX 1650 SUPER",
+  "core_base_clock": 1530,
+  "core_boost_clock": 1740,
+  "memory": 4,
+  "memory_type": "GDDR6",
+  "effective_memory_clock": 12000,
+  "memory_bus": 0,
+  "tdp": 100,
+  "interface": "PCIe x16",
+  "color": ["BLACK", "GREY"],
+  "lighting": [],
+  "length": 180,
+  "total_slot_width": 2,
+  "cooling": "2 Fans",
+  "power_connectors": {
+    "pcie_6_pin": 0,
+    "pcie_8_pin": 0,
+    "pcie_12VHPWR": 0,
+    "pcie_12V_2x6": 0
+  },
+  "video_outputs": {
+    "hdmi_2_1": 0,
+    "hdmi_2_0": 1,
+    "displayport_2_1": 0,
+    "displayport_2_1a": 0,
+    "displayport_1_4a": 1,
+    "dvi_d": 0,
+    "vga": 0
+  },
+  "metadata": {
+    "name": "MSI GeForce GTX 1650 SUPER 4GB GDDR6 Black / Silver",
+    "manufacturer": "MSI",
+    "part_numbers": [
+      "GeForce GTX 1650 Super Ventus XS OC",
+      "GTX 1650 Super Ventus XS OC",
+      "V809-3294R",
+      "GeForce GTX 1650 SUPER VENTUS XS OC"
+    ],
+    "series": "GeForce GTX 1650 SUPER",
+    "variant": "MSI"
+  },
+  "general_product_information": {},
+  "identifiers": {
+    "version": 1,
+    "identifiers": [
+      {
+        "type": "ean",
+        "value": "0824142202166",
+        "region": "all"
+      },
+      {
+        "type": "mpn",
+        "value": "GeForce GTX 1650 Super Ventus XS OC",
+        "region": "all"
+      },
+      {
+        "type": "mpn",
+        "value": "GeForce GTX 1650 SUPER VENTUS XS OC",
+        "region": "all"
+      },
+      {
+        "type": "mpn",
+        "value": "GTX 1650 Super Ventus XS OC",
+        "region": "all"
+      },
+      {
+        "type": "mpn",
+        "value": "V809-3294R",
+        "region": "all"
+      },
+      {
+        "type": "upc",
+        "value": "824142202166",
+        "region": "all"
+      }
+    ],
+    "retailer_listings": [
+      {
+        "source": "amazon",
+        "channel": "au",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "be",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "ca",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "de",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "es",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "fr",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "ie",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "it",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "jp",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "nl",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "pl",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "se",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "sg",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "uk",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "amazon",
+        "channel": "us",
+        "source_product_id": "B081Q6KKDS",
+        "pricing_enabled": true,
+        "verified": true
+      },
+      {
+        "source": "cenowarka",
+        "channel": "pl",
+        "source_product_id": "3381558",
+        "pricing_enabled": true,
+        "verified": false
+      },
+      {
+        "source": "geizhals",
+        "channel": "de",
+        "source_product_id": "3381558",
+        "pricing_enabled": true,
+        "verified": false
+      },
+      {
+        "source": "skinflint",
+        "channel": "uk",
+        "source_product_id": "3381558",
+        "pricing_enabled": true,
+        "verified": false
+      },
+      {
+        "source": "walmart",
+        "channel": "us",
+        "source_product_id": "706598152",
+        "pricing_enabled": true,
+        "verified": false
+      }
+    ]
+  }
+}

@@ -20,6 +20,7 @@ public class CpuMemorySeedLoader {
     public static final String REVISION = "b6fc3a559b871106ba89d9d8b8ad4beeb886a799";
     public static final String INITIAL = "cpu-memory-v1";
     public static final String EXPANSION = "cpu-memory-expand100";
+    public static final String EXPANSION_300 = "cpu-memory-expand300";
     private final JsonMapper mapper = JsonMapper.builder()
             .enable(DeserializationFeature.FAIL_ON_READING_DUP_TREE_KEY)
             .enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS)
@@ -35,16 +36,23 @@ public class CpuMemorySeedLoader {
     public List<Item> load(String batch) {
         expectedCount(batch);
         try (var input = new ClassPathResource("catalog/enrichment/" + batch + ".json").getInputStream()) {
-            return read(input.readAllBytes());
+            return read(input.readAllBytes(), batch);
         } catch (IOException ex) {
             throw new IllegalStateException("Cannot read CPU memory enrichment resource", ex);
         }
     }
 
     List<Item> read(byte[] data) {
+        return read(data, null);
+    }
+
+    private List<Item> read(byte[] data, String requestedBatch) {
         try {
             // Tree 파싱에서 중복 JSON 키도 거부한 다음 생성자/필드 검증을 적용한다.
             var manifest = mapper.treeToValue(mapper.readTree(data), Manifest.class);
+            if (requestedBatch != null && !requestedBatch.equals(manifest.seedName())) {
+                throw new IllegalArgumentException("CPU memory seed name differs from the requested resource");
+            }
             if (manifest.items() == null || manifest.items().size() != expectedCount(manifest.seedName())) {
                 throw new IllegalArgumentException("Unexpected CPU profile count for " + manifest.seedName());
             }
@@ -53,7 +61,7 @@ public class CpuMemorySeedLoader {
                 if (item == null || !seen.add(item.externalId())) {
                     throw new IllegalArgumentException("CPU external IDs must be distinct");
                 }
-                item.source();
+                item.source(manifest.seedName());
             }
             return List.copyOf(manifest.items());
         } catch (RuntimeException ex) {
@@ -66,6 +74,7 @@ public class CpuMemorySeedLoader {
     private static int expectedCount(String batch) {
         if (INITIAL.equals(batch)) return 12;
         if (EXPANSION.equals(batch)) return 25;
+        if (EXPANSION_300.equals(batch)) return 33;
         throw new IllegalArgumentException("Unknown CPU memory seed batch: " + batch);
     }
 
