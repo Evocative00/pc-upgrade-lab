@@ -12,7 +12,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 import javax.sql.DataSource;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,8 +22,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 웹 서버는 실행하지 않으므로 HTTP API·화면 전체 흐름이나 별도 bootRun 프로세스를 재시작하는 검사는 아니다.
  */
 class MySqlPersistenceTests {
-    // 실행마다 고유한 소유자 값을 사용해 기존 사용자 데이터와 이번 검증 데이터를 구분한다.
-    private final String ownerKey = "mysql-verification-" + UUID.randomUUID();
+    // 실행마다 고유한 회원 ID를 사용해 기존 사용자 데이터와 이번 검증 데이터를 구분한다.
+    // users 테이블 FK가 추가되면 검증용 회원 행을 먼저 만들어야 한다.
+    private final long userId = ThreadLocalRandom.current().nextLong(1_000_000_000_000L, Long.MAX_VALUE);
     private Long pcId;
 
     @Test
@@ -36,7 +37,7 @@ class MySqlPersistenceTests {
             var transactions = app.getBean(TransactionTemplate.class);
 
             pcId = transactions.execute(status -> repository.saveAndFlush(new PcConfiguration(
-                    ownerKey, "MySQL 검증용 PC", List.of(
+                    userId, "MySQL 검증용 PC", List.of(
                     part(PartType.RAM, "검증 RAM A", 17179869184L),
                     part(PartType.RAM, "검증 RAM B", 17179869184L),
                     part(PartType.STORAGE, "검증 SSD A", 1000000000000L),
@@ -45,9 +46,9 @@ class MySqlPersistenceTests {
 
             // 저장 트랜잭션이 반영된 뒤 별도 트랜잭션으로 조회·수정한다. 메모리 객체만 바꾼 검사가 되지 않게 한다.
             transactions.executeWithoutResult(status -> {
-                var pc = repository.findByIdAndOwnerKey(pcId, ownerKey).orElseThrow();
+                var pc = repository.findByIdAndUserId(pcId, userId).orElseThrow();
                 assertThat(pc.getParts()).hasSize(4);
-                assertThat(repository.findByIdAndOwnerKey(pcId, ownerKey + "-other")).isEmpty();
+                assertThat(repository.findByIdAndUserId(pcId, userId - 1)).isEmpty();
                 pc.update("MySQL 수정 확인", List.of(
                         part(PartType.RAM, "교체 RAM", 34359738368L),
                         part(PartType.STORAGE, "교체 SSD", 2000000000000L)));
@@ -59,7 +60,7 @@ class MySqlPersistenceTests {
             var repository = restarted.getBean(PcConfigurationRepository.class);
             var transactions = restarted.getBean(TransactionTemplate.class);
             transactions.executeWithoutResult(status -> {
-                var pc = repository.findByIdAndOwnerKey(pcId, ownerKey).orElseThrow();
+                var pc = repository.findByIdAndUserId(pcId, userId).orElseThrow();
                 assertThat(pc.getId()).isEqualTo(pcId);
                 assertThat(pc.getName()).isEqualTo("MySQL 수정 확인");
                 assertThat(pc.getVersion()).isGreaterThan(0);
@@ -80,18 +81,18 @@ class MySqlPersistenceTests {
         }
     }
 
-    // 검사가 끝나면 이번 pcId와 ownerKey에 해당하는 데이터만 지운다. 전체 테이블을 초기화하지 않는다.
+    // 검사가 끝나면 이번 pcId와 userId에 해당하는 데이터만 지운다. 전체 테이블을 초기화하지 않는다.
     @AfterEach
     void removeOnlyThisRunsRecord() {
         if (pcId == null) return;
         try (var app = application()) {
             var repository = app.getBean(PcConfigurationRepository.class);
             app.getBean(TransactionTemplate.class).executeWithoutResult(status ->
-                    repository.findByIdAndOwnerKey(pcId, ownerKey).ifPresent(repository::delete));
+                    repository.findByIdAndUserId(pcId, userId).ifPresent(repository::delete));
             var jdbc = app.getBean(JdbcTemplate.class);
             assertThat(jdbc.queryForObject(
-                    "SELECT COUNT(*) FROM pc_configuration WHERE id = ? AND owner_key = ?",
-                    Long.class, pcId, ownerKey)).isZero();
+                    "SELECT COUNT(*) FROM pc_configuration WHERE id = ? AND user_id = ?",
+                    Long.class, pcId, userId)).isZero();
             assertThat(jdbc.queryForObject(
                     "SELECT COUNT(*) FROM pc_part WHERE pc_id = ?", Long.class, pcId)).isZero();
         }

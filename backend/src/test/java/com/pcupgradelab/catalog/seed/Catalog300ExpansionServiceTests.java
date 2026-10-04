@@ -1,5 +1,6 @@
 package com.pcupgradelab.catalog.seed;
 
+import com.pcupgradelab.auth.SessionCurrentUser;
 import com.pcupgradelab.catalog.CatalogEntryService;
 import com.pcupgradelab.catalog.CatalogSpecification;
 import com.pcupgradelab.catalog.memory.CpuMemorySeedLoader;
@@ -23,12 +24,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.NestedExceptionUtils;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -69,10 +73,15 @@ class Catalog300ExpansionServiceTests {
         assertThat(TransactionSynchronizationManager.isActualTransactionActive()).isFalse();
         for (String table : TABLES) assertThat(count(table)).as(table).isZero();
         mvc = MockMvcBuilders.webAppContextSetup(web).build();
+        // PcService direct calls use a logged-in request; MockMvc requests remain anonymous.
+        var request = new MockHttpServletRequest();
+        request.getSession(true).setAttribute(SessionCurrentUser.SESSION_ATTRIBUTE, 1L);
+        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
     }
 
     @AfterEach
     void cleanOnlyDedicatedFixtures() {
+        RequestContextHolder.resetRequestAttributes();
         for (String table : TABLES) jdbc.update("DELETE FROM " + table);
     }
 

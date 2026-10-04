@@ -22,20 +22,20 @@ class PcPersistenceTests {
     @Test
     void preservesMultipleDevicesUnknownCatalogAndReplacesWithoutDuplication() {
         var id = transactions.execute(status -> repository.saveAndFlush(new PcConfiguration(
-                "test-owner", "처음 PC", List.of(part(PartType.RAM, "DIMM A"), part(PartType.RAM, "DIMM B"),
+                101L, "처음 PC", List.of(part(PartType.RAM, "DIMM A"), part(PartType.RAM, "DIMM B"),
                 part(PartType.STORAGE, "SSD A"), part(PartType.STORAGE, "SSD B")))).getId());
 
         transactions.executeWithoutResult(status -> {
-            var pc = repository.findByIdAndOwnerKey(id, "test-owner").orElseThrow();
+            var pc = repository.findByIdAndUserId(id, 101L).orElseThrow();
             assertThat(pc.getParts()).hasSize(4);
             assertThat(pc.getParts().getFirst().toInput().rawName()).isEqualTo("unmatched original name");
             assertThat(pc.getParts().getFirst().toInput().catalogProductId()).isNull();
             assertThat(pc.getParts().getFirst().toInput().specs().get("capacityBytes").toString()).isEqualTo("17179869184");
-            assertThat(repository.findByIdAndOwnerKey(id, "different-owner")).isEmpty();
+            assertThat(repository.findByIdAndUserId(id, 102L)).isEmpty();
             pc.update("바뀐 PC", List.of(part(PartType.RAM, "DIMM C"), part(PartType.STORAGE, "SSD C")));
         });
         transactions.executeWithoutResult(status -> {
-            var pc = repository.findByIdAndOwnerKey(id, "test-owner").orElseThrow();
+            var pc = repository.findByIdAndUserId(id, 101L).orElseThrow();
             assertThat(pc.getId()).isEqualTo(id);
             assertThat(pc.getName()).isEqualTo("바뀐 PC");
             assertThat(pc.getParts()).hasSize(2);
@@ -47,7 +47,7 @@ class PcPersistenceTests {
     // 잘못된 교체 요청은 기존 이름과 부품을 변경하기 전에 거절해야 한다.
     @Test
     void rejectsInvalidReplacementBeforeChangingSavedAggregate() {
-        var pc = new PcConfiguration("owner", "PC", List.of(part(PartType.RAM, "Original")));
+        var pc = new PcConfiguration(1L, "PC", List.of(part(PartType.RAM, "Original")));
         var invalid = new PartInput(PartType.RAM, "Bad", null, 0, InputSource.MANUAL, null, MatchStatus.UNMATCHED, Map.of());
         assertThatThrownBy(() -> pc.update("New name", List.of(invalid))).isInstanceOf(IllegalArgumentException.class);
         assertThat(pc.getName()).isEqualTo("PC");

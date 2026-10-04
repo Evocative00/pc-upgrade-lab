@@ -34,44 +34,39 @@ PC 요청: `{ "name": "내 PC", "parts": [...] }`. `name`은 공백만 사용할
 
 자동 검출 문자열은 카탈로그의 제조사·정확한 판매 모델과 다를 수 있다. GPU 칩셋명만으로 제조사별 카드 모델을 확정하지 않는다. 유사 모델은 향후 후보로 제시하고 확인 전에는 UNMATCHED로 저장한다.
 
-## 문경민: PC API 구현 대상 (이 변경에는 구현하지 않음)
+## PC API (구현됨, 2주차 회원별 소유권 적용)
 
-| API | 요청 / 응답 |
-| --- | --- |
-| POST `/api/pcs` | PC 요청 → 201, PC 상세, Location 헤더 |
-| GET `/api/pcs?page=0&size=20` | 200, `{items:[{id,name,createdAt,updatedAt}],page,size,totalElements,totalPages}`. size 1~100 |
-| GET `/api/pcs/{id}` | 200, `{id,name,parts,createdAt,updatedAt}` |
-| PUT `/api/pcs/{id}` | PC 요청 → 200, 변경 후 PC 상세 |
+모든 요청은 로그인 회원의 PC만 다룬다. 소유자는 서버가 로그인 정보로 정하며 요청 본문의 userId는 받지 않는다.
+로그인 연결 규격은 [인증 ↔ PC 연결 규격](week2-auth-pc-contract.md)을 따른다.
+
+| API | 성공 | 실패 |
+| --- | --- | --- |
+| POST `/api/pcs` | 201, PC 상세, Location 헤더 | 400, 401, 409 |
+| GET `/api/pcs?page=0&size=20` | 200, `{items:[{id,name,createdAt,updatedAt}],page,size,totalElements,totalPages}`. size 1~100 | 400, 401 |
+| GET `/api/pcs/{id}` | 200, `{id,name,parts,createdAt,updatedAt}` | 401, 404 |
+| PUT `/api/pcs/{id}` | 200, 변경 후 PC 상세 | 400, 401, 404, 409 |
+| DELETE `/api/pcs/{id}` | 204 (부품 행 함께 삭제) | 401, 404 |
 
 상세 `parts`는 위 부품 규격 그대로다. DB 내부 부품 행 ID는 이번 공통 응답에서 생략한다. 날짜는 ISO 8601 UTC 문자열. 목록 정렬은 `updatedAt DESC, id DESC`다.
 
 페이지 번호는 0 이상이며, JPA의 조회 시작 위치 제한에 따라 `page × size`가 2147483647 이하여야 한다.
 범위를 초과하면 `400 INVALID_INPUT`을 반환한다. 허용 범위 내에서 데이터가 없는 페이지는 200과 빈 `items`를 반환한다.
 
-요청 DTO의 `parts`에 `@NotEmpty @Size(max=64) List<@Valid @NotNull PartInput>`을 사용한다. `name`에는 `@NotBlank @Size(max=100)`을 적용한다. 컨트롤러에서 `@Valid`를 사용한다. 엔티티를 직접 JSON으로 반환하지 않는다.
+요청 DTO의 `parts`에 `@NotEmpty @Size(max=64) List<@Valid @NotNull PartInput>`을 사용한다. `name`에는 `@NotBlank @Size(max=100)`을 적용한다. 엔티티를 직접 JSON으로 반환하지 않는다.
 
-Repository 사용 예:
+| 코드 | 상태 | 의미 |
+| --- | --- | --- |
+| `UNAUTHORIZED` | 401 | 로그인이 필요하거나 세션이 끝났다. 화면은 개인 목록을 비우고 로그인 안내로 이동한다. |
+| `PC_NOT_FOUND` | 404 | 없는 PC이거나 **다른 회원의 PC**다. 다른 회원 PC의 존재 여부를 알려 주지 않는다. |
+| `PC_NAME_DUPLICATE` | 409 | 같은 회원 안에 같은 이름의 PC가 있다. 비교 기준은 앞뒤 공백 제거 + 소문자. 다른 회원의 같은 이름은 허용한다. |
+| `CONCURRENT_MODIFICATION` | 409 | 다른 요청이 먼저 수정했다. |
+| `INVALID_PART_ID` | 400 | `catalogProductId`가 카탈로그에 없다. |
+| `PART_CATEGORY_MISMATCH` | 400 | 부품 `type`과 연결한 카탈로그 제품의 종류가 다르다. |
 
-```java
-// 아래는 서비스 구현 예시. 실제 Controller/Service/DTO는 문경민 담당.
-@Transactional
-public PcDetail update(Long id, PcRequest request) {
-    String ownerKey = "local-dev"; // 로컬 전용 개발 단계. 실제 인증 주체로 교체 필요.
-    PcConfiguration pc = repository.findByIdAndOwnerKey(id, ownerKey)
-        .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "PC_NOT_FOUND", "PC를 찾을 수 없습니다."));
-    pc.update(request.name(), request.parts());
-    repository.flush();
-    // pc.getParts().stream().map(PcPart::toInput).toList()를 상세 DTO에 넣는다.
-    return toDetail(pc);
-}
-```
-
-- `PcConfiguration(ownerKey, name, parts)`로 생성하고 `save`한다.
-- 상세는 `findByIdAndOwnerKey`로 가져온다. 부품까지 조회한다.
-- 목록은 `findAllByOwnerKey(ownerKey, pageable)`을 사용하고 요약 DTO만 반환한다.
-- `update`가 기존 자식 목록을 교체하며 `orphanRemoval`이 이전 행을 제거한다. 부품별 Repository를 따로 만들 필요가 없다.
-- ownerKey는 서버가 정한다. 클라이언트 요청에서 받지 않는다. `local-dev`는 로그인 구현 전 로컬 검증용이며 계정별 접근 제어가 아니다.
-- 엔티티에 `@Version`이 있다. 동시 수정 충돌은 409로 변환한다. 실제 계정 인증·계정당 5대 제한은 후속 단계다.
+- 소유자: `pc_configuration.user_id`(V10). 로그인 도입 전 `local-dev` 데이터는 `user_id = NULL`로 남아 어느 회원에게도 보이지 않는다. `owner_key`는 사용하지 않는다.
+- 이름 중복은 서버 검사와 DB 제약 `uk_pc_configuration_user_name (user_id, name_normalized)`로 막는다. 수정 시 자기 PC는 제외한다. 동시에 같은 이름이 저장돼도 DB 제약 위반을 409로 바꾼다.
+- 카탈로그에 없는 수집 결과는 `catalogProductId = null`, `matchStatus = UNMATCHED`로 원문(`rawName`)과 함께 보존한다. 임의의 모델로 확정하지 않는다.
+- `update`가 기존 자식 목록을 교체하며 `orphanRemoval`이 이전 행을 제거한다. 엔티티의 `@Version` 충돌은 409로 변환한다.
 
 ## 공통 오류
 

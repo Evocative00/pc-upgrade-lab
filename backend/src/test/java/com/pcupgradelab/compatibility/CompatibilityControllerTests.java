@@ -10,12 +10,15 @@ import java.util.ArrayList;
 import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
+import com.pcupgradelab.auth.SessionCurrentUser;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -23,11 +26,14 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.nullValue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -65,6 +71,46 @@ class CompatibilityControllerTests {
         memorySeeds.seed();
         supportSeeds.seed();
         mvc = MockMvcBuilders.webAppContextSetup(context).build();
+        // PcService를 HTTP 요청 없이 직접 호출하므로 로그인한 회원의 요청을 만들어 둔다.
+        var request = new MockHttpServletRequest();
+        request.getSession(true).setAttribute(SessionCurrentUser.SESSION_ATTRIBUTE, 1L);
+        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+    }
+
+    @AfterEach
+    void signOut() {
+        RequestContextHolder.resetRequestAttributes();
+    }
+
+    @Test
+    void guestsCanBrowseCatalogAndCheckCompatibilityButCannotReadOrSavePersonalPcs() throws Exception {
+        // Remove the direct-service fixture login so this test also starts without a logged-in context.
+        RequestContextHolder.resetRequestAttributes();
+        String cpu = id("Ryzen 5 5600X"), board = id("B550-A PRO");
+
+        mvc.perform(get("/api/catalog/products").param("size", "1"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.totalElements").value(61))
+                .andExpect(result -> assertThat(result.getRequest().getSession(false)).isNull());
+        mvc.perform(get("/api/catalog/products/{id}", cpu))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.product.id").value(cpu))
+                .andExpect(result -> assertThat(result.getRequest().getSession(false)).isNull());
+
+        var candidate = new CompatibilityDtos.Request(cpu, board,
+                List.of(new CompatibilityDtos.RamInput(
+                        id("FURY Beast DDR4-3200 CL16 16GB (2x8GB)"), 2)), null, null, null);
+        mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(candidate)))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.scope").value("CPU_MOTHERBOARD_RAM_V1"))
+                .andExpect(result -> assertThat(result.getRequest().getSession(false)).isNull());
+
+        mvc.perform(get("/api/pcs"))
+                .andExpect(status().isUnauthorized()).andExpect(jsonPath("$.code").value("UNAUTHORIZED"));
+        var pc = new PcDtos.Request("Guest candidate", List.of(new PartInput(PartType.CPU,
+                "Guest CPU", null, 1, InputSource.MANUAL, cpu, MatchStatus.MATCHED, Map.of())));
+        mvc.perform(post("/api/pcs").contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(pc)))
+                .andExpect(status().isUnauthorized()).andExpect(jsonPath("$.code").value("UNAUTHORIZED"));
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM pc_configuration", Long.class)).isZero();
     }
 
     @Test

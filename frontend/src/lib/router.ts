@@ -6,20 +6,41 @@ export type Route =
   | { name: 'new' }
   | { name: 'detail'; id: number }
   | { name: 'edit'; id: number }
+  | { name: 'login' }
+  | { name: 'loginSuccess' }
+  | { name: 'loginFailure'; reason: LoginFailureReason }
   | { name: 'notFound' }
+
+// 로그인 실패 화면 구분. 서버가 모르는 값을 보내도 일반 실패로 안내한다.
+export type LoginFailureReason = 'cancelled' | 'error'
 
 export const paths = {
   list: () => '#/pcs',
   new: () => '#/pcs/new',
   detail: (id: number) => `#/pcs/${id}`,
   edit: (id: number) => `#/pcs/${id}/edit`,
+  // 로그인 성공·실패 경로는 인증 서버의 리다이렉트 주소와 같아야 한다. (docs/week2-auth-pc-contract.md)
+  login: () => '#/login',
+  loginSuccess: () => '#/login/success',
+  loginFailure: (reason: LoginFailureReason) => `#/login/failure?reason=${reason}`,
 }
 
 export function parseRoute(hash: string): Route {
-  const segments = hash.replace(/^#\/?/, '').split('/').filter(Boolean)
+  const [pathPart, query = ''] = hash.replace(/^#\/?/, '').split('?', 2)
+  const segments = pathPart.split('/').filter(Boolean)
 
   if (segments.length === 0) {
     return { name: 'list' }
+  }
+
+  if (segments[0] === 'login') {
+    if (segments.length === 1) return { name: 'login' }
+    if (segments.length === 2 && segments[1] === 'success') return { name: 'loginSuccess' }
+    if (segments.length === 2 && segments[1] === 'failure') {
+      const reason = new URLSearchParams(query).get('reason')
+      return { name: 'loginFailure', reason: reason === 'cancelled' ? 'cancelled' : 'error' }
+    }
+    return { name: 'notFound' }
   }
 
   if (segments[0] !== 'pcs') {

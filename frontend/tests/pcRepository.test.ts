@@ -162,3 +162,61 @@ test('응답 헤더 이후 본문 수신 중 중단도 시간 초과로 안내�
     return true
   })
 })
+
+test('삭제는 DELETE 204이며 저장·수정·삭제 요청에만 CSRF 헤더를 붙인다', async () => {
+  const calls: RequestInit[] = []
+  const previous = Object.getOwnPropertyDescriptor(globalThis, 'document')
+  Object.defineProperty(globalThis, 'document', {
+    value: { cookie: 'other=1; XSRF-TOKEN=abc%3D%3D' }, configurable: true,
+  })
+  try {
+    const responses = [json(detail), new Response(null, { status: 204 }), json(detail, 201)]
+    const repository = createHttpPcRepository(async (_url, init) => {
+      calls.push(init ?? {})
+      const next = responses.shift()
+      assert.ok(next)
+      return next
+    })
+    await repository.get(42)
+    assert.equal(await repository.delete(42), undefined)
+    await repository.create(input)
+  } finally {
+    if (previous) Object.defineProperty(globalThis, 'document', previous)
+    else Reflect.deleteProperty(globalThis, 'document')
+  }
+  assert.deepEqual(calls.map((init) => init.method), ['GET', 'DELETE', 'POST'])
+  assert.equal(new Headers(calls[0].headers).get('X-XSRF-TOKEN'), null)
+  assert.equal(new Headers(calls[1].headers).get('X-XSRF-TOKEN'), 'abc==')
+  assert.equal(new Headers(calls[1].headers).get('Content-Type'), null)
+  assert.equal(calls[1].body, undefined)
+  assert.equal(new Headers(calls[2].headers).get('X-XSRF-TOKEN'), 'abc==')
+})
+
+test('401은 로그인 필요 오류로 전달하고 화면의 로그인 상태 정리 함수를 호출한다', async () => {
+  let unauthorized = 0
+  const repository = createHttpPcRepository(async () => json({
+    code: 'UNAUTHORIZED', message: '로그인이 필요합니다.', errors: [],
+  }, 401), '/api/pcs', 10_000, () => { unauthorized += 1 })
+  await assert.rejects(repository.list(), (error: unknown) => {
+    assert.ok(error instanceof PcApiError)
+    assert.equal(error.status, 401)
+    assert.equal(error.code, 'UNAUTHORIZED')
+    return true
+  })
+  await assert.rejects(repository.delete(1))
+  assert.equal(unauthorized, 2)
+})
+
+test('같은 회원의 이름 중복과 삭제 대상 없음은 서버 코드 그대로 전달한다', async () => {
+  const duplicate = createHttpPcRepository(async () => json({
+    code: 'PC_NAME_DUPLICATE', message: '같은 이름의 PC가 이미 있습니다. 다른 이름을 입력해 주세요.', errors: [],
+  }, 409))
+  await assert.rejects(duplicate.create(input), (error: unknown) =>
+    error instanceof PcApiError && error.status === 409 && error.code === 'PC_NAME_DUPLICATE' &&
+    error.message.includes('다른 이름'))
+  const missing = createHttpPcRepository(async () => json({
+    code: 'PC_NOT_FOUND', message: 'PC를 찾을 수 없습니다.',
+  }, 404))
+  await assert.rejects(missing.delete(7), (error: unknown) =>
+    error instanceof PcApiError && error.status === 404 && error.code === 'PC_NOT_FOUND')
+})

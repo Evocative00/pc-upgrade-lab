@@ -1,5 +1,5 @@
 ﻿# 실제 MySQL 저장 검사를 선택 실행하는 Windows 도구. 일반 build와 달리 로컬 DB가 필요하다.
-# 현재는 V6까지의 테이블과 CPU/보드/RAM/GPU/모니터 초기 자료 등록을 마친 뒤 실행한다.
+# 현재 마이그레이션(V10까지)과 CPU/보드/RAM/GPU/모니터 초기 자료 등록을 마친 로컬 DB에서 실행한다.
 # 직접 입력·카탈로그 연결 PC의 저장, 수정, 컨텍스트 재시작 후 재조회를 검사한다.
 $ErrorActionPreference = 'Stop'
 if ($env:OS -ne 'Windows_NT') { throw 'Run this helper on Windows.' }
