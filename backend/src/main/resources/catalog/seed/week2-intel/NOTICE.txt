@@ -1,0 +1,23 @@
+Contains data from BuildCores OpenDB, made available under the Open Data Commons Attribution License (ODC-By) v1.0.
+Database: https://github.com/buildcores/buildcores-open-db
+Pinned source revision: b6fc3a559b871106ba89d9d8b8ad4beeb886a799
+License: https://opendatacommons.org/licenses/by/1-0/
+The complete upstream license is included in BUILDCORES-LICENSE.txt.
+
+The buildcores directory contains eight original JSON records from that revision.
+The manifest contains PC Upgrade Lab's normalized catalog fields and curated
+manufacturer specification extracts. These extracts are not copies of the
+manufacturer's full pages and are explicitly labeled CURATED_SPEC_EXTRACT.
+Official source URLs and retrieval times are included with every record.
+Normalized values may differ from the source records where manufacturer evidence
+was used, or remain null when not confirmed. No compatibility or price verification
+is implied. Manufacturer trademarks belong to their respective owners.
+
+When displaying or redistributing this dataset or material derived from it, retain
+the BuildCores attribution and license reference. A future public catalog UI must
+also expose appropriate attribution to its users.
+
+This batch adds four Intel CPUs and four B760 motherboards. CPU power fields use
+Intel PBP/MTP, and hybrid CPUs keep separate P/E clocks. Manufacturer evidence
+corrects the i7-14700F P-core boost and PRIME B760M-A memory capacity. Unverified
+aliases in raw records are not adopted. Existing batches and prices are preserved.

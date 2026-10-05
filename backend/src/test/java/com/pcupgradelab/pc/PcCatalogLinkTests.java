@@ -38,6 +38,7 @@ class PcCatalogLinkTests {
     private final JsonMapper mapper = JsonMapper.builder().build();
     private final Map<PartType, String> productIds = new EnumMap<>(PartType.class);
     private final List<Long> pcIds = new ArrayList<>();
+    private static final long USER_ID = 1L;
 
     @Autowired WebApplicationContext context;
     @Autowired CatalogProductService products;
@@ -50,7 +51,8 @@ class PcCatalogLinkTests {
         try (var connection = jdbc.getDataSource().getConnection()) {
             assertThat(connection.getMetaData().getURL()).startsWith("jdbc:h2:mem:pc-catalog-link-test");
         }
-        mvc = MockMvcBuilders.webAppContextSetup(context).build();
+        mvc = MockMvcBuilders.webAppContextSetup(context)
+                .defaultRequest(get("/").header("X-Dev-User-Id", String.valueOf(USER_ID))).build();
         for (var type : List.of(PartType.CPU, PartType.MOTHERBOARD, PartType.RAM, PartType.GPU, PartType.MONITOR)) {
             // ID와 종류 검사에 필요한 기본 정보만 생성한다. 제품과 미확정 가격 행은 함께 저장된다.
             productIds.put(type, products.create(new CatalogProductCreateRequest(
@@ -95,7 +97,7 @@ class PcCatalogLinkTests {
         mvc.perform(post("/api/pcs").contentType(MediaType.APPLICATION_JSON)
                         .content(request("저장되면 안 되는 PC", List.of(linked(PartType.RAM, "DIMM 1"), bad))))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.code").value("CATALOG_LINK_NOT_FOUND"));
+                .andExpect(jsonPath("$.code").value("INVALID_PART_ID"));
         assertNoPcRows();
     }
 
@@ -105,7 +107,7 @@ class PcCatalogLinkTests {
         mvc.perform(post("/api/pcs").contentType(MediaType.APPLICATION_JSON)
                         .content(request("저장되면 안 되는 PC", List.of(bad))))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.code").value("CATALOG_LINK_TYPE_MISMATCH"));
+                .andExpect(jsonPath("$.code").value("PART_CATEGORY_MISMATCH"));
         assertNoPcRows();
     }
 
@@ -166,7 +168,7 @@ class PcCatalogLinkTests {
     void anOldPlaceholderLinkCanBeReadAndRepairedByUnlinking() throws Exception {
         var legacy = withLink(linked(PartType.RAM, "DIMM 1"), "old-mock-id", MatchStatus.MATCHED);
         // 이전 단계에서 임시 ID로 저장한 PC를 재현한다. 신규 API 요청은 이런 ID를 허용하지 않는다.
-        long id = pcs.saveAndFlush(new PcConfiguration(PcService.DEFAULT_OWNER_KEY, "기존 PC", List.of(legacy))).getId();
+        long id = pcs.saveAndFlush(new PcConfiguration(USER_ID, "기존 PC", List.of(legacy))).getId();
         pcIds.add(id);
         assertParts(read(id), List.of(legacy));
         var fixed = List.of(withLink(legacy, null, MatchStatus.UNMATCHED));

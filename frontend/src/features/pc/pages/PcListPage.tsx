@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { paths } from '../../../lib/router.ts'
-import { pcRepository } from '../pcRepository.ts'
+import { authKey, useAuth } from '../../auth/authStore.ts'
+import { pcRepository } from '../pcApi.ts'
 import type { PcSummary } from '../types.ts'
 import { usePcQuery } from '../usePcQuery.ts'
 
@@ -101,7 +102,20 @@ function PcListResults({
   )
 }
 
+function LoginRequired() {
+  return (
+    <div className="empty">
+      <p>로그인하면 계정에 저장한 PC를 볼 수 있습니다.</p>
+      <p className="muted">PC 구성은 로그인 없이 시작하고, 저장할 때 로그인할 수 있습니다.</p>
+      <a className="button button--primary" href={paths.login()}>
+        로그인
+      </a>
+    </div>
+  )
+}
+
 export function PcListPage() {
+  const auth = useAuth()
   const [page, setPage] = useState(0)
   const [attempt, setAttempt] = useState(0)
 
@@ -114,13 +128,18 @@ export function PcListPage() {
         </a>
       </div>
 
-      {/* usePcQuery는 한 번만 조회하므로 페이지 이동·재시도 때 결과 영역을 새로 연다. */}
-      <PcListResults
-        key={`${page}:${attempt}`}
-        page={page}
-        onPageChange={setPage}
-        onRetry={() => setAttempt((current) => current + 1)}
-      />
+      {/* 로그아웃·세션 만료(401) 때는 이전 회원의 목록을 보여 주지 않는다. */}
+      {auth.status === 'loading' && <p className="muted">로그인 상태를 확인하는 중…</p>}
+      {auth.status === 'signedOut' && <LoginRequired />}
+      {/* usePcQuery는 한 번만 조회하므로 페이지 이동·재시도·회원 전환 때 결과 영역을 새로 연다. */}
+      {(auth.status === 'signedIn' || auth.status === 'unavailable') && (
+        <PcListResults
+          key={`${authKey(auth)}:${page}:${attempt}`}
+          page={page}
+          onPageChange={setPage}
+          onRetry={() => setAttempt((current) => current + 1)}
+        />
+      )}
     </>
   )
 }

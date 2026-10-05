@@ -1,4 +1,5 @@
-import { useId, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent } from 'react'
+import { registerActiveDraft } from '../../auth/draftBridge.ts'
 import { PcBuilder, type PickTarget } from '../../builder/PcBuilder.tsx'
 import { slotOfDraft } from '../../builder/buildSlots.ts'
 import { PcScanPanel } from '../../pc-scan/PcScanPanel.tsx'
@@ -14,12 +15,14 @@ import {
   validatePcRequest,
   withEmptyRows,
 } from '../partDraft.ts'
+import { PcApiError } from '../pcRepository.ts'
 import type { PartDraft, PcRequest } from '../types.ts'
 import { PartRow } from './PartRow.tsx'
 import { PartStatusLegend } from './PartStatusBadge.tsx'
 
 type Props = {
   initial: PcRequest
+  pcId?: number | null
   submitLabel: string
   onSubmit: (request: PcRequest) => Promise<void>
   onCancel: () => void
@@ -27,10 +30,24 @@ type Props = {
   visual?: boolean
 }
 
-export function PcForm({ initial, submitLabel, onSubmit, onCancel, visual = false }: Props) {
+export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, visual = false }: Props) {
   const nameId = useId()
+  const nameErrorId = useId()
+  const nameInputRef = useRef<HTMLInputElement>(null)
   const [name, setName] = useState(initial.name)
+  // 같은 회원 안의 이름 중복(409 PC_NAME_DUPLICATE)은 이름 입력란 바로 아래에 안내한다.
+  const [nameError, setNameError] = useState<string | null>(null)
+
+  // 저장 중 잠금이 풀린 뒤 이름 입력란으로 이동해 바로 고칠 수 있게 한다.
+  useEffect(() => {
+    if (nameError !== null) nameInputRef.current?.focus()
+  }, [nameError])
   const [drafts, setDrafts] = useState(() => withEmptyRows(initial.parts.map(toPersistedDraft)))
+  // 다음 클릭 전에 최신 값을 등록한다. 편집 초안은 기존 PC ID를 유지한다.
+  useLayoutEffect(() => registerActiveDraft(() => ({
+    request: { name, parts: toPartInputs(drafts) },
+    pcId,
+  })), [name, drafts, pcId])
   const [notice, setNotice] = useState<string | null>(null)
   const [errors, setErrors] = useState<string[]>([])
   const [saving, setSaving] = useState(false)
@@ -97,6 +114,7 @@ export function PcForm({ initial, submitLabel, onSubmit, onCancel, visual = fals
     const validationErrors = validatePcRequest(request.name, request.parts)
 
     setErrors(validationErrors)
+    setNameError(null)
 
     if (validationErrors.length > 0) {
       return
@@ -109,6 +127,10 @@ export function PcForm({ initial, submitLabel, onSubmit, onCancel, visual = fals
       await onSubmit(request)
     } catch (submitError) {
       // 저장에 실패해도 입력 내용은 그대로 둔다.
+      if (submitError instanceof PcApiError && submitError.code === 'PC_NAME_DUPLICATE') {
+        setNameError(submitError.message)
+        return
+      }
       setErrors([
         submitError instanceof Error
           ? submitError.message
@@ -189,14 +211,24 @@ export function PcForm({ initial, submitLabel, onSubmit, onCancel, visual = fals
           <label htmlFor={nameId}>PC 이름</label>
           <input
             id={nameId}
+            ref={nameInputRef}
             value={name}
             maxLength={100}
             placeholder="예: 집 데스크톱"
+            aria-invalid={nameError !== null}
+            aria-describedby={nameError !== null ? nameErrorId : undefined}
             onChange={(event) => {
-              if (!savingRef.current) setName(event.target.value)
+              if (savingRef.current) return
+              setName(event.target.value)
+              setNameError(null)
             }}
             required
           />
+          {nameError !== null && (
+            <p id={nameErrorId} role="alert" className="error">
+              {nameError}
+            </p>
+          )}
         </div>
 
         <PcScanPanel onApply={applyScan} />
@@ -207,8 +239,9 @@ export function PcForm({ initial, submitLabel, onSubmit, onCancel, visual = fals
         )}
 
         {visual ? (
-          <PcBuilder drafts={drafts} updateDrafts={updateDrafts} target={pickTarget} onTarget={setPickTarget}
-            parts={partsPanel} />
+          <PcBuilder drafts={drafts} updateDrafts={updateDrafts} target={pickTarget} onTarget={setPickTarget}>
+            {partsPanel}
+          </PcBuilder>
         ) : partsPanel}
 
         <div className="actions">

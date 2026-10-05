@@ -1,0 +1,806 @@
+{
+  "seedName": "cpu-memory-expand300",
+  "items": [
+    {
+      "externalId": "7a9c7440-6aca-4f8e-a6a1-9ae438789cd9",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 3 3100",
+      "partNumber": "100-100000284BOX",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": null,
+        "channelCount": null,
+        "capacityConditions": "This retrieved manufacturer page does not state a maximum capacity; no capacity is inferred from the upstream record, processor family or socket.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Manufacturer maximum standard rate. This retrieved page does not specify separate DIMM-population/rank rates; actual population, rank, motherboard and BIOS can lower the operating speed. XMP/EXPO speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-3-3100.html",
+      "retrievedAt": "2026-10-04T06:57:34.894123+00:00"
+    },
+    {
+      "externalId": "dd073712-0a1f-4e7f-a7e0-40f40aea600c",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 3 3300X",
+      "partNumber": "100-100000159BOX",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": null,
+        "channelCount": null,
+        "capacityConditions": "This retrieved manufacturer page does not state a maximum capacity; no capacity is inferred from the upstream record, processor family or socket.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Manufacturer maximum standard rate. This retrieved page does not specify separate DIMM-population/rank rates; actual population, rank, motherboard and BIOS can lower the operating speed. XMP/EXPO speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-3-3300x.html",
+      "retrievedAt": "2026-10-04T06:57:34.882264+00:00"
+    },
+    {
+      "externalId": "4b70d972-96c3-4813-b291-cce2c30eb149",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 4500",
+      "partNumber": "100-100000644BOX",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "2x1R DDR4-3200; 2x2R DDR4-3200; 4x1R DDR4-2933; 4x2R DDR4-2667. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-4000-series/amd-ryzen-5-4500.html",
+      "retrievedAt": "2026-10-04T06:57:34.827340+00:00"
+    },
+    {
+      "externalId": "1380a6eb-8357-4ce2-be1c-190fa045a108",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 4600G",
+      "partNumber": "100-100000147BOX",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "2x1R DDR4-3200; 2x2R DDR4-3200; 4x1R DDR4-2933; 4x2R DDR4-2667. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-4000-series/amd-ryzen-5-4600g.html",
+      "retrievedAt": "2026-10-04T06:57:34.841962+00:00"
+    },
+    {
+      "externalId": "7564da71-725e-4a56-9d79-d80377b7a92f",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 5600G",
+      "partNumber": "100-100000252BOX",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": null,
+        "channelCount": 2,
+        "capacityConditions": "This retrieved manufacturer page does not state a maximum capacity; no capacity is inferred from the upstream record, processor family or socket.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Manufacturer maximum standard rate. This retrieved page does not specify separate DIMM-population/rank rates; actual population, rank, motherboard and BIOS can lower the operating speed. XMP/EXPO speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-5-5600g.html",
+      "retrievedAt": "2026-10-04T06:57:34.840742+00:00"
+    },
+    {
+      "externalId": "ac833b07-53eb-4d59-8be5-bcd20ad26e79",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 8600G",
+      "partNumber": "100-100001237BOX",
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5200,
+            "dataRateConditions": "2x1R DDR5-5200; 2x2R DDR5-5200; 4x1R DDR5-3600; 4x2R DDR5-3600. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/8000-series/amd-ryzen-5-8600g.html",
+      "retrievedAt": "2026-10-04T06:57:43.179354+00:00"
+    },
+    {
+      "externalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 9600X",
+      "partNumber": "100-100001405WOF",
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "2x1R DDR5-5600; 2x2R DDR5-5600; 4x1R DDR5-3600; 4x2R DDR5-3600. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9600x.html",
+      "retrievedAt": "2026-10-04T06:57:43.171706+00:00"
+    },
+    {
+      "externalId": "43597450-8c66-4f59-9ef5-c347c0a45fd4",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 3800X",
+      "partNumber": "100-100000025BOX",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": null,
+        "channelCount": 2,
+        "capacityConditions": "This retrieved manufacturer page does not state a maximum capacity; no capacity is inferred from the upstream record, processor family or socket.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Manufacturer maximum standard rate. This retrieved page does not specify separate DIMM-population/rank rates; actual population, rank, motherboard and BIOS can lower the operating speed. XMP/EXPO speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-7-3800x.html",
+      "retrievedAt": "2026-10-04T06:57:34.922061+00:00"
+    },
+    {
+      "externalId": "8fc4b00d-bab9-40e6-b277-bc8d77bea153",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5700G",
+      "partNumber": "100-100000263BOX",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": null,
+        "channelCount": 2,
+        "capacityConditions": "This retrieved manufacturer page does not state a maximum capacity; no capacity is inferred from the upstream record, processor family or socket.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Manufacturer maximum standard rate. This retrieved page does not specify separate DIMM-population/rank rates; actual population, rank, motherboard and BIOS can lower the operating speed. XMP/EXPO speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700g.html",
+      "retrievedAt": "2026-10-04T06:57:34.821706+00:00"
+    },
+    {
+      "externalId": "fe3d12e9-87eb-4701-8579-5c29d61437c6",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 8700G",
+      "partNumber": null,
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5200,
+            "dataRateConditions": "2x1R DDR5-5200; 2x2R DDR5-5200; 4x1R DDR5-3600; 4x2R DDR5-3600. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/8000-series/amd-ryzen-7-8700g.html",
+      "retrievedAt": "2026-10-04T06:57:43.189964+00:00"
+    },
+    {
+      "externalId": "2c0ed4a5-939f-4902-bfeb-cb16c0890ef2",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 3950X",
+      "partNumber": "100-100000051WOF",
+      "socketCode": "AM4",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "2x1R DDR4-3200; 2x2R DDR4-3200; 4x1R DDR4-2933; 4x2R DDR4-2667. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-9-3950x.html",
+      "retrievedAt": "2026-10-04T06:57:34.952978+00:00"
+    },
+    {
+      "externalId": "2ab00ac9-d91e-4250-9297-2bdd6f617d41",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 7900",
+      "partNumber": null,
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5200,
+            "dataRateConditions": "2x1R DDR5-5200; 2x2R DDR5-5200; 4x1R DDR5-3600; 4x2R DDR5-3600. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7900.html",
+      "retrievedAt": "2026-10-04T06:57:43.214659+00:00"
+    },
+    {
+      "externalId": "eda463d1-d4b6-4f1a-96dd-0416efe84381",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 7900X",
+      "partNumber": "100-100000589WOF",
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5200,
+            "dataRateConditions": "2x1R DDR5-5200; 2x2R DDR5-5200; 4x1R DDR5-3600; 4x2R DDR5-3600. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7900x.html",
+      "retrievedAt": "2026-10-04T06:57:43.319464+00:00"
+    },
+    {
+      "externalId": "78196eaf-6ffa-4232-976b-c50e0680157e",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 7900X3D",
+      "partNumber": "100-100000909WOF",
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5200,
+            "dataRateConditions": "2x1R DDR5-5200; 2x2R DDR5-5200; 4x1R DDR5-3600; 4x2R DDR5-3600. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7900x3d.html",
+      "retrievedAt": "2026-10-04T06:57:43.292941+00:00"
+    },
+    {
+      "externalId": "63f23f26-d52c-4e3c-be6e-0d25163cff59",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 7950X",
+      "partNumber": "100-100000514WOF",
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5200,
+            "dataRateConditions": "2x1R DDR5-5200; 2x2R DDR5-5200; 4x1R DDR5-3600; 4x2R DDR5-3600. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7950x.html",
+      "retrievedAt": "2026-10-04T06:57:43.305995+00:00"
+    },
+    {
+      "externalId": "4fb54223-132b-42ac-b668-4be50bb6df71",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 7950X3D",
+      "partNumber": "100-100000908WOF",
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5200,
+            "dataRateConditions": "2x1R DDR5-5200; 2x2R DDR5-5200; 4x1R DDR5-3600; 4x2R DDR5-3600. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7950x3d.html",
+      "retrievedAt": "2026-10-04T06:57:43.196653+00:00"
+    },
+    {
+      "externalId": "b6f5b046-0856-4ef3-9689-5d75ddc92608",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 9900X",
+      "partNumber": "100-100000662WOF",
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "2x1R DDR5-5600; 2x2R DDR5-5600; 4x1R DDR5-3600; 4x2R DDR5-3600. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9900x.html",
+      "retrievedAt": "2026-10-04T06:57:52.305640+00:00"
+    },
+    {
+      "externalId": "ee2ac384-a2d9-4324-88af-d4765e604bcf",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 9950X",
+      "partNumber": "100-100001277WOF",
+      "socketCode": "AM5",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "2x1R DDR5-5600; 2x2R DDR5-5600; 4x1R DDR5-3600; 4x2R DDR5-3600. These published population/rank limits do not guarantee XMP/EXPO speeds; motherboard and BIOS can impose lower limits."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x.html",
+      "retrievedAt": "2026-10-04T06:57:52.330113+00:00"
+    },
+    {
+      "externalId": "e16a10af-3e6e-4d60-8f7b-96f054281fa6",
+      "manufacturer": "Intel",
+      "modelName": "Core i3-13100F",
+      "partNumber": "BX8071513100F",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 4800,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230576/intel-core-i313100f-processor-12m-cache-up-to-4-50-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:49.897470+00:00"
+    },
+    {
+      "externalId": "9f7d0407-954b-492f-86cf-20f0c0150aed",
+      "manufacturer": "Intel",
+      "modelName": "Core i3-14100F",
+      "partNumber": "BX8071514100F",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 4800,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/236786/intel-core-i3-processor-14100f-12m-cache-up-to-4-70-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:49.938200+00:00"
+    },
+    {
+      "externalId": "0800f2cd-ce39-4a64-b400-5d1e5d26e7cd",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-12600KF",
+      "partNumber": "BX8071512600KF",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 4800,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/134590/intel-core-i512600kf-processor-20m-cache-up-to-4-90-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:49.969366+00:00"
+    },
+    {
+      "externalId": "b20e3cca-2a76-407d-9a2b-a8d191215899",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-13400",
+      "partNumber": "BX8071513400",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 4800,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230495/intel-core-i513400-processor-20m-cache-up-to-4-60-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:49.940476+00:00"
+    },
+    {
+      "externalId": "af402682-92b0-4c17-9228-19b9b5c6dcdd",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-14400",
+      "partNumber": "BX8071514400",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 4800,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/236788/intel-core-i5-processor-14400-20m-cache-up-to-4-70-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:56.976405+00:00"
+    },
+    {
+      "externalId": "e53fd77d-8083-4243-8739-a8ec2311b25a",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-14500",
+      "partNumber": "BX8071514500",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 4800,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/236784/intel-core-i5-processor-14500-24m-cache-up-to-5-00-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:56.914459+00:00"
+    },
+    {
+      "externalId": "61524df0-3c26-49c3-b7db-b056ad3d3028",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-14600K",
+      "partNumber": "BX8071514600K",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/236799/intel-core-i5-processor-14600k-24m-cache-up-to-5-30-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:56.919256+00:00"
+    },
+    {
+      "externalId": "54157058-0ff5-4208-9466-5ce1e985ca7a",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-14600KF",
+      "partNumber": "BX8071514600KF",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/236778/intel-core-i5-processor-14600kf-24m-cache-up-to-5-30-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:56.907281+00:00"
+    },
+    {
+      "externalId": "ef051311-c91d-425d-a91c-585ea31b63fd",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-12700KF",
+      "partNumber": "BX8071512700KF",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 137438953472,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 4800,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/134595/intel-core-i712700kf-processor-25m-cache-up-to-5-00-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:49.943746+00:00"
+    },
+    {
+      "externalId": "ebb0e539-2265-4e3f-bb05-960429116b4b",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-13700F",
+      "partNumber": "BX8071513700F",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230491/intel-core-i713700f-processor-30m-cache-up-to-5-20-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:50.062602+00:00"
+    },
+    {
+      "externalId": "28155df9-8c91-4150-8786-96b8c54c309c",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-13700K",
+      "partNumber": "BX8071513700K",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230500/intel-core-i713700k-processor-30m-cache-up-to-5-40-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:57.054742+00:00"
+    },
+    {
+      "externalId": "8a042a3a-8c29-4599-8be6-b93f55830e54",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-13700KF",
+      "partNumber": "BX8071513700KF",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230489/intel-core-i713700kf-processor-30m-cache-up-to-5-40-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:56.944198+00:00"
+    },
+    {
+      "externalId": "402c2508-a75c-4f4d-9d09-778349ae72bb",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-14700KF",
+      "partNumber": "BX8071514700KF",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/236789/intel-core-i7-processor-14700kf-33m-cache-up-to-5-60-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:56.944573+00:00"
+    },
+    {
+      "externalId": "045802be-240a-4bce-9e67-2722f885e671",
+      "manufacturer": "Intel",
+      "modelName": "Core i9-13900K",
+      "partNumber": "BX8071513900K",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230496/intel-core-i913900k-processor-36m-cache-up-to-5-80-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:57:56.927332+00:00"
+    },
+    {
+      "externalId": "536e31d4-f1a4-4936-897a-8866bcfb01e6",
+      "manufacturer": "Intel",
+      "modelName": "Core i9-14900KF",
+      "partNumber": "BX8071514900KF",
+      "socketCode": "LGA1700",
+      "support": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 206158430208,
+        "channelCount": 2,
+        "capacityConditions": "Published maximum capacity normalized from GB to GiB bytes; the memory type, motherboard, DIMM density and BIOS may impose lower limits.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR4",
+            "maxStandardDataRateMts": 3200,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          },
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "Published standard maximum. The selected motherboard accepts one memory generation; actual DIMM population, rank, motherboard and BIOS can lower the operating rate. XMP speeds are not guaranteed."
+          }
+        ]
+      },
+      "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/236787/intel-core-i9-processor-14900kf-36m-cache-up-to-6-00-ghz/specifications.html",
+      "retrievedAt": "2026-10-04T06:58:04.727464+00:00"
+    }
+  ]
+}
