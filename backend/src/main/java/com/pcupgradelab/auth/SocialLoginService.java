@@ -16,20 +16,29 @@ public class SocialLoginService {
 
     @Transactional
     public UserAccount findOrCreateGoogleUser(String subject, String name, String email) {
+        return findOrCreateUser("google", subject, name, email);
+    }
+
+    @Transactional
+    public UserAccount findOrCreateKakaoUser(String subject, String name, String email) {
+        return findOrCreateUser("kakao", subject, name, email);
+    }
+
+    private UserAccount findOrCreateUser(String provider, String subject, String name, String email) {
         if (subject == null || subject.isBlank()) {
-            throw new IllegalArgumentException("Google subject is required");
+            throw new IllegalArgumentException(provider + " subject is required");
         }
         String displayName = name == null || name.isBlank()
-                ? (email == null || email.isBlank() ? "Google 사용자" : email)
+                ? (email == null || email.isBlank() ? provider + " 사용자" : email)
                 : name;
-        var existing = socialAccounts.findByProviderAndProviderUserId("google", subject);
+        var existing = socialAccounts.findByProviderAndProviderUserId(provider, subject);
         if (existing.isPresent()) {
             var user = users.findById(existing.get().getUserId()).orElseThrow();
             user.updateProfile(displayName, email);
             return user;
         }
         var user = users.saveAndFlush(new UserAccount(displayName, email));
-        socialAccounts.saveAndFlush(new SocialAccount(user.getId(), "google", subject));
+        socialAccounts.saveAndFlush(new SocialAccount(user.getId(), provider, subject));
         return user;
     }
 }

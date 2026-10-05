@@ -67,4 +67,17 @@ class SocialAccountPersistenceTests {
         assertThat(socialAccounts.findByProviderAndProviderUserId("google", "google-sub-1")
                 .orElseThrow().getUserId()).isEqualTo(first.getId());
     }
+
+    @Test
+    void kakaoLoginKeepsSeparateUserEvenWhenSubjectAndEmailMatchGoogle() {
+        var google = socialLogin.findOrCreateGoogleUser("same-sub", "Google 회원", "same@example.test");
+        var kakao = socialLogin.findOrCreateKakaoUser("same-sub", "Kakao 회원", "same@example.test");
+        var kakaoAgain = socialLogin.findOrCreateKakaoUser("same-sub", "새 이름", "same@example.test");
+
+        assertThat(kakao.getId()).isNotEqualTo(google.getId());
+        assertThat(kakaoAgain.getId()).isEqualTo(kakao.getId());
+        assertThat(kakaoAgain.getName()).isEqualTo("새 이름");
+        assertThat(socialAccounts.findByProviderAndProviderUserId("kakao", "same-sub")
+                .orElseThrow().getUserId()).isEqualTo(kakao.getId());
+    }
 }
