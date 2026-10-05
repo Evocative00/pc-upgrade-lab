@@ -18,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class SocialAccountPersistenceTests {
     @Autowired UserAccountRepository users;
     @Autowired SocialAccountRepository socialAccounts;
+    @Autowired SocialLoginService socialLogin;
     @Autowired JdbcTemplate jdbc;
 
     @Test
@@ -52,5 +53,18 @@ class SocialAccountPersistenceTests {
                 INSERT INTO pc_configuration (user_id, name, name_normalized, version, created_at, updated_at)
                 VALUES (NULL, '기존 PC', '기존 pc', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
                 """);
+    }
+
+    @Test
+    void repeatedGoogleLoginReusesTheSameUserAndDoesNotMergeMatchingEmail() {
+        var first = socialLogin.findOrCreateGoogleUser("google-sub-1", "첫 이름", "same@example.test");
+        var again = socialLogin.findOrCreateGoogleUser("google-sub-1", "새 이름", "same@example.test");
+        var different = socialLogin.findOrCreateGoogleUser("google-sub-2", "다른 계정", "same@example.test");
+
+        assertThat(again.getId()).isEqualTo(first.getId());
+        assertThat(again.getName()).isEqualTo("새 이름");
+        assertThat(different.getId()).isNotEqualTo(first.getId());
+        assertThat(socialAccounts.findByProviderAndProviderUserId("google", "google-sub-1")
+                .orElseThrow().getUserId()).isEqualTo(first.getId());
     }
 }
