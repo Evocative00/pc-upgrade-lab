@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 /** 브라우저 세션/CSRF 보안과 Google OIDC 로그인을 기존 PC 소유권 규격에 연결한다. */
 @Configuration
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthSecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http,
@@ -40,6 +42,7 @@ public class AuthSecurityConfig {
             http.oauth2Login(oauth -> oauth
                     .successHandler(successHandler)
                     .failureHandler((request, response, exception) -> {
+                        GoogleLoginSuccessHandler.clearLoginSession(request);
                         String reason = exception instanceof OAuth2AuthenticationException oauthError
                                 && "access_denied".equals(oauthError.getError().getErrorCode())
                                 ? "cancelled" : "error";

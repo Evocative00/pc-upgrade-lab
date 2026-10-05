@@ -1,11 +1,15 @@
 package com.pcupgradelab.auth;
 
 import org.junit.jupiter.api.Test;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
@@ -29,5 +33,25 @@ class GoogleOAuthStartTests {
                 .andExpect(status().is3xxRedirection()).andReturn().getResponse();
         assertThat(response.getRedirectedUrl()).startsWith("https://accounts.google.com/");
         assertThat(response.getRedirectedUrl()).contains("redirect_uri=http://127.0.0.1:5173/login/oauth2/code/google");
+    }
+
+    @Test
+    void cancelledGoogleCallbackInvalidatesAnyPreviousApplicationUserSession() throws Exception {
+        var mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
+        var session = new MockHttpSession();
+        session.setAttribute(SessionCurrentUser.SESSION_ATTRIBUTE, 42L);
+        var started = mvc.perform(get("/oauth2/authorization/google").session(session))
+                .andExpect(status().is3xxRedirection()).andReturn().getResponse().getRedirectedUrl();
+        var encodedState = UriComponentsBuilder.fromUriString(started).build().getQueryParams().getFirst("state");
+        assertThat(encodedState).isNotNull();
+        var state = URLDecoder.decode(encodedState, StandardCharsets.UTF_8);
+
+        var response = mvc.perform(get("/login/oauth2/code/google").session(session)
+                        .param("error", "access_denied").param("state", state))
+                .andExpect(status().is3xxRedirection()).andReturn().getResponse();
+
+        assertThat(response.getRedirectedUrl()).isEqualTo("http://127.0.0.1:5173/#/login/failure?reason=cancelled");
+        assertThat(session.isInvalid()).isTrue();
+        mvc.perform(get("/api/auth/me")).andExpect(status().isUnauthorized());
     }
 }

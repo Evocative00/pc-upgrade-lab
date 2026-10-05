@@ -3,17 +3,17 @@ import { CatalogPicker } from '../catalog/CatalogPicker.tsx'
 import { formatCatalogPrice } from '../catalog/catalogPresentation.ts'
 import type { CatalogProduct } from '../catalog/catalogTypes.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
-import { createManualDraft, getPartStatus, linkCatalog, withEmptyRows } from '../pc/partDraft.ts'
+import { getPartStatus, withEmptyRows } from '../pc/partDraft.ts'
 import type { PartDraft } from '../pc/types.ts'
 import {
-  assignSlots, priceTotal, ramLabel, ramSlotCount, slotInfo, type SlotId,
+  applyCatalogSelection, assignSlots, priceTotal, ramModuleViews, slotInfo, type PickTarget, type SlotId,
 } from './buildSlots.ts'
 import { CaseView, type SlotView } from './CaseView.tsx'
 import { useCatalogDetails } from './useCatalogDetails.ts'
 import './pc-builder.css'
 
 // 자리에서 열었으면 draftKey는 null이고, 부품 행의 '부품 검색'에서 열었으면 그 행의 key다.
-export type PickTarget = { slot: SlotId; draftKey: string | null }
+export type { PickTarget } from './buildSlots.ts'
 
 type Props = {
   drafts: PartDraft[]
@@ -28,7 +28,7 @@ type Props = {
 export function PcBuilder({ drafts, updateDrafts, target, onTarget, children }: Props) {
   const slots = assignSlots(drafts)
   const named = drafts.filter((draft) => getPartStatus(draft) !== 'empty')
-  const details = useCatalogDetails(named.flatMap((draft) => draft.catalogProductId ?? []))
+  const { entries: details, retry } = useCatalogDetails(named.flatMap((draft) => draft.catalogProductId ?? []))
   const detailOf = (draft: PartDraft) => draft.catalogProductId ? details[draft.catalogProductId] : undefined
   const productOf = (draft: PartDraft) => {
     const entry = detailOf(draft)
@@ -39,35 +39,26 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, children }: 
   for (const [id, draft] of Object.entries(slots) as [SlotId, PartDraft][]) {
     views[id] = { name: draft.displayName.trim(), fadeKey: `${draft.key}:${draft.catalogProductId ?? draft.displayName}` }
   }
-  const ramDrafts = named.filter((draft) => draft.type === 'RAM')
-  const ramDetail = slots.RAM && productOf(slots.RAM)
-  const ramSlots = ramSlotCount(ramDrafts.map((draft) => draft.quantity), ramDetail?.specification.moduleCount)
-  const ramText = ramLabel(slots.RAM ? { ...slots.RAM.specs, ...ramDetail?.specification } : null)
+  const ram = ramModuleViews(named, (draft) => productOf(draft)?.specification ?? null)
+  // 검색 대상 행을 지우거나 재스캔한 뒤에는 이전 검색 결과를 다른 행에 적용하지 않는다.
+  const activeTarget = target?.draftKey && !drafts.some((draft) => draft.key === target.draftKey)
+    ? null : target
 
   function choose(product: CatalogProduct) {
-    if (!target) return
-    const keyFromSlot = target.draftKey ?? slots[target.slot]?.key
-    const existing = drafts.find((draft) => draft.key === keyFromSlot && draft.type === product.type)
-    // 자리에 항목이 없으면 같은 종류의 빈 줄을 쓰고, 빈 줄도 없으면 새 줄을 만든다.
-    const empty = drafts.find((draft) => draft.type === product.type && getPartStatus(draft) === 'empty')
-    const base = existing ?? empty ?? createManualDraft(product.type)
-    const visualSlot = target.draftKey === null && (target.slot === 'SSD' || target.slot === 'HDD')
-      ? target.slot : base.visualSlot
-    const linked = { ...linkCatalog(base, product), visualSlot }
-    updateDrafts((current) => current.some((draft) => draft.key === base.key)
-      ? current.map((draft) => draft.key === base.key ? linked : draft)
-      : withEmptyRows([...current, linked]))
+    if (!activeTarget) return
+    updateDrafts((current) => applyCatalogSelection(current, activeTarget, product))
     onTarget(null)
   }
 
   function remove(key: string) {
     updateDrafts((current) => withEmptyRows(current.filter((draft) => draft.key !== key)))
+    if (target?.draftKey === key) onTarget(null)
   }
 
-  const total = priceTotal(named.map((draft) => productOf(draft)?.product.referencePrice ?? null))
+  const total = priceTotal(named.map((draft) => ({ draft, detail: productOf(draft) })))
   const pickSlot = (slot: SlotId) => onTarget(target?.slot === slot && target.draftKey === null ? null : { slot, draftKey: null })
-  const activeLabel = target && (target.draftKey
-    ? getPartTypeInfo(slotInfo(target.slot).type).label : slotInfo(target.slot).label)
+  const activeLabel = activeTarget && (activeTarget.draftKey
+    ? getPartTypeInfo(slotInfo(activeTarget.slot).type).label : slotInfo(activeTarget.slot).label)
 
   return (
     <section className="builder" aria-label="PC 구성">
@@ -75,8 +66,10 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, children }: 
         <div className="builder__parts">{children}</div>
 
         <div className="builder__visual">
-          <CaseView slots={views} ramSlots={ramSlots} ramText={ramText}
-            active={target?.slot ?? null} onPick={pickSlot} />
+          <CaseView slots={views} ramModules={ram.modules}
+            active={activeTarget?.slot ?? null} onPick={pickSlot} />
+          <p className="muted">구성 이해를 위한 예시 그림입니다. 실제 크기·위치·장착 가능 수를 뜻하지 않습니다.
+            {ram.installedCount > 0 && ` RAM 장착 ${ram.installedCount}개 중 첫 ${ram.modules.length}개를 표시합니다.`}</p>
         </div>
 
         <aside className="builder__summary" aria-label="구성 요약">
@@ -94,9 +87,14 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, children }: 
                     <span className="builder__name">{draft.displayName}</span>
                     {!draft.catalogProductId
                       ? <span className="muted">카탈로그 미연결 · 기준가격 없음</span>
-                      : detail ? <span className="muted">{formatCatalogPrice(detail.product.referencePrice)}</span>
+                      : detail ? <span className="muted">{formatCatalogPrice(detail.product.referencePrice)}
+                        {draft.type === 'RAM' ? ' / 판매 묶음' : ' / 1개'}</span>
                         : entry?.status === 'error'
-                          ? <span className="error">가격·제원 조회 실패: {entry.message}</span>
+                          ? <>
+                            <span className="error">가격·제원 조회 실패: {entry.message}</span>
+                            <button type="button" className="button button--ghost"
+                              onClick={() => retry(draft.catalogProductId!)}>다시 조회</button>
+                          </>
                           : <span className="muted">가격·제원 불러오는 중…</span>}
                     <button type="button" className="button button--ghost builder__remove"
                       onClick={() => remove(draft.key)}>빼기</button>
@@ -111,8 +109,12 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, children }: 
             <span>확정 기준가격 합계</span>
             <strong>{total.confirmedKrw.toLocaleString('ko-KR')}원</strong>
             {total.unconfirmed > 0 && (
-              <span className="muted">가격 미확정·미연결 {total.unconfirmed}개는 합계에서 뺐습니다.</span>
+              <span className="muted">가격 미확정·미연결 {total.unconfirmed}개 항목은 합계에서 뺐습니다.</span>
             )}
+            {total.quantityNeedsCheck > 0 && (
+              <span className="muted">수량·RAM 판매 묶음 확인이 필요한 {total.quantityNeedsCheck}건은 합계에서 뺐습니다.</span>
+            )}
+            <span className="muted">RAM은 같은 제품의 장착 모듈 합계가 판매 묶음 수와 맞을 때만 계산합니다.</span>
           </div>
           {/* 검사 전 상태를 '양호'로 보이지 않게 한다. 호환성 검사 API 연결 전까지 항상 미검사다. */}
           <p className="builder__check" role="status">
@@ -121,11 +123,11 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, children }: 
         </aside>
       </div>
 
-      {target && (
+      {activeTarget && (
         <section className="builder__picker" aria-label={`${activeLabel} 고르기`}>
           <h2>{activeLabel} 고르기</h2>
-          <CatalogPicker key={`${target.slot}-${target.draftKey}`} type={slotInfo(target.slot).type}
-            initialQuery={drafts.find((draft) => draft.key === target.draftKey)?.displayName ?? ''}
+          <CatalogPicker key={`${activeTarget.slot}-${activeTarget.draftKey}`} type={slotInfo(activeTarget.slot).type}
+            initialQuery={drafts.find((draft) => draft.key === activeTarget.draftKey)?.displayName ?? ''}
             onClose={() => onTarget(null)} onSelect={choose} />
         </section>
       )}

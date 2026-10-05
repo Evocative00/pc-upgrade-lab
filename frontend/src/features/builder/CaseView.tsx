@@ -1,13 +1,12 @@
 import type { KeyboardEvent, ReactNode } from 'react'
-import { chipLabel, slotInfo, type SlotId } from './buildSlots.ts'
+import { chipLabel, slotInfo, type RamModuleView, type SlotId } from './buildSlots.ts'
 
 type Box = { x: number; y: number; w: number; h: number }
 // fadeKey가 바뀐 자리만 다시 그려지고 페이드가 걸린다.
 export type SlotView = { name: string; fadeKey: string }
 type Props = {
   slots: Partial<Record<SlotId, SlotView>>
-  ramSlots: number
-  ramText: [string, string]
+  ramModules: RamModuleView[]
   active: SlotId | null
   onPick: (slot: SlotId) => void
 }
@@ -72,9 +71,8 @@ function Slot({ id, part, active, onPick, empty, filled }: {
 
 const FANS = [140, 240, 340]
 
-export function CaseView({ slots, ramSlots, ramText, active, onPick }: Props) {
+export function CaseView({ slots, ramModules, active, onPick }: Props) {
   const slot = (id: SlotId) => ({ id, part: slots[id], active: active === id, onPick })
-  const [ramSize, ramType] = ramText
 
   return (
     <svg viewBox="0 0 480 640" className="case-view" role="group" aria-label="PC 구성 그림. 자리를 누르면 해당 부품을 고릅니다.">
@@ -148,19 +146,19 @@ export function CaseView({ slots, ramSlots, ramText, active, onPick }: Props) {
           <rect x={352} y={116} width={28} height={140} rx={6} className="case-slot__empty" />
         </>}
         filled={() => <>
-          {[316, 352].map((x, index) => index < ramSlots ? (
-            <g key={x}>
+          {[316, 352].map((x, index) => ramModules[index] ? (
+            <g key={ramModules[index].key} aria-label={`${ramModules[index].name}: ${ramModules[index].label.join(' ')}`}>
               <FilledBox x={x} y={116} w={28} h={140} />
               <text x={x + 14} y={186} fill={FILLED_TEXT} textAnchor="middle" dominantBaseline="middle"
                 transform={`rotate(-90 ${x + 14} 186)`} fontSize={12}>
-                <tspan fontWeight={700}>{ramSize}</tspan> {ramType}
+                <tspan fontWeight={700}>{ramModules[index].label[0]}</tspan> {ramModules[index].label[1]}
               </text>
             </g>
           ) : <rect key={x} x={x} y={116} width={28} height={140} rx={6} className="case-slot__empty" />)}
         </>} />
 
       <Slot {...slot('SSD')}
-        empty={<EmptyBox x={96} y={250} w={92} h={28} text="SSD" />}
+        empty={<EmptyBox x={96} y={250} w={92} h={28} text="저장장치 1" />}
         filled={(part) => <>
           <FilledBox x={96} y={250} w={92} h={28} rx={4} />
           <Lines x={142} y={264} lines={[part.name]} size={10} />
@@ -187,7 +185,7 @@ export function CaseView({ slots, ramSlots, ramText, active, onPick }: Props) {
         </>} />
 
       <Slot {...slot('HDD')}
-        empty={<EmptyBox x={276} y={468} w={120} h={88} text="HDD" />}
+        empty={<EmptyBox x={276} y={468} w={120} h={88} text="저장장치 2" />}
         filled={(part) => <>
           <FilledBox x={276} y={468} w={120} h={88} />
           <Lines x={336} y={512} lines={chipLabel(part.name)} size={11} />

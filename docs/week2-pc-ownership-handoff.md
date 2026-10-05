@@ -7,7 +7,7 @@
 
 ### 백엔드
 - V10 마이그레이션: `pc_configuration.user_id`, `name_normalized`, `UNIQUE(user_id, name_normalized)`. 기존 local-dev 행은 `user_id = NULL`로 숨김
-- `CurrentUser` / `SessionCurrentUser`: 세션 속성 `LOGIN_USER_ID`로 소유자 결정 (`local`·`test`에서는 `X-Dev-User-Id`도 인정)
+- `CurrentUser` / `SessionCurrentUser`: 세션 속성 `LOGIN_USER_ID`로 소유자 결정. 인증 통합 후 `X-Dev-User-Id`는 기본적으로 끄고, `local`·`test`와 `app.auth.dev-header.enabled=true`를 함께 지정한 테스트에서만 인정
 - 목록·상세·수정·삭제 모두 `id + user_id` 조건. 비로그인 401, 다른 회원 PC 404
 - 같은 회원 이름 중복 409 `PC_NAME_DUPLICATE` (공백·대소문자 무시, 수정 시 자기 PC 제외, DB 제약 위반도 409)
 - 부품 연결 오류 코드 변경: `INVALID_PART_ID`, `PART_CATEGORY_MISMATCH`
@@ -31,7 +31,7 @@
 2. 실제 Google 계정 A/B로 아래 완료 기준 확인 → 이슈 #18 체크
 3. 재훈 초안 기능이 나오면 `frontend/src/features/auth/draftBridge.ts`의 보관·복구·삭제 구현을 교체한다. 로그인 직전 최신 입력 보관(`registerActiveDraft`/`saveActiveDraft`)과 성공한 요청의 초안만 삭제하는 규칙(`clearSavedDraftFor`)을 유지한다.
 4. 재훈 삭제 확인 모달이 나오면 `PcDetailPage.tsx`의 `DeletePcButton`(지금은 `window.confirm`)을 교체
-5. 실제 로그인이 연결되면 개발용 `X-Dev-User-Id`(백엔드 `SessionCurrentUser`, 프런트 `vite.config.ts`의 `DEV_USER_ID`)를 유지할지 결정
+5. 인증 통합 시 개발용 `X-Dev-User-Id`는 기본적으로 비활성화. 자동 테스트의 명시적 설정은 유지하며 실제 로그인 확인 시 백엔드 설정과 `DEV_USER_ID`를 모두 끈다
 6. FK 추가 후 `Verify-MySql.ps1`의 검증용 회원 ID(무작위)가 FK에 걸리므로 검증용 `users` 행을 만들도록 `src/mysqlTest`를 수정
 7. 기존 local-dev 데이터는 `user_id = NULL`로 보존하고 회원 목록에서 숨김(상준 확정, 2026-10-04). 필요 시 실제 계정과 소유자를 확인한 뒤 별도 이관하며, 첫 로그인 회원에게 자동 귀속하지 않는다.
 
@@ -48,7 +48,7 @@
 
 ## 로그인 연결 전 로컬 확인 방법
 
-백엔드는 `local` 프로필로 실행한다.
+백엔드는 `local` 프로필로 실행한다. 인증 통합 후 이 방법은 개인 `application-local.properties`에 `app.auth.dev-header.enabled=true`를 지정한 가상 회원 테스트에서만 유효하다. V11 이후에는 `users`에 존재하는 테스트 회원 ID를 사용하며, 서버와 Vite를 외부에 공개하지 않는다. 실제 Google 로그인 확인 시 이 설정을 끄고 백엔드를 재실행한다.
 
 ```powershell
 # 프런트: 모든 /api 요청에 개발 회원 1을 붙인다
