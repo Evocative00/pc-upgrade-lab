@@ -9,8 +9,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  * 로그인 성공 시 HTTP 세션에 저장한 회원 ID를 읽는다.
- * local·test 프로필에서는 로그인 구현 전 A/B 회원 확인을 위해 X-Dev-User-Id 헤더도 인정한다.
- * 이 헤더는 같은 PC에서만 접속하는 개발 환경용이며 다른 프로필에서는 무시한다.
+ * 개발용 X-Dev-User-Id는 local·test 프로필에서 명시적으로 켠 경우에만 인정한다.
+ * 기본값은 꺼짐이다. 실제 Google 로그인 확인 중에는 켜지 않는다.
  */
 @Component
 public class SessionCurrentUser implements CurrentUser {
@@ -21,7 +21,8 @@ public class SessionCurrentUser implements CurrentUser {
     private final boolean devHeaderEnabled;
 
     public SessionCurrentUser(Environment environment) {
-        this.devHeaderEnabled = environment.acceptsProfiles(Profiles.of("local", "test"));
+        this.devHeaderEnabled = environment.acceptsProfiles(Profiles.of("local", "test"))
+                && environment.getProperty("app.auth.dev-header.enabled", Boolean.class, false);
     }
 
     @Override

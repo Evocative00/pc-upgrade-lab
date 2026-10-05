@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { ScanResult, ScanSession, ScanStatus, ScanView } from './types'
+import { csrfHeaders } from '../../lib/csrf.ts'
 
 type UiStatus = ScanStatus | 'IDLE' | 'PREPARING' | 'CONNECTION_ERROR'
 const terminal: ScanStatus[] = ['COMPLETED', 'COMPLETED_WITH_WARNINGS', 'FAILED', 'EXPIRED']
@@ -48,7 +49,7 @@ export function usePcScan() {
     setStatus('PREPARING')
     try {
       const created = await checkedJson<ScanSession>(await fetch('/api/scan-sessions', {
-        method: 'POST', headers: { 'X-PCUL-Client': 'web' },
+        method: 'POST', headers: { 'X-PCUL-Client': 'web', ...csrfHeaders() },
         // 요청 한 번의 제한은 8초. 서버가 정한 검사 전체 제한 시간(2분)과는 별개다.
         signal: AbortSignal.any([controller.signal, AbortSignal.timeout(8000)]),
       }))

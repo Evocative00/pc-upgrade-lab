@@ -1,5 +1,7 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent } from 'react'
 import { registerActiveDraft } from '../../auth/draftBridge.ts'
+import { PcBuilder, type PickTarget } from '../../builder/PcBuilder.tsx'
+import { slotOfDraft } from '../../builder/buildSlots.ts'
 import { PcScanPanel } from '../../pc-scan/PcScanPanel.tsx'
 import type { ScanResult } from '../../pc-scan/types.ts'
 import { PART_TYPES } from '../partCategories.ts'
@@ -24,9 +26,11 @@ type Props = {
   submitLabel: string
   onSubmit: (request: PcRequest) => Promise<void>
   onCancel: () => void
+  // 2D 구성 화면(부품 선택·케이스 그림·요약)을 함께 보여 준다. 카탈로그 검색은 구성 화면의 검색 창으로 통일한다.
+  visual?: boolean
 }
 
-export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel }: Props) {
+export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, visual = false }: Props) {
   const nameId = useId()
   const nameErrorId = useId()
   const nameInputRef = useRef<HTMLInputElement>(null)
@@ -49,6 +53,11 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel }
   const [saving, setSaving] = useState(false)
   // state가 다시 렌더링되기 전의 연속 클릭도 같은 요청을 두 번 보내지 않게 막는다.
   const savingRef = useRef(false)
+  const [pickTarget, setPickTarget] = useState<PickTarget | null>(null)
+
+  function updateDrafts(update: (current: PartDraft[]) => PartDraft[]) {
+    if (!savingRef.current) setDrafts(update)
+  }
 
   function updateDraft(next: PartDraft) {
     if (savingRef.current) return
@@ -139,6 +148,56 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel }
     return status === 'auto' || status === 'manual'
   }).length
 
+  // 구성 화면에서는 이 입력란이 케이스 그림 왼쪽(부품 선택 칸 자리)에 들어간다.
+  const partsPanel = (
+    <section className="panel">
+      <div className="panel__head">
+        <h2>부품 구성</h2>
+        {unlinkedCount > 0 && (
+          <span className="muted">카탈로그 미연결 {unlinkedCount}개</span>
+        )}
+      </div>
+      <PartStatusLegend />
+
+      {PART_TYPES.map((info) => {
+        const rows = partsOfType(drafts, info.type)
+
+        return (
+          <fieldset key={info.type} className="part-group">
+            <legend className="visually-hidden">{info.label}</legend>
+            {rows.map((draft, index) => (
+              <PartRow
+                key={draft.key}
+                draft={draft}
+                index={index}
+                count={rows.length}
+                onChange={updateDraft}
+                onSearch={visual
+                  ? () => setPickTarget({ slot: slotOfDraft(drafts, draft), draftKey: draft.key })
+                  : undefined}
+                // 여러 항목을 쓰는 종류이거나, 자동 인식으로 한 종류에 항목이 여러 개 생긴 경우 제거할 수 있다.
+                onRemove={
+                  info.multiple || rows.length > 1
+                    ? () => removeDraft(draft.key)
+                    : undefined
+                }
+              />
+            ))}
+            {info.multiple && (
+              <button
+                type="button"
+                className="button button--ghost"
+                onClick={() => addDraft(info.type)}
+              >
+                + {info.label} 추가
+              </button>
+            )}
+          </fieldset>
+        )
+      })}
+    </section>
+  )
+
   return (
     <form className="pc-form" onSubmit={handleSubmit} noValidate aria-busy={saving}>
       {/* disabled는 입력·버튼을, inert는 수집기 실행 링크 등 나머지 조작도 잠근다. */}
@@ -179,49 +238,11 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel }
           </p>
         )}
 
-        <section className="panel">
-          <div className="panel__head">
-            <h2>부품 구성</h2>
-            {unlinkedCount > 0 && (
-              <span className="muted">카탈로그 미연결 {unlinkedCount}개</span>
-            )}
-          </div>
-          <PartStatusLegend />
-
-          {PART_TYPES.map((info) => {
-            const rows = partsOfType(drafts, info.type)
-
-            return (
-              <fieldset key={info.type} className="part-group">
-                <legend className="visually-hidden">{info.label}</legend>
-                {rows.map((draft, index) => (
-                  <PartRow
-                    key={draft.key}
-                    draft={draft}
-                    index={index}
-                    count={rows.length}
-                    onChange={updateDraft}
-                    // 여러 항목을 쓰는 종류이거나, 자동 인식으로 한 종류에 항목이 여러 개 생긴 경우 제거할 수 있다.
-                    onRemove={
-                      info.multiple || rows.length > 1
-                        ? () => removeDraft(draft.key)
-                        : undefined
-                    }
-                  />
-                ))}
-                {info.multiple && (
-                  <button
-                    type="button"
-                    className="button button--ghost"
-                    onClick={() => addDraft(info.type)}
-                  >
-                    + {info.label} 추가
-                  </button>
-                )}
-              </fieldset>
-            )
-          })}
-        </section>
+        {visual ? (
+          <PcBuilder drafts={drafts} updateDrafts={updateDrafts} target={pickTarget} onTarget={setPickTarget}>
+            {partsPanel}
+          </PcBuilder>
+        ) : partsPanel}
 
         <div className="actions">
           <button

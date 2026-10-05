@@ -5,6 +5,17 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
+}
+
+.app-nav {
+  display: flex;
+  gap: 16px;
+  font-size: 15px;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .auth-status {

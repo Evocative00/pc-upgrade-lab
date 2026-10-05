@@ -33,6 +33,11 @@ export function parseRoute(hash: string): Route {
     return { name: 'list' }
   }
 
+  // 예전 PC 구성하기 주소. 구성 화면은 새 PC 등록 화면으로 합쳤다.
+  if (segments[0] === 'build' && segments.length === 1) {
+    return { name: 'new' }
+  }
+
   if (segments[0] === 'login') {
     if (segments.length === 1) return { name: 'login' }
     if (segments.length === 2 && segments[1] === 'success') return { name: 'loginSuccess' }

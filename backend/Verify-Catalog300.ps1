@@ -5,6 +5,11 @@ $BaseUrl = $BaseUrl.TrimEnd('/')
 # HTTP reads and temporary compatibility checks only. No seed, PC save or DB write.
 # Compatible with Windows PowerShell 5.1; the script text intentionally uses ASCII.
 
+Invoke-WebRequest -Method Get -Uri "$BaseUrl/api/auth/providers" -UseBasicParsing -SessionVariable catalog300CheckSession | Out-Null
+$catalog300CsrfCookie = $catalog300CheckSession.Cookies.GetCookies([uri]$BaseUrl)['XSRF-TOKEN']
+if ($null -eq $catalog300CsrfCookie) { throw 'The backend did not issue an XSRF-TOKEN cookie. Check the security configuration.' }
+$catalog300CsrfToken = [uri]::UnescapeDataString($catalog300CsrfCookie.Value)
+
 function Invoke-JsonUtf8 {
     param(
         [string]$Uri,
@@ -13,20 +18,29 @@ function Invoke-JsonUtf8 {
     )
     # Read original response bytes: Windows PowerShell 5.1 can otherwise decode
     # application/json without a charset as Latin-1 and corrupt Korean text.
-    $client = New-Object System.Net.WebClient
+    $response = $null
     try {
-        $client.Headers['Accept'] = 'application/json'
-        if ($Method -ceq 'Post') {
-            $client.Headers['Content-Type'] = 'application/json; charset=utf-8'
-            $bytes = $client.UploadData($Uri, 'POST', [System.Text.Encoding]::UTF8.GetBytes($Body))
-        } else {
-            $bytes = $client.DownloadData($Uri)
+        $request = @{
+            Uri = $Uri; Method = $Method; WebSession = $catalog300CheckSession
+            UseBasicParsing = $true; Headers = @{ Accept = 'application/json' }
         }
+        if ($Method -ceq 'Post') {
+            $request.ContentType = 'application/json; charset=utf-8'
+            $request.Headers['X-XSRF-TOKEN'] = $catalog300CsrfToken
+            $request.Body = [System.Text.Encoding]::UTF8.GetBytes($Body)
+        }
+        $response = Invoke-WebRequest @request
+        $buffer = New-Object System.IO.MemoryStream
+        try {
+            if ($response.RawContentStream.CanSeek) { $response.RawContentStream.Position = 0 }
+            $response.RawContentStream.CopyTo($buffer)
+            $bytes = $buffer.ToArray()
+        } finally { $buffer.Dispose() }
         $utf8 = New-Object System.Text.UTF8Encoding -ArgumentList $false, $true
         $json = $utf8.GetString($bytes).TrimStart([char]0xFEFF)
         return ($json | ConvertFrom-Json)
     } finally {
-        $client.Dispose()
+        if ($null -ne $response) { $response.RawContentStream.Dispose() }
     }
 }
 

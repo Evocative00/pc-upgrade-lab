@@ -1,0 +1,171 @@
+.builder {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 부품 구성 입력 | 구성 그림 | 요약·상태·기준가격 */
+.builder__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 300px) 220px;
+  gap: 16px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 입력란이 길어도 그림과 요약은 화면에 남아 있게 한다. */
+.builder__visual,
+.builder__summary {
+  position: sticky;
+  top: 16px;
+
+  @media (max-width: 900px) {
+    position: static;
+  }
+}
+
+.builder__visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-view {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  font-family: var(--sans);
+}
+
+.case-slot {
+  cursor: pointer;
+  outline: none;
+
+  &:hover .case-slot__empty,
+  &:focus-visible .case-slot__empty {
+    fill: rgba(255, 255, 255, 0.22);
+  }
+
+  &:focus-visible > g {
+    filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 2px #aa3bff);
+  }
+}
+
+.case-slot__empty {
+  fill: rgba(255, 255, 255, 0.1);
+  stroke: rgba(255, 255, 255, 0.7);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 4;
+}
+
+.case-slot--active .case-slot__empty {
+  fill: rgba(255, 255, 255, 0.25);
+  stroke: #fff;
+}
+
+.case-slot__hint {
+  fill: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* 부품이 바뀐 자리만 다시 그려지므로 그 자리에만 페이드가 걸린다. */
+.case-slot__fade {
+  animation: case-fade 320ms ease-out;
+}
+
+@keyframes case-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-slot__fade {
+    animation: none;
+  }
+}
+
+.builder__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+
+  dl {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  dt {
+    font-size: 13px;
+  }
+
+  dd {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+}
+
+.builder__name {
+  color: var(--text-h);
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.builder__remove {
+  padding: 2px 8px;
+  font-size: 13px;
+}
+
+.builder__total {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+
+  strong {
+    color: var(--text-h);
+    font-size: 20px;
+  }
+}
+
+.builder__check {
+  padding: 8px 10px;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  color: var(--text-h);
+  font-size: 14px;
+
+  span {
+    display: inline-grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+}
+
+.builder__picker {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}

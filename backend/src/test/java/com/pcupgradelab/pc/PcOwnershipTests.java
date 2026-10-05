@@ -44,6 +44,10 @@ class PcOwnershipTests {
 
     @BeforeEach
     void setUp() {
+        for (long userId : new long[]{USER_A, USER_B}) {
+            jdbc.update("INSERT INTO users (id, name, created_at, updated_at) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)",
+                    userId, "PC 소유권 테스트 회원 " + userId);
+        }
         mvc = MockMvcBuilders.webAppContextSetup(context).build();
         sessionA = new MockHttpSession();
         sessionA.setAttribute(SessionCurrentUser.SESSION_ATTRIBUTE, USER_A);

@@ -19,6 +19,9 @@ export default defineConfig({
                 changeOrigin: true,
                 ...(devUserId ? { headers: { 'X-Dev-User-Id': devUserId } } : {}),
               },
+              // Google 인증 시작과 콜백 모두 브라우저의 5173 origin에서 처리해 세션 쿠키를 유지한다.
+              '/oauth2': { target: 'http://127.0.0.1:8080', changeOrigin: true },
+              '/login/oauth2': { target: 'http://127.0.0.1:8080', changeOrigin: true },
             },
           },
 

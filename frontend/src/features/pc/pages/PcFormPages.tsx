@@ -87,6 +87,7 @@ export function PcNewPage() {
         key={formKey}
         initial={draft ?? { name: '', parts: [] }}
         submitLabel="계정에 저장"
+        visual
         onCancel={() => navigate(paths.list())}
         onSubmit={(request) => saveOrAskLogin(request, null, async () => {
           const pc = await pcRepository.create(request)

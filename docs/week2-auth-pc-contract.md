@@ -25,7 +25,7 @@ public interface CurrentUser {
   1. 로그인 성공 처리에서 `session.setAttribute(SessionCurrentUser.SESSION_ATTRIBUTE, user.getId())`
   2. SecurityContext에서 회원 ID를 읽는 `CurrentUser` 구현체를 `@Primary` 빈으로 등록
 - 로그아웃은 세션을 무효화한다.
-- `local`·`test` 프로필에서는 개발용 헤더 `X-Dev-User-Id: <양수>`도 회원으로 인정한다. 같은 PC에서만 접속하는 개발 환경용이며 다른 프로필에서는 무시한다.
+- 개발용 헤더 `X-Dev-User-Id: <양수>`는 기본적으로 무시한다. `local`·`test` 프로필과 `app.auth.dev-header.enabled=true`를 모두 설정한 가상 회원 테스트에서만 인정한다. 실제 세션 회원이 우선하며 다른 프로필에서는 설정과 관계없이 헤더를 무시한다. 실제 Google 로그인 검증 중에는 끈다.
 - PC API는 `CurrentUser`만 보고 소유자를 정한다. 비로그인이면 401 `UNAUTHORIZED`.
 
 ## 2. DB
@@ -38,6 +38,7 @@ public interface CurrentUser {
 - `social_accounts`는 `(provider, provider_user_id)` 유니크. 이메일이 같다는 이유로 Google·Kakao 계정을 자동 통합하지 않는다.
 - FK 예: `ALTER TABLE pc_configuration ADD CONSTRAINT fk_pc_configuration_user FOREIGN KEY (user_id) REFERENCES users(id);`
 - 기존 `local-dev` 행은 `user_id = NULL`로 보존하고 모든 회원의 PC 목록에서 숨긴다(고상준 확정, 2026-10-04). 첫 로그인 회원에게 자동 귀속하지 않는다. 필요하면 실제 계정과 소유자를 확인한 뒤 별도 이관한다.
+- 애플리케이션의 V11 사전 검사 콜백은 기존 `user_id IS NOT NULL` PC가 있으면 첫 DDL 전에 중단한다. 기존 PC나 소유권은 변경하지 않으며 조회·백업·이관 결정은 [로그인 실행 안내](week2-google-login-setup.md)를 따른다.
 - 고상준 검토. 그 사이 다른 마이그레이션이 V11을 쓰면 다음 번호를 사용한다.
 
 ## 3. 인증 API

@@ -2,6 +2,10 @@ param([string]$BaseUrl = 'http://localhost:8080')
 
 $ErrorActionPreference = 'Stop'
 $BaseUrl = $BaseUrl.TrimEnd('/')
+Invoke-RestMethod -Method Get -Uri "$BaseUrl/api/auth/providers" -SessionVariable catalogExpansionCheckSession | Out-Null
+$catalogExpansionCsrfCookie = $catalogExpansionCheckSession.Cookies.GetCookies([uri]$BaseUrl)['XSRF-TOKEN']
+if ($null -eq $catalogExpansionCsrfCookie) { throw 'The backend did not issue an XSRF-TOKEN cookie. Check the security configuration.' }
+$catalogExpansionCsrfHeaders = @{ 'X-XSRF-TOKEN' = [uri]::UnescapeDataString($catalogExpansionCsrfCookie.Value) }
 # HTTP reads and temporary compatibility checks only. This helper does not seed or save a PC.
 function Assert-Equal {
     param($Actual, $Expected, [string]$Label)
@@ -45,7 +49,7 @@ function Test-Configuration {
     param([string]$Scenario, [hashtable]$Configuration, [hashtable]$ExpectedChecks)
     # BIOS/revision values here describe a virtual fixture, not the user's physical hardware.
     $body = $Configuration | ConvertTo-Json -Depth 6
-    $response = Invoke-RestMethod -Method Post -Uri "$BaseUrl/api/compatibility/check" -ContentType 'application/json; charset=utf-8' -Body $body
+    $response = Invoke-RestMethod -Method Post -Uri "$BaseUrl/api/compatibility/check" -ContentType 'application/json; charset=utf-8' -Body $body -WebSession $catalogExpansionCheckSession -Headers $catalogExpansionCsrfHeaders
     Assert-Equal $response.scope 'CPU_MOTHERBOARD_RAM_V1' 'Compatibility scope'
     Assert-Equal $response.fullPcCompatibilityChecked $false 'Full PC guarantee'
     foreach ($code in $ExpectedChecks.Keys) {

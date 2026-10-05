@@ -70,6 +70,7 @@ class CompatibilityControllerTests {
         for (var batch : CatalogSeedBatch.values()) if (batch != CatalogSeedBatch.EXPAND_100 && batch != CatalogSeedBatch.EXPAND_300) seeds.seed(batch);
         memorySeeds.seed();
         supportSeeds.seed();
+        jdbc.update("INSERT INTO users (id, name, created_at, updated_at) VALUES (1, '호환성 테스트 회원', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)");
         mvc = MockMvcBuilders.webAppContextSetup(context).build();
         // PcService를 HTTP 요청 없이 직접 호출하므로 로그인한 회원의 요청을 만들어 둔다.
         var request = new MockHttpServletRequest();

@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "test": "node --test tests/partDraft.test.ts tests/pcRepository.test.ts tests/catalogClient.test.ts tests/catalogPresentation.test.ts tests/authClient.test.ts tests/authStore.test.ts tests/authNavigation.test.mjs tests/draftBridge.test.ts tests/router.test.ts",
+    "test": "node --test tests/partDraft.test.ts tests/pcRepository.test.ts tests/catalogClient.test.ts tests/catalogPresentation.test.ts tests/authClient.test.ts tests/authStore.test.ts tests/authNavigation.test.mjs tests/draftBridge.test.ts tests/router.test.ts tests/buildSlots.test.ts",
     "preview": "vite preview"
   },
   "dependencies": {

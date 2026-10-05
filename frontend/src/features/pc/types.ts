@@ -38,4 +38,6 @@ export type PartDraft = PartInput & {
   persisted: boolean
   // 입력 중인 용량 문자열. 바이트 변환·반올림 때문에 사용자가 쓴 값이 사라지지 않게 한다.
   capacityText?: string
+  // 구성 그림에서 SSD·HDD 중 어느 자리에서 골랐는지. 저장 요청에는 넣지 않는다.
+  visualSlot?: 'SSD' | 'HDD'
 }

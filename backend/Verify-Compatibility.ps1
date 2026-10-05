@@ -3,6 +3,12 @@ param([string]$BaseUrl = 'http://localhost:8080')
 $ErrorActionPreference = 'Stop'
 $BaseUrl = $BaseUrl.TrimEnd('/')
 
+# Keep the issued CSRF cookie with the token header for temporary POST checks.
+Invoke-RestMethod -Method Get -Uri "$BaseUrl/api/auth/providers" -SessionVariable compatibilityCheckSession | Out-Null
+$compatibilityCsrfCookie = $compatibilityCheckSession.Cookies.GetCookies([uri]$BaseUrl)['XSRF-TOKEN']
+if ($null -eq $compatibilityCsrfCookie) { throw 'The backend did not issue an XSRF-TOKEN cookie. Check the security configuration.' }
+$compatibilityCsrfHeaders = @{ 'X-XSRF-TOKEN' = [uri]::UnescapeDataString($compatibilityCsrfCookie.Value) }
+
 # Read-only checks against the running local backend. No PC or catalog rows are created/updated.
 function Find-CatalogProductId {
     param([string]$Type, [string]$Model)
@@ -18,7 +24,7 @@ function Find-CatalogProductId {
 function Test-TemporaryConfiguration {
     param([string]$Scenario, [hashtable]$Configuration, [string]$ExpectedStatus)
     $body = $Configuration | ConvertTo-Json -Depth 5
-    $result = Invoke-RestMethod -Method Post -Uri "$BaseUrl/api/compatibility/check" -ContentType 'application/json; charset=utf-8' -Body $body
+    $result = Invoke-RestMethod -Method Post -Uri "$BaseUrl/api/compatibility/check" -ContentType 'application/json; charset=utf-8' -Body $body -WebSession $compatibilityCheckSession -Headers $compatibilityCsrfHeaders
     if ($result.status -cne $ExpectedStatus) {
         $result.checks | Format-Table code, status, message -AutoSize | Out-Host
         throw "$Scenario expected $ExpectedStatus but received $($result.status)."
