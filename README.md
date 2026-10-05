@@ -4,11 +4,11 @@
 
 2026-2 산학협력캡스톤디자인 1
     
-현재 목표는 프런트엔드·백엔드·DB의 연결과 협업 준비고 서비스 기능과 업무용 테이블은 이후 개발 단계에서 추가
+현재 목표는 프론트엔드·백엔드·DB의 연결과 협업 준비고 서비스 기능과 업무용 테이블은 이후 개발 단계에서 추가
 
 저장소: [Evocative00/pc-upgrade-lab](https://github.com/Evocative00/pc-upgrade-lab)
 
-> 이 문서는 프런트엔드 초기 구성과 MySQL 연결 설정이 포함된 `dev` 브랜치를 기준으로 합니다. 아래에서 안내하는 파일이 없다면, 환경설정 PR이 `dev`에 병합되었는지 먼저 확인해 주세요.
+> 이 문서는 프론트엔드 초기 구성과 MySQL 연결 설정이 포함된 `dev` 브랜치를 기준으로 합니다. 아래에서 안내하는 파일이 없다면, 환경설정 PR이 `dev`에 병합되었는지 먼저 확인해 주세요.
 
 ## 기본적으로 할 것
 
@@ -17,7 +17,7 @@
 3. **내 PC의 MySQL**에 프로젝트 DB와 전용 계정 생성
 4. 예제 설정 파일을 복사하고 IntelliJ에 개인 환경 변수를 설정
 5. 백엔드 빌드를 확인한 뒤 서버를 실행
-6. 프런트엔드 의존성을 설치하고 개발 서버를 실행
+6. 프론트엔드 의존성을 설치하고 개발 서버를 실행
 7. 화면의 API 연결과 백엔드의 DB 연결 상태를 각각 확인
 
 이미 마친 단계는 다시 할 필요 X 특히 정상적으로 사용하는 DB나 계정을 삭제하거나 새로 만들기 X
@@ -55,7 +55,7 @@
 |MySQL Server|8.4.x|아래 DB 접속 명령으로 확인|
 |IntelliJ IDEA|JDK 21을 사용할 수 있는 버전|**도움말 → 정보**|
 
-초기 설정 PC에서는 MySQL 8.4.11과 Vite 8.3.0으로 연결 및 프런트엔드 빌드를 확인. 개개인은 저장소에 있는 설정과 잠금 파일을 그대로 사용해 주세요.
+초기 설정 PC에서는 MySQL 8.4.11과 Vite 8.3.0으로 연결 및 프론트엔드 빌드를 확인. 개개인은 저장소에 있는 설정과 잠금 파일을 그대로 사용해 주세요.
 
 MySQL은 데이터베이스 서버가 실제로 설치되어 있어야 함. Workbench만 설치한 경우에는 MySQL Server 설치도 필요.
 
@@ -299,7 +299,7 @@ Gradle 실행 구성은 [IntelliJ 공식 안내](https://www.jetbrains.com/help/
 
 Actuator의 상태 점검 동작은 [Spring Boot 공식 안내](https://docs.spring.io/spring-boot/reference/actuator/endpoints.html)를 참고하세요.
 
-## 7\. 프런트엔드 실행
+## 7\. 프론트엔드 실행
 
 백엔드를 켜 둔 채 **별도의 PowerShell 창**을 엽니다. 이 문서의 기본 경로로 복제했다면 다음 명령을 실행합니다.
 
@@ -321,11 +321,11 @@ npm run dev
 * 응답의 `status`가 `UP`
 * 응답의 `service`가 `pc-upgrade-lab`
 
-프런트엔드에서 호출하는 `/api` 요청의 개발 서버 연결 설정은 `frontend/vite.config.ts`에서 확인할 수 있습니다. 개발 서버의 프록시는 [Vite 공식 안내](https://vite.dev/config/server-options.html#server-proxy)를 참고하세요.
+프론트엔드에서 호출하는 `/api` 요청의 개발 서버 연결 설정은 `frontend/vite.config.ts`에서 확인할 수 있습니다. 개발 서버의 프록시는 [Vite 공식 안내](https://vite.dev/config/server-options.html#server-proxy)를 참고하세요.
 
 화면 연결과 DB 연결은 각각 확인합니다. DB는 앞 단계의 \*\*8080 포트 `/actuator/health`\*\*에서 확인해 주세요.
 
-### 프런트엔드 빌드 확인
+### 프론트엔드 빌드 확인
 
 같은 터미널을 쓰려면 `Ctrl + C`로 개발 서버를 종료한 뒤 실행합니다. 개발 서버를 계속 켜 두려면 `frontend` 폴더에서 새 터미널을 엽니다.
 
@@ -346,7 +346,7 @@ TypeScript 검사와 Vite 빌드가 오류 없이 완료되어야 합니다. 결
 3. `frontend` 폴더의 터미널에서 `npm run dev`를 실행합니다.
 4. 브라우저에서 화면을 열고 작업합니다.
 
-종료할 때는 프런트엔드 터미널에서 `Ctrl + C`, IntelliJ의 백엔드 실행 창에서 **■ 중지**를 누릅니다.
+종료할 때는 프론트엔드 터미널에서 `Ctrl + C`, IntelliJ의 백엔드 실행 창에서 **■ 중지**를 누릅니다.
 
 IntelliJ 실행 구성에 입력한 환경 변수는 해당 실행에서 사용됩니다. 별도의 PowerShell에서 곧바로 `gradlew.bat build`를 실행하면 그 변수가 자동으로 전달되는 것은 아닙니다. 이 안내를 따를 때는 설정해 둔 `backend \[build]`를 사용해 주세요.
 
@@ -442,7 +442,7 @@ git check-ignore -v backend/src/main/resources/application-local.properties
 * \[ ] 백엔드 빌드에서 `BUILD SUCCESSFUL`을 확인했다.
 * \[ ] `/api/health`의 응답을 확인했다.
 * \[ ] `/actuator/health`의 `components.db.status`가 `UP`이다.
-* \[ ] 프런트엔드 화면의 백엔드 연결 버튼이 성공한다.
+* \[ ] 프론트엔드 화면의 백엔드 연결 버튼이 성공한다.
 * \[ ] `npm run build`가 성공한다.
 * \[ ] 개인 비밀번호와 설정 파일이 커밋에 포함되지 않았다.
 * \[ ] 공동 작업자 초대를 수락했다.
