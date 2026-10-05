@@ -21,9 +21,11 @@ type Props = {
   count: number
   onChange: (draft: PartDraft) => void
   onRemove?: () => void
+  // 있으면 행 안의 검색 창 대신 구성 화면의 검색 창을 연다.
+  onSearch?: () => void
 }
 
-export function PartRow({ draft, index, count, onChange, onRemove }: Props) {
+export function PartRow({ draft, index, count, onChange, onRemove, onSearch }: Props) {
   const nameId = useId()
   const quantityId = useId()
   const capacityId = useId()
@@ -107,8 +109,8 @@ export function PartRow({ draft, index, count, onChange, onRemove }: Props) {
         <button
           type="button"
           className="button button--ghost"
-          onClick={() => setPickerOpen((open) => !open)}
-          aria-expanded={pickerOpen}
+          onClick={() => onSearch ? onSearch() : setPickerOpen((open) => !open)}
+          aria-expanded={onSearch ? undefined : pickerOpen}
         >
           부품 검색
         </button>

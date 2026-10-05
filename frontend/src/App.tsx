@@ -113,6 +113,10 @@ function App() {
         <a href={paths.list()} className="app-title">
           PC 업그레이드 실험실
         </a>
+        <nav className="app-nav">
+          <a href={paths.list()}>내 PC</a>
+          <a href={paths.new()}>PC 구성하기</a>
+        </nav>
         <AuthStatus />
       </header>
       <main className="app-main">
