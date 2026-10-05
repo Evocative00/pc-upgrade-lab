@@ -72,6 +72,7 @@ class CatalogExpansionServiceTests {
         }
         assertThat(TransactionSynchronizationManager.isActualTransactionActive()).isFalse();
         for (String table : TABLES) assertThat(count(table)).as(table).isZero();
+        jdbc.update("INSERT INTO users (id, name, created_at, updated_at) VALUES (1, '카탈로그 테스트 회원', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)");
         mvc = MockMvcBuilders.webAppContextSetup(web).build();
         // PcService direct calls use a logged-in request; MockMvc requests remain anonymous.
         var request = new MockHttpServletRequest();
@@ -83,6 +84,7 @@ class CatalogExpansionServiceTests {
     void removeOnlyDedicatedFixtures() {
         RequestContextHolder.resetRequestAttributes();
         for (String table : TABLES) jdbc.update("DELETE FROM " + table);
+        jdbc.update("DELETE FROM users WHERE id = 1");
     }
 
     @Test

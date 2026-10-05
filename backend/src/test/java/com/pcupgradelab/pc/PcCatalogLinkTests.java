@@ -53,6 +53,7 @@ class PcCatalogLinkTests {
         }
         mvc = MockMvcBuilders.webAppContextSetup(context)
                 .defaultRequest(get("/").header("X-Dev-User-Id", String.valueOf(USER_ID))).build();
+        jdbc.update("INSERT INTO users (id, name, created_at, updated_at) VALUES (?, '카탈로그 연결 테스트 회원', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)", USER_ID);
         for (var type : List.of(PartType.CPU, PartType.MOTHERBOARD, PartType.RAM, PartType.GPU, PartType.MONITOR)) {
             // ID와 종류 검사에 필요한 기본 정보만 생성한다. 제품과 미확정 가격 행은 함께 저장된다.
             productIds.put(type, products.create(new CatalogProductCreateRequest(
@@ -70,6 +71,7 @@ class PcCatalogLinkTests {
             jdbc.update("DELETE FROM catalog_reference_price WHERE product_id = ?", id);
             jdbc.update("DELETE FROM catalog_product WHERE id = ?", id);
         }
+        jdbc.update("DELETE FROM users WHERE id = ?", USER_ID);
     }
 
     @Test

@@ -1,11 +1,12 @@
 package com.pcupgradelab.pc;
 
 import com.pcupgradelab.BackendApplication;
+import com.pcupgradelab.auth.UserAccount;
+import com.pcupgradelab.auth.UserAccountRepository;
 import java.util.EnumMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
 import javax.sql.DataSource;
 import com.pcupgradelab.auth.SessionCurrentUser;
 import org.junit.jupiter.api.AfterEach;
@@ -32,15 +33,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MySqlCatalogLinkPersistenceTests {
     private final String pcName = "mysql-catalog-check-" + UUID.randomUUID();
     private final JsonMapper mapper = JsonMapper.builder().build();
-    // 실행마다 고유한 회원 ID. users 테이블 FK가 추가되면 검증용 회원 행을 먼저 만들어야 한다.
-    private final long userId = ThreadLocalRandom.current().nextLong(1_000_000_000_000L, Long.MAX_VALUE);
+    private Long userId;
     private Long pcId;
 
     // PcService는 HTTP 세션의 로그인 회원을 사용한다. 웹 서버 없이 호출하므로 로그인된 요청을 직접 만든다.
     @BeforeEach
     void signInAsVerificationUser() {
+        // 세션은 회원 행 생성 직후 실제 테스트에서 설정한다.
         var request = new MockHttpServletRequest();
-        request.getSession(true).setAttribute(SessionCurrentUser.SESSION_ATTRIBUTE, userId);
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
     }
 
@@ -52,6 +52,10 @@ class MySqlCatalogLinkPersistenceTests {
                 assertThat(connection.getMetaData().getDatabaseProductName()).isEqualTo("MySQL");
             }
             var jdbc = app.getBean(JdbcTemplate.class);
+            userId = app.getBean(UserAccountRepository.class)
+                    .saveAndFlush(new UserAccount("MySQL 카탈로그 검증 회원", null)).getId();
+            ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest()
+                    .getSession(true).setAttribute(SessionCurrentUser.SESSION_ATTRIBUTE, userId);
             var service = app.getBean(PcService.class);
             var products = new EnumMap<PartType, CatalogFixture>(PartType.class);
             for (var type : List.of(PartType.CPU, PartType.MOTHERBOARD, PartType.RAM, PartType.GPU, PartType.MONITOR)) {
@@ -103,17 +107,22 @@ class MySqlCatalogLinkPersistenceTests {
     @AfterEach
     void removeOnlyThisRunsPc() {
         RequestContextHolder.resetRequestAttributes();
-        if (pcId == null) return;
+        if (userId == null) return;
         try (var app = application()) {
             var repository = app.getBean(PcConfigurationRepository.class);
-            app.getBean(TransactionTemplate.class).executeWithoutResult(status ->
-                    repository.findByIdAndUserId(pcId, userId).ifPresent(pc -> {
-                        assertThat(pc.getName()).isIn(pcName, pcName + "-updated");
-                        repository.delete(pc);
-                    }));
+            if (pcId != null) {
+                app.getBean(TransactionTemplate.class).executeWithoutResult(status ->
+                        repository.findByIdAndUserId(pcId, userId).ifPresent(pc -> {
+                            assertThat(pc.getName()).isIn(pcName, pcName + "-updated");
+                            repository.delete(pc);
+                        }));
+            }
             var jdbc = app.getBean(JdbcTemplate.class);
-            assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM pc_configuration WHERE id = ?", Long.class, pcId)).isZero();
-            assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM pc_part WHERE pc_id = ?", Long.class, pcId)).isZero();
+            if (pcId != null) {
+                assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM pc_configuration WHERE id = ?", Long.class, pcId)).isZero();
+                assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM pc_part WHERE pc_id = ?", Long.class, pcId)).isZero();
+            }
+            app.getBean(UserAccountRepository.class).deleteById(userId);
         }
     }
 

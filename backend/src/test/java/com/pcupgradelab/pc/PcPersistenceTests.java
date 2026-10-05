@@ -21,6 +21,7 @@ class PcPersistenceTests {
     // 여러 부품과 미연결 원문을 저장한 뒤 같은 PC를 수정해, 이전 부품 행이 중복으로 남지 않는지 확인한다.
     @Test
     void preservesMultipleDevicesUnknownCatalogAndReplacesWithoutDuplication() {
+        jdbc.update("INSERT INTO users (id, name, created_at, updated_at) VALUES (101, 'PC 저장 테스트 회원', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)");
         var id = transactions.execute(status -> repository.saveAndFlush(new PcConfiguration(
                 101L, "처음 PC", List.of(part(PartType.RAM, "DIMM A"), part(PartType.RAM, "DIMM B"),
                 part(PartType.STORAGE, "SSD A"), part(PartType.STORAGE, "SSD B")))).getId());
@@ -42,6 +43,7 @@ class PcPersistenceTests {
             assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM pc_part WHERE pc_id = ?", Integer.class, id)).isEqualTo(2);
             repository.delete(pc);
         });
+        jdbc.update("DELETE FROM users WHERE id = 101");
     }
 
     // 잘못된 교체 요청은 기존 이름과 부품을 변경하기 전에 거절해야 한다.

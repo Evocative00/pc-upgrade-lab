@@ -37,6 +37,7 @@ class PcControllerTests {
 
     @BeforeEach
     void setUp() {
+        jdbc.update("INSERT INTO users (id, name, created_at, updated_at) VALUES (1, 'PC API 테스트 회원', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)");
         // 개발용 회원 헤더로 로그인 회원 1을 흉내 낸다. 소유권 검사는 PcOwnershipTests에서 따로 확인한다.
         mvc = MockMvcBuilders.webAppContextSetup(context)
                 .defaultRequest(get("/").header("X-Dev-User-Id", "1")).build();
