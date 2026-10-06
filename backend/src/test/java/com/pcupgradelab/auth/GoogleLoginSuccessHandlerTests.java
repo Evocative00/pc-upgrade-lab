@@ -108,6 +108,34 @@ class GoogleLoginSuccessHandlerTests {
     }
 
     @Test
+    void storesVerifiedNaverUserSeparatelyFromGoogle() throws Exception {
+        var google = mock(OidcUser.class);
+        when(google.getSubject()).thenReturn("same-subject");
+        when(google.getFullName()).thenReturn("Google 회원");
+        when(google.getEmail()).thenReturn("same@example.test");
+        var naver = mock(OidcUser.class);
+        when(naver.getSubject()).thenReturn("same-subject");
+        when(naver.getFullName()).thenReturn("네이버 회원");
+        when(naver.getEmail()).thenReturn("same@example.test");
+        var request = new MockHttpServletRequest();
+        var response = new MockHttpServletResponse();
+
+        handler.onAuthenticationSuccess(request, response,
+                new OAuth2AuthenticationToken(google, List.of(), "google"));
+        var googleId = (Long) request.getSession(false).getAttribute(SessionCurrentUser.SESSION_ATTRIBUTE);
+        var naverResponse = new MockHttpServletResponse();
+        handler.onAuthenticationSuccess(request, naverResponse,
+                new OAuth2AuthenticationToken(naver, List.of(), "naver"));
+
+        var userId = (Long) request.getSession(false).getAttribute(SessionCurrentUser.SESSION_ATTRIBUTE);
+        assertThat(userId).isPositive();
+        assertThat(userId).isNotEqualTo(googleId);
+        assertThat(socialAccounts.findByProviderAndProviderUserId("naver", "same-subject")
+                .orElseThrow().getUserId()).isEqualTo(userId);
+        assertThat(naverResponse.getRedirectedUrl()).isEqualTo("http://127.0.0.1:5173/#/login/success");
+    }
+
+    @Test
     void failedAccountConnectionClearsPreviousUserAndSecuritySession() throws Exception {
         var loginService = mock(SocialLoginService.class);
         when(loginService.findOrCreateGoogleUser("new-google-sub", "새 회원", "new@example.test"))

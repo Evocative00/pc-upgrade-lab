@@ -16,11 +16,12 @@ test('me는 로그인·비로그인·인증 API 없음 상태를 구분한다', 
   assert.deepEqual(await createAuthClient(async () => json({ name: '경민' })).me(), { status: 'unavailable' })
 })
 
-test('providers는 Google을 기본으로 하고 서버가 알려 준 경우에만 Kakao를 포함한다', async () => {
+test('providers는 Google을 기본으로 하고 추가 제공자를 Google, Kakao, Naver 순서로 보여 준다', async () => {
   assert.deepEqual(await createAuthClient(async () => json({}, 404)).providers(), ['google'])
   assert.deepEqual(await createAuthClient(async () => json(['google'])).providers(), ['google'])
-  assert.deepEqual(await createAuthClient(async () => json(['google', 'kakao', 'naver'])).providers(), ['google', 'kakao'])
+  assert.deepEqual(await createAuthClient(async () => json(['naver', 'google', 'kakao'])).providers(), ['google', 'kakao', 'naver'])
   assert.equal(loginUrl('google'), '/oauth2/authorization/google')
+  assert.equal(loginUrl('naver'), '/oauth2/authorization/naver')
 })
 
 test('logout은 POST로 요청하고 이미 끝난 세션(401)도 성공으로 본다', async () => {

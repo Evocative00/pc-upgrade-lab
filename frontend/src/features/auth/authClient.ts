@@ -8,7 +8,7 @@ export type AuthUser = {
   provider: string
 }
 
-export type AuthProvider = 'google' | 'kakao'
+export type AuthProvider = 'google' | 'kakao' | 'naver'
 
 // unavailable: 인증 API가 아직 없는 서버(404 등). 로그인 안내 대신 PC API의 응답으로 판단한다.
 export type MeResult =
@@ -56,8 +56,10 @@ export function createAuthClient(fetcher: typeof fetch = globalThis.fetch, baseU
       const response = await get('/providers')
       const body: unknown = response?.ok ? await response.json().catch(() => null) : null
       if (!Array.isArray(body)) return ['google']
-      const known = body.filter((item): item is AuthProvider => item === 'google' || item === 'kakao')
-      return known.length > 0 ? known : ['google']
+      const known = body.filter((item): item is AuthProvider =>
+        item === 'google' || item === 'kakao' || item === 'naver')
+      const order: AuthProvider[] = ['google', 'kakao', 'naver']
+      return known.length > 0 ? order.filter((provider) => known.includes(provider)) : ['google']
     },
 
     async logout(): Promise<void> {

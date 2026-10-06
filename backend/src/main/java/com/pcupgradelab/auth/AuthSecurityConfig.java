@@ -8,7 +8,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplicat
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -40,6 +42,7 @@ public class AuthSecurityConfig {
         // GOOGLE_CLIENT_ID/SECRET 설정 전에도 서버와 기존 H2 테스트가 실행돼야 한다.
         if (registrations.getIfAvailable() != null) {
             http.oauth2Login(oauth -> oauth
+                    .userInfoEndpoint(userInfo -> userInfo.oidcUserService(oidcUserService()))
                     .successHandler(successHandler)
                     .failureHandler((request, response, exception) -> {
                         GoogleLoginSuccessHandler.clearLoginSession(request);
@@ -50,6 +53,16 @@ public class AuthSecurityConfig {
                     }));
         }
         return http.build();
+    }
+
+    private static OidcUserService oidcUserService() {
+        var oauth2UserService = new DefaultOAuth2UserService();
+        oauth2UserService.setAttributesConverter(userRequest -> attributes ->
+                "naver".equals(userRequest.getClientRegistration().getRegistrationId())
+                        ? NaverUserInfoAttributes.normalize(attributes) : attributes);
+        var oidcUserService = new OidcUserService();
+        oidcUserService.setOauth2UserService(oauth2UserService);
+        return oidcUserService;
     }
 
     private static void redirect(HttpServletResponse response, String location) throws IOException {
