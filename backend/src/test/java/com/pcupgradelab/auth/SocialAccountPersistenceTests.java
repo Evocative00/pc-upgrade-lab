@@ -67,4 +67,17 @@ class SocialAccountPersistenceTests {
         assertThat(socialAccounts.findByProviderAndProviderUserId("google", "google-sub-1")
                 .orElseThrow().getUserId()).isEqualTo(first.getId());
     }
+
+    @Test
+    void naverLoginReusesItsOwnUserButDoesNotMergeGoogleWithMatchingEmailAndSubject() {
+        var google = socialLogin.findOrCreateGoogleUser("shared-sub", "Google 회원", "same@example.test");
+        var naver = socialLogin.findOrCreateNaverUser("shared-sub", "네이버 회원", "same@example.test");
+        var naverAgain = socialLogin.findOrCreateNaverUser("shared-sub", "새 이름", "same@example.test");
+
+        assertThat(naver.getId()).isNotEqualTo(google.getId());
+        assertThat(naverAgain.getId()).isEqualTo(naver.getId());
+        assertThat(naverAgain.getName()).isEqualTo("새 이름");
+        assertThat(socialAccounts.findByProviderAndProviderUserId("naver", "shared-sub")
+                .orElseThrow().getUserId()).isEqualTo(naver.getId());
+    }
 }

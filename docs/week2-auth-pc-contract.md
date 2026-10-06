@@ -35,7 +35,7 @@ public interface CurrentUser {
 | V10 | 문경민 (반영됨) | `pc_configuration.user_id BIGINT NULL`, `name_normalized`, `UNIQUE(user_id, name_normalized)`, `owner_key` NULL 허용 |
 | V11 | 김민성 | `users`, `social_accounts` 생성 + `pc_configuration.user_id → users.id` FK |
 
-- `social_accounts`는 `(provider, provider_user_id)` 유니크. 이메일이 같다는 이유로 Google·Kakao 계정을 자동 통합하지 않는다.
+- `social_accounts`는 `(provider, provider_user_id)` 유니크. 이메일이 같다는 이유로 Google·Kakao·Naver 계정을 자동 통합하지 않는다.
 - FK 예: `ALTER TABLE pc_configuration ADD CONSTRAINT fk_pc_configuration_user FOREIGN KEY (user_id) REFERENCES users(id);`
 - 기존 `local-dev` 행은 `user_id = NULL`로 보존하고 모든 회원의 PC 목록에서 숨긴다(고상준 확정, 2026-10-04). 첫 로그인 회원에게 자동 귀속하지 않는다. 필요하면 실제 계정과 소유자를 확인한 뒤 별도 이관한다.
 - 애플리케이션의 V11 사전 검사 콜백은 기존 `user_id IS NOT NULL` PC가 있으면 첫 DDL 전에 중단한다. 기존 PC나 소유권은 변경하지 않으며 조회·백업·이관 결정은 [로그인 실행 안내](week2-google-login-setup.md)를 따른다.
@@ -47,7 +47,7 @@ public interface CurrentUser {
 | --- | --- | --- |
 | `GET /api/auth/me` | 200 `{ "id": 1, "name": "...", "email": "..." 또는 null, "provider": "google" }` | 401 `{ "code": "UNAUTHORIZED", "message": "..." }` |
 | `POST /api/auth/logout` | 204 | — (이미 끝난 세션의 401도 화면은 로그아웃으로 처리) |
-| `GET /api/auth/providers` | 200 `["google"]`, Kakao가 준비되면 `["google","kakao"]` | — (없거나 실패하면 화면은 Google만 표시) |
+| `GET /api/auth/providers` | 200 `["google"]`; 설정된 제공자만 Google → Kakao → Naver 순으로 추가 | — (없거나 실패하면 화면은 Google만 표시) |
 
 화면 동작(`frontend/src/features/auth/authClient.ts`): `/api/auth/me`가 404 등으로 없으면 "인증 미연결"로 보고 로그인 안내를 띄우지 않는다.
 
@@ -57,6 +57,7 @@ public interface CurrentUser {
 | --- | --- |
 | Google 시작 | `/oauth2/authorization/google` |
 | Kakao 시작 | `/oauth2/authorization/kakao` |
+| Naver 시작 | `/oauth2/authorization/naver` |
 | 성공 후 이동 | `/#/login/success` |
 | 사용자가 취소 | `/#/login/failure?reason=cancelled` |
 | 그 밖의 실패 | `/#/login/failure?reason=error` |

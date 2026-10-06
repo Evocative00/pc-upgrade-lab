@@ -32,4 +32,23 @@ public class SocialLoginService {
         socialAccounts.saveAndFlush(new SocialAccount(user.getId(), "google", subject));
         return user;
     }
+
+    @Transactional
+    public UserAccount findOrCreateNaverUser(String subject, String name, String email) {
+        if (subject == null || subject.isBlank()) {
+            throw new IllegalArgumentException("Naver subject is required");
+        }
+        String displayName = name == null || name.isBlank()
+                ? (email == null || email.isBlank() ? "네이버 사용자" : email)
+                : name;
+        var existing = socialAccounts.findByProviderAndProviderUserId("naver", subject);
+        if (existing.isPresent()) {
+            var user = users.findById(existing.get().getUserId()).orElseThrow();
+            user.updateProfile(displayName, email);
+            return user;
+        }
+        var user = users.saveAndFlush(new UserAccount(displayName, email));
+        socialAccounts.saveAndFlush(new SocialAccount(user.getId(), "naver", subject));
+        return user;
+    }
 }

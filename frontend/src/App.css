@@ -524,3 +524,9 @@ ul.error {
   color: rgba(0, 0, 0, 0.85);
   border-color: #fee500;
 }
+
+.login__button--naver {
+  background: #03c75a;
+  color: #fff;
+  border-color: #03c75a;
+}
