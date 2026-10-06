@@ -45,7 +45,7 @@ public class GoogleLoginSuccessHandler implements AuthenticationSuccessHandler {
                 case "google" -> socialLogin.findOrCreateGoogleUser(
                         identity.getSubject(), identity.getFullName(), identity.getEmail());
                 case "kakao" -> socialLogin.findOrCreateKakaoUser(
-                        identity.getSubject(), identity.getFullName(), identity.getEmail());
+                        identity.getSubject(), kakaoDisplayName(identity), identity.getEmail());
                 default -> throw new IllegalArgumentException("Unsupported login provider");
             };
         } catch (RuntimeException exception) {
@@ -56,6 +56,11 @@ public class GoogleLoginSuccessHandler implements AuthenticationSuccessHandler {
         }
         request.getSession(true).setAttribute(SessionCurrentUser.SESSION_ATTRIBUTE, user.getId());
         response.sendRedirect(frontend + "/#/login/success");
+    }
+
+    private static String kakaoDisplayName(OidcUser identity) {
+        String nickname = identity.getClaimAsString("nickname");
+        return nickname != null && !nickname.isBlank() ? nickname : identity.getFullName();
     }
 
     private void failLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {

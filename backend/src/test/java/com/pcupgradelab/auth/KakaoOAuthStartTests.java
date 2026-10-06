@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         "spring.security.oauth2.client.registration.kakao.client-authentication-method=client_secret_post",
         "spring.security.oauth2.client.registration.kakao.authorization-grant-type=authorization_code",
         "spring.security.oauth2.client.registration.kakao.redirect-uri=http://127.0.0.1:5173/login/oauth2/code/kakao",
-        "spring.security.oauth2.client.registration.kakao.scope=openid",
+        "spring.security.oauth2.client.registration.kakao.scope=openid,profile_nickname",
         "spring.security.oauth2.client.provider.kakao.authorization-uri=https://kauth.kakao.com/oauth/authorize",
         "spring.security.oauth2.client.provider.kakao.token-uri=https://kauth.kakao.com/oauth/token",
         "spring.security.oauth2.client.provider.kakao.jwk-set-uri=https://kauth.kakao.com/.well-known/jwks.json",
@@ -43,5 +43,6 @@ class KakaoOAuthStartTests {
         assertThat(response.getRedirectedUrl()).startsWith("https://kauth.kakao.com/oauth/authorize");
         assertThat(response.getRedirectedUrl()).contains("redirect_uri=http://127.0.0.1:5173/login/oauth2/code/kakao");
         assertThat(response.getRedirectedUrl()).contains("scope=openid");
+        assertThat(response.getRedirectedUrl()).contains("profile_nickname");
     }
 }

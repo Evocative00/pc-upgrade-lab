@@ -54,6 +54,7 @@ class GoogleLoginSuccessHandlerTests {
         var kakao = mock(OidcUser.class);
         when(kakao.getSubject()).thenReturn("shared-subject");
         when(kakao.getFullName()).thenReturn("Kakao 회원");
+        when(kakao.getClaimAsString("nickname")).thenReturn("카카오별명");
         when(kakao.getEmail()).thenReturn("shared@example.test");
         var request = new MockHttpServletRequest();
         var response = new MockHttpServletResponse();
@@ -67,9 +68,29 @@ class GoogleLoginSuccessHandlerTests {
         var kakaoId = (Long) request.getSession(false).getAttribute(SessionCurrentUser.SESSION_ATTRIBUTE);
 
         assertThat(kakaoId).isNotEqualTo(googleId);
+        assertThat(users.findById(kakaoId).orElseThrow().getName()).isEqualTo("카카오별명");
         assertThat(socialAccounts.findByProviderAndProviderUserId("kakao", "shared-subject")
                 .orElseThrow().getUserId()).isEqualTo(kakaoId);
         assertThat(kakaoResponse.getRedirectedUrl()).isEqualTo("http://127.0.0.1:5173/#/login/success");
+    }
+
+    @Test
+    void newKakaoConsentUpdatesExistingFallbackNameOnNextLogin() throws Exception {
+        var kakao = mock(OidcUser.class);
+        when(kakao.getSubject()).thenReturn("nickname-later");
+        var firstRequest = new MockHttpServletRequest();
+        handler.onAuthenticationSuccess(firstRequest, new MockHttpServletResponse(),
+                new OAuth2AuthenticationToken(kakao, List.of(), "kakao"));
+        var userId = (Long) firstRequest.getSession(false).getAttribute(SessionCurrentUser.SESSION_ATTRIBUTE);
+        assertThat(users.findById(userId).orElseThrow().getName()).isEqualTo("카카오 사용자");
+
+        when(kakao.getClaimAsString("nickname")).thenReturn("새 카카오 닉네임");
+        var secondRequest = new MockHttpServletRequest();
+        handler.onAuthenticationSuccess(secondRequest, new MockHttpServletResponse(),
+                new OAuth2AuthenticationToken(kakao, List.of(), "kakao"));
+
+        assertThat(secondRequest.getSession(false).getAttribute(SessionCurrentUser.SESSION_ATTRIBUTE)).isEqualTo(userId);
+        assertThat(users.findById(userId).orElseThrow().getName()).isEqualTo("새 카카오 닉네임");
     }
 
     @Test
