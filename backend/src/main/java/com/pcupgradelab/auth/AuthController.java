@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.pcupgradelab.common.ApiException;
 import java.util.List;
+import java.util.ArrayList;
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 
 /** 프런트와 합의한 로그인 상태·제공자·로그아웃 API. */
 @RestController
@@ -18,12 +21,15 @@ public class AuthController {
     private final CurrentUser currentUser;
     private final UserAccountRepository users;
     private final SocialAccountRepository socialAccounts;
+    private final ObjectProvider<ClientRegistrationRepository> registrations;
 
     public AuthController(CurrentUser currentUser, UserAccountRepository users,
-                          SocialAccountRepository socialAccounts) {
+                          SocialAccountRepository socialAccounts,
+                          ObjectProvider<ClientRegistrationRepository> registrations) {
         this.currentUser = currentUser;
         this.users = users;
         this.socialAccounts = socialAccounts;
+        this.registrations = registrations;
     }
 
     public record Me(Long id, String name, String email, String provider) { }
@@ -37,7 +43,12 @@ public class AuthController {
     }
 
     @GetMapping("/providers")
-    public List<String> providers() { return List.of("google"); }
+    public List<String> providers() {
+        var available = new ArrayList<>(List.of("google"));
+        var repository = registrations.getIfAvailable();
+        if (repository != null && repository.findByRegistrationId("kakao") != null) available.add("kakao");
+        return available;
+    }
 
     @PostMapping("/logout")
     public ResponseEntity<Void> logout(HttpServletRequest request) {
