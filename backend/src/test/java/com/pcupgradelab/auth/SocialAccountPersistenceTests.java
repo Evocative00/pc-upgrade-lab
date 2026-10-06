@@ -80,4 +80,13 @@ class SocialAccountPersistenceTests {
         assertThat(socialAccounts.findByProviderAndProviderUserId("kakao", "same-sub")
                 .orElseThrow().getUserId()).isEqualTo(kakao.getId());
     }
+
+    @Test
+    void missingProfileUsesReadableProviderName() {
+        var google = socialLogin.findOrCreateGoogleUser("empty-google", null, null);
+        var kakao = socialLogin.findOrCreateKakaoUser("empty-kakao", null, null);
+
+        assertThat(google.getName()).isEqualTo("Google 사용자");
+        assertThat(kakao.getName()).isEqualTo("카카오 사용자");
+    }
 }

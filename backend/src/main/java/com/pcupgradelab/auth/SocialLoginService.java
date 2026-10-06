@@ -29,7 +29,7 @@ public class SocialLoginService {
             throw new IllegalArgumentException(provider + " subject is required");
         }
         String displayName = name == null || name.isBlank()
-                ? (email == null || email.isBlank() ? provider + " 사용자" : email)
+                ? (email == null || email.isBlank() ? defaultName(provider) : email)
                 : name;
         var existing = socialAccounts.findByProviderAndProviderUserId(provider, subject);
         if (existing.isPresent()) {
@@ -40,5 +40,13 @@ public class SocialLoginService {
         var user = users.saveAndFlush(new UserAccount(displayName, email));
         socialAccounts.saveAndFlush(new SocialAccount(user.getId(), provider, subject));
         return user;
+    }
+
+    private static String defaultName(String provider) {
+        return switch (provider) {
+            case "google" -> "Google 사용자";
+            case "kakao" -> "카카오 사용자";
+            default -> throw new IllegalArgumentException("Unsupported login provider");
+        };
     }
 }
