@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-/** Google 검증이 끝난 뒤 우리 회원 ID를 세션에 담고 프런트로 돌려보낸다. */
+/** 제공자의 OIDC 검증이 끝난 뒤 우리 회원 ID를 세션에 담고 프런트로 돌려보낸다. */
 @Component
 public class GoogleLoginSuccessHandler implements AuthenticationSuccessHandler {
     private static final Logger log = LoggerFactory.getLogger(GoogleLoginSuccessHandler.class);
@@ -34,18 +34,23 @@ public class GoogleLoginSuccessHandler implements AuthenticationSuccessHandler {
         var previousSession = request.getSession(false);
         if (previousSession != null) previousSession.removeAttribute(SessionCurrentUser.SESSION_ATTRIBUTE);
         if (!(authentication instanceof OAuth2AuthenticationToken token)
-                || !"google".equals(token.getAuthorizedClientRegistrationId())
-                || !(token.getPrincipal() instanceof OidcUser google)) {
+                || !(token.getPrincipal() instanceof OidcUser identity)) {
             failLogin(request, response);
             return;
         }
+        String provider = token.getAuthorizedClientRegistrationId();
         UserAccount user;
         try {
-            user = socialLogin.findOrCreateGoogleUser(
-                    google.getSubject(), google.getFullName(), google.getEmail());
+            user = switch (provider) {
+                case "google" -> socialLogin.findOrCreateGoogleUser(
+                        identity.getSubject(), identity.getFullName(), identity.getEmail());
+                case "kakao" -> socialLogin.findOrCreateKakaoUser(
+                        identity.getSubject(), identity.getFullName(), identity.getEmail());
+                default -> throw new IllegalArgumentException("Unsupported login provider");
+            };
         } catch (RuntimeException exception) {
             // 제공자 프로필·DB 예외의 원문에는 개인정보가 있을 수 있으므로 종류만 기록한다.
-            log.warn("Google account connection failed: {}", exception.getClass().getSimpleName());
+            log.warn("Social account connection failed: {}", exception.getClass().getSimpleName());
             failLogin(request, response);
             return;
         }

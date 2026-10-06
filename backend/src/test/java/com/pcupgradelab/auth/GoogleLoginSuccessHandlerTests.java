@@ -46,6 +46,47 @@ class GoogleLoginSuccessHandlerTests {
     }
 
     @Test
+    void kakaoUsesItsOwnAccountEvenWhenGoogleHasTheSameSubjectAndEmail() throws Exception {
+        var google = mock(OidcUser.class);
+        when(google.getSubject()).thenReturn("shared-subject");
+        when(google.getFullName()).thenReturn("Google 회원");
+        when(google.getEmail()).thenReturn("shared@example.test");
+        var kakao = mock(OidcUser.class);
+        when(kakao.getSubject()).thenReturn("shared-subject");
+        when(kakao.getFullName()).thenReturn("Kakao 회원");
+        when(kakao.getEmail()).thenReturn("shared@example.test");
+        var request = new MockHttpServletRequest();
+        var response = new MockHttpServletResponse();
+
+        handler.onAuthenticationSuccess(request, response,
+                new OAuth2AuthenticationToken(google, List.of(), "google"));
+        var googleId = (Long) request.getSession(false).getAttribute(SessionCurrentUser.SESSION_ATTRIBUTE);
+        var kakaoResponse = new MockHttpServletResponse();
+        handler.onAuthenticationSuccess(request, kakaoResponse,
+                new OAuth2AuthenticationToken(kakao, List.of(), "kakao"));
+        var kakaoId = (Long) request.getSession(false).getAttribute(SessionCurrentUser.SESSION_ATTRIBUTE);
+
+        assertThat(kakaoId).isNotEqualTo(googleId);
+        assertThat(socialAccounts.findByProviderAndProviderUserId("kakao", "shared-subject")
+                .orElseThrow().getUserId()).isEqualTo(kakaoId);
+        assertThat(kakaoResponse.getRedirectedUrl()).isEqualTo("http://127.0.0.1:5173/#/login/success");
+    }
+
+    @Test
+    void unknownProviderCannotCreateAnAccountOrKeepThePreviousSession() throws Exception {
+        var identity = mock(OidcUser.class);
+        var request = new MockHttpServletRequest();
+        request.getSession().setAttribute(SessionCurrentUser.SESSION_ATTRIBUTE, 42L);
+        var response = new MockHttpServletResponse();
+
+        handler.onAuthenticationSuccess(request, response,
+                new OAuth2AuthenticationToken(identity, List.of(), "unknown"));
+
+        assertThat(request.getSession(false)).isNull();
+        assertThat(response.getRedirectedUrl()).isEqualTo("http://127.0.0.1:5173/#/login/failure?reason=error");
+    }
+
+    @Test
     void failedAccountConnectionClearsPreviousUserAndSecuritySession() throws Exception {
         var loginService = mock(SocialLoginService.class);
         when(loginService.findOrCreateGoogleUser("new-google-sub", "새 회원", "new@example.test"))
