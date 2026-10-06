@@ -18,7 +18,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(properties = {"app.security.csrf.enabled=true", "app.auth.dev-header.enabled=false"})
-@ActiveProfiles({"test", "local"})
+// local 기능을 활성화하되 test를 마지막에 적용해 개인 MySQL 설정 대신 H2를 사용한다.
+@ActiveProfiles({"local", "test"})
 class AuthSecurityTests {
     @Autowired WebApplicationContext context;
 
