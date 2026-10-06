@@ -24,6 +24,11 @@ public class SocialLoginService {
         return findOrCreateUser("kakao", subject, name, email);
     }
 
+    @Transactional
+    public UserAccount findOrCreateNaverUser(String subject, String name, String email) {
+        return findOrCreateUser("naver", subject, name, email);
+    }
+
     private UserAccount findOrCreateUser(String provider, String subject, String name, String email) {
         if (subject == null || subject.isBlank()) {
             throw new IllegalArgumentException(provider + " subject is required");
@@ -46,6 +51,7 @@ public class SocialLoginService {
         return switch (provider) {
             case "google" -> "Google 사용자";
             case "kakao" -> "카카오 사용자";
+            case "naver" -> "네이버 사용자";
             default -> throw new IllegalArgumentException("Unsupported login provider");
         };
     }

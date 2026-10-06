@@ -47,6 +47,7 @@ public class AuthController {
         var available = new ArrayList<>(List.of("google"));
         var repository = registrations.getIfAvailable();
         if (repository != null && repository.findByRegistrationId("kakao") != null) available.add("kakao");
+        if (repository != null && repository.findByRegistrationId("naver") != null) available.add("naver");
         return available;
     }
 

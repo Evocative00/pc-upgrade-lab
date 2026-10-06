@@ -7,6 +7,7 @@ import { loadDraft, type PcDraft } from '../draftBridge.ts'
 const PROVIDER_LABELS: Record<AuthProvider, string> = {
   google: 'Google로 계속하기',
   kakao: '카카오로 계속하기',
+  naver: '네이버로 계속하기',
 }
 
 // 로그인 후 돌아갈 작성 화면. 초안이 없으면 저장한 PC 목록으로 간다.
@@ -27,7 +28,7 @@ function DraftSummary({ draft }: { draft: PcDraft | null }) {
   )
 }
 
-// 저장할 때 로그인이 필요하면 이동하는 안내 화면. Kakao는 서버가 사용 가능하다고 알려 줄 때만 보인다.
+// 저장할 때 로그인이 필요하면 이동하는 안내 화면. 추가 제공자는 서버 설정이 있을 때만 보인다.
 export function LoginPage() {
   const [draft] = useState(() => loadDraft())
   const [providers, setProviders] = useState<AuthProvider[]>(['google'])

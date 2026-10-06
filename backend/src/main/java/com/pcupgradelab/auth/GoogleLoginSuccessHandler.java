@@ -46,6 +46,8 @@ public class GoogleLoginSuccessHandler implements AuthenticationSuccessHandler {
                         identity.getSubject(), identity.getFullName(), identity.getEmail());
                 case "kakao" -> socialLogin.findOrCreateKakaoUser(
                         identity.getSubject(), kakaoDisplayName(identity), identity.getEmail());
+                case "naver" -> socialLogin.findOrCreateNaverUser(
+                        identity.getSubject(), identity.getFullName(), identity.getEmail());
                 default -> throw new IllegalArgumentException("Unsupported login provider");
             };
         } catch (RuntimeException exception) {
