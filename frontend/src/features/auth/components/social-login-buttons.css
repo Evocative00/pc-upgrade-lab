@@ -1,0 +1,81 @@
+.social-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  height: 56px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 4px;
+  }
+}
+
+.social-login__icon {
+  display: block;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.social-login__label {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.social-login--google {
+  border-color: #747775;
+  color: #1f1f1f;
+  background: #fff;
+  font-family: 'Google Sans', var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.social-login--kakao {
+  color: rgb(0 0 0 / 85%);
+  background: #fee500;
+}
+
+/* NAVER's current login-button guide specifies #03A94D. */
+.social-login--naver {
+  gap: 8px;
+  color: #fff;
+  background: #03a94d;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-login {
+    transition: none;
+
+    &:hover,
+    &:active {
+      transform: none;
+    }
+  }
+}

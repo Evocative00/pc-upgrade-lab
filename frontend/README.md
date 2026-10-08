@@ -1,75 +1,40 @@
-# React + TypeScript + Vite
+# PC 업그레이드 실험실 프론트엔드
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19·TypeScript·Vite 기반 화면이다. 의존성·명령은 `package.json`과 `package-lock.json`, 전체 실행 환경은 [프로젝트 실행 안내](../docs/week1-setup.md)를 기준으로 한다.
 
-Currently, two official plugins are available:
+## 로그인 화면
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Google·카카오·네이버의 공식 브랜드 자산과 색상을 사용하는 버튼, 반응형 소개 영역과 로그인 카드를 적용했다. 출처는 [브랜드 자산 안내](src/features/auth/assets/NOTICE.txt)에 기록했다.
+- 서버의 제공자 목록에 따라 활성화된 로그인 버튼을 표시한다. 실제 OAuth 사용에는 각 PC의 개인 설정과 제공자 콘솔 등록이 필요하다.
+- 로그인 전 PC 초안 복구와 돌아갈 화면을 유지한다. 로그인 후 사용자가 저장 버튼을 눌러야 PC를 계정에 저장한다.
+- 로그인 성공·실패 화면도 같은 스타일로 정리했다.
 
-## React Compiler
+## PC 조립 스크롤 랜딩
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+블랙·실버, 유리 케이스와 은은한 아이스 블루 LED를 사용한 자체 제작 3D 장면을 스크롤에 연결했다. 메인보드의 전원부·실드·소켓·슬롯과 CPU 쿨러의 방열핀·히트파이프·고정 장치를 보강했으며, GPU·RAM·CPU·SSD·케이블 등을 21개 독립 그룹으로 분해·조립한다.
 
-## Expanding the ESLint configuration
+- 240개 고유 이미지와 역순 재사용으로 480단계 왕복 동작을 제공한다. 데스크톱은 1600×1200, 모바일은 960×720 WebP를 사용한다.
+- 스크롤 진행률을 부드럽게 따라가고, 빠르게 방향을 바꿀 때 최신 목표를 우선한다. 이미지 캐시는 데스크톱 24장·모바일 12장으로 제한하고 화면 밖이나 비활성 탭에서는 작업과 캐시를 정리한다.
+- 모션 감소 설정에서는 정지 장면을 기본으로 보여 준다. 사용자가 해당 페이지에서만 애니메이션 표시를 선택할 수 있다.
+- 메인보드·쿨러 근접 이미지와 실제 제품의 공식 형태 참고 링크를 제공한다. 특정 제품의 정밀 CAD나 브랜드 로고를 복제한 장면은 아니다.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+완성 이미지와 manifest는 `public/pc-assembly/`에 포함되어 pull 후 렌더 없이 사용할 수 있다. 원본 Blender 장면과 제작·재렌더 방법은 [PC 장면 제작 안내](../art/pc-assembly/README.md), 상세 검토 기록은 [장면 규격](../art/pc-assembly/scene-spec.json)에 있다. 480단계라는 수는 모든 기기에서 고정 60fps를 보장하지 않는다.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 실행·검증
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Node.js 24.x와 npm을 준비한 뒤 `frontend/`에서 실행한다.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```powershell
+npm.cmd ci
+npm.cmd run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+개발 서버 주소는 `http://127.0.0.1:5173`이다. 로그인·저장 등 서버 기능에는 별도 백엔드 실행과 개인 설정이 필요하다. 개인 OAuth 키와 DB 데이터는 pull로 공유되지 않는다. 상품가 준비는 [국내 신품 상품가 안내](../docs/catalog-current-prices.md)를 참고한다.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```powershell
+npm.cmd test
+npm.cmd run lint
+npm.cmd run build
 ```
+
+2026-10-09 기준 프론트엔드 테스트 100개, ESLint, TypeScript·Vite 빌드를 통과했다. 실제 브라우저에서 데스크톱 왕복 스크롤·방향 변경·화면 밖 캐시 해제, 모바일 크기 화면·가로 넘침·기존 PC 구성하기 링크를 확인했다. 모바일 확인은 브라우저 화면 크기 모의 시험이며, 실제 모바일 하드웨어·외부 네트워크·고정 FPS 시험은 하지 않았다. 이번 화면 변경에서는 백엔드·DB를 수정하지 않았으며 실제 MySQL·OAuth 로그인 통합 시험도 새로 실행하지 않았다.

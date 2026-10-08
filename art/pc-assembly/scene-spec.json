@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 4,
+  "status": "detailed-scene-and-480-position-homepage-scroll-complete",
+  "createdOn": "2026-10-09",
+  "purpose": "PC assembly and disassembly scene for the landing page",
+  "concept": {
+    "image": "concept-v1.png",
+    "prompt": "concept-v1.prompt.txt",
+    "method": "built-in image generation",
+    "role": "Reference for composition, materials and lighting only",
+    "isAnimationSource": false,
+    "isEditable3DModel": false,
+    "technicalGeometryValidated": false
+  },
+  "approvedDirection": {
+    "palette": [
+      "matte black",
+      "brushed silver",
+      "subtle ice-blue LED accents"
+    ],
+    "lightingStyle": "neutral studio product lighting with restrained ice-blue component LEDs",
+    "gpuStyle": "angular GeForce RTX 5070 / RTX 5080 gaming-card references",
+    "caseStyle": "glass-front and glass-side case with black framing and silver edges",
+    "motionDirection": "preserve the user-approved v2 disassembly and assembly paths",
+    "confirmedOn": "2026-10-09",
+    "assetSearchScope": "free and paid candidates; purchase requires a separate decision",
+    "confirmedScope": "Detailed motherboard/cooler, high-resolution stills, 480-position web sequence and local homepage integration"
+  },
+  "authoredScene": {
+    "file": "pc-assembly-v4.blend",
+    "source": "build_scene.py",
+    "method": "original procedural geometry and materials",
+    "externalModelOrImageDependencies": false,
+    "previews": [
+      "assembled-v4.png",
+      "exploded-v4.png",
+      "motherboard-detail-v4.png",
+      "cooler-detail-v4.png"
+    ],
+    "reviewPage": "preview.html",
+    "validation": "render-metadata-v4.json",
+    "references": "references.json",
+    "qualityStatus": "2301 original scene objects; motherboard sockets/shields/headers and notched/perforated cooler fins, heatpipes and mounting details",
+    "motionPreview": {
+      "manifest": "preview-manifest.json",
+      "role": "representative rendered storyboard frames, selected with a slider",
+      "complete": true,
+      "frameCount": 42,
+      "resolution": [
+        800,
+        600
+      ],
+      "samples": 32,
+      "isFullFrameRateAnimationMaster": false
+    },
+    "stillResolution": [
+      2560,
+      1920
+    ],
+    "stillSamples": 128,
+    "independentlyAnimatedRigCount": 21,
+    "previousVersionReview": {
+      "performedOn": "2026-10-09",
+      "cameraBoundsCheckedAtAll240Frames": true,
+      "endWorldTransformsMatch": true,
+      "rigPivotsAndMotionMetadataMatchV2": true,
+      "visuallyInspectedFrames": [
+        1,
+        55,
+        85,
+        120,
+        187
+      ],
+      "previewFilesMissing": 0,
+      "browserChecks": [
+        "42-step slider",
+        "rapid End/Home/End selection",
+        "1600-pixel zoom and Escape focus restoration",
+        "eight official reference links",
+        "default viewport horizontal overflow"
+      ],
+      "allFrameIntersectionValidationPerformed": false,
+      "remainingRefinement": [
+        "small cable and connector overlaps in the middle pose",
+        "flexible cable deformation",
+        "physical notch geometry and manufacturing detail",
+        "final motion master and homepage scroll integration"
+      ]
+    },
+    "fullAnimationRendered": true,
+    "previousVersion": {
+      "artifactAvailability": "Local authoring history; previous Blender/render/review outputs are excluded from Git. Versioned source/spec/reference files are retained for provenance.",
+      "scene": "pc-assembly-v3.blend",
+      "source": "build_scene-v3.py",
+      "spec": "scene-spec-v3.json",
+      "references": "references-v3.json",
+      "manifest": "preview-manifest-v3.json",
+      "page": "preview-v3.html"
+    },
+    "review": {
+      "performedOn": "2026-10-09",
+      "cameraBoundsCheckedAtAll240Frames": true,
+      "endWorldTransformsMatch": true,
+      "rigPivotsAndMotionSourceMatchV3": true,
+      "detailCameraAndSceneStateRestored": true,
+      "visuallyInspectedFrames": [
+        1,
+        55,
+        85,
+        120
+      ],
+      "previewFilesMissing": 0,
+      "browserChecks": [
+        "42-step slider and rapid End/Home/End selection",
+        "detail zoom and Escape focus restoration",
+        "2560-pixel stills and 1600-pixel detail images",
+        "eight official reference links",
+        "default viewport horizontal overflow",
+        "Desktop 480-position forward/reverse scroll and rapid direction changes settle on the latest target",
+        "Desktop 24 decoded-image limit and mobile 12 decoded-image limit",
+        "Offscreen release to zero decoded images",
+        "Offscreen same-variant resize restores the poster until the next draw",
+        "414x896 mobile sequence and no horizontal overflow",
+        "390x600, 320x600 and 844x390 layout checks",
+        "PC build CTA reaches the existing new-PC form",
+        "Default viewport restored; no browser console warnings/errors in final checks"
+      ],
+      "allFrameIntersectionValidationPerformed": false,
+      "remainingRefinement": [
+        "flexible cable deformation",
+        "small cable/connector overlaps in intermediate poses"
+      ],
+      "visuallyInspectedWebPoses": [
+        0,
+        119,
+        239
+      ],
+      "browserPerformanceScope": "Local in-app desktop browser and responsive viewport emulation; not physical mobile hardware or remote-network/FPS testing",
+      "observedCanvasDrawCallMs": [
+        0,
+        0.2
+      ],
+      "observedDecodedImageBytes": {
+        "desktopMax": 184320000,
+        "mobileMax": 33177600
+      },
+      "reducedMotion": "Static poster by default, explicit ephemeral page-only opt-in; code-reviewed and built, default static state observed, opt-in path not manually exercised because the reported preference changed during QA",
+      "checks": {
+        "frontendTests": {
+          "passed": 100,
+          "failed": 0
+        },
+        "frontendLint": "passed",
+        "frontendProductionBuildWithAssets": "passed",
+        "webImageHeadersChecked": 480,
+        "backendIntegration": "not run; no backend or DB changes"
+      }
+    },
+    "detailResolution": [
+      1600,
+      1200
+    ],
+    "webAnimation": {
+      "status": "complete",
+      "manifest": "../../frontend/public/pc-assembly/manifest.json",
+      "deliveryMetadata": "web-delivery-v4.json",
+      "timelinePositions": 480,
+      "forwardImages": 240,
+      "reverseUsesSamePixels": true,
+      "desktopResolution": [
+        1600,
+        1200
+      ],
+      "mobileResolution": [
+        960,
+        720
+      ],
+      "renderSamples": 64,
+      "nominalFps": 60,
+      "nominalDurationSeconds": 8,
+      "actualScrollTiming": "determined by user scrolling; not a fixed-FPS guarantee",
+      "sourceSceneSha256": "ab398984af7f0c73cc9afc99565d978f49963f72255ff8e0210c286fad400fd7",
+      "imageFormat": "WebP",
+      "desktopImageBytes": 14242634,
+      "mobileImageBytes": 6513534,
+      "validation": {
+        "timeline_positions_checked": 480,
+        "rig_count": 21,
+        "reverse_transform_max_difference": 1.4603137969970703e-06,
+        "normalized_bounds": [
+          0.11425551772117615,
+          0.8948706388473511,
+          0.08112063258886337,
+          0.8197245001792908
+        ],
+        "includes_curves": true,
+        "all_frame_collision_validation": false
+      },
+      "sourceMasterLocation": "backend/build/pc-assembly-runtime/web-v4-master (Git-ignored)"
+    }
+  },
+  "proposedScene": {
+    "software": "Blender",
+    "renderer": "Cycles",
+    "pcStyle": "original unbranded gaming ATX mid-tower with removable glass front and side",
+    "materials": [
+      "black anodized metal",
+      "brushed silver trim",
+      "glass with real thickness",
+      "PCB",
+      "matte plastic",
+      "ice-blue LED diffusers"
+    ],
+    "camera": {
+      "view": "slightly elevated three-quarter side and front",
+      "motion": "fixed during assembly",
+      "startingLensMm": 58,
+      "framing": "keep the entire exploded assembly inside the frame"
+    },
+    "lighting": {
+      "key": "large soft neutral area light",
+      "fill": "gentle fill for readable internal components",
+      "rim": "narrow neutral light to define black metal edges",
+      "coloredRGB": false,
+      "componentLEDs": "constant restrained ice-blue fan rings, case edges, RAM spines and GPU side lightbar"
+    },
+    "separateObjectGroups": [
+      "chassis",
+      "glass-side-panel",
+      "other-visible-panels",
+      "motherboard",
+      "cpu",
+      "cpu-cooler-tower-and-heatpipes",
+      "cpu-cooler-fan-and-clips",
+      "ram-stick-1",
+      "ram-stick-2",
+      "gpu-pcb-and-surface-components",
+      "gpu-backplate",
+      "gpu-heatsink-and-heatpipes",
+      "gpu-shroud",
+      "gpu-fans",
+      "power-supply",
+      "m2-ssd",
+      "m2-heatshield",
+      "case-fans",
+      "cpu-eps-power-cable-and-connectors",
+      "motherboard-atx-power-cable-and-connectors",
+      "gpu-power-cable-and-connectors"
+    ],
+    "keyPoses": [
+      {
+        "progress": 0,
+        "state": "fully assembled"
+      },
+      {
+        "progress": 0.5,
+        "state": "exploded assembly with clear readable gaps"
+      },
+      {
+        "progress": 1,
+        "state": "fully assembled; transforms exactly match the first pose"
+      }
+    ],
+    "movementRules": [
+      "Open the glass panel before moving internal components.",
+      "Disconnect cables and remove mounted components before extracting the motherboard.",
+      "Keep CPU/DIMM/M.2 sockets and motherboard mounting structures with the motherboard.",
+      "Move each component along a path consistent with its mounting direction.",
+      "Use intermediate keyframes to prevent components passing through one another.",
+      "Keep cable and connector movement deterministic for reverse scrolling.",
+      "Keep the camera, materials and lighting consistent across all frames."
+    ]
+  },
+  "productionMilestones": [
+    "Inspect the chosen model's objects, materials, dependencies and usage terms.",
+    "Produce one assembled still and one exploded still from the same actual 3D scene.",
+    "Review composition, internal visibility and part separation before the full animation render.",
+    "Render the animation master and optimize desktop and mobile outputs."
+  ],
+  "acceptanceCriteria": [
+    "The same mesh geometry and material setup are used for every frame.",
+    "No visible intersection, flicker or unexplained appearance/disappearance of parts.",
+    "Forward and reverse playback show the same pose at the same progress.",
+    "Both assembled end poses match exactly.",
+    "Deliver an editable .blend scene with camera, lights, materials, animation and required dependencies.",
+    "Deliver a lossless numbered frame master, website-optimized outputs and a poster."
+  ],
+  "pendingDecisions": {
+    "sourceModel": "original authored scene; no purchased model",
+    "modelObjectSeparation": "independent named rigs with pivots for mounted parts and GPU/cooler/storage subassemblies",
+    "paidAssetPurchase": "not authorized",
+    "blenderRuntime": "official Blender 4.5.14 LTS portable in the ignored backend/build/pc-assembly-runtime folder",
+    "durationAndFrameCount": "Approved: 480 sampled scroll positions; original 240-frame source animation retained",
+    "finalResolution": "Approved: 2560x1920 stills, 1600x1200 desktop sequence, 960x720 mobile sequence"
+  }
+}

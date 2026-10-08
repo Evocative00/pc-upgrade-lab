@@ -105,6 +105,7 @@ function AuthStatus({ loginLabel = '로그인', alwaysShowLogin = false }: { log
 
 function App() {
   const route = useRoute()
+  const isAuthPage = route.name === 'login' || route.name === 'loginSuccess' || route.name === 'loginFailure'
 
   // 처음 열 때 한 번 로그인 상태를 확인한다. 로그인 성공 화면은 직접 다시 확인한다.
   useEffect(() => {
@@ -129,7 +130,7 @@ function App() {
         </nav>
         <AuthStatus />
       </header>
-      <main className="app-main">
+      <main className={isAuthPage ? 'app-main app-main--auth' : 'app-main'}>
         <Page route={route} />
       </main>
       <footer className="app-footer">

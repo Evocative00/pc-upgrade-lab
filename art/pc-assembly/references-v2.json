@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-09",
+  "purpose": "블랙·실버 PC 조립/분해 원본 장면의 부품 구조와 재질 참고",
+  "modelRelationship": "제조사의 공개 제품 설명과 외형을 참고해 만든 자체 제작 모델이다. 특정 제품의 정확한 복제, 실제 부품 조합의 호환성 검증 또는 제조사와의 제휴를 뜻하지 않는다.",
+  "photoReuse": false,
+  "sourcePolicy": "공식 제조사 페이지와 공식 자료만 참고한다. 제품 사진·3D 모델은 다운로드하거나 장면의 텍스처·메시로 재사용하지 않는다. 브랜드 로고와 제품 라벨도 복제하지 않는다.",
+  "references": [
+    {
+      "id": "gpu-proart-4080-super",
+      "category": "GPU",
+      "manufacturer": "ASUS",
+      "product": "ProArt GeForce RTX 4080 SUPER OC Edition 16GB GDDR6X",
+      "url": "https://www.asus.com/motherboards-components/graphics-cards/proart/proart-rtx4080s-o16g/",
+      "feature": "세 팬·히트파이프·방열핀·PCB·백플레이트의 층 구조",
+      "features": [
+        "세 축류 팬과 검은 방열핀을 갖춘 절제된 2.5슬롯 외형",
+        "팬 아래 핀 스택과 히트파이프, 그 아래 PCB로 이어지는 층 구조",
+        "짧은 PCB와 큰 백플레이트 통풍구",
+        "공식 분해 사진에서 확인한 중앙 GPU 패키지와 은색 다이, 주변 검은 메모리 칩, 초크·캐패시터의 반복 배열, 금색 PCIe 접점과 금속 브래킷"
+      ],
+      "modelingGuidance": [
+        "원본 슈라우드·팬·히트싱크·PCB·백플레이트·브래킷을 별도 오브젝트로 만든다.",
+        "작은 금속 나사, 핀 간격, PCB 위 높이가 다른 칩과 회로 부품으로 근접 장면의 입체감을 보강한다.",
+        "전체는 무광 검정과 은색 금속 하이라이트로 유지하고 제조사 로고와 실제 PCB 배선 패턴은 재현하지 않는다."
+      ],
+      "verifiedFacts": [
+        "공식 제품 설명은 세 팬, 2.5슬롯 설계, 히트파이프·핀 스택, 짧은 PCB와 백플레이트 통풍구를 명시한다."
+      ],
+      "imageInspection": {
+        "status": "pixels_verified_by_root",
+        "reviewer": "/root",
+        "sourceUrls": [
+          "https://www.asus.com/motherboards-components/graphics-cards/proart/proart-rtx4080s-o16g/",
+          "https://dlcdnwebimgs.asus.com/files/media/706d67d7-af8c-41a7-b1a6-062e6d3dff61/v1/img/explosion/part-pcb.png",
+          "https://dlcdnwebimgs.asus.com/files/media/706d67d7-af8c-41a7-b1a6-062e6d3dff61/v1/img/explosion/part-heatsink.png"
+        ],
+        "note": "공식 사진을 브라우저에서 읽기 전용으로 확인했다. 파일 저장이나 사진 재사용은 하지 않았다."
+      },
+      "limitations": [
+        "분해 사진은 제조사가 제시한 참고 이미지이며, 원본 장면은 동일 제품의 정밀 CAD 모델이 아니다."
+      ]
+    },
+    {
+      "id": "motherboard-atx-tomahawk",
+      "category": "ATX 메인보드",
+      "manufacturer": "MSI",
+      "product": "MAG X870 TOMAHAWK WIFI",
+      "url": "https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/Overview",
+      "feature": "CPU 소켓·네 DIMM 슬롯·PCIe 보강부·M.2 방열판 배치",
+      "features": [
+        "ATX 크기 304.8 × 243.84 mm의 보드 비례",
+        "CPU 소켓 주변 전원부와 네 개의 DDR5 UDIMM 슬롯 및 양쪽 래치",
+        "금속으로 보강한 주요 PCIe 슬롯과 분리된 M.2 방열판",
+        "확장된 전원부 방열판, 사전 장착 I/O 실드, 보드 가장자리의 전원·팬·전면 패널 헤더",
+        "공식 사진에서 확인한 위·왼쪽 L자 전원부 방열판, 중앙 소켓의 금속 고정 프레임·레버, 오른쪽 DIMM 네 개와 가장자리 24핀 전원, 아래쪽 가로 M.2 덮개와 은색 PCIe 보강부"
+      ],
+      "modelingGuidance": [
+        "보드 평면, 소켓 프레임, DIMM 슬롯, PCIe 슬롯, 전원부 블록, M.2 실드, I/O 블록을 구분해 만든다.",
+        "블랙 PCB에 은색 소켓·슬롯 보강부를 더하고 칩·초크·캐패시터·핀 헤더에 작은 높이 차이를 준다.",
+        "슬롯과 소켓 주변의 여유 공간을 남겨 RAM·GPU·쿨러가 어디에 결합되는지 읽히게 한다."
+      ],
+      "verifiedFacts": [
+        "공식 사양은 AM5, DDR5 슬롯 네 개, 양쪽 DIMM 래치, M.2 슬롯 네 개와 ATX 크기를 명시한다.",
+        "공식 소개는 Steel Armor II, EZ M.2 Shield Frozr II, 확장 방열판과 사전 장착 I/O 실드를 설명한다."
+      ],
+      "additionalSources": [
+        "https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/Specification"
+      ],
+      "imageInspection": {
+        "status": "pixels_verified_by_root",
+        "reviewer": "/root",
+        "sourceUrls": [
+          "https://storage-asset.msi.com/global/picture/image/feature/mb/X870/MAG-x870-Tomahawk-wifi/features/hero/msi-x870-tomahawk-wifi-hero-01.png"
+        ],
+        "note": "공식 대표 구조 사진을 브라우저에서 읽기 전용으로 확인했다. 파일 저장이나 사진 재사용은 하지 않았다."
+      },
+      "limitations": [
+        "부품 위치를 일반화해 참고하며 실제 PCB 배선, 핀 배치와 제품별 호환성은 재현·검증하지 않는다."
+      ]
+    },
+    {
+      "id": "ram-ddr5-beast",
+      "category": "DDR5 RAM",
+      "manufacturer": "Kingston",
+      "product": "FURY Beast DDR5 Memory — Black",
+      "url": "https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr5-memory",
+      "feature": "낮은 검은 방열판과 길고 얇은 DIMM 비례",
+      "features": [
+        "검은색 선택이 있는 낮은 프로파일 방열판",
+        "133.35 × 34.9 × 6.62 mm의 길고 얇은 모듈 비례",
+        "일반 Beast DDR5 UDIMM 외형을 RGB 모델과 구분해 참고"
+      ],
+      "modelingGuidance": [
+        "두 개의 RAM 모듈을 별도 오브젝트로 만들고 각 모듈에 PCB와 양면 방열판의 얇은 층을 준다.",
+        "하단 금색 접점과 삽입 방향을 읽히게 하는 키 홈, 양끝 래치가 잡는 구역을 일반화해 표현한다.",
+        "브랜드 글자를 넣지 않고 검정 방열판의 얕은 단차와 가장자리 하이라이트로 형태를 구분한다."
+      ],
+      "verifiedFacts": [
+        "공식 제품 페이지는 검정·흰색 저상 방열판, UDIMM 형식과 133.35 × 34.9 × 6.62 mm 치수를 명시한다."
+      ],
+      "imageInspection": {
+        "status": "pixels_verified_by_root",
+        "reviewer": "/root",
+        "sourceUrls": [
+          "https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr5-memory"
+        ],
+        "note": "공식 제품 페이지의 대표 사진을 브라우저에서 읽기 전용으로 확인했다. 길고 낮은 검은 방열판, 사선 단차와 상단의 작은 홈, 하단 금색 접점과 중앙에서 어긋난 키 홈, 양끝 래치 영역을 확인했다. 사진과 브랜드 문양은 저장·재사용하지 않았다."
+      },
+      "limitations": [
+        "제품군 외형 참고이며 특정 용량·속도 제품을 구매하거나 호환성을 보증하기 위한 목록이 아니다."
+      ]
+    },
+    {
+      "id": "ssd-m2-990-pro",
+      "category": "M.2 SSD",
+      "manufacturer": "Samsung",
+      "product": "990 PRO NVMe SSD 1 TB (MZ-V9P1T0BW)",
+      "url": "https://www.samsung.com/sec/memory-storage/990-pro-nvme-ssd-d2c2/MZ-V9P1T0BW/",
+      "feature": "M.2 2280의 좁은 PCB와 표면 실장 칩 비례",
+      "features": [
+        "방열판 없는 M.2 2280 모듈의 얇고 긴 외형",
+        "최대 80 × 22 × 2.3 mm 크기",
+        "공식 정면·후면·사선 이미지 대체 텍스트에서 명시한 검은 외형",
+        "별도의 컨트롤러·NAND·DRAM을 쓰는 보드 구조",
+        "공식 사진에서 확인한 검은 얇은 PCB, 금색 M키 단자와 반대쪽 반원형 고정 홈, 작은 표면 실장 부품"
+      ],
+      "modelingGuidance": [
+        "메인보드 위 낮게 놓인 좁은 PCB, 검은 칩 블록과 작은 표면 실장 부품으로 만든다.",
+        "단자 쪽 금색 접점·키 홈과 반대쪽 고정 구역을 표현하고 SSD와 M.2 방열판을 별도 오브젝트로 둔다.",
+        "실제 제품 라벨·시리얼은 생략하고 원본 장면에 필요한 일반적인 칩 배치만 표현한다."
+      ],
+      "verifiedFacts": [
+        "공식 데이터시트는 M.2 2280, 최대 80 × 22 × 2.3 mm와 컨트롤러·NAND·DRAM을 명시한다.",
+        "삼성 한국 제품 페이지는 1 TB 모델명과 검정 정면·후면·사선 이미지 대체 텍스트를 제공한다."
+      ],
+      "additionalSources": [
+        "https://download.semiconductor.samsung.com/resources/data-sheet/Samsung_NVMe_SSD_990_PRO_Datasheet_Rev.1.0_10119997003518.pdf"
+      ],
+      "imageInspection": {
+        "status": "pixels_verified_by_root",
+        "reviewer": "/root",
+        "sourceUrls": [
+          "https://www.samsung.com/sec/memory-storage/990-pro-nvme-ssd-d2c2/MZ-V9P1T0BW/",
+          "https://images.samsung.com/kdp/goods/2022/09/21/287ad1ec-ecef-40e3-be01-51051ff65ccb.png?%24Q90_1920_1280_F_JPG%24="
+        ],
+        "note": "공식 제품 사진을 브라우저에서 읽기 전용으로 확인했다. 라벨에 가려진 칩 전체의 정확한 배치는 검증하지 않았다. 제품 라벨과 사진을 저장·재사용하지 않았다."
+      },
+      "limitations": [
+        "세부 칩 배치는 모델링을 위한 일반화이며 실제 SSD의 내부 설계를 재현하지 않는다."
+      ]
+    },
+    {
+      "id": "cooler-single-tower-noctua",
+      "category": "타워 CPU 쿨러",
+      "manufacturer": "Noctua",
+      "product": "NH-U12A chromax.black",
+      "url": "https://www.noctua.at/en/products/nh-u12a-chromax-black",
+      "feature": "검은 단일 타워·히트파이프·양쪽 팬의 조립 구조",
+      "features": [
+        "검은 코팅 방열판을 쓰는 비대칭 단일 타워",
+        "히트파이프 일곱 개와 두 개의 120 mm 팬을 쓰는 push/pull 구조",
+        "높이 158 mm, 팬·클립을 포함한 너비 125 mm의 비례",
+        "RAM 슬롯을 덮지 않도록 둔 비대칭 배치",
+        "공식 사진에서 확인한 크게 휜 팬 날개, 모서리 고무 패드·나사, 핀 타워를 잡는 와이어 클립과 하단 U자 히트파이프"
+      ],
+      "modelingGuidance": [
+        "촘촘한 방열핀, 굽은 히트파이프, 베이스, 팬 프레임·날개, 고정 클립과 마운트를 별도 형태로 만든다.",
+        "팬이 핀 스택을 관통하지 않게 앞뒤에 배치하고 나사·클립이 조립 위치를 설명하도록 한다.",
+        "검은 재질에도 핀 모서리와 파이프 곡면이 빛을 받게 하고 조명은 약하게 유지한다."
+      ],
+      "verifiedFacts": [
+        "공식 제품 페이지는 단일 타워, 검은 코팅, 두 NF-A12x25 팬, 일곱 히트파이프와 높이·너비를 명시한다."
+      ],
+      "imageInspection": {
+        "status": "pixels_verified_by_root",
+        "reviewer": "/root",
+        "sourceUrls": [
+          "https://www.noctua.at/en/products/nh-u12a-chromax-black"
+        ],
+        "note": "공식 제품 페이지의 대표 사진을 브라우저에서 읽기 전용으로 확인했다. 정확한 팬 날개 개수는 확정하지 않았고 사진은 저장·재사용하지 않았다."
+      },
+      "limitations": [
+        "원본 장면의 팬 수·핀 수·파이프 경로는 시각적 설계이며 실물 제품의 정밀 조립도는 아니다."
+      ]
+    },
+    {
+      "id": "cable-sleeved-12v2x6",
+      "category": "케이블·커넥터",
+      "manufacturer": "CORSAIR",
+      "product": "Elite Premium Individually Sleeved PCIe 12V-2x6 to PCIe 12V-2x6 600W Cable — Black (CP-8920431)",
+      "url": "https://www.corsair.com/us/en/p/pc-components-accessories/cp-8920431/elite-premium-individually-sleeved-pcie-12v-2x6-to-pcie-12v-2x6-600w-cable-black-cp-8920431",
+      "feature": "개별 검정 슬리브·낮은 케이블 콤·플러그 하우징",
+      "features": [
+        "개별 파라코드 슬리브와 유연한 검은 케이블 묶음",
+        "평행한 선을 정리하는 낮은 케이블 콤",
+        "체결 상태를 읽히게 하는 두 색 커넥터",
+        "650 mm 길이의 12V-2x6 양끝 케이블"
+      ],
+      "modelingGuidance": [
+        "검은 선 묶음을 부드러운 곡선으로 라우팅하고 중간에 작은 케이블 콤을 배치한다.",
+        "플러그 하우징·체결 래치·단자 개구부를 일반화해 연결되는 위치를 보여준다.",
+        "ATX·CPU 전원 케이블은 이 제품의 핀 구성을 복사하지 않고 메인보드의 해당 소켓과 구별되는 원본 플러그로 만든다."
+      ],
+      "verifiedFacts": [
+        "공식 제품 페이지는 검정 옵션, 파라코드 슬리브, 낮은 케이블 콤, 두 색 커넥터와 650 mm 12V-2x6 케이블을 명시한다."
+      ],
+      "imageInspection": {
+        "status": "pixels_verified_by_root",
+        "reviewer": "/root",
+        "pixelsViewed": true,
+        "sourceUrls": [
+          "https://www.corsair.com/us/en/p/pc-components-accessories/cp-8920431/elite-premium-individually-sleeved-pcie-12v-2x6-to-pcie-12v-2x6-600w-cable-black-cp-8920431"
+        ],
+        "note": "공식 제품 페이지의 대표 사진에서 검은 개별 슬리브, 평행한 선 묶음, 케이블 콤과 두 색 플러그 외형을 확인했다. 정확한 핀아웃과 각 단자의 기능은 사진으로 검증하지 않았다."
+      },
+      "limitations": [
+        "케이블 재질·정리 방식의 참고이며 실제 전원 배선이나 핀아웃·안전한 굽힘 반경의 검증 자료가 아니다."
+      ]
+    }
+  ]
+}

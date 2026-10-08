@@ -1,0 +1,21 @@
+*.blend[0-9]
+__pycache__/
+
+# Local render history; publish the current v4 scene and review assets.
+pc-assembly-v1.blend
+pc-assembly-v2.blend
+pc-assembly-v3.blend
+assembled-v1.png
+assembled-v2.png
+assembled-v3.png
+exploded-v1.png
+exploded-v2.png
+exploded-v3.png
+preview-frames/
+preview-frames-v3/
+preview-v3.html
+preview-manifest-v2.json
+preview-manifest-v3.json
+render-metadata.json
+render-metadata-v2.json
+render-metadata-v3.json

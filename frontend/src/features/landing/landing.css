@@ -8,11 +8,18 @@
   grid-template-columns: 220px minmax(0, 1fr);
 
   @media (max-width: 640px) {
+    display: block;
     grid-template-columns: 1fr;
   }
 }
 
 .landing__tabs {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  min-height: 100svh;
+  box-sizing: border-box;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -37,6 +44,7 @@
   }
 
   @media (max-width: 640px) {
+    min-height: 0;
     flex-direction: row;
     flex-wrap: wrap;
     border-right: 0;
@@ -89,20 +97,12 @@
 }
 
 .landing__hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 48px 24px;
-  text-align: center;
-  background: #111;
+  min-width: 0;
+  background: #101214;
   color: #bdbdbd;
 
   h1 {
     color: #fff;
-    font-size: 40px;
-    line-height: 120%;
   }
 }
 
