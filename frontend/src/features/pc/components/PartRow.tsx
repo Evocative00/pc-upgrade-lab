@@ -23,9 +23,11 @@ type Props = {
   onRemove?: () => void
   // 있으면 행 안의 검색 창 대신 구성 화면의 검색 창을 연다.
   onSearch?: () => void
+  // 호환성 검사에서 불가 판정을 받은 이유. 있으면 빨간 테두리와 경고를 표시한다.
+  warnings?: string[]
 }
 
-export function PartRow({ draft, index, count, onChange, onRemove, onSearch }: Props) {
+export function PartRow({ draft, index, count, onChange, onRemove, onSearch, warnings = [] }: Props) {
   const nameId = useId()
   const quantityId = useId()
   const capacityId = useId()
@@ -38,7 +40,7 @@ export function PartRow({ draft, index, count, onChange, onRemove, onSearch }: P
   const otherSpecs = formatOtherSpecs(draft)
 
   return (
-    <div className={`part-row part-row--${status}`}>
+    <div className={`part-row part-row--${status}${warnings.length > 0 ? ' part-row--invalid' : ''}`}>
       <div className="part-row__fields">
         <label htmlFor={nameId} className="part-row__label">
           {label}
@@ -141,6 +143,12 @@ export function PartRow({ draft, index, count, onChange, onRemove, onSearch }: P
           {draft.rawName !== null && otherSpecs.length > 0 && ' · '}
           {otherSpecs.join(', ')}
         </p>
+      )}
+
+      {warnings.length > 0 && (
+        <ul role="alert" className="part-row__warnings error">
+          {warnings.map((message) => <li key={message}>호환성 문제: {message}</li>)}
+        </ul>
       )}
 
       {pickerOpen && (

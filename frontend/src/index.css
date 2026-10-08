@@ -1,13 +1,14 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --surface: #faf9fb;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
+  /* 블랙&화이트 기본 색 (#33) */
+  --text: #5f5f5f;
+  --text-h: #111;
+  --bg: #f4f4f2;
+  --surface: #fff;
+  --border: #e2e2df;
+  --code-bg: #ececea;
+  --accent: #111;
+  --accent-bg: rgba(0, 0, 0, 0.05);
+  --accent-border: rgba(0, 0, 0, 0.25);
   --on-accent: #fff;
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
@@ -37,16 +38,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --surface: #1c1d24;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --on-accent: #16171d;
+    --text: #a3a3a3;
+    --text-h: #f5f5f5;
+    --bg: #111;
+    --surface: #1a1a1a;
+    --border: #2e2e2e;
+    --code-bg: #222;
+    --accent: #f5f5f5;
+    --accent-bg: rgba(255, 255, 255, 0.08);
+    --accent-border: rgba(255, 255, 255, 0.3);
+    --on-accent: #111;
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
 

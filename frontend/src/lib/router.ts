@@ -2,6 +2,7 @@ import { useSyncExternalStore } from 'react'
 
 // 라우터 라이브러리를 넣기 전까지 쓰는 간단한 해시 라우팅
 export type Route =
+  | { name: 'home' }
   | { name: 'list' }
   | { name: 'new' }
   | { name: 'detail'; id: number }
@@ -15,6 +16,8 @@ export type Route =
 export type LoginFailureReason = 'cancelled' | 'error'
 
 export const paths = {
+  // 랜딩 화면. 주소가 비어 있을 때도 여기로 온다.
+  home: () => '#/',
   list: () => '#/pcs',
   new: () => '#/pcs/new',
   detail: (id: number) => `#/pcs/${id}`,
@@ -30,7 +33,7 @@ export function parseRoute(hash: string): Route {
   const segments = pathPart.split('/').filter(Boolean)
 
   if (segments.length === 0) {
-    return { name: 'list' }
+    return { name: 'home' }
   }
 
   // 예전 PC 구성하기 주소. 구성 화면은 새 PC 등록 화면으로 합쳤다.

@@ -12,5 +12,10 @@ test('로그인 안내·성공·실패 경로를 해석한다', () => {
   assert.deepEqual(parseRoute('#/login/other'), { name: 'notFound' })
   // 기존 PC 경로는 그대로다.
   assert.deepEqual(parseRoute('#/pcs/12/edit'), { name: 'edit', id: 12 })
-  assert.deepEqual(parseRoute(''), { name: 'list' })
+  assert.deepEqual(parseRoute('#/pcs'), { name: 'list' })
+})
+
+test('빈 주소는 랜딩 화면이다', () => {
+  assert.deepEqual(parseRoute(''), { name: 'home' })
+  assert.deepEqual(parseRoute(paths.home()), { name: 'home' })
 })

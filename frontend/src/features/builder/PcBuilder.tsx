@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { CatalogPicker } from '../catalog/CatalogPicker.tsx'
+import { CatalogPickerDialog } from './CatalogPickerDialog.tsx'
 import { formatCurrentPrice } from '../catalog/catalogPresentation.ts'
 import { CurrentPriceSource } from '../catalog/CurrentPriceSource.tsx'
 import type { CatalogProduct } from '../catalog/catalogTypes.ts'
@@ -10,7 +10,9 @@ import {
   applyCatalogSelection, assignSlots, priceTotal, ramModuleViews, slotInfo, type PickTarget, type SlotId,
 } from './buildSlots.ts'
 import { CaseView, type SlotView } from './CaseView.tsx'
+import type { CompatibilityStatus } from './compatibility.ts'
 import { useCatalogDetails } from './useCatalogDetails.ts'
+import type { CompatibilityState } from './useCompatibility.ts'
 import './pc-builder.css'
 
 // 자리에서 열었으면 draftKey는 null이고, 부품 행의 '부품 검색'에서 열었으면 그 행의 key다.
@@ -21,12 +23,56 @@ type Props = {
   updateDrafts: (update: (drafts: PartDraft[]) => PartDraft[]) => void
   target: PickTarget | null
   onTarget: (target: PickTarget | null) => void
+  compatibility: CompatibilityState
+  // 불가 판정을 받은 부품 행 key → 경고 문구
+  warnings: Map<string, string[]>
   // 왼쪽 칸에 넣을 부품 입력란 (PC 입력 폼의 '부품 구성')
   children: ReactNode
 }
 
+// 호환성 3단계. 검사 결과가 없을 때는 어느 단계도 켜지 않는다(양호로 보이지 않게).
+const STEPS: { status: CompatibilityStatus; icon: string; label: string }[] = [
+  { status: 'COMPATIBLE', icon: '✓', label: '호환' },
+  { status: 'NEEDS_CHECK', icon: '!', label: '확인 필요' },
+  { status: 'INCOMPATIBLE', icon: '✕', label: '불가' },
+]
+const ORDER: Record<CompatibilityStatus, number> = { INCOMPATIBLE: 0, NEEDS_CHECK: 1, COMPATIBLE: 2 }
+
+function CompatibilityPanel({ state }: { state: CompatibilityState }) {
+  const current = state.status === 'done' ? state.result.status : null
+  return (
+    <section className="compat" aria-label="호환성 체크">
+      <h3>호환성 체크</h3>
+      <ol className="compat__steps">
+        {STEPS.map((step) => (
+          <li key={step.status} className={`compat__step compat__step--${step.status.toLowerCase()}`}
+            aria-current={current === step.status ? 'step' : undefined}>
+            <span aria-hidden="true">{step.icon}</span>{step.label}
+          </li>
+        ))}
+      </ol>
+      {state.status === 'idle' && (
+        <p className="muted" role="status">미검사 · CPU·메인보드·RAM을 카탈로그에서 고르면 검사합니다.</p>
+      )}
+      {state.status === 'loading' && <p className="muted" role="status">호환성 검사 중…</p>}
+      {state.status === 'error' && <p className="error" role="alert">{state.message}</p>}
+      {state.status === 'done' && (
+        <ul className="compat__checks">
+          {[...state.result.checks].sort((a, b) => ORDER[a.status] - ORDER[b.status]).map((check, index) => (
+            <li key={`${check.code}-${index}`} className={`compat__check compat__check--${check.status.toLowerCase()}`}>
+              <span aria-hidden="true">{STEPS.find((step) => step.status === check.status)!.icon}</span>
+              <span>{check.message}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      <p className="muted">CPU·메인보드·RAM 공표 규격만 검사합니다. 그래픽카드·파워·케이스·쿨러는 미검사입니다.</p>
+    </section>
+  )
+}
+
 // 2D 구성 화면: 부품 구성 입력 | 케이스 그림 | 요약·상태·현재 상품가. 내용은 PC 입력 폼의 부품 항목과 같은 데이터다.
-export function PcBuilder({ drafts, updateDrafts, target, onTarget, children }: Props) {
+export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibility, warnings, children }: Props) {
   const slots = assignSlots(drafts)
   const named = drafts.filter((draft) => getPartStatus(draft) !== 'empty')
   const catalogIds = named.flatMap((draft) => draft.catalogProductId ?? [])
@@ -83,10 +129,13 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, children }: 
               const placed = Object.entries(slots).find(([, item]) => item.key === draft.key)
               const label = placed ? slotInfo(placed[0] as SlotId).label : getPartTypeInfo(draft.type).label
               return (
-                <div key={draft.key} className="builder__row">
+                <div key={draft.key} className={`builder__row${warnings.has(draft.key) ? ' builder__row--invalid' : ''}`}>
                   <dt>{label}{draft.quantity > 1 && ` × ${draft.quantity}`}</dt>
                   <dd>
                     <span className="builder__name">{draft.displayName}</span>
+                    {warnings.get(draft.key)?.map((message) => (
+                      <span key={message} className="error">⚠ {message}</span>
+                    ))}
                     {!draft.catalogProductId
                       ? <span className="muted">카탈로그 미연결 · 현재 상품가 없음</span>
                       : detail ? <>
@@ -125,20 +174,15 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, children }: 
               가격 새로고침
             </button>
           </div>
-          {/* 검사 전 상태를 '양호'로 보이지 않게 한다. 호환성 검사 API 연결 전까지 항상 미검사다. */}
-          <p className="builder__check" role="status">
-            <span aria-hidden="true">?</span> 호환성 미검사 · 확인 필요
-          </p>
+          <CompatibilityPanel state={compatibility} />
         </aside>
       </div>
 
       {activeTarget && (
-        <section className="builder__picker" aria-label={`${activeLabel} 고르기`}>
-          <h2>{activeLabel} 고르기</h2>
-          <CatalogPicker key={`${activeTarget.slot}-${activeTarget.draftKey}`} type={slotInfo(activeTarget.slot).type}
-            initialQuery={drafts.find((draft) => draft.key === activeTarget.draftKey)?.displayName ?? ''}
-            onClose={() => onTarget(null)} onSelect={choose} />
-        </section>
+        <CatalogPickerDialog key={`${activeTarget.slot}-${activeTarget.draftKey}`} label={activeLabel!}
+          type={slotInfo(activeTarget.slot).type}
+          initialQuery={drafts.find((draft) => draft.key === activeTarget.draftKey)?.displayName ?? ''}
+          onClose={() => onTarget(null)} onSelect={choose} />
       )}
     </section>
   )
