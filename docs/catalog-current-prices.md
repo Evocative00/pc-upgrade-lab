@@ -2,6 +2,58 @@
 
 현재 구매 판단에 사용할 값은 **국내 신품의 상품가**다. 배송료, 쿠폰, 카드 할인, 적립금, 프로모션 조건은 수집하거나 계산하지 않는다. 기존 `catalog_reference_price`의 장기 기준가격과 별도로 저장한다.
 
+## 팀원이 pull한 뒤 가격이 없을 때
+
+**Git은 각 PC의 MySQL 데이터를 공유하지 않는다.** 저장소에 있는 관측 파일과 다른 개발자의 DB에 저장한 관측 행은 별개다. 카탈로그 300종이 이미 보여도 `catalog_price_mapping`·`catalog_price_observation`에 가격을 가져오지 않았다면 `currentPrice`는 `null`이다. 화면의 가격 새로고침은 저장된 API 값을 다시 읽을 뿐, DB를 채우거나 판매처를 새로 수집하지 않는다.
+
+2026-10-08 추가한 Gradle 작업 `importCatalogPrices`는 검토한 기존 22종과 추가 50종, **총 72종**을 한 번 실행하고 종료한다. 웹 서버를 띄우지 않으므로 일반 서버의 8080 포트와 겹치지 않는다. JDK 21, 실행 중인 MySQL, 개인 `application-local.properties`의 DB URL·계정과 실행 환경의 `DB_PASSWORD`를 준비한다. 가격 작업에는 Google/Kakao/Naver 키가 필요 없으며 OAuth 등록 설정을 사용하지 않는다. IntelliJ `bootRun`에 넣은 환경변수는 PowerShell이나 다른 실행 구성에 자동 전달되지 않고 `.env`도 자동으로 읽히지 않는다.
+
+가격 미리보기와 실제 DB 반영은 **V12까지 적용된 테이블**을 사용하며 Flyway를 실행하지 않는다. 처음 만든 MySQL DB는 반영 전에 개인 설정을 준비하고 일반 `bootRun`을 한 번 실행해 마이그레이션을 적용한 뒤 종료한다. 기존 DB는 이력과 소유자를 확인하며 초기화하지 않는다. 일반 `bootRun`, pull, build/test에서는 카탈로그·가격을 자동 적재하지 않는다. 아래 `setupDevCatalog`의 기본 미리보기에는 DB가 필요 없다.
+
+### 새 DB 또는 300종 카탈로그 준비가 끝나지 않은 DB
+
+`setupDevCatalog`는 승인된 카탈로그 300종·호환 근거·상품가 72종을 함께 준비하는 별도 작업이다. JDK 21에서 기본 미리보기로 사용할 검토 자료를 확인한다. 기본 실행은 DB에 연결하지 않으며 `DB_PASSWORD`와 OAuth 키 없이 실행할 수 있다.
+
+```powershell
+.\backend\gradlew.bat --project-dir .\backend setupDevCatalog
+```
+
+`CATALOG PREVIEW: reviewedProducts=300, reviewedPrices=72, databaseWrites=0`을 확인한다. 이 미리보기는 검토 자료의 건수를 확인하며 기존 제품과의 충돌을 검사하지 않는다. **내 개발 DB 준비를 선택한 경우에만** V12까지 적용된 DB, 개인 DB 설정과 해당 실행 환경의 `DB_PASSWORD`를 준비하고 명시적인 옵션으로 반영한다. OAuth 키는 반영에도 필요 없다.
+
+```powershell
+.\backend\gradlew.bat --project-dir .\backend setupDevCatalog -PapplyDevCatalog=true
+```
+
+카탈로그·호환 근거·가격을 한 트랜잭션으로 검증·적재한다. 기존 식별·제원과 충돌하는 경우 중단하며 PC 데이터와 개인 설정을 초기화하지 않는다. 테이블이 없는 DB에 마이그레이션을 자동 적용하는 작업은 아니다. 준비를 마치면 일반 백엔드를 다시 실행한다.
+
+### 기존 300종 카탈로그에 가격만 추가
+
+`importCatalogPrices`는 기존 제품을 참조하며 제품·호환 근거를 새로 만들지 않는다. 다른 seed·가격 자동 가져오기를 켜지 않고 기존 스키마와 제품 식별을 확인한다. 테이블이 없거나 제품 준비가 끝나지 않았으면 위 준비 순서를 먼저 따른다.
+
+최신 `dev`를 받은 뒤 프로젝트 루트에서 먼저 미리보기를 실행한다.
+
+```powershell
+.\backend\gradlew.bat --project-dir .\backend importCatalogPrices
+```
+
+`PREVIEW`의 `checked=72`, `newMappings`, `newObservations`, `unchanged`를 확인한다. 아직 가격이 없는 동일 카탈로그 DB라면 새 매핑·관측이 각각 72개다. 기존 22종만 적용돼 있다면 각각 50개가 추가 대상이다. 미리보기는 가격 행을 저장하지 않으며, 실제 반영은 **명시적인 옵션**으로만 실행한다.
+
+```powershell
+.\backend\gradlew.bat --project-dir .\backend importCatalogPrices -PapplyPrices=true
+```
+
+`COMMITTED`가 나온 뒤 같은 미리보기를 다시 실행하면 `newMappings=0`, `newObservations=0`, `unchanged=72`가 나온다. 전체 배치의 제품 식별·판매 단위·충돌을 검증해 한 트랜잭션으로 반영하며, 같은 관측을 재실행해도 중복 행을 추가하지 않는다. 제품의 내부 ID를 하드코딩하지 않고 각 DB의 BuildCores 원본 식별과 제조사·모델·부품번호를 대조한다. 기존의 다른 가격·제품 제원·장기 기준가격은 초기화하지 않는다. 더 최근에 저장한 관측이 있으면 API는 그 값을 계속 선택한다.
+
+이 자료는 **2026-10-06·2026-10-08에 실제 확인한 관측 스냅샷**이며 실행일의 실시간 최저가가 아니다. 승인된 300종 중 가격 미확인 228종은 계속 `null`이다. 다른 가격을 만들거나 새 판매가를 반영하려면 별도의 수집·제품 식별 검토가 필요하다. 개인 DB 설정·비밀번호·OAuth 키를 커밋하거나 공유 파일에 넣지 않는다.
+
+아래 날짜별 수집·적용·검증 기록은 당시 결과를 보존한다. 팀원이 자신의 DB에 가져오기를 실행한 사실이나 실제 로그인 검증을 대신하지 않는다.
+
+### 팀원용 명령 검증 기록 (2026-10-08)
+
+백엔드 H2 전체 테스트 288개(신규 11개 포함)가 실패·오류·건너뜀 없이 통과했다. 빈 카탈로그와 부분 카탈로그 준비, 재실행, 최신 가격·기준가격·기존 PC 보존, 실패 시 전체 롤백을 검사했다. 최초 전체 실행은 테스트 JVM 메모리 부족으로 중단됐으며, 테스트 최대 힙을 1GB로 지정한 뒤 전체를 다시 실행해 통과했다.
+
+`setupDevCatalog` 기본 미리보기와 `bootJar`가 성공했고, JAR에 포함한 두 관측 파일의 내용이 검토한 원본과 일치했다. 이 데스크톱의 기존 MySQL에서는 OAuth 키 없이 가격 미리보기를 실행해 `checked=72`, `newMappings=0`, `newObservations=0`, `unchanged=72`를 확인했다. 웹 실행 환경변수가 있어도 별도 웹 서버를 시작하지 않았다. **새 빈 MySQL에 전체 카탈로그를 적재하는 실행과 실제 소셜 계정 로그인은 이 검증에 포함되지 않는다.**
+
 ## 저장과 조회
 
 V12는 두 테이블을 추가한다. 기존 마이그레이션과 기준가격 행은 변경하지 않는다.
@@ -75,7 +127,7 @@ node backend/tools/collect-danawa-prices.mjs --manifest data/catalog-current-pri
 
 가져오기는 기본 비활성이며, 활성화해도 `dry-run` 기본값은 `true`다. 배치 전체를 검증한 뒤 하나의 트랜잭션으로 반영한다. 가격 반영이 제품의 제원 검증 상태나 장기 기준가격을 확정하지는 않는다.
 
-실제 MySQL 스키마 변경과 가격 반영은 별도 실행 단계다. **`bootRun`은 미리보기 모드에서도 시작 시 Flyway로 마이그레이션을 적용할 수 있다.** 따라서 실제 DB 변경 실행을 요청받은 뒤 실행한다. 첫 22종은 위 승인·반영 기록에 따라 적용했으며, 다음은 이후 검토한 관측 파일을 가져올 때 사용하는 설정이다.
+실제 MySQL 스키마 변경과 가격 반영은 별도 실행 단계다. 위 팀원용 `importCatalogPrices`는 Flyway를 실행하지 않는다. 직접 **`bootRun`으로 가져오기를 켜는 기존 경로는 미리보기 모드에서도 시작 시 Flyway로 마이그레이션을 적용할 수 있다.** 따라서 그 경로는 실제 DB 변경 실행을 요청받은 뒤 실행한다. 첫 22종은 위 승인·반영 기록에 따라 적용했으며, 다음은 이후 검토한 다른 관측 파일을 가져올 때 사용하는 설정이다.
 
 ```text
 --catalog.price-import.enabled=true

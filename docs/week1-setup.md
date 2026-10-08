@@ -1,9 +1,10 @@
 # 1주차 실행·팀원 개발 시작 안내
 
-안내 갱신: 2026-09-24. 기능 기준: PR #3·#4가 반영된 dev 커밋 `8563c15d592dde46f61c9b6618da0bc9c46b2852`.
+최초 1주차 안내 기준: 2026-09-24, PR #3·#4가 반영된 dev 커밋 `8563c15d592dde46f61c9b6618da0bc9c46b2852`.
+팀원별 로그인·상품가 준비 안내 추가: 2026-10-08. 아래 실행 방법은 현재 `dev`의 코드와 설정을 기준으로 한다.
 Java 21, 프로젝트 Gradle Wrapper 9.7.1, Spring Boot 4.1.1, Node.js 24, React·TypeScript·Vite, MySQL 8.4를 사용한다.
 
-현재 dev에 저장 계층과 자동 인식 모듈이 포함돼 있다. PC 등록·조회·수정 API는 문경민, 전체 입력 화면은 김재훈이 연결한다.
+현재 dev에는 PC 구성 화면, 회원별 PC 등록·조회·수정, 자동 인식, 소셜 로그인과 국내 신품 상품가 조회가 포함돼 있다.
 코드가 처음이라면 [문서 첫 화면의 읽는 순서](README.md)와 [공통 규격](week1-contract.md)을 함께 확인한다.
 
 ## 1. 최신 코드 받기
@@ -39,6 +40,8 @@ git switch -c feature/pc-api
 
 IntelliJ에서 프로젝트를 열고 오른쪽 Gradle 창에서 다시 로드한다. 기존 build/bootRun 실행 구성이 있다면 유지한다.
 처음 환경을 준비한다면 [루트의 개발환경 안내](../README.md)로 JDK·MySQL·IDE를 준비하고, 1주차 코드의 실행·테스트 방식은 아래 내용을 따른다.
+
+**Git pull로 팀원의 MySQL 데이터나 개인 실행 설정이 복사되지는 않는다.** 각자의 `application-local.properties`, IntelliJ 환경변수와 DB는 별도로 준비한다. 카탈로그 제품이 보이는데 상품가만 없으면 아래 **2.2 상품가 가져오기**를 확인한다. 소셜 로그인 버튼 준비는 **2.1**을 따른다.
 
 ## 2. DB와 서버
 
@@ -76,6 +79,68 @@ if (-not (Test-Path .\backend\src\main\resources\application-local.properties)) 
 
 위 명령도 프로젝트 루트에서 실행한다. 일반 `test`/`build`의 DB 검사는 H2를 사용하므로 개인 MySQL 서비스·비밀번호가 필요 없다.
 실제 MySQL 저장 검사는 별도의 [Verify-MySql 실행 안내](week1-mysql-verification.md)를 따른다. 일반 build에서 자동 실행되지 않는다.
+
+### 2.1 팀원별 소셜 로그인 설정
+
+`backend/src/main/resources/application-local.properties`와 `.idea/workspace.xml`의 개인 실행 구성은 Git 제외 대상이다. 다른 팀원이 pull해도 이 PC의 OAuth 키나 IntelliJ 환경변수가 전달되지 않는다. 각자 사용할 제공자의 키를 발급하거나, 팀에서 승인한 개발용 키를 안전하게 전달받아 **자신의 backend 실행 구성**에 설정한다. `.env` 파일을 만드는 것만으로 Spring Boot나 Gradle이 자동으로 읽지는 않는다.
+
+| 로그인 제공자 | backend 실행 구성에 넣을 환경변수 | 개발자 콘솔에 등록할 콜백 | 상세 안내 |
+| --- | --- | --- | --- |
+| Google | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | `http://127.0.0.1:5173/login/oauth2/code/google` | [Google 설정](week2-google-login-setup.md) |
+| Kakao | `KAKAO_CLIENT_ID`, `KAKAO_CLIENT_SECRET` | `http://127.0.0.1:5173/login/oauth2/code/kakao` | [카카오 설정](week2-kakao-login-setup.md) |
+| Naver | `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET` | `http://127.0.0.1:5173/login/oauth2/code/naver` | [네이버 설정](week2-naver-login-setup.md) |
+
+환경변수 이름은 `CLIENT`다. `CILENT`처럼 철자가 다르면 연결되지 않는다. Kakao는 REST API 키와 활성화한 Client Secret을 사용하고 OpenID Connect·닉네임 동의를 설정한다. Naver도 OpenID Connect 설정이 필요하다. 각 콘솔의 웹/서비스 주소는 `http://127.0.0.1:5173`을 사용한다.
+
+키가 준비된 제공자만 `application-local.example.properties`의 해당 OAuth 설정을 개인 파일에 추가한다. Google은 3줄, Kakao와 Naver는 각각 7줄이며, `client-id`와 `client-secret`은 `${...}` 환경변수 참조를 유지한다. 기존 DB 설정을 예제로 덮어쓰지 않는다. 키를 준비하지 않은 제공자의 설정은 주석으로 남긴다.
+
+`SPRING_PROFILES_ACTIVE=local`, `DB_PASSWORD`를 유지하고 백엔드를 다시 실행한 뒤 `GET http://127.0.0.1:8080/api/auth/providers`를 확인한다. Kakao/Naver는 등록 설정이 있어야 응답과 로그인 화면에 나타난다. Google은 기본 표시되므로 버튼이 보인다는 것만으로 키가 유효하다는 뜻은 아니다. 실제 화면은 `http://127.0.0.1:5173/#/login`을 사용하고 `DEV_USER_ID`를 설정하지 않으며 `app.auth.dev-header.enabled`는 `false`로 둔다. 실제 계정 로그인 완료는 개발자 콘솔의 콜백·동의 설정까지 별도로 확인한다.
+
+### 2.2 팀원 DB에 상품가 가져오기
+
+상품가는 각자의 MySQL에 저장된 관측값이다. 코드와 검토한 관측 파일은 pull로 받지만, 다른 PC에서 적용한 가격 행은 전달되지 않는다. 화면의 **가격 새로고침**은 내 백엔드의 저장값을 다시 읽으며 판매처를 실시간으로 수집하지 않는다.
+
+가격 미리보기와 실제 DB 반영에는 **V12까지 마이그레이션된 DB**가 필요하며 준비 작업 자체는 Flyway를 실행하지 않는다. 처음 만든 MySQL DB는 실제 반영 전에 앞의 개인 DB 설정을 완료하고 일반 `backend [bootRun]`을 한 번 실행해 마이그레이션을 적용한 뒤 종료한다. 기존 DB는 소유자·마이그레이션 이력을 확인하고, 적용된 마이그레이션을 수정하거나 DB를 초기화하지 않는다. 아래 `setupDevCatalog`의 기본 자료 미리보기는 DB 없이도 실행된다.
+
+카탈로그가 비어 있거나 300종 준비가 끝나지 않았다면 **새 DB·미완성 카탈로그 준비**, 이미 기존 300종이 있다면 **가격만 가져오기**를 따른다. 일반 `bootRun`, pull, build/test는 카탈로그나 가격을 자동으로 적재하지 않는다.
+
+#### 새 DB·미완성 카탈로그 준비
+
+JDK 21을 준비하고 프로젝트 루트에서 사용할 검토 자료의 건수를 먼저 확인한다. 기본 실행은 DB에 연결하지 않으며 `DB_PASSWORD`와 OAuth 키가 필요 없다.
+
+```powershell
+.\backend\gradlew.bat --project-dir .\backend setupDevCatalog
+```
+
+`CATALOG PREVIEW: reviewedProducts=300, reviewedPrices=72, databaseWrites=0`을 확인한다. 이 미리보기는 기존 제품과의 충돌을 검사하지 않는다. **내 개발 DB를 준비하기로 한 경우에만** V12까지 적용된 DB, 개인 DB URL·계정과 **실행할 PowerShell/IntelliJ 구성의 `DB_PASSWORD`**를 준비한다. `bootRun`의 환경변수는 다른 실행 구성이나 터미널에 자동 전달되지 않는다. OAuth 키는 반영에도 필요 없다. 다음 명령으로 기존 데이터와 대조하고 승인된 카탈로그 300종·호환 근거·상품가 72종을 한 트랜잭션으로 반영한다.
+
+```powershell
+.\backend\gradlew.bat --project-dir .\backend setupDevCatalog -PapplyDevCatalog=true
+```
+
+기존 제품 식별과 충돌하는 경우 실행을 중단하며, 이전 PC나 개인 설정을 초기화하지 않는다. 준비가 끝나면 일반 백엔드와 프런트엔드를 다시 실행한다. 카탈로그가 이미 완성된 팀원은 이 전체 준비 대신 아래 가격 작업만 실행한다.
+
+#### 기존 300종 카탈로그에 가격만 가져오기
+
+이 가격 작업은 제품을 생성하거나 호환 근거를 적재하지 않는다.
+
+1. 최신 `dev`를 받고 JDK 21과 개인 DB URL·계정 설정을 확인한다.
+2. 실행할 PowerShell 또는 IntelliJ의 **importCatalogPrices 실행 구성**에 `DB_PASSWORD`를 설정한다. `bootRun` 구성에 넣은 환경변수는 별도 터미널이나 다른 실행 구성에 자동 전달되지 않는다. 이 가격 작업에는 OAuth 키가 필요 없다.
+3. 프로젝트 루트에서 미리보기를 실행한다. 이는 DB의 제품 식별·판매 단위·기존 관측과 비교하며 가격 행을 저장하지 않는다.
+
+```powershell
+.\backend\gradlew.bat --project-dir .\backend importCatalogPrices
+```
+
+4. `PREVIEW`의 `checked=72`, `newMappings`, `newObservations`, `unchanged`와 오류 유무를 확인한다. 확인한 배치를 **내 DB에 반영하기로 한 경우에만** 다음 명령을 실행한다.
+
+```powershell
+.\backend\gradlew.bat --project-dir .\backend importCatalogPrices -PapplyPrices=true
+```
+
+5. `COMMITTED`를 확인한 뒤 일반 백엔드와 프런트엔드를 실행하고 상품가를 다시 조회한다. 같은 배치 재실행은 중복 관측을 추가하지 않으며, 이미 적용됐다면 미리보기의 `newMappings=0`, `newObservations=0`, `unchanged=72`가 나온다.
+
+가져오는 자료는 2026-10-06·2026-10-08에 확인한 **72종의 저장된 가격 스냅샷**이다. 300종 중 나머지 228종은 상품가 미확인으로 `null`이며, 정상적으로 가져왔어도 모든 부품에 가격이 생기지는 않는다. 새 판매가 수집과 검토는 별도 작업이다. 제품 ID는 각 DB의 식별 결과를 사용하므로 다른 사람의 내부 ID를 복사하지 않는다. 자세한 검증·재실행 규칙은 [국내 신품 상품가](catalog-current-prices.md)를 참고한다.
 
 ## 3. Windows 보조 프로그램 설치
 
@@ -126,7 +191,7 @@ powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File .\collector\window
 
 1. 같은 PC의 백엔드를 8080 포트에서 실행한다.
 2. 별도 PowerShell 창에서 프로젝트의 `frontend` 폴더로 이동해 `npm ci`, `npm run dev`를 실행한다.
-3. `http://localhost:5173`에서 **내 PC 불러오기**를 클릭한다.
+3. `http://127.0.0.1:5173/#/pcs/new`에서 **내 PC 불러오기**를 클릭한다.
 4. **보조 프로그램 실행**을 클릭하고 브라우저의 열기 확인을 허용한다.
 5. CPU·GPU·RAM과 가능한 메인보드·저장장치가 화면에 도착하는지 확인한다.
 
@@ -134,7 +199,7 @@ powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File .\collector\window
 
 개발 서버는 5173 포트를 고정 사용한다. 이미 사용 중이면 자동으로 다른 포트로 바뀌지 않으므로 기존 실행을 확인한다.
 화면의 '화면에서 취소'는 대기·결과 표시만 초기화한다. 이미 실행된 수집기를 종료하거나 서버 세션을 취소하는 동작은 아니다.
-현재 App에는 결과 확인용 패널이 있다. 폼에 결과를 반영하는 버튼은 부모 화면에서 `onApply`를 전달했을 때 표시된다.
+현재 PC 등록·수정 폼의 자동 인식 패널은 `onApply`로 연결돼 있다. 결과를 확인하고 **입력란에 반영**을 눌러 폼에 가져온 뒤 저장한다. 자동 인식만으로 회원의 PC가 저장되지는 않는다.
 
 이번 프로그램은 **같은 PC의 `http://127.0.0.1:8080`에만 전송**한다. 다른 웹 서버 배포용 수집기나 자동 업데이터는 아직 아니다. 운영 서버 연결 시 고정 HTTPS 목적지, 인증, 서명된 설치 프로그램 등을 별도 구현해야 한다.
 

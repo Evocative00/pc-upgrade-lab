@@ -7,6 +7,10 @@ plugins {
 group = 'com.pcupgradelab'
 version = '0.0.1-SNAPSHOT'
 
+springBoot {
+    mainClass = 'com.pcupgradelab.BackendApplication'
+}
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
@@ -51,6 +55,49 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+    // 카탈로그 300종과 여러 Spring 테스트 컨텍스트를 함께 검증할 메모리를 확보한다.
+    maxHeapSize = '1g'
+}
+
+// 검토한 관측 파일을 그대로 번들링한다. JSON 원본은 data/ 한 곳에서 관리한다.
+tasks.named('processResources') {
+    from('../data/catalog-current-prices') {
+        include 'observations-2026-10-06.json', 'observations-expansion50-2026-10-08.json'
+        into 'catalog/prices'
+    }
+}
+
+// 일반 서버 시작·build·test에서는 DB 자료를 넣지 않는다. 두 작업 모두 기본값은 미리보기다.
+tasks.register('importCatalogPrices', JavaExec) {
+    group = 'application'
+    description = 'Preview the bundled 72 reviewed prices; use -PapplyPrices=true to commit them.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.price.CatalogPriceImportApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    doFirst {
+        def apply = providers.gradleProperty('applyPrices').getOrElse('false')
+        if (!(apply in ['true', 'false'])) {
+            throw new GradleException('applyPrices must be true or false')
+        }
+        setArgs(apply == 'true' ? ['--apply'] : [])
+    }
+}
+
+tasks.register('setupDevCatalog', JavaExec) {
+    group = 'application'
+    description = 'Preview development data setup; use -PapplyDevCatalog=true for 300 products and 72 prices.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.price.CatalogPriceImportApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    doFirst {
+        def apply = providers.gradleProperty('applyDevCatalog').getOrElse('false')
+        if (!(apply in ['true', 'false'])) {
+            throw new GradleException('applyDevCatalog must be true or false')
+        }
+        setArgs(apply == 'true' ? ['--setup-catalog', '--apply'] : ['--setup-catalog'])
+    }
 }
 
 // mysqlTest를 직접 실행할 때만 실제 DB를 검사한다. 일반 test/build는 H2를 사용하며 이 작업을 포함하지 않는다.
