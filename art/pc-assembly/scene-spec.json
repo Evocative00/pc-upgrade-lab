@@ -28,6 +28,8 @@
   },
   "authoredScene": {
     "file": "pc-assembly-v4.blend",
+    "sha256": "7262d26f110f054244079767db7f7c8179d447e6c20bc96b58a31c97ca5c13f3",
+    "renderSourceSceneSha256": "ab398984af7f0c73cc9afc99565d978f49963f72255ff8e0210c286fad400fd7",
     "source": "build_scene.py",
     "method": "original procedural geometry and materials",
     "externalModelOrImageDependencies": false,

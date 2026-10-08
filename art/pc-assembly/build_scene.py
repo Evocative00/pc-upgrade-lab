@@ -1014,6 +1014,16 @@ def render_component_details(scene,groups,render):
     return results,restored
 
 
+def shared_scene_paths(scene):
+    """Keep saved scene paths portable without changing render destinations."""
+    scene.render.filepath = "//assembled-v4.png"
+    for screen in bpy.data.screens:
+        for area in screen.areas:
+            for space in area.spaces:
+                if space.type == "FILE_BROWSER" and space.params is not None:
+                    space.params.directory = b""
+
+
 def main():
     args = arguments()
     if not bpy.app.background:
@@ -1083,6 +1093,7 @@ def main():
         }
     scene.frame_set(1)
     blend = output/"pc-assembly-v4.blend"
+    shared_scene_paths(scene)
     bpy.ops.wm.save_as_mainfile(filepath=str(blend))
     rendered = []
     final_settings = (scene.render.resolution_x,scene.render.resolution_y,args.samples,
@@ -1126,8 +1137,8 @@ def main():
             (output/"preview-manifest.json").write_text(json.dumps(manifest,indent=2)+"\n",encoding="utf-8")
     (scene.render.resolution_x,scene.render.resolution_y,scene.cycles.samples,
      scene.cycles.adaptive_threshold) = final_settings
-    scene.render.filepath = str(output/"assembled-v4.png")
     scene.frame_set(1)
+    shared_scene_paths(scene)
     bpy.ops.wm.save_as_mainfile(filepath=str(blend))
     metadata = {
         "version":4,"status":scene["asset_status"],"blender":bpy.app.version_string,"engine":"CYCLES",

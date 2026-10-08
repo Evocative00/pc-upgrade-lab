@@ -44,6 +44,8 @@ if ($LASTEXITCODE -ne 0) { throw 'Dense sequence resume failed' }
 
 `--resume`은 원본 `.blend` SHA-256과 해상도·샘플 수·단계 수가 기존 설정과 같을 때만 허용한다. 장면이나 설정을 바꿨다면 새 원본 출력 폴더를 지정한다. 완료 여부는 `web-render-metadata.json`의 `complete`에서 확인한다. 포터블 런타임, GPU 렌더 기록, 무손실 시퀀스 원본은 Git에서 제외된 `backend/build/`에 둔다.
 
+현재 공유본은 저장 경로를 상대경로로 바꾸고 파일 탐색기 디렉터리를 비웠으며, 형상·카메라·재질·동작은 동일하다. `scene-spec.json`의 `authoredScene.sha256`은 공유본 해시이고, `authoredScene.renderSourceSceneSha256`과 기존 웹 검증 해시는 렌더 당시 원본 해시다. 기존 master를 이 공유본으로 `--resume`할 수는 없으므로, 다시 렌더할 때는 새 master 폴더를 지정한다.
+
 ## 3. Pillow로 웹 전달 자료 만들기
 
 ```powershell
