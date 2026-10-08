@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-08T10:35:24.408Z",
+  "items": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "63f23f26-d52c-4e3c-be6e-0d25163cff59",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7950X",
+        "partNumber": "100-100000514WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17913980",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+        "saleSku": "100-100000514WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 1840490,
+        "observedAt": "2026-10-08T10:23:26.933Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "reason": "Unusually high live boxed-product quote; defer until independently confirmed. Do not replace with a bulk, multipack or overseas quote.",
+      "applied": false
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ac833b07-53eb-4d59-8be5-bcd20ad26e79",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 8600G",
+        "partNumber": "100-100001237BOX"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "34336475",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=34336475",
+        "saleSku": "100-100001237BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 975000,
+        "observedAt": "2026-10-08T10:23:38.939Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=34336475",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "reason": "Unusually high live boxed-product quote; defer until independently confirmed. Do not replace with a bulk, multipack or overseas quote.",
+      "applied": false
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "045802be-240a-4bce-9e67-2722f885e671",
+        "manufacturer": "Intel",
+        "modelName": "Core i9-13900K",
+        "partNumber": "BX8071513900K"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18039569",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18039569",
+        "saleSku": "BX8071513900K",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 10000000,
+        "observedAt": "2026-10-08T10:26:49.802Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18039569",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "reason": "Unusually high live boxed-product quote; defer until independently confirmed. Do not replace with a bulk, multipack or overseas quote.",
+      "applied": false
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "70bae351-5e16-46d2-ac14-821d393b6244",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 3900X",
+        "partNumber": "100-100000023BOX"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "8457111",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+        "saleSku": "100-100000023BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:27:08.221Z"
+      },
+      "price": {
+        "amountKrw": 1500000,
+        "observedAt": "2026-10-08T10:29:18.361Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "reason": "Unusually high live boxed-product quote; defer until independently confirmed. Do not replace with a bulk, multipack or overseas quote.",
+      "applied": false
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c479ed77-62fa-48fa-84e5-923b087843c1",
+        "manufacturer": "MSI",
+        "modelName": "MPG B650 CARBON WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17971178",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+        "saleSku": "MPG B650 CARBON WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "price": {
+        "amountKrw": 915000,
+        "observedAt": "2026-10-08T10:19:20.587Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "reason": "Unusually high live regular-product quote; numeric value and shipping separation were checked, but this batch defers it until independently confirmed.",
+      "applied": false
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1b48c3ec-6fc0-416e-83e4-cc6f671084f5",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 4060 VENTUS 2X BLACK 8G OC",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "20740013",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=20740013",
+        "saleSku": "GeForce RTX 4060 VENTUS 2X BLACK 8G OC",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:16.333Z"
+      },
+      "price": {
+        "amountKrw": 2697030,
+        "observedAt": "2026-10-08T10:25:38.465Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=20740013",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "reason": "Unusually high live regular-product quote; numeric value and shipping separation were checked, but this batch defers it until independently confirmed.",
+      "applied": false
+    }
+  ]
+}

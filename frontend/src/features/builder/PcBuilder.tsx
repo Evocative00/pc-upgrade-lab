@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { CatalogPicker } from '../catalog/CatalogPicker.tsx'
-import { formatCatalogPrice } from '../catalog/catalogPresentation.ts'
+import { formatCurrentPrice } from '../catalog/catalogPresentation.ts'
+import { CurrentPriceSource } from '../catalog/CurrentPriceSource.tsx'
 import type { CatalogProduct } from '../catalog/catalogTypes.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { getPartStatus, withEmptyRows } from '../pc/partDraft.ts'
@@ -70,11 +71,12 @@ function CompatibilityPanel({ state }: { state: CompatibilityState }) {
   )
 }
 
-// 2D 구성 화면: 부품 구성 입력 | 케이스 그림 | 요약·상태·기준가격. 내용은 PC 입력 폼의 부품 항목과 같은 데이터다.
+// 2D 구성 화면: 부품 구성 입력 | 케이스 그림 | 요약·상태·현재 상품가. 내용은 PC 입력 폼의 부품 항목과 같은 데이터다.
 export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibility, warnings, children }: Props) {
   const slots = assignSlots(drafts)
   const named = drafts.filter((draft) => getPartStatus(draft) !== 'empty')
-  const { entries: details, retry } = useCatalogDetails(named.flatMap((draft) => draft.catalogProductId ?? []))
+  const catalogIds = named.flatMap((draft) => draft.catalogProductId ?? [])
+  const { entries: details, retry, refreshAll } = useCatalogDetails(catalogIds)
   const detailOf = (draft: PartDraft) => draft.catalogProductId ? details[draft.catalogProductId] : undefined
   const productOf = (draft: PartDraft) => {
     const entry = detailOf(draft)
@@ -135,9 +137,12 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
                       <span key={message} className="error">⚠ {message}</span>
                     ))}
                     {!draft.catalogProductId
-                      ? <span className="muted">카탈로그 미연결 · 기준가격 없음</span>
-                      : detail ? <span className="muted">{formatCatalogPrice(detail.product.referencePrice)}
-                        {draft.type === 'RAM' ? ' / 판매 묶음' : ' / 1개'}</span>
+                      ? <span className="muted">카탈로그 미연결 · 현재 상품가 없음</span>
+                      : detail ? <>
+                        <span className="muted">{formatCurrentPrice(detail.product.currentPrice)}
+                          {detail.product.currentPrice && (draft.type === 'RAM' ? ' / 판매 묶음' : ' / 1개')}</span>
+                        <CurrentPriceSource price={detail.product.currentPrice} />
+                      </>
                         : entry?.status === 'error'
                           ? <>
                             <span className="error">가격·제원 조회 실패: {entry.message}</span>
@@ -155,15 +160,19 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
           {named.length === 0 && <p className="muted">아직 고른 부품이 없습니다.</p>}
 
           <div className="builder__total">
-            <span>확정 기준가격 합계</span>
-            <strong>{total.confirmedKrw.toLocaleString('ko-KR')}원</strong>
-            {total.unconfirmed > 0 && (
-              <span className="muted">가격 미확정·미연결 {total.unconfirmed}개 항목은 합계에서 뺐습니다.</span>
+            <span>현재 상품가 합계</span>
+            <strong>{total.pricedItems > 0 ? `${total.currentKrw.toLocaleString('ko-KR')}원` : '산정 가능한 가격 없음'}</strong>
+            {total.unpriced > 0 && (
+              <span className="muted">현재 상품가 미확인·미연결 {total.unpriced}개 항목은 합계에서 뺐습니다.</span>
             )}
             {total.quantityNeedsCheck > 0 && (
               <span className="muted">수량·RAM 판매 묶음 확인이 필요한 {total.quantityNeedsCheck}건은 합계에서 뺐습니다.</span>
             )}
             <span className="muted">RAM은 같은 제품의 장착 모듈 합계가 판매 묶음 수와 맞을 때만 계산합니다.</span>
+            <button type="button" className="button button--ghost" onClick={refreshAll}
+              disabled={catalogIds.length === 0 || catalogIds.some((id) => !details[id] || details[id].status === 'loading')}>
+              가격 새로고침
+            </button>
           </div>
           <CompatibilityPanel state={compatibility} />
         </aside>

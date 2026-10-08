@@ -4,7 +4,7 @@ import type { CatalogDetail } from '../catalog/catalogTypes.ts'
 
 export type DetailEntry = { status: 'loading' } | { status: 'done'; detail: CatalogDetail } | { status: 'error'; message: string }
 
-// 연결된 카탈로그 제품의 상세(가격·제원)를 한 번씩 받아 둔다. 결과가 없으면 불러오는 중이다.
+// 연결된 카탈로그 제품의 상세(가격·제원)를 받아 두고 명시적인 새로고침으로 현재가를 갱신한다.
 // 검색 창·부품 행·저장된 PC 등 어느 경로로 연결돼도 같은 방식으로 그림과 요약에 반영된다.
 export function useCatalogDetails(ids: string[]) {
   const [entries, setEntries] = useState<Record<string, DetailEntry>>({})
@@ -54,5 +54,9 @@ export function useCatalogDetails(ids: string[]) {
     fetchDetail(id)
   }
 
-  return { entries, retry }
+  function refreshAll() {
+    for (const id of new Set(ids)) retry(id)
+  }
+
+  return { entries, retry, refreshAll }
 }

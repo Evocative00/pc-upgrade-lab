@@ -74,4 +74,6 @@ H2 검사가 실제 MySQL 검사를 대신하지 않으며, 저장 계층 검사
 - [회원별 PC 관리 인계](week2-pc-ownership-handoff.md): 이슈 #18에서 완료한 것과 이어서 할 일.
 
 - [부품 데이터 조사](week1-data-review.md): 후보 데이터의 필드와 한계, 공동 선정할 사항.
+- [로컬 DB 점검 기록](catalog-db-audit-2026-10-06.md): 카탈로그·가격·누락 제원·제품 식별 점검 결과.
+- [국내 신품 상품가](catalog-current-prices.md): 현재가 저장·수집·판매 SKU 검토와 DB 반영 절차.
 - [스캔 결과 예시](examples/scan-result.json): 자동 인식 JSON 형식을 이해하기 위한 개발용 샘플.

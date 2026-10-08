@@ -1,0 +1,546 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "04984638-674b-4384-8866-a7b20d55f8b4",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 5600",
+        "partNumber": "100-100000927BOX"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17157083",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17157083",
+        "saleSku": "100-100000927BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠5-4세대 5600 (버미어) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-5-5600.html"
+        ],
+        "reason": "Exact processor model and domestic boxed retail package. Bulk, multipack and overseas variants excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7ab840c3-8c52-4ced-a65c-7b0922ca479e",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 9800X3D",
+        "partNumber": "100-100001084WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "70679912",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=70679912",
+        "saleSku": "100-100001084WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠7-6세대 9800X3D (그래니트 릿지) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9800x3d.html"
+        ],
+        "reason": "Exact processor model and domestic boxed retail package. Bulk, multipack and overseas variants excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-12400F",
+        "partNumber": "BX8071512400F"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16101353",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16101353",
+        "saleSku": "BX8071512400F",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i5-12세대 12400F (엘더레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/134587/intel-core-i512400f-processor-18m-cache-up-to-4-40-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html"
+        ],
+        "reason": "Exact processor model and domestic boxed retail package. Bulk, multipack and overseas variants excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "61524df0-3c26-49c3-b7db-b056ad3d3028",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-14600K",
+        "partNumber": "BX8071514600K"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28799654",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28799654",
+        "saleSku": "BX8071514600K",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i5-14세대 14600K (랩터레이크 리프레시) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/236799/intel-core-i5-processor-14600k-24m-cache-up-to-5-30-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/products/sku/236799/intel-core-i5-processor-14600k-24m-cache-up-to-5-30-ghz/ordering.html"
+        ],
+        "reason": "Exact processor model and domestic boxed retail package. Bulk, multipack and overseas variants excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60",
+        "manufacturer": "Intel",
+        "modelName": "Core i3-12100F",
+        "partNumber": "BX8071512100F"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16101179",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16101179",
+        "saleSku": "BX8071512100F",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i3-12세대 12100F (엘더레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/132223/intel-core-i312100f-processor-12m-cache-up-to-4-30-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html"
+        ],
+        "reason": "Exact processor model and domestic boxed retail package. Bulk, multipack and overseas variants excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "9f7d0407-954b-492f-86cf-20f0c0150aed",
+        "manufacturer": "Intel",
+        "modelName": "Core i3-14100F",
+        "partNumber": "BX8071514100F"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "32038895",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=32038895",
+        "saleSku": "BX8071514100F",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i3-14세대 14100F (랩터레이크 리프레시) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/236786/intel-core-i3-processor-14100f-12m-cache-up-to-4-70-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html",
+          "https://www.intel.com/content/www/us/en/products/sku/236786/intel-core-i3-processor-14100f-12m-cache-up-to-4-70-ghz/ordering.html"
+        ],
+        "reason": "Exact processor model and domestic boxed retail package. Bulk, multipack and overseas variants excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+        "partNumber": "G5060-8V2C"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "90956033",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+        "saleSku": "G5060-8V2C",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "MSI 지포스 RTX 5060 벤투스 2X OC D7 8GB",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Graphics-Card/GeForce-RTX-5060-8G-VENTUS-2X-OC/Specification"
+        ],
+        "reason": "Exact board manufacturer, GPU, memory capacity and named cooling/OC variant; part number checked against curated manufacturer source."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ad2dd5e9-8853-49cb-857e-f1d80e3a5d13",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5070 12G VENTUS 2X OC",
+        "partNumber": "G5070-12V2C"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "77379452",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=77379452",
+        "saleSku": "G5070-12V2C",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "MSI 지포스 RTX 5070 벤투스 2X OC D7 12GB",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Graphics-Card/GeForce-RTX-5070-12G-VENTUS-2X-OC/Specification"
+        ],
+        "reason": "Exact board manufacturer, GPU, memory capacity and named cooling/OC variant; part number checked against curated manufacturer source."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "689f5aea-b1fc-4d0c-9162-568f6e9aeb73",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9070 XT 16GB",
+        "partNumber": "11348-03-20G"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "77378039",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=77378039",
+        "saleSku": "11348-03-20G",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "SAPPHIRE 라데온 RX 9070 XT PULSE D6 16GB",
+        "identityEvidenceUrls": [
+          "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9070-xt-16g-gddr6"
+        ],
+        "reason": "Exact board manufacturer, GPU, memory capacity and named cooling/OC variant; part number checked against curated manufacturer source."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+        "partNumber": "11350-03-20G"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "91909571",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+        "saleSku": "11350-03-20G",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "SAPPHIRE 라데온 RX 9060 XT PULSE OC D6 16GB",
+        "identityEvidenceUrls": [
+          "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9060-xt-16g-gddr6"
+        ],
+        "reason": "Exact board manufacturer, GPU, memory capacity and named cooling/OC variant; part number checked against curated manufacturer source."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "01110bc3-78da-4304-8bb6-ec8f0e56fb0e",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 7600 8GB",
+        "partNumber": "11324-01-20G"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "20315144",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=20315144",
+        "saleSku": "11324-01-20G",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "SAPPHIRE 라데온 RX 7600 PULSE OC D6 8GB",
+        "identityEvidenceUrls": [
+          "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-7600-8g-gddr6"
+        ],
+        "reason": "Exact board manufacturer, GPU, memory capacity and named cooling/OC variant; part number checked against curated manufacturer source."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "011e1664-de3e-4923-9e24-1ba2dbb138e6",
+        "manufacturer": "MSI",
+        "modelName": "PRO B650M-P",
+        "partNumber": "PRO B650M-P"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "20108249",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=20108249",
+        "saleSku": "PRO B650M-P",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "MSI PRO B650M-P",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/PRO-B650M-P/Specification"
+        ],
+        "reason": "Exact model/partNumber; AM5/B650, DDR5."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650M MORTAR WIFI",
+        "partNumber": "MAG B650M MORTAR WIFI"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17971187",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971187",
+        "saleSku": "MAG B650M MORTAR WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "MSI MAG B650M 박격포 WIFI",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/MAG-B650M-MORTAR-WIFI/Specification"
+        ],
+        "reason": "MORTAR is the Korean 박격포 naming; AM5/B650/DDR5/WIFI variant."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "48b63b34-ce2f-479d-b46c-b74c572e99bf",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B650M-PLUS WIFI",
+        "partNumber": "TUF GAMING B650M-PLUS WIFI"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18044522",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18044522",
+        "saleSku": "TUF GAMING B650M-PLUS WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "ASUS TUF Gaming B650M-PLUS WIFI STCOM",
+        "identityEvidenceUrls": [
+          "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b650m-plus-wifi/techspec/"
+        ],
+        "reason": "Exact B650M-PLUS WIFI, AM5/B650/mATX/DDR5."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "835f4a47-295d-4ad3-b15a-6fb8ea53de1f",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B650-PLUS WIFI",
+        "partNumber": "TUF GAMING B650-PLUS WIFI"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18044558",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18044558",
+        "saleSku": "TUF GAMING B650-PLUS WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "ASUS TUF Gaming B650-PLUS WIFI STCOM",
+        "identityEvidenceUrls": [
+          "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b650-plus-wifi/techspec/"
+        ],
+        "reason": "Exact B650-PLUS WIFI, AM5/B650/ATX/DDR5; M suffix absent."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f5b7becd-f2da-4c14-a74a-d34e3bf51d26",
+        "manufacturer": "ASRock",
+        "modelName": "B760M Pro RS",
+        "partNumber": "B760M Pro RS"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19536062",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19536062",
+        "saleSku": "B760M Pro RS",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "ASRock B760M Pro RS D5 에즈윈",
+        "identityEvidenceUrls": [
+          "https://www.asrock.com/mb/Intel/B760M%20Pro%20RS/index.asp"
+        ],
+        "reason": "Domestic D5 naming: manufacturer B760M Pro RS supports DDR5; DDR4 variant has D4 in manufacturer model."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d60171cb-1cef-4614-a4f7-e7f145f07e30",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B760M-A D4",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18652898",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18652898",
+        "saleSku": "PRIME B760M-A D4",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "ASUS PRIME B760M-A D4 STCOM",
+        "identityEvidenceUrls": [
+          "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-b760m-a-d4/techspec/"
+        ],
+        "reason": "Exact manufacturer model D4; DDR4 variant. Seed partNumber null."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "dc95c90b-60d3-4bec-a73c-ef5eb799ae46",
+        "manufacturer": "MSI",
+        "modelName": "PRO B760M-A WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19241759",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19241759",
+        "saleSku": "PRO B760M-A WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "MSI PRO B760M-A WIFI",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/PRO-B760M-A-WIFI/Specification"
+        ],
+        "reason": "Exact DDR5 WIFI variant; separate PRO B760M-A WIFI DDR4 excluded. Seed partNumber null."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "395770a4-6600-4987-ae26-8fad86f5b553",
+        "manufacturer": "MSI",
+        "modelName": "PRO B760M-P DDR4",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18652889",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18652889",
+        "saleSku": "PRO B760M-P DDR4",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "MSI PRO B760M-P DDR4",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/PRO-B760M-P-DDR4/Specification"
+        ],
+        "reason": "Exact DDR4 P model; seed partNumber null."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "135b5ebe-0105-4515-abd4-97f0a4f15276",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B760M-A",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19704527",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19704527",
+        "saleSku": "PRIME B760M-A",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "ASUS PRIME B760M-A 코잇",
+        "identityEvidenceUrls": [
+          "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-b760m-a/techspec/"
+        ],
+        "reason": "Exact DDR5 model; separate D4/WIFI variants excluded. Seed partNumber null."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+        "manufacturer": "G.SKILL",
+        "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "F5-6000J3038F16GX2-TZ5N"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17932031",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+        "saleSku": "F5-6000J3038F16GX2-TZ5N",
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2,
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "G.SKILL DDR5-6000 CL30 TRIDENT Z5 NEO J 패키지 (32GB(16Gx2))",
+        "identityEvidenceUrls": [
+          "https://www.gskill.com/specification/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-Specification"
+        ],
+        "reason": "Exact non-RGB Trident Z5 Neo PN cross-checked against manufacturer page and domestic Compuzone product description; manufacturer capacity matches two-module kit. RGB suffix N/R variants are excluded.",
+        "domesticPnEvidenceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?ProductNo=1124075",
+        "domesticPnReview": "Compuzone product description explicitly identifies F5-6000J3038F16GX2-TZ5N and two modules; title capacity is 32GB (16GB*2).",
+        "timingCheck": "6000 MT/s, CL30-38-38-96, 1.35V"
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ac9187af-fd3b-47e0-95b1-f02402e345c8",
+        "manufacturer": "G.SKILL",
+        "modelName": "Trident Z5 Neo DDR5-6000 CL30 64GB (2x32GB)",
+        "partNumber": "F5-6000J3040G32GX2-TZ5N"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "40559801",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=40559801",
+        "saleSku": "F5-6000J3040G32GX2-TZ5N",
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2,
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "G.SKILL DDR5-6000 CL30 TRIDENT Z5 NEO J 패키지 (64GB(32Gx2))",
+        "identityEvidenceUrls": [
+          "https://www.gskill.com/specification/165/393/1665020366/F5-6000J3040G32GX2-TZ5N-Specification"
+        ],
+        "reason": "Exact non-RGB Trident Z5 Neo PN cross-checked against manufacturer page and domestic Compuzone product description; manufacturer capacity matches two-module kit. RGB suffix N/R variants are excluded.",
+        "domesticPnEvidenceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?ProductNo=1124074",
+        "domesticPnReview": "Compuzone product description explicitly identifies F5-6000J3040G32GX2-TZ5N and two modules; title capacity is 64GB (32GB*2).",
+        "timingCheck": "6000 MT/s, CL30-40-40-96, 1.40V"
+      }
+    }
+  ]
+}

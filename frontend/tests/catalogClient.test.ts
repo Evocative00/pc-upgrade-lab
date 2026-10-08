@@ -15,7 +15,8 @@ const details: CatalogDetail[] = ['week2-initial', 'week2-gpu', 'week2-monitor']
   }
   return manifest.items.map((item, index) => ({
     product: { ...item.product, id: `ui-fixture-${batch}-${index}`, verificationStatus: 'UNVERIFIED', active: false,
-      createdAt: timestamp, updatedAt: timestamp, referencePrice: { amountKrw: null, status: 'UNCONFIRMED', updatedAt: timestamp } },
+      createdAt: timestamp, updatedAt: timestamp, currentPrice: null,
+      referencePrice: { amountKrw: null, status: 'UNCONFIRMED', updatedAt: timestamp } },
     specification: item.specification,
     sources: [{ sourceName: 'BUILDCORES', externalId: 'source-fixture', sourceRevision: 'revision-fixture',
       sourceUrl: 'https://github.com/buildcores/buildcores-open-db', retrievedAt: timestamp }],
@@ -61,6 +62,46 @@ test('빈 목록은 정상 응답이며 미확정 가격을 0으로 바꾸지 �
   assert.deepEqual((await emptyClient.search('STORAGE', '')).items, [])
   const client = createHttpCatalogClient(async () => json(page(gpu)))
   assert.equal((await client.search('GPU', '')).items[0].referencePrice.amountKrw, null)
+  assert.equal((await client.search('GPU', '')).items[0].currentPrice, null)
+})
+
+test('현재 상품가의 금액·출처·확인 시각을 목록과 상세에서 읽는다', async () => {
+  const product = { ...gpu[0], currentPrice: { amountKrw: 123456, sourceName: '판매처',
+    sourceUrl: 'https://shop.example/products/exact-model', observedAt: '2026-10-06T01:02:03.123456Z' } }
+  const client = createHttpCatalogClient(async () => json(page([product])))
+  assert.deepEqual((await client.search('GPU', '')).items[0].currentPrice, product.currentPrice)
+  const detail = { ...details.find((item) => item.product.id === product.id)!, product }
+  const detailClient = createHttpCatalogClient(async () => json(detail))
+  assert.deepEqual((await detailClient.get(product.id)).product.currentPrice, product.currentPrice)
+})
+
+test('현재가가 없는 이전 응답은 null로 정규화하고 확정 기준가격을 현재가로 대체하지 않는다', async () => {
+  const legacy = Object.fromEntries(Object.entries(gpu[0]).filter(([key]) => key !== 'currentPrice')) as Omit<CatalogProduct, 'currentPrice'>
+  const product = { ...legacy, referencePrice: { amountKrw: 99999, status: 'CONFIRMED', updatedAt: timestamp } }
+  const client = createHttpCatalogClient(async () => json(page([product as CatalogProduct])))
+  const result = (await client.search('GPU', '')).items[0]
+  assert.equal(result.currentPrice, null)
+  assert.equal(result.referencePrice.amountKrw, 99999)
+  const detail = { ...details.find((item) => item.product.id === product.id)!, product }
+  const detailClient = createHttpCatalogClient(async () => json(detail))
+  assert.equal((await detailClient.get(product.id)).product.currentPrice, null)
+})
+
+test('잘못된 현재가·출처 URL·날짜를 유효한 구매가로 받아들이지 않는다', async () => {
+  const valid = { amountKrw: 123456, sourceName: '판매처', sourceUrl: 'https://shop.example/p/1', observedAt: timestamp }
+  for (const price of [
+    ...[0, -1, 1.5, '10000', null, Number.MAX_SAFE_INTEGER + 1].map((amountKrw) => ({ ...valid, amountKrw })),
+    { ...valid, sourceName: '' },
+    ...['javascript:alert(1)', 'http://shop.example/p/1', '/p/1'].map((sourceUrl) => ({ ...valid, sourceUrl })),
+    ...['yesterday', '2026-10-06', '2026-10-06T01:00:00', '2026-02-30T01:00:00Z',
+      '2026-10-06T24:00:00Z', '2026-10-06T01:00:00+24:00'].map((observedAt) => ({ ...valid, observedAt })),
+  ]) {
+    const product = { ...gpu[0], currentPrice: price }
+    const client = createHttpCatalogClient(async () => json(page([product as CatalogProduct])))
+    await assert.rejects(client.search('GPU', ''), hasCode('INVALID_RESPONSE'))
+    const detailClient = createHttpCatalogClient(async () => json({ ...details.find((item) => item.product.id === product.id)!, product }))
+    await assert.rejects(detailClient.get(product.id), hasCode('INVALID_RESPONSE'))
+  }
 })
 
 test('CPU 상세의 추가 전력·P/E 제원을 누락하거나 기존 TDP로 환산하지 않는다', async () => {

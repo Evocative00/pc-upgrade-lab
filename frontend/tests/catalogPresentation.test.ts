@@ -1,11 +1,25 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { formatCatalogPrice, ramKitLabel, specificationRows } from '../src/features/catalog/catalogPresentation.ts'
+import { formatCatalogPrice, formatCurrentPrice, formatPriceObservedAt, ramKitLabel, specificationRows } from '../src/features/catalog/catalogPresentation.ts'
 
 test('가격 미확정·자료 부족을 0원으로 표시하지 않는다', () => {
   assert.equal(formatCatalogPrice({ amountKrw: null, status: 'UNCONFIRMED', updatedAt: '' }), '가격 미확정')
   assert.equal(formatCatalogPrice({ amountKrw: null, status: 'INSUFFICIENT_HISTORY', updatedAt: '' }), '가격 자료 부족')
   assert.equal(formatCatalogPrice({ amountKrw: 123456.78, status: 'CONFIRMED', updatedAt: '' }), '123,456.78원')
+})
+
+test('현재 상품가는 원 단위로 표시하고 없는 가격은 미확인으로 표시한다', () => {
+  assert.equal(formatCurrentPrice(null), '현재 상품가 미확인')
+  assert.equal(formatCurrentPrice({ amountKrw: 123456, sourceName: '판매처', sourceUrl: 'https://shop.example/p/1',
+    observedAt: '2026-10-06T01:00:00Z' }), '123,456원')
+})
+
+test('가격 확인 시각은 실행 환경의 시간대와 관계없이 한국 시간으로 표시한다', () => {
+  const formatted = formatPriceObservedAt('2026-10-05T15:30:00Z')
+  assert.match(formatted, /2026\. 10\. 06\./)
+  assert.match(formatted, /00:30/)
+  assert.match(formatted, /한국 시간/)
+  assert.equal(formatPriceObservedAt('invalid'), '확인 시각 미확인')
 })
 
 test('RAM은 모듈당 용량·묶음 개수·합계를 구분한다', () => {

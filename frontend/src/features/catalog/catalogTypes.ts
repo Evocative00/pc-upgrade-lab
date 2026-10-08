@@ -1,5 +1,12 @@
 import type { PartType } from '../pc-scan/types.ts'
 
+export type CurrentPrice = {
+  amountKrw: number
+  sourceName: string
+  sourceUrl: string
+  observedAt: string
+}
+
 export type CatalogProduct = {
   id: string
   type: PartType
@@ -8,6 +15,7 @@ export type CatalogProduct = {
   partNumber: string | null
   verificationStatus: 'UNVERIFIED' | 'PARTIAL' | 'CORE_VERIFIED'
   active: boolean
+  currentPrice: CurrentPrice | null
   referencePrice: {
     amountKrw: number | null
     status: 'UNCONFIRMED' | 'INSUFFICIENT_HISTORY' | 'CONFIRMED'

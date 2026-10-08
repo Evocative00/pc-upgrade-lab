@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-08T10:35:24.411Z",
+  "requested": 50,
+  "succeeded": 50,
+  "rejectedCount": 0,
+  "pricedProductsByType": {
+    "CPU": 27,
+    "MOTHERBOARD": 12,
+    "GPU": 7,
+    "MONITOR": 4
+  },
+  "existingPricedProducts": 22,
+  "totalPricedProductsAfterImport": 72,
+  "catalogProducts": 300,
+  "newCatalogProducts": 0,
+  "observedFrom": "2026-10-08T10:18:40.726Z",
+  "observedThrough": "2026-10-08T10:29:06.321Z",
+  "shippingAndConditionalDiscountsIncluded": false,
+  "identityAndSaleUnitMatches": 50,
+  "duplicateProducts": 0,
+  "duplicateOffersWithExisting22": 0,
+  "sourceFile": "observations-expansion50-2026-10-08.json",
+  "sourceSha256": "de6f16277a2092b5ecdfb5342c3328648b0e59b00c8a479e440bb924058260c0",
+  "deferredQuoteCount": 6,
+  "deferredFile": "deferred-expansion50-2026-10-08.json",
+  "scope": "This report describes the selected 50 successful observations. Research also encountered inactive offers, unverified variants and deferred quotes; these are not imported.",
+  "databaseApplied": true,
+  "research": {
+    "actualProductPagesRequested": 114,
+    "liveRegularPricesParsed": 57,
+    "withoutActiveRegularPrice": 57,
+    "deferredUnusualQuotes": 6,
+    "verifiedButNotSelected": 1,
+    "selectedForImport": 50,
+    "byType": {
+      "CPU": {
+        "requested": 50,
+        "parsed": 32,
+        "selected": 27
+      },
+      "MOTHERBOARD": {
+        "requested": 42,
+        "parsed": 13,
+        "selected": 12
+      },
+      "GPU": {
+        "requested": 15,
+        "parsed": 8,
+        "selected": 7
+      },
+      "MONITOR": {
+        "requested": 7,
+        "parsed": 4,
+        "selected": 4
+      }
+    },
+    "unverifiedVariantsExcludedBeforeImport": true
+  },
+  "databaseApplicationReport": "applied-expansion50-2026-10-08.json"
+}

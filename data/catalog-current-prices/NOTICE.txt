@@ -1,0 +1,39 @@
+Product identities contain data from BuildCores OpenDB.
+Database: https://github.com/buildcores/buildcores-open-db
+Revision: b6fc3a559b871106ba89d9d8b8ad4beeb886a799
+License: Open Data Commons Attribution License 1.0 (ODC-By-1.0).
+License text: ../../backend/src/main/resources/catalog/seed/week2-expand300/BUILDCORES-LICENSE.txt
+
+Domestic product mappings are separately reviewed using manufacturer and retailer facts.
+Observation files contain integer KRW product prices and source URLs, not full HTML page copies.
+Danawa regular visible purchase offers were read on the recorded observedAt dates.
+Shipping, membership benefits, coupon/card discounts and promotional conditions are excluded.
+RAM prices cover the complete reviewed kit; moduleCount is the number of physical modules.
+On 2026-10-06 at 21:50 Asia/Seoul, explicit user approval authorized applying V12 and this 22-product batch to local MySQL.
+Flyway V12 and the COMMITTED import were confirmed: 22 mappings and 22 price observations were stored.
+Initial batch coverage was CPU 6, GPU 5, MOTHERBOARD 9 and RAM 2: at that time, 22 of 300 products had a current price and 278 remained null.
+The repeated-observation preview checked 22 items with 0 new mappings, 0 new observations and 22 unchanged observations.
+All 300 API products and all 22 priced product details were verified; list/detail amounts, source URLs and observedAt values matched.
+The actual API responses passed the frontend catalogClient contract for all 22 priced products.
+The four-part actual-price total was KRW 2,483,010; RAM kit/module totals, incomplete-kit exclusion and unknown-price handling were verified.
+Browser interaction was not verified (browserVerified=false).
+A nine-hour absolute-timestamp discrepancy between MySQL SYSTEM/KST and Hibernate UTC was corrected atomically for only the 22 mapping verifiedAt and 22 observation observedAt values.
+New price services now use a transaction-scoped UTC session and restore the original session timezone afterward; existing settings and tables were not changed.
+Price amounts and product links were preserved. All 300 existing reference-price rows remain UNCONFIRMED with NULL amounts and an unchanged data digest.
+Initial validation passed 269 backend H2 tests, 78 frontend tests, 14 collector tests, frontend lint and build.
+Immediately after the timezone change, 18 related tests and the bootJar rebuild passed; at that stage the full H2 suite had not been rerun.
+Actual MySQL/API verification is recorded separately from automated tests in applied-2026-10-06.json.
+On 2026-10-08 at 19:37 Asia/Seoul, the user-requested expansion added prices for 50 existing catalog products to local MySQL.
+Expansion coverage is CPU 27, MOTHERBOARD 12, GPU 7 and MONITOR 4. No catalog products were created and no new migration was applied.
+There are now 72 priced products out of 300 (CPU 33, GPU 12, MOTHERBOARD 21, RAM 2, MONITOR 4); 228 remain null.
+Research checked 114 actual product pages and parsed 57 live regular prices. Six unusually high quotes were deferred and one verified reserve was not selected.
+The selected 50-product batch contains only successful reviewed observations; inactive or unverified variants were not imported.
+Existing 22-product prices and all 300 reference-price rows retain their original data digests.
+Repeated expansion preview checked 50 items with 0 new mappings, 0 new observations and 50 unchanged observations.
+All 72 prices, source URLs and absolute timestamps matched the database and list/detail API; all 72 actual responses passed the frontend decoder and per-product price calculation.
+The five-part actual-price subtotal was KRW 3,609,210. RAM kit and unknown-price handling were verified again.
+Collector tests passed 14 cases; application code was unchanged in this expansion, and backend/frontend full suites were not rerun.
+Expansion application and validation are recorded in applied-expansion50-2026-10-08.json. Browser interaction and OAuth login were not verified.
+Before GitHub publication on 2026-10-08, final backend H2 validation passed all 277 tests (0 failures/errors/skips), frontend validation passed all 78 tests plus lint/build, and all 14 collector tests passed.
+The staged observation files' SHA-256 values match the application reports. Private settings, secrets and generated build files are excluded from publication.
+File creation alone does not update MySQL; import is opt-in.

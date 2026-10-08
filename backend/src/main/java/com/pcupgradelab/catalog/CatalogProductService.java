@@ -1,9 +1,11 @@
 package com.pcupgradelab.catalog;
 
+import com.pcupgradelab.catalog.price.CatalogCurrentPriceService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.List;
 
 /**
  * 공용 부품의 기본 등록·조회. 상세 제원과 출처 적재를 붙이기 전의 첫 저장 단위다.
@@ -14,10 +16,13 @@ import java.util.Optional;
 public class CatalogProductService {
     private final CatalogProductRepository products;
     private final CatalogReferencePriceRepository prices;
+    private final CatalogCurrentPriceService currentPrices;
 
-    public CatalogProductService(CatalogProductRepository products, CatalogReferencePriceRepository prices) {
+    public CatalogProductService(CatalogProductRepository products, CatalogReferencePriceRepository prices,
+                                 CatalogCurrentPriceService currentPrices) {
         this.products = products;
         this.prices = prices;
+        this.currentPrices = currentPrices;
     }
 
     @Transactional
@@ -41,7 +46,7 @@ public class CatalogProductService {
         return products.findById(id).map(product -> {
             var price = prices.findById(id).orElseThrow(() -> new IllegalStateException(
                     "Catalog product is missing its reference price row: " + id));
-            return CatalogProductView.from(product, price);
+            return CatalogProductView.from(product, price, currentPrices.latestForProducts(List.of(id)).get(id));
         });
     }
 }
