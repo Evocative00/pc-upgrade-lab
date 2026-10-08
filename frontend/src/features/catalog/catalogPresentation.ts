@@ -1,5 +1,5 @@
 import type { PartType } from '../pc-scan/types.ts'
-import type { CatalogProduct, CatalogSpecification } from './catalogTypes.ts'
+import type { CatalogProduct, CatalogSpecification, CurrentPrice } from './catalogTypes.ts'
 
 export const VERIFICATION_LABEL: Record<CatalogProduct['verificationStatus'], string> = {
   UNVERIFIED: '미검증', PARTIAL: '일부 제원 확인', CORE_VERIFIED: '핵심 제원 확인',
@@ -9,6 +9,19 @@ export function formatCatalogPrice(price: CatalogProduct['referencePrice']): str
   if (price.status === 'INSUFFICIENT_HISTORY') return '가격 자료 부족'
   if (price.status !== 'CONFIRMED' || price.amountKrw === null) return '가격 미확정'
   return `${price.amountKrw.toLocaleString('ko-KR', { maximumFractionDigits: 2 })}원`
+}
+
+export function formatCurrentPrice(price: CurrentPrice | null): string {
+  return price ? `${price.amountKrw.toLocaleString('ko-KR')}원` : '현재 상품가 미확인'
+}
+
+export function formatPriceObservedAt(observedAt: string): string {
+  const date = new Date(observedAt)
+  if (!Number.isFinite(date.getTime())) return '확인 시각 미확인'
+  return `${new Intl.DateTimeFormat('ko-KR', {
+    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+  }).format(date)} (한국 시간)`
 }
 
 type Field = [key: string, label: string, unit?: string]

@@ -16,14 +16,29 @@ public record CatalogProductView(
         boolean active,
         Instant createdAt,
         Instant updatedAt,
-        ReferencePrice referencePrice
+        ReferencePrice referencePrice,
+        CurrentPrice currentPrice
 ) {
     public record ReferencePrice(BigDecimal amountKrw, CatalogPriceStatus status, Instant updatedAt) { }
 
+    /** 가장 최근에 기록한 국내 신품 상품가. 기준가격 산정과 별개다. */
+    public record CurrentPrice(long amountKrw, String sourceName, String sourceUrl, Instant observedAt) { }
+
+    public CatalogProductView(String id, PartType type, String manufacturer, String modelName,
+                              String partNumber, CatalogVerificationStatus verificationStatus,
+                              boolean active, Instant createdAt, Instant updatedAt, ReferencePrice referencePrice) {
+        this(id, type, manufacturer, modelName, partNumber, verificationStatus, active,
+                createdAt, updatedAt, referencePrice, null);
+    }
+
     static CatalogProductView from(CatalogProduct product, CatalogReferencePrice price) {
+        return from(product, price, null);
+    }
+
+    static CatalogProductView from(CatalogProduct product, CatalogReferencePrice price, CurrentPrice currentPrice) {
         return new CatalogProductView(product.getId(), product.getType(), product.getManufacturer(),
                 product.getModelName(), product.getPartNumber(), product.getVerificationStatus(),
                 product.isActive(), product.getCreatedAt(), product.getUpdatedAt(),
-                new ReferencePrice(price.getAmountKrw(), price.getStatus(), price.getUpdatedAt()));
+                new ReferencePrice(price.getAmountKrw(), price.getStatus(), price.getUpdatedAt()), currentPrice);
     }
 }

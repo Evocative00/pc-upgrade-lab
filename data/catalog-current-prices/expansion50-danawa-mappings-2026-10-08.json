@@ -1,0 +1,1300 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4dcfffec-423b-4052-8aca-db6c0f84bb43",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 7800X3D",
+        "partNumber": "100-100000910WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19627808",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19627808",
+        "saleSku": "100-100000910WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠7-5세대 7800X3D (라파엘) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7800x3d.html",
+          "https://prod.danawa.com/info/?pcode=19627808"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact AMD Ryzen 7 7800X3D suffix, AM5 socket, 8 cores/16 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=19627808",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "0240f7db-68e5-4aac-9438-41d2f12ec15a",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-14400F",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "32038667",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=32038667",
+        "saleSku": "Core i5-14400F / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i5-14세대 14400F (랩터레이크 리프레시) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/236777/intel-core-i5-processor-14400f-20m-cache-up-to-4-70-ghz/specifications.html",
+          "https://prod.danawa.com/info/?pcode=32038667"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i5-14400F suffix, LGA1700 socket, 10 cores/16 threads and integrated graphics absent were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=32038667",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e53fd77d-8083-4243-8739-a8ec2311b25a",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-14500",
+        "partNumber": "BX8071514500"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "32038256",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=32038256",
+        "saleSku": "BX8071514500",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i5-14세대 14500 (랩터레이크 리프레시) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/236784/intel-core-i5-processor-14500-24m-cache-up-to-5-00-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/products/sku/236784/intel-core-i5-processor-14500-24m-cache-up-to-5-00-ghz/ordering.html",
+          "https://prod.danawa.com/info/?pcode=32038256"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i5-14500 suffix, LGA1700 socket, 14 cores/20 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=32038256",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e80823a0-6dd5-47d0-b69b-852e92acf964",
+        "manufacturer": "Intel",
+        "modelName": "Core i9-14900K",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28798964",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28798964",
+        "saleSku": "Core i9-14900K / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i9-14세대 14900K (랩터레이크 리프레시) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/236773/intel-core-i9-processor-14900k-36m-cache-up-to-6-00-ghz/specifications.html",
+          "https://prod.danawa.com/info/?pcode=28798964"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i9-14900K suffix, LGA1700 socket, 24 cores/32 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=28798964",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "622e7110-ebf4-4040-93f6-5b37e82ff02e",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-14700K",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28799435",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28799435",
+        "saleSku": "Core i7-14700K / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i7-14세대 14700K (랩터레이크 리프레시) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/236783/intel-core-i7-processor-14700k-33m-cache-up-to-5-60-ghz/specifications.html",
+          "https://prod.danawa.com/info/?pcode=28799435"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i7-14700K suffix, LGA1700 socket, 20 cores/28 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=28799435",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "22546c6c-9af1-4646-a9af-0ede3444c6b7",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-13400F",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18640280",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18640280",
+        "saleSku": "Core i5-13400F / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i5-13세대 13400F (랩터레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/230501/intel-core-i513400f-processor-20m-cache-up-to-4-60-ghz/specifications.html",
+          "https://prod.danawa.com/info/?pcode=18640280"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i5-13400F suffix, LGA1700 socket, 10 cores/16 threads and integrated graphics absent were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=18640280",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "63e78ef0-3723-44e2-b64d-ae7ef297cc46",
+        "manufacturer": "Intel",
+        "modelName": "Core i3-12100",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16101083",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16101083",
+        "saleSku": "Core i3-12100 / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i3-12세대 12100 (엘더레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/134584/intel-core-i312100-processor-12m-cache-up-to-4-30-ghz/specifications.html",
+          "https://prod.danawa.com/info/?pcode=16101083"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i3-12100 suffix, LGA1700 socket, 4 cores/8 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=16101083",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ff4b4766-4f58-4c17-915e-9881c50ed032",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-12400",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16101326",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16101326",
+        "saleSku": "Core i5-12400 / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i5-12세대 12400 (엘더레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/134586/intel-core-i512400-processor-18m-cache-up-to-4-40-ghz/specifications.html",
+          "https://prod.danawa.com/info/?pcode=16101326"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i5-12400 suffix, LGA1700 socket, 6 cores/12 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=16101326",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "82e101d8-9816-4a6e-9d5a-7090e6933eea",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-12700F",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16101464",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16101464",
+        "saleSku": "Core i7-12700F / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i7-12세대 12700F (엘더레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/134592/intel-core-i712700f-processor-25m-cache-up-to-4-90-ghz/specifications.html",
+          "https://prod.danawa.com/info/?pcode=16101464"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i7-12700F suffix, LGA1700 socket, 12 cores/20 threads and integrated graphics absent were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=16101464",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7564da71-725e-4a56-9d79-d80377b7a92f",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 5600G",
+        "partNumber": "100-100000252BOX"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "14927615",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14927615",
+        "saleSku": "100-100000252BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠5-4세대 5600G (세잔) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-5-5600g.html",
+          "https://prod.danawa.com/info/?pcode=14927615"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact AMD Ryzen 5 5600G suffix, AM4 socket, 6 cores/12 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=14927615",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "eda463d1-d4b6-4f1a-96dd-0416efe84381",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7900X",
+        "partNumber": "100-100000589WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17913863",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17913863",
+        "saleSku": "100-100000589WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠9-5세대 7900X (라파엘) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7900x.html",
+          "https://prod.danawa.com/info/?pcode=17913863"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact AMD Ryzen 9 7900X suffix, AM5 socket, 12 cores/24 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=17913863",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ebb0e539-2265-4e3f-bb05-960429116b4b",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-13700F",
+        "partNumber": "BX8071513700F"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18640379",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18640379",
+        "saleSku": "BX8071513700F",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i7-13세대 13700F (랩터레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/230491/intel-core-i713700f-processor-30m-cache-up-to-5-20-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html",
+          "https://www.intel.com/content/www/us/en/products/sku/230491/intel-core-i713700f-processor-30m-cache-up-to-5-20-ghz/ordering.html",
+          "https://prod.danawa.com/info/?pcode=18640379"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i7-13700F suffix, LGA1700 socket, 16 cores/24 threads and integrated graphics absent were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=18640379",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c2900762-11b6-49bc-a728-566b56db3638",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-14700F",
+        "partNumber": "BX8071514700F"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "32156936",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=32156936",
+        "saleSku": "BX8071514700F",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i7-14세대 14700F (랩터레이크 리프레시) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/236854/intel-core-i7-processor-14700f-33m-cache-up-to-5-40-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html",
+          "https://prod.danawa.com/info/?pcode=32156936"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i7-14700F suffix, LGA1700 socket, 20 cores/28 threads and integrated graphics absent were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=32156936",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "af402682-92b0-4c17-9228-19b9b5c6dcdd",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-14400",
+        "partNumber": "BX8071514400"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "32038580",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=32038580",
+        "saleSku": "BX8071514400",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i5-14세대 14400 (랩터레이크 리프레시) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/236788/intel-core-i5-processor-14400-20m-cache-up-to-4-70-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/products/sku/236788/intel-core-i5-processor-14400-20m-cache-up-to-4-70-ghz/ordering.html",
+          "https://prod.danawa.com/info/?pcode=32038580"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i5-14400 suffix, LGA1700 socket, 10 cores/16 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=32038580",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "54157058-0ff5-4208-9466-5ce1e985ca7a",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-14600KF",
+        "partNumber": "BX8071514600KF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28799732",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28799732",
+        "saleSku": "BX8071514600KF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i5-14세대 14600KF (랩터레이크 리프레시) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/236778/intel-core-i5-processor-14600kf-24m-cache-up-to-5-30-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html",
+          "https://www.intel.com/content/www/us/en/products/sku/236778/intel-core-i5-processor-14600kf-24m-cache-up-to-5-30-ghz/ordering.html",
+          "https://prod.danawa.com/info/?pcode=28799732"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i5-14600KF suffix, LGA1700 socket, 14 cores/20 threads and integrated graphics absent were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=28799732",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "41a8238b-049f-46db-a304-0c8ece1a8d73",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-12700K",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "15594638",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15594638",
+        "saleSku": "Core i7-12700K / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i7-12세대 12700K (엘더레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/134594/intel-core-i712700k-processor-25m-cache-up-to-5-00-ghz/specifications.html",
+          "https://prod.danawa.com/info/?pcode=15594638"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i7-12700K suffix, LGA1700 socket, 12 cores/20 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=15594638",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b20e3cca-2a76-407d-9a2b-a8d191215899",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-13400",
+        "partNumber": "BX8071513400"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18640286",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18640286",
+        "saleSku": "BX8071513400",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i5-13세대 13400 (랩터레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/230495/intel-core-i513400-processor-20m-cache-up-to-4-60-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/products/sku/230495/intel-core-i513400-processor-20m-cache-up-to-4-60-ghz/ordering.html",
+          "https://prod.danawa.com/info/?pcode=18640286"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i5-13400 suffix, LGA1700 socket, 10 cores/16 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=18640286",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f5cb6fa2-042a-48ce-a09d-eaf41290a607",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-13500",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18640319",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18640319",
+        "saleSku": "Core i5-13500 / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i5-13세대 13500 (랩터레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/230580/intel-core-i513500-processor-24m-cache-up-to-4-80-ghz/specifications.html",
+          "https://prod.danawa.com/info/?pcode=18640319"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i5-13500 suffix, LGA1700 socket, 14 cores/20 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=18640319",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 9700X",
+        "partNumber": "100-100001404WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "62653715",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+        "saleSku": "100-100001404WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠7-6세대 9700X (그래니트 릿지) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9700x.html",
+          "https://prod.danawa.com/info/?pcode=62653715"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact AMD Ryzen 7 9700X suffix, AM5 socket, 8 cores/16 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 9600X",
+        "partNumber": "100-100001405WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "62653718",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+        "saleSku": "100-100001405WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠5-6세대 9600X (그래니트 릿지) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9600x.html",
+          "https://prod.danawa.com/info/?pcode=62653718"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact AMD Ryzen 5 9600X suffix, AM5 socket, 6 cores/12 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "fe2cf1aa-c66e-43ec-a55b-997584228dd1",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 7600X",
+        "partNumber": "100-100000593WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17913311",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17913311",
+        "saleSku": "100-100000593WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠5-5세대 7600X (라파엘) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7600x.html",
+          "https://prod.danawa.com/info/?pcode=17913311"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact AMD Ryzen 5 7600X suffix, AM5 socket, 6 cores/12 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=17913311",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b6f5b046-0856-4ef3-9689-5d75ddc92608",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 9900X",
+        "partNumber": "100-100000662WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "63139097",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=63139097",
+        "saleSku": "100-100000662WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:27:08.221Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠9-6세대 9900X (그래니트 릿지) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9900x.html",
+          "https://prod.danawa.com/info/?pcode=63139097"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact AMD Ryzen 9 9900X suffix, AM5 socket, 12 cores/24 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=63139097",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ee2ac384-a2d9-4324-88af-d4765e604bcf",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 9950X",
+        "partNumber": "100-100001277WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "63139115",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=63139115",
+        "saleSku": "100-100001277WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:27:08.221Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠9-6세대 9950X (그래니트 릿지) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x.html",
+          "https://prod.danawa.com/info/?pcode=63139115"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact AMD Ryzen 9 9950X suffix, AM5 socket, 16 cores/32 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=63139115",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "402c2508-a75c-4f4d-9d09-778349ae72bb",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-14700KF",
+        "partNumber": "BX8071514700KF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28799498",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28799498",
+        "saleSku": "BX8071514700KF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:27:08.221Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i7-14세대 14700KF (랩터레이크 리프레시) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/236789/intel-core-i7-processor-14700kf-33m-cache-up-to-5-60-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html",
+          "https://www.intel.com/content/www/us/en/products/sku/236789/intel-core-i7-processor-14700kf-33m-cache-up-to-5-60-ghz/ordering.html",
+          "https://prod.danawa.com/info/?pcode=28799498"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i7-14700KF suffix, LGA1700 socket, 20 cores/28 threads and integrated graphics absent were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=28799498",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "536e31d4-f1a4-4936-897a-8866bcfb01e6",
+        "manufacturer": "Intel",
+        "modelName": "Core i9-14900KF",
+        "partNumber": "BX8071514900KF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28799180",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28799180",
+        "saleSku": "BX8071514900KF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:27:08.221Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i9-14세대 14900KF (랩터레이크 리프레시) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/236787/intel-core-i9-processor-14900kf-36m-cache-up-to-6-00-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html",
+          "https://www.intel.com/content/www/us/en/products/sku/236787/intel-core-i9-processor-14900kf-36m-cache-up-to-6-00-ghz/ordering.html",
+          "https://prod.danawa.com/info/?pcode=28799180"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i9-14900KF suffix, LGA1700 socket, 24 cores/32 threads and integrated graphics absent were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=28799180",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a0535313-5457-4b3a-8ff3-a7550e458406",
+        "manufacturer": "Intel",
+        "modelName": "Core i9-12900K",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "15594887",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15594887",
+        "saleSku": "Core i9-12900K / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i9-12세대 12900K (엘더레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/134599/intel-core-i912900k-processor-30m-cache-up-to-5-20-ghz/specifications.html",
+          "https://prod.danawa.com/info/?pcode=15594887"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i9-12900K suffix, LGA1700 socket, 16 cores/24 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=15594887",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ef051311-c91d-425d-a91c-585ea31b63fd",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-12700KF",
+        "partNumber": "BX8071512700KF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "15594701",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15594701",
+        "saleSku": "BX8071512700KF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "인텔 코어i7-12세대 12700KF (엘더레이크) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.intel.com/content/www/us/en/products/sku/134595/intel-core-i712700kf-processor-25m-cache-up-to-5-00-ghz/specifications.html",
+          "https://www.intel.com/content/www/us/en/support/articles/000027144/processors/intel-core-processors.html",
+          "https://www.intel.com/content/www/us/en/products/sku/134595/intel-core-i712700kf-processor-25m-cache-up-to-5-00-ghz/ordering.html",
+          "https://prod.danawa.com/info/?pcode=15594701"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact Intel Core i7-12700KF suffix, LGA1700 socket, 12 cores/20 threads and integrated graphics absent were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=15594701",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "303429d5-887f-4cf2-84a6-fd6c96e40d0c",
+        "manufacturer": "MSI",
+        "modelName": "PRO A620M-E",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19705316",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19705316",
+        "saleSku": "PRO A620M-E",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "review": {
+        "expectedTitle": "MSI PRO A620M-E",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/PRO-A620M-E/Specification"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR5, MICRO_ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e8a66e2e-c53b-49d3-a31c-49a9ee8fe389",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650 TOMAHAWK WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17971181",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971181",
+        "saleSku": "MAG B650 TOMAHAWK WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "review": {
+        "expectedTitle": "MSI MAG B650 토마호크 WIFI",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/Specification"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR5, ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f24caa89-27bd-4797-899c-2bb76b608971",
+        "manufacturer": "MSI",
+        "modelName": "PRO B650M-A WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17971184",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971184",
+        "saleSku": "PRO B650M-A WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "review": {
+        "expectedTitle": "MSI PRO B650M-A WIFI",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/PRO-B650M-A-WIFI/Specification"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR5, MICRO_ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "79e31e8a-27c5-4be8-a845-494b51319ec7",
+        "manufacturer": "MSI",
+        "modelName": "MPG B650 EDGE WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18172115",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18172115",
+        "saleSku": "MPG B650 EDGE WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "review": {
+        "expectedTitle": "MSI MPG B650 엣지 WIFI",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/MPG-B650-EDGE-WIFI/Specification"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR5, ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3190abcf-4bf4-4ae4-b06d-0c29dd1d8120",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME A520M-K",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "12060293",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12060293",
+        "saleSku": "PRIME A520M-K",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "review": {
+        "expectedTitle": "ASUS PRIME A520M-K STCOM",
+        "identityEvidenceUrls": [
+          "https://www.asus.com/motherboards-components/motherboards/prime/prime-a520m-k/techspec/"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR4, MICRO_ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "877eb2a2-a8d4-48d9-8036-245c0381fb5b",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME H610M-K D4",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18523409",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18523409",
+        "saleSku": "PRIME H610M-K D4",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "review": {
+        "expectedTitle": "ASUS PRIME H610M-K D4 아이보라",
+        "identityEvidenceUrls": [
+          "https://www.asus.com/motherboards-components/motherboards/prime/prime-h610m-k-d4/techspec/"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR4, MICRO_ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e584f5cb-0312-4681-a2fe-97c4d2241cf0",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME A620M-A",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19924310",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19924310",
+        "saleSku": "PRIME A620M-A",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:17.104Z"
+      },
+      "review": {
+        "expectedTitle": "ASUS PRIME A620M-A STCOM",
+        "identityEvidenceUrls": [
+          "https://www.asus.com/motherboards-components/motherboards/prime/prime-a620m-a/techspec/"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR5, MICRO_ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "aab6da00-a3f4-48e5-bebf-ebc3181ac91f",
+        "manufacturer": "MSI",
+        "modelName": "A520M-A PRO",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "12067598",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12067598",
+        "saleSku": "A520M-A PRO",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:17.104Z"
+      },
+      "review": {
+        "expectedTitle": "MSI A520M-A PRO",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/A520M-A-PRO/Specification"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR4, MICRO_ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "198e62d6-cbe2-4897-9a44-23e9c8b882e8",
+        "manufacturer": "MSI",
+        "modelName": "PRO H610M-G DDR4",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16314863",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16314863",
+        "saleSku": "PRO H610M-G DDR4",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:17.104Z"
+      },
+      "review": {
+        "expectedTitle": "MSI PRO H610M-G DDR4",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/PRO-H610M-G-DDR4/Specification"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR4, MICRO_ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c9899cf7-92e8-4dda-9e4f-df63aa235095",
+        "manufacturer": "MSI",
+        "modelName": "MAG B760 TOMAHAWK WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18652865",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18652865",
+        "saleSku": "MAG B760 TOMAHAWK WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:17.104Z"
+      },
+      "review": {
+        "expectedTitle": "MSI MAG B760 토마호크 WIFI",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/MAG-B760-TOMAHAWK-WIFI/Specification"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR5, ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "320488a7-b309-490d-80da-235d999eff79",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B550M-PLUS",
+        "partNumber": "TUF GAMING B550M-PLUS"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "11571368",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=11571368",
+        "saleSku": "TUF GAMING B550M-PLUS",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:17.104Z"
+      },
+      "review": {
+        "expectedTitle": "ASUS TUF Gaming B550M-PLUS STCOM",
+        "identityEvidenceUrls": [
+          "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b550m-plus/techspec/"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR4, MICRO_ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1a2236a4-508d-43cb-a19b-015339816362",
+        "manufacturer": "ASUS",
+        "modelName": "ROG STRIX B650E-F GAMING WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18265715",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18265715",
+        "saleSku": "ROG STRIX B650E-F GAMING WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:09.570Z"
+      },
+      "review": {
+        "expectedTitle": "ASUS ROG STRIX B650E-F GAMING WIFI 대원씨티에스",
+        "identityEvidenceUrls": [
+          "https://rog.asus.com/motherboards/rog-strix/rog-strix-b650e-f-gaming-wifi-model/spec/"
+        ],
+        "reason": "Exact manufacturer motherboard model, DDR5, ATX. Model suffixes, Wi-Fi and DDR variant retained; domestic distributor suffix only selects the Korean retail offer.  Overseas, used, refurbished, bundles, replacement II/MAX variants, unverified hardware revisions and conditional prices excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "276f17ec-f8a5-4ca5-9b4a-1f31a661ba32",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 Ti 16G VENTUS 2X OC PLUS",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "81990338",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=81990338",
+        "saleSku": "GeForce RTX 5060 Ti 16G VENTUS 2X OC PLUS",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:17:44.670Z"
+      },
+      "review": {
+        "expectedTitle": "MSI 지포스 RTX 5060 Ti 벤투스 2X OC 플러스 D7 16GB",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Graphics-Card/GeForce-RTX-5060-Ti-16G-VENTUS-2X-OC-PLUS/Specification"
+        ],
+        "reason": "Exact MSI RTX 5060 Ti 16GB GDDR7, VENTUS 2X OC PLUS; 227 x 126 x 41 mm, 180W, 8-pin and OC suffix distinguish non-OC PLUS and SHADOW cards. Catalog partNumber is unknown and remains null."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "72a60451-31a8-4ec9-9777-0483d0e3d8f2",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 Ti 8G VENTUS 2X OC PLUS",
+        "partNumber": "G506T-8V2CP"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "86814989",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=86814989",
+        "saleSku": "G506T-8V2CP",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:17:44.670Z"
+      },
+      "review": {
+        "expectedTitle": "MSI 지포스 RTX 5060 Ti 벤투스 2X OC 플러스 D7 8GB",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Graphics-Card/GeForce-RTX-5060-Ti-8G-VENTUS-2X-OC-PLUS/Specification"
+        ],
+        "reason": "Exact MSI RTX 5060 Ti 8GB GDDR7 VENTUS 2X OC PLUS, catalog PN G506T-8V2CP; 227mm/180W and OC clocks distinguish 16GB and non-OC PLUS."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b82ba049-00cb-46d4-b0cd-05bab26d83ed",
+        "manufacturer": "Gigabyte",
+        "modelName": "GeForce RTX 5070 Ti WINDFORCE OC SFF 16G",
+        "partNumber": "GV-N507TWF3OC-16GD"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "76551065",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=76551065",
+        "saleSku": "GV-N507TWF3OC-16GD",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:17:44.670Z"
+      },
+      "review": {
+        "expectedTitle": "GIGABYTE 지포스 RTX 5070 Ti WINDFORCE OC SFF D7 16GB 제이씨현",
+        "identityEvidenceUrls": [
+          "https://www.gigabyte.com/Graphics-Card/GV-N507TWF3OC-16GD/sp"
+        ],
+        "reason": "Exact original WINDFORCE OC SFF 16GB GDDR7 GV-N507TWF3OC-16GD, 304 x 126 x 50 mm and dual BIOS. V2 GV-N507TWF3OCV2-16GD, non-SFF and other coolers excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1487a153-0138-4cf8-9017-cb7f1c8fa66a",
+        "manufacturer": "Gigabyte",
+        "modelName": "GeForce RTX 5080 WINDFORCE OC SFF 16G",
+        "partNumber": "GV-N5080WF3OC-16GD"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "75184271",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=75184271",
+        "saleSku": "GV-N5080WF3OC-16GD",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:17:44.670Z"
+      },
+      "review": {
+        "expectedTitle": "GIGABYTE 지포스 RTX 5080 WINDFORCE OC SFF D7 16GB 제이씨현",
+        "identityEvidenceUrls": [
+          "https://www.gigabyte.com/Graphics-Card/GV-N5080WF3OC-16GD/sp"
+        ],
+        "reason": "Exact original WINDFORCE OC SFF 16GB GDDR7 GV-N5080WF3OC-16GD, 304 x 126 x 50 mm, dual BIOS and 2670MHz; V2, MAX, AERO and other variants excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a01cd62d-86e3-42d0-bd28-5b1f6abb486c",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9070 16GB",
+        "partNumber": "11349-03-20G"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "77378426",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=77378426",
+        "saleSku": "11349-03-20G",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:17:44.670Z"
+      },
+      "review": {
+        "expectedTitle": "SAPPHIRE 라데온 RX 9070 PULSE D6 16GB",
+        "identityEvidenceUrls": [
+          "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9070-16g-gddr6"
+        ],
+        "reason": "Exact PULSE Radeon RX 9070 non-XT 16GB GDDR6 PN11349-03-20G; official 2520MHz/220W/280mm facts match domestic product; XT and NITRO variants excluded."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "07bb0503-35f1-48b7-abb5-829d1ff5d30f",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 7700 XT 12GB",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28057922",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28057922",
+        "saleSku": "PULSE Radeon RX 7700 XT 12GB",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:01.377Z"
+      },
+      "review": {
+        "expectedTitle": "SAPPHIRE 라데온 RX 7700 XT PULSE D6 12GB",
+        "identityEvidenceUrls": [
+          "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-7700-xt-12g-gddr6"
+        ],
+        "reason": "Exact Sapphire PULSE RX7700XT 12GB GDDR6, 280mm/230W/2fans/2x8pin/52.57mm; distinct NITRO and PURE coolers excluded; unknown catalog partNumber preserved."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c4c44fc0-9231-4578-b947-0ccd887d97e1",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 3060 VENTUS 2X 12G OC",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "13512254",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=13512254",
+        "saleSku": "GeForce RTX 3060 VENTUS 2X 12G OC",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:01.377Z"
+      },
+      "review": {
+        "expectedTitle": "MSI 지포스 RTX 3060 벤투스 2X OC D6 12GB",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Graphics-Card/GeForce-RTX-3060-VENTUS-2X-12G-OC/Specification"
+        ],
+        "reason": "Exact original MSI RTX3060 VENTUS2X 12G OC GDDR6,235mm/170W; 8GB,V1 and WHITE variants excluded; unknown catalog PN preserved."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "331fe74d-bc9b-494d-87e3-6e454045447d",
+        "manufacturer": "Dell",
+        "modelName": "G2724D",
+        "partNumber": "G2724D"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "26423741",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=26423741",
+        "saleSku": "G2724D",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:03.448Z"
+      },
+      "review": {
+        "expectedTitle": "DELL G2724D",
+        "identityEvidenceUrls": [
+          "https://dl.dell.com/content/manual65349921-dell-g2724d-monitor-user-s-guide.pdf?language=en-us"
+        ],
+        "reason": "Exact manufacturer model and part number; panel IPS, native resolution 2560x1440, standard refresh 165 Hz compared with the domestic product specification. P/Q/CA suffix variants and overseas/refurbished products are excluded. Domestic distributor or dead-pixel warranty wording identifies the reviewed retail offer without replacing the hardware model."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "fe1b7202-6bf0-4c91-8ef3-0c9823f28c5c",
+        "manufacturer": "Dell",
+        "modelName": "S2722DGM",
+        "partNumber": "S2722DGM"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "14797718",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14797718",
+        "saleSku": "S2722DGM",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:03.448Z"
+      },
+      "review": {
+        "expectedTitle": "DELL S2722DGM",
+        "identityEvidenceUrls": [
+          "https://www.dell.com/en-us/shop/dell-27-curved-gaming-monitor-s2722dgm/apd/210-azzp/monitors-monitor-accessories"
+        ],
+        "reason": "Exact manufacturer model and part number; panel VA, native resolution 2560x1440, standard refresh 165 Hz compared with the domestic product specification. P/Q/CA suffix variants and overseas/refurbished products are excluded. Domestic distributor or dead-pixel warranty wording identifies the reviewed retail offer without replacing the hardware model."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "be8b15f6-7bb1-40f5-9852-4d3a8dd2a0bd",
+        "manufacturer": "Dell",
+        "modelName": "S2722QC",
+        "partNumber": "S2722QC"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16137869",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16137869",
+        "saleSku": "S2722QC",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:03.448Z"
+      },
+      "review": {
+        "expectedTitle": "DELL S2722QC",
+        "identityEvidenceUrls": [
+          "https://www.dell.com/en-us/shop/dell-27-4k-uhd-usb-c-monitor-s2722qc/apd/210-bbqt/monitors-monitor-accessories"
+        ],
+        "reason": "Exact manufacturer model and part number; panel IPS, native resolution 3840x2160, standard refresh 60 Hz compared with the domestic product specification. P/Q/CA suffix variants and overseas/refurbished products are excluded. Domestic distributor or dead-pixel warranty wording identifies the reviewed retail offer without replacing the hardware model."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "5cf272bb-5d0b-4f1e-b819-3f350d8213ee",
+        "manufacturer": "MSI",
+        "modelName": "G241",
+        "partNumber": "G241"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "10996191",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=10996191",
+        "saleSku": "G241",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:03.448Z"
+      },
+      "review": {
+        "expectedTitle": "MSI 옵틱스 G241 게이밍 144 아이세이버",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Monitor/Optix-G241/Specification"
+        ],
+        "reason": "Exact manufacturer model and part number; panel IPS, native resolution 1920x1080, standard refresh 144 Hz compared with the domestic product specification. P/Q/CA suffix variants and overseas/refurbished products are excluded. Domestic distributor or dead-pixel warranty wording identifies the reviewed retail offer without replacing the hardware model."
+      }
+    }
+  ]
+}

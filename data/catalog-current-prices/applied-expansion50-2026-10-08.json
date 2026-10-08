@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-08T10:39:59.493Z",
+  "database": "pc_upgrade_lab",
+  "flyway": {
+    "version": 12,
+    "success": true,
+    "newMigrationApplied": false
+  },
+  "import": {
+    "sourceFile": "observations-expansion50-2026-10-08.json",
+    "sourceSha256": "de6f16277a2092b5ecdfb5342c3328648b0e59b00c8a479e440bb924058260c0",
+    "committedAt": "2026-10-08T10:37:05.760Z",
+    "checked": 50,
+    "createdMappings": 50,
+    "createdObservations": 50,
+    "pricedProductsByType": {
+      "CPU": 27,
+      "MOTHERBOARD": 12,
+      "GPU": 7,
+      "MONITOR": 4
+    },
+    "shippingAndConditionalDiscountsIncluded": false
+  },
+  "finalDatabase": {
+    "catalogProducts": 300,
+    "newCatalogProducts": 0,
+    "pricedProducts": 72,
+    "unpricedProducts": 228,
+    "mappings": 72,
+    "observations": 72,
+    "pricedProductsByType": {
+      "CPU": 33,
+      "GPU": 12,
+      "MOTHERBOARD": 21,
+      "RAM": 2,
+      "MONITOR": 4
+    },
+    "exactProductIdentities": 72,
+    "exactMappingSaleUnitAndAbsoluteTimestampMatches": 72,
+    "exactPriceEvidenceAndAbsoluteTimestampMatches": 72,
+    "existing22CurrentPricesUnchanged": true,
+    "existing22CurrentPriceDigestBeforeAndAfter": "a59dae04b942cd6978fab738494182616878eb3ac47e8f6499c60fc8eea3ce35",
+    "existingReferencePriceRows": 300,
+    "existingReferencePricesUnchanged": true,
+    "referencePriceDigestBeforeAndAfter": "0ac9cd42ce87e6ed21f7881d9a1572e2736c7d8ffd131f6db21ea572e180502e",
+    "referencePriceStatus": "UNCONFIRMED",
+    "referencePriceAmounts": null
+  },
+  "repeatPreview": {
+    "checked": 50,
+    "newMappings": 0,
+    "newObservations": 0,
+    "unchanged": 50
+  },
+  "api": {
+    "listAndDetailMatches": 72,
+    "unpricedProductsReturnNull": 228
+  },
+  "frontend": {
+    "checkedAt": "2026-10-08T10:39:10.285Z",
+    "actualApiResponsesAccepted": 72,
+    "selectedParts": [
+      "Ryzen 9 9950X",
+      "MAG B650 TOMAHAWK WIFI",
+      "GeForce RTX 5060 Ti 16G VENTUS 2X OC PLUS",
+      "G2724D",
+      "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)"
+    ],
+    "productPriceSubtotalKrw": 3609210,
+    "ramKitAndSplitModuleTotalsMatch": true,
+    "incompleteRamKitExcluded": true,
+    "missingPriceRemainsUnpriced": true,
+    "browserVerified": false
+  },
+  "selectionReview": {
+    "independentReviewMatches": 50,
+    "unusualQuotesDeferred": 6,
+    "deferredFile": "deferred-expansion50-2026-10-08.json",
+    "noUnverifiedHardwareRevisionsImported": true
+  },
+  "validation": {
+    "applicationCodeChanged": false,
+    "collectorTests": 14,
+    "collectorTestsResult": "passed",
+    "backendH2TestsRerun": false,
+    "frontendTestSuiteRerun": false,
+    "actualMySqlVerified": true,
+    "browserVerified": false,
+    "oauthLoginVerified": false
+  },
+  "items": [
+    {
+      "productId": "e32ebba5-e24d-460d-9bf4-70f647388043",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 7800X3D",
+      "amountKrw": 690180,
+      "observedAt": "2026-10-08T10:22:22.872Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=19627808",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "d67d1b15-ddc1-4e83-ace3-bb9b2ee4ec21",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-14400F",
+      "amountKrw": 230230,
+      "observedAt": "2026-10-08T10:22:26.857Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=32038667",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "57abe80e-bdf5-4d0f-a4ee-d2436dde680e",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-14500",
+      "amountKrw": 363440,
+      "observedAt": "2026-10-08T10:22:30.891Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=32038256",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "98c4699c-cffc-4d71-a2f0-bb34641df21f",
+      "manufacturer": "Intel",
+      "modelName": "Core i9-14900K",
+      "amountKrw": 768000,
+      "observedAt": "2026-10-08T10:22:35.006Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=28798964",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "c110e131-1c24-43b6-a6af-fef7a87562c6",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-14700K",
+      "amountKrw": 780000,
+      "observedAt": "2026-10-08T10:22:38.973Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=28799435",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "dc8f6b74-1b97-4080-9c8b-391e105df347",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-13400F",
+      "amountKrw": 389000,
+      "observedAt": "2026-10-08T10:22:46.905Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18640280",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "916398e9-6d8d-4d26-8437-a91201988133",
+      "manufacturer": "Intel",
+      "modelName": "Core i3-12100",
+      "amountKrw": 159000,
+      "observedAt": "2026-10-08T10:22:51.013Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16101083",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "b4ffb2c4-faa5-44b3-98d2-41dbfcf75355",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-12400",
+      "amountKrw": 269950,
+      "observedAt": "2026-10-08T10:22:55.074Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16101326",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "284ac2a5-dc06-4f47-b140-2d80b1e3865e",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-12700F",
+      "amountKrw": 409480,
+      "observedAt": "2026-10-08T10:23:02.976Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16101464",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "cd1eeeed-6463-46d8-bc8e-818b293c5124",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 5600G",
+      "amountKrw": 222390,
+      "observedAt": "2026-10-08T10:23:11.051Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=14927615",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "f0d6004a-1f5e-4d3b-8b3a-057dcfbecd13",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 7900X",
+      "amountKrw": 506200,
+      "observedAt": "2026-10-08T10:23:22.882Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17913863",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "4d6b20b3-60fc-4445-8714-aad60754cef6",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-13700F",
+      "amountKrw": 525000,
+      "observedAt": "2026-10-08T10:23:51.095Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18640379",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "125b7aab-d05f-4a6b-a2e8-6df185a22ce6",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-14700F",
+      "amountKrw": 524390,
+      "observedAt": "2026-10-08T10:23:59.137Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=32156936",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "2fdbbf84-9be5-46a2-8154-e371e2cb8fde",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-14400",
+      "amountKrw": 277670,
+      "observedAt": "2026-10-08T10:26:05.855Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=32038580",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "b7e07244-1d95-40c7-b273-107356f049aa",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-14600KF",
+      "amountKrw": 348680,
+      "observedAt": "2026-10-08T10:26:09.845Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=28799732",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "6c5a62f9-51d3-4f97-9a38-ce42c56b4c59",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-12700K",
+      "amountKrw": 466990,
+      "observedAt": "2026-10-08T10:26:21.829Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=15594638",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "c968367c-f146-4f0e-980a-3d185d11ec02",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-13400",
+      "amountKrw": 352590,
+      "observedAt": "2026-10-08T10:26:29.72Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18640286",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "158db746-37fb-445d-804e-6b0f6e47fbba",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-13500",
+      "amountKrw": 434000,
+      "observedAt": "2026-10-08T10:26:33.741Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18640319",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "a963e044-5cf0-4034-8ed3-f4bd282a3d36",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 9700X",
+      "amountKrw": 686000,
+      "observedAt": "2026-10-08T10:26:53.784Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "940b0555-b2ce-4f4d-9ca2-db65740c4591",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 9600X",
+      "amountKrw": 399000,
+      "observedAt": "2026-10-08T10:26:57.7Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "3f963dea-12a8-47ac-81bf-3cc5a9fc5aa0",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 7600X",
+      "amountKrw": 357000,
+      "observedAt": "2026-10-08T10:27:01.784Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17913311",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "1aa26d6b-1a68-4020-968d-f17c525cb066",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 9900X",
+      "amountKrw": 686000,
+      "observedAt": "2026-10-08T10:28:54.383Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=63139097",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "0e1b1aac-97de-41e8-8ca1-f8d7566928ab",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 9950X",
+      "amountKrw": 878980,
+      "observedAt": "2026-10-08T10:28:58.581Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=63139115",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "51946c5a-8acd-4ff5-a5a6-f2f32cc0cdc6",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-14700KF",
+      "amountKrw": 539970,
+      "observedAt": "2026-10-08T10:29:02.893Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=28799498",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "2aed0dea-f567-4a1d-9b39-7cce28706511",
+      "manufacturer": "Intel",
+      "modelName": "Core i9-14900KF",
+      "amountKrw": 739000,
+      "observedAt": "2026-10-08T10:29:06.321Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=28799180",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "20f92588-befb-43f4-9d66-f0971487b338",
+      "manufacturer": "Intel",
+      "modelName": "Core i9-12900K",
+      "amountKrw": 818990,
+      "observedAt": "2026-10-08T10:26:25.691Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=15594887",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "6ca94e2a-9e21-4940-8b0f-b5de1bda9c19",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-12700KF",
+      "amountKrw": 494000,
+      "observedAt": "2026-10-08T10:26:41.717Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=15594701",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "3636875b-3097-4493-846c-ebe65a39291f",
+      "manufacturer": "MSI",
+      "modelName": "PRO A620M-E",
+      "amountKrw": 109000,
+      "observedAt": "2026-10-08T10:19:04.64Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=19705316",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "b2be1cea-45bd-4b16-96c8-12d801fcc21a",
+      "manufacturer": "MSI",
+      "modelName": "MAG B650 TOMAHAWK WIFI",
+      "amountKrw": 249110,
+      "observedAt": "2026-10-08T10:19:08.868Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17971181",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "a79d2069-22f7-4672-882c-e941a8c7789c",
+      "manufacturer": "MSI",
+      "modelName": "PRO B650M-A WIFI",
+      "amountKrw": 165980,
+      "observedAt": "2026-10-08T10:19:12.913Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17971184",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "c540c79e-9c65-401c-81dd-e71035b4d310",
+      "manufacturer": "MSI",
+      "modelName": "MPG B650 EDGE WIFI",
+      "amountKrw": 401490,
+      "observedAt": "2026-10-08T10:19:24.655Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18172115",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "ea1b11e2-2b6e-469d-be15-394606c82637",
+      "manufacturer": "ASUS",
+      "modelName": "PRIME A520M-K",
+      "amountKrw": 64990,
+      "observedAt": "2026-10-08T10:19:32.808Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=12060293",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "c34eedf7-941d-428a-8761-5b7b863bb649",
+      "manufacturer": "ASUS",
+      "modelName": "PRIME H610M-K D4",
+      "amountKrw": 77400,
+      "observedAt": "2026-10-08T10:19:36.632Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18523409",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "559b611f-cefb-40a6-88d4-2597ce049469",
+      "manufacturer": "ASUS",
+      "modelName": "PRIME A620M-A",
+      "amountKrw": 280000,
+      "observedAt": "2026-10-08T10:21:17.588Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=19924310",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "7a271b79-3b48-409d-abad-85e187f63e07",
+      "manufacturer": "MSI",
+      "modelName": "A520M-A PRO",
+      "amountKrw": 69730,
+      "observedAt": "2026-10-08T10:21:37.871Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=12067598",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "fc17c7a8-4be0-41b7-b7b4-a8be8ff2b464",
+      "manufacturer": "MSI",
+      "modelName": "PRO H610M-G DDR4",
+      "amountKrw": 122000,
+      "observedAt": "2026-10-08T10:21:41.556Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16314863",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "c90710f6-b6f5-4956-8fc4-6625c24ba1e1",
+      "manufacturer": "MSI",
+      "modelName": "MAG B760 TOMAHAWK WIFI",
+      "amountKrw": 227630,
+      "observedAt": "2026-10-08T10:21:45.875Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18652865",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "c2292ee4-f5bc-43bb-8bae-c6d09ec4ede4",
+      "manufacturer": "ASUS",
+      "modelName": "TUF GAMING B550M-PLUS",
+      "amountKrw": 156990,
+      "observedAt": "2026-10-08T10:21:49.574Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=11571368",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "fff2ec6b-0cf2-4ca0-af07-6cb88a1b3369",
+      "manufacturer": "ASUS",
+      "modelName": "ROG STRIX B650E-F GAMING WIFI",
+      "amountKrw": 593000,
+      "observedAt": "2026-10-08T10:25:10.019Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18265715",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "1a14ef4a-d77a-4d4c-99a4-a8dc3309e9b8",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 5060 Ti 16G VENTUS 2X OC PLUS",
+      "amountKrw": 1139000,
+      "observedAt": "2026-10-08T10:18:40.726Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=81990338",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "c21ac809-c005-4953-82b8-00e1a96a5e54",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 5060 Ti 8G VENTUS 2X OC PLUS",
+      "amountKrw": 753000,
+      "observedAt": "2026-10-08T10:18:43.603Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=86814989",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "a3b84b7e-8d44-4380-b8a4-c0b8278881d2",
+      "manufacturer": "Gigabyte",
+      "modelName": "GeForce RTX 5070 Ti WINDFORCE OC SFF 16G",
+      "amountKrw": 1895490,
+      "observedAt": "2026-10-08T10:18:46.797Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=76551065",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "e0e9280f-ab34-4f17-b4c1-3e4eb8d411e6",
+      "manufacturer": "Gigabyte",
+      "modelName": "GeForce RTX 5080 WINDFORCE OC SFF 16G",
+      "amountKrw": 2458980,
+      "observedAt": "2026-10-08T10:18:49.756Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=75184271",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "aa0d9e3d-d4ef-4f24-93fe-db6a4c17e287",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 9070 16GB",
+      "amountKrw": 1099000,
+      "observedAt": "2026-10-08T10:18:55.604Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=77378426",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "e160bbce-6f0e-452a-8c1d-808b78f1f57d",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 7700 XT 12GB",
+      "amountKrw": 726440,
+      "observedAt": "2026-10-08T10:21:17.374Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=28057922",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "1c33b8eb-6e3a-4eac-a76a-6dc90474228f",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 3060 VENTUS 2X 12G OC",
+      "amountKrw": 536420,
+      "observedAt": "2026-10-08T10:21:32.333Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=13512254",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "23184a7e-4e50-469b-a8c5-4aa277925ee4",
+      "manufacturer": "Dell",
+      "modelName": "G2724D",
+      "amountKrw": 379000,
+      "observedAt": "2026-10-08T10:22:04.002Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=26423741",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "45862776-5720-44aa-904a-05b2fd13be3c",
+      "manufacturer": "Dell",
+      "modelName": "S2722DGM",
+      "amountKrw": 399000,
+      "observedAt": "2026-10-08T10:22:07.985Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=14797718",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "b4230e78-5693-4066-8920-99012b69c0c6",
+      "manufacturer": "Dell",
+      "modelName": "S2722QC",
+      "amountKrw": 489000,
+      "observedAt": "2026-10-08T10:22:11.968Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16137869",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "d5419012-9d20-4823-8359-e1601c53a388",
+      "manufacturer": "MSI",
+      "modelName": "G241",
+      "amountKrw": 350000,
+      "observedAt": "2026-10-08T10:22:27.85Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=10996191",
+      "listAndDetailMatch": true
+    }
+  ]
+}

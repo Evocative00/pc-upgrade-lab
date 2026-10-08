@@ -1,0 +1,16 @@
+{
+  "reviewedAt": "2026-10-06T12:34:13.387Z",
+  "items": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "63798832-19d3-43e3-9c10-61806081b716",
+        "manufacturer": "Gigabyte",
+        "modelName": "B760M DS3H DDR4",
+        "partNumber": "B760M DS3H DDR4"
+      },
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18650483",
+      "reason": "Seed manufacturer source specifies hardware rev1.0; domestic offer does not explicitly verify that revision."
+    }
+  ]
+}

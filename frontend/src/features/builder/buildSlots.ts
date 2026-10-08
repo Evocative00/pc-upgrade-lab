@@ -92,36 +92,45 @@ export type PriceLine = { draft: PartDraft; detail: CatalogDetail | null }
 
 // 일반 부품은 장치 수, RAM은 동일 제품의 실제 모듈 합계를 판매 묶음 수로 바꿔 계산한다.
 // 묶음이 딱 맞지 않거나 단위가 미확인이면 임의로 나누거나 올림하지 않는다.
-export function priceTotal(lines: PriceLine[]): { confirmedKrw: number; unconfirmed: number; quantityNeedsCheck: number } {
-  let confirmedKrw = 0
-  let unconfirmed = 0
+export function priceTotal(lines: PriceLine[]): { currentKrw: number; pricedItems: number; unpriced: number; quantityNeedsCheck: number } {
+  let currentKrw = 0
+  let pricedItems = 0
+  let unpriced = 0
   let quantityNeedsCheck = 0
-  const ramGroups = new Map<string, { amount: number; kit: unknown; quantity: number; valid: boolean }>()
+  const ramGroups = new Map<string, { amount: number; kit: unknown; quantity: number; items: number; valid: boolean }>()
+  function addPrice(amount: number, items: number) {
+    if (Number.isSafeInteger(amount) && Number.isSafeInteger(currentKrw + amount)) {
+      currentKrw += amount
+      pricedItems += items
+    } else quantityNeedsCheck += 1
+  }
   for (const { draft, detail } of lines) {
-    const price = detail?.product.referencePrice
-    if (!detail || detail.product.type !== draft.type || price?.status !== 'CONFIRMED' ||
-      typeof price.amountKrw !== 'number' || !Number.isFinite(price.amountKrw) || price.amountKrw < 0) {
-      unconfirmed += 1
+    const price = detail?.product.currentPrice
+    if (!detail || detail.product.type !== draft.type || !price ||
+      !Number.isSafeInteger(price.amountKrw) || price.amountKrw <= 0) {
+      unpriced += 1
       continue
     }
     if (draft.type !== 'RAM') {
-      if (validQuantity(draft.quantity)) confirmedKrw += price.amountKrw * draft.quantity
+      if (validQuantity(draft.quantity)) addPrice(price.amountKrw * draft.quantity, 1)
       else quantityNeedsCheck += 1
       continue
     }
     const group = ramGroups.get(detail.product.id) ?? {
-      amount: price.amountKrw, kit: detail.specification.moduleCount, quantity: 0, valid: true,
+      amount: price.amountKrw, kit: detail.specification.moduleCount, quantity: 0, items: 0, valid: true,
     }
     group.quantity += draft.quantity
-    group.valid &&= validQuantity(draft.quantity)
+    group.items += 1
+    group.valid &&= validQuantity(draft.quantity) && group.amount === price.amountKrw &&
+      group.kit === detail.specification.moduleCount
     ramGroups.set(detail.product.id, group)
   }
-  for (const { amount, kit, quantity, valid } of ramGroups.values()) {
+  for (const { amount, kit, quantity, items, valid } of ramGroups.values()) {
     if (valid && typeof kit === 'number' && Number.isInteger(kit) && kit > 0 && quantity % kit === 0) {
-      confirmedKrw += amount * (quantity / kit)
+      addPrice(amount * (quantity / kit), items)
     } else quantityNeedsCheck += 1
   }
-  return { confirmedKrw, unconfirmed, quantityNeedsCheck }
+  return { currentKrw, pricedItems, unpriced, quantityNeedsCheck }
 }
 
 // 최신 입력을 기준으로 연결한다. 검색 중 수량을 고쳤거나 항목을 지워도 옛 상태를 복원하지 않는다.

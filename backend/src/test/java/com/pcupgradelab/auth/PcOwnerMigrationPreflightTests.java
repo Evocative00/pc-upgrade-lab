@@ -31,7 +31,8 @@ class PcOwnerMigrationPreflightTests {
             migrateV10(ds);
             insertPc(jdbc, null);
             var before = jdbc.queryForList("SELECT * FROM pc_configuration");
-            var latest = Flyway.configure().dataSource(ds).callbacks(new PcOwnerMigrationPreflight()).load();
+            var latest = Flyway.configure().dataSource(ds).target(MigrationVersion.fromVersion("11"))
+                    .callbacks(new PcOwnerMigrationPreflight()).load();
 
             assertThat(latest.migrate().migrationsExecuted).isEqualTo(1);
             assertThat(jdbc.queryForList("SELECT * FROM pc_configuration")).isEqualTo(before);

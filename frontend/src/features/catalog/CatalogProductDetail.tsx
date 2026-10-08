@@ -1,5 +1,6 @@
 import { useId } from 'react'
-import { formatCatalogPrice, ramKitLabel, specificationRows, VERIFICATION_LABEL } from './catalogPresentation.ts'
+import { formatCurrentPrice, ramKitLabel, specificationRows, VERIFICATION_LABEL } from './catalogPresentation.ts'
+import { CurrentPriceSource } from './CurrentPriceSource.tsx'
 import type { CatalogAttribution, CatalogDetail, CatalogProduct } from './catalogTypes.ts'
 
 export function CatalogAttributions({ items }: { items: CatalogAttribution[] }) {
@@ -16,9 +17,10 @@ export function CatalogAttributions({ items }: { items: CatalogAttribution[] }) 
   )
 }
 
-export function CatalogProductDetail({ detail, onSelect }: {
+export function CatalogProductDetail({ detail, onSelect, onRefresh }: {
   detail: CatalogDetail
   onSelect: (product: CatalogProduct) => void
+  onRefresh: () => void
 }) {
   const headingId = useId()
   const { product, specification, sources } = detail
@@ -29,7 +31,11 @@ export function CatalogProductDetail({ detail, onSelect }: {
       <div>
         <p className="muted">{product.manufacturer} · {VERIFICATION_LABEL[product.verificationStatus]}{!product.active && ' · 검토용'}</p>
         <h3 id={headingId}>{product.modelName}</h3>
-        <p className="muted">부품번호: {product.partNumber ?? '미확인'} · 기준가격: {formatCatalogPrice(product.referencePrice)}</p>
+        <p className="muted">부품번호: {product.partNumber ?? '미확인'}</p>
+        <p>현재 상품가: {formatCurrentPrice(product.currentPrice)}{product.currentPrice &&
+          (product.type === 'RAM' ? ' / 판매 묶음' : ' / 1개')}</p>
+        <CurrentPriceSource price={product.currentPrice} />
+        <button type="button" className="button button--ghost" onClick={onRefresh}>가격·제원 새로고침</button>
       </div>
 
       {product.type === 'RAM' && (

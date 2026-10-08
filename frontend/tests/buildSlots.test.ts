@@ -15,7 +15,9 @@ const named = (type: PartDraft['type'], displayName: string, extra: Partial<Part
 const product = (type: CatalogProduct['type'], id = 'catalog-1'): CatalogProduct => ({
   id, type, manufacturer: 'Test', modelName: `${type} model`, partNumber: null,
   verificationStatus: 'CORE_VERIFIED', active: true,
-  referencePrice: { amountKrw: 100000, status: 'CONFIRMED', updatedAt: '' }, createdAt: '', updatedAt: '',
+  referencePrice: { amountKrw: 140000, status: 'CONFIRMED', updatedAt: '' },
+  currentPrice: { amountKrw: 100000, sourceName: '판매처', sourceUrl: 'https://shop.example/p/1', observedAt: '2026-10-06T01:00:00Z' },
+  createdAt: '', updatedAt: '',
 })
 const detail = (type: CatalogProduct['type'], kit?: number, id = 'catalog-1'): CatalogDetail => ({
   product: product(type, id), specification: kit === undefined ? {} : { moduleCount: kit }, sources: [], attributions: [],
@@ -70,15 +72,23 @@ test('저장장치는 실제 SSD/HDD 종류를 추정하지 않고 위치 이름
   assert.equal(slotOfDraft(drafts, extra), 'SSD')
 })
 
-test('가격은 일반 부품의 장치 수를 곱하고 미확정 가격은 따로 센다', () => {
+test('현재 상품가는 일반 부품의 장치 수를 곱하고 없는 가격은 따로 센다', () => {
   const confirmed = detail('MONITOR')
   const pending = detail('GPU')
-  pending.product.referencePrice = { amountKrw: null, status: 'UNCONFIRMED', updatedAt: '' }
+  pending.product.currentPrice = null
   assert.deepEqual(priceTotal([
     { draft: named('MONITOR', 'monitor', { quantity: 2 }), detail: confirmed },
     { draft: named('GPU', 'gpu'), detail: pending },
     { draft: named('CPU', 'unlinked'), detail: null },
-  ]), { confirmedKrw: 200000, unconfirmed: 2, quantityNeedsCheck: 0 })
+  ]), { currentKrw: 200000, pricedItems: 1, unpriced: 2, quantityNeedsCheck: 0 })
+})
+
+test('확정 기준가격만 있어도 현재 상품가 합계는 산정하지 않는다', () => {
+  const legacy = detail('CPU')
+  legacy.product.currentPrice = null
+  assert.deepEqual(priceTotal([{ draft: named('CPU', 'cpu'), detail: legacy }]), {
+    currentKrw: 0, pricedItems: 0, unpriced: 1, quantityNeedsCheck: 0,
+  })
 })
 
 test('같은 RAM 제품의 여러 행은 모듈 합계를 판매 묶음 수로 환산한다', () => {
@@ -86,20 +96,20 @@ test('같은 RAM 제품의 여러 행은 모듈 합계를 판매 묶음 수로 �
   assert.deepEqual(priceTotal([
     { draft: named('RAM', 'module A'), detail: kit },
     { draft: named('RAM', 'module B'), detail: kit },
-  ]), { confirmedKrw: 100000, unconfirmed: 0, quantityNeedsCheck: 0 })
-  assert.equal(priceTotal([{ draft: named('RAM', '4 modules', { quantity: 4 }), detail: kit }]).confirmedKrw, 200000)
+  ]), { currentKrw: 100000, pricedItems: 2, unpriced: 0, quantityNeedsCheck: 0 })
+  assert.equal(priceTotal([{ draft: named('RAM', '4 modules', { quantity: 4 }), detail: kit }]).currentKrw, 200000)
 })
 
 test('RAM 묶음이 맞지 않거나 모르면 가격을 임의로 나누거나 올림하지 않는다', () => {
   for (const kit of [detail('RAM', 2), detail('RAM')]) {
     assert.deepEqual(priceTotal([{ draft: named('RAM', 'one module'), detail: kit }]), {
-      confirmedKrw: 0, unconfirmed: 0, quantityNeedsCheck: 1,
+      currentKrw: 0, pricedItems: 0, unpriced: 0, quantityNeedsCheck: 1,
     })
   }
   const differentKits = [detail('RAM', 2, 'A'), detail('RAM', 2, 'B')]
   assert.equal(priceTotal(differentKits.map((kit) => ({ draft: named('RAM', kit.product.id), detail: kit }))).quantityNeedsCheck, 2)
   assert.deepEqual(priceTotal([{ draft: named('MONITOR', 'invalid', { quantity: Number.NaN }), detail: detail('MONITOR') }]), {
-    confirmedKrw: 0, unconfirmed: 0, quantityNeedsCheck: 1,
+    currentKrw: 0, pricedItems: 0, unpriced: 0, quantityNeedsCheck: 1,
   })
 })
 
@@ -178,7 +188,7 @@ function detailHookHarness() {
   }
   new Function('require', 'exports', 'module', code)(require, module.exports, module)
   const hookFunction = module.exports.useCatalogDetails as (ids: string[]) => {
-    entries: Record<string, DetailEntry>; retry: (id: string) => void,
+    entries: Record<string, DetailEntry>; retry: (id: string) => void; refreshAll: () => void,
   }
   function render(ids = ['catalog-1']) {
     index = 0
@@ -216,6 +226,26 @@ test('가격·제원 조회 실패 후 다시 조회하면 오류를 지우고 �
   h.requests[1].resolve(detail('CPU'))
   await new Promise((resolve) => setImmediate(resolve))
   assert.equal(h.render().entries['catalog-1'].status, 'done')
+})
+
+test('가격 새로고침은 연결된 제품을 한 번씩 다시 조회하고 갱신된 현재가를 반환한다', async () => {
+  const h = detailHookHarness()
+  h.render(['catalog-1', 'catalog-1'])
+  assert.equal(h.requests.length, 1)
+  h.requests[0].resolve(detail('CPU'))
+  await new Promise((resolve) => setImmediate(resolve))
+  const view = h.render(['catalog-1', 'catalog-1'])
+  assert.equal(view.entries['catalog-1'].status, 'done')
+  view.refreshAll()
+  assert.equal(h.render(['catalog-1']).entries['catalog-1'].status, 'loading')
+  assert.equal(h.requests.length, 2)
+  const changed = detail('CPU')
+  changed.product.currentPrice!.amountKrw = 90000
+  h.requests[1].resolve(changed)
+  await new Promise((resolve) => setImmediate(resolve))
+  const refreshed = h.render(['catalog-1']).entries['catalog-1']
+  assert.equal(refreshed.status, 'done')
+  if (refreshed.status === 'done') assert.equal(refreshed.detail.product.currentPrice?.amountKrw, 90000)
 })
 
 test('StrictMode 재실행은 취소한 요청을 다시 보내고 이전 성공 응답을 무시한다', async () => {

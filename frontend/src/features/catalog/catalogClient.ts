@@ -32,11 +32,31 @@ function nullableText(value: unknown): boolean {
   return value === null || typeof value === 'string'
 }
 
-function isWebUrl(value: unknown): boolean {
+function isWebUrl(value: unknown): value is string {
   if (!isText(value)) return false
   try {
     return ['http:', 'https:'].includes(new URL(value).protocol)
   } catch { return false }
+}
+
+function isPriceTimestamp(value: unknown): boolean {
+  if (typeof value !== 'string') return false
+  const parts = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d{1,9})?(?:Z|[+-](\d{2}):(\d{2}))$/.exec(value)
+  if (!parts || !Number.isFinite(Date.parse(value))) return false
+  const [, year, month, day, hour, minute, second, offsetHour, offsetMinute] = parts
+  const leapYear = Number(year) % 4 === 0 && (Number(year) % 100 !== 0 || Number(year) % 400 === 0)
+  const maxDay = [31, leapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][Number(month) - 1]
+  return Number(month) >= 1 && Number(month) <= 12 && Number(day) >= 1 && Number(day) <= maxDay &&
+    Number(hour) <= 23 && Number(minute) <= 59 && Number(second) <= 59 &&
+    (offsetHour === undefined || Number(offsetHour) <= 23 && Number(offsetMinute) <= 59)
+}
+
+function isCurrentPrice(value: unknown): boolean {
+  // 이전 서버의 응답에 현재가가 없으면 미확인으로 정규화한다. 기준가격으로 대체하지 않는다.
+  return value === null || value === undefined || isObject(value) &&
+    Number.isSafeInteger(value.amountKrw) && Number(value.amountKrw) > 0 &&
+    isText(value.sourceName, 100) && isWebUrl(value.sourceUrl) && new URL(value.sourceUrl).protocol === 'https:' &&
+    isPriceTimestamp(value.observedAt)
 }
 
 function isProduct(value: unknown): value is CatalogProduct {
@@ -45,7 +65,8 @@ function isProduct(value: unknown): value is CatalogProduct {
   return isText(value.id, 128) && PART_TYPES.some(({ type }) => type === value.type) &&
     isText(value.manufacturer, 100) && isText(value.modelName, 255) && nullableText(value.partNumber) &&
     ['UNVERIFIED', 'PARTIAL', 'CORE_VERIFIED'].includes(String(value.verificationStatus)) &&
-    typeof value.active === 'boolean' && isText(value.createdAt) && isText(value.updatedAt) &&
+    typeof value.active === 'boolean' && isCurrentPrice(value.currentPrice) &&
+    isText(value.createdAt) && isText(value.updatedAt) &&
     isText(price.updatedAt) &&
     ['UNCONFIRMED', 'INSUFFICIENT_HISTORY', 'CONFIRMED'].includes(String(price.status)) &&
     (price.status === 'CONFIRMED'
@@ -139,14 +160,14 @@ export function createHttpCatalogClient(
       if (result.page !== page || result.size !== size || result.items.some((product) => product.type !== type)) {
         throw new CatalogApiError('검색 조건과 다른 부품 응답을 받았습니다.', 200, 'INVALID_RESPONSE')
       }
-      return result
+      return { ...result, items: result.items.map((product) => ({ ...product, currentPrice: product.currentPrice ?? null })) }
     },
     async get(id, signal) {
       const detail = await request(`/${encodeURIComponent(id)}`, isDetail, signal)
       if (detail.product.id !== id) {
         throw new CatalogApiError('선택한 제품과 상세 응답이 일치하지 않습니다.', 200, 'INVALID_RESPONSE')
       }
-      return detail
+      return { ...detail, product: { ...detail.product, currentPrice: detail.product.currentPrice ?? null } }
     },
   }
 }

@@ -2,7 +2,8 @@ import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import type { PartType } from '../pc-scan/types.ts'
 import { catalogClient } from './catalogClient.ts'
 import { CatalogAttributions, CatalogProductDetail } from './CatalogProductDetail.tsx'
-import { formatCatalogPrice, VERIFICATION_LABEL } from './catalogPresentation.ts'
+import { formatCurrentPrice, VERIFICATION_LABEL } from './catalogPresentation.ts'
+import { CurrentPriceSource } from './CurrentPriceSource.tsx'
 import type { CatalogDetail, CatalogPage, CatalogProduct } from './catalogTypes.ts'
 
 type Props = {
@@ -144,9 +145,11 @@ export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) 
                   aria-label={`${product.modelName} 상세 보기`}>
                   <span><span className="muted">{product.manufacturer}</span> {product.modelName}</span>
                   <span className="catalog-picker__meta muted">
-                    {VERIFICATION_LABEL[product.verificationStatus]} · {formatCatalogPrice(product.referencePrice)} · 상세 보기
+                    {VERIFICATION_LABEL[product.verificationStatus]} · {formatCurrentPrice(product.currentPrice)}
+                    {product.currentPrice && (type === 'RAM' ? ' / 판매 묶음' : ' / 1개')} · 상세 보기
                   </span>
                 </button>
+                <CurrentPriceSource price={product.currentPrice} />
               </li>
             ))}
           </ul>
@@ -164,7 +167,8 @@ export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) 
         <p className="error">{detail.message}</p>
         <button type="button" className="button" onClick={() => void showDetail(detail.product)}>상세 다시 조회</button>
       </div>}
-      {detail.status === 'done' && <CatalogProductDetail detail={detail.result} onSelect={onSelect} />}
+      {detail.status === 'done' && <CatalogProductDetail detail={detail.result} onSelect={onSelect}
+        onRefresh={() => void showDetail(detail.product)} />}
       {(detail.status === 'done' || search.status === 'done') && (
         <CatalogAttributions items={detail.status === 'done' ? detail.result.attributions
           : search.status === 'done' ? search.result.attributions : []} />

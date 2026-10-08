@@ -16,7 +16,7 @@ public final class CatalogDtos {
     public record Attribution(String name, String notice, String url,
                               String license, String licenseUrl) { }
 
-    /** 목록에는 공통 정보·기준가격만 포함한다. 부품별 상세 제원과 출처는 상세 API에서 조회한다. */
+    /** 목록에는 공통 정보·기준가격·현재 상품가를 포함한다. 상세 제원과 출처는 상세 API에서 조회한다. */
     public record PageResponse(List<CatalogProductView> items, int page, int size,
                                long totalElements, int totalPages, List<Attribution> attributions) {
         public PageResponse {

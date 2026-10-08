@@ -410,6 +410,13 @@
   margin-top: 4px;
 }
 
+.catalog-price-source {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
 .catalog-picker__results button {
   overflow-wrap: anywhere;
 }

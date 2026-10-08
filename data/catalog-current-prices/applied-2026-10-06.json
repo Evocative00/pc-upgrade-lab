@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-06T14:26:09.159Z",
+  "database": "pc_upgrade_lab",
+  "flyway": {
+    "version": 12,
+    "success": true
+  },
+  "import": {
+    "sourceFile": "observations-2026-10-06.json",
+    "sourceSha256": "b2fd9c8538af6161921edfc1c37f6d12c3c1b6218af2dad74562fd1d0b53bf84",
+    "committedAt": "2026-10-06T12:50:53.242Z",
+    "checked": 22,
+    "createdMappings": 22,
+    "createdObservations": 22,
+    "pricedProductsByType": {
+      "CPU": 6,
+      "GPU": 5,
+      "MOTHERBOARD": 9,
+      "RAM": 2
+    },
+    "shippingAndConditionalDiscountsIncluded": false
+  },
+  "finalDatabase": {
+    "catalogProducts": 300,
+    "pricedProducts": 22,
+    "unpricedProducts": 278,
+    "mappings": 22,
+    "observations": 22,
+    "exactProductMappingAndSaleUnitMatches": 22,
+    "exactPriceEvidenceAndAbsoluteTimestampMatches": 22,
+    "existingReferencePriceRows": 300,
+    "existingReferencePricesUnchanged": true,
+    "referencePriceDigestBeforeAndAfter": "0ac9cd42ce87e6ed21f7881d9a1572e2736c7d8ffd131f6db21ea572e180502e",
+    "pcRows": 1,
+    "pcPartRows": 14
+  },
+  "repeatPreview": {
+    "checked": 22,
+    "newMappings": 0,
+    "newObservations": 0,
+    "unchanged": 22
+  },
+  "api": {
+    "listAndDetailMatches": 22,
+    "unpricedProductsReturnNull": 278
+  },
+  "frontend": {
+    "checkedAt": "2026-10-06T14:26:09.159Z",
+    "actualApiResponsesAccepted": 22,
+    "selectedParts": [
+      "Ryzen 7 9800X3D",
+      "PRO B650M-P",
+      "GeForce RTX 5060 8G VENTUS 2X OC",
+      "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)"
+    ],
+    "productPriceSubtotalKrw": 2483010,
+    "ramKitAndSplitModuleTotalsMatch": true,
+    "incompleteRamKitExcluded": true,
+    "missingPriceRemainsUnpriced": true,
+    "browserVerified": false
+  },
+  "timestampCorrection": {
+    "reason": "MySQL SYSTEM session timezone and Hibernate UTC binding differed by nine hours",
+    "mappingVerifiedAtRowsCorrected": 22,
+    "observationObservedAtRowsCorrected": 22,
+    "scope": "New current-price tables only",
+    "futurePriceOperationsUseUtcSession": true,
+    "originalConnectionTimezoneRestored": true
+  },
+  "codeValidation": {
+    "beforeTimestampCorrection": {
+      "backendH2Tests": 269,
+      "frontendTests": 78,
+      "collectorTests": 14,
+      "frontendLint": "passed",
+      "frontendBuild": "passed"
+    },
+    "afterTimestampCorrection": {
+      "focusedPriceAndTimezoneTests": 18,
+      "bootJarBuild": "passed",
+      "fullBackendSuiteRerun": false
+    }
+  },
+  "items": [
+    {
+      "productId": "fcb7d3b4-6d63-4cd6-b09b-240f45d8abc7",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 5600",
+      "amountKrw": 158700,
+      "observedAt": "2026-10-06T12:39:04.826Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17157083",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "82c9e97b-9048-4b10-89e1-e4c007ba7124",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 9800X3D",
+      "amountKrw": 720000,
+      "observedAt": "2026-10-06T12:39:05.299Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=70679912",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "4bfb9aac-f072-4751-bdde-32cb383d86a3",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-12400F",
+      "amountKrw": 215990,
+      "observedAt": "2026-10-06T12:39:06.581Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16101353",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "4ff83064-3025-42c3-bbd0-d9a7e30a7752",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-14600K",
+      "amountKrw": 441350,
+      "observedAt": "2026-10-06T12:39:07.8Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=28799654",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "f46f3c35-7601-4f5f-aa35-ad105b59b76e",
+      "manufacturer": "Intel",
+      "modelName": "Core i3-12100F",
+      "amountKrw": 189990,
+      "observedAt": "2026-10-06T12:39:08.818Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16101179",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "ed89c649-13c6-4c03-b7af-5782d1fa2c90",
+      "manufacturer": "Intel",
+      "modelName": "Core i3-14100F",
+      "amountKrw": 151570,
+      "observedAt": "2026-10-06T12:39:10.432Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=32038895",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "df126ce6-d94b-482b-bf03-7fa5c3b2ca6f",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+      "amountKrw": 675000,
+      "observedAt": "2026-10-06T12:39:10.953Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "ac5fb12d-9371-49c3-bb08-fd99307eeee2",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 5070 12G VENTUS 2X OC",
+      "amountKrw": 1257990,
+      "observedAt": "2026-10-06T12:39:11.914Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=77379452",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "8fcfdf7e-0c43-465d-99c0-fd10209cb59b",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 9070 XT 16GB",
+      "amountKrw": 1451000,
+      "observedAt": "2026-10-06T12:39:13.277Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=77378039",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "23b35a2d-a1b1-41a9-bfd3-16914e42207b",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+      "amountKrw": 821000,
+      "observedAt": "2026-10-06T12:39:14.292Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "d264b5dd-d9df-4c0f-be75-521afb5d163b",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 7600 8GB",
+      "amountKrw": 489400,
+      "observedAt": "2026-10-06T12:39:15.425Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=20315144",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "a1735520-62b9-4812-a4e9-ddf59e9800ce",
+      "manufacturer": "MSI",
+      "modelName": "PRO B650M-P",
+      "amountKrw": 124890,
+      "observedAt": "2026-10-06T12:39:16.528Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=20108249",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "db284b37-952a-4b7d-9edd-d3a051dd4855",
+      "manufacturer": "MSI",
+      "modelName": "MAG B650M MORTAR WIFI",
+      "amountKrw": 205050,
+      "observedAt": "2026-10-06T12:39:17.724Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17971187",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "ab0fc73e-a865-403c-b660-a65e87e04846",
+      "manufacturer": "ASUS",
+      "modelName": "TUF GAMING B650M-PLUS WIFI",
+      "amountKrw": 249100,
+      "observedAt": "2026-10-06T12:39:18.955Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18044522",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "af8f67c8-4529-4ea2-b22c-85771c024a63",
+      "manufacturer": "ASUS",
+      "modelName": "TUF GAMING B650-PLUS WIFI",
+      "amountKrw": 358710,
+      "observedAt": "2026-10-06T12:39:19.681Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18044558",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "48d669cb-6220-4762-8791-104b3ae83e65",
+      "manufacturer": "ASRock",
+      "modelName": "B760M Pro RS",
+      "amountKrw": 148500,
+      "observedAt": "2026-10-06T12:39:21.294Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=19536062",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "a933a060-655e-4749-8012-2c080da1cb46",
+      "manufacturer": "ASUS",
+      "modelName": "PRIME B760M-A D4",
+      "amountKrw": 128990,
+      "observedAt": "2026-10-06T12:39:22.028Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18652898",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "af2ea316-b87a-4960-ba46-af9aaf6aa583",
+      "manufacturer": "MSI",
+      "modelName": "PRO B760M-A WIFI",
+      "amountKrw": 154950,
+      "observedAt": "2026-10-06T12:39:23.259Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=19241759",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "bd98a142-2d19-4853-ade2-dc3c62436524",
+      "manufacturer": "MSI",
+      "modelName": "PRO B760M-P DDR4",
+      "amountKrw": 125090,
+      "observedAt": "2026-10-06T12:39:24.258Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18652889",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "bbe6a229-68ff-4f07-836b-0be833db8083",
+      "manufacturer": "ASUS",
+      "modelName": "PRIME B760M-A",
+      "amountKrw": 141000,
+      "observedAt": "2026-10-06T12:39:25.421Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=19704527",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "fa0f5d88-f248-4b37-80b4-cb95f3f15d89",
+      "manufacturer": "G.SKILL",
+      "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+      "amountKrw": 963120,
+      "observedAt": "2026-10-06T12:39:26.336Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+      "listAndDetailMatch": true
+    },
+    {
+      "productId": "bf4eeb64-aacb-4f38-b8ac-8accb8e8b873",
+      "manufacturer": "G.SKILL",
+      "modelName": "Trident Z5 Neo DDR5-6000 CL30 64GB (2x32GB)",
+      "amountKrw": 2100000,
+      "observedAt": "2026-10-06T12:39:27.446Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=40559801",
+      "listAndDetailMatch": true
+    }
+  ]
+}
