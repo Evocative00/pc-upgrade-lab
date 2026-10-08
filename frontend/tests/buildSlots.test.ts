@@ -9,6 +9,7 @@ import { createManualDraft, toPartInputs, withEmptyRows } from '../src/features/
 import type { CatalogDetail, CatalogProduct } from '../src/features/catalog/catalogTypes.ts'
 import type { PartDraft } from '../src/features/pc/types.ts'
 import type { DetailEntry } from '../src/features/builder/useCatalogDetails.ts'
+import { buildCompatibilityRequest, incompatibleByDraft } from '../src/features/builder/compatibility.ts'
 
 const named = (type: PartDraft['type'], displayName: string, extra: Partial<PartDraft> = {}): PartDraft =>
   ({ ...createManualDraft(type), displayName, ...extra })
@@ -233,4 +234,28 @@ test('StrictMode 재실행은 취소한 요청을 다시 보내고 이전 성공
   const entry = h.render().entries['catalog-1']
   assert.equal(entry.status, 'done')
   if (entry.status === 'done') assert.equal(entry.detail.product.modelName, 'latest')
+})
+
+test('호환성 검사 요청은 연결된 CPU·메인보드·RAM이 있을 때만 만들고, 불가 판정만 해당 행에 표시한다', () => {
+  assert.equal(buildCompatibilityRequest(withEmptyRows([named('CPU', '직접 입력 CPU')])), null)
+  const cpu = named('CPU', 'CPU', { catalogProductId: 'cpu-1' })
+  const board = named('MOTHERBOARD', '보드', { catalogProductId: 'board-1' })
+  const ram1 = named('RAM', '램1', { catalogProductId: 'ram-1', quantity: 2 })
+  const ramBad = named('RAM', '수량 오류', { quantity: NaN })
+  const ram2 = named('RAM', '램2', { catalogProductId: 'ram-2', quantity: 1 })
+  const drafts = withEmptyRows([cpu, board, ram1, ramBad, ram2])
+  assert.deepEqual(buildCompatibilityRequest(drafts), {
+    cpuProductId: 'cpu-1', motherboardProductId: 'board-1',
+    ram: [{ catalogProductId: 'ram-1', quantity: 2 }, { catalogProductId: 'ram-2', quantity: 1 }],
+  })
+  const warnings = incompatibleByDraft(drafts, { status: 'INCOMPATIBLE', checks: [
+    { code: 'CPU_SOCKET', status: 'INCOMPATIBLE', message: '소켓 다름', affectedFields: ['cpuProductId', 'motherboardProductId'] },
+    { code: 'MOTHERBOARD_RAM_TYPE_1', status: 'INCOMPATIBLE', message: 'DDR 다름', affectedFields: ['motherboardProductId', 'ram[1].catalogProductId'] },
+    { code: 'CPU_BIOS', status: 'NEEDS_CHECK', message: 'BIOS 확인', affectedFields: ['cpuProductId'] },
+  ] })
+  assert.deepEqual(warnings.get(cpu.key), ['소켓 다름'])
+  assert.deepEqual(warnings.get(board.key), ['소켓 다름', 'DDR 다름'])
+  assert.deepEqual(warnings.get(ram2.key), ['DDR 다름'])
+  assert.equal(warnings.has(ram1.key), false)
+  assert.equal(warnings.has(ramBad.key), false)
 })

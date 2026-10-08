@@ -2,6 +2,8 @@ import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent } f
 import { registerActiveDraft } from '../../auth/draftBridge.ts'
 import { PcBuilder, type PickTarget } from '../../builder/PcBuilder.tsx'
 import { slotOfDraft } from '../../builder/buildSlots.ts'
+import { incompatibleByDraft } from '../../builder/compatibility.ts'
+import { useCompatibility } from '../../builder/useCompatibility.ts'
 import { PcScanPanel } from '../../pc-scan/PcScanPanel.tsx'
 import type { ScanResult } from '../../pc-scan/types.ts'
 import { PART_TYPES } from '../partCategories.ts'
@@ -54,6 +56,10 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
   // state가 다시 렌더링되기 전의 연속 클릭도 같은 요청을 두 번 보내지 않게 막는다.
   const savingRef = useRef(false)
   const [pickTarget, setPickTarget] = useState<PickTarget | null>(null)
+  // 구성 화면에서만 CPU·메인보드·RAM 호환성을 검사한다. 불가 판정 부품은 행에 경고를 표시한다.
+  const compatibility = useCompatibility(drafts, visual)
+  const warnings = compatibility.status === 'done'
+    ? incompatibleByDraft(drafts, compatibility.result) : new Map<string, string[]>()
 
   function updateDrafts(update: (current: PartDraft[]) => PartDraft[]) {
     if (!savingRef.current) setDrafts(update)
@@ -172,17 +178,29 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
                 index={index}
                 count={rows.length}
                 onChange={updateDraft}
+                warnings={warnings.get(draft.key)}
                 onSearch={visual
                   ? () => setPickTarget({ slot: slotOfDraft(drafts, draft), draftKey: draft.key })
                   : undefined}
                 // 여러 항목을 쓰는 종류이거나, 자동 인식으로 한 종류에 항목이 여러 개 생긴 경우 제거할 수 있다.
+                // 구성 화면에서는 단일 종류도 입력한 항목을 삭제(빈 줄로 되돌리기)할 수 있다.
                 onRemove={
-                  info.multiple || rows.length > 1
+                  info.multiple || rows.length > 1 || (visual && getPartStatus(draft) !== 'empty')
                     ? () => removeDraft(draft.key)
                     : undefined
                 }
               />
             ))}
+            {/* 구성 화면에서 비어 있는 단일 종류는 오른쪽 선택 창을 연다. */}
+            {visual && !info.multiple && rows.every((draft) => getPartStatus(draft) === 'empty') && (
+              <button
+                type="button"
+                className="button button--ghost"
+                onClick={() => setPickTarget({ slot: slotOfDraft(drafts, rows[0]), draftKey: rows[0].key })}
+              >
+                + {info.label} 추가
+              </button>
+            )}
             {info.multiple && (
               <button
                 type="button"
@@ -239,7 +257,8 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
         )}
 
         {visual ? (
-          <PcBuilder drafts={drafts} updateDrafts={updateDrafts} target={pickTarget} onTarget={setPickTarget}>
+          <PcBuilder drafts={drafts} updateDrafts={updateDrafts} target={pickTarget} onTarget={setPickTarget}
+            compatibility={compatibility} warnings={warnings}>
             {partsPanel}
           </PcBuilder>
         ) : partsPanel}
