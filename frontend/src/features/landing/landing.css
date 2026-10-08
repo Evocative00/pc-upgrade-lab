@@ -1,0 +1,142 @@
+/* 왼쪽 탭 바 | 검은 배경의 가운데 버튼 */
+/* 랜딩은 #root의 1024px 폭을 벗어나 화면 전체를 쓴다. */
+.landing {
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.landing__tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px 12px;
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+
+  a {
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: var(--text-h);
+    text-decoration: none;
+
+    &:hover {
+      background: var(--accent-bg);
+    }
+  }
+
+  a[aria-current='page'] {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+.landing__tabs .landing__brand {
+  margin-bottom: 12px;
+  font-weight: 700;
+
+  &:hover {
+    background: none;
+  }
+}
+
+/* 로그인/회원가입은 탭 바 맨 아래에 둔다. */
+.landing__auth {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+
+  .auth-status {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  /* 로그인/회원가입은 버튼 모양으로 보인다. */
+  .auth-status a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: var(--on-accent);
+    text-align: center;
+    font-weight: 600;
+
+    &:hover {
+      background: var(--accent);
+      opacity: 0.85;
+    }
+  }
+
+  @media (max-width: 640px) {
+    margin-top: 0;
+    border-top: 0;
+    padding-top: 0;
+  }
+}
+
+.landing__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 48px 24px;
+  text-align: center;
+  background: #111;
+  color: #bdbdbd;
+
+  h1 {
+    color: #fff;
+    font-size: 40px;
+    line-height: 120%;
+  }
+}
+
+.landing__eyebrow {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+}
+
+.landing__lead {
+  word-break: keep-all;
+  max-width: none;
+}
+
+.landing__cta {
+  margin-top: 8px;
+  padding: 16px 40px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: #fff;
+  color: #111;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 160ms, color 160ms;
+
+  &:hover,
+  &:focus-visible {
+    background: transparent;
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+  }
+}

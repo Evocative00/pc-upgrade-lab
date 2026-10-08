@@ -4,6 +4,7 @@ import { BackendStatus } from './components/BackendStatus.tsx'
 import { logout, refreshAuth, useAuth } from './features/auth/authStore.ts'
 import { saveActiveDraft } from './features/auth/draftBridge.ts'
 import { LoginFailurePage, LoginPage, LoginSuccessPage } from './features/auth/pages/LoginPages.tsx'
+import { LandingPage } from './features/landing/LandingPage.tsx'
 import { PcDetailPage } from './features/pc/pages/PcDetailPage.tsx'
 import { PcEditPage, PcNewPage } from './features/pc/pages/PcFormPages.tsx'
 import { PcListPage } from './features/pc/pages/PcListPage.tsx'
@@ -12,6 +13,9 @@ import { navigate, paths, useRoute, type Route } from './lib/router.ts'
 // 자동 인식 패널(PcScanPanel)은 PC 등록·수정 폼 안에서 onApply로 연결한다.
 function Page({ route }: { route: Route }) {
   switch (route.name) {
+    // 랜딩 화면은 App에서 머리말 없이 따로 그린다.
+    case 'home':
+      return null
     case 'list':
       return <PcListPage />
     case 'new':
@@ -37,7 +41,9 @@ function Page({ route }: { route: Route }) {
 }
 
 // 로그인 상태. 인증 API가 아직 없는 서버(unavailable)에서는 아무것도 표시하지 않는다.
-function AuthStatus() {
+// 소셜 로그인은 첫 로그인 때 계정을 만들므로 회원가입도 같은 로그인 화면을 쓴다.
+// alwaysShowLogin이면 로그인 상태를 확인하지 못했을 때(확인 중·인증 API 없음)에도 로그인 링크를 보인다.
+function AuthStatus({ loginLabel = '로그인', alwaysShowLogin = false }: { loginLabel?: string; alwaysShowLogin?: boolean }) {
   const auth = useAuth()
   const [error, setError] = useState<string | null>(null)
   const [loggingOut, setLoggingOut] = useState(false)
@@ -73,7 +79,7 @@ function AuthStatus() {
     )
   }
 
-  if (auth.status === 'signedOut') {
+  if (auth.status === 'signedOut' || alwaysShowLogin) {
     return (
       <div className="auth-status">
         <a
@@ -87,7 +93,7 @@ function AuthStatus() {
             setError('작성 중인 구성을 임시 보관하지 못했습니다. 부품 용량·수량과 브라우저 저장소 설정을 확인한 뒤 다시 시도해 주세요.')
           }}
         >
-          로그인
+          {loginLabel}
         </a>
         {error !== null && <span role="alert" className="error">{error}</span>}
       </div>
@@ -107,10 +113,14 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  if (route.name === 'home') {
+    return <LandingPage auth={<AuthStatus loginLabel="로그인 / 회원가입" alwaysShowLogin />} />
+  }
+
   return (
     <>
       <header className="app-header">
-        <a href={paths.list()} className="app-title">
+        <a href={paths.home()} className="app-title">
           PC 업그레이드 실험실
         </a>
         <nav className="app-nav">
