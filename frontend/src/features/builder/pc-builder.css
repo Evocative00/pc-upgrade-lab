@@ -172,13 +172,21 @@
 
   strong {
     color: #fff;
-    font-family: var(--mono);
-    font-size: 24px;
+    font-size: 22px;
+    word-break: keep-all;
   }
 
   .muted {
     color: #a3a3a3;
     font-size: 12px;
+  }
+
+  /* 검은 카드 안의 가격 새로고침 버튼 */
+  .button--ghost {
+    align-self: flex-start;
+    margin-top: 4px;
+    color: #fff;
+    border-color: #555;
   }
 }
 
