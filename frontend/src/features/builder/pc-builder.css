@@ -45,6 +45,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  /* 두 열에서는 그림이 스크롤되어야 같은 열의 요약을 가리지 않는다. */
+  @media (max-width: 1100px) {
+    position: static;
+  }
 }
 
 .case-view {
@@ -237,8 +242,8 @@
 }
 
 .compat__step--incompatible[aria-current='step'] {
-  background: var(--danger);
-  border-color: var(--danger);
+  background: #c0262d;
+  border-color: #c0262d;
   color: #fff;
 }
 
@@ -286,32 +291,36 @@
   border-radius: 6px;
 }
 
-/* 부품 선택 창: 오른쪽에서 밀려 들어오는 패널 */
-.builder__backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
+/* 부품 선택 창: 네이티브 모달을 오른쪽 슬라이드 패널로 표시한다. */
+.builder__picker::backdrop {
   background: rgba(0, 0, 0, 0.35);
   animation: builder-fade 200ms ease-out;
 }
 
 .builder__picker {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 11;
+  inset: 0 0 0 auto;
+  margin: 0 0 0 auto;
   width: min(480px, 100vw);
+  height: 100svh;
+  max-width: none;
+  max-height: none;
   box-sizing: border-box;
   overflow-y: auto;
   padding: 20px 16px;
+  color: var(--text);
   background: var(--bg);
+  border: 0;
   border-left: 1px solid var(--border);
   box-shadow: var(--shadow);
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 12px;
   animation: builder-slide-in 260ms ease-out;
+
+  &[open] {
+    display: flex;
+  }
 }
 
 @keyframes builder-slide-in {
@@ -328,7 +337,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .builder__picker,
-  .builder__backdrop {
+  .builder__picker::backdrop {
     animation: none;
   }
 }

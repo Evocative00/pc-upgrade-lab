@@ -124,7 +124,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) 
       </div>
 
       <p className="muted">
-        현재 등록된 검토용 부품을 조회합니다. 카탈로그 연결은 제품 선택을 뜻하며, 호환성 판정은 아직 수행하지 않습니다.
+        현재 등록된 검토용 부품을 조회합니다. 제품을 연결한 뒤 구성 화면에서 CPU·메인보드·RAM 호환성을 확인할 수 있습니다.
       </p>
 
       {search.status === 'idle' && <p className="muted">검색어를 입력하거나 ‘전체 보기’로 이 종류의 등록 부품을 확인해 주세요.</p>}

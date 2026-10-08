@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { CatalogPicker } from '../catalog/CatalogPicker.tsx'
+import { CatalogPickerDialog } from './CatalogPickerDialog.tsx'
 import { formatCurrentPrice } from '../catalog/catalogPresentation.ts'
 import { CurrentPriceSource } from '../catalog/CurrentPriceSource.tsx'
 import type { CatalogProduct } from '../catalog/catalogTypes.ts'
@@ -178,19 +178,12 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
         </aside>
       </div>
 
-      {/* 부품 선택 창은 오른쪽에서 밀려 들어온다. 바깥을 누르거나 Esc로 닫는다. */}
-      {activeTarget && <>
-        <div className="builder__backdrop" aria-hidden="true" onClick={() => onTarget(null)} />
-        <section className="builder__picker" aria-label={`${activeLabel} 고르기`}
-          onKeyDown={(event) => {
-            if (event.key === 'Escape') onTarget(null)
-          }}>
-          <h2>{activeLabel} 고르기</h2>
-          <CatalogPicker key={`${activeTarget.slot}-${activeTarget.draftKey}`} type={slotInfo(activeTarget.slot).type}
-            initialQuery={drafts.find((draft) => draft.key === activeTarget.draftKey)?.displayName ?? ''}
-            onClose={() => onTarget(null)} onSelect={choose} />
-        </section>
-      </>}
+      {activeTarget && (
+        <CatalogPickerDialog key={`${activeTarget.slot}-${activeTarget.draftKey}`} label={activeLabel!}
+          type={slotInfo(activeTarget.slot).type}
+          initialQuery={drafts.find((draft) => draft.key === activeTarget.draftKey)?.displayName ?? ''}
+          onClose={() => onTarget(null)} onSelect={choose} />
+      )}
     </section>
   )
 }

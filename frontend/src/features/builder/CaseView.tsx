@@ -11,7 +11,7 @@ type Props = {
   onPick: (slot: SlotId) => void
 }
 
-const FILLED_TEXT = '#0b1f3f'
+const FILLED_TEXT = '#091b37'
 
 function EmptyBox({ x, y, w, h, text, vertical = false }: Box & { text: string; vertical?: boolean }) {
   const cx = x + w / 2
