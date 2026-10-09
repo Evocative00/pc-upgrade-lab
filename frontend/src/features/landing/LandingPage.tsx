@@ -8,7 +8,7 @@ type Props = {
   auth: ReactNode
 }
 
-// 랜딩 화면: 왼쪽 탭 바 | 가운데 'PC 빌드' 버튼
+// 첫 화면은 사이트 소개용으로 비워두고, 다음 구간에서 PC 조립 장면을 보여준다.
 export function LandingPage({ auth }: Props) {
   const scrollRoot = useRef<HTMLDivElement>(null)
   return (
@@ -22,6 +22,8 @@ export function LandingPage({ auth }: Props) {
       </nav>
 
       <main className="landing__hero">
+        {/* 팀원이 사이트 소개 요소를 추가할 첫 화면. */}
+        <div className="landing__intro" />
         <PcAssemblyScroll scrollRoot={scrollRoot}>
           <p className="landing__eyebrow">BUILD YOUR NEXT PC</p>
           <h1>나만의 PC를,<br />더 선명하게.</h1>

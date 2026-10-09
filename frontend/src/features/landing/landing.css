@@ -1,4 +1,4 @@
-/* 왼쪽 탭 바 | 검은 배경의 가운데 버튼 */
+/* 고정 메뉴와 소개·PC 조립 구간으로 이어지는 랜딩 화면. */
 /* 랜딩은 #root의 1024px 폭을 벗어나 화면 전체를 쓴다. */
 .landing {
   position: fixed;
@@ -104,6 +104,10 @@
   h1 {
     color: #fff;
   }
+}
+
+.landing__intro {
+  height: max(0px, calc(100svh - var(--landing-navigation-height, 0px)));
 }
 
 .landing__eyebrow {

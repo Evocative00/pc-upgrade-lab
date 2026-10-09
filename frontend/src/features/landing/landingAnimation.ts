@@ -50,7 +50,55 @@ export function frameAtProgress(progress: number, count: number): number {
 export function advanceProgress(current: number, target: number, elapsedMs: number): number {
   const from = clampProgress(current), to = clampProgress(target)
   if (Math.abs(to - from) < 0.0001) return to
-  return from + (to - from) * (1 - Math.exp(-Math.max(0, Math.min(50, Number.isFinite(elapsedMs) ? elapsedMs : 0)) / 45))
+  return from + (to - from) * (1 - Math.exp(-Math.max(0, Math.min(50, Number.isFinite(elapsedMs) ? elapsedMs : 0)) / 110))
+}
+
+export type DesktopFramePlan = {
+  canvasWidth: number; canvasHeight: number; pixelRatio: number; width: number; height: number; nearbyLimit: number; anchorLimit: number
+}
+
+// All buffers use the same display pixel density; letterboxing must not lower DPR.
+export function desktopFramePlan(cssWidth: number, cssHeight: number, dpr: number, sourceWidth: number, sourceHeight: number): DesktopFramePlan {
+  const positive = (value: number) => Math.max(1, Number.isFinite(value) ? value : 1)
+  const scale = Math.min(2, positive(dpr))
+  const canvasWidth = Math.max(1, Math.round(positive(cssWidth) * scale)), canvasHeight = Math.max(1, Math.round(positive(cssHeight) * scale))
+  const sourceW = positive(sourceWidth), sourceH = positive(sourceHeight)
+  const containedWidth = Math.min(canvasWidth, canvasHeight * sourceW / sourceH)
+  // Round upwards to avoid upscaling and needless cache rebuilds on tiny resizes.
+  const width = Math.min(sourceW, Math.ceil(containedWidth / 64) * 64), height = Math.min(sourceH, Math.round(width * sourceH / sourceW))
+  const capacity = Math.max(2, Math.floor(320 * 1024 * 1024 / (width * height * 4)))
+  const nearbyLimit = Math.min(8, Math.max(1, capacity - 2)), anchorLimit = Math.min(64, capacity - nearbyLimit)
+  return { canvasWidth, canvasHeight, pixelRatio: scale, width, height, nearbyLimit, anchorLimit }
+}
+
+// Load both ends and then fill the widest gaps, so even a partial pool covers the scene.
+export function anchorPoseIndexes(poseCount: number, limit = 64): number[] {
+  const length = Math.max(0, Math.floor(Number.isFinite(poseCount) ? poseCount : 0))
+  const count = Math.min(length, Math.max(1, Math.floor(Number.isFinite(limit) ? limit : 1)))
+  if (!length) return []
+  if (count === 1) return [0]
+  const indexes = Array.from({ length: count }, (_, index) => Math.round(index * (length - 1) / (count - 1)))
+  const order = [indexes[0], indexes[count - 1]], ranges = [[0, count - 1]]
+  for (let cursor = 0; cursor < ranges.length; cursor++) {
+    const [left, right] = ranges[cursor]
+    if (right - left < 2) continue
+    const middle = Math.floor((left + right) / 2)
+    order.push(indexes[middle]); ranges.push([left, middle], [middle, right])
+  }
+  return order
+}
+
+// Use ready poses behind the eased position, never moving backwards while loading.
+export function readyFrame(frames: number[], target: number, hasPose: (pose: number) => boolean, previous = -1, direction = 1): number | null {
+  if (!frames.length) return null
+  const desired = Math.max(0, Math.min(frames.length - 1, Math.round(Number.isFinite(target) ? target : 0)))
+  const step = direction < 0 ? 1 : -1
+  const monotonic = previous >= 0 && previous < frames.length && (step < 0 ? previous <= desired : previous >= desired)
+  for (let index = desired; index >= 0 && index < frames.length; index += step) {
+    if (monotonic && (step < 0 ? index < previous : index > previous)) break
+    if (hasPose(frames[index])) return index
+  }
+  return null
 }
 
 export function poseWindow(frames: number[], target: number, count: number, direction = 1): number[] {
