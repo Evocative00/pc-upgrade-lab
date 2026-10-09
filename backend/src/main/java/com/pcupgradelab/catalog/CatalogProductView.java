@@ -1,6 +1,8 @@
 package com.pcupgradelab.catalog;
 
 import com.pcupgradelab.pc.PartType;
+import com.pcupgradelab.catalog.identity.CatalogIdentityKind;
+import com.pcupgradelab.catalog.identity.CatalogRole;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -17,7 +19,11 @@ public record CatalogProductView(
         Instant createdAt,
         Instant updatedAt,
         ReferencePrice referencePrice,
-        CurrentPrice currentPrice
+        CurrentPrice currentPrice,
+        String canonicalId,
+        String modelId,
+        CatalogIdentityKind identityKind,
+        CatalogRole role
 ) {
     public record ReferencePrice(BigDecimal amountKrw, CatalogPriceStatus status, Instant updatedAt) { }
 
@@ -31,6 +37,15 @@ public record CatalogProductView(
                 createdAt, updatedAt, referencePrice, null);
     }
 
+    public CatalogProductView(String id, PartType type, String manufacturer, String modelName,
+                              String partNumber, CatalogVerificationStatus verificationStatus,
+                              boolean active, Instant createdAt, Instant updatedAt, ReferencePrice referencePrice,
+                              CurrentPrice currentPrice) {
+        this(id, type, manufacturer, modelName, partNumber, verificationStatus, active,
+                createdAt, updatedAt, referencePrice, currentPrice, null, null,
+                CatalogIdentityKind.LEGACY_UNCLASSIFIED, CatalogRole.UNASSIGNED);
+    }
+
     static CatalogProductView from(CatalogProduct product, CatalogReferencePrice price) {
         return from(product, price, null);
     }
@@ -39,6 +54,7 @@ public record CatalogProductView(
         return new CatalogProductView(product.getId(), product.getType(), product.getManufacturer(),
                 product.getModelName(), product.getPartNumber(), product.getVerificationStatus(),
                 product.isActive(), product.getCreatedAt(), product.getUpdatedAt(),
-                new ReferencePrice(price.getAmountKrw(), price.getStatus(), price.getUpdatedAt()), currentPrice);
+                new ReferencePrice(price.getAmountKrw(), price.getStatus(), price.getUpdatedAt()), currentPrice,
+                product.getCanonicalId(), product.getModelId(), product.getIdentityKind(), product.getRole());
     }
 }

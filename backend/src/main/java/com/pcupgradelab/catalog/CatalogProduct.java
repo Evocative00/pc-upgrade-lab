@@ -1,6 +1,9 @@
 package com.pcupgradelab.catalog;
 
 import com.pcupgradelab.pc.PartType;
+import com.pcupgradelab.catalog.identity.CatalogIdentityKind;
+import com.pcupgradelab.catalog.identity.CatalogIdentityRequests;
+import com.pcupgradelab.catalog.identity.CatalogRole;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -39,6 +42,23 @@ public class CatalogProduct {
 
     @Column(name = "part_number", length = 128)
     private String partNumber;
+
+    @Column(name = "canonical_id", length = 36)
+    private String canonicalId;
+    @Column(name = "model_id", length = 128)
+    private String modelId;
+    @Enumerated(EnumType.STRING) @JdbcTypeCode(SqlTypes.VARCHAR)
+    @Column(name = "identity_kind", nullable = false, length = 32)
+    private CatalogIdentityKind identityKind = CatalogIdentityKind.LEGACY_UNCLASSIFIED;
+    @Enumerated(EnumType.STRING) @JdbcTypeCode(SqlTypes.VARCHAR)
+    @Column(nullable = false, length = 32)
+    private CatalogRole role = CatalogRole.UNASSIGNED;
+    @Column(name = "identity_evidence_source_id")
+    private Long identityEvidenceSourceId;
+    @Column(name = "identity_review_scope", length = 1000)
+    private String identityReviewScope;
+    @Column(name = "identity_reviewed_at")
+    private Instant identityReviewedAt;
 
     @Enumerated(EnumType.STRING)
     @JdbcTypeCode(SqlTypes.VARCHAR)
@@ -96,11 +116,39 @@ public class CatalogProduct {
         createdAt = updatedAt = Instant.now().truncatedTo(ChronoUnit.MICROS);
     }
 
+    /** 내부 검토 서비스가 출처·종류·공통 ID 충돌을 확인한 뒤 호출한다. 로컬 UUID는 바꾸지 않는다. */
+    public void bindReviewedIdentity(CatalogIdentityRequests.ProductBinding input) {
+        if (!java.util.Objects.equals(id, input.productId())) throw new IllegalArgumentException("binding product ID differs");
+        if (canonicalId != null && !canonicalId.equals(input.canonicalId()))
+            throw new IllegalArgumentException("Existing canonical ID must not be replaced");
+        if (modelId != null && !modelId.equals(input.modelId()))
+            throw new IllegalArgumentException("Existing model binding must not be replaced");
+        if (identityKind != CatalogIdentityKind.LEGACY_UNCLASSIFIED && identityKind != input.identityKind())
+            throw new IllegalArgumentException("Existing identity classification must not be replaced");
+        if (role != CatalogRole.UNASSIGNED && role != input.role())
+            throw new IllegalArgumentException("Existing role must not be replaced");
+        boolean same = java.util.Objects.equals(canonicalId, input.canonicalId())
+                && java.util.Objects.equals(modelId, input.modelId()) && identityKind == input.identityKind() && role == input.role();
+        if (same) {
+            if (!java.util.Objects.equals(identityEvidenceSourceId, input.evidenceSourceId())
+                    || !java.util.Objects.equals(identityReviewScope, input.reviewScope()))
+                throw new IllegalArgumentException("Existing identity review differs; explicit re-review is required");
+            return;
+        }
+        canonicalId = input.canonicalId(); modelId = input.modelId(); identityKind = input.identityKind(); role = input.role();
+        identityEvidenceSourceId = input.evidenceSourceId(); identityReviewScope = input.reviewScope();
+        identityReviewedAt = updatedAt = Instant.now().truncatedTo(ChronoUnit.MICROS);
+    }
+
     public String getId() { return id; }
     public PartType getType() { return type; }
     public String getManufacturer() { return manufacturer; }
     public String getModelName() { return modelName; }
     public String getPartNumber() { return partNumber; }
+    public String getCanonicalId() { return canonicalId; }
+    public String getModelId() { return modelId; }
+    public CatalogIdentityKind getIdentityKind() { return identityKind; }
+    public CatalogRole getRole() { return role; }
     public CatalogVerificationStatus getVerificationStatus() { return verificationStatus; }
     public boolean isActive() { return active; }
     public Instant getCreatedAt() { return createdAt; }

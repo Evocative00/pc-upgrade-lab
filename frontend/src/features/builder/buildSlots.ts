@@ -1,6 +1,6 @@
-import type { CatalogDetail, CatalogProduct, CatalogSpecification } from '../catalog/catalogTypes.ts'
+import type { CatalogDetail, CatalogModel, CatalogProduct, CatalogSpecification } from '../catalog/catalogTypes.ts'
 import type { PartType } from '../pc-scan/types.ts'
-import { createManualDraft, getPartStatus, linkCatalog, withEmptyRows } from '../pc/partDraft.ts'
+import { createManualDraft, getPartStatus, linkCatalog, linkCatalogModel, withEmptyRows } from '../pc/partDraft.ts'
 import type { PartDraft } from '../pc/types.ts'
 
 // SSD·HDD는 기존 화면 위치 ID다. 저장장치의 실제 종류를 뜻하지 않는다.
@@ -135,15 +135,24 @@ export function priceTotal(lines: PriceLine[]): { currentKrw: number; pricedItem
 
 // 최신 입력을 기준으로 연결한다. 검색 중 수량을 고쳤거나 항목을 지워도 옛 상태를 복원하지 않는다.
 export function applyCatalogSelection(drafts: PartDraft[], target: PickTarget, product: CatalogProduct): PartDraft[] {
-  if (slotInfo(target.slot).type !== product.type) return drafts
+  return applySelection(drafts, target, product.type, (base) => linkCatalog(base, product))
+}
+
+export function applyCatalogModelSelection(drafts: PartDraft[], target: PickTarget, model: CatalogModel): PartDraft[] {
+  return applySelection(drafts, target, model.type, (base) => linkCatalogModel(base, model))
+}
+
+function applySelection(drafts: PartDraft[], target: PickTarget, type: PartType,
+  link: (base: PartDraft) => PartDraft): PartDraft[] {
+  if (slotInfo(target.slot).type !== type) return drafts
   const key = target.draftKey ?? assignSlots(drafts)[target.slot]?.key
-  const existing = drafts.find((draft) => draft.key === key && draft.type === product.type)
+  const existing = drafts.find((draft) => draft.key === key && draft.type === type)
   if (target.draftKey !== null && !existing) return drafts
-  const empty = drafts.find((draft) => draft.type === product.type && getPartStatus(draft) === 'empty')
-  const base = existing ?? empty ?? createManualDraft(product.type)
+  const empty = drafts.find((draft) => draft.type === type && getPartStatus(draft) === 'empty')
+  const base = existing ?? empty ?? createManualDraft(type)
   const visualSlot = target.draftKey === null && (target.slot === 'SSD' || target.slot === 'HDD')
     ? target.slot : base.visualSlot
-  const linked = { ...linkCatalog(base, product), visualSlot }
+  const linked = { ...link(base), visualSlot }
   return drafts.some((draft) => draft.key === base.key)
     ? drafts.map((draft) => draft.key === base.key ? linked : draft)
     : withEmptyRows([...drafts, linked])

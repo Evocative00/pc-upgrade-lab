@@ -50,6 +50,8 @@ JPA 엔티티는 `backend/src/main/java/com/pcupgradelab/pc/`, SQL은 `backend/s
 Flyway가 시작 시 적용되지 않은 SQL을 실행하고 이력을 기록한다. JPA는 `ddl-auto=validate`로 테이블을 확인한다.
 `spring.sql.init.mode=never`는 유지한다. 스키마 변경은 Flyway가 담당하고, JPA는 구조 일치 여부를 검사한다.
 
+2026-10-09 카탈로그 확장 코드는 일반 `backend [bootRun]`을 재시작할 때 Flyway로 **V13·V14 구조**를 적용한다. JDK 21·`SPRING_PROFILES_ACTIVE=local`·`DB_PASSWORD`와 사용 중인 OAuth 설정을 그대로 유지하면 되며, 이번 변경용 새 환경변수나 실행 구성은 필요 없다. 기존 제품 UUID·가격·PC 연결을 보존하고 모델·공통 ID·SSD·보드 슬롯을 저장할 구조만 추가한다. **최신 부품 후보 78종과 모델·제원·슬롯 자료는 자동으로 적재되지 않는다.** 세부 범위는 [구현·미리보기 안내](catalog-expansion-implementation-2026-10-09.md)를 확인한다.
+
 1. MySQL 서비스를 실행한다. 각자의 PC에 `pc_upgrade_lab` DB와 접속 가능한 앱 계정이 준비돼 있어야 한다.
 2. 개인 설정이 없으면 아래 명령으로 예제를 복사한다. 이미 있다면 DB URL·계정·환경 변수 참조를 보존한다.
 3. 개인 파일에 `server.address=127.0.0.1`이 있는지 확인하고, 없을 때만 추가한다.
@@ -100,7 +102,7 @@ if (-not (Test-Path .\backend\src\main\resources\application-local.properties)) 
 
 상품가는 각자의 MySQL에 저장된 관측값이다. 코드와 검토한 관측 파일은 pull로 받지만, 다른 PC에서 적용한 가격 행은 전달되지 않는다. 화면의 **가격 새로고침**은 내 백엔드의 저장값을 다시 읽으며 판매처를 실시간으로 수집하지 않는다.
 
-가격 미리보기와 실제 DB 반영에는 **V12까지 마이그레이션된 DB**가 필요하며 준비 작업 자체는 Flyway를 실행하지 않는다. 처음 만든 MySQL DB는 실제 반영 전에 앞의 개인 DB 설정을 완료하고 일반 `backend [bootRun]`을 한 번 실행해 마이그레이션을 적용한 뒤 종료한다. 기존 DB는 소유자·마이그레이션 이력을 확인하고, 적용된 마이그레이션을 수정하거나 DB를 초기화하지 않는다. 아래 `setupDevCatalog`의 기본 자료 미리보기는 DB 없이도 실행된다.
+가격 미리보기와 실제 DB 반영에는 **V14까지 마이그레이션된 DB**가 필요하며 준비 작업 자체는 Flyway를 실행하지 않는다. 현재 코드의 JPA 검증은 가격 테이블뿐 아니라 식별·저장장치 테이블도 검사한다. 처음 만든 MySQL DB와 V14 이전의 기존 DB는 앞의 개인 DB 설정을 확인하고, 승인된 DB 변경 범위에서 일반 `backend [bootRun]`을 재시작해 최신 마이그레이션을 적용한 뒤 종료한다. 그다음 `importCatalogPrices`나 `setupDevCatalog -PapplyDevCatalog=true`를 실행한다. 기존 DB는 소유자·마이그레이션 이력을 확인하고, 적용된 마이그레이션을 수정하거나 DB를 초기화하지 않는다. 아래 `setupDevCatalog`의 기본 자료 미리보기는 DB 없이도 실행된다.
 
 카탈로그가 비어 있거나 300종 준비가 끝나지 않았다면 **새 DB·미완성 카탈로그 준비**, 이미 기존 300종이 있다면 **가격만 가져오기**를 따른다. 일반 `bootRun`, pull, build/test는 카탈로그나 가격을 자동으로 적재하지 않는다.
 
@@ -112,7 +114,7 @@ JDK 21을 준비하고 프로젝트 루트에서 사용할 검토 자료의 건�
 .\backend\gradlew.bat --project-dir .\backend setupDevCatalog
 ```
 
-`CATALOG PREVIEW: reviewedProducts=300, reviewedPrices=72, databaseWrites=0`을 확인한다. 이 미리보기는 기존 제품과의 충돌을 검사하지 않는다. **내 개발 DB를 준비하기로 한 경우에만** V12까지 적용된 DB, 개인 DB URL·계정과 **실행할 PowerShell/IntelliJ 구성의 `DB_PASSWORD`**를 준비한다. `bootRun`의 환경변수는 다른 실행 구성이나 터미널에 자동 전달되지 않는다. OAuth 키는 반영에도 필요 없다. 다음 명령으로 기존 데이터와 대조하고 승인된 카탈로그 300종·호환 근거·상품가 72종을 한 트랜잭션으로 반영한다.
+`CATALOG PREVIEW: reviewedProducts=300, reviewedPrices=72, databaseWrites=0`을 확인한다. 이 미리보기는 기존 제품과의 충돌을 검사하지 않는다. **내 개발 DB를 준비하기로 한 경우에만** V14까지 적용된 DB, 개인 DB URL·계정과 **실행할 PowerShell/IntelliJ 구성의 `DB_PASSWORD`**를 준비한다. `bootRun`의 환경변수는 다른 실행 구성이나 터미널에 자동 전달되지 않는다. OAuth 키는 반영에도 필요 없다. 다음 명령으로 기존 데이터와 대조하고 승인된 카탈로그 300종·호환 근거·상품가 72종을 한 트랜잭션으로 반영한다.
 
 ```powershell
 .\backend\gradlew.bat --project-dir .\backend setupDevCatalog -PapplyDevCatalog=true

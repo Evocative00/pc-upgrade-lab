@@ -8,7 +8,7 @@
 
 2026-10-08 추가한 Gradle 작업 `importCatalogPrices`는 검토한 기존 22종과 추가 50종, **총 72종**을 한 번 실행하고 종료한다. 웹 서버를 띄우지 않으므로 일반 서버의 8080 포트와 겹치지 않는다. JDK 21, 실행 중인 MySQL, 개인 `application-local.properties`의 DB URL·계정과 실행 환경의 `DB_PASSWORD`를 준비한다. 가격 작업에는 Google/Kakao/Naver 키가 필요 없으며 OAuth 등록 설정을 사용하지 않는다. IntelliJ `bootRun`에 넣은 환경변수는 PowerShell이나 다른 실행 구성에 자동 전달되지 않고 `.env`도 자동으로 읽히지 않는다.
 
-가격 미리보기와 실제 DB 반영은 **V12까지 적용된 테이블**을 사용하며 Flyway를 실행하지 않는다. 처음 만든 MySQL DB는 반영 전에 개인 설정을 준비하고 일반 `bootRun`을 한 번 실행해 마이그레이션을 적용한 뒤 종료한다. 기존 DB는 이력과 소유자를 확인하며 초기화하지 않는다. 일반 `bootRun`, pull, build/test에서는 카탈로그·가격을 자동 적재하지 않는다. 아래 `setupDevCatalog`의 기본 미리보기에는 DB가 필요 없다.
+현재 코드의 가격 미리보기와 실제 DB 반영에는 **V14까지 적용된 DB**가 필요하다. JPA 검증은 가격 테이블 외에 V13·V14의 식별·저장장치 테이블도 검사하지만, 가져오기 작업은 Flyway를 실행하지 않는다. 처음 만든 MySQL DB와 V14 이전의 기존 DB는 개인 설정을 확인하고, 승인된 DB 변경 범위에서 일반 `bootRun`을 재시작해 최신 마이그레이션을 적용한 뒤 종료한다. 그다음 `importCatalogPrices`나 `setupDevCatalog -PapplyDevCatalog=true`를 실행한다. 기존 DB는 이력과 소유자를 확인하며 초기화하지 않는다. 일반 `bootRun`, pull, build/test에서는 카탈로그·가격을 자동 적재하지 않는다. 아래 `setupDevCatalog`의 기본 미리보기에는 DB가 필요 없다.
 
 ### 새 DB 또는 300종 카탈로그 준비가 끝나지 않은 DB
 
@@ -18,7 +18,7 @@
 .\backend\gradlew.bat --project-dir .\backend setupDevCatalog
 ```
 
-`CATALOG PREVIEW: reviewedProducts=300, reviewedPrices=72, databaseWrites=0`을 확인한다. 이 미리보기는 검토 자료의 건수를 확인하며 기존 제품과의 충돌을 검사하지 않는다. **내 개발 DB 준비를 선택한 경우에만** V12까지 적용된 DB, 개인 DB 설정과 해당 실행 환경의 `DB_PASSWORD`를 준비하고 명시적인 옵션으로 반영한다. OAuth 키는 반영에도 필요 없다.
+`CATALOG PREVIEW: reviewedProducts=300, reviewedPrices=72, databaseWrites=0`을 확인한다. 이 미리보기는 검토 자료의 건수를 확인하며 기존 제품과의 충돌을 검사하지 않는다. **내 개발 DB 준비를 선택한 경우에만** V14까지 적용된 DB, 개인 DB 설정과 해당 실행 환경의 `DB_PASSWORD`를 준비하고 명시적인 옵션으로 반영한다. OAuth 키는 반영에도 필요 없다.
 
 ```powershell
 .\backend\gradlew.bat --project-dir .\backend setupDevCatalog -PapplyDevCatalog=true
@@ -135,7 +135,7 @@ node backend/tools/collect-danawa-prices.mjs --manifest data/catalog-current-pri
 --catalog.price-import.dry-run=true
 ```
 
-V12 적용 후 미리보기 결과의 `checked`, `newMappings`, `newObservations`, `unchanged`를 확인하고, 실제 반영 시에만 `dry-run=false`를 사용한다. DB 비밀번호는 기존 개인 설정과 환경변수로 전달하며 파일이나 명령 인수에 넣지 않는다.
+현재 코드에서는 V14 적용 후 미리보기 결과의 `checked`, `newMappings`, `newObservations`, `unchanged`를 확인하고, 실제 반영 시에만 `dry-run=false`를 사용한다. DB 비밀번호는 기존 개인 설정과 환경변수로 전달하며 파일이나 명령 인수에 넣지 않는다.
 
 ## 적용 후 검증
 

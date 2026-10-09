@@ -13,6 +13,10 @@ export type CatalogProduct = {
   manufacturer: string
   modelName: string
   partNumber: string | null
+  canonicalId?: string | null
+  modelId?: string | null
+  identityKind?: 'LEGACY_UNCLASSIFIED' | 'MODEL_REFERENCE' | 'PHYSICAL_VARIANT' | 'RETAIL_KIT'
+  role?: 'UNASSIGNED' | 'INSTALLED_PC_REFERENCE' | 'PURCHASE_CANDIDATE' | 'BOTH'
   verificationStatus: 'UNVERIFIED' | 'PARTIAL' | 'CORE_VERIFIED'
   active: boolean
   currentPrice: CurrentPrice | null
@@ -58,4 +62,27 @@ export type CatalogDetail = {
   specification: CatalogSpecification
   sources: CatalogSource[]
   attributions: CatalogAttribution[]
+}
+
+export type CatalogModel = {
+  id: string
+  canonicalId: string
+  type: PartType
+  manufacturer: string
+  modelName: string
+  kind: 'CPU_MODEL' | 'GPU_CHIP_MODEL' | 'BOARD_MODEL' | 'RAM_MODULE_MODEL' | 'RAM_SPEC_GROUP' | 'STORAGE_MODEL'
+  role: 'UNASSIGNED' | 'INSTALLED_PC_REFERENCE' | 'PURCHASE_CANDIDATE' | 'BOTH'
+  verificationStatus: 'UNVERIFIED' | 'PARTIAL' | 'CORE_VERIFIED'
+  family: string | null
+  series: string | null
+  createdAt: string
+  updatedAt: string
+}
+
+export type CatalogModelPage = {
+  items: CatalogModel[]
+  page: number
+  size: number
+  totalElements: number
+  totalPages: number
 }

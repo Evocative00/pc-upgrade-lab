@@ -7,7 +7,7 @@ export function PartStatusBadge({ status }: { status: PartStatus }) {
 }
 
 export function PartStatusLegend() {
-  const statuses: PartStatus[] = ['linked', 'auto', 'manual']
+  const statuses: PartStatus[] = ['linked', 'model', 'auto', 'manual']
 
   return (
     <p className="legend">

@@ -1,5 +1,7 @@
 package com.pcupgradelab.catalog;
 
+import com.pcupgradelab.catalog.storage.StorageSpec;
+import com.pcupgradelab.catalog.storage.StorageSpecRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,12 +21,13 @@ public class CatalogEntryService {
     private final RamSpecRepository ram;
     private final GpuSpecRepository gpus;
     private final MonitorSpecRepository monitors;
+    private final StorageSpecRepository storage;
     private final CatalogProductSourceRepository sources;
 
     public CatalogEntryService(CatalogProductService productService, CatalogProductRepository products,
                                CpuSpecRepository cpus, MotherboardSpecRepository motherboards,
                                RamSpecRepository ram, GpuSpecRepository gpus,
-                               MonitorSpecRepository monitors,
+                               MonitorSpecRepository monitors, StorageSpecRepository storage,
                                CatalogProductSourceRepository sources) {
         this.productService = productService;
         this.products = products;
@@ -33,6 +36,7 @@ public class CatalogEntryService {
         this.ram = ram;
         this.gpus = gpus;
         this.monitors = monitors;
+        this.storage = storage;
         this.sources = sources;
     }
 
@@ -64,6 +68,8 @@ public class CatalogEntryService {
             gpus.saveAndFlush(new GpuSpec(product, gpu));
         } else if (specification instanceof CatalogSpecification.Monitor monitor) {
             monitors.saveAndFlush(new MonitorSpec(product, monitor));
+        } else if (specification instanceof CatalogSpecification.Storage drive) {
+            storage.saveAndFlush(new StorageSpec(product, drive));
         } else {
             throw new IllegalArgumentException("Unsupported catalog specification type");
         }
@@ -86,9 +92,11 @@ public class CatalogEntryService {
         var memory = ram.findById(product.id());
         var gpu = gpus.findById(product.id());
         var monitor = monitors.findById(product.id());
+        var drive = storage.findById(product.id());
         int specificationCount = (cpu.isPresent() ? 1 : 0)
                 + (motherboard.isPresent() ? 1 : 0) + (memory.isPresent() ? 1 : 0)
-                + (gpu.isPresent() ? 1 : 0) + (monitor.isPresent() ? 1 : 0);
+                + (gpu.isPresent() ? 1 : 0) + (monitor.isPresent() ? 1 : 0)
+                + (drive.isPresent() ? 1 : 0);
         if (specificationCount != 1) {
             throw new IllegalStateException("Catalog entry requires exactly one specification: " + product.id());
         }
@@ -102,8 +110,10 @@ public class CatalogEntryService {
             specification = memory.orElseThrow().toSpecification();
         } else if (gpu.isPresent()) {
             specification = gpu.orElseThrow().toSpecification();
-        } else {
+        } else if (monitor.isPresent()) {
             specification = monitor.orElseThrow().toSpecification();
+        } else {
+            specification = drive.orElseThrow().toSpecification();
         }
         if (product.type() != specification.type()) {
             throw new IllegalStateException("Stored product and specification types do not match: " + product.id());

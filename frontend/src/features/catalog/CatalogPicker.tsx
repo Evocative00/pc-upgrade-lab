@@ -1,15 +1,17 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import type { PartType } from '../pc-scan/types.ts'
 import { catalogClient } from './catalogClient.ts'
+import { CatalogModelPicker } from './CatalogModelPicker.tsx'
 import { CatalogAttributions, CatalogProductDetail } from './CatalogProductDetail.tsx'
 import { formatCurrentPrice, VERIFICATION_LABEL } from './catalogPresentation.ts'
 import { CurrentPriceSource } from './CurrentPriceSource.tsx'
-import type { CatalogDetail, CatalogPage, CatalogProduct } from './catalogTypes.ts'
+import type { CatalogDetail, CatalogModel, CatalogPage, CatalogProduct } from './catalogTypes.ts'
 
 type Props = {
   type: PartType
   initialQuery: string
   onSelect: (product: CatalogProduct) => void
+  onSelectModel?: (model: CatalogModel) => void
   onClose: () => void
 }
 
@@ -25,9 +27,10 @@ type DetailState =
   | { status: 'done'; product: CatalogProduct; result: CatalogDetail }
   | { status: 'error'; product: CatalogProduct; message: string }
 
-export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) {
+export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onClose }: Props) {
   const inputId = useId()
   const [query, setQuery] = useState(initialQuery.slice(0, 100))
+  const [mode, setMode] = useState<'product' | 'model'>('product')
   const [search, setSearch] = useState<SearchState>({ status: 'idle' })
   const [detail, setDetail] = useState<DetailState>({ status: 'idle' })
   const searchController = useRef<AbortController | null>(null)
@@ -97,6 +100,15 @@ export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) 
 
   return (
     <div className="catalog-picker" aria-label="부품 카탈로그 검색">
+      {onSelectModel && <div className="catalog-picker__bar" aria-label="확인 범위">
+        <button type="button" className="button" aria-pressed={mode === 'product'} onClick={() => setMode('product')}>제품 연결</button>
+        <button type="button" className="button" aria-pressed={mode === 'model'} onClick={() => {
+          searchController.current?.abort(); detailController.current?.abort()
+          setSearch({ status: 'idle' }); setDetail({ status: 'idle' }); setMode('model')
+        }}>모델만 확인</button>
+      </div>}
+      {mode === 'model' && onSelectModel ? <CatalogModelPicker type={type} initialQuery={query}
+        onSelect={onSelectModel} onClose={onClose} /> : <>
       <div className="catalog-picker__bar">
         <label htmlFor={inputId} className="visually-hidden">
           부품 검색어
@@ -173,6 +185,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) 
         <CatalogAttributions items={detail.status === 'done' ? detail.result.attributions
           : search.status === 'done' ? search.result.attributions : []} />
       )}
+      </>}
     </div>
   )
 }

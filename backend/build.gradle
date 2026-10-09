@@ -65,6 +65,35 @@ tasks.named('processResources') {
         include 'observations-2026-10-06.json', 'observations-expansion50-2026-10-08.json'
         into 'catalog/prices'
     }
+    from('../data/catalog-review') {
+        include 'catalog-expansion-preview-2026-10-09.json'
+        into 'catalog/expansion'
+    }
+}
+
+// Research preview only: no Spring startup, JDBC, Flyway or catalog apply implementation.
+tasks.register('previewCatalogExpansion', JavaExec) {
+    group = 'application'
+    description = 'Validate 78 research candidates and 300 source identity mapping plans without a database.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.expansion.CatalogExpansionPreviewApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    // Windows의 native code page 대신 Gradle이 읽는 UTF-8로 후보 이름을 출력한다.
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+    doFirst {
+        def applyRequested = project.properties.any { key, value ->
+            key.toString().toLowerCase().startsWith('apply') && value.toString().toLowerCase() != 'false'
+        }
+        if (applyRequested) {
+            throw new GradleException('previewCatalogExpansion is read-only; catalog adoption and database apply are not implemented or authorized.')
+        }
+        def requestedArgs = getArgs() ?: []
+        if (requestedArgs.any { it.startsWith('--apply') || it.startsWith('-Papply') }) {
+            throw new GradleException('previewCatalogExpansion is read-only; --apply is not implemented or authorized.')
+        }
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath] + requestedArgs)
+    }
 }
 
 // 일반 서버 시작·build·test에서는 DB 자료를 넣지 않는다. 두 작업 모두 기본값은 미리보기다.

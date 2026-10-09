@@ -151,7 +151,7 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
   const unlinkedCount = drafts.filter((draft) => {
     const status = getPartStatus(draft)
 
-    return status === 'auto' || status === 'manual'
+    return status === 'auto' || status === 'manual' || status === 'model'
   }).length
 
   // 구성 화면에서는 이 입력란이 케이스 그림 왼쪽(부품 선택 칸 자리)에 들어간다.

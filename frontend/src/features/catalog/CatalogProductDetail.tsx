@@ -1,6 +1,7 @@
 import { useId } from 'react'
 import { formatCurrentPrice, ramKitLabel, specificationRows, VERIFICATION_LABEL } from './catalogPresentation.ts'
 import { CurrentPriceSource } from './CurrentPriceSource.tsx'
+import { MotherboardStorageDetail } from './MotherboardStorageDetail.tsx'
 import type { CatalogAttribution, CatalogDetail, CatalogProduct } from './catalogTypes.ts'
 
 export function CatalogAttributions({ items }: { items: CatalogAttribution[] }) {
@@ -54,6 +55,8 @@ export function CatalogProductDetail({ detail, onSelect, onRefresh }: {
       {product.type === 'GPU' && (
         <p className="muted">카드 공표 전력·권장 파워 용량은 실제 사용 전력과 다를 수 있습니다.</p>
       )}
+      {product.type === 'STORAGE' && <p className="muted">판매 용량은 십진 GB 기준이며 Windows 표시 용량과 다를 수 있습니다. M.2는 장착 형태입니다. SATA·PCIe 인터페이스와 NVMe 프로토콜을 각각 확인해 주세요.</p>}
+      {product.type === 'MOTHERBOARD' && <MotherboardStorageDetail key={product.id} productId={product.id} />}
 
       <div className="catalog-sources">
         <span className="muted">제원 출처</span>

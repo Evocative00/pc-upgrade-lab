@@ -63,6 +63,10 @@ function isProduct(value: unknown): value is CatalogProduct {
   if (!isObject(value) || !isObject(value.referencePrice)) return false
   const price = value.referencePrice
   return isText(value.id, 128) && PART_TYPES.some(({ type }) => type === value.type) &&
+    (value.canonicalId === undefined || nullableText(value.canonicalId)) &&
+    (value.modelId === undefined || nullableText(value.modelId)) &&
+    (value.identityKind === undefined || ['LEGACY_UNCLASSIFIED', 'MODEL_REFERENCE', 'PHYSICAL_VARIANT', 'RETAIL_KIT'].includes(String(value.identityKind))) &&
+    (value.role === undefined || ['UNASSIGNED', 'INSTALLED_PC_REFERENCE', 'PURCHASE_CANDIDATE', 'BOTH'].includes(String(value.role))) &&
     isText(value.manufacturer, 100) && isText(value.modelName, 255) && nullableText(value.partNumber) &&
     ['UNVERIFIED', 'PARTIAL', 'CORE_VERIFIED'].includes(String(value.verificationStatus)) &&
     typeof value.active === 'boolean' && isCurrentPrice(value.currentPrice) &&

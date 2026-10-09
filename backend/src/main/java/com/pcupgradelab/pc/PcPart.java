@@ -1,6 +1,7 @@
 package com.pcupgradelab.pc;
 
 import jakarta.persistence.*;
+import com.pcupgradelab.catalog.identity.CatalogRecognitionLevel;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import java.util.LinkedHashMap;
@@ -33,6 +34,11 @@ public class PcPart {
     private String catalogProductId;
     @Enumerated(EnumType.STRING) @Column(name = "match_status", nullable = false, length = 20)
     private MatchStatus matchStatus;
+    @Column(name = "catalog_model_id", length = 128)
+    private String catalogModelId;
+    @Enumerated(EnumType.STRING) @JdbcTypeCode(SqlTypes.VARCHAR)
+    @Column(name = "recognition_level", length = 32)
+    private CatalogRecognitionLevel recognitionLevel;
     // 종류마다 다른 제원을 JSON으로 저장한다. 큰 용량 값과 미확인 값(null)도 보존한다.
     @JdbcTypeCode(SqlTypes.JSON) @Column(nullable = false, columnDefinition = "json")
     private Map<String, Object> specs;
@@ -46,7 +52,7 @@ public class PcPart {
                 || input.rawName() != null && input.rawName().length() > 500
                 || input.quantity() == null || input.quantity() < 1 || input.quantity() > 64
                 || input.source() == null || input.specs() == null || input.specs().size() > 40
-                || !input.isCatalogLinkValid() || !input.isSpecsValid()
+                || !input.isCatalogLinkValid() || !input.isModelRecognitionValid() || !input.isSpecsValid()
                 || input.catalogProductId() != null && input.catalogProductId().length() > 128) {
             throw new IllegalArgumentException("Invalid PC part");
         }
@@ -58,6 +64,8 @@ public class PcPart {
         source = input.source();
         catalogProductId = input.catalogProductId();
         matchStatus = input.matchStatus();
+        catalogModelId = input.catalogModelId();
+        recognitionLevel = input.recognitionLevel();
         specs = new LinkedHashMap<>(input.specs());
     }
 
@@ -65,6 +73,6 @@ public class PcPart {
     /** 공통 부품 형식으로 변환한다. API의 상세 DTO를 만들 때 사용하며 DB 내부 부품 ID는 포함하지 않는다. */
     public PartInput toInput() {
         return new PartInput(type, displayName, rawName, quantity, source,
-                catalogProductId, matchStatus, specs);
+                catalogProductId, matchStatus, specs, catalogModelId, recognitionLevel);
     }
 }

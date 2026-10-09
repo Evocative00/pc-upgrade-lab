@@ -37,6 +37,7 @@ Assert ($null -eq $gpu.specs.vramBytes) 'Unreliable AdapterRAM was used.'
 $json = ConvertTo-Json -InputObject $result -Depth 12
 Assert ($json -notmatch 'DO_NOT_EMIT|ProcessorId|SerialNumber') 'A hardware identifier leaked.'
 Assert (@($result.parts | Where-Object quantity -ne 1).Count -eq 0) 'Quantity must count individual devices.'
+Assert (@($result.parts | Where-Object { $null -ne $_.catalogModelId -or $null -ne $_.recognitionLevel }).Count -eq 0) 'Collector must not claim a catalog model or recognition level.'
 
 # 일부 조회 실패와 전체 빈 결과를 따로 확인한다. 읽은 항목이 사라지거나 경고가 누락되지 않아야 한다.
 $partial = Get-PcInventory -Query {

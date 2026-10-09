@@ -60,6 +60,16 @@ const FIELDS: Partial<Record<PartType, Field[]>> = {
     ['nativeOcRefreshHz', '오버클록 최대 주사율', 'Hz'], ['activePowerW', '사용 중 전력', 'W'],
     ['activePowerConditions', '전력 측정 조건'],
   ],
+  STORAGE: [
+    ['storageKind', '장치 종류'], ['advertisedCapacityGb', '제조사 표시 용량', 'GB'],
+    ['capacityBytes', '명목 용량', 'bytes'], ['capacityBasis', '용량 표기 기준'],
+    ['formFactor', '형태'], ['m2LengthCode', 'M.2 길이 규격'], ['connectorKey', 'M.2 키'],
+    ['busInterface', '연결 버스'], ['interfaceProtocol', '프로토콜'],
+    ['pcieVersion', 'PCIe 세대'], ['pcieLanes', 'PCIe 레인', '레인'],
+    ['nvmeVersion', 'NVMe 버전'], ['sataVersion', 'SATA 버전'],
+    ['lengthMm', '길이', 'mm'], ['widthMm', '너비', 'mm'], ['heightMm', '높이', 'mm'],
+    ['dimensionsBasis', '치수 기준'], ['heatsinkIncluded', '방열판 포함'],
+  ],
 }
 
 function formatValue(value: CatalogSpecification[string] | undefined, unit?: string): string {
@@ -87,7 +97,19 @@ export function specificationRows(type: PartType, specs: CatalogSpecification): 
     const absentCoreClock = type === 'CPU' && key.endsWith('ClockMhz') && (
       key.startsWith('performanceCore') && specs.performanceCoreCount === 0
       || key.startsWith('efficientCore') && specs.efficientCoreCount === 0)
-    return [label, absentCoreClock ? '해당 없음' : formatValue(specs[key], unit)]
+    const notApplicable = type === 'STORAGE' && (
+      specs.busInterface === 'SATA' && ['pcieVersion', 'pcieLanes', 'nvmeVersion'].includes(key) ||
+      specs.busInterface === 'PCIE' && key === 'sataVersion' ||
+      ['TWO_POINT_FIVE_INCH', 'THREE_POINT_FIVE_INCH'].includes(String(specs.formFactor)) && ['connectorKey', 'm2LengthCode'].includes(key))
+    const storageLabels: Record<string, string> = {
+      TWO_POINT_FIVE_INCH: '2.5형', THREE_POINT_FIVE_INCH: '3.5형', M2: 'M.2', DECIMAL_GB: '십진 GB (1GB = 1,000,000,000 bytes)',
+      NOMINAL: '명목 규격', MANUFACTURER_MAXIMUM: '제조사 공표 최대치', PUBLISHED: '제조사 공표 치수',
+    }
+    const value = type === 'STORAGE' && key === 'heatsinkIncluded' && typeof specs[key] === 'boolean'
+      ? specs[key] ? '포함' : '미포함'
+      : type === 'STORAGE' && typeof specs[key] === 'string' && storageLabels[String(specs[key])]
+      ? storageLabels[String(specs[key])] : formatValue(specs[key], unit)
+    return [label, absentCoreClock || notApplicable ? '해당 없음' : value]
   })
   if (type === 'MONITOR') {
     rows.splice(1, 0, ['기본 해상도', typeof specs.nativeWidthPx === 'number' && typeof specs.nativeHeightPx === 'number'

@@ -77,5 +77,9 @@ H2 검사가 실제 MySQL 검사를 대신하지 않으며, 저장 계층 검사
 
 - [부품 데이터 조사](week1-data-review.md): 후보 데이터의 필드와 한계, 공동 선정할 사항.
 - [로컬 DB 점검 기록](catalog-db-audit-2026-10-06.md): 카탈로그·가격·누락 제원·제품 식별 점검 결과.
+- [300종 선정 검토표 원자료](../data/catalog-review/catalog-selection-2026-10-09.json): 2026-10-09 기준 저장소 자료의 제품별 식별 범위, 과거 가격 기록, 수요 근거와 추가 제원 확인 항목. 현재 DB·웹 판매 상태를 다시 점검한 자료는 아니다. 프로젝트 루트에서 `node data/catalog-review/review-catalog-selection.mjs`로 재생성하며 DB나 네트워크에 연결하지 않는다.
+- [국내 데스크톱 부품 DB 보강 후보](catalog-expansion-candidates-2026-10-09.md): 구형 설치 참조부터 Intel Core Ultra 200S·Plus와 AMD 최신 X3D·800 계열 보드, 누락 GPU·RAM·SSD까지 후보 78종과 별도 보류 범위. 실제 DB에 반영한 목록은 아니다.
+- [카탈로그·가격 DB 확장 설계안](catalog-db-expansion-design-2026-10-09.md): 모델/판매 구성 구분, 기존 UUID 유지·공통 ID, SSD·보드 슬롯·메모리 조건, 중앙 가격 API와 수집·신선도, 단계별 구현과 컨펌 범위.
+- [카탈로그 확장 구현·적용·미리보기](catalog-expansion-implementation-2026-10-09.md): 승인한 V13·V14 로컬 MySQL 적용·기존 자료 보존, 백엔드 실행 구성과 팀원 준비, DB 없는 `previewCatalogExpansion`, 최신 우선 52종과 후속 자료 검토 범위.
 - [국내 신품 상품가](catalog-current-prices.md): 현재가 저장·수집·판매 SKU 검토와 DB 반영 절차.
 - [스캔 결과 예시](examples/scan-result.json): 자동 인식 JSON 형식을 이해하기 위한 개발용 샘플.

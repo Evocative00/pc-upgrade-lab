@@ -15,6 +15,8 @@ PC 요청: `{ "name": "내 PC", "parts": [...] }`. `name`은 공백만 사용할
 | `source` | AUTO / MANUAL. 자동 인식 후 제원을 보완해도 원문은 유지 |
 | `catalogProductId` | 문자열, 최대 128자. 미연결이면 null |
 | `matchStatus` | UNMATCHED / MATCHED. UNMATCHED이면 제품 ID null, MATCHED이면 비어 있지 않은 제품 ID |
+| `catalogModelId` | 선택적 모델 ID, 최대 128자. 미확인은 null. 판매 상품 ID와 별도다. |
+| `recognitionLevel` | 선택적 SPEC_GROUP / MODEL / PHYSICAL_VARIANT. 기존 요청은 생략 또는 null 가능. |
 | `specs` | 객체, 최대 40개 속성. 값은 문자열(최대 500자)·숫자·불리언·null |
 
 `specs` 키는 영문자로 시작하는 영문·숫자 조합, 최대 50자다. 중첩 객체·배열은 사용하지 않는다. 미확인 값은 null로 유지한다. `capacityBytes`와 `vramBytes`가 있는 경우 양수여야 한다.
@@ -62,10 +64,16 @@ PC 요청: `{ "name": "내 PC", "parts": [...] }`. `name`은 공백만 사용할
 | `CONCURRENT_MODIFICATION` | 409 | 다른 요청이 먼저 수정했다. |
 | `INVALID_PART_ID` | 400 | `catalogProductId`가 카탈로그에 없다. |
 | `PART_CATEGORY_MISMATCH` | 400 | 부품 `type`과 연결한 카탈로그 제품의 종류가 다르다. |
+| `INVALID_MODEL_ID` | 400 | `catalogModelId`가 등록된 모델에 없다. |
+| `MODEL_PRODUCT_MISMATCH` | 400 | 제품의 모델 관계와 PC의 모델 연결이 일치하지 않는다. |
+| `MODEL_RECOGNITION_MISMATCH` | 400 | 규격군과 모델 확인 수준이 다르다. |
+| `PHYSICAL_VARIANT_UNVERIFIED` | 400 | 정확 변형·판매 묶음 근거 없이 PHYSICAL_VARIANT를 주장한다. |
 
 - 소유자: `pc_configuration.user_id`(V10). 로그인 도입 전 `local-dev` 데이터는 `user_id = NULL`로 남아 어느 회원에게도 보이지 않는다. `owner_key`는 사용하지 않는다.
 - 이름 중복은 서버 검사와 DB 제약 `uk_pc_configuration_user_name (user_id, name_normalized)`로 막는다. 수정 시 자기 PC는 제외한다. 동시에 같은 이름이 저장돼도 DB 제약 위반을 409로 바꾼다.
 - 카탈로그에 없는 수집 결과는 `catalogProductId = null`, `matchStatus = UNMATCHED`로 원문(`rawName`)과 함께 보존한다. 임의의 모델로 확정하지 않는다.
+- 수집기는 `catalogModelId`와 `recognitionLevel`도 null로 보낸다. 사용자가 모델만 확인하면 모델 ID와 MODEL(RAM 규격군은 SPEC_GROUP)을 저장하고 제품 ID는 null, UNMATCHED로 둔다. 이 상태에 상품가를 연결하지 않는다.
+- 제품과 모델을 함께 연결하면 부품 종류 및 해당 제품의 모델 연결이 일치해야 한다. MODEL/SPEC_GROUP은 물리적 변형 검증을 뜻하지 않는다. PHYSICAL_VARIANT는 정확한 변형 또는 판매 묶음으로 검토된 제품 연결이 필요하며 기존 제품을 자동 승격하지 않는다.
 - `update`가 기존 자식 목록을 교체하며 `orphanRemoval`이 이전 행을 제거한다. 엔티티의 `@Version` 충돌은 409로 변환한다.
 
 ## 공통 오류

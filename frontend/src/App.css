@@ -176,7 +176,7 @@
   background: var(--linked-bg);
 }
 
-.badge--auto {
+.badge--auto, .badge--model {
   color: var(--detected);
   background: var(--detected-bg);
 }

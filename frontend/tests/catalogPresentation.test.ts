@@ -2,6 +2,23 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { formatCatalogPrice, formatCurrentPrice, formatPriceObservedAt, ramKitLabel, specificationRows } from '../src/features/catalog/catalogPresentation.ts'
 
+test('SSD 십진 광고 용량·실제 공표 치수와 SATA 비해당을 구분한다', () => {
+  const sata = Object.fromEntries(specificationRows('STORAGE', { storageKind: 'SSD', advertisedCapacityGb: 1000,
+    capacityBytes: 1_000_000_000_000, capacityBasis: 'DECIMAL_GB', formFactor: 'TWO_POINT_FIVE_INCH',
+    busInterface: 'SATA', pcieVersion: null, pcieLanes: null, nvmeVersion: null, heatsinkIncluded: false }))
+  assert.equal(sata['제조사 표시 용량'], '1,000 GB')
+  assert.equal(sata['명목 용량'], '1,000,000,000,000 bytes')
+  assert.equal(sata['PCIe 세대'], '해당 없음')
+  assert.equal(sata['M.2 키'], '해당 없음')
+  assert.equal(sata['SATA 버전'], '미확인')
+  assert.equal(sata['방열판 포함'], '미포함')
+  const nvme = Object.fromEntries(specificationRows('STORAGE', { busInterface: 'PCIE', formFactor: 'M2',
+    lengthMm: 80.15, widthMm: 22.15, dimensionsBasis: 'MANUFACTURER_MAXIMUM', heatsinkIncluded: null }))
+  assert.equal(nvme['길이'], '80.15 mm')
+  assert.equal(nvme['SATA 버전'], '해당 없음')
+  assert.equal(nvme['방열판 포함'], '미확인')
+})
+
 test('가격 미확정·자료 부족을 0원으로 표시하지 않는다', () => {
   assert.equal(formatCatalogPrice({ amountKrw: null, status: 'UNCONFIRMED', updatedAt: '' }), '가격 미확정')
   assert.equal(formatCatalogPrice({ amountKrw: null, status: 'INSUFFICIENT_HISTORY', updatedAt: '' }), '가격 자료 부족')

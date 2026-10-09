@@ -2,12 +2,12 @@ import type { ReactNode } from 'react'
 import { CatalogPickerDialog } from './CatalogPickerDialog.tsx'
 import { formatCurrentPrice } from '../catalog/catalogPresentation.ts'
 import { CurrentPriceSource } from '../catalog/CurrentPriceSource.tsx'
-import type { CatalogProduct } from '../catalog/catalogTypes.ts'
+import type { CatalogModel, CatalogProduct } from '../catalog/catalogTypes.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { getPartStatus, withEmptyRows } from '../pc/partDraft.ts'
 import type { PartDraft } from '../pc/types.ts'
 import {
-  applyCatalogSelection, assignSlots, priceTotal, ramModuleViews, slotInfo, type PickTarget, type SlotId,
+  applyCatalogSelection, applyCatalogModelSelection, assignSlots, priceTotal, ramModuleViews, slotInfo, type PickTarget, type SlotId,
 } from './buildSlots.ts'
 import { CaseView, type SlotView } from './CaseView.tsx'
 import type { CompatibilityStatus } from './compatibility.ts'
@@ -66,7 +66,7 @@ function CompatibilityPanel({ state }: { state: CompatibilityState }) {
           ))}
         </ul>
       )}
-      <p className="muted">CPU·메인보드·RAM 공표 규격만 검사합니다. 그래픽카드·파워·케이스·쿨러는 미검사입니다.</p>
+      <p className="muted">CPU·메인보드·RAM 공표 규격만 검사합니다. 그래픽카드·저장장치·파워·케이스·쿨러는 미검사입니다.</p>
     </section>
   )
 }
@@ -95,6 +95,12 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
   function choose(product: CatalogProduct) {
     if (!activeTarget) return
     updateDrafts((current) => applyCatalogSelection(current, activeTarget, product))
+    onTarget(null)
+  }
+
+  function chooseModel(model: CatalogModel) {
+    if (!activeTarget) return
+    updateDrafts((current) => applyCatalogModelSelection(current, activeTarget, model))
     onTarget(null)
   }
 
@@ -137,7 +143,7 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
                       <span key={message} className="error">⚠ {message}</span>
                     ))}
                     {!draft.catalogProductId
-                      ? <span className="muted">카탈로그 미연결 · 현재 상품가 없음</span>
+                      ? <span className="muted">{draft.catalogModelId ? '모델 확인 · 상품 미연결' : '카탈로그 미연결'} · 현재 상품가 없음</span>
                       : detail ? <>
                         <span className="muted">{formatCurrentPrice(detail.product.currentPrice)}
                           {detail.product.currentPrice && (draft.type === 'RAM' ? ' / 판매 묶음' : ' / 1개')}</span>
@@ -182,7 +188,7 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
         <CatalogPickerDialog key={`${activeTarget.slot}-${activeTarget.draftKey}`} label={activeLabel!}
           type={slotInfo(activeTarget.slot).type}
           initialQuery={drafts.find((draft) => draft.key === activeTarget.draftKey)?.displayName ?? ''}
-          onClose={() => onTarget(null)} onSelect={choose} />
+          onClose={() => onTarget(null)} onSelect={choose} onSelectModel={chooseModel} />
       )}
     </section>
   )
