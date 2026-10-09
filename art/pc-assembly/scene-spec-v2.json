@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "status": "detailed-scene-and-motion-review",
+  "createdOn": "2026-10-09",
+  "purpose": "PC assembly and disassembly scene for the landing page",
+  "concept": {
+    "image": "concept-v1.png",
+    "prompt": "concept-v1.prompt.txt",
+    "method": "built-in image generation",
+    "role": "Reference for composition, materials and lighting only",
+    "isAnimationSource": false,
+    "isEditable3DModel": false,
+    "technicalGeometryValidated": false
+  },
+  "approvedDirection": {
+    "palette": ["matte black", "brushed silver", "neutral white light"],
+    "lightingStyle": "restrained studio product lighting",
+    "assetSearchScope": "free and paid candidates; purchase requires a separate decision"
+  },
+  "authoredScene": {
+    "file": "pc-assembly-v2.blend",
+    "source": "build_scene.py",
+    "method": "original procedural geometry and materials",
+    "externalModelOrImageDependencies": false,
+    "previews": ["assembled-v2.png", "exploded-v2.png"],
+    "reviewPage": "preview.html",
+    "validation": "render-metadata-v2.json",
+    "references": "references.json",
+    "qualityStatus": "detailed original geometry and staged motion for visual review before final animation production",
+    "motionPreview": {
+      "manifest": "preview-manifest.json",
+      "role": "representative rendered storyboard frames, selected with a slider",
+      "complete": true,
+      "frameCount": 42,
+      "resolution": [800, 600],
+      "samples": 32,
+      "isFullFrameRateAnimationMaster": false
+    },
+    "stillResolution": [1600, 1200],
+    "stillSamples": 128,
+    "independentlyAnimatedRigCount": 21,
+    "review": {
+      "performedOn": "2026-10-09",
+      "cameraBoundsCheckedAtAll240Frames": true,
+      "endWorldTransformsMatch": true,
+      "visuallyInspectedFrames": [1, 55, 85, 120, 187],
+      "endpointRasterMeanRgbDifferenceOutOf255": 0.000025,
+      "endpointRasterMaxChannelDifferenceOutOf255": 1,
+      "previewFilesMissing": 0,
+      "browserChecks": ["42-step slider", "rapid keyboard selection", "1600-pixel zoom and Escape", "six official reference links", "default viewport horizontal overflow"],
+      "allFrameIntersectionValidationPerformed": false,
+      "remainingRefinement": ["small connector readability", "flexible cable deformation", "physical notch geometry and manufacturing detail", "final motion master and homepage scroll integration"]
+    },
+    "fullAnimationRendered": false
+  },
+  "proposedScene": {
+    "software": "Blender",
+    "renderer": "Cycles",
+    "pcStyle": "generic unbranded ATX mid-tower with a removable glass side",
+    "materials": ["black anodized metal", "brushed silver trim", "glass with real thickness", "PCB", "matte plastic"],
+    "camera": {
+      "view": "slightly elevated three-quarter side and front",
+      "motion": "fixed during assembly",
+      "startingLensMm": 58,
+      "framing": "keep the entire exploded assembly inside the frame"
+    },
+    "lighting": {
+      "key": "large soft neutral area light",
+      "fill": "gentle fill for readable internal components",
+      "rim": "narrow neutral light to define black metal edges",
+      "coloredRGB": false
+    },
+    "separateObjectGroups": [
+      "chassis",
+      "glass-side-panel",
+      "other-visible-panels",
+      "motherboard",
+      "cpu",
+      "cpu-cooler-tower-and-heatpipes",
+      "cpu-cooler-fan-and-clips",
+      "ram-stick-1",
+      "ram-stick-2",
+      "gpu-pcb-and-surface-components",
+      "gpu-backplate",
+      "gpu-heatsink-and-heatpipes",
+      "gpu-shroud",
+      "gpu-fans",
+      "power-supply",
+      "m2-ssd",
+      "m2-heatshield",
+      "case-fans",
+      "cpu-eps-power-cable-and-connectors",
+      "motherboard-atx-power-cable-and-connectors",
+      "gpu-power-cable-and-connectors"
+    ],
+    "keyPoses": [
+      { "progress": 0, "state": "fully assembled" },
+      { "progress": 0.5, "state": "exploded assembly with clear readable gaps" },
+      { "progress": 1, "state": "fully assembled; transforms exactly match the first pose" }
+    ],
+    "movementRules": [
+      "Open the glass panel before moving internal components.",
+      "Disconnect cables and remove mounted components before extracting the motherboard.",
+      "Keep CPU/DIMM/M.2 sockets and motherboard mounting structures with the motherboard.",
+      "Move each component along a path consistent with its mounting direction.",
+      "Use intermediate keyframes to prevent components passing through one another.",
+      "Keep cable and connector movement deterministic for reverse scrolling.",
+      "Keep the camera, materials and lighting consistent across all frames."
+    ]
+  },
+  "productionMilestones": [
+    "Inspect the chosen model's objects, materials, dependencies and usage terms.",
+    "Produce one assembled still and one exploded still from the same actual 3D scene.",
+    "Review composition, internal visibility and part separation before the full animation render.",
+    "Render the animation master and optimize desktop and mobile outputs."
+  ],
+  "acceptanceCriteria": [
+    "The same mesh geometry and material setup are used for every frame.",
+    "No visible intersection, flicker or unexplained appearance/disappearance of parts.",
+    "Forward and reverse playback show the same pose at the same progress.",
+    "Both assembled end poses match exactly.",
+    "Deliver an editable .blend scene with camera, lights, materials, animation and required dependencies.",
+    "Deliver a lossless numbered frame master, website-optimized outputs and a poster."
+  ],
+  "pendingDecisions": {
+    "sourceModel": "original authored scene; no purchased model",
+    "modelObjectSeparation": "independent named rigs with pivots for mounted parts and GPU/cooler/storage subassemblies",
+    "paidAssetPurchase": "not authorized",
+    "blenderRuntime": "official Blender 4.5.14 LTS portable in the ignored backend/build/pc-assembly-runtime folder",
+    "durationAndFrameCount": "draft timeline: frames 1 to 240 at 30 fps; final motion review remains",
+    "finalResolution": "set after desktop and mobile composition reviews"
+  }
+}

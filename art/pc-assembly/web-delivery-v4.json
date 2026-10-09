@@ -1,0 +1,29 @@
+{
+  "version": 4,
+  "timelinePositions": 480,
+  "uniqueImagesPerVariant": 240,
+  "desktopImageBytes": 14242634,
+  "mobileImageBytes": 6513534,
+  "desktopQuality": 88,
+  "mobileQuality": 87,
+  "sourceRenderSamples": 64,
+  "sourceRenderResolution": [
+    1600,
+    1200
+  ],
+  "validation": {
+    "timeline_positions_checked": 480,
+    "rig_count": 21,
+    "reverse_transform_max_difference": 1.4603137969970703e-06,
+    "normalized_bounds": [
+      0.11425551772117615,
+      0.8948706388473511,
+      0.08112063258886337,
+      0.8197245001792908
+    ],
+    "includes_curves": true,
+    "all_frame_collision_validation": false
+  },
+  "reverseSharesPixels": true,
+  "notADevicePerformanceGuarantee": true
+}

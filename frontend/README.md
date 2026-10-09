@@ -1,75 +1,46 @@
-# React + TypeScript + Vite
+# PC 업그레이드 실험실 프론트엔드
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19·TypeScript·Vite 기반 화면이다. 의존성·명령은 `package.json`과 `package-lock.json`, 전체 실행 환경은 [프로젝트 실행 안내](../docs/week1-setup.md)를 기준으로 한다.
 
-Currently, two official plugins are available:
+## 로그인 화면
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Google·카카오·네이버의 공식 브랜드 자산과 색상을 사용하는 버튼, 반응형 소개 영역과 로그인 카드를 적용했다. 출처는 [브랜드 자산 안내](src/features/auth/assets/NOTICE.txt)에 기록했다.
+- 서버의 제공자 목록에 따라 활성화된 로그인 버튼을 표시한다. 목록 조회에 실패하거나 목록이 비어 있으면 Google 버튼만 기본으로 표시한다. 실제 OAuth 사용에는 각 PC의 개인 설정과 제공자 콘솔 등록이 필요하다.
+- 로그인 전 PC 초안 복구와 돌아갈 화면을 유지한다. 로그인 후 사용자가 저장 버튼을 눌러야 PC를 계정에 저장한다.
+- 로그인 성공·실패 화면도 같은 스타일로 정리했다.
 
-## React Compiler
+## PC 조립 스크롤 랜딩
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+첫 화면은 팀원이 사이트 소개 요소를 추가할 공백으로 남겨두었다. 다음 스크롤 구간에서 PC 분해·조립을 보여주고, 그 뒤에 형태 참고 자료를 배치한다. 메인보드·쿨러 근접 이미지 영역은 사용자 요청으로 숨겼으며 자산은 보존했다. 소개 요소는 `LandingPage.tsx`의 `landing__intro`에 추가하면 된다.
 
-## Expanding the ESLint configuration
+블랙·실버, 유리 케이스와 은은한 아이스 블루 LED를 사용한 자체 제작 3D 장면을 스크롤에 연결했다. 메인보드의 전원부·실드·소켓·슬롯과 CPU 쿨러의 방열핀·히트파이프·고정 장치를 보강했으며, GPU·RAM·CPU·SSD·케이블 등을 21개 독립 그룹으로 분해·조립한다.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 240개 고유 이미지와 역순 재사용으로 480단계 왕복 동작을 제공한다. 이 홈페이지는 PC 사용을 기준으로 하며, 플레이어는 1600×1200 데스크톱 WebP만 사용한다. 기존 모바일 파일과 manifest 항목은 보존하지만 화면에서는 선택하지 않는다.
+- 큰 스크롤 이동도 즉시 점프하지 않고 시간 기준으로 부드럽게 따라간다. 정확한 목표 이미지가 로딩 중이면 이동 방향에 맞는 준비된 포즈를 표시하며, 진행 중 요청은 완료한 뒤 최신 위치의 요청을 우선한다.
+- 첫 소개 구간에서 전체 동작 범위를 덮는 기준 포즈를 최대 64개 준비한다. 기준 포즈와 근처 포즈 모두 같은 데스크톱 원본에서 실제 이미지 표시 영역의 픽셀 수(DPR 최대 2배, 원본 크기 상한)에 맞춰 동일한 해상도로 디코딩한다. 640×480 미리보기를 확대하거나 고해상도와 번갈아 표시하는 경로를 제거했다. 크기 조절은 [createImageBitmap 옵션](https://developer.mozilla.org/en-US/docs/Web/API/Window/createImageBitmap)을 사용하며 추가 렌더는 필요 없다.
+- 근처 포즈는 최대 8개, 기준 포즈는 해상도에 따라 최대 64개로 제한해 저장된 bitmap 픽셀 합계를 320MiB 이내로 유지한다. 예를 들어 1088×816에서는 기준 64개+근처 8개 약 243.8MiB, 원본 1600×1200에서는 기준 35개+근처 8개 약 315MiB다. 같은 포즈는 한 풀에서만 디코딩한다. 이 수치는 canvas·GPU·진행 중 디코더의 추가 메모리를 포함하지 않는다. 화면 크기·DPR 변경 시 필요한 해상도를 갱신하고, 화면 밖이나 비활성 탭에서는 요청·재시도 타이머·캐시를 정리한다.
+- 모션 감소 설정에서는 정지 장면을 기본으로 보여 준다. 사용자가 해당 페이지에서만 애니메이션 표시를 선택할 수 있다.
+- 실제 제품의 공식 형태 참고 링크를 제공한다. 특정 제품의 정밀 CAD나 브랜드 로고를 복제한 장면은 아니다.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+완성 이미지와 manifest는 `public/pc-assembly/`에 포함되어 pull 후 렌더 없이 사용할 수 있다. 원본 Blender 장면과 제작·재렌더 방법은 [PC 장면 제작 안내](../art/pc-assembly/README.md), 상세 검토 기록은 [장면 규격](../art/pc-assembly/scene-spec.json)에 있다. 480단계라는 수는 모든 기기에서 고정 60fps를 보장하지 않는다.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 실행·검증
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Node.js 24.x와 npm을 준비한 뒤 `frontend/`에서 실행한다.
 
+```powershell
+npm.cmd ci
+npm.cmd run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+개발 서버 주소는 `http://127.0.0.1:5173`이다. 로그인·저장 등 서버 기능에는 별도 백엔드 실행과 개인 설정이 필요하다. 개인 OAuth 키와 DB 데이터는 pull로 공유되지 않는다. 상품가 준비는 [국내 신품 상품가 안내](../docs/catalog-current-prices.md)를 참고한다.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```powershell
+npm.cmd test
+npm.cmd run lint
+npm.cmd run build
 ```
+
+2026-10-09 기준 프론트엔드 테스트 106개, ESLint, TypeScript·Vite 빌드를 통과했다. 실제 브라우저에서 일반 데스크톱과 2560×1440 화면의 급격한 왕복 스크롤을 확인했다. 기준·근처 포즈의 표시 해상도가 같고, 큰 화면의 저장된 bitmap 합계는 330,240,000 bytes로 예산 안에 있었다. 첫 화면 공백과 두 번째 조립 구간을 유지했고 하단 부품 이미지 영역이 표시되지 않는 것도 확인했다. 고정 FPS·실제 모니터 간 이동·외부 네트워크 시험은 하지 않았다.
+
+모바일 전용 최적화·검증은 작업 범위에서 제외했다. 최초 로딩 중에는 기준 포즈 준비 상태와 네트워크에 따라 잠깐 기다릴 수 있다. 1600×1200보다 큰 실제 이미지 표시 영역에서는 원본 해상도 자체의 한계가 있다. 이번 화면 변경에서는 백엔드·DB를 수정하지 않았으며 실제 MySQL·OAuth 로그인 통합 시험도 새로 실행하지 않았다.

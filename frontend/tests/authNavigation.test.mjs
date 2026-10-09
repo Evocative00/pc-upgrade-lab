@@ -82,6 +82,7 @@ function harness({ blockedStorage = false, detail = null, user = null, logoutSta
       if (specifier === 'react') return react
       if (specifier === 'react/jsx-runtime') return jsx
       if (specifier.endsWith('.css')) return {}
+      if (specifier.endsWith('.png')) return { default: specifier }
       const dependency = path.resolve(path.dirname(filename), specifier)
       const names = unrelated[path.basename(dependency)]
       if (names) return Object.fromEntries(names.map((name) => [name, Object.assign(() => null, { displayName: name })]))

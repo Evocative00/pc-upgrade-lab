@@ -70,6 +70,8 @@ H2 검사가 실제 MySQL 검사를 대신하지 않으며, 저장 계층 검사
 
 ## 그 밖의 문서
 
+- [로그인·PC 조립 스크롤 화면](../frontend/README.md): 최신 화면 변경, 팀원 실행 방법과 검증 범위.
+- [PC 장면 제작 안내](../art/pc-assembly/README.md): Blender 원본, 고해상도 렌더와 홈페이지용 이미지 재현 방법.
 - [인증 ↔ PC 연결 규격](week2-auth-pc-contract.md): 로그인 회원 전달, 인증 API, 리다이렉트, CSRF, 접근 규칙 (2주차, 이슈 #18).
 - [회원별 PC 관리 인계](week2-pc-ownership-handoff.md): 이슈 #18에서 완료한 것과 이어서 할 일.
 

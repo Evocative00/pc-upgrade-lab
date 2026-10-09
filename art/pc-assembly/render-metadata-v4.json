@@ -1,0 +1,1027 @@
+{
+  "version": 4,
+  "status": "V4 authored glass PC study with detailed motherboard/single tower; not manufacturer CAD or verified hardware",
+  "blender": "4.5.14 LTS",
+  "engine": "CYCLES",
+  "device": "OPTIX",
+  "saved_blend_samples": 128,
+  "saved_blend_resolution": [
+    2560,
+    1920
+  ],
+  "denoising": true,
+  "color_management": "AgX",
+  "compositor": {
+    "type": "FOG_GLOW",
+    "quality": "HIGH",
+    "socket_settings": {
+      "Threshold": 1.6,
+      "Strength": 0.18,
+      "Size": 0.3,
+      "Clamp": false
+    }
+  },
+  "art_direction": {
+    "palette": "Black/silver with one restrained ice-blue hue",
+    "GPU": "Original three-fan cast-metal styling inspired by ROG Astral RTX5080",
+    "case": "Original front/side glass styling inspired by O11D EVO RGB",
+    "motherboard": "Functional zones, split sockets and stepped VRM/IO/chipset shielding",
+    "cooler": "Original single tower with 49 notched/perforated fins and seven heatpipes",
+    "animation": "V3 rig pivots and staged keyframe paths retained"
+  },
+  "rigs": {
+    "glass": {
+      "object": "RIG_GLASS",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        -1.17,
+        0.0,
+        2.51
+      ],
+      "exploded_displacement": [
+        -1.649999933242798,
+        3.4000000953674316,
+        0.04999994277954123
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "extraction_frames": [
+        1,
+        20
+      ]
+    },
+    "motherboard": {
+      "object": "RIG_MOTHERBOARD",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.77,
+        0.05,
+        2.91
+      ],
+      "exploded_displacement": [
+        -1.7000000667572022,
+        0.25000001192092897,
+        0.25000008583068833
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "extraction_frames": [
+        99,
+        108
+      ]
+    },
+    "cpu": {
+      "object": "RIG_CPU",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.606,
+        0.4,
+        3.53
+      ],
+      "exploded_displacement": [
+        -3.2060001430511473,
+        0.3000000476837158,
+        0.2699999523162844
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.18000000715255737,
+        0.0
+      ],
+      "extraction_frames": [
+        76,
+        89
+      ]
+    },
+    "cpu_cooler": {
+      "object": "RIG_CPU_COOLER",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        -0.11,
+        0.4,
+        3.56
+      ],
+      "exploded_displacement": [
+        -2.5399998569488527,
+        0.8000000476837158,
+        1.4200000190734863
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "extraction_frames": [
+        54,
+        74
+      ]
+    },
+    "cpu_cooler_fan": {
+      "object": "RIG_CPU_COOLER_FAN",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        -0.635,
+        0.4,
+        3.56
+      ],
+      "exploded_displacement": [
+        -2.5999998950958254,
+        0.9500000238418579,
+        1.4000000381469726
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.10000000149011612
+      ],
+      "extraction_frames": [
+        43,
+        62
+      ]
+    },
+    "ram_1": {
+      "object": "RIG_RAM_1",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.48,
+        -0.93,
+        3.5
+      ],
+      "exploded_displacement": [
+        -2.4000000762939453,
+        -0.4000000429153442,
+        0.8000001907348633
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.11999999731779099
+      ],
+      "extraction_frames": [
+        77,
+        91
+      ]
+    },
+    "ram_2": {
+      "object": "RIG_RAM_2",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.48,
+        -1.39,
+        3.5
+      ],
+      "exploded_displacement": [
+        -2.9500000286102295,
+        -0.6999999141693116,
+        0.38000011444091797
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.2800000011920929
+      ],
+      "extraction_frames": [
+        80,
+        94
+      ]
+    },
+    "storage": {
+      "object": "RIG_STORAGE",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.66,
+        0.7,
+        2.48
+      ],
+      "exploded_displacement": [
+        -2.91,
+        -0.15000004768371578,
+        0.52
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.11999999731779099
+      ],
+      "extraction_frames": [
+        86,
+        97
+      ]
+    },
+    "storage_heatsink": {
+      "object": "RIG_STORAGE_HEATSINK",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.55,
+        0.7,
+        2.48
+      ],
+      "exploded_displacement": [
+        -3.8,
+        -0.10000003576278682,
+        0.5399999809265137
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.14000000059604645
+      ],
+      "extraction_frames": [
+        73,
+        88
+      ]
+    },
+    "gpu_pcb": {
+      "object": "RIG_GPU_PCB",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.11,
+        0.05,
+        1.89
+      ],
+      "exploded_displacement": [
+        -2.3100000476837157,
+        -0.850000011920929,
+        0.20999990463256846
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        1.350000023841858,
+        0.0
+      ],
+      "extraction_frames": [
+        39,
+        55
+      ]
+    },
+    "gpu_backplate": {
+      "object": "RIG_GPU_BACKPLATE",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.11,
+        -0.05,
+        2.015
+      ],
+      "exploded_displacement": [
+        -1.5099999761581422,
+        0.2500000029802322,
+        0.7349999999999999
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        1.100000023841858,
+        0.0
+      ],
+      "extraction_frames": [
+        39,
+        55
+      ]
+    },
+    "gpu_heatsink": {
+      "object": "RIG_GPU_HEATSINK",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.11,
+        -0.05,
+        1.7
+      ],
+      "exploded_displacement": [
+        -3.2600000953674315,
+        -0.7,
+        -0.44999999999999996
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.3799999952316284,
+        0.0
+      ],
+      "extraction_frames": [
+        39,
+        55
+      ]
+    },
+    "gpu_shroud": {
+      "object": "RIG_GPU_SHROUD",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.11,
+        -0.05,
+        1.46
+      ],
+      "exploded_displacement": [
+        -3.86,
+        -2.150000047683716,
+        0.14000002384185795
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        1.3799999952316284,
+        0.0
+      ],
+      "extraction_frames": [
+        39,
+        55
+      ]
+    },
+    "gpu_fans": {
+      "object": "RIG_GPU_FANS",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.11,
+        -0.05,
+        1.46
+      ],
+      "exploded_displacement": [
+        -4.11,
+        -2.150000047683716,
+        0.14000002384185795
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        1.3799999952316284,
+        0.0
+      ],
+      "extraction_frames": [
+        39,
+        55
+      ]
+    },
+    "psu": {
+      "object": "RIG_PSU",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.02,
+        0.9,
+        0.69
+      ],
+      "exploded_displacement": [
+        -2.150000114440918,
+        -1.1000000476837157,
+        -0.10000002622604365
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "extraction_frames": [
+        77,
+        94
+      ]
+    },
+    "cable_eps": {
+      "object": "RIG_CABLE_EPS",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.51,
+        1.14,
+        4.3
+      ],
+      "exploded_displacement": [
+        -3.7000000572204588,
+        1.6000000095367433,
+        0.5500003814697267
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "extraction_frames": [
+        22,
+        37
+      ]
+    },
+    "cable_atx": {
+      "object": "RIG_CABLE_ATX",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.51,
+        -1.5,
+        3.18
+      ],
+      "exploded_displacement": [
+        -3.9500000572204588,
+        2.4000000953674316,
+        0.250000066757202
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "extraction_frames": [
+        24,
+        40
+      ]
+    },
+    "cable_gpu": {
+      "object": "RIG_CABLE_GPU",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.16,
+        -1.12,
+        1.9
+      ],
+      "exploded_displacement": [
+        -3.6500000095367433,
+        1.7000000429153443,
+        0.6499999523162843
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "extraction_frames": [
+        22,
+        38
+      ]
+    },
+    "front_panel": {
+      "object": "RIG_FRONT_PANEL",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.15,
+        -2.18,
+        2.5
+      ],
+      "exploded_displacement": [
+        0.85,
+        -1.750000066757202,
+        -0.04999995231628418
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.9200000166893005
+      ],
+      "extraction_frames": [
+        4,
+        25
+      ]
+    },
+    "case_front_fans": {
+      "object": "RIG_CASE_FRONT_FANS",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.0,
+        -1.92,
+        2.9
+      ],
+      "exploded_displacement": [
+        0.30000001192092896,
+        -1.2500000762939454,
+        0.05000004768371591
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "extraction_frames": [
+        28,
+        45
+      ]
+    },
+    "case_rear_fan": {
+      "object": "RIG_CASE_REAR_FAN",
+      "parent": "PC_ASSEMBLY_ROOT",
+      "rest_location": [
+        0.16,
+        1.97,
+        3.7
+      ],
+      "exploded_displacement": [
+        -1.4500000810623168,
+        1.2000000762939453,
+        -0.09999985694885272
+      ],
+      "exploded_rotation_radians": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "extraction_frames": [
+        30,
+        48
+      ]
+    }
+  },
+  "independently_animated_rig_count": 21,
+  "object_count": 2301,
+  "frame1_matches_frame240": true,
+  "camera_validation": {
+    "frames_checked": 240,
+    "includes_curves": true,
+    "method": "Conservative per-assembly bounds",
+    "normalized_bounds": [
+      0.11425547301769257,
+      0.8948706984519958,
+      0.08112061768770218,
+      0.8197245597839355
+    ],
+    "camera_fixed": true,
+    "intersection_test_performed": false
+  },
+  "rendered_stills": [
+    {
+      "frame": 1,
+      "path": "assembled-v4.png",
+      "device": "OPTIX",
+      "samples": 128,
+      "resolution": [
+        2560,
+        1920
+      ]
+    },
+    {
+      "frame": 120,
+      "path": "exploded-v4.png",
+      "device": "OPTIX",
+      "samples": 128,
+      "resolution": [
+        2560,
+        1920
+      ]
+    }
+  ],
+  "preview_renders": [
+    {
+      "frame": 1,
+      "path": "preview-frames-v4/frame-0001.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 7,
+      "path": "preview-frames-v4/frame-0007.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 13,
+      "path": "preview-frames-v4/frame-0013.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 19,
+      "path": "preview-frames-v4/frame-0019.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 25,
+      "path": "preview-frames-v4/frame-0025.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 31,
+      "path": "preview-frames-v4/frame-0031.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 37,
+      "path": "preview-frames-v4/frame-0037.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 43,
+      "path": "preview-frames-v4/frame-0043.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 49,
+      "path": "preview-frames-v4/frame-0049.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 55,
+      "path": "preview-frames-v4/frame-0055.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 61,
+      "path": "preview-frames-v4/frame-0061.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 67,
+      "path": "preview-frames-v4/frame-0067.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 73,
+      "path": "preview-frames-v4/frame-0073.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 79,
+      "path": "preview-frames-v4/frame-0079.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 85,
+      "path": "preview-frames-v4/frame-0085.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 91,
+      "path": "preview-frames-v4/frame-0091.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 97,
+      "path": "preview-frames-v4/frame-0097.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 103,
+      "path": "preview-frames-v4/frame-0103.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 109,
+      "path": "preview-frames-v4/frame-0109.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 115,
+      "path": "preview-frames-v4/frame-0115.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 120,
+      "path": "preview-frames-v4/frame-0120.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 121,
+      "path": "preview-frames-v4/frame-0121.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 127,
+      "path": "preview-frames-v4/frame-0127.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 133,
+      "path": "preview-frames-v4/frame-0133.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 139,
+      "path": "preview-frames-v4/frame-0139.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 145,
+      "path": "preview-frames-v4/frame-0145.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 151,
+      "path": "preview-frames-v4/frame-0151.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 157,
+      "path": "preview-frames-v4/frame-0157.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 163,
+      "path": "preview-frames-v4/frame-0163.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 169,
+      "path": "preview-frames-v4/frame-0169.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 175,
+      "path": "preview-frames-v4/frame-0175.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 181,
+      "path": "preview-frames-v4/frame-0181.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 187,
+      "path": "preview-frames-v4/frame-0187.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 193,
+      "path": "preview-frames-v4/frame-0193.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 199,
+      "path": "preview-frames-v4/frame-0199.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 205,
+      "path": "preview-frames-v4/frame-0205.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 211,
+      "path": "preview-frames-v4/frame-0211.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 217,
+      "path": "preview-frames-v4/frame-0217.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 223,
+      "path": "preview-frames-v4/frame-0223.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 229,
+      "path": "preview-frames-v4/frame-0229.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 235,
+      "path": "preview-frames-v4/frame-0235.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    },
+    {
+      "frame": 240,
+      "path": "preview-frames-v4/frame-0240.png",
+      "device": "OPTIX",
+      "samples": 32,
+      "resolution": [
+        800,
+        600
+      ]
+    }
+  ],
+  "animation_frames": [
+    1,
+    240
+  ],
+  "detail_renders": [
+    {
+      "frame": 120,
+      "path": "motherboard-detail-v4.png",
+      "device": "OPTIX",
+      "samples": 128,
+      "resolution": [
+        1600,
+        1200
+      ],
+      "isolated_rigs": [
+        "motherboard"
+      ],
+      "actual_3D_render": true
+    },
+    {
+      "frame": 120,
+      "path": "cooler-detail-v4.png",
+      "device": "OPTIX",
+      "samples": 128,
+      "resolution": [
+        1600,
+        1200
+      ],
+      "isolated_rigs": [
+        "cpu_cooler",
+        "cpu_cooler_fan"
+      ],
+      "actual_3D_render": true
+    }
+  ],
+  "detail_scene_restored": true,
+  "fin_holes": {
+    "count_per_fin": 7,
+    "fin_count": 49,
+    "geometry": "Opposite-wound filled 2D curve loops"
+  },
+  "limitations": [
+    "Original generic geometry; no brand assets, product CAD, certified dimensions or exact electrical pinout",
+    "Cable sleeves and plugs translate as rigid authored assemblies; no flexible cable simulation",
+    "Staged visual extraction is not a collision or mechanical disassembly validation",
+    "Front intake fans move as one carrier; individual fan geometry remains identifiable",
+    "Manufacturing details are a visual interpretation, not a circuit, thermal or compatibility model",
+    "GPU reference has four fans; this original study retains the approved three-fan structure",
+    "RAM/cooler lighting is original art direction, not a feature claim for referenced products"
+  ]
+}

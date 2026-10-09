@@ -1,0 +1,20 @@
+Social sign-in brand assets
+Official resources reviewed on 2026-10-08.
+
+Google: google-g.png is the unmodified official Google G asset.
+https://developers.google.com/static/identity/images/g-logo.png
+https://developers.google.com/identity/branding-guidelines
+
+Kakao: the speech-bubble path is taken from the official login-button SVG.
+Its geometry and aspect ratio are retained; black follows the design guide.
+https://developers.kakao.com/tool/images/resource/preview/login-complete-ko.svg
+https://developers.kakao.com/docs/ko/kakaologin/design-guide
+
+NAVER: the N path is translated into SVG coordinates from the white 20px
+N mark in the official Illustrator asset; its geometry is unchanged.
+The current button guide specifies background #03A94D and a white mark.
+https://developers.naver.com/inc/devcenter/downloads/bi/NAVER_login_KR.ai
+https://developers.naver.com/docs/login/bi/bi.md
+
+These marks identify their respective sign-in providers. They remain
+the brand assets of Google, Kakao and NAVER, not project-owned logos.
