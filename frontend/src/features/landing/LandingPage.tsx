@@ -16,6 +16,7 @@ export function LandingPage({ auth }: Props) {
         <a href={paths.home()} aria-current="page">홈</a>
         <a href={paths.new()}>PC 구성하기</a>
         <a href={paths.list()}>내 PC</a>
+        <a href={paths.upgrade()}>업그레이드 플랜</a>
         <div className="landing__auth">{auth}</div>
       </nav>
 

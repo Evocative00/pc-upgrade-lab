@@ -19,3 +19,10 @@ test('빈 주소는 랜딩 화면이다', () => {
   assert.deepEqual(parseRoute(''), { name: 'home' })
   assert.deepEqual(parseRoute(paths.home()), { name: 'home' })
 })
+
+test('업그레이드 플랜과 저장된 PC 선택 경로를 해석한다', () => {
+  assert.deepEqual(parseRoute(paths.upgrade()), { name: 'upgrade' })
+  assert.deepEqual(parseRoute(paths.upgradePc(12)), { name: 'upgradePc', id: 12 })
+  assert.deepEqual(parseRoute('#/upgrade/pcs/0'), { name: 'notFound' })
+  assert.deepEqual(parseRoute('#/upgrade/pcs/12/edit'), { name: 'notFound' })
+})

@@ -6,6 +6,7 @@ import { incompatibleByDraft } from '../../builder/compatibility.ts'
 import { useCompatibility } from '../../builder/useCompatibility.ts'
 import { PcScanPanel } from '../../pc-scan/PcScanPanel.tsx'
 import type { ScanResult } from '../../pc-scan/types.ts'
+import { UpgradePlanner } from '../../planner/UpgradePlanner.tsx'
 import { PART_TYPES } from '../partCategories.ts'
 import {
   createManualDraft,
@@ -56,6 +57,7 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
   // state가 다시 렌더링되기 전의 연속 클릭도 같은 요청을 두 번 보내지 않게 막는다.
   const savingRef = useRef(false)
   const [pickTarget, setPickTarget] = useState<PickTarget | null>(null)
+  const [plannerOpen, setPlannerOpen] = useState(false)
   // 구성 화면에서만 CPU·메인보드·RAM 호환성을 검사한다. 불가 판정 부품은 행에 경고를 표시한다.
   const compatibility = useCompatibility(drafts, visual)
   const warnings = compatibility.status === 'done'
@@ -216,6 +218,10 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
     </section>
   )
 
+  if (plannerOpen) {
+    return <UpgradePlanner pcName={name} parts={toPartInputs(drafts)} onBackToPc={() => setPlannerOpen(false)} />
+  }
+
   return (
     <form className="pc-form" onSubmit={handleSubmit} noValidate aria-busy={saving}>
       {/* disabled는 입력·버튼을, inert는 수집기 실행 링크 등 나머지 조작도 잠근다. */}
@@ -264,6 +270,10 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
         ) : partsPanel}
 
         <div className="actions">
+          <button type="button" className="button button--ghost" disabled={toPartInputs(drafts).length === 0}
+            onClick={() => setPlannerOpen(true)}>
+            업그레이드 계획 살펴보기
+          </button>
           <button
             type="button"
             className="button button--ghost"
