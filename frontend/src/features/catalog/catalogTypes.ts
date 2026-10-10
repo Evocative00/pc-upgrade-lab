@@ -7,6 +7,16 @@ export type CurrentPrice = {
   observedAt: string
 }
 
+export type CatalogPriceStatus = {
+  origin: 'LOCAL' | 'SHARED'
+  lookupStatus: 'OK' | 'NO_PRICE' | 'NOT_IN_SCOPE' | 'UNKNOWN_PRODUCT' | 'UNAVAILABLE'
+  freshness: 'FRESH' | 'STALE' | 'EXPIRED' | 'NO_PRICE' | null
+  catalogVersion: string | null
+  checkedAt: string | null
+  lastSuccessAt: string | null
+  includedInTotal: boolean
+}
+
 export type CatalogProduct = {
   id: string
   type: PartType
@@ -20,6 +30,7 @@ export type CatalogProduct = {
   verificationStatus: 'UNVERIFIED' | 'PARTIAL' | 'CORE_VERIFIED'
   active: boolean
   currentPrice: CurrentPrice | null
+  priceStatus?: CatalogPriceStatus | null
   referencePrice: {
     amountKrw: number | null
     status: 'UNCONFIRMED' | 'INSUFFICIENT_HISTORY' | 'CONFIRMED'

@@ -167,11 +167,11 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
                   <span><span className="muted">{product.manufacturer}</span> {product.modelName}</span>
                   <CatalogProductIdentity product={product} />
                   <span className="catalog-picker__meta muted">
-                    {VERIFICATION_LABEL[product.verificationStatus]} · {formatCurrentPrice(product.currentPrice)}
+                    {VERIFICATION_LABEL[product.verificationStatus]} · {formatCurrentPrice(product.currentPrice, product.priceStatus)}
                     {product.currentPrice && (type === 'RAM' ? ' / 판매 묶음' : ' / 1개')} · 상세 보기
                   </span>
                 </button>
-                <CurrentPriceSource price={product.currentPrice} />
+                <CurrentPriceSource price={product.currentPrice} status={product.priceStatus} />
               </li>
             ))}
           </ul>

@@ -1,6 +1,28 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import test from 'node:test'
-import { catalogIdentityDescription, catalogIdentityLabel, catalogRoleLabel, formatCatalogPrice, formatCurrentPrice, formatPriceObservedAt, ramKitLabel, specificationRows } from '../src/features/catalog/catalogPresentation.ts'
+import { renderToStaticMarkup } from 'react-dom/server'
+import * as jsxRuntime from 'react/jsx-runtime'
+import ts from 'typescript'
+import * as presentation from '../src/features/catalog/catalogPresentation.ts'
+import { catalogIdentityDescription, catalogIdentityLabel, catalogPriceStatusLabel, catalogRoleLabel, formatCatalogPrice, formatCurrentPrice, formatPriceObservedAt, ramKitLabel, specificationRows } from '../src/features/catalog/catalogPresentation.ts'
+import type { CatalogPriceStatus, CurrentPrice } from '../src/features/catalog/catalogTypes.ts'
+
+const price: CurrentPrice = { amountKrw: 123456, sourceName: 'DANAWA', sourceUrl: 'https://shop.example/p/1', observedAt: '2026-10-06T01:00:00Z' }
+const sharedStatus = (overrides: Partial<CatalogPriceStatus> = {}): CatalogPriceStatus => ({
+  origin: 'SHARED', lookupStatus: 'OK', freshness: 'FRESH', catalogVersion: 'pilot-2026-10-10-v1',
+  checkedAt: '2026-10-10T12:00:00Z', lastSuccessAt: '2026-10-10T11:00:00Z', includedInTotal: true, ...overrides,
+})
+
+function renderPriceSource(currentPrice: CurrentPrice | null, status: CatalogPriceStatus | null) {
+  const code = ts.transpileModule(readFileSync(new URL('../src/features/catalog/CurrentPriceSource.tsx', import.meta.url), 'utf8'), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX },
+  }).outputText
+  const module = { exports: {} as { CurrentPriceSource?: (props: { price: CurrentPrice | null; status: CatalogPriceStatus | null }) => ReturnType<typeof jsxRuntime.jsx> } }
+  const require = (name: string) => name === 'react/jsx-runtime' ? jsxRuntime : presentation
+  new Function('require', 'exports', 'module', code)(require, module.exports, module)
+  return renderToStaticMarkup(module.exports.CurrentPriceSource!({ price: currentPrice, status }))
+}
 
 test('설치 모델 참고·판매 키트·정확 상품 자료·미분류를 별도로 표시한다', () => {
   assert.equal(catalogIdentityLabel('MODEL_REFERENCE'), '설치 모델 참고')
@@ -52,6 +74,53 @@ test('현재 상품가는 원 단위로 표시하고 없는 가격은 미확인�
   assert.equal(formatCurrentPrice(null), '현재 상품가 미확인')
   assert.equal(formatCurrentPrice({ amountKrw: 123456, sourceName: '판매처', sourceUrl: 'https://shop.example/p/1',
     observedAt: '2026-10-06T01:00:00Z' }), '123,456원')
+})
+
+test('중앙 최근 관측·오래된 관측·만료와 로컬 범위 밖 상태를 별도로 표시한다', () => {
+  assert.match(catalogPriceStatusLabel(sharedStatus()), /중앙 가격 · 최근 관측/)
+  assert.match(catalogPriceStatusLabel(sharedStatus({ freshness: 'STALE' })), /오래된 관측 · 구매 전 확인/)
+  const expired = sharedStatus({ freshness: 'EXPIRED', includedInTotal: false })
+  assert.match(catalogPriceStatusLabel(expired), /관측 만료 · 합계 제외/)
+  assert.equal(formatCurrentPrice(price, expired), '과거 관측 123,456원 (합계 제외)')
+  assert.equal(formatCurrentPrice(price, sharedStatus({ freshness: 'STALE' })), '123,456원')
+  assert.equal(catalogPriceStatusLabel(null), '로컬 가격')
+  assert.match(catalogPriceStatusLabel(sharedStatus({ origin: 'LOCAL', lookupStatus: 'NOT_IN_SCOPE',
+    freshness: null, catalogVersion: null, checkedAt: null, lastSuccessAt: null })), /로컬 가격 · 중앙 대상 범위 밖/)
+})
+
+test('가격 미확인·중앙 미등록·연결 실패를 같은 빈 가격으로 숨기지 않는다', () => {
+  const noPrice = sharedStatus({ lookupStatus: 'NO_PRICE', freshness: 'NO_PRICE', includedInTotal: false })
+  const unknown = { ...noPrice, lookupStatus: 'UNKNOWN_PRODUCT' as const }
+  const unavailable = sharedStatus({ lookupStatus: 'UNAVAILABLE', includedInTotal: false })
+  assert.equal(formatCurrentPrice(null, noPrice), '현재 상품가 미확인')
+  assert.equal(formatCurrentPrice(null, unknown), '중앙 카탈로그 미등록')
+  assert.equal(formatCurrentPrice(null, unavailable), '중앙 가격 연결 실패 · 확인한 가격 없음')
+  assert.equal(formatCurrentPrice(price, unavailable), '마지막 확인 가격 123,456원 (합계 제외)')
+  for (const status of [noPrice, unknown, unavailable]) assert.ok(!formatCurrentPrice(null, status).includes('0원'))
+})
+
+test('중앙 연결 실패 시 마지막 가격의 원관측 시각·출처와 마지막 성공 조회를 함께 표시한다', () => {
+  const status = sharedStatus({ lookupStatus: 'UNAVAILABLE', includedInTotal: false })
+  const html = renderPriceSource(price, status)
+  assert.match(html, /중앙 가격 · 연결 실패 · 합계 제외/)
+  assert.match(html, /href="https:\/\/shop.example\/p\/1"/)
+  assert.match(html, /datetime="2026-10-06T01:00:00Z"/i)
+  assert.match(html, /마지막 성공 조회/)
+  assert.match(html, /datetime="2026-10-10T11:00:00Z"/i)
+  assert.match(html, /한국 시간/)
+  const empty = renderPriceSource(null, sharedStatus({ lookupStatus: 'UNAVAILABLE', freshness: null,
+    lastSuccessAt: null, includedInTotal: false }))
+  assert.match(empty, /연결 실패/)
+  assert.ok(!empty.includes('마지막 성공 조회'))
+  assert.ok(!empty.includes('0원'))
+})
+
+test('가격 없는 중앙 미확인·미등록 상태도 출처 컴포넌트에 표시한다', () => {
+  for (const lookupStatus of ['NO_PRICE', 'UNKNOWN_PRODUCT'] as const) {
+    const html = renderPriceSource(null, sharedStatus({ lookupStatus, freshness: 'NO_PRICE', includedInTotal: false }))
+    assert.match(html, lookupStatus === 'NO_PRICE' ? /현재 상품가 미확인/ : /카탈로그 미등록/)
+    assert.match(html, /datetime="2026-10-10T12:00:00Z"/i)
+  }
 })
 
 test('가격 확인 시각은 실행 환경의 시간대와 관계없이 한국 시간으로 표시한다', () => {

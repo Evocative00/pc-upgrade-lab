@@ -59,6 +59,36 @@ function isCurrentPrice(value: unknown): boolean {
     isPriceTimestamp(value.observedAt)
 }
 
+function isUtcPriceTimestamp(value: unknown): value is string {
+  return typeof value === 'string' && value.endsWith('Z') && isPriceTimestamp(value) && Date.parse(value) >= 0
+}
+
+function isPriceStatus(value: unknown, currentPrice: unknown): boolean {
+  if (value === undefined || value === null) return true
+  if (!isObject(value) || typeof value.includedInTotal !== 'boolean') return false
+  const hasPrice = currentPrice !== null && currentPrice !== undefined
+  if (value.origin === 'LOCAL') {
+    return value.lookupStatus === 'NOT_IN_SCOPE' && value.freshness === null && value.catalogVersion === null &&
+      value.checkedAt === null && value.lastSuccessAt === null && value.includedInTotal === hasPrice
+  }
+  if (value.origin !== 'SHARED' || !isText(value.catalogVersion, 128) || !isUtcPriceTimestamp(value.checkedAt) ||
+    !(value.lastSuccessAt === null || isUtcPriceTimestamp(value.lastSuccessAt))) return false
+  switch (value.lookupStatus) {
+    case 'OK':
+      return hasPrice && value.lastSuccessAt !== null && ['FRESH', 'STALE', 'EXPIRED'].includes(String(value.freshness)) &&
+        value.includedInTotal === (value.freshness !== 'EXPIRED')
+    case 'NO_PRICE':
+    case 'UNKNOWN_PRODUCT':
+      return !hasPrice && value.freshness === 'NO_PRICE' && value.lastSuccessAt !== null && !value.includedInTotal
+    case 'UNAVAILABLE':
+      if (value.includedInTotal) return false
+      return hasPrice
+        ? value.lastSuccessAt !== null && ['FRESH', 'STALE', 'EXPIRED'].includes(String(value.freshness))
+        : value.lastSuccessAt === null ? value.freshness === null : value.freshness === 'NO_PRICE'
+    default: return false
+  }
+}
+
 function isProduct(value: unknown): value is CatalogProduct {
   if (!isObject(value) || !isObject(value.referencePrice)) return false
   const price = value.referencePrice
@@ -69,7 +99,7 @@ function isProduct(value: unknown): value is CatalogProduct {
     (value.role === undefined || ['UNASSIGNED', 'INSTALLED_PC_REFERENCE', 'PURCHASE_CANDIDATE', 'BOTH'].includes(String(value.role))) &&
     isText(value.manufacturer, 100) && isText(value.modelName, 255) && nullableText(value.partNumber) &&
     ['UNVERIFIED', 'PARTIAL', 'CORE_VERIFIED'].includes(String(value.verificationStatus)) &&
-    typeof value.active === 'boolean' && isCurrentPrice(value.currentPrice) &&
+    typeof value.active === 'boolean' && isCurrentPrice(value.currentPrice) && isPriceStatus(value.priceStatus, value.currentPrice) &&
     isText(value.createdAt) && isText(value.updatedAt) &&
     isText(price.updatedAt) &&
     ['UNCONFIRMED', 'INSUFFICIENT_HISTORY', 'CONFIRMED'].includes(String(price.status)) &&

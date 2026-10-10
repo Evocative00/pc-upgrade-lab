@@ -36,9 +36,9 @@ export function CatalogProductDetail({ detail, onSelect, onRefresh, onSelectMode
         <p className="muted">{product.manufacturer} · {VERIFICATION_LABEL[product.verificationStatus]}{!product.active && ' · 검토용'}</p>
         <h3 id={headingId}>{product.modelName}</h3>
         <p className="muted">부품번호: {product.partNumber ?? '미확인'}</p>
-        <p>현재 상품가: {formatCurrentPrice(product.currentPrice)}{product.currentPrice &&
+        <p>상품가: {formatCurrentPrice(product.currentPrice, product.priceStatus)}{product.currentPrice &&
           (product.type === 'RAM' ? ' / 판매 묶음' : ' / 1개')}</p>
-        <CurrentPriceSource price={product.currentPrice} />
+        <CurrentPriceSource price={product.currentPrice} status={product.priceStatus} />
         <button type="button" className="button button--ghost" onClick={onRefresh}>가격·제원 새로고침</button>
       </div>
 

@@ -43,6 +43,8 @@ IntelliJ에서 프로젝트를 열고 오른쪽 Gradle 창에서 다시 로드�
 
 **Git pull로 팀원의 MySQL 데이터나 개인 실행 설정이 복사되지는 않는다.** 각자의 `application-local.properties`, IntelliJ 환경변수와 DB는 별도로 준비한다. 카탈로그 제품이 보이는데 상품가만 없으면 아래 **2.2 상품가 가져오기**를 확인한다. 소셜 로그인 버튼 준비는 **2.1**을 따른다.
 
+2026-10-10 첫 14종 중앙 가격 공유 코드는 **기본으로 꺼져 있어 기존 backend 실행 구성을 바꿀 필요가 없다.** 중앙 조회를 검수할 때만 별도 `sharedCatalogPrices` 제공 서버와 `CATALOG_SHARED_PRICES_ENABLED=true`, `CATALOG_SHARED_PRICES_BASE_URL=http://127.0.0.1:8081` 설정을 사용한다. [실행 안내](catalog-shared-prices-2026-10-10.md)에 순서와 장애 확인 방법을 정리했다. 실제 중앙 배포·자동 가격 수집은 별도 단계다.
+
 ## 2. DB와 서버
 
 JPA 엔티티는 `backend/src/main/java/com/pcupgradelab/pc/`, SQL은 `backend/src/main/resources/db/migration/V1__create_pc_configuration.sql`에 있다.

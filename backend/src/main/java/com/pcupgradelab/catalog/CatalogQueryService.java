@@ -2,6 +2,8 @@ package com.pcupgradelab.catalog;
 
 import com.pcupgradelab.common.ApiException;
 import com.pcupgradelab.catalog.price.CatalogCurrentPriceService;
+import com.pcupgradelab.catalog.shared.SharedPriceAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.pcupgradelab.pc.PartType;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -21,13 +23,22 @@ public class CatalogQueryService {
     private final CatalogReferencePriceRepository prices;
     private final CatalogEntryService entries;
     private final CatalogCurrentPriceService currentPrices;
+    private final SharedPriceAdapter sharedPrices;
 
     public CatalogQueryService(CatalogProductRepository products, CatalogReferencePriceRepository prices,
                                CatalogEntryService entries, CatalogCurrentPriceService currentPrices) {
+        this(products, prices, entries, currentPrices, SharedPriceAdapter.disabled());
+    }
+
+    @Autowired
+    public CatalogQueryService(CatalogProductRepository products, CatalogReferencePriceRepository prices,
+                               CatalogEntryService entries, CatalogCurrentPriceService currentPrices,
+                               SharedPriceAdapter sharedPrices) {
         this.products = products;
         this.prices = prices;
         this.entries = entries;
         this.currentPrices = currentPrices;
+        this.sharedPrices = sharedPrices;
     }
 
     /** type 생략 = 전체 종류, q 생략/공백 = 해당 종류 전체. 검색어는 대소문자를 구분하지 않는다. */
@@ -59,7 +70,7 @@ public class CatalogQueryService {
             }
             return CatalogProductView.from(product, price, currentPricesById.get(product.getId()));
         }).toList();
-        return new CatalogDtos.PageResponse(items, result.getNumber(), result.getSize(),
+        return new CatalogDtos.PageResponse(sharedPrices.enrich(items), result.getNumber(), result.getSize(),
                 result.getTotalElements(), result.getTotalPages(), CatalogDtos.ATTRIBUTIONS);
     }
 

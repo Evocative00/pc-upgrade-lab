@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import test from 'node:test'
 import { CatalogApiError, createHttpCatalogClient } from '../src/features/catalog/catalogClient.ts'
-import type { CatalogDetail, CatalogPage, CatalogProduct, CatalogSpecification } from '../src/features/catalog/catalogTypes.ts'
+import type { CatalogDetail, CatalogPage, CatalogPriceStatus, CatalogProduct, CatalogSpecification } from '../src/features/catalog/catalogTypes.ts'
 
 const attributions = [{ name: 'BuildCores OpenDB', notice: 'Contains data from BuildCores OpenDB.',
   url: 'https://github.com/buildcores/buildcores-open-db', license: 'ODC-By-1.0',
@@ -29,6 +29,10 @@ function page(items: CatalogProduct[], overrides: Partial<CatalogPage> = {}): Ca
 }
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } })
 const hasCode = (code: string) => (error: unknown) => error instanceof CatalogApiError && error.code === code
+const sharedPriceStatus = (overrides: Partial<CatalogPriceStatus> = {}): CatalogPriceStatus => ({
+  origin: 'SHARED', lookupStatus: 'OK', freshness: 'FRESH', catalogVersion: 'pilot-2026-10-10-v1',
+  checkedAt: '2026-10-10T12:00:00Z', lastSuccessAt: '2026-10-10T11:00:00Z', includedInTotal: true, ...overrides,
+})
 
 test('목록 규격·페이지·검색어 인코딩을 API와 맞춘다', async () => {
   const calls: { url: string; init: RequestInit }[] = []
@@ -73,6 +77,68 @@ test('현재 상품가의 금액·출처·확인 시각을 목록과 상세에�
   const detail = { ...details.find((item) => item.product.id === product.id)!, product }
   const detailClient = createHttpCatalogClient(async () => json(detail))
   assert.deepEqual((await detailClient.get(product.id)).product.currentPrice, product.currentPrice)
+})
+
+test('중앙 신선도·미확인·미등록·장애 캐시와 범위 밖 로컬 가격을 목록·상세에서 구분한다', async () => {
+  const price = { amountKrw: 123456, sourceName: 'DANAWA', sourceUrl: 'https://shop.example/p/1', observedAt: timestamp }
+  const combinations = [
+    { currentPrice: price, priceStatus: sharedPriceStatus() },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ lastSuccessAt: '2026-10-10T12:00:00.100Z' }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ freshness: 'STALE' }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ freshness: 'EXPIRED', includedInTotal: false }) },
+    ...(['NO_PRICE', 'UNKNOWN_PRODUCT'] as const).map((lookupStatus) => ({ currentPrice: null,
+      priceStatus: sharedPriceStatus({ lookupStatus, freshness: 'NO_PRICE', includedInTotal: false }) })),
+    ...(['FRESH', 'STALE', 'EXPIRED'] as const).map((freshness) => ({ currentPrice: price,
+      priceStatus: sharedPriceStatus({ lookupStatus: 'UNAVAILABLE', freshness, includedInTotal: false }) })),
+    { currentPrice: null, priceStatus: sharedPriceStatus({ lookupStatus: 'UNAVAILABLE', freshness: null,
+      lastSuccessAt: null, includedInTotal: false }) },
+    { currentPrice: null, priceStatus: sharedPriceStatus({ lookupStatus: 'UNAVAILABLE', freshness: 'NO_PRICE', includedInTotal: false }) },
+    ...[price, null].map((currentPrice) => ({ currentPrice, priceStatus: sharedPriceStatus({ origin: 'LOCAL',
+      lookupStatus: 'NOT_IN_SCOPE', freshness: null, catalogVersion: null, checkedAt: null, lastSuccessAt: null,
+      includedInTotal: currentPrice !== null }) })),
+    { currentPrice: price, priceStatus: null },
+  ]
+  for (const combination of combinations) {
+    const product = { ...gpu[0], ...combination }
+    const client = createHttpCatalogClient(async () => json(page([product])))
+    assert.deepEqual((await client.search('GPU', '')).items[0].priceStatus, combination.priceStatus)
+    const expected = { ...details.find((item) => item.product.id === product.id)!, product }
+    const detailClient = createHttpCatalogClient(async () => json(expected))
+    assert.deepEqual((await detailClient.get(product.id)).product, product)
+  }
+})
+
+test('중앙 상태와 금액·신선도·합계 정책·버전·UTC 시각이 불일치하면 응답을 거절한다', async () => {
+  const price = { amountKrw: 123456, sourceName: 'DANAWA', sourceUrl: 'https://shop.example/p/1', observedAt: timestamp }
+  const invalid = [
+    { currentPrice: price, priceStatus: sharedPriceStatus({ lookupStatus: 'NO_PRICE', freshness: 'NO_PRICE', includedInTotal: false }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ lookupStatus: 'UNKNOWN_PRODUCT', freshness: 'NO_PRICE', includedInTotal: false }) },
+    { currentPrice: null, priceStatus: sharedPriceStatus() },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ freshness: 'EXPIRED' }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ includedInTotal: false }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ lookupStatus: 'UNAVAILABLE' }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ lookupStatus: 'NOT_IN_SCOPE' }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ catalogVersion: null }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ catalogVersion: '' }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ freshness: null }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ checkedAt: null }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ checkedAt: '2026-10-10T12:00:00+00:00' }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ checkedAt: '2026-02-30T12:00:00Z' }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ lastSuccessAt: null }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ lastSuccessAt: 'not-a-timestamp' }) },
+    { currentPrice: null, priceStatus: sharedPriceStatus({ lookupStatus: 'UNAVAILABLE', freshness: 'NO_PRICE', lastSuccessAt: null, includedInTotal: false }) },
+    { currentPrice: null, priceStatus: sharedPriceStatus({ lookupStatus: 'UNAVAILABLE', freshness: null, includedInTotal: false }) },
+    { currentPrice: price, priceStatus: sharedPriceStatus({ origin: 'LOCAL', lookupStatus: 'NOT_IN_SCOPE' }) },
+    { currentPrice: price, priceStatus: { ...sharedPriceStatus(), lookupStatus: null } },
+    { currentPrice: price, priceStatus: { ...sharedPriceStatus(), includedInTotal: 'true' } },
+  ]
+  for (const combination of invalid) {
+    const product = { ...gpu[0], ...combination }
+    const client = createHttpCatalogClient(async () => json(page([product as CatalogProduct])))
+    await assert.rejects(client.search('GPU', ''), hasCode('INVALID_RESPONSE'))
+    const detailClient = createHttpCatalogClient(async () => json({ ...details.find((item) => item.product.id === product.id)!, product }))
+    await assert.rejects(detailClient.get(product.id), hasCode('INVALID_RESPONSE'))
+  }
 })
 
 test('현재가가 없는 이전 응답은 null로 정규화하고 확정 기준가격을 현재가로 대체하지 않는다', async () => {

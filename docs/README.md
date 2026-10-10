@@ -85,4 +85,7 @@ H2 검사가 실제 MySQL 검사를 대신하지 않으며, 저장 계층 검사
 - [14종 상세 검토와 승인된 수동 적재](catalog-pilot-review-2026-10-10.md): 승인된 로컬 MySQL 반영, 상품 307종·가격 보유 74종, H2 345개·기존 행 보존 감사·재검사 통과. `importPilotCatalog`의 기본 DB 없는 미리보기·`-PcheckPilotDb=true` 사전검사·`-PapplyPilotCatalog=true` 반영, V14/개인 DB 준비와 보류 SKU를 정리했다. 일반 backend의 새 설정은 필요 없으며 pull/서버 시작에서 자동 적재하지 않는다.
 - [국내 신품 상품가](catalog-current-prices.md): 현재가 저장·수집·판매 SKU 검토와 DB 반영 절차.
 - [첫 14종 검색과 PC 연결 검증](catalog-pilot-search-pc-verification-2026-10-10.md): 실제 MySQL 읽기 전용 검색 14종·PN 9종, H2 검색·저장·재조회 39개, 승인한 분류 표시·연결 모델 조회·0건 검색 안내와 프론트 전체 124개 검사.
+- [첫 14종 중앙 가격 공유 구현안](catalog-shared-prices-plan-2026-10-10.md): 사용자 직접 검수 후 다음 단계의 범위·완료 기준. 승인 14종·가격 8종으로 공통 ID 조회·로컬 연결·신선도·장애 표시를 검증하며 실제 배포와 정기 수집은 별도 컨펌한다.
+- [첫 14종 중앙 가격 공유 실행 안내](catalog-shared-prices-2026-10-10.md): 승인된 API·로컬 연결·48시간/7일 정책·장애 표시, DB 없는 제공 서버와 선택 backend 설정. 기본 로컬 실행은 유지하고 실제 중앙 배포·정기 수집은 별도 단계다.
+- [중앙 가격 API 최소비용 배포 추천안](catalog-price-api-deployment-options-2026-10-10.md): 10명 미만 내부 사용 기준 Workers 무료·Cloud Run·Railway·Render·Oracle 비교와 비용 조건, 팀용 토큰·스냅샷 운영 제안. 실제 배포는 별도 컨펌이다.
 - [스캔 결과 예시](examples/scan-result.json): 자동 인식 JSON 형식을 이해하기 위한 개발용 샘플.

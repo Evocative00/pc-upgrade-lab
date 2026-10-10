@@ -145,9 +145,9 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
                     {!draft.catalogProductId
                       ? <span className="muted">{draft.catalogModelId ? '모델 확인 · 상품 미연결' : '카탈로그 미연결'} · 현재 상품가 없음</span>
                       : detail ? <>
-                        <span className="muted">{formatCurrentPrice(detail.product.currentPrice)}
+                        <span className="muted">{formatCurrentPrice(detail.product.currentPrice, detail.product.priceStatus)}
                           {detail.product.currentPrice && (draft.type === 'RAM' ? ' / 판매 묶음' : ' / 1개')}</span>
-                        <CurrentPriceSource price={detail.product.currentPrice} />
+                        <CurrentPriceSource price={detail.product.currentPrice} status={detail.product.priceStatus} />
                       </>
                         : entry?.status === 'error'
                           ? <>
@@ -169,7 +169,7 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
             <span>현재 상품가 합계</span>
             <strong>{total.pricedItems > 0 ? `${total.currentKrw.toLocaleString('ko-KR')}원` : '산정 가능한 가격 없음'}</strong>
             {total.unpriced > 0 && (
-              <span className="muted">현재 상품가 미확인·미연결 {total.unpriced}개 항목은 합계에서 뺐습니다.</span>
+              <span className="muted">가격 미확인·미연결·만료·연결 실패 등으로 {total.unpriced}개 항목은 합계에서 뺐습니다. 각 부품의 가격 상태를 확인해 주세요.</span>
             )}
             {total.quantityNeedsCheck > 0 && (
               <span className="muted">수량·RAM 판매 묶음 확인이 필요한 {total.quantityNeedsCheck}건은 합계에서 뺐습니다.</span>

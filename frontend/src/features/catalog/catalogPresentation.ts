@@ -1,5 +1,5 @@
 import type { PartType } from '../pc-scan/types.ts'
-import type { CatalogProduct, CatalogSpecification, CurrentPrice } from './catalogTypes.ts'
+import type { CatalogPriceStatus, CatalogProduct, CatalogSpecification, CurrentPrice } from './catalogTypes.ts'
 
 export const VERIFICATION_LABEL: Record<CatalogProduct['verificationStatus'], string> = {
   UNVERIFIED: '미검증', PARTIAL: '일부 제원 확인', CORE_VERIFIED: '핵심 제원 확인',
@@ -38,8 +38,45 @@ export function formatCatalogPrice(price: CatalogProduct['referencePrice']): str
   return `${price.amountKrw.toLocaleString('ko-KR', { maximumFractionDigits: 2 })}원`
 }
 
-export function formatCurrentPrice(price: CurrentPrice | null): string {
-  return price ? `${price.amountKrw.toLocaleString('ko-KR')}원` : '현재 상품가 미확인'
+export function formatCurrentPrice(price: CurrentPrice | null, status?: CatalogPriceStatus | null): string {
+  const amount = price ? `${price.amountKrw.toLocaleString('ko-KR')}원` : null
+  if (status?.lookupStatus === 'UNAVAILABLE') {
+    return amount ? `마지막 확인 가격 ${amount} (합계 제외)` : '중앙 가격 연결 실패 · 확인한 가격 없음'
+  }
+  if (status?.lookupStatus === 'UNKNOWN_PRODUCT') return '중앙 카탈로그 미등록'
+  if (status?.freshness === 'EXPIRED') return amount ? `과거 관측 ${amount} (합계 제외)` : '과거 가격 미확인'
+  return amount ?? '현재 상품가 미확인'
+}
+
+export function catalogPriceStatusLabel(status?: CatalogPriceStatus | null): string {
+  if (!status) return '로컬 가격'
+  if (status.origin === 'LOCAL') return '로컬 가격 · 중앙 대상 범위 밖'
+  switch (status.lookupStatus) {
+    case 'UNAVAILABLE': return '중앙 가격 · 연결 실패 · 합계 제외'
+    case 'UNKNOWN_PRODUCT': return '중앙 가격 · 카탈로그 미등록 · 합계 제외'
+    case 'NO_PRICE': return '중앙 가격 · 현재 상품가 미확인'
+    default:
+      switch (status.freshness) {
+        case 'STALE': return '중앙 가격 · 오래된 관측 · 구매 전 확인'
+        case 'EXPIRED': return '중앙 가격 · 관측 만료 · 합계 제외'
+        default: return '중앙 가격 · 최근 관측'
+      }
+  }
+}
+
+// 중앙 서버가 전달한 신선도·합계 정책을 따른다. 브라우저 시계로 관측 나이를 다시 판정하지 않는다.
+export function isCurrentPriceIncluded(product: CatalogProduct): boolean {
+  const price = product.currentPrice
+  if (!price || !Number.isSafeInteger(price.amountKrw) || price.amountKrw <= 0) return false
+  const status = product.priceStatus
+  if (!status) return true
+  if (!status.includedInTotal) return false
+  if (status.origin === 'LOCAL') return status.lookupStatus === 'NOT_IN_SCOPE' && status.freshness === null &&
+    status.catalogVersion === null && status.checkedAt === null && status.lastSuccessAt === null
+  return status.origin === 'SHARED' && status.lookupStatus === 'OK' &&
+    (status.freshness === 'FRESH' || status.freshness === 'STALE') &&
+    typeof status.catalogVersion === 'string' && status.catalogVersion.trim().length > 0 &&
+    typeof status.checkedAt === 'string' && typeof status.lastSuccessAt === 'string'
 }
 
 export function formatPriceObservedAt(observedAt: string): string {

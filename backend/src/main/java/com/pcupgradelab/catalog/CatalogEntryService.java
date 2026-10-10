@@ -2,6 +2,8 @@ package com.pcupgradelab.catalog;
 
 import com.pcupgradelab.catalog.storage.StorageSpec;
 import com.pcupgradelab.catalog.storage.StorageSpecRepository;
+import com.pcupgradelab.catalog.shared.SharedPriceAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,12 +25,23 @@ public class CatalogEntryService {
     private final MonitorSpecRepository monitors;
     private final StorageSpecRepository storage;
     private final CatalogProductSourceRepository sources;
+    private final SharedPriceAdapter sharedPrices;
 
     public CatalogEntryService(CatalogProductService productService, CatalogProductRepository products,
                                CpuSpecRepository cpus, MotherboardSpecRepository motherboards,
                                RamSpecRepository ram, GpuSpecRepository gpus,
                                MonitorSpecRepository monitors, StorageSpecRepository storage,
                                CatalogProductSourceRepository sources) {
+        this(productService, products, cpus, motherboards, ram, gpus, monitors, storage, sources,
+                SharedPriceAdapter.disabled());
+    }
+
+    @Autowired
+    public CatalogEntryService(CatalogProductService productService, CatalogProductRepository products,
+                               CpuSpecRepository cpus, MotherboardSpecRepository motherboards,
+                               RamSpecRepository ram, GpuSpecRepository gpus,
+                               MonitorSpecRepository monitors, StorageSpecRepository storage,
+                               CatalogProductSourceRepository sources, SharedPriceAdapter sharedPrices) {
         this.productService = productService;
         this.products = products;
         this.cpus = cpus;
@@ -38,6 +51,7 @@ public class CatalogEntryService {
         this.monitors = monitors;
         this.storage = storage;
         this.sources = sources;
+        this.sharedPrices = sharedPrices;
     }
 
     @Transactional
@@ -79,14 +93,14 @@ public class CatalogEntryService {
             // 마지막 출처 INSERT가 실패해도 앞서 실행한 제품·가격·제원 INSERT가 모두 롤백된다.
             sources.saveAndFlush(new CatalogProductSource(product, source));
         }
-        return loadEntry(productView);
+        return loadEntry(productView, false);
     }
 
     public Optional<CatalogEntryView> findById(String id) {
-        return productService.findById(id).map(this::loadEntry);
+        return productService.findById(id).map(product -> loadEntry(product, true));
     }
 
-    private CatalogEntryView loadEntry(CatalogProductView product) {
+    private CatalogEntryView loadEntry(CatalogProductView product, boolean sharedLookup) {
         var cpu = cpus.findById(product.id());
         var motherboard = motherboards.findById(product.id());
         var memory = ram.findById(product.id());
@@ -122,6 +136,11 @@ public class CatalogEntryService {
                 .map(CatalogProductSource::toView).toList();
         if (sourceViews.isEmpty()) {
             throw new IllegalStateException("Catalog entry is missing its sources: " + product.id());
+        }
+        if (sharedLookup) {
+            var counts = memory.isPresent() ? java.util.Collections.singletonMap(product.id(),
+                    memory.orElseThrow().toSpecification().moduleCount()) : java.util.Map.<String, Integer>of();
+            product = sharedPrices.enrich(java.util.List.of(product), counts).getFirst();
         }
         return new CatalogEntryView(product, specification, sourceViews);
     }

@@ -69,6 +69,37 @@ tasks.named('processResources') {
         include 'catalog-expansion-preview-2026-10-09.json'
         into 'catalog/expansion'
     }
+    from('../data/catalog-review') {
+        include 'pilot-import-preview-2026-10-10.json', 'pilot-approved-prices-2026-10-10.json',
+                'pilot-apply-approval-2026-10-10.json', 'pilot-selection-2026-10-10.json',
+                'catalog-selection-2026-10-09.json', 'pilot-platform-evidence-2026-10-10.json',
+                'pilot-ram-gpu-evidence-2026-10-10.json', 'pilot-storage-evidence-2026-10-10.json',
+                'pilot-existing-prices-2026-10-10.json', 'pilot-existing-prices-2026-10-10.json.report.json',
+                'pilot-existing-price-assessment-2026-10-10.json', 'pilot-model-price-review-2026-10-10.json',
+                'pilot-storage-price-review-2026-10-10.json'
+        into 'catalog/shared'
+    }
+}
+
+// Independent public snapshot provider: no application profile, private settings, JDBC or Flyway.
+tasks.register('sharedCatalogPrices', JavaExec) {
+    group = 'application'
+    description = 'Serve the approved 14-product/8-price snapshot on loopback (default port 8081).'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.SharedPricePublisher'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+}
+
+tasks.register('verifySharedCatalog', JavaExec) {
+    group = 'verification'
+    description = 'Verify pinned shared public inputs without a database or web server.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.SharedPricePublisher'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    args '--check'
 }
 
 // Research preview only: no Spring startup, JDBC, Flyway or catalog apply implementation.

@@ -1,4 +1,5 @@
 import type { CatalogDetail, CatalogModel, CatalogProduct, CatalogSpecification } from '../catalog/catalogTypes.ts'
+import { isCurrentPriceIncluded } from '../catalog/catalogPresentation.ts'
 import type { PartType } from '../pc-scan/types.ts'
 import { createManualDraft, getPartStatus, linkCatalog, linkCatalogModel, withEmptyRows } from '../pc/partDraft.ts'
 import type { PartDraft } from '../pc/types.ts'
@@ -106,8 +107,8 @@ export function priceTotal(lines: PriceLine[]): { currentKrw: number; pricedItem
   }
   for (const { draft, detail } of lines) {
     const price = detail?.product.currentPrice
-    if (!detail || detail.product.type !== draft.type || !price ||
-      !Number.isSafeInteger(price.amountKrw) || price.amountKrw <= 0) {
+    if (!detail || detail.product.type !== draft.type || !price || !isCurrentPriceIncluded(detail.product) ||
+      draft.catalogModelId && !draft.catalogProductId) {
       unpriced += 1
       continue
     }
