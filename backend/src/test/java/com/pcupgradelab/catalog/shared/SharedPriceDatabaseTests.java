@@ -35,7 +35,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /** 독립 H2 두 DB에 같은 승인 상품을 서로 다른 로컬 UUID로 만들고 실제 HTTP 읽기만 비교한다. */
 class SharedPriceDatabaseTests {
     @Test void independentDatabasesUseCanonicalIdsAndNeitherListNorDetailWritesLocalRows() throws Exception {
-        var snapshot = SharedCatalogSnapshot.load();
+        var snapshot = SharedCatalogSnapshot.loadActive();
         var plan = new CatalogPilotImportLoader().load(Path.of("..").toAbsolutePath());
         var cpu = plan.parts().stream().filter(p -> p.product().type() == PartType.CPU
                 && snapshot.products().get(p.proposedCanonicalId()).price() != null).findFirst().orElseThrow();
@@ -90,6 +90,7 @@ class SharedPriceDatabaseTests {
         properties.put("spring.jpa.open-in-view", "false"); properties.put("spring.flyway.enabled", "true");
         properties.put("spring.flyway.locations", "classpath:db/migration");
         properties.put("catalog.shared-prices.enabled", "true"); properties.put("catalog.shared-prices.base-url", origin.toString());
+        properties.put("catalog.shared-prices.api-token", ""); // 개인 팀 토큰을 로컬 테스트 제공기로 보내지 않는다.
         context.getEnvironment().getPropertySources().addFirst(new MapPropertySource("isolated-h2", properties));
         context.registerBean("sharedPriceClock", Clock.class, () -> clock);
         context.register(DatabaseConfiguration.class);

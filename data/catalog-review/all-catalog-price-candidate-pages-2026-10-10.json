@@ -1,0 +1,3535 @@
+{
+  "schemaVersion": 1,
+  "stage": "UNVERIFIED_SALE_SKU_PRICE_CANDIDATES_ONLY",
+  "priceImportApproved": false,
+  "databaseWrites": 0,
+  "deployments": 0,
+  "requested": 150,
+  "rules": "The first search candidate may be a different SKU. All prices remain research only until exact manufacturer PN, domestic sale configuration, revision and RAM module count have been reviewed. A missing price section is not global stock evidence.",
+  "items": [
+    {
+      "localProductId": "1f759563-68ef-4949-ae51-325976997891",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 3 3100",
+      "partNumber": "100-100000284BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "12200864",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12200864",
+        "title": "AMD 라이젠 3 -3세대 3100 (마티스)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:04.440Z",
+      "responseSha256": "52b8a2a8aa826fdc3a590eff1708988a5fee733e02bcd4dfc1aa399241f671ff",
+      "pageTitle": "AMD 라이젠3-3세대 3100 (마티스) (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠3-3세대 3100 (마티스) (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "95174e54-42c2-4b53-95c6-65f4da611e63",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 3 3300X",
+      "partNumber": "100-100000159BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "11236053",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=11236053",
+        "title": "AMD 라이젠 3 -3세대 3300X (마티스)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:05.405Z",
+      "responseSha256": "bbb75386b7c915b7f141c89c85618e4bfc813584dad9fed8f13173868a53b4bb",
+      "pageTitle": "AMD 라이젠3-3세대 3300X (마티스) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠3-3세대 3300X (마티스) (정품)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "7c336963-b4fb-4c39-98cb-80c1cfd00e71",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 3600",
+      "partNumber": "100-100000031BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "8459973",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=8459973",
+        "title": "AMD 라이젠 5 -3세대 3600 (마티스)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:06.435Z",
+      "responseSha256": "7aac71eec92285ae6b6106356e5a91ffdb8924096732fde6219d49f3bb864de5",
+      "pageTitle": "AMD 라이젠5-3세대 3600 (마티스) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠5-3세대 3600 (마티스) (정품)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "a85d7ab1-bf64-4788-9e05-512545974211",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 3600X",
+      "partNumber": "100-100000022BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "8459925",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=8459925",
+        "title": "AMD 라이젠 5 -3세대 3600X (마티스)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:07.570Z",
+      "responseSha256": "3eec598eef17f5c71230ff71db42cec5340817b5d90b90427c7391bda57295b6",
+      "pageTitle": "AMD 라이젠5-3세대 3600X (마티스) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠5-3세대 3600X (마티스) (정품)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "c36e6c2a-703d-4f93-866d-3f2fcb376812",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 4500",
+      "partNumber": "100-100000644BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "17855558",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17855558",
+        "title": "AMD 라이젠 5 -3세대 4500 (르누아르-X)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:08.662Z",
+      "responseSha256": "69391e3c91c2a1d2aa0c5ef2ba9cc359d50ca215551bb44649a6c180fdf921b4",
+      "pageTitle": "AMD 라이젠5-3세대 4500 (르누아르-X) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠5-3세대 4500 (르누아르-X) (정품)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "1ee3137f-6e5e-4dfc-a61f-8a3c8253c7e8",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 4600G",
+      "partNumber": "100-100000147BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "17287790",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17287790",
+        "title": "AMD 라이젠 5 -3세대 4600G (르누아르)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:09.879Z",
+      "responseSha256": "10683f035dfe867ca6d2652f9f9b64e31e6b9c92c6fa2b92f8dee4a6c449d350",
+      "pageTitle": "AMD 라이젠5-3세대 4600G (르누아르) (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠5-3세대 4600G (르누아르) (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "be906e41-7d3d-48ea-8243-2576dc1e45e1",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 5500",
+      "partNumber": "100-100000457BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "106688090",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=106688090",
+        "title": "AMD 라이젠 5 -4세대 5500 (세잔)"
+      },
+      "priceCandidate": {
+        "amountKrw": 170700,
+        "observedAt": "2026-10-10T09:01:10.958Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=106688090",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:10.958Z",
+      "responseSha256": "d973f114cc85d0fae31a22d0682b5772ce3c2db5112798ed4c5b8e514a2b0a1b",
+      "pageTitle": "AMD 라이젠5-4세대 5500 (세잔) (벌크 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠5-4세대 5500 (세잔) (벌크 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "8ad08612-ace7-4811-8ae6-e5d5ed84b59f",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 5600X",
+      "partNumber": "100-100000065BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "12625265",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12625265",
+        "title": "AMD 라이젠 5 -4세대 5600X (버미어)"
+      },
+      "priceCandidate": {
+        "amountKrw": 600000,
+        "observedAt": "2026-10-10T09:01:12.079Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=12625265",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:12.079Z",
+      "responseSha256": "d47283ebab3ccfce68cb9b1a566ed34bf6d4c195642bd68a6c9496a349ff3a6f",
+      "pageTitle": "AMD 라이젠5-4세대 5600X (버미어) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠5-4세대 5600X (버미어) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "a9aa8d06-0a37-469e-88f0-c1e51a8fa046",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 7500F",
+      "partNumber": "100-100000597BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "21694499",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=21694499",
+        "title": "AMD 라이젠 5 -5세대 7500F (라파엘)"
+      },
+      "priceCandidate": {
+        "amountKrw": 171380,
+        "observedAt": "2026-10-10T09:01:13.480Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=21694499",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:13.480Z",
+      "responseSha256": "1dafbceaa09e053b94b8937c715a72a7476cfd30705adf1684fd0ef060748703",
+      "pageTitle": "AMD 라이젠5-5세대 7500F (라파엘) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠5-5세대 7500F (라파엘) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "e3f0c9a5-4511-4468-b94f-adfe324f7463",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 7600",
+      "partNumber": "100-100001015BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18718496",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18718496",
+        "title": "AMD 라이젠 5 -5세대 7600 (라파엘)"
+      },
+      "priceCandidate": {
+        "amountKrw": 213840,
+        "observedAt": "2026-10-10T09:01:14.458Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18718496",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:14.458Z",
+      "responseSha256": "2d825af0c71efd00c2ac8d880aa063eda33e4ab7d762a07385d1ca5272294e97",
+      "pageTitle": "AMD 라이젠5-5세대 7600 (라파엘) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠5-5세대 7600 (라파엘) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "282ae125-fba8-4923-9f68-32ad684ee0a8",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 8600G",
+      "partNumber": "100-100001237BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "60170204",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=60170204",
+        "title": "AMD 라이젠 5 -5세대 8600G (피닉스)"
+      },
+      "priceCandidate": {
+        "amountKrw": 266870,
+        "observedAt": "2026-10-10T09:01:15.531Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=60170204",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:15.531Z",
+      "responseSha256": "f3651306aad06518594cb6257f35cacd96b05aae106702cbdb39473dbf03118d",
+      "pageTitle": "AMD 라이젠5-5세대 8600G (피닉스) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠5-5세대 8600G (피닉스) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "6f59c439-f924-4a9a-9ac5-a1ad9fda7fd3",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 3700X",
+      "partNumber": "100-100000071BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "9421629",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=9421629",
+        "title": "AMD 라이젠 7 -3세대 3700X (마티스)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:16.473Z",
+      "responseSha256": "11bd8dc28ba5bb636acfcfb1170e53c0790ddce4ef37fc985f60b2f395dbef1a",
+      "pageTitle": "AMD 라이젠7-3세대 3700X (마티스) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠7-3세대 3700X (마티스) (멀티팩 정품)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NO_ACTIVE_OFFER",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "15b0f37c-ced1-43d0-a5e1-a6d95b3f26ac",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 3800X",
+      "partNumber": "100-100000025BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "8459781",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+        "title": "AMD 라이젠 7 -3세대 3800X (마티스)"
+      },
+      "priceCandidate": {
+        "amountKrw": 560760,
+        "observedAt": "2026-10-10T09:01:17.553Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:17.553Z",
+      "responseSha256": "120b891e098a357e727bdd93524c0fb55f7ca55bf2662f1b96eedb5d588568c7",
+      "pageTitle": "AMD 라이젠7-3세대 3800X (마티스) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠7-3세대 3800X (마티스) (정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "d2d1f646-c789-4b64-88fa-d0a60b424037",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5700G",
+      "partNumber": "100-100000263BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "14927759",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14927759",
+        "title": "AMD 라이젠 7 -4세대 5700G (세잔)"
+      },
+      "priceCandidate": {
+        "amountKrw": 322990,
+        "observedAt": "2026-10-10T09:01:18.856Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=14927759",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:18.856Z",
+      "responseSha256": "e0379ca3ae19807ab86e1a41d281abb40cb6bd20088a6b0bc006423f2f5e3b5c",
+      "pageTitle": "AMD 라이젠7-4세대 5700G (세잔) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠7-4세대 5700G (세잔) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "4bcea5a6-da9c-4590-9bd1-4c51ba998e84",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5700X",
+      "partNumber": "100-100000926WOF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "16741349",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16741349",
+        "title": "AMD 라이젠 7 -4세대 5700X (버미어)"
+      },
+      "priceCandidate": {
+        "amountKrw": 299880,
+        "observedAt": "2026-10-10T09:01:19.950Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16741349",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:19.950Z",
+      "responseSha256": "06ef717879757e46cf8bf5857fae5b05d52a64ccb4ad39a5a347d2b2ce0d022b",
+      "pageTitle": "AMD 라이젠7-4세대 5700X (버미어) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠7-4세대 5700X (버미어) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "75e48991-3a0b-4363-91fe-aae19d3fb005",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5700X3D",
+      "partNumber": "100-100001503WOF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "47839244",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=47839244",
+        "title": "AMD 라이젠 7 -4세대 5700X3D (버미어)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:21.313Z",
+      "responseSha256": "ad416f7cdaf53ca808126dc26312c8def2a18c61ee92528b4783aeb930820481",
+      "pageTitle": "AMD 라이젠7-4세대 5700X3D (버미어) (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠7-4세대 5700X3D (버미어) (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "47016749-457b-4d17-9dcd-eabdb0f4b6ec",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5800X",
+      "partNumber": "100-100000063WOF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "122711750",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=122711750",
+        "title": "AMD 라이젠 7 -4세대 5800X 3D AM4 10주년 기념 에디션 (버미어)"
+      },
+      "priceCandidate": {
+        "amountKrw": 579890,
+        "observedAt": "2026-10-10T09:01:22.062Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=122711750",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:22.062Z",
+      "responseSha256": "ae71866b2fb621c4748a70ebedae9ddc370df54083d5c5a00ab4dd1f2f357186",
+      "pageTitle": "AMD 라이젠7-4세대 5800X3D AM4 10주년 기념 에디션 (버미어) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠7-4세대 5800X3D AM4 10주년 기념 에디션 (버미어) (정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "317da120-7875-474d-a6f3-b5a90df89dfa",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5800X3D",
+      "partNumber": "100-100000651POF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "122711750",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=122711750",
+        "title": "AMD 라이젠 7 -4세대 5800X 3D AM4 10주년 기념 에디션 (버미어)"
+      },
+      "priceCandidate": {
+        "amountKrw": 579890,
+        "observedAt": "2026-10-10T09:01:23.076Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=122711750",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:23.076Z",
+      "responseSha256": "95652430cf64176c4d187fcfa580f7d86f181947c491582b70ab5d591b30e512",
+      "pageTitle": "AMD 라이젠7-4세대 5800X3D AM4 10주년 기념 에디션 (버미어) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠7-4세대 5800X3D AM4 10주년 기념 에디션 (버미어) (정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "33f12798-9f6d-4461-a2ca-3470be9984c1",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 7700",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18718538",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18718538",
+        "title": "AMD 라이젠 7 -5세대 7700 (라파엘)"
+      },
+      "priceCandidate": {
+        "amountKrw": 346250,
+        "observedAt": "2026-10-10T09:01:24.384Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18718538",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:24.384Z",
+      "responseSha256": "e3f766972d0fe25d99dff2cb8c21327e79ccf962d90960ce6c5c07d324e43bb5",
+      "pageTitle": "AMD 라이젠7-5세대 7700 (라파엘) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠7-5세대 7700 (라파엘) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "56dcacba-cbd1-471a-b31e-b3085d3e9679",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 7700X",
+      "partNumber": "100-100000591WOF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "123234946",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=123234946",
+        "title": "AMD 라이젠 7 -5세대 7700X3D (라파엘)"
+      },
+      "priceCandidate": {
+        "amountKrw": 428890,
+        "observedAt": "2026-10-10T09:01:25.304Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=123234946",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:25.304Z",
+      "responseSha256": "8daaf51ad72601d82f91c515bf821c187ffc93e5349be20c2be98ba8c74ff5c3",
+      "pageTitle": "AMD 라이젠7-5세대 7700X3D (라파엘) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠7-5세대 7700X3D (라파엘) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "79af8590-791b-4491-b287-a971d7e1d892",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 8700G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "58933169",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=58933169",
+        "title": "AMD 라이젠 7 -5세대 8700G (피닉스)"
+      },
+      "priceCandidate": {
+        "amountKrw": 412840,
+        "observedAt": "2026-10-10T09:01:26.748Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=58933169",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:26.748Z",
+      "responseSha256": "cdb770fd2f31a2868dd6efe88e7cc53f248290ce9db45f99b1da03dc98eb4acb",
+      "pageTitle": "AMD 라이젠7-5세대 8700G (피닉스) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠7-5세대 8700G (피닉스) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "aa7386e5-8c8a-480d-9054-c8cd8eff93bd",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 3900X",
+      "partNumber": "100-100000023BOX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "8457111",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+        "title": "AMD 라이젠 9 -3세대 3900X (마티스)"
+      },
+      "priceCandidate": {
+        "amountKrw": 1500000,
+        "observedAt": "2026-10-10T09:01:27.569Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:27.569Z",
+      "responseSha256": "090f0ab89640801eed56575cc7401481f912f43ccb4455a877540b54dafaefd2",
+      "pageTitle": "AMD 라이젠9-3세대 3900X (마티스) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠9-3세대 3900X (마티스) (정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "0c7be6ce-6e3a-4b26-982c-ac1a854ecc42",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 3950X",
+      "partNumber": "100-100000051WOF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "9996480",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=9996480",
+        "title": "AMD 라이젠 9 -3세대 3950X (마티스)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:28.598Z",
+      "responseSha256": "6ff6573323147ae8b515204b98d9000bff58f48a5ba59a9cd9caf78fd6584b08",
+      "pageTitle": "AMD 라이젠9-3세대 3950X (마티스) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠9-3세대 3950X (마티스) (정품)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "b05fe082-84f5-46a5-9e46-c8995eead596",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 5900X",
+      "partNumber": "100-100000061WOF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "12837425",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12837425",
+        "title": "AMD 라이젠 9 -4세대 5900X (버미어)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:29.759Z",
+      "responseSha256": "ce902c4d1c32c9a8ee1a32bc4efb7d9f5c6d852c1a2b61ab961cbdc33bbe3642",
+      "pageTitle": "AMD 라이젠9-4세대 5900X (버미어) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠9-4세대 5900X (버미어) (멀티팩 정품)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NO_ACTIVE_OFFER",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "92e16149-cb9d-4d80-b042-07a49a511455",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 5950X",
+      "partNumber": "100-100000059WOF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "13172262",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=13172262",
+        "title": "AMD 라이젠 9 -4세대 5950X (버미어)"
+      },
+      "priceCandidate": {
+        "amountKrw": 735000,
+        "observedAt": "2026-10-10T09:01:30.906Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=13172262",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:30.906Z",
+      "responseSha256": "d3abeac799fec8c025db92db5c05afa322578115ca34c947805ff7531c7d1e13",
+      "pageTitle": "AMD 라이젠9-4세대 5950X (버미어) (벌크 병행) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠9-4세대 5950X (버미어) (벌크 병행)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "9350ad11-8a31-4083-96bf-3bf6cbf80e78",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 7900",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18718631",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18718631",
+        "title": "AMD 라이젠 9 -5세대 7900 (라파엘)"
+      },
+      "priceCandidate": {
+        "amountKrw": 484950,
+        "observedAt": "2026-10-10T09:01:32.070Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18718631",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:32.070Z",
+      "responseSha256": "cc0e2c3929c15311cf7b6ddecf53b548793ff8c599bfd3e8c4187b5a29d4ead0",
+      "pageTitle": "AMD 라이젠9-5세대 7900 (라파엘) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠9-5세대 7900 (라파엘) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "fe942923-68b5-4b16-9cd0-fa852e9d78ab",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 7900X3D",
+      "partNumber": "100-100000909WOF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "19627457",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19627457",
+        "title": "AMD 라이젠 9 -5세대 7900X3D (라파엘)"
+      },
+      "priceCandidate": {
+        "amountKrw": 804590,
+        "observedAt": "2026-10-10T09:01:33.097Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=19627457",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:33.097Z",
+      "responseSha256": "d3d6cb628c41b977249d97c1049a990ef1144e59dade98dc76ac4a17266097bf",
+      "pageTitle": "AMD 라이젠9-5세대 7900X3D (라파엘) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠9-5세대 7900X3D (라파엘) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "16aeed8e-5b91-4a91-9143-4b0913f2a39a",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 7950X",
+      "partNumber": "100-100000514WOF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "20613197",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=20613197",
+        "title": "AMD 라이젠 9 -5세대 7950X (라파엘)"
+      },
+      "priceCandidate": {
+        "amountKrw": 1470000,
+        "observedAt": "2026-10-10T09:01:34.237Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=20613197",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:34.237Z",
+      "responseSha256": "1481bc9ed55e3434179cfa8878325d5a55520416d66f91b1a23675b9f248ca07",
+      "pageTitle": "AMD 라이젠9-5세대 7950X (라파엘) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠9-5세대 7950X (라파엘) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "1c40a545-56ed-4687-b8d2-0194f9455c32",
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 7950X3D",
+      "partNumber": "100-100000908WOF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "19627601",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19627601",
+        "title": "AMD 라이젠 9 -5세대 7950X3D (라파엘)"
+      },
+      "priceCandidate": {
+        "amountKrw": 686650,
+        "observedAt": "2026-10-10T09:01:35.451Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=19627601",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:35.451Z",
+      "responseSha256": "e00124626562c45f74cc1593edb65beb22afd329c3c5a5846b8ac81cefdb71e7",
+      "pageTitle": "AMD 라이젠9-5세대 7950X3D (라파엘) (멀티팩 정품) : 다나와 가격비교",
+      "candidateProductTitle": "AMD 라이젠9-5세대 7950X3D (라파엘) (멀티팩 정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "0291aadf-c724-4ef6-b08e-67efad1a4033",
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i3-13100F",
+      "partNumber": "BX8071513100F",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18702614",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18702614",
+        "title": "인텔 코어i3-13세대 13100F (랩터레이크)"
+      },
+      "priceCandidate": {
+        "amountKrw": 208000,
+        "observedAt": "2026-10-10T09:01:36.414Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18702614",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:36.414Z",
+      "responseSha256": "7eb393cb54a9bf9a90f51022343667844969784f76b832e0c9d5a929cfea025b",
+      "pageTitle": "인텔 코어i3-13세대 13100F (랩터레이크) (벌크 + 쿨러) : 다나와 가격비교",
+      "candidateProductTitle": "인텔 코어i3-13세대 13100F (랩터레이크) (벌크 + 쿨러)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "da1f3753-83ca-41c1-a163-e22c23a5a389",
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-12600K",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "15752510",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15752510",
+        "title": "인텔 코어i5-12세대 12600K (엘더레이크)"
+      },
+      "priceCandidate": {
+        "amountKrw": 322310,
+        "observedAt": "2026-10-10T09:01:37.842Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=15752510",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:37.842Z",
+      "responseSha256": "a32fcf5468cd0c6d7e8c6dea45844f34ff81edefaa2a3da3ab249d5579fd37e4",
+      "pageTitle": "인텔 코어i5-12세대 12600K (엘더레이크) (벌크 + 쿨러) : 다나와 가격비교",
+      "candidateProductTitle": "인텔 코어i5-12세대 12600K (엘더레이크) (벌크 + 쿨러)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "0a341774-25d8-4b11-a791-f0cd2e1444f4",
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-12600KF",
+      "partNumber": "BX8071512600KF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "15752597",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15752597",
+        "title": "인텔 코어i5-12세대 12600KF (엘더레이크)"
+      },
+      "priceCandidate": {
+        "amountKrw": 268830,
+        "observedAt": "2026-10-10T09:01:38.736Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=15752597",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:38.736Z",
+      "responseSha256": "5994a98c3430d4923436dc662b8d66cbed062ab071d7d1dc48c396108e16289a",
+      "pageTitle": "인텔 코어i5-12세대 12600KF (엘더레이크) (벌크 + 쿨러) : 다나와 가격비교",
+      "candidateProductTitle": "인텔 코어i5-12세대 12600KF (엘더레이크) (벌크 + 쿨러)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "3ca99f89-4d65-40ca-83e4-d76d143406d5",
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-13600K",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18169127",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18169127",
+        "title": "인텔 코어i5-13세대 13600K (랩터레이크)"
+      },
+      "priceCandidate": {
+        "amountKrw": 410000,
+        "observedAt": "2026-10-10T09:01:39.728Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18169127",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:39.728Z",
+      "responseSha256": "8705f7840470199b6d6dde30eb227827e35986358496d9485197adbe5aa25d4b",
+      "pageTitle": "인텔 코어i5-13세대 13600K (랩터레이크) (벌크 + 쿨러) : 다나와 가격비교",
+      "candidateProductTitle": "인텔 코어i5-13세대 13600K (랩터레이크) (벌크 + 쿨러)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "7f6a0c2b-330a-45ab-87ea-83dd1aebe4d5",
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-13600KF",
+      "partNumber": "BX8071513600KF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18169253",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18169253",
+        "title": "인텔 코어i5-13세대 13600KF (랩터레이크)"
+      },
+      "priceCandidate": {
+        "amountKrw": 286830,
+        "observedAt": "2026-10-10T09:01:40.945Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18169253",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:40.945Z",
+      "responseSha256": "1c6655c7d8d8db137bf6576d0a31fed1939b1c1bb6e333f1e6692aecd5f26224",
+      "pageTitle": "인텔 코어i5-13세대 13600KF (랩터레이크) (벌크 + 쿨러) : 다나와 가격비교",
+      "candidateProductTitle": "인텔 코어i5-13세대 13600KF (랩터레이크) (벌크 + 쿨러)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "8a5cc1d3-b1b9-4eee-a42f-e07820ca470f",
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-13700K",
+      "partNumber": "BX8071513700K",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18224471",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18224471",
+        "title": "인텔 코어i7-13세대 13700K (랩터레이크)"
+      },
+      "priceCandidate": {
+        "amountKrw": 653000,
+        "observedAt": "2026-10-10T09:01:41.980Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18224471",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:41.980Z",
+      "responseSha256": "e3e3eaf6960184d8333d3760b6afacd5fed8c276fb2eb00d724e3ffb9dbdc3af",
+      "pageTitle": "인텔 코어i7-13세대 13700K (랩터레이크) (벌크 + 쿨러) : 다나와 가격비교",
+      "candidateProductTitle": "인텔 코어i7-13세대 13700K (랩터레이크) (벌크 + 쿨러)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "fa0f6c80-4654-48e6-b5b0-0696ab0319fa",
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-13700KF",
+      "partNumber": "BX8071513700KF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18184013",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18184013",
+        "title": "인텔 코어i7-13세대 13700KF (랩터레이크)"
+      },
+      "priceCandidate": {
+        "amountKrw": 386420,
+        "observedAt": "2026-10-10T09:01:43.129Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18184013",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:43.129Z",
+      "responseSha256": "45c4702204272fb1926b86d8a56fea2822c8d8ce9da8a557fcd1a4a7c97d4c78",
+      "pageTitle": "인텔 코어i7-13세대 13700KF (랩터레이크) (벌크 + 쿨러) : 다나와 가격비교",
+      "candidateProductTitle": "인텔 코어i7-13세대 13700KF (랩터레이크) (벌크 + 쿨러)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "f11beddb-4adc-433e-967a-7e4c70c1db75",
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i9-13900K",
+      "partNumber": "BX8071513900K",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18039569",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18039569",
+        "title": "인텔 코어i9-13세대 13900K (랩터레이크)"
+      },
+      "priceCandidate": {
+        "amountKrw": 10000000,
+        "observedAt": "2026-10-10T09:01:44.156Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18039569",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:44.156Z",
+      "responseSha256": "3286cd0b1639677a38b7da9a4af179b1a0d9f61d95eaefac36e71a40ba9647a2",
+      "pageTitle": "인텔 코어i9-13세대 13900K (랩터레이크) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "인텔 코어i9-13세대 13900K (랩터레이크) (정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "141658a0-ad44-4099-876a-800f8cf5f130",
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 245K",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "69059753",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+        "title": "인텔 코어 울트라 5 시리즈2 245K (애로우레이크)"
+      },
+      "priceCandidate": {
+        "amountKrw": 315160,
+        "observedAt": "2026-10-10T09:01:45.428Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:45.428Z",
+      "responseSha256": "0bc233161ecbf95dee7f9b4fabcfc500f6e63d54d669edd8775715f36002e46b",
+      "pageTitle": "인텔 코어 울트라5 시리즈2 245K (애로우레이크) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "인텔 코어 울트라5 시리즈2 245K (애로우레이크) (정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "77fad406-901e-4ce4-bbcc-6cfff8032d83",
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 250K Plus",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "108424286",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=108424286",
+        "title": "인텔 코어 울트라7 시리즈2 270K Plus (애로우레이크 리프레시)"
+      },
+      "priceCandidate": {
+        "amountKrw": 497180,
+        "observedAt": "2026-10-10T09:01:46.330Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=108424286",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:46.330Z",
+      "responseSha256": "fd18b94ec43155cd0f2643ecb7aec80c0284a38fd25d95ffcf5eeae0ce52900c",
+      "pageTitle": "인텔 코어 울트라7 시리즈2 270K Plus (애로우레이크 리프레시) (정품) : 다나와 가격비교",
+      "candidateProductTitle": "인텔 코어 울트라7 시리즈2 270K Plus (애로우레이크 리프레시) (정품)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "0ecfbd81-c809-485f-afdc-c1ab62906118",
+      "type": "GPU",
+      "manufacturer": "ASRock",
+      "modelName": "Intel Arc A380 Challenger ITX 6GB OC",
+      "partNumber": "A380 CLI 6GO",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "6481846",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=6481846",
+        "title": "제스파 A380"
+      },
+      "priceCandidate": {
+        "amountKrw": 58880,
+        "observedAt": "2026-10-10T09:01:47.559Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=6481846",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:47.559Z",
+      "responseSha256": "777f973c72c2a6164b965da0aae2cb59bc8668d99703594bb9a00c43ae0d1c83",
+      "pageTitle": "제스파 A380 : 다나와 가격비교",
+      "candidateProductTitle": "제스파 A380",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "f711450c-bfb5-4852-828e-4cbaa1d79996",
+      "type": "GPU",
+      "manufacturer": "ASRock",
+      "modelName": "Intel Arc A750 Challenger D 8GB OC",
+      "partNumber": "A750 CLD 8GO",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "29905919",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=29905919",
+        "title": "맥킨더 헤드레스트 옷걸이 A750"
+      },
+      "priceCandidate": {
+        "amountKrw": 7100,
+        "observedAt": "2026-10-10T09:01:48.610Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=29905919",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:48.610Z",
+      "responseSha256": "d3d89e591a6dba16cfeff044dcf104fceed241f882df5b095e39bd1e558efefd",
+      "pageTitle": "맥킨더 헤드레스트 옷걸이 A750 : 다나와 가격비교",
+      "candidateProductTitle": "맥킨더 헤드레스트 옷걸이 A750",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "f36b1cbb-a2ab-4377-9fdc-991f0dcf4c05",
+      "type": "GPU",
+      "manufacturer": "ASRock",
+      "modelName": "Intel Arc A770 Phantom Gaming 16GB OC",
+      "partNumber": "A770 PG 16GO",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "122767847",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=122767847",
+        "title": "스타일러스 리프라인 PG 반지 a-282000129 770 18K 골든듀AMC CH"
+      },
+      "priceCandidate": {
+        "amountKrw": 899100,
+        "observedAt": "2026-10-10T09:01:49.809Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=122767847",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:49.809Z",
+      "responseSha256": "01035f337e657a2fdf12cf1601f48b6d7f1758c4a3ee280aaa752053f3afc146",
+      "pageTitle": "스타일러스 리프라인 PG 반지 a-282000129 770 18K 골든듀AMC CH : 다나와 가격비교",
+      "candidateProductTitle": "스타일러스 리프라인 PG 반지 a-282000129 770 18K 골든듀AMC CH",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "66b56f72-de41-4efb-b3c1-325d3b3f6ac2",
+      "type": "GPU",
+      "manufacturer": "ASRock",
+      "modelName": "Intel Arc A770 Phantom Gaming D 8GB OC",
+      "partNumber": "A770 PGD 8GO",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "17969696",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17969696",
+        "title": "인텔 Arc A770 Limited Edition D6 8GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:50.645Z",
+      "responseSha256": "30d52250e7043cc3678eee9571a857c817fb3c04b56a788f8b6843e3f9c4444f",
+      "pageTitle": "인텔 Arc A770 Limited Edition D6 8GB : 다나와 가격비교",
+      "candidateProductTitle": "인텔 Arc A770 Limited Edition D6 8GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "2974b0f2-1014-47ed-872e-db1d2bac91ff",
+      "type": "GPU",
+      "manufacturer": "ASRock",
+      "modelName": "Radeon RX 6500 XT Challenger ITX 4GB",
+      "partNumber": "RX6500XT CLI 4G",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "16224614",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16224614",
+        "title": "XFX 라데온 RX 6500 XT QICK 210 BLACK D6 4GB"
+      },
+      "priceCandidate": {
+        "amountKrw": 440000,
+        "observedAt": "2026-10-10T09:01:51.922Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16224614",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:51.922Z",
+      "responseSha256": "20d5364cb8b655858ad34e7e2f76543bc3abc5466dc29a7bf0e008cfea7935e5",
+      "pageTitle": "XFX 라데온 RX 6500 XT QICK 210 BLACK D6 4GB : 다나와 가격비교",
+      "candidateProductTitle": "XFX 라데온 RX 6500 XT QICK 210 BLACK D6 4GB",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "a340ad2f-6e6d-4911-8edd-9192831e68c9",
+      "type": "GPU",
+      "manufacturer": "ASRock",
+      "modelName": "Radeon RX 6500 XT Phantom Gaming 8GB OC",
+      "partNumber": "RX6500XT PG 8GO",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "16224614",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16224614",
+        "title": "XFX 라데온 RX 6500 XT QICK 210 BLACK D6 4GB"
+      },
+      "priceCandidate": {
+        "amountKrw": 440000,
+        "observedAt": "2026-10-10T09:01:52.865Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16224614",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:01:52.865Z",
+      "responseSha256": "95008c4a281bce1a6fda6f13ca2d43ddf1c10ff7a8178aa92ad581734710c6b4",
+      "pageTitle": "XFX 라데온 RX 6500 XT QICK 210 BLACK D6 4GB : 다나와 가격비교",
+      "candidateProductTitle": "XFX 라데온 RX 6500 XT QICK 210 BLACK D6 4GB",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "f0734644-11f4-4039-bdc0-cedf8c51955c",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce GTX 1050 Ti GAMING X 4G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "4586858",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=4586858",
+        "title": "MSI 지포스 GTX 1050 Ti 게이밍 X D5 4GB 트윈프로져6"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:54.009Z",
+      "responseSha256": "442ea2032d8f3dae5cd8325a9b21156643e9d4077eabf30ef3d896973aede63f",
+      "pageTitle": "MSI 지포스 GTX1050 Ti 게이밍 X D5 4GB 트윈프로져6 : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 GTX1050 Ti 게이밍 X D5 4GB 트윈프로져6",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "c9fcd522-cff1-4362-a762-4ddf0f28323b",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce GTX 1060 GAMING X 6G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "7818736",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=7818736",
+        "title": "MSI 지포스 GTX 1060 게이밍 D5 6GB 트윈프로져6"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:55.341Z",
+      "responseSha256": "22be07839d8f99a8e35f69948702c013919ae153b34b7bf2fcec48b98e41212f",
+      "pageTitle": "MSI 지포스 GTX 1060 게이밍 D5 6GB 트윈프로져6 : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 GTX 1060 게이밍 D5 6GB 트윈프로져6",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "1bf348f7-24dc-43dc-bae6-1cfda9b32571",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce GTX 1070 GAMING X 8G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "6773644",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=6773644",
+        "title": "MSI 지포스 GTX 1070 게이밍 D5 8GB 트윈프로져6"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:56.263Z",
+      "responseSha256": "8bad51929f7a37e20558bef38f3614ae66b31bfbf3c13b4566e0ed24f0a6a43d",
+      "pageTitle": "MSI 지포스 GTX1070 게이밍 D5 8GB 트윈프로져6 : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 GTX1070 게이밍 D5 8GB 트윈프로져6",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "470a3036-d090-4a1e-946f-9603be613238",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce GTX 1070 Ti GAMING 8G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "5589437",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=5589437",
+        "title": "MSI 지포스 GTX 1070 Ti 게이밍 D5 8GB 트윈프로져6"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:57.390Z",
+      "responseSha256": "fc8b8ee778ff4340244ef7a670cfcde89ae45b808a49a2f37c867d04df4b9221",
+      "pageTitle": "MSI 지포스 GTX1070 Ti 게이밍 D5 8GB 트윈프로져6 : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 GTX1070 Ti 게이밍 D5 8GB 트윈프로져6",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "09e264f3-f5ff-440b-9332-8ef1060a3059",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce GTX 1080 GAMING X 8G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "6405672",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=6405672",
+        "title": "MSI 지포스 GTX 1080 게이밍 D5X 8GB 트윈프로져6"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:58.411Z",
+      "responseSha256": "328a21ad1559e7079f93d507dc6eb77b4f0f657d2af8c9240c2277aa5464de19",
+      "pageTitle": "MSI 지포스 GTX1080 게이밍 D5X 8GB 트윈프로져6 : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 GTX1080 게이밍 D5X 8GB 트윈프로져6",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "4e63ba52-5702-4899-954c-bca0b23f8266",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce GTX 1080 Ti GAMING X 11G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "6405723",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=6405723",
+        "title": "MSI 지포스 GTX 1080 Ti 게이밍 D5X 11GB 트윈프로져6"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:01:59.746Z",
+      "responseSha256": "cd0cd0e0175898c2390bfa98a597c087d289d69f329df03fff34c749be6f039d",
+      "pageTitle": "MSI 지포스 GTX1080 Ti 게이밍 D5X 11GB 트윈프로져6 : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 GTX1080 Ti 게이밍 D5X 11GB 트윈프로져6",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "c6cfa1e9-64d3-42a9-bb72-e2b74a527117",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce GTX 1650 D6 VENTUS XS OCV1",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "10797144",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=10797144",
+        "title": "MSI 지포스 RTX 2060 SUPER 벤투스 D6 8GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:00.586Z",
+      "responseSha256": "d9bda281633a02ee23b387f14c296801f8599325d2f9a7ca7afbdf3aff7a65d3",
+      "pageTitle": "MSI 지포스 RTX 2060 SUPER 벤투스 D6 8GB : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 2060 SUPER 벤투스 D6 8GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "3780770a-847a-487d-a4fe-475277e5e613",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce GTX 970 GAMING 4G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "3066610",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=3066610",
+        "title": "MSI 지포스 GTX 970 100 밀리언 에디션 OC D5 4GB 트윈 프로져 5 게이밍"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:01.704Z",
+      "responseSha256": "05ff98942ac1db5dfc7b35e86f9b0e3829f55ad29cce24de364c9736e360e473",
+      "pageTitle": "MSI 지포스 GTX970 100 밀리언 에디션 OC D5 4GB 트윈 프로져 5 게이밍 : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 GTX970 100 밀리언 에디션 OC D5 4GB 트윈 프로져 5 게이밍",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "1727de70-db7f-46a5-9a08-0760f12f527e",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce GTX 980 GAMING 4G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "2820316",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=2820316",
+        "title": "MSI 지포스 GTX 980 OC D5 4GB 트윈 프로져 5 게이밍 반석전자"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:02.853Z",
+      "responseSha256": "4c1528af3977543d34454e4b006d61c7be10447869efdef07a1c947394dc04d8",
+      "pageTitle": "MSI 지포스 GTX980 OC D5 4GB 트윈 프로져 5 게이밍 반석전자 : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 GTX980 OC D5 4GB 트윈 프로져 5 게이밍 반석전자",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "801d46ee-222e-4360-8db0-d183dbfb3a5c",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 2060 SUPER VENTUS OC",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "12222116",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12222116",
+        "title": "MSI 지포스 RTX 2060 SUPER 벤투스 OC V1 D6 8GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:03.943Z",
+      "responseSha256": "e7b64b3063faee26a23bd3eb523c4b44519af0a15cb27cbeb8bd95344d12a9b1",
+      "pageTitle": "MSI 지포스 RTX 2060 SUPER 벤투스 OC V1 D6 8GB : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 2060 SUPER 벤투스 OC V1 D6 8GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "1b7eeb57-388d-456d-976f-df7714d498e1",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 2060 VENTUS 6G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "10797093",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=10797093",
+        "title": "MSI 지포스 RTX 2060 벤투스 D6 6GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:05.037Z",
+      "responseSha256": "f47ae52584caf24052d78d4e019f4c68a1f48155c5c46096f73d7585dc980f7d",
+      "pageTitle": "MSI 지포스 RTX 2060 벤투스 D6 6GB : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 2060 벤투스 D6 6GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "f41a6e9f-62e3-4618-a1a9-25f86eeee583",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 2070 SUPER VENTUS OC",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "10767708",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=10767708",
+        "title": "MSI 지포스 RTX 2070 SUPER 벤투스 GP OC D6 8GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:06.155Z",
+      "responseSha256": "24838ba0d2511b3f839b802c8cdb7da5067c1dfef8d0e1661de27a21247d3057",
+      "pageTitle": "MSI 지포스 RTX 2070 SUPER 벤투스 GP OC D6 8GB : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 2070 SUPER 벤투스 GP OC D6 8GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "1a927bdd-4594-408b-94b8-5479119ae319",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 2070 VENTUS 8G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "11201670",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=11201670",
+        "title": "MSI 지포스 RTX 2070 SUPER 벤투스 GP D6 8GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:07.294Z",
+      "responseSha256": "493efb6c2f8c6cabffa5a036119197444146ee9e52df91c97fb6d3a20d55bc5b",
+      "pageTitle": "MSI 지포스 RTX 2070 SUPER 벤투스 GP D6 8GB : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 2070 SUPER 벤투스 GP D6 8GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "82cf21d2-9a3b-4945-9dfe-ee2ffcc72eca",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 2080 Ti VENTUS 11G OC",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "9294786",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=9294786",
+        "title": "MSI 지포스 RTX 2080 Ti 벤투스 GP D6 11GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:08.388Z",
+      "responseSha256": "eb2411d688e794cbaed23ce3e33e615a2b428c2950dc30761b64b87d31d477ab",
+      "pageTitle": "MSI 지포스 RTX 2080 Ti 벤투스 GP D6 11GB : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 2080 Ti 벤투스 GP D6 11GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "afb36d5e-d4cf-4501-9dc6-1dc0ebd4777a",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 2080 VENTUS 8G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "9831372",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=9831372",
+        "title": "MSI 지포스 RTX 2080 SUPER 벤투스 S D6 8GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:09.474Z",
+      "responseSha256": "8ae7f8c11469182e0110787e7bad73821554fae1033d659f3f3faa781cc3020e",
+      "pageTitle": "MSI 지포스 RTX 2080 SUPER 벤투스 S D6 8GB : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 2080 SUPER 벤투스 S D6 8GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "09ca8a92-c6cc-45b8-8a3f-ea63b588b313",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 3060 Ti VENTUS 2X 8G OCV1 LHR",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "13095299",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=13095299",
+        "title": "MSI 지포스 RTX 3060 Ti 벤투스 2X OC D6 8GB (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:10.633Z",
+      "responseSha256": "b625a2f6c0e9c51ebda1516a9584a9083f27cae419c0a84a2956365286ba2852",
+      "pageTitle": "MSI 지포스 RTX 3060 Ti 벤투스 2X OC D6 8GB (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 3060 Ti 벤투스 2X OC D6 8GB (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "7f67d406-5332-4cb7-ae56-6da9ffb23e53",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 3060 VENTUS 2X 8G OC",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18279782",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18279782",
+        "title": "MSI 지포스 RTX 3060 벤투스 2X OC D6 8GB"
+      },
+      "priceCandidate": {
+        "amountKrw": 472590,
+        "observedAt": "2026-10-10T09:02:11.823Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18279782",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:11.823Z",
+      "responseSha256": "70d08db2ebf17c9f985e665aec9857b91585617e45c0ae8fd036385a7b8e2249",
+      "pageTitle": "MSI 지포스 RTX 3060 벤투스 2X OC D6 8GB : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 3060 벤투스 2X OC D6 8GB",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "bf6ca014-db39-49c8-a767-650d445bf8e0",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 3070 Ti VENTUS 3X 8G OC",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "14957963",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14957963",
+        "title": "MSI 지포스 RTX 3070 Ti 벤투스 3X OC D6X 8GB (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:12.857Z",
+      "responseSha256": "5a63010d3a7530bd2c601d9ba6d49a1cbf81dd188ff6c112bfa5ac16dfdb29e0",
+      "pageTitle": "MSI 지포스 RTX 3070 Ti 벤투스 3X OC D6X 8GB (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 3070 Ti 벤투스 3X OC D6X 8GB (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "bc967cf5-2ef5-4201-8cca-544bd3468566",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 3070 VENTUS 2X 8G OC LHR",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "14741960",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14741960",
+        "title": "MSI 지포스 RTX 3070 벤투스 2X OC D6 8GB LHR"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:13.916Z",
+      "responseSha256": "07790aa874e722f0d11292d88d229ee45a7f71382d66e2c76fcf21980bdf16b2",
+      "pageTitle": "MSI 지포스 RTX 3070 벤투스 2X OC D6 8GB LHR : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 3070 벤투스 2X OC D6 8GB LHR",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "1b8f73e4-63c5-4ceb-a56d-d379b084caed",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 3080 Ti VENTUS 3X 12G OC",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "16294076",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16294076",
+        "title": "MSI 지포스 RTX 3080 Ti 벤투스 3X OC D6X 12GB (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:15.024Z",
+      "responseSha256": "d6edb908b1d151583b96274e8f94c5cfc7d493f47df2b26d126789aa529907a6",
+      "pageTitle": "MSI 지포스 RTX 3080 Ti 벤투스 3X OC D6X 12GB (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 3080 Ti 벤투스 3X OC D6X 12GB (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "c0d0619b-4266-4706-a46b-f6a2c3064e58",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 3080 VENTUS 3X PLUS 12G OC LHR",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "16916114",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16916114",
+        "title": "MSI 지포스 RTX 3080 벤투스 3X 플러스 OC D6X 12GB LHR"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:16.138Z",
+      "responseSha256": "e891d2cda36a5c984dc9607921b6e102a0966a43b03f5ac223e20b15878b5710",
+      "pageTitle": "MSI 지포스 RTX 3080 벤투스 3X 플러스 OC D6X 12GB LHR : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 3080 벤투스 3X 플러스 OC D6X 12GB LHR",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "c6951494-9219-41a0-a633-c125cdbd339a",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 3090 Ti GAMING X TRIO 24G",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "16986743",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16986743",
+        "title": "MSI 지포스 RTX 3090 Ti 게이밍 X 트리오 D6X 24GB 트라이프로져2"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:17.258Z",
+      "responseSha256": "aaa3bc7086a67379b4c9a2cb6d9a395c4e94e73938962407f87065b294888b68",
+      "pageTitle": "MSI 지포스 RTX 3090 Ti 게이밍 X 트리오 D6X 24GB 트라이프로져2 : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 3090 Ti 게이밍 X 트리오 D6X 24GB 트라이프로져2",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "196efb72-7ecb-42e3-a275-5cd55df3e1b4",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 3090 VENTUS 3X 24G OC",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "12213866",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12213866",
+        "title": "MSI 지포스 RTX 3090 벤투스 3X OC D6X 24GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:18.346Z",
+      "responseSha256": "2acd88c3afeeec6c5b619a700f4cb22a179fb7bd8ec398dc7e978140c2d08920",
+      "pageTitle": "MSI 지포스 RTX 3090 벤투스 3X OC D6X 24GB : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 3090 벤투스 3X OC D6X 24GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "d66d7afb-883e-4faa-980d-1edd1566d83d",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 4060 VENTUS 2X BLACK 8G OC",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "20740013",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=20740013",
+        "title": "MSI 지포스 RTX 4060 벤투스 2X 블랙 OC D6 8GB"
+      },
+      "priceCandidate": {
+        "amountKrw": 2697030,
+        "observedAt": "2026-10-10T09:02:19.569Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=20740013",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:19.569Z",
+      "responseSha256": "6e57fa75ca6e24553f5506f8e0f4329c907067d184fcc23d868ff604ac0d9fca",
+      "pageTitle": "MSI 지포스 RTX 4060 벤투스 2X 블랙 OC D6 8GB : 다나와 가격비교",
+      "candidateProductTitle": "MSI 지포스 RTX 4060 벤투스 2X 블랙 OC D6 8GB",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "4b9890b9-9d0e-48ed-9751-f354d45ac2b2",
+      "type": "GPU",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 5090 32G VENTUS 3X OC",
+      "partNumber": "G5090-32V3C",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "124335169",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=124335169",
+        "title": "ASUS ProArt 지포스 RTX 5090 OC D7 32GB 코잇"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:20.637Z",
+      "responseSha256": "70cd18d3d4d900d967cf5f0bbfe77f2a7104dcaf92bf96df14ee298b3be0b1d6",
+      "pageTitle": "ASUS ProArt 지포스 RTX 5090 OC D7 32GB 코잇 : 다나와 가격비교",
+      "candidateProductTitle": "ASUS ProArt 지포스 RTX 5090 OC D7 32GB 코잇",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "952e3192-9453-4138-be7a-668e4e3931b1",
+      "type": "GPU",
+      "manufacturer": "PowerColor",
+      "modelName": "Red Devil Radeon RX 6900 XT 16GB",
+      "partNumber": "AXRX 6900XT 16GBD6-3DHE/OC",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "14977763",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14977763",
+        "title": "PowerColor 라데온 RX 6600 XT Hellhound D6 8GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:21.641Z",
+      "responseSha256": "978756487b3b527634afbbb782509736e655cdd6ebd8354de827a1575fb5a60e",
+      "pageTitle": "PowerColor 라데온 RX 6600 XT Hellhound D6 8GB : 다나와 가격비교",
+      "candidateProductTitle": "PowerColor 라데온 RX 6600 XT Hellhound D6 8GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "ad45d2df-8178-4194-be04-09698b95a178",
+      "type": "GPU",
+      "manufacturer": "PowerColor",
+      "modelName": "Red Devil Radeon RX 6950 XT 16GB",
+      "partNumber": "AXRX 6950XT 16GBD6-3DHE/OC",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "14977763",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14977763",
+        "title": "PowerColor 라데온 RX 6600 XT Hellhound D6 8GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:22.745Z",
+      "responseSha256": "3146b1638bfbab07077094c3e1919c96582a481d4681bf4a8a0d6f1099779cde",
+      "pageTitle": "PowerColor 라데온 RX 6600 XT Hellhound D6 8GB : 다나와 가격비교",
+      "candidateProductTitle": "PowerColor 라데온 RX 6600 XT Hellhound D6 8GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "7f17db95-dd67-4981-9a2c-5ae3bdb8ce3b",
+      "type": "GPU",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 5500 XT 4GB",
+      "partNumber": "11295-03-20G",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "10141980",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=10141980",
+        "title": "SAPPHIRE 라데온 RX 5500 XT PULSE OC D6 4GB Dual-X"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:23.900Z",
+      "responseSha256": "672fcb78ed43b459ad413632045e5188e2070cf490d3c8a948b8ac96783141e7",
+      "pageTitle": "SAPPHIRE 라데온 RX 5500 XT PULSE OC D6 4GB Dual-X : 다나와 가격비교",
+      "candidateProductTitle": "SAPPHIRE 라데온 RX 5500 XT PULSE OC D6 4GB Dual-X",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "e060c063-49c1-4124-9957-63cef571f290",
+      "type": "GPU",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 5500 XT 8GB",
+      "partNumber": "11295-01-20G",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "10142007",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=10142007",
+        "title": "SAPPHIRE 라데온 RX 5500 XT PULSE OC D6 8GB Dual-X"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:24.954Z",
+      "responseSha256": "7aec1adfcb63c77be1e3fb3ea8810558770931c05072981e47f349c4bff78c8a",
+      "pageTitle": "SAPPHIRE 라데온 RX 5500 XT PULSE OC D6 8GB Dual-X : 다나와 가격비교",
+      "candidateProductTitle": "SAPPHIRE 라데온 RX 5500 XT PULSE OC D6 8GB Dual-X",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "bbe04cea-0009-4e85-8b52-38a717223c85",
+      "type": "GPU",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 5600 XT 6GB",
+      "partNumber": "11296-01-20G",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "10404144",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=10404144",
+        "title": "SAPPHIRE 라데온 RX 5600 XT PULSE OC D6 6GB Dual-X"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:26.165Z",
+      "responseSha256": "8f72c6e35c9dd658d36224ef968c1bc3ac8d56efd28e0cfd06ffb47fe82fc755",
+      "pageTitle": "SAPPHIRE 라데온 RX 5600 XT PULSE OC D6 6GB Dual-X : 다나와 가격비교",
+      "candidateProductTitle": "SAPPHIRE 라데온 RX 5600 XT PULSE OC D6 6GB Dual-X",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "0d470616-f60e-4fb8-af71-c27899a3ab80",
+      "type": "GPU",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 5700 XT 8GB",
+      "partNumber": "11293-01-20G",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "13221041",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=13221041",
+        "title": "SAPPHIRE 라데온 RX 5700 XT PULSE OC D6 8GB Dual-X (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:27.291Z",
+      "responseSha256": "3aee564c99edac7dee86cb8416eeeed3f012f2d3755e692a896c4dc03fb2017f",
+      "pageTitle": "SAPPHIRE 라데온 RX 5700 XT PULSE OC D6 8GB Dual-X (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "SAPPHIRE 라데온 RX 5700 XT PULSE OC D6 8GB Dual-X (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "79bee22f-a64e-4af9-b343-0c6bebd930cb",
+      "type": "GPU",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 580 8GB",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "6297115",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=6297115",
+        "title": "SAPPHIRE 라데온 RX 580 PULSE OC D5 8GB Dual-X (벌크)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:28.363Z",
+      "responseSha256": "4ca822f04ca44032f756676d5ecc245cd9e9e77e7531cb8b8c76492eb2104aea",
+      "pageTitle": "SAPPHIRE 라데온 RX 580 PULSE OC D5 8GB Dual-X (벌크) : 다나와 가격비교",
+      "candidateProductTitle": "SAPPHIRE 라데온 RX 580 PULSE OC D5 8GB Dual-X (벌크)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "f14d6664-2d03-4d32-83c7-e996fa43b4d1",
+      "type": "GPU",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 6600 8GB",
+      "partNumber": "11310-01-20G",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "15824780",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15824780",
+        "title": "SAPPHIRE 라데온 RX 6600 XT PULSE OC D6 8GB Dual-X (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:29.441Z",
+      "responseSha256": "90da42afd9456b575e3d075e20befd0dca5550d936fb0d79271e5ddce522df87",
+      "pageTitle": "SAPPHIRE 라데온 RX 6600 XT PULSE OC D6 8GB Dual-X (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "SAPPHIRE 라데온 RX 6600 XT PULSE OC D6 8GB Dual-X (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "6b5d8755-654b-42d4-ad2f-e74a21796137",
+      "type": "GPU",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 6600 XT 8GB",
+      "partNumber": "11309-03-20G",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "15824780",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15824780",
+        "title": "SAPPHIRE 라데온 RX 6600 XT PULSE OC D6 8GB Dual-X (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:30.568Z",
+      "responseSha256": "3123d66397f9638f3275aa4ff7d2951cb2a39c54d0c7095237612c3682d0c4f6",
+      "pageTitle": "SAPPHIRE 라데온 RX 6600 XT PULSE OC D6 8GB Dual-X (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "SAPPHIRE 라데온 RX 6600 XT PULSE OC D6 8GB Dual-X (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "564af240-2407-421a-a845-5e0eadf01255",
+      "type": "GPU",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 6700 XT 12GB",
+      "partNumber": "11306-02-20G",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "15219524",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15219524",
+        "title": "SAPPHIRE 라데온 RX 6700 XT PULSE OC D6 12GB Dual-X"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:31.654Z",
+      "responseSha256": "c052320aeca597da8773d56a5cad129490287102bbfe048f7384fd2e5d26368e",
+      "pageTitle": "SAPPHIRE 라데온 RX 6700 XT PULSE OC D6 12GB Dual-X : 다나와 가격비교",
+      "candidateProductTitle": "SAPPHIRE 라데온 RX 6700 XT PULSE OC D6 12GB Dual-X",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "dfd51ce5-02dc-45b2-9e1b-68ed8d6bbad6",
+      "type": "GPU",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 6800 16GB",
+      "partNumber": "11305-02-20G",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "14164469",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14164469",
+        "title": "SAPPHIRE 라데온 RX 6800 XT PULSE OC D6 16GB Tri-X"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:32.727Z",
+      "responseSha256": "89640e69632b2761c479378a528bf84798128e9b5abaaf8c9aca8f6c0c795419",
+      "pageTitle": "SAPPHIRE 라데온 RX 6800 XT PULSE OC D6 16GB Tri-X : 다나와 가격비교",
+      "candidateProductTitle": "SAPPHIRE 라데온 RX 6800 XT PULSE OC D6 16GB Tri-X",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "e6db1b58-72dd-424c-a8f7-f3586f1493e9",
+      "type": "GPU",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 9060 XT 8GB",
+      "partNumber": "11350-05-20G",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "91909628",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=91909628",
+        "title": "SAPPHIRE 라데온 RX 9060 XT PULSE OC D6 8GB"
+      },
+      "priceCandidate": {
+        "amountKrw": 682490,
+        "observedAt": "2026-10-10T09:02:34.150Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=91909628",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:34.150Z",
+      "responseSha256": "c95a6cb4996b9ac9a7dce83a88ae11ab1ab73e4b8e191d3762bd8c2b6924d026",
+      "pageTitle": "SAPPHIRE 라데온 RX 9060 XT PULSE OC D6 8GB : 다나와 가격비교",
+      "candidateProductTitle": "SAPPHIRE 라데온 RX 9060 XT PULSE OC D6 8GB",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "92b7e578-ffcf-4775-8275-fe5cc2a7a2e7",
+      "type": "GPU",
+      "manufacturer": "XFX",
+      "modelName": "Speedster MERC 319 Radeon RX 6800 XT CORE 16GB",
+      "partNumber": "RX-68XTALFD9",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "14411957",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14411957",
+        "title": "XFX 라데온 RX 6800 XT MERC 319 D6 16GB"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:35.251Z",
+      "responseSha256": "b6c66f14425b9a0879537876dcc6f53355aba843efdbeec120a1880457692003",
+      "pageTitle": "XFX 라데온 RX 6800 XT MERC 319 D6 16GB : 다나와 가격비교",
+      "candidateProductTitle": "XFX 라데온 RX 6800 XT MERC 319 D6 16GB",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "18471642-f8af-4b5d-b1d8-4133555f5999",
+      "type": "MONITOR",
+      "manufacturer": "ASUS",
+      "modelName": "VG249Q",
+      "partNumber": "VG249Q",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "21205289",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=21205289",
+        "title": "ASUS TUF Gaming VG249Q1A"
+      },
+      "priceCandidate": {
+        "amountKrw": 218990,
+        "observedAt": "2026-10-10T09:02:36.143Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=21205289",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:36.143Z",
+      "responseSha256": "e06f5ddf6afcf28a7d4e91235edb597cd6d5e2a835b5b27efc379a767c44de26",
+      "pageTitle": "ASUS TUF Gaming VG249Q1A : 다나와 가격비교",
+      "candidateProductTitle": "ASUS TUF Gaming VG249Q1A",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": true
+    },
+    {
+      "localProductId": "a3080a92-a63a-4896-9a4d-956cca219ca5",
+      "type": "MONITOR",
+      "manufacturer": "Dell",
+      "modelName": "S2721DGF",
+      "partNumber": "S2721DGF",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "12612587",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+        "title": "DELL S2721DGF"
+      },
+      "priceCandidate": {
+        "amountKrw": 976500,
+        "observedAt": "2026-10-10T09:02:37.326Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:37.326Z",
+      "responseSha256": "e351dbd54e574a5e3e7c5db320b10088c47792b6ec33a5aa63f76bc2b1eee10f",
+      "pageTitle": "DELL S2721DGF : 다나와 가격비교",
+      "candidateProductTitle": "DELL S2721DGF",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": true
+    },
+    {
+      "localProductId": "eb3c77c9-a487-4c12-8ccb-365de25a6536",
+      "type": "MONITOR",
+      "manufacturer": "Gigabyte",
+      "modelName": "M28U",
+      "partNumber": "M28U",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "103451186",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=103451186",
+        "title": "LG전자 2026 그램14 14Z95U-GS5WK"
+      },
+      "priceCandidate": {
+        "amountKrw": 1628000,
+        "observedAt": "2026-10-10T09:02:38.571Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=103451186",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:38.571Z",
+      "responseSha256": "b0cf6fe4e9c67012074868f15cc4d060d78da2ba93ac48319cde16889a479bba",
+      "pageTitle": "LG전자 2026 그램14 14Z95U-GS5WK (SSD 512GB) : 다나와 가격비교",
+      "candidateProductTitle": "LG전자 2026 그램14 14Z95U-GS5WK (SSD 512GB)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "655069e2-47dc-489a-a77a-336511e975c9",
+      "type": "MONITOR",
+      "manufacturer": "Gigabyte",
+      "modelName": "M32U",
+      "partNumber": "M32U",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "103452437",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=103452437",
+        "title": "LG전자 2026 그램 프로16 16ZD95U-GX59K"
+      },
+      "priceCandidate": {
+        "amountKrw": 2400000,
+        "observedAt": "2026-10-10T09:02:39.690Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=103452437",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:39.690Z",
+      "responseSha256": "5ac38e0b18c5e5a07255c087c359abd62829cdd95e510186aaf3bd3e593024ed",
+      "pageTitle": "LG전자 2026 그램 프로16 16ZD95U-GX59K (SSD 256GB) : 다나와 가격비교",
+      "candidateProductTitle": "LG전자 2026 그램 프로16 16ZD95U-GX59K (SSD 256GB)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "589c1ced-305a-4f94-8ff5-dd245bbe1af1",
+      "type": "MOTHERBOARD",
+      "manufacturer": "ASRock",
+      "modelName": "B550M Pro4",
+      "partNumber": "B550M Pro4",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "49995851",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=49995851",
+        "title": "ASRock B550M Pro RS 대원씨티에스"
+      },
+      "priceCandidate": {
+        "amountKrw": 119540,
+        "observedAt": "2026-10-10T09:02:40.842Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=49995851",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:40.842Z",
+      "responseSha256": "ebeac794af19700d37efb8852aaf7d534009bc8de61b48e981998dcd6451ea4f",
+      "pageTitle": "ASRock B550M Pro RS 대원씨티에스 : 다나와 가격비교",
+      "candidateProductTitle": "ASRock B550M Pro RS 대원씨티에스",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "6f8b752b-ad10-4ef7-b51c-45c5c470abf9",
+      "type": "MOTHERBOARD",
+      "manufacturer": "ASRock",
+      "modelName": "B650M Pro RS",
+      "partNumber": "B650M Pro RS",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "21627827",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=21627827",
+        "title": "ASRock B650M Pro RS 대원씨티에스"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:41.695Z",
+      "responseSha256": "61e379fd163e95ecc3eb72e1e69bbf7f7639434d708e0435faf317052c0bfa48",
+      "pageTitle": "ASRock B650M Pro RS 대원씨티에스 : 다나와 가격비교",
+      "candidateProductTitle": "ASRock B650M Pro RS 대원씨티에스",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NO_ACTIVE_OFFER",
+      "partNumberTextOccurrenceHint": true
+    },
+    {
+      "localProductId": "5e68a954-3f32-4b88-9d05-001fa2304726",
+      "type": "MOTHERBOARD",
+      "manufacturer": "ASRock",
+      "modelName": "B850M Pro RS",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "73952525",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=73952525",
+        "title": "ASRock B850 Pro RS 에즈윈"
+      },
+      "priceCandidate": {
+        "amountKrw": 242870,
+        "observedAt": "2026-10-10T09:02:43.096Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=73952525",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:43.096Z",
+      "responseSha256": "b9aaeadcaa42b76ab2341d16bdfd191cf9fdf1753e65c84302b0905199c6cdcb",
+      "pageTitle": "ASRock B850 Pro RS 에즈윈 : 다나와 가격비교",
+      "candidateProductTitle": "ASRock B850 Pro RS 에즈윈",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "d6d52700-49fd-4adf-ac99-b196df49151f",
+      "type": "MOTHERBOARD",
+      "manufacturer": "ASUS",
+      "modelName": "PRIME B550M-A (WI-FI)",
+      "partNumber": "PRIME B550M-A (WI-FI)",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "16134440",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16134440",
+        "title": "ASUS PRIME B550M-A WIFI II 대원씨티에스"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:43.827Z",
+      "responseSha256": "6cd1ab548dbe64cac2095b24a21998c65f6ce234d61da5e5337996e8aa34fd35",
+      "pageTitle": "ASUS PRIME B550M-A WIFI II 대원씨티에스 : 다나와 가격비교",
+      "candidateProductTitle": "ASUS PRIME B550M-A WIFI II 대원씨티에스",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "9a15a1c8-01fc-44a0-aeb8-c79828423dc6",
+      "type": "MOTHERBOARD",
+      "manufacturer": "ASUS",
+      "modelName": "ROG STRIX B550-F GAMING (WI-FI)",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "15467126",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15467126",
+        "title": "ASUS ROG STRIX B550-F GAMING WIFI II 대원씨티에스"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:44.911Z",
+      "responseSha256": "b8741f5672c43b4a6afff94a25ccb9e0e2e3efe17d31b0acb490e2f3f81790c9",
+      "pageTitle": "ASUS ROG STRIX B550-F GAMING WIFI II 대원씨티에스 : 다나와 가격비교",
+      "candidateProductTitle": "ASUS ROG STRIX B550-F GAMING WIFI II 대원씨티에스",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "ffbf4ec7-f9a0-4430-9fef-0e615191e306",
+      "type": "MOTHERBOARD",
+      "manufacturer": "ASUS",
+      "modelName": "TUF GAMING B450M-PRO II",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "13396157",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=13396157",
+        "title": "ASUS TUF B450M-PRO GAMING (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:46.177Z",
+      "responseSha256": "7ec33c6735b90cfb0da63a8084fa0c25d3ef975e8352bd2cfe4915cb420bebab",
+      "pageTitle": "ASUS TUF B450M-PRO GAMING (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "ASUS TUF B450M-PRO GAMING (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "66a04e75-7120-415c-813a-9d78106f76e4",
+      "type": "MOTHERBOARD",
+      "manufacturer": "ASUS",
+      "modelName": "TUF GAMING B550-PLUS",
+      "partNumber": "TUF GAMING B550-PLUS",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "11571368",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=11571368",
+        "title": "ASUS TUF Gaming B550M-PLUS STCOM"
+      },
+      "priceCandidate": {
+        "amountKrw": 154930,
+        "observedAt": "2026-10-10T09:02:47.465Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=11571368",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:47.465Z",
+      "responseSha256": "70fa5ce4f6e3f8e9d34ed5ec64e6cfdb84a00c12c6faa55f7add97149db6611a",
+      "pageTitle": "ASUS TUF Gaming B550M-PLUS STCOM : 다나와 가격비교",
+      "candidateProductTitle": "ASUS TUF Gaming B550M-PLUS STCOM",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "e726b02e-1d88-4c62-a896-1d7e9f3c428d",
+      "type": "MOTHERBOARD",
+      "manufacturer": "ASUS",
+      "modelName": "TUF GAMING B760M-PLUS WIFI",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "19756199",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19756199",
+        "title": "ASUS TUF Gaming B760-PLUS WIFI 코잇"
+      },
+      "priceCandidate": {
+        "amountKrw": 281560,
+        "observedAt": "2026-10-10T09:02:48.506Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=19756199",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:48.506Z",
+      "responseSha256": "0a4909848f66588788956fdbba7c1b4654599183740b4ceef00c5d830de23c91",
+      "pageTitle": "ASUS TUF Gaming B760-PLUS WIFI 코잇 : 다나와 가격비교",
+      "candidateProductTitle": "ASUS TUF Gaming B760-PLUS WIFI 코잇",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "0e4090fc-f3d3-4ff0-8098-01746cb35a14",
+      "type": "MOTHERBOARD",
+      "manufacturer": "ASUS",
+      "modelName": "TUF GAMING B860-PLUS WIFI",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "74254814",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=74254814",
+        "title": "ASUS TUF Gaming B860M-PLUS WIFI STCOM"
+      },
+      "priceCandidate": {
+        "amountKrw": 273960,
+        "observedAt": "2026-10-10T09:02:49.715Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=74254814",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:49.715Z",
+      "responseSha256": "4d69494c6c876bb4587a1beabab987831f7f46db5d126d172a69c7c3a98abe63",
+      "pageTitle": "ASUS TUF Gaming B860M-PLUS WIFI STCOM : 다나와 가격비교",
+      "candidateProductTitle": "ASUS TUF Gaming B860M-PLUS WIFI STCOM",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "018ba07e-bdcb-406e-b2ec-c56deddc1634",
+      "type": "MOTHERBOARD",
+      "manufacturer": "Gigabyte",
+      "modelName": "B550M DS3H",
+      "partNumber": "B550M DS3H",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "11575373",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=11575373",
+        "title": "GIGABYTE B550M DS3H 듀러블에디션 피씨디렉트"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:50.453Z",
+      "responseSha256": "03228935724e2f6b63b07b56a7d08544bcac61a0ae7c15b8e6d41efdec31f33c",
+      "pageTitle": "GIGABYTE B550M DS3H 듀러블에디션 피씨디렉트 : 다나와 가격비교",
+      "candidateProductTitle": "GIGABYTE B550M DS3H 듀러블에디션 피씨디렉트",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": true
+    },
+    {
+      "localProductId": "b6196947-39ac-4389-abb3-703b6c291fbb",
+      "type": "MOTHERBOARD",
+      "manufacturer": "Gigabyte",
+      "modelName": "B650 GAMING X AX",
+      "partNumber": "B650 GAMING X AX",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "123846779",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=123846779",
+        "title": "MSI MAG CODEX R2 B5NVM I13 U5-250KF PLUS RTX™ 5060 Ti 게이밍"
+      },
+      "priceCandidate": {
+        "amountKrw": 1913740,
+        "observedAt": "2026-10-10T09:02:51.766Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=123846779",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:51.766Z",
+      "responseSha256": "fead4d2fa00f5ea0a93b19e03bd5114dcaef94c41eb3570190176b43cf66cf98",
+      "pageTitle": "MSI MAG CODEX R2 B5NVM I13 U5-250KF PLUS RTX™ 5060 Ti 게이밍 (16GB, M.2 512GB) : 다나와 가격비교",
+      "candidateProductTitle": "MSI MAG CODEX R2 B5NVM I13 U5-250KF PLUS RTX™ 5060 Ti 게이밍 (16GB, M.2 512GB)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "068b31b5-7f0f-4b5b-a824-6bcb8c78f7d1",
+      "type": "MOTHERBOARD",
+      "manufacturer": "Gigabyte",
+      "modelName": "B650M DS3H (rev. 1.0)",
+      "partNumber": "B650M DS3H (rev. 1.0)",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "102553601",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=102553601",
+        "title": "GIGABYTE B650EM DS3H WIFI6E 피씨디렉트"
+      },
+      "priceCandidate": {
+        "amountKrw": 160380,
+        "observedAt": "2026-10-10T09:02:52.802Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=102553601",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:52.802Z",
+      "responseSha256": "62db3c6df80f2e7ad33265236f4482222892358bc8ebaa54b33a469e4e7ede57",
+      "pageTitle": "GIGABYTE B650EM DS3H WIFI6E 피씨디렉트 : 다나와 가격비교",
+      "candidateProductTitle": "GIGABYTE B650EM DS3H WIFI6E 피씨디렉트",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "3b33edb9-e662-474a-b6ca-426bddea7a6a",
+      "type": "MOTHERBOARD",
+      "manufacturer": "Gigabyte",
+      "modelName": "B760M DS3H DDR4",
+      "partNumber": "B760M DS3H DDR4",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18651560",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18651560",
+        "title": "GIGABYTE B760M DS3H D4 피씨디렉트"
+      },
+      "priceCandidate": {
+        "amountKrw": 118540,
+        "observedAt": "2026-10-10T09:02:54.125Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18651560",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:54.125Z",
+      "responseSha256": "8f6dc7dd147ac3516b4a2f846ff04fb4715af54e48babbed4b7f5f4c6feecf45",
+      "pageTitle": "GIGABYTE B760M DS3H D4 피씨디렉트 : 다나와 가격비교",
+      "candidateProductTitle": "GIGABYTE B760M DS3H D4 피씨디렉트",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "a03ef0d8-431a-4f45-b4df-03a54c704ad3",
+      "type": "MOTHERBOARD",
+      "manufacturer": "Gigabyte",
+      "modelName": "B760M GAMING X DDR4",
+      "partNumber": "B760M GAMING X DDR4",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "19903481",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19903481",
+        "title": "ASUS ROG STRIX B760-G GAMING WIFI 코잇"
+      },
+      "priceCandidate": {
+        "amountKrw": 219230,
+        "observedAt": "2026-10-10T09:02:55.251Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=19903481",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:02:55.251Z",
+      "responseSha256": "85fcd57acaa5da9dd87ab737cc06266874d7a8d86dd24975ed15b888dc46ee13",
+      "pageTitle": "ASUS ROG STRIX B760-G GAMING WIFI 코잇 : 다나와 가격비교",
+      "candidateProductTitle": "ASUS ROG STRIX B760-G GAMING WIFI 코잇",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "06d866fd-b577-4a3d-ac7d-6eb4c31a04b8",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "B450 GAMING PLUS MAX",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "9204126",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=9204126",
+        "title": "MSI MPG B450 게이밍 플러스 맥스"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:56.104Z",
+      "responseSha256": "eafb3cfa5060ce6d5c2f511f2281532d59bfe3ccd7536d00e5e9fa1d24298993",
+      "pageTitle": "MSI MPG B450 게이밍 플러스 맥스 : 다나와 가격비교",
+      "candidateProductTitle": "MSI MPG B450 게이밍 플러스 맥스",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "818b0353-e9f3-4e66-8842-188838408685",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "B450 TOMAHAWK MAX II",
+      "partNumber": "B450 TOMAHAWK MAX II",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "9203967",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=9203967",
+        "title": "MSI MAG B450 토마호크 맥스"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:57.196Z",
+      "responseSha256": "8b2ab31ba6fa1afa52788dfabfc9e25070b2712dc1a03561fe4c6cc29f570edf",
+      "pageTitle": "MSI MAG B450 토마호크 맥스 : 다나와 가격비교",
+      "candidateProductTitle": "MSI MAG B450 토마호크 맥스",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "f72518b6-feca-413a-a9df-e8e663953502",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "B450M MORTAR MAX",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "8938550",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=8938550",
+        "title": "MSI MAG B450M 박격포 맥스"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:58.214Z",
+      "responseSha256": "f1f5c0505605e810f5b9cd6c9692ab8f2952cdf1facb7aa36a03ddbf0a5f8023",
+      "pageTitle": "MSI MAG B450M 박격포 맥스 : 다나와 가격비교",
+      "candidateProductTitle": "MSI MAG B450M 박격포 맥스",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "c4540c1e-043a-460e-9e14-8647a5f2db89",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "B450M PRO-VDH MAX",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "9499989",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=9499989",
+        "title": "MSI B450M PRO-VDH 맥스"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:02:59.326Z",
+      "responseSha256": "5d30a0ab659364e51f14f78a7fcf0afa332a0442cb050eaeeecac9e26b21306b",
+      "pageTitle": "MSI B450M PRO-VDH 맥스 : 다나와 가격비교",
+      "candidateProductTitle": "MSI B450M PRO-VDH 맥스",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "9f57a8fd-aaf9-4681-aaf1-f959cd6a4e8b",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "B550-A PRO",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "122694411",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=122694411",
+        "title": "MSI B550M-A PRO"
+      },
+      "priceCandidate": {
+        "amountKrw": 96020,
+        "observedAt": "2026-10-10T09:03:00.679Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=122694411",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:00.679Z",
+      "responseSha256": "945ee64829c0dd42d850f3d7ac5a74ee86aff462473dd5dba1960766b65bab6f",
+      "pageTitle": "MSI B550M-A PRO : 다나와 가격비교",
+      "candidateProductTitle": "MSI B550M-A PRO",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "62759c61-8604-44f3-b54e-4efc3d0fef28",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "B550M PRO-VDH WIFI",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18036965",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18036965",
+        "title": "MSI B550M PRO-VDH WIFI (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:01.674Z",
+      "responseSha256": "d9f82db73dbf458bc27a8c909a54a7985aaeee4ae07e31fe82036ba91723ea29",
+      "pageTitle": "MSI B550M PRO-VDH WIFI (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "MSI B550M PRO-VDH WIFI (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "a77dfd71-007a-4689-83f1-fca03d672445",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "B650 GAMING PLUS WIFI",
+      "partNumber": "B650 GAMING PLUS WIFI",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "67690235",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=67690235",
+        "title": "삼성전자 갤럭시탭S10 플러스"
+      },
+      "priceCandidate": {
+        "amountKrw": 1145860,
+        "observedAt": "2026-10-10T09:03:02.992Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=67690235",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:02.992Z",
+      "responseSha256": "6072afecf7fedc69e165c9e419e2c60408b35343dc327e48a0de683b190dbfce",
+      "pageTitle": "삼성전자 갤럭시탭S10 플러스 (256GB) : 다나와 가격비교",
+      "candidateProductTitle": "삼성전자 갤럭시탭S10 플러스 (256GB)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "880de7f7-ca07-4e78-8a88-4569cd4a58b0",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "B650M GAMING PLUS WIFI",
+      "partNumber": "B650M GAMING PLUS WIFI",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18044522",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18044522",
+        "title": "ASUS TUF Gaming B650M- PLUS WIFI STCOM"
+      },
+      "priceCandidate": {
+        "amountKrw": 248550,
+        "observedAt": "2026-10-10T09:03:04.003Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18044522",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:04.003Z",
+      "responseSha256": "8bfccdfcf9568d3499d250e049b4c67a57dd696d5928ad904cdc2262a18ccb35",
+      "pageTitle": "ASUS TUF Gaming B650M-PLUS WIFI STCOM : 다나와 가격비교",
+      "candidateProductTitle": "ASUS TUF Gaming B650M-PLUS WIFI STCOM",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "9eb31bdb-515f-444d-97e7-d4e112f6abf9",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "MAG B550 TOMAHAWK",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "13631252",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=13631252",
+        "title": "MSI MAG B550 토마호크 (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:05.121Z",
+      "responseSha256": "8fdb07a0013b1c5351c71600c2a10cc120be03f1faef6068ddfd216d8b940fb3",
+      "pageTitle": "MSI MAG B550 토마호크 (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "MSI MAG B550 토마호크 (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "c346c424-f5c4-4fdc-9324-78818fb1da17",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "MAG B550M MORTAR",
+      "partNumber": "MAG B550M MORTAR",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "11578325",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=11578325",
+        "title": "MSI MAG B550M 박격포 WiFi"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:05.985Z",
+      "responseSha256": "f5dc195e16032b9985ea69bb938941dd60b1bf109a1ed984744817310dd87069",
+      "pageTitle": "MSI MAG B550M 박격포 WiFi : 다나와 가격비교",
+      "candidateProductTitle": "MSI MAG B550M 박격포 WiFi",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "70a98210-ce83-4fbf-a0ed-14360629ed35",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "MAG B550M MORTAR WIFI",
+      "partNumber": "MAG B550M MORTAR WIFI",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "11578325",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=11578325",
+        "title": "MSI MAG B550M 박격포 WiFi"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:07.091Z",
+      "responseSha256": "10c36e5f21d6689a6537eb30d16583793d219cc0b1e28a88f515a27742a18b33",
+      "pageTitle": "MSI MAG B550M 박격포 WiFi : 다나와 가격비교",
+      "candidateProductTitle": "MSI MAG B550M 박격포 WiFi",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "11da4bd7-aecf-4ad4-864d-ca058db18688",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "MAG B760 TOMAHAWK WIFI DDR4",
+      "partNumber": "MAG B760 TOMAHAWK WIFI DDR4",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18652865",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18652865",
+        "title": "MSI MAG B760 토마호크 WIFI"
+      },
+      "priceCandidate": {
+        "amountKrw": 227630,
+        "observedAt": "2026-10-10T09:03:08.493Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18652865",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:08.493Z",
+      "responseSha256": "4e47dc92ccdf98f1ee5e1d0cc0612397d78df94ea700d99cfb93f28ace00e830",
+      "pageTitle": "MSI MAG B760 토마호크 WIFI : 다나와 가격비교",
+      "candidateProductTitle": "MSI MAG B760 토마호크 WIFI",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "1e871288-c101-40c7-877e-a2e4708fd47c",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "MAG X570 TOMAHAWK WIFI",
+      "partNumber": "MAG X570 TOMAHAWK WIFI",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "15156329",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15156329",
+        "title": "MSI MAG X570S 토마호크 맥스 WIFI"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:09.376Z",
+      "responseSha256": "f62dfcba0f13710b42918adc5c1d48428d7a423d181d0cd5e09a8c6b6df8c5c8",
+      "pageTitle": "MSI MAG X570S 토마호크 맥스 WIFI : 다나와 가격비교",
+      "candidateProductTitle": "MSI MAG X570S 토마호크 맥스 WIFI",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "82400cfc-c1b0-446d-974c-8c13b77e6c10",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "MAG X670E TOMAHAWK WIFI",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "27576677",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=27576677",
+        "title": "MSI MAG X670E 토마호크 WIFI (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:10.529Z",
+      "responseSha256": "1d8e6d71172b1e615a1346132f77fb9f4ee1c1682e8c8d4920bb631cbb848730",
+      "pageTitle": "MSI MAG X670E 토마호크 WIFI (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "MSI MAG X670E 토마호크 WIFI (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "b2ec5262-24e3-4dad-aa75-dd2156ea0b1d",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "MPG B550 GAMING PLUS",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "11591501",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=11591501",
+        "title": "MSI MPG B550 게이밍 플러스"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:11.526Z",
+      "responseSha256": "f81caa9e191bd996da6701ac4d9085544b2952e1925acfea230fbb06111886d3",
+      "pageTitle": "MSI MPG B550 게이밍 플러스 : 다나와 가격비교",
+      "candidateProductTitle": "MSI MPG B550 게이밍 플러스",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "54ff0994-8f3c-4f26-8209-5e0bcf94068c",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "MPG B650 CARBON WIFI",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "17971178",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+        "title": "MSI MPG B650 카본 WIFI"
+      },
+      "priceCandidate": {
+        "amountKrw": 915000,
+        "observedAt": "2026-10-10T09:03:12.755Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:12.755Z",
+      "responseSha256": "41e1ee18d4e193c0f32333f8a5224c054f28a5fcca9188dc9530c4cf1625b6bd",
+      "pageTitle": "MSI MPG B650 카본 WIFI : 다나와 가격비교",
+      "candidateProductTitle": "MSI MPG B650 카본 WIFI",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "f784bedf-2c35-48e4-8dd2-e10cada0d814",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "MPG B650I EDGE WIFI",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18449468",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18449468",
+        "title": "MSI MPG B650I 엣지 WIFI (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:13.882Z",
+      "responseSha256": "865b2cfd26f85b409ff32b547c0740e5c45c6aab5e3bcdf9c7465b2e8ef47b25",
+      "pageTitle": "MSI MPG B650I 엣지 WIFI (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "MSI MPG B650I 엣지 WIFI (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "a8310210-8d47-4c76-86e8-8ebe5e85799e",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "PRO B660M-A DDR4",
+      "partNumber": "PRO B660M-A DDR4",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "16089554",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16089554",
+        "title": "ASRock B660M Pro RS D4 에즈윈"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:14.925Z",
+      "responseSha256": "74b0eb17b2b0ebcd30bd2eda07d49ae3f68497de40da1881b9d680bbea04724a",
+      "pageTitle": "ASRock B660M Pro RS D4 에즈윈 : 다나와 가격비교",
+      "candidateProductTitle": "ASRock B660M Pro RS D4 에즈윈",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NO_ACTIVE_OFFER",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "12749e7c-09da-45ad-9c42-acf1a8dbc132",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "PRO B660M-A WIFI DDR4",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18222278",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18222278",
+        "title": "MSI PRO B660M-A WIFI (해외구매)"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:16.056Z",
+      "responseSha256": "4f50d3ee664e4aa46d42caeb90c66aa9cbec5204e0d275733fda845d66159ded",
+      "pageTitle": "MSI PRO B660M-A WIFI (해외구매) : 다나와 가격비교",
+      "candidateProductTitle": "MSI PRO B660M-A WIFI (해외구매)",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NOT_DOMESTIC_NEW",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "2aa10423-e5ed-456c-8aec-910e89eadf07",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "PRO B760M-A WIFI DDR4",
+      "partNumber": null,
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "19241759",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19241759",
+        "title": "MSI PRO B760M-A WIFI"
+      },
+      "priceCandidate": {
+        "amountKrw": 154210,
+        "observedAt": "2026-10-10T09:03:17.382Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=19241759",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:17.382Z",
+      "responseSha256": "0edc83c9f06907a47a7953c1457ac9606d1c6790beb328e9612d9ccd83f6cb31",
+      "pageTitle": "MSI PRO B760M-A WIFI : 다나와 가격비교",
+      "candidateProductTitle": "MSI PRO B760M-A WIFI",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "560e6d6a-4264-4361-9e96-f894a5812484",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "PRO Z690-A WIFI DDR4",
+      "partNumber": "PRO Z690-A WIFI DDR4",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "15614630",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15614630",
+        "title": "MSI PRO Z690-A WIFI"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:18.205Z",
+      "responseSha256": "53a88e7af868dec33a66de0244bdeb65fdbb031e6c9a22c1e6cde627f0dc6eac",
+      "pageTitle": "MSI PRO Z690-A WIFI : 다나와 가격비교",
+      "candidateProductTitle": "MSI PRO Z690-A WIFI",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "9b4419db-7e8b-4474-8487-eec6b98ba18f",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "PRO Z790-A WIFI",
+      "partNumber": "PRO Z790-A WIFI",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "27475169",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=27475169",
+        "title": "MSI PRO Z790-P WIFI"
+      },
+      "priceCandidate": {
+        "amountKrw": 283180,
+        "observedAt": "2026-10-10T09:03:19.613Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=27475169",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:19.613Z",
+      "responseSha256": "2a632a8e3de6d81558f6bea016de8328c0c9b7f7834dc6827af55e66ce50509c",
+      "pageTitle": "MSI PRO Z790-P WIFI : 다나와 가격비교",
+      "candidateProductTitle": "MSI PRO Z790-P WIFI",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "1d2f918f-c0d5-45bb-955a-451e3ac01cb7",
+      "type": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "X570-A PRO",
+      "partNumber": "X570-A PRO",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "95424731",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=95424731",
+        "title": "BIWIN Black Opal X570 PRO M.2 NVMe"
+      },
+      "priceCandidate": {
+        "amountKrw": 1155000,
+        "observedAt": "2026-10-10T09:03:20.486Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=95424731",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:20.486Z",
+      "responseSha256": "05d06de90b278b276fa37518946603397f291ab65707dc31f16881b7bafb27d7",
+      "pageTitle": "BIWIN Black Opal X570 PRO M.2 NVMe (4TB) : 다나와 가격비교",
+      "candidateProductTitle": "BIWIN Black Opal X570 PRO M.2 NVMe (4TB)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "3ec57274-ad7b-4ac8-950f-be2e45d68d6b",
+      "type": "RAM",
+      "manufacturer": "Corsair",
+      "modelName": "VENGEANCE DDR5-5600 CL40 48GB (2x24GB)",
+      "partNumber": "CMK48GX5M2B5600C40",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "27788273",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=27788273",
+        "title": "CORSAIR DDR5 - 5600 CL40 VENGEANCE RGB BLACK 패키지"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:21.478Z",
+      "responseSha256": "4802a466ee9b0d031c31a7a7daf6ef804af7565931d0c9efb9e439ee7cdd39ce",
+      "pageTitle": "CORSAIR DDR5-5600 CL40 VENGEANCE RGB BLACK 패키지 (128GB(32Gx4)) : 다나와 가격비교",
+      "candidateProductTitle": "CORSAIR DDR5-5600 CL40 VENGEANCE RGB BLACK 패키지 (128GB(32Gx4))",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NO_ACTIVE_OFFER",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "a3b81710-dd76-497a-8174-7a99963836c8",
+      "type": "RAM",
+      "manufacturer": "Corsair",
+      "modelName": "VENGEANCE DDR5-6000 32GB (2x16GB)",
+      "partNumber": "CMK32GX5M2B6000C36",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "59829371",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=59829371",
+        "title": "CORSAIR DDR5 - 6000 CL30 VENGEANCE RGB 패키지"
+      },
+      "priceCandidate": {
+        "amountKrw": 798590,
+        "observedAt": "2026-10-10T09:03:22.796Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=59829371",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:22.796Z",
+      "responseSha256": "18350830359dd665324a1ef482f03b9131314bf0b7a75fddbd6b5012daa19553",
+      "pageTitle": "CORSAIR DDR5-6000 CL30 VENGEANCE RGB 패키지 (32GB(16Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "CORSAIR DDR5-6000 CL30 VENGEANCE RGB 패키지 (32GB(16Gx2))",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "1b68935f-3b4c-4784-8746-bb0f57dbb677",
+      "type": "RAM",
+      "manufacturer": "Corsair",
+      "modelName": "VENGEANCE DDR5-6000 CL36 32GB (2x16GB)",
+      "partNumber": "CMK32GX5M2E6000C36",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "59829371",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=59829371",
+        "title": "CORSAIR DDR5 - 6000 CL30 VENGEANCE RGB 패키지"
+      },
+      "priceCandidate": {
+        "amountKrw": 798590,
+        "observedAt": "2026-10-10T09:03:23.709Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=59829371",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:23.709Z",
+      "responseSha256": "7025ca75238de322969d792054368f29c25e913403579d32e87171b2165c5ea4",
+      "pageTitle": "CORSAIR DDR5-6000 CL30 VENGEANCE RGB 패키지 (32GB(16Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "CORSAIR DDR5-6000 CL30 VENGEANCE RGB 패키지 (32GB(16Gx2))",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "ac84db24-9526-41cc-a6a9-31f2da9e7f09",
+      "type": "RAM",
+      "manufacturer": "Corsair",
+      "modelName": "VENGEANCE DDR5-6000 CL40 64GB (2x32GB)",
+      "partNumber": "CMK64GX5M2B6000C40",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "124377550",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=124377550",
+        "title": "CORSAIR DDR5-6000 CL40 VENGEANCE 패키지"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:24.933Z",
+      "responseSha256": "7c0273383048bbf7806f0748a20d67afddffda9d9d0741eca91f7e0c6435edb4",
+      "pageTitle": "CORSAIR DDR5-6000 CL40 VENGEANCE 패키지 (64GB(32Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "CORSAIR DDR5-6000 CL40 VENGEANCE 패키지 (64GB(32Gx2))",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "bd6785d6-50a4-4666-9326-1445cae84536",
+      "type": "RAM",
+      "manufacturer": "Corsair",
+      "modelName": "VENGEANCE LPX DDR4-3200 16GB (2x8GB)",
+      "partNumber": "CMK16GX4M2B3200C16",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "4063210",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=4063210",
+        "title": "CORSAIR DDR4-3200 CL16 VENGEANCE LPX 레드 패키지"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:25.965Z",
+      "responseSha256": "1d741a460437e26af616748986c8076632329a89a27f502ea8281ff41023df77",
+      "pageTitle": "CORSAIR DDR4-3200 CL16 VENGEANCE LPX 레드 패키지 (32GB(16Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "CORSAIR DDR4-3200 CL16 VENGEANCE LPX 레드 패키지 (32GB(16Gx2))",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "df48793c-9511-41df-8740-07ebf9deb9bb",
+      "type": "RAM",
+      "manufacturer": "Corsair",
+      "modelName": "VENGEANCE LPX DDR4-3200 64GB (2x32GB)",
+      "partNumber": "CMK64GX4M2E3200C16",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "13406036",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=13406036",
+        "title": "CORSAIR DDR4-3200 CL16-20-20 VENGEANCE LPX BLACK 패키지"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:26.987Z",
+      "responseSha256": "4fa18d5b26a8645d9c86abdf8d90c30a120a2e2faeb57455632517baf5056395",
+      "pageTitle": "CORSAIR DDR4-3200 CL16-20-20 VENGEANCE LPX BLACK 패키지 (64GB(32Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "CORSAIR DDR4-3200 CL16-20-20 VENGEANCE LPX BLACK 패키지 (64GB(32Gx2))",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "80dd475f-7fc5-416b-b691-0e705fa9ae2c",
+      "type": "RAM",
+      "manufacturer": "Corsair",
+      "modelName": "VENGEANCE LPX DDR4-3600 32GB (2x16GB)",
+      "partNumber": "CMK32GX4M2D3600C18",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "13406396",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=13406396",
+        "title": "CORSAIR DDR4-3600 CL18 VENGEANCE LPX BLACK 패키지"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:28.113Z",
+      "responseSha256": "c256d439dc48c0a0701a5c31dee297cb6883422f1b5fc44ac9222d7a4430b92c",
+      "pageTitle": "CORSAIR DDR4-3600 CL18 VENGEANCE LPX BLACK 패키지 (64GB(32Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "CORSAIR DDR4-3600 CL18 VENGEANCE LPX BLACK 패키지 (64GB(32Gx2))",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "9dfb18b5-379e-46c3-a47e-35ab55dbeeeb",
+      "type": "RAM",
+      "manufacturer": "Corsair",
+      "modelName": "VENGEANCE LPX DDR4-3600 CL18 16GB (2x8GB)",
+      "partNumber": "CMK16GX4M2B3600C18",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "4063259",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=4063259",
+        "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE LPX 레드 패키지"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:29.343Z",
+      "responseSha256": "0584e4536fdb88098e34d93ded5d77bfbbaeb6080909d0eb33b44604c2aadc72",
+      "pageTitle": "CORSAIR DDR4-3600 CL18 VENGEANCE LPX 레드 패키지 (16GB(8Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "CORSAIR DDR4-3600 CL18 VENGEANCE LPX 레드 패키지 (16GB(8Gx2))",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "a55f968d-c92c-4edd-89d8-c6801a2c54d2",
+      "type": "RAM",
+      "manufacturer": "Corsair",
+      "modelName": "VENGEANCE RGB DDR5-6000 CL30 32GB (2x16GB)",
+      "partNumber": "CMH32GX5M2B6000C30",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "27666047",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=27666047",
+        "title": "CORSAIR DDR5-6000 CL30 VENGEANCE RGB WHITE 패키지"
+      },
+      "priceCandidate": {
+        "amountKrw": 895780,
+        "observedAt": "2026-10-10T09:03:30.575Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=27666047",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:30.575Z",
+      "responseSha256": "442f65407aba6a26c89cab7032f5a00d4aeb7a3bab7eccddd3d6ffee24897083",
+      "pageTitle": "CORSAIR DDR5-6000 CL30 VENGEANCE RGB WHITE 패키지 (32GB(16Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "CORSAIR DDR5-6000 CL30 VENGEANCE RGB WHITE 패키지 (32GB(16Gx2))",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "e024b9ab-f009-4b2a-a468-a9f43980c1f2",
+      "type": "RAM",
+      "manufacturer": "G.SKILL",
+      "modelName": "Ripjaws V DDR4-3200 16GB (2x8GB)",
+      "partNumber": "F4-3200C16D-16GVKB",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "3444778",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=3444778",
+        "title": "G.SKILL DDR4 - 3200 RIPJAWS VKB 패키지"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:31.495Z",
+      "responseSha256": "2c8af3881ce38d367c8aa628940822694aa55554af335725fb7e57ddd33c034e",
+      "pageTitle": "G.SKILL DDR4-3200 RIPJAWS VKB 패키지 (16GB(8Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "G.SKILL DDR4-3200 RIPJAWS VKB 패키지 (16GB(8Gx2))",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "7778923e-6acb-426f-aa44-9a9822bdf6e9",
+      "type": "RAM",
+      "manufacturer": "G.SKILL",
+      "modelName": "Ripjaws V DDR4-3200 32GB (2x16GB)",
+      "partNumber": "F4-3200C16D-32GVK",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "10019382",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=10019382",
+        "title": "G.SKILL DDR4-3200 CL16 RIPJAWS V VK 패키지"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:32.621Z",
+      "responseSha256": "25a4fb8a3f7bf163f37be0d373b61b3027b80a33d622e3d31d319919153101fe",
+      "pageTitle": "G.SKILL DDR4-3200 CL16 RIPJAWS V VK 패키지 (64GB(32Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "G.SKILL DDR4-3200 CL16 RIPJAWS V VK 패키지 (64GB(32Gx2))",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NO_ACTIVE_OFFER",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "2b13e1cb-7066-48a7-8b02-c3855eb0d8a1",
+      "type": "RAM",
+      "manufacturer": "G.SKILL",
+      "modelName": "Ripjaws V DDR4-3200 CL16 64GB (2x32GB)",
+      "partNumber": "F4-3200C16D-64GVK",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "10019382",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=10019382",
+        "title": "G.SKILL DDR4-3200 CL16 RIPJAWS V VK 패키지"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:33.744Z",
+      "responseSha256": "8456f5cd02ee1a368940f1e337cd3f03f9f57cf6afbc343ebee8db1fcd18981c",
+      "pageTitle": "G.SKILL DDR4-3200 CL16 RIPJAWS V VK 패키지 (64GB(32Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "G.SKILL DDR4-3200 CL16 RIPJAWS V VK 패키지 (64GB(32Gx2))",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "NO_ACTIVE_OFFER",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "a6d1208c-1b9a-4e50-99d0-7752300bc570",
+      "type": "RAM",
+      "manufacturer": "G.SKILL",
+      "modelName": "Ripjaws V DDR4-3600 CL16 32GB (2x16GB)",
+      "partNumber": "F4-3600C16D-32GVKC",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "3987011",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=3987011",
+        "title": "G.SKILL DDR4 - 3600 CL17 RIPJAWS VK 패키지"
+      },
+      "priceCandidate": null,
+      "observedAt": "2026-10-10T09:03:34.771Z",
+      "responseSha256": "efa06bf4212f19f25e33969c631fbaff634035fe62295db4ac1e27a3236f5ef4",
+      "pageTitle": "G.SKILL DDR4-3600 CL17 RIPJAWS VK 패키지 (16GB(8Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "G.SKILL DDR4-3600 CL17 RIPJAWS VK 패키지 (16GB(8Gx2))",
+      "status": "NO_VERIFIED_PRICE_REVIEW_REQUIRED",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "de974dec-000f-48c1-a0be-43ec48876f00",
+      "type": "RAM",
+      "manufacturer": "Kingston",
+      "modelName": "FURY Beast DDR4-3200 CL16 16GB (1x16GB)",
+      "partNumber": "KF432C16BB/16",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "106776428",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=106776428",
+        "title": "에스티오 King n Fury Beast 8GB 3200MHz DDR4 CL16 데스크탑 메모리 싱글 모듈 KF432C16BB8"
+      },
+      "priceCandidate": {
+        "amountKrw": 179370,
+        "observedAt": "2026-10-10T09:03:36.298Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=106776428",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:36.298Z",
+      "responseSha256": "d37a2d5bbffcae397a201c107b7bae0ac05b860a273a3876df31f48091ad4b33",
+      "pageTitle": "에스티오 King n Fury Beast 8GB 3200MHz DDR4 CL16 데스크탑 메모리 싱글 모듈 KF432C16BB8 : 다나와 가격비교",
+      "candidateProductTitle": "에스티오 King n Fury Beast 8GB 3200MHz DDR4 CL16 데스크탑 메모리 싱글 모듈 KF432C16BB8",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "a2a6493d-6570-430d-a764-926907ae7a8c",
+      "type": "RAM",
+      "manufacturer": "Kingston",
+      "modelName": "FURY Beast DDR4-3200 CL16 8GB (1x8GB)",
+      "partNumber": "KF432C16BB/8",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "106776428",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=106776428",
+        "title": "에스티오 King n Fury Beast 8GB 3200MHz DDR4 CL16 데스크탑 메모리 싱글 모듈 KF432C16BB8"
+      },
+      "priceCandidate": {
+        "amountKrw": 179370,
+        "observedAt": "2026-10-10T09:03:37.090Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=106776428",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:37.090Z",
+      "responseSha256": "3d9f694329d954a5fe00ed35f96bc3cd9a97fbd022b112ce72925b339edf178e",
+      "pageTitle": "에스티오 King n Fury Beast 8GB 3200MHz DDR4 CL16 데스크탑 메모리 싱글 모듈 KF432C16BB8 : 다나와 가격비교",
+      "candidateProductTitle": "에스티오 King n Fury Beast 8GB 3200MHz DDR4 CL16 데스크탑 메모리 싱글 모듈 KF432C16BB8",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "d69bdeec-06a3-44b1-a60d-b25d2c80714e",
+      "type": "RAM",
+      "manufacturer": "Kingston",
+      "modelName": "FURY Beast DDR5-5200 CL40 16GB (1x16GB)",
+      "partNumber": "KF552C40BB-16",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "16761047",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16761047",
+        "title": "킹스톤 FURY DDR5 - 5200 CL40 Beast"
+      },
+      "priceCandidate": {
+        "amountKrw": 426000,
+        "observedAt": "2026-10-10T09:03:38.253Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16761047",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:38.253Z",
+      "responseSha256": "c7931ecedc9f19504580a001ea37447244b36c6be365f17ac6b6517eee64a74a",
+      "pageTitle": "킹스톤 FURY DDR5-5200 CL40 Beast (16GB) : 다나와 가격비교",
+      "candidateProductTitle": "킹스톤 FURY DDR5-5200 CL40 Beast (16GB)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "0d5d0740-244e-4c24-8439-446a96de19b3",
+      "type": "RAM",
+      "manufacturer": "Kingston",
+      "modelName": "FURY Beast DDR5-5600 CL36 32GB (2x16GB)",
+      "partNumber": "KF556C36BBEK2-32",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "100192376",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=100192376",
+        "title": "킹스톤 FURY DDR5 - 5600 CL36 Beast 화이트 코잇"
+      },
+      "priceCandidate": {
+        "amountKrw": 932390,
+        "observedAt": "2026-10-10T09:03:39.375Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=100192376",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:39.375Z",
+      "responseSha256": "a4b8952c10ab673cd12dfc81ac5d664af1e5b420adc38c949ec6a2cba58c850e",
+      "pageTitle": "킹스톤 FURY DDR5-5600 CL36 Beast 화이트 코잇 (32GB) : 다나와 가격비교",
+      "candidateProductTitle": "킹스톤 FURY DDR5-5600 CL36 Beast 화이트 코잇 (32GB)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "d3590fa6-da88-402a-8299-e4b1a8782366",
+      "type": "RAM",
+      "manufacturer": "Kingston",
+      "modelName": "FURY Beast DDR5-6000 32GB (2x16GB)",
+      "partNumber": "KF560C30BBK2-32",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "96773279",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+        "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 블랙 패키지 코잇"
+      },
+      "priceCandidate": {
+        "amountKrw": 999990,
+        "observedAt": "2026-10-10T09:03:40.473Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:40.473Z",
+      "responseSha256": "b935854860c7a038f49cbe35b7d3e5c290649d6d9499b7f16830c0782a2aebc2",
+      "pageTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 블랙 패키지 코잇 (32GB(16Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 블랙 패키지 코잇 (32GB(16Gx2))",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "91a14949-27a3-43fd-b2e6-cbc81835d8af",
+      "type": "RAM",
+      "manufacturer": "Kingston",
+      "modelName": "FURY Beast DDR5-6000 CL30 32GB (2x16GB)",
+      "partNumber": "KF560C30BBEK2-32",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "96773279",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+        "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 블랙 패키지 코잇"
+      },
+      "priceCandidate": {
+        "amountKrw": 999990,
+        "observedAt": "2026-10-10T09:03:41.530Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:41.530Z",
+      "responseSha256": "2f895f18a74f635581ee059cba06c3086685c2aa73a96424e5aadc719f15cecd",
+      "pageTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 블랙 패키지 코잇 (32GB(16Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 블랙 패키지 코잇 (32GB(16Gx2))",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "6df92049-f4d1-4fda-84ac-226df51f18a9",
+      "type": "RAM",
+      "manufacturer": "Kingston",
+      "modelName": "FURY Beast DDR5-6000 CL36 16GB (1x16GB)",
+      "partNumber": "KF560C36BBE-16",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "96773279",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+        "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 블랙 패키지 코잇"
+      },
+      "priceCandidate": {
+        "amountKrw": 999990,
+        "observedAt": "2026-10-10T09:03:42.547Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:42.547Z",
+      "responseSha256": "c7232dff924fab54f69d5a3f52bca53775db6856f344dde0db40a8e91ef0b475",
+      "pageTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 블랙 패키지 코잇 (32GB(16Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 블랙 패키지 코잇 (32GB(16Gx2))",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "1a379ed2-8a17-4b05-9fa8-194fee7cb71a",
+      "type": "RAM",
+      "manufacturer": "Kingston",
+      "modelName": "FURY Beast DDR5-6000 CL36 32GB (1x32GB)",
+      "partNumber": "KF560C36BBE-32",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "96773279",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+        "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 블랙 패키지 코잇"
+      },
+      "priceCandidate": {
+        "amountKrw": 999990,
+        "observedAt": "2026-10-10T09:03:44.311Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:44.311Z",
+      "responseSha256": "f68c686f1b1d5f1164877e424602a8bd6a2015626ef5e002406c14842ae2f06c",
+      "pageTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 블랙 패키지 코잇 (32GB(16Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 블랙 패키지 코잇 (32GB(16Gx2))",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "c4d6c745-44c2-45c6-bfc5-59ce508d5ced",
+      "type": "RAM",
+      "manufacturer": "Kingston",
+      "modelName": "FURY Beast DDR5-6000 CL36 32GB (2x16GB)",
+      "partNumber": "KF560C36BBEK2-32",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "96773279",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+        "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 블랙 패키지 코잇"
+      },
+      "priceCandidate": {
+        "amountKrw": 999990,
+        "observedAt": "2026-10-10T09:03:44.808Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:44.808Z",
+      "responseSha256": "be3db7c71de997f60090635725a3f38db4a40dbb8cda1b3a27a62d4d60687c77",
+      "pageTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 블랙 패키지 코잇 (32GB(16Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 블랙 패키지 코잇 (32GB(16Gx2))",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "244b13f2-cd74-4847-862b-bee88c2ee910",
+      "type": "RAM",
+      "manufacturer": "Kingston",
+      "modelName": "FURY Beast DDR5-6000 CL36 64GB (2x32GB)",
+      "partNumber": "KF560C36BBEK2-64",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "96773312",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=96773312",
+        "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 화이트 패키지 코잇"
+      },
+      "priceCandidate": {
+        "amountKrw": 1999990,
+        "observedAt": "2026-10-10T09:03:45.994Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=96773312",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:45.994Z",
+      "responseSha256": "87c61ab36fd1bf0b965ac732f88b5e7f610e082ecd20ad14fb99717603fc26ac",
+      "pageTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 화이트 패키지 코잇 (64GB(32Gx2)) : 다나와 가격비교",
+      "candidateProductTitle": "킹스톤 FURY DDR5-6000 CL30 Beast RGB 화이트 패키지 코잇 (64GB(32Gx2))",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "40c63df5-de09-4e26-a247-7e686a31a719",
+      "type": "RAM",
+      "manufacturer": "Kingston",
+      "modelName": "ValueRAM DDR4-2666 CL19 8GB (1x8GB)",
+      "partNumber": "KVR26N19S8/8",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "7013641",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=7013641",
+        "title": "킹스톤 DDR4-2666"
+      },
+      "priceCandidate": {
+        "amountKrw": 85900,
+        "observedAt": "2026-10-10T09:03:46.994Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=7013641",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:46.994Z",
+      "responseSha256": "fce2ae25180f7201bc8d5f28d8b80aee7c5915aa3f1e3365d20e9eb3719c9511",
+      "pageTitle": "킹스톤 DDR4-2666 (8GB) : 다나와 가격비교",
+      "candidateProductTitle": "킹스톤 DDR4-2666 (8GB)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "83f74ca3-7217-4d5c-9343-37ed717ba7b4",
+      "type": "RAM",
+      "manufacturer": "SK Hynix",
+      "modelName": "HMA81GU6MFR8N-UH DDR4-2400 8GB (1x8GB)",
+      "partNumber": "HMA81GU6MFR8N-UH",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18965774",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18965774",
+        "title": "ESSENCORE KLEVV DDR5-5600 CL46 파인인포 이벤트"
+      },
+      "priceCandidate": {
+        "amountKrw": 343920,
+        "observedAt": "2026-10-10T09:03:48.289Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18965774",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:48.289Z",
+      "responseSha256": "200c34fb6835ce7437df146afdfca22411e6bcbe30afb525da37e2968607b3c5",
+      "pageTitle": "ESSENCORE KLEVV DDR5-5600 CL46 파인인포 (16GB) : 다나와 가격비교",
+      "candidateProductTitle": "ESSENCORE KLEVV DDR5-5600 CL46 파인인포 (16GB)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    },
+    {
+      "localProductId": "5fbad1f5-f3b9-4571-9c4b-9c7dcf67cf43",
+      "type": "RAM",
+      "manufacturer": "SK Hynix",
+      "modelName": "HMAA2GU6CJR8N-XN DDR4-3200 16GB (1x16GB)",
+      "partNumber": "HMAA2GU6CJR8N-XN",
+      "saleIdentityVerified": false,
+      "candidate": {
+        "externalId": "18965774",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18965774",
+        "title": "ESSENCORE KLEVV DDR5-5600 CL46 파인인포 이벤트"
+      },
+      "priceCandidate": {
+        "amountKrw": 343920,
+        "observedAt": "2026-10-10T09:03:49.312Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18965774",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "observedAt": "2026-10-10T09:03:49.312Z",
+      "responseSha256": "4ee1e6f11e28e331a365bb90948c9e8a2e6533be4ee8b4189bc4ed57a766e782",
+      "pageTitle": "ESSENCORE KLEVV DDR5-5600 CL46 파인인포 (16GB) : 다나와 가격비교",
+      "candidateProductTitle": "ESSENCORE KLEVV DDR5-5600 CL46 파인인포 (16GB)",
+      "status": "REGULAR_PRICE_FOUND_EXACT_SALE_SKU_REVIEW_REQUIRED",
+      "partNumberTextOccurrenceHint": false
+    }
+  ],
+  "completed": 150,
+  "regularPriceCandidates": 74,
+  "requestFailures": 0,
+  "pnTextHintsWithPrice": 2
+}

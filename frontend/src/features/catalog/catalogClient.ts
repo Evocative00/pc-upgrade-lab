@@ -63,6 +63,42 @@ function isUtcPriceTimestamp(value: unknown): value is string {
   return typeof value === 'string' && value.endsWith('Z') && isPriceTimestamp(value) && Date.parse(value) >= 0
 }
 
+function isReferenceDate(value: unknown): boolean {
+  return value === null || typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
+    && isUtcPriceTimestamp(`${value}T00:00:00Z`)
+}
+
+function isReferenceEstimate(value: unknown, type: unknown): boolean {
+  if (value === undefined || value === null) return true
+  if (!isObject(value) || !Number.isSafeInteger(value.amountKrw) || Number(value.amountKrw) <= 0
+    || Number(value.amountKrw) > 999_999_999_999 || !isReferenceDate(value.sourceDate)
+    || !isUtcPriceTimestamp(value.reviewedAt) || !isText(value.notes, 1000)
+    || !['HISTORICAL_RETAIL', 'MODEL_RETAIL_REFERENCE', 'LAUNCH_PRICE', 'SIMILAR_PART_ESTIMATE'].includes(String(value.basis))
+    || !['EXACT_PRODUCT', 'MODEL', 'SIMILAR_SPEC'].includes(String(value.identityScope))
+    || !['VERIFIED_MODEL', 'ESTIMATED'].includes(String(value.confidence))
+    || !['DIRECT_MODEL_QUOTE', 'OFFICIAL_MODEL_LAUNCH', 'SPEC_NEIGHBOUR_MEDIAN'].includes(String(value.method))) return false
+  if (value.saleUnit === 'RAM_KIT') {
+    if (type !== 'RAM' || !Number.isSafeInteger(value.moduleCount) || Number(value.moduleCount) < 1 || Number(value.moduleCount) > 64) return false
+  } else if (value.saleUnit !== 'PRODUCT' || value.moduleCount !== (type === 'RAM' ? 1 : null)) return false
+  const low = value.rangeLowKrw, high = value.rangeHighKrw
+  if (value.confidence === 'ESTIMATED') {
+    if (value.basis !== 'SIMILAR_PART_ESTIMATE' || value.identityScope !== 'SIMILAR_SPEC' || value.method !== 'SPEC_NEIGHBOUR_MEDIAN'
+      || !Number.isSafeInteger(low) || !Number.isSafeInteger(high) || Number(low) <= 0
+      || Number(low) > Number(value.amountKrw) || Number(high) < Number(value.amountKrw) || Number(high) > 999_999_999_999) return false
+  } else if (value.basis === 'SIMILAR_PART_ESTIMATE' || low !== null || high !== null
+    || value.basis === 'LAUNCH_PRICE' && (value.identityScope !== 'MODEL' || value.method !== 'OFFICIAL_MODEL_LAUNCH')
+    || value.basis === 'MODEL_RETAIL_REFERENCE' && (value.identityScope !== 'MODEL' || value.method !== 'DIRECT_MODEL_QUOTE')
+    || value.basis === 'HISTORICAL_RETAIL' && (value.identityScope !== 'EXACT_PRODUCT' || value.method !== 'DIRECT_MODEL_QUOTE')) return false
+  return Array.isArray(value.sourceQuotes) && value.sourceQuotes.length >= 1 && value.sourceQuotes.length <= 3
+    && value.sourceQuotes.every((q: unknown) => isObject(q) && nullableText(q.canonicalId) && isText(q.modelName, 255)
+      && Number.isSafeInteger(q.amountKrw) && Number(q.amountKrw) > 0 && Number(q.amountKrw) <= 999_999_999_999
+      && isText(q.sourceName, 100) && isWebUrl(q.sourceUrl) && new URL(q.sourceUrl).protocol === 'https:'
+      && isReferenceDate(q.sourceDate)
+      && (q.saleUnit === 'RAM_KIT' ? type === 'RAM' && Number.isSafeInteger(q.moduleCount) && Number(q.moduleCount) >= 1 && Number(q.moduleCount) <= 64
+        : q.saleUnit === 'PRODUCT' && q.moduleCount === (type === 'RAM' ? 1 : null))
+      && (value.confidence === 'ESTIMATED' || q.saleUnit === value.saleUnit && q.moduleCount === value.moduleCount))
+}
+
 function isPriceStatus(value: unknown, currentPrice: unknown): boolean {
   if (value === undefined || value === null) return true
   if (!isObject(value) || typeof value.includedInTotal !== 'boolean') return false
@@ -100,6 +136,7 @@ function isProduct(value: unknown): value is CatalogProduct {
     isText(value.manufacturer, 100) && isText(value.modelName, 255) && nullableText(value.partNumber) &&
     ['UNVERIFIED', 'PARTIAL', 'CORE_VERIFIED'].includes(String(value.verificationStatus)) &&
     typeof value.active === 'boolean' && isCurrentPrice(value.currentPrice) && isPriceStatus(value.priceStatus, value.currentPrice) &&
+    isReferenceEstimate(value.referenceEstimate, value.type) &&
     isText(value.createdAt) && isText(value.updatedAt) &&
     isText(price.updatedAt) &&
     ['UNCONFIRMED', 'INSUFFICIENT_HISTORY', 'CONFIRMED'].includes(String(price.status)) &&

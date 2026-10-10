@@ -41,7 +41,7 @@ class SharedPriceAdapterTests {
     private MutableClock clock;
 
     @BeforeEach void fixture() {
-        snapshot = SharedCatalogSnapshot.load();
+        snapshot = SharedCatalogSnapshot.loadPilot();
         priced = snapshot.products().values().stream().filter(e -> e.price() != null).findFirst().orElseThrow();
         unpriced = snapshot.products().values().stream().filter(e -> e.price() == null).findFirst().orElseThrow();
         clock = new MutableClock(priced.price().observedAt().plus(Duration.ofHours(24)));
@@ -145,7 +145,7 @@ class SharedPriceAdapterTests {
             List<UnaryOperator<ObjectNode>> mutations = List.of(
                     n -> { n.put("schemaVersion", 2); return n; },
                     n -> { n.put("catalogVersion", "different"); return n; },
-                    n -> { n.put("servedAt", clock.now.plusSeconds(1).toString()); return n; },
+                    n -> { n.put("servedAt", clock.now.plusSeconds(6).toString()); return n; },
                     n -> { ((ObjectNode)n.get("policy")).put("staleAfterSeconds", 1); return n; },
                     n -> { ((ObjectNode)n.get("items").get(0)).put("canonicalId", UUID.randomUUID().toString()); return n; },
                     n -> { ((ObjectNode)n.get("items").get(0).get("product")).put("partNumber", "wrong-PN"); return n; },
@@ -262,17 +262,17 @@ class SharedPriceAdapterTests {
 
     @Test void optInConfigurationRequiresAnExplicitOriginAndValidTimeAndSizeBounds() {
         var config = new SharedPriceAdapterConfig(); var ram = mock(RamSpecRepository.class);
-        assertThat(config.sharedPriceAdapter(false, "", 2000, 65536, 172800, 604800, clock, ram)).isNotNull();
+        assertThat(config.sharedPriceAdapter(false, "", "", 2000, 65536, 172800, 604800, clock, ram)).isNotNull();
         for (String origin : List.of("", " http://127.0.0.1:8081", "http://localhost:8081"))
-            assertThatThrownBy(() -> config.sharedPriceAdapter(true, origin, 2000, 65536, 172800, 604800, clock, ram))
+            assertThatThrownBy(() -> config.sharedPriceAdapter(true, origin, "", 2000, 65536, 172800, 604800, clock, ram))
                     .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> config.sharedPriceAdapter(true, "http://127.0.0.1:8081", 99, 65536, 172800, 604800, clock, ram))
+        assertThatThrownBy(() -> config.sharedPriceAdapter(true, "http://127.0.0.1:8081", "", 99, 65536, 172800, 604800, clock, ram))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> config.sharedPriceAdapter(true, "http://127.0.0.1:8081", 2000, 262145, 172800, 604800, clock, ram))
+        assertThatThrownBy(() -> config.sharedPriceAdapter(true, "http://127.0.0.1:8081", "", 2000, 262145, 172800, 604800, clock, ram))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> config.sharedPriceAdapter(true, "http://127.0.0.1:8081", 2000, 65536, 0, 604800, clock, ram))
+        assertThatThrownBy(() -> config.sharedPriceAdapter(true, "http://127.0.0.1:8081", "", 2000, 65536, 0, 604800, clock, ram))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> config.sharedPriceAdapter(true, "http://127.0.0.1:8081", 2000, 65536, 172800, 172800, clock, ram))
+        assertThatThrownBy(() -> config.sharedPriceAdapter(true, "http://127.0.0.1:8081", "", 2000, 65536, 172800, 172800, clock, ram))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

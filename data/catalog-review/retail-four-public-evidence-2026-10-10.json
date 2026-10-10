@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "mode": "PREVIEW_ONLY",
+  "databaseWrites": 0,
+  "publications": 0,
+  "evidence": [
+    {
+      "key": "asus-manufacturer",
+      "url": "https://www.asus.com/kr/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+      "observedAt": "2026-10-10T11:55:17.555Z",
+      "status": 200,
+      "responseSha256": "9c1d6999e1255d8fb222099f401330231650e4a9be6d9150e9c471ac4b0c79ca"
+    },
+    {
+      "key": "asus-domestic",
+      "pcode": "74255378",
+      "title": "ASUS TUF Gaming B860-PLUS WIFI 인텍앤컴퍼니",
+      "url": "https://prod.danawa.com/info/?pcode=74255378",
+      "observedAt": "2026-10-10T11:55:19.159Z",
+      "status": 200,
+      "responseSha256": "e1065648809101d18c2f8e6b3210fa5c85e388ba52ec685dfc20d642dbd9f9da",
+      "price": {
+        "amountKrw": 275350,
+        "observedAt": "2026-10-10T11:55:19.159Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "key": "msi-domestic",
+      "pcode": "74340266",
+      "title": "MSI MAG B860M 박격포 WIFI",
+      "url": "https://prod.danawa.com/info/?pcode=74340266",
+      "observedAt": "2026-10-10T11:55:20.872Z",
+      "status": 200,
+      "responseSha256": "bc28e8f95099720da0fd6e3e9ba565a843ab64cf943850cda27c621f437c3a52",
+      "price": {
+        "amountKrw": 260900,
+        "observedAt": "2026-10-10T11:55:20.872Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=74340266",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "key": "asus-domestic-after-configuration-review",
+      "url": "https://prod.danawa.com/info/?pcode=74255378",
+      "observedAt": "2026-10-10T11:57:37.758Z",
+      "responseSha256": "b3b103b8c567cabcd4cc46cdd349ed53dfe6fe559e73652a60ec6df51ed54798",
+      "configurationVerifiedAt": "2026-10-10T11:57:37.400Z",
+      "price": {
+        "amountKrw": 275350,
+        "observedAt": "2026-10-10T11:57:37.758Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+      "observedAt": "2026-10-10T11:54:09.804Z",
+      "responseSha256": "0344cc18b8184c18c7abda598a4f07afff6b0c76e64e6c7ed554ebe7140e7236",
+      "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+      "charset": "euc-kr"
+    },
+    {
+      "sourceUrl": "https://usr.icoda.co.kr/item/view/1739432",
+      "observedAt": "2026-10-10T11:54:11.251Z",
+      "responseSha256": "7222df3aec1005801f6d866d206a8324ef96dc6d51750e16798b070910ec3e41",
+      "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+      "charset": "utf-8"
+    }
+  ]
+}

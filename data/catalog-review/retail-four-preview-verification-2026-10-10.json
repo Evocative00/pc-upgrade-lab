@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "stage": "IMPLEMENTATION_AND_LOCAL_PREVIEW_COMPLETE_AWAITING_APPLICATION_APPROVAL",
+  "implementationDecision": "추천 범위 구현·4종 미리보기 승인",
+  "scope": {
+    "requestedCandidates": 4,
+    "readyForApplicationApproval": 1,
+    "held": 3,
+    "proposedNewSaleProducts": 1,
+    "proposedNewPriceObservations": 1,
+    "newModels": 0,
+    "existingInstalledModelIdsChanged": 0
+  },
+  "readyCandidate": {
+    "manufacturer": "ASUS",
+    "modelName": "TUF GAMING B860-PLUS WIFI",
+    "domesticDistributor": "인텍앤컴퍼니",
+    "existingInstalledCanonicalId": "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+    "proposedSaleCanonicalId": "f5d69333-0ab1-382d-bc72-9434811daccf",
+    "modelCanonicalId": "3650ed66-d0bf-3906-9a1c-a77544ce34cf",
+    "partNumber": null,
+    "identityKind": "PHYSICAL_VARIANT",
+    "role": "PURCHASE_CANDIDATE",
+    "verificationStatus": "UNVERIFIED",
+    "active": false,
+    "amountKrw": 275350,
+    "sourceName": "DANAWA",
+    "sourceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+    "configurationVerifiedAt": "2026-10-10T11:57:37.400Z",
+    "observedAt": "2026-10-10T11:57:37.758Z",
+    "priceBasis": "DOMESTIC_NEW_SINGLE_BOARD_ORDINARY_PRODUCT_PRICE_WITHOUT_SHIPPING_OR_CONDITIONAL_PROMOTIONS",
+    "revisionScope": "No equivalence to any specific undisclosed PCB revision is asserted.",
+    "automaticInstalledModelPriceSubstitution": false
+  },
+  "heldCandidates": [
+    { "modelName": "Core Ultra 5 245K", "priceCandidateKrw": 330500, "reason": "Actual domestic shipped BOX factory PN not verified", "preparedImportRows": 0 },
+    { "modelName": "Core Ultra 5 250K Plus", "priceCandidateKrw": 342100, "reason": "Actual domestic shipped BOX factory PN not verified", "preparedImportRows": 0 },
+    { "modelName": "MAG B860M MORTAR WIFI", "priceCandidateKrw": 260900, "reason": "Domestic distributor not identified in reviewed listing", "preparedImportRows": 0 }
+  ],
+  "validation": {
+    "backendRelatedTests": { "status": "PASSED", "tests": 94, "classes": 13, "failures": 0, "errors": 0, "skipped": 0, "database": "DEDICATED_H2_ONLY" },
+    "backendFullTests": {
+      "status": "STOPPED_INCOMPLETE",
+      "reason": "Stopped the newly started Gradle test executor after 5m49s in existing CatalogDevBootstrapServiceTests seed300/H2 JSON processing; switched to directly relevant validation to limit time.",
+      "fullSuitePassClaimed": false,
+      "existingBackendStopped": false
+    },
+    "nodeCollectors": { "status": "PASSED", "tests": 43, "danawa": 14, "retail": 29 },
+    "workerTests": { "status": "PASSED", "tests": 566 },
+    "workerTypecheck": "PASSED",
+    "workerBuild": "PASSED_LOCAL_ONLY",
+    "readOnlyGradlePreview": "PASSED",
+    "javaWorkerPreviewHttpFixtures": { "status": "PASSED", "matched": 497, "syntheticTokenOnly": true, "cloudAccess": 0 },
+    "previewRejectsApply": true,
+    "duplicateJsonKeysRejected": true,
+    "all307IdentityFieldsPreserved": true,
+    "all80PriceItemsPreserved": true,
+    "all227ExistingNullPricesPreserved": true,
+    "heldRowsCannotCreateProductsOrPriceItems": true,
+    "collectorOutputCannotOverwriteReviewedOrProductionInputs": true,
+    "defaultWorkerDoesNotServeUnapprovedNewProduct": true
+  },
+  "productionPreservation": {
+    "homepageCheckedAt": "2026-10-10T12:05:21.1598713Z",
+    "products": 307,
+    "shared": 307,
+    "priced": 80,
+    "noPrice": 227,
+    "local": 0,
+    "unavailable": 0,
+    "catalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+    "priceVersion": "prices-v1-7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc",
+    "identitiesFileSha256": "8ad681a1cd634eb4c990ec20714fe332d6972dd1e22aff3feef54c6261466792",
+    "activeApprovedPricesFileSha256": "7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc"
+  },
+  "localPreviewOnly": {
+    "products": 308,
+    "priced": 81,
+    "existingUnconfirmed": 227,
+    "catalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+    "priceVersion": "prices-v1-0004abd3cf71594e5b6857a2a8a4395784507158b9c416683c33aa4bf8d235cf",
+    "outputDirectory": "backend/build/catalog-retail-preview",
+    "gitIgnoredOutput": true
+  },
+  "safety": {
+    "realDatabaseWrites": 0,
+    "realProductCreates": 0,
+    "pricePublications": 0,
+    "deployments": 0,
+    "backendRestarts": 0,
+    "environmentVariableChanges": 0,
+    "gitCommits": 0,
+    "gitPushes": 0
+  },
+  "configurationImpact": "No IntelliJ environment or backend run-configuration changes are needed for preview. JDK21 remains required. Actual adoption would need separately approved catalog/price publication and a coordinated backend restart for the expanded catalog version; the existing three central-price environment variables can remain unchanged.",
+  "limitations": [
+    "CPU factory BOX PN and MSI distributor confirmations remain pending; their candidate prices are not price import rows.",
+    "The new sale product does not price the existing installed-model reference or change any existing PC link.",
+    "No automatic scheduled collection, production adoption, MySQL integration application, OAuth login or direct browser UI verification was performed.",
+    "Computer Use ended because the current Windows browser URL could not be validated; image-only PN evidence remains unconfirmed."
+  ],
+  "evidenceFiles": [
+    "data/catalog-review/retail-four-preview-2026-10-10.json",
+    "data/catalog-review/retail-four-public-evidence-2026-10-10.json",
+    "data/catalog-review/retail-cpu-pending-manifest-2026-10-10.json",
+    "data/catalog-review/held146-price-review-2026-10-10.json"
+  ]
+}

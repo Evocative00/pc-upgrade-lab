@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "product": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:241067:model",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 245K",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "COMPUZONE",
+        "externalId": "1183680",
+        "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+        "saleSku": "국내 대리점 정품 박스 CPU 단품, 쿨러 미포함",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": null
+      },
+      "review": {
+        "status": "PENDING",
+        "expectedTitle": "[INTEL] 인텔 코어 Ultra 5 프로세서 245K (애로우 레이크/4.2GHz/26MB/쿨러미포함) [정품박스]",
+        "expectedModel": "245K",
+        "expectedPartNumber": "BX80768245K",
+        "packageType": "BOX",
+        "unitCount": 1,
+        "domesticDistribution": "AUTHORIZED",
+        "domesticPnVerified": false,
+        "reason": "Global BOX order code candidate only. The actual domestic shipped factory PN is not established."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:245694:model",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 250K Plus",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "ICODA",
+        "externalId": "1739432",
+        "sourceUrl": "https://usr.icoda.co.kr/item/view/1739432",
+        "saleSku": "국내 대리점 정품 박스 CPU 단품, 쿨러 미포함",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": null
+      },
+      "review": {
+        "status": "PENDING",
+        "expectedTitle": "박스 인텔 코어 울트라 5 정품 250K PLUS CPU (애로우레이크 리프레시/LGA1851/쿨러미포함)",
+        "expectedModel": "250K PLUS",
+        "expectedPartNumber": "BX80768250K",
+        "packageType": "BOX",
+        "unitCount": 1,
+        "domesticDistribution": "AUTHORIZED",
+        "domesticPnVerified": false,
+        "reason": "Global BOX order code candidate only. The actual domestic shipped factory PN is not established."
+      }
+    }
+  ]
+}

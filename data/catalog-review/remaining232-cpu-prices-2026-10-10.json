@@ -1,0 +1,3912 @@
+{
+  "schemaVersion": 1,
+  "stage": "UNAPPROVED_CPU_PRICE_REVIEW_PREVIEW",
+  "priceImportApproved": false,
+  "databaseWrites": 0,
+  "deployments": 0,
+  "requested": 39,
+  "startedAt": "2026-10-10T10:11:22.342Z",
+  "inputEvidence": {
+    "active75Sha256": "cdb8e354e2932f2d53045f76fe7f284dd8529527e43952a385304defd58984d4",
+    "identityManifestSha256": "8ad681a1cd634eb4c990ec20714fe332d6972dd1e22aff3feef54c6261466792",
+    "discovery": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+    "priorCandidatePages": "data/catalog-review/all-catalog-price-candidate-pages-2026-10-10.json",
+    "initialInventory": "data/catalog-review/all-catalog-live-inventory-2026-10-10.json"
+  },
+  "rules": [
+    "Only current original HTML observations are price evidence; search caches and prior prices are discovery only.",
+    "Domestic NEW retail BOX/WOF only; bulk, multipack, overseas, refurb, anniversary and other CPUs are excluded.",
+    "Regular data-base-price in active Danawa merchant purchase rows only; shipping, membership, coupon, cash and promotional prices excluded.",
+    "Manufacturer Product ID Boxed or exact Intel boxed Ordering Code must match sale package. Existing source identity, partNumber, canonicalID, model role and DB are preserved.",
+    "No price on reviewed page is page-scoped; it does not prove global unavailability.",
+    "Manufacturer model-reference items remain held for separate exact retail SKU approval.",
+    "Outlier boxed quotes are eligible only where an independent seller original product page confirms exact advertised CPU/package, ordinary KRW amount and current in-stock/purchase evidence. They retain an outlier flag for explicit review; expensive alone is not proof of wrong price."
+  ],
+  "items": [
+    {
+      "localProductId": "8a5cc1d3-b1b9-4eee-a42f-e07820ca470f",
+      "canonicalId": "03548f5c-69a1-3c02-8559-ca66a5b3a98c",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "28155df9-8c91-4150-8786-96b8c54c309c"
+      },
+      "identity": {
+        "canonicalId": "03548f5c-69a1-3c02-8559-ca66a5b3a98c",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-13700K",
+        "partNumber": "BX8071513700K",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "BX8071513700K",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=BX8071513700K",
+        "priorCandidate": {
+          "externalId": "18224471",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18224471",
+          "title": "인텔 코어i7-13세대 13700K (랩터레이크)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230500/intel-core-i713700k-processor-30m-cache-up-to-5-40-ghz/ordering.html",
+        "observedAt": "2026-10-10T10:11:22.492Z",
+        "responseSha256": "4f90baa0fb0eebac6aa10cf1db9e072f67548c8f7eb421aa735efeab00fee4bd",
+        "pageTitle": "Intel Core i7-13700K Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "BX8071513700K",
+          "BXC8071513700K"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BX8071513700K",
+            "context": "Boxed Intel Core i7-13700K Processor (30M Cache, up to 5.40 GHz) FC-LGA16A Ordering Code BX8071513700K Spec Code SRMB8 Shipping Media BOX Stepping B0 MDDS Content IDs 750128 , 850146 PCN Content IDs 798714 , 798811 , 800380 , 811981 , 815134 , 818660 "
+          },
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BXC8071513700K",
+            "context": "Boxed Intel Core i7-13700K Processor (30M Cache, up to 5.40 GHz) FC-LGA16A, for China Ordering Code BXC8071513700K Spec Code SRMB8 Shipping Media BOX Stepping B0 MDDS Content IDs 750128 , 850146 PCN Content IDs 798714 , 798811 , 800380 , 811981 , 815134 , 818660 Trade Compliance Information ECCN 5A9"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18039374",
+          "observedAt": "2026-10-10T10:11:22.981Z",
+          "responseSha256": "493e17292494bc46f2b72d3dd9de52f4ed90f1948acbc1f95f81ea99c01f2aa3",
+          "pageTitle": "인텔 코어i7-13세대 13700K (랩터레이크) (정품) : 다나와 가격비교",
+          "externalId": "18039374",
+          "productTitle": "인텔 코어i7-13세대 13700K (랩터레이크) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": null,
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "e3f0c9a5-4511-4468-b94f-adfe324f7463",
+      "canonicalId": "05a1b875-7aa0-34cf-8ff5-b59a31733119",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "6b03b443-7b22-491c-b301-7e2a285359df"
+      },
+      "identity": {
+        "canonicalId": "05a1b875-7aa0-34cf-8ff5-b59a31733119",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 7600",
+        "partNumber": "100-100001015BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-initial/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100001015BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100001015BOX",
+        "priorCandidate": {
+          "externalId": "18718496",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718496",
+          "title": "AMD 라이젠 5 -5세대 7600 (라파엘)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7600.html",
+        "observedAt": "2026-10-10T10:11:23.305Z",
+        "responseSha256": "9f2009c43f4572e1fc9d1caeac20be447f2f18b122e7ce61345a44a06f670f44",
+        "pageTitle": "AMD Ryzen 5 7600",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100001015BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100001015BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718496",
+          "observedAt": "2026-10-10T10:11:24.127Z",
+          "responseSha256": "bc9c6bc03bc72663bcbe2e10cb50f49a20216b1851530c46bb93a73d58f3e6be",
+          "pageTitle": "AMD 라이젠5-5세대 7600 (라파엘) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "18718496",
+          "productTitle": "AMD 라이젠5-5세대 7600 (라파엘) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "18718496"
+            },
+            {
+              "label": "벌크 정품 용어사전 레이어 보기",
+              "pcode": "89606675"
+            },
+            {
+              "label": "벌크 병행 용어사전 레이어 보기",
+              "pcode": "27757436"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "18771350"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718481",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:08.240Z",
+          "responseSha256": "a71413db8c04e1c250389806134cb4961fcd8f7b97b0ff7339b1a8ef9bda1f8f",
+          "pageTitle": "AMD 라이젠5-5세대 7600 (라파엘) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "18718481",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠5-5세대 7600 (라파엘) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "Wraith Stealth 포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "c36e6c2a-703d-4f93-866d-3f2fcb376812",
+      "canonicalId": "0bbcce00-3eea-35a8-8f0d-b44a751de098",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4b70d972-96c3-4813-b291-cce2c30eb149"
+      },
+      "identity": {
+        "canonicalId": "0bbcce00-3eea-35a8-8f0d-b44a751de098",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 4500",
+        "partNumber": "100-100000644BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000644BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000644BOX",
+        "priorCandidate": {
+          "externalId": "17855558",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17855558",
+          "title": "AMD 라이젠 5 -3세대 4500 (르누아르-X)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-4000-series/amd-ryzen-5-4500.html",
+        "observedAt": "2026-10-10T10:11:26.081Z",
+        "responseSha256": "28143e2c0f6931cd7257756cd0f8ee5b9ba2e0d0e1f68fe63bca2d90be3c226b",
+        "pageTitle": "AMD Ryzen 5 4500 Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000644BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000644BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17855558",
+          "observedAt": "2026-10-10T10:11:26.366Z",
+          "responseSha256": "ea5a3e0d2af8bcb7f2c77c2aaec2d4f99f9407ff2c110e44c7a7e53ba9e90eca",
+          "pageTitle": "AMD 라이젠5-3세대 4500 (르누아르-X) (정품) : 다나와 가격비교",
+          "externalId": "17855558",
+          "productTitle": "AMD 라이젠5-3세대 4500 (르누아르-X) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": null,
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "fa0f6c80-4654-48e6-b5b0-0696ab0319fa",
+      "canonicalId": "0f41a56a-4b08-3997-9ed9-0e61402c91c3",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8a042a3a-8c29-4599-8be6-b93f55830e54"
+      },
+      "identity": {
+        "canonicalId": "0f41a56a-4b08-3997-9ed9-0e61402c91c3",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-13700KF",
+        "partNumber": "BX8071513700KF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "BX8071513700KF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=BX8071513700KF",
+        "priorCandidate": {
+          "externalId": "18184013",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18184013",
+          "title": "인텔 코어i7-13세대 13700KF (랩터레이크)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230489/intel-core-i713700kf-processor-30m-cache-up-to-5-40-ghz/ordering.html",
+        "observedAt": "2026-10-10T10:11:26.496Z",
+        "responseSha256": "35469d40f2ba53f125013d56f1d4049b0f692568814d30f1df2af832b368eb25",
+        "pageTitle": "Intel Core i7-13700KF Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "BX8071513700KF",
+          "BXC8071513700KF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BX8071513700KF",
+            "context": "Boxed Intel Core i7-13700KF Processor (30M Cache, up to 5.40 GHz) FC-LGA16A Ordering Code BX8071513700KF Spec Code SRMB9 Shipping Media BOX Stepping B0 MDDS Content IDs 750128 , 850146 PCN Content IDs 798714 , 798811 , 800380 , 811981 , 815134 , 818660 "
+          },
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BXC8071513700KF",
+            "context": "Boxed Intel Core i7-13700KF Processor (30M Cache, up to 5.40 GHz) FC-LGA16A, for China Ordering Code BXC8071513700KF Spec Code SRMB9 Shipping Media BOX Stepping B0 MDDS Content IDs 750128 , 850146 PCN Content IDs 798714 , 798811 , 800380 , 811981 , 815134 , 818660 Trade Compliance Information ECCN 5"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18039356",
+          "observedAt": "2026-10-10T10:11:27.458Z",
+          "responseSha256": "6ae2062a7a8817707ec6287e63f7754f8060417ab317160f8e379f09d14fef5a",
+          "pageTitle": "인텔 코어i7-13세대 13700KF (랩터레이크) (정품) : 다나와 가격비교",
+          "externalId": "18039356",
+          "productTitle": "인텔 코어i7-13세대 13700KF (랩터레이크) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": null,
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "282ae125-fba8-4923-9f68-32ad684ee0a8",
+      "canonicalId": "10039536-d228-3f0c-a740-ea75a2df6b05",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ac833b07-53eb-4d59-8be5-bcd20ad26e79"
+      },
+      "identity": {
+        "canonicalId": "10039536-d228-3f0c-a740-ea75a2df6b05",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 8600G",
+        "partNumber": "100-100001237BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "HELD",
+      "reasonCode": "BOX_PRICE_OUTLIER_INDEPENDENT_SELLER_CONFIRMATION_REQUIRED",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100001237BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100001237BOX",
+        "priorCandidate": {
+          "externalId": "60170204",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=60170204",
+          "title": "AMD 라이젠 5 -5세대 8600G (피닉스)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/8000-series/amd-ryzen-5-8600g.html",
+        "observedAt": "2026-10-10T10:11:27.812Z",
+        "responseSha256": "6c04bc7e23a0f6ce405a456d16b9caa10f902d2cef5ad30e281b83fb077ac603",
+        "pageTitle": "AMD Ryzen 5 8600G Desktop Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100001237BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100001237BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=60170204",
+          "observedAt": "2026-10-10T10:11:28.814Z",
+          "responseSha256": "8e69959f9b09e4dc1d114abf9352eb59016c9abc323b636e50ad68b0da1de4aa",
+          "pageTitle": "AMD 라이젠5-5세대 8600G (피닉스) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "60170204",
+          "productTitle": "AMD 라이젠5-5세대 8600G (피닉스) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "60170204"
+            },
+            {
+              "label": "정품 용어사전 레이어 보기",
+              "pcode": "34336475"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "57304250"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=34336475",
+          "observedAt": "2026-10-10T10:11:29.854Z",
+          "responseSha256": "e856c3c531e258ed5fd2caeaa050e4a16fc0d1900a091a8485e761d4922ef73b",
+          "pageTitle": "AMD 라이젠5-5세대 8600G (피닉스) (정품) : 다나와 가격비교",
+          "externalId": "34336475",
+          "productTitle": "AMD 라이젠5-5세대 8600G (피닉스) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": {
+            "amountKrw": 975000,
+            "observedAt": "2026-10-10T10:11:29.854Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=34336475",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceParseReason": null
+        }
+      ],
+      "currentQuote": {
+        "amountKrw": 975000,
+        "observedAt": "2026-10-10T10:11:29.854Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=34336475",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "saleIdentityVerified": false,
+      "verifiedSaleSku": "100-100001237BOX",
+      "verificationScope": "Exact model and advertised domestic retail BOX/WOF packaging matched to manufacturer boxed code; physical delivered box is not inspected.",
+      "outlierReview": {
+        "flag": "SCARCE_BOX_OR_EXTREME_PRICE_REVIEW",
+        "amountKrw": 975000,
+        "aggregatorQuoteConfirmed": true,
+        "sellerEvidence": [
+          {
+            "seller": "SHPC컴퓨터",
+            "amountKrw": 975000,
+            "bridge": {
+              "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=960&cate4=0&pcode=34336475&cmpnyc=TV2175&safe_trade=4&fee_type=N&link_pcode=9927889411&package=0&setpc=0&r=17916273853850",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T10:16:26.700Z",
+              "responseSha256": "fd01f832be7ebd43594dd4d338c922bb18d568842002c0714b6c00886b2fd0f0",
+              "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+              "redirectLocation": null
+            },
+            "actualSellerPage": {
+              "sourceUrl": "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F9927889411&service_id=pcdn",
+              "httpStatus": 429,
+              "observedAt": "2026-10-10T10:16:26.763Z",
+              "responseSha256": "5f4fb552ab36eb82dd328727e335542d99dd5d309e1c0d47f5eb50153f671e9b",
+              "pageTitle": "[에러] 에러페이지 - 시스템오류",
+              "redirectLocation": null,
+              "error": "HTTP 429"
+            }
+          }
+        ],
+        "sellerConfirmed": false
+      }
+    },
+    {
+      "localProductId": "a9aa8d06-0a37-469e-88f0-c1e51a8fa046",
+      "canonicalId": "13a50823-a1b5-3741-998d-362ccfbab984",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ea28e46f-dc70-4547-9701-eca335890462"
+      },
+      "identity": {
+        "canonicalId": "13a50823-a1b5-3741-998d-362ccfbab984",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 7500F",
+        "partNumber": "100-100000597BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "HELD",
+      "reasonCode": "NO_VERIFIED_DOMESTIC_BOX_PAGE",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000597BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000597BOX",
+        "priorCandidate": {
+          "externalId": "21694499",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=21694499",
+          "title": "AMD 라이젠 5 -5세대 7500F (라파엘)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7500f.html",
+        "observedAt": "2026-10-10T10:11:30.218Z",
+        "responseSha256": "99df473ba1721711a87f31dfde7ba8065d954a97cf99b00e75bb802a7588676c",
+        "pageTitle": "AMD Ryzen 5 7500F",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000597BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000597BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=21694499",
+          "observedAt": "2026-10-10T10:11:30.964Z",
+          "responseSha256": "4794d20e02144c930888edfdb02a26691cd6279b39785b19b5af5cfd4758547c",
+          "pageTitle": "AMD 라이젠5-5세대 7500F (라파엘) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "21694499",
+          "productTitle": "AMD 라이젠5-5세대 7500F (라파엘) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "21694499"
+            },
+            {
+              "label": "벌크 정품 용어사전 레이어 보기",
+              "pcode": "79112576"
+            },
+            {
+              "label": "벌크 병행 용어사전 레이어 보기",
+              "pcode": "27948446"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "31908263"
+            }
+          ]
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed discovery/variant lists showed only bulk, multipack, overseas or used offers; this research did not verify a qualifying boxed page. This is not global unavailability evidence."
+    },
+    {
+      "localProductId": "8ad08612-ace7-4811-8ae6-e5d5ed84b59f",
+      "canonicalId": "145b141f-3c6b-3108-9939-82a17435b944",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3796bb7f-b124-4628-9592-cb2b3bf47e08"
+      },
+      "identity": {
+        "canonicalId": "145b141f-3c6b-3108-9939-82a17435b944",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 5600X",
+        "partNumber": "100-100000065BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-amd/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000065BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000065BOX",
+        "priorCandidate": {
+          "externalId": "12625265",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12625265",
+          "title": "AMD 라이젠 5 -4세대 5600X (버미어)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-5-5600x.html",
+        "observedAt": "2026-10-10T10:11:31.022Z",
+        "responseSha256": "bb3afedbfeb333be63c2418f330b28a8b6340599383311878a46e4afd9642c54",
+        "pageTitle": "AMD Ryzen 5 5600X Desktop Processors",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000065BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000065BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12625265",
+          "observedAt": "2026-10-10T10:11:31.954Z",
+          "responseSha256": "ba6b286282ba241a62b419c15342c421ecf05062bcdfa55b3cd1ca2076861187",
+          "pageTitle": "AMD 라이젠5-4세대 5600X (버미어) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "12625265",
+          "productTitle": "AMD 라이젠5-4세대 5600X (버미어) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "12625265"
+            },
+            {
+              "label": "프리즘 멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "15137684"
+            },
+            {
+              "label": "벌크 병행 용어사전 레이어 보기",
+              "pcode": "13763867"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "12872324"
+            },
+            {
+              "label": "중고 용어사전 레이어 보기",
+              "pcode": "17198921"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12621851",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:09.287Z",
+          "responseSha256": "075d68908405f26476994371d807e0efc141cbf4fd6ed087265eb7267c7a1a2d",
+          "pageTitle": "AMD 라이젠5-4세대 5600X (버미어) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "12621851",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠5-4세대 5600X (버미어) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "Wraith Stealth 포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "aa7386e5-8c8a-480d-9054-c8cd8eff93bd",
+      "canonicalId": "1aaff72f-29fa-38c4-888a-c654a54c81a9",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "70bae351-5e16-46d2-ac14-821d393b6244"
+      },
+      "identity": {
+        "canonicalId": "1aaff72f-29fa-38c4-888a-c654a54c81a9",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 3900X",
+        "partNumber": "100-100000023BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "HELD",
+      "reasonCode": "BOX_PRICE_OUTLIER_INDEPENDENT_SELLER_CONFIRMATION_REQUIRED",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000023BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000023BOX",
+        "priorCandidate": {
+          "externalId": "8457111",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+          "title": "AMD 라이젠 9 -3세대 3900X (마티스)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-9-3900x.html",
+        "observedAt": "2026-10-10T10:11:32.191Z",
+        "responseSha256": "8bf72f16a3e29a872a4ad7cb86de466e3dc33911f7632555c5270806291cb8e6",
+        "pageTitle": "AMD Ryzen 9 3900X Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000023BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000023BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+          "observedAt": "2026-10-10T10:11:33.107Z",
+          "responseSha256": "c88b9c84ef85b3d99316014498c9308b8b0bd1bab6adeb94e7764194f0bc6747",
+          "pageTitle": "AMD 라이젠9-3세대 3900X (마티스) (정품) : 다나와 가격비교",
+          "externalId": "8457111",
+          "productTitle": "AMD 라이젠9-3세대 3900X (마티스) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": {
+            "amountKrw": 1500000,
+            "observedAt": "2026-10-10T10:11:33.107Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceParseReason": null
+        }
+      ],
+      "currentQuote": {
+        "amountKrw": 1500000,
+        "observedAt": "2026-10-10T10:11:33.107Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "saleIdentityVerified": false,
+      "outlierReview": {
+        "flag": "SCARCE_BOX_OR_EXTREME_PRICE_REVIEW",
+        "amountKrw": 1500000,
+        "aggregatorQuoteConfirmed": true,
+        "sellerEvidence": [
+          {
+            "seller": "에프에이치디",
+            "amountKrw": 1500000,
+            "bridge": {
+              "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=960&cate4=0&pcode=8457111&cmpnyc=TY3179&safe_trade=4&fee_type=N&link_pcode=13558918388&package=0&setpc=0&r=17916273872917",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T10:16:28.948Z",
+              "responseSha256": "3db00a84965f36828c9b947034a86f4931f2d675db1b59304028a545e44bcbb0",
+              "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+              "redirectLocation": null
+            },
+            "actualSellerPage": {
+              "sourceUrl": "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F13558918388&service_id=pcdn",
+              "httpStatus": 429,
+              "observedAt": "2026-10-10T10:16:28.967Z",
+              "responseSha256": "5f4fb552ab36eb82dd328727e335542d99dd5d309e1c0d47f5eb50153f671e9b",
+              "pageTitle": "[에러] 에러페이지 - 시스템오류",
+              "redirectLocation": null,
+              "error": "HTTP 429"
+            }
+          }
+        ],
+        "sellerConfirmed": false
+      }
+    },
+    {
+      "localProductId": "79af8590-791b-4491-b287-a971d7e1d892",
+      "canonicalId": "1e55de48-6d9e-3b3b-b638-b1c257ccd2d4",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "fe3d12e9-87eb-4701-8579-5c29d61437c6"
+      },
+      "identity": {
+        "canonicalId": "1e55de48-6d9e-3b3b-b638-b1c257ccd2d4",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 8700G",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "AMD Ryzen 7 8700G",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=AMD%20Ryzen%207%208700G",
+        "priorCandidate": {
+          "externalId": "58933169",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=58933169",
+          "title": "AMD 라이젠 7 -5세대 8700G (피닉스)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/8000-series/amd-ryzen-7-8700g.html",
+        "httpStatus": 200,
+        "observedAt": "2026-10-10T10:16:09.491Z",
+        "responseSha256": "98005061d1567ebde69bad45f7b68e326978f277be7e409ad286f121c01e9d07",
+        "pageTitle": "AMD Ryzen 7 8700G Desktop Processor",
+        "redirectLocation": null,
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100001236SBX",
+          "100-100001236CSX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed *Due to AMD SR2a and SR4 coolers reaching EOL status, select AMD Ryzen 8000G, 7000 and 5000 Product ID MPK models are updated to include the AMD SR1 cooler, replacing the AMD SR2a cooler, starting 8/1/2025. These changes result in configurations that meet their original design specifications. Contact your local AMD Sales Representative for more information.&lt;/p> \" tabindex=\"0\" data-bs-html=\"true\" ref=\"info\">",
+            "value": "100-100001236SBX* , 100-100001236CSX*"
+          }
+        ],
+        "partNumberMatches": null
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=58933169",
+          "observedAt": "2026-10-10T10:11:34.360Z",
+          "responseSha256": "a00051d0d687bb62be35085a175f7c66703564d76770ee6030a14793c59c3290",
+          "pageTitle": "AMD 라이젠7-5세대 8700G (피닉스) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "58933169",
+          "productTitle": "AMD 라이젠7-5세대 8700G (피닉스) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "58933169"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "61819028"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=34336664",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:10.414Z",
+          "responseSha256": "cf96229b8871923055d1789384104cfb49171fb819304cc44e140cdf66622f34",
+          "pageTitle": "AMD 라이젠7-5세대 8700G (피닉스) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "34336664",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠7-5세대 8700G (피닉스) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "Wraith Stealth 포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "requiredFollowUp": "Current manufacturer boxed variants changed; confirm retailer order code and included cooler against official BOX/SBX/CSX/WOF/WOZ variant before assigning a price.",
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "56dcacba-cbd1-471a-b31e-b3085d3e9679",
+      "canonicalId": "239bd464-14e0-3068-9bee-8d7c7c6a0d42",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "60a8ba0d-d6a5-4e84-89df-a5ca2a8915c9"
+      },
+      "identity": {
+        "canonicalId": "239bd464-14e0-3068-9bee-8d7c7c6a0d42",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 7700X",
+        "partNumber": "100-100000591WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000591WOF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000591WOF",
+        "priorCandidate": {
+          "externalId": "123234946",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=123234946",
+          "title": "AMD 라이젠 7 -5세대 7700X3D (라파엘)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7700x.html",
+        "observedAt": "2026-10-10T10:11:34.663Z",
+        "responseSha256": "4a832b12d0b4536270c4c0caa48c0c9fbef88c0bec7d280c985c0baa9bd01307",
+        "pageTitle": "AMD Ryzen 7 7700X Desktop Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000591WOF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000591WOF"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=27945140",
+          "observedAt": "2026-10-10T10:11:35.414Z",
+          "responseSha256": "8516d8dcaff4d1e5826c9234b1eb63e3f9c184ab69c692aedb079dffc41bb94b",
+          "pageTitle": "AMD 라이젠7-5세대 7700X (라파엘) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "27945140",
+          "productTitle": "AMD 라이젠7-5세대 7700X (라파엘) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "27945140"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "13165080"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17913710",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:11.494Z",
+          "responseSha256": "3f350f0e680171e157d9da0a90a760fad6a44e3f89a7c22efdaafd5756065257",
+          "pageTitle": "AMD 라이젠7-5세대 7700X (라파엘) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "17913710",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠7-5세대 7700X (라파엘) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "미포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "15b0f37c-ced1-43d0-a5e1-a6d95b3f26ac",
+      "canonicalId": "3f8a80d4-ebdb-33e1-83c2-8a0c026ab129",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "43597450-8c66-4f59-9ef5-c347c0a45fd4"
+      },
+      "identity": {
+        "canonicalId": "3f8a80d4-ebdb-33e1-83c2-8a0c026ab129",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 3800X",
+        "partNumber": "100-100000025BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "READY",
+      "reasonCode": "VERIFIED_DOMESTIC_BOX_AND_INDEPENDENT_SELLER_PRICE_REOBSERVED_AFTER_REVIEW_OUTLIER_WARNING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000025BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000025BOX",
+        "priorCandidate": {
+          "externalId": "8459781",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+          "title": "AMD 라이젠 7 -3세대 3800X (마티스)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-7-3800x.html",
+        "observedAt": "2026-10-10T10:11:35.693Z",
+        "responseSha256": "442bb65aa415ec22de16eca6bf7f130d0fffc2b4541895ad22edf80c5b51883b",
+        "pageTitle": "AMD Ryzen 7 3800X Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000025BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000025BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+          "observedAt": "2026-10-10T10:11:36.461Z",
+          "responseSha256": "b4aae5bc8ef21492f557080e75756efff34732c38149f0aaa3a37f392cb25bcc",
+          "pageTitle": "AMD 라이젠7-3세대 3800X (마티스) (정품) : 다나와 가격비교",
+          "externalId": "8459781",
+          "productTitle": "AMD 라이젠7-3세대 3800X (마티스) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": {
+            "amountKrw": 560760,
+            "observedAt": "2026-10-10T10:11:36.461Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceParseReason": null
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+          "externalId": "8459781",
+          "discoveryMethod": "Reobserved same reviewed exact domestic boxed product after independent seller review completed",
+          "expectedTitle": "AMD 라이젠7-3세대 3800X (마티스) (정품)",
+          "reviewCompletedAt": "2026-10-10T10:19:34.196Z",
+          "regularPrice": {
+            "amountKrw": 560760,
+            "observedAt": "2026-10-10T10:26:34.472Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:26:34.472Z",
+          "responseSha256": "b0b1d69b3c804375087ed1eb2bbf7bce07f30a9635abb3ae047f8d11c12cd4c7",
+          "productTitle": "AMD 라이젠7-3세대 3800X (마티스) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "amountChanged": false,
+          "matchesPreviouslyVerifiedSellerAmount": true
+        }
+      ],
+      "currentQuote": {
+        "amountKrw": 560760,
+        "observedAt": "2026-10-10T10:26:34.472Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "saleIdentityVerified": true,
+      "verifiedSaleSku": "100-100000025BOX",
+      "verificationScope": "Exact CPU and advertised domestic 정품 BOX/WOF matched to current manufacturer boxed PN; ordinary price and stock/purchase evidence independently match original seller page. High/scarce boxed-price warning requires explicit review before apply.",
+      "outlierReview": {
+        "flag": "SCARCE_BOX_OR_EXTREME_PRICE_REVIEW",
+        "amountKrw": 560760,
+        "aggregatorQuoteConfirmed": true,
+        "sellerEvidence": [
+          {
+            "seller": "상품보기",
+            "amountKrw": 560760,
+            "bridge": {
+              "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=960&cate4=0&pcode=8459781&cmpnyc=TH201&safe_trade=4&fee_type=T&link_pcode=2483195532&package=0&setpc=0&r=17916273901293",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T10:16:31.161Z",
+              "responseSha256": "04ab2f9fb003d597af04c9824ef4fbb4823aaf05b0a08c38027e30e18f89c96f",
+              "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+              "redirectLocation": null
+            },
+            "actualSellerPage": {
+              "sourceUrl": "https://11pcs.11st.co.kr/?appLnkWyCd=04&prdNo=2483195532&goUrl=https%3A%2F%2Fm.11st.co.kr%2Fproducts%2Fma%2F2483195532&XSITE=1000000081&service_id=pcdn",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T10:16:31.200Z",
+              "responseSha256": "db7fabc6bb2b316fe41f351525c67e75326000c46e3fc1d8b30a4013783f491e",
+              "pageTitle": "앱설치 안내 - 11번가 모바일",
+              "redirectLocation": null,
+              "productIdentityTitleMatches": false,
+              "partNumberTextHintOnly": false,
+              "schemaProductName": null,
+              "schemaOffer": null,
+              "verification": "Review only: a text PN occurrence or redirected gate does not verify an exact in-stock sale product."
+            }
+          },
+          {
+            "seller": "11번가",
+            "amountKrw": 560760,
+            "actualSellerPage": {
+              "sourceUrl": "https://www.11st.co.kr/products/2483195532",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T10:19:29.961Z",
+              "responseSha256": "4243511f7ac3fb729221b847ad9446bf25b9a9743a789653c94206d409137cc2",
+              "pageTitle": "AMD 라이젠 7 3800X (마티스) (정품) AMD CPU////",
+              "seller": "11번가",
+              "verificationScope": "The seller original product page is independent of the Danawa quote. Confirmed exact CPU number, domestic 정품 packaging, ordinary KRW product amount and active purchase/in-stock evidence. Delivered physical box is not inspected.",
+              "confirmedProduct": {
+                "productId": "2483195532",
+                "name": "AMD 라이젠 7 3800X (마티스) (정품) AMD CPU////",
+                "advertisedPackage": "정품",
+                "offer": {
+                  "price": 560760,
+                  "priceCurrency": "KRW",
+                  "availability": "http://schema.org/InStock"
+                }
+              },
+              "sellerMetadataWarning": "External seller JSON-LD brand/category labels are inaccurate (brand Radeon / category Ryzen 9); exact product name, productId and ordinary offer amount match 3800X. Do not copy that metadata to our catalog.",
+              "exactAdvertisedModelAndPackageMatches": true,
+              "ordinaryPriceMatchesDanawa": true,
+              "currentSaleEvidence": true
+            }
+          }
+        ],
+        "sellerConfirmed": true,
+        "recommendation": "READY_FOR_EXPLICIT_PRICE_CONFIRMATION_WITH_OUTLIER_WARNING",
+        "originalAmountKrw": 560760,
+        "latestQuoteMatchesVerifiedSellerAmount": true
+      },
+      "detailedReviewCompletedAt": "2026-10-10T10:19:34.196Z",
+      "initialAggregatorInspectionAt": "2026-10-10T10:11:36.461Z",
+      "initialPriceObservation": {
+        "amountKrw": 560760,
+        "observedAt": "2026-10-10T10:11:36.461Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "localProductId": "141658a0-ad44-4099-876a-800f8cf5f130",
+      "canonicalId": "4328778c-84af-324b-bc60-e51891fff949",
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:241067:model"
+      },
+      "identity": {
+        "canonicalId": "4328778c-84af-324b-bc60-e51891fff949",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 245K",
+        "partNumber": null,
+        "identityKind": "MODEL_REFERENCE",
+        "role": "INSTALLED_PC_REFERENCE",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "HELD",
+      "reasonCode": "MODEL_REFERENCE_REQUIRES_SEPARATE_RETAIL_SKU_REVIEW",
+      "seedEvidenceFile": null,
+      "discoveryEvidence": {
+        "query": "Intel Core Ultra 5 245K",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=Intel%20Core%20Ultra%205%20245K",
+        "priorCandidate": {
+          "externalId": "69059753",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+          "title": "인텔 코어 울트라 5 시리즈2 245K (애로우레이크)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/ordering.html",
+        "observedAt": "2026-10-10T10:11:36.605Z",
+        "responseSha256": "813dff06eb134f2ec4e6ac609aff49a767e0f04dd8997261530e9eb2a6febefe",
+        "pageTitle": "Intel Core Ultra 5 Processor 245K",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "BXC80768245K",
+          "BX80768245K"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BXC80768245K",
+            "context": "Boxed Intel Core Ultra 5 processor 245K (24M Cache, up to 5.20 GHz) FCLGA18W, for China Ordering Code BXC80768245K Spec Code SRQCT Shipping Media BOX Stepping B0 PCN Content IDs 853587 , 917638 , 919379 Retired and discontinued "
+          },
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BX80768245K",
+            "context": "Boxed Intel Core Ultra 5 processor 245K (24M Cache, up to 5.20 GHz) FCLGA18W Ordering Code BX80768245K Spec Code SRQCT Shipping Media BOX Stepping B0 PCN Content IDs 917638 , 853587 , 919379 Recommended Customer Price $319.00 Trade Compliance Information ECCN 5A992.C CCATS 740.17B1 US HTS 8542310050"
+          }
+        ],
+        "partNumberMatches": null
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+          "observedAt": "2026-10-10T10:11:37.676Z",
+          "responseSha256": "5b3c278d92fc039d5ebc7751858f7576e30d740f54e9e3a73a938c7d2528e8a6",
+          "pageTitle": "인텔 코어 울트라5 시리즈2 245K (애로우레이크) (정품) : 다나와 가격비교",
+          "externalId": "69059753",
+          "productTitle": "인텔 코어 울트라5 시리즈2 245K (애로우레이크) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": {
+            "amountKrw": 315160,
+            "observedAt": "2026-10-10T10:11:37.676Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceParseReason": null
+        }
+      ],
+      "currentQuote": {
+        "amountKrw": 315160,
+        "observedAt": "2026-10-10T10:11:37.676Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "saleIdentityVerified": false,
+      "proposedRetailSku": {
+        "partNumber": "BX80768245K",
+        "productTitle": "인텔 코어 울트라5 시리즈2 245K (애로우레이크) (정품)",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+        "currentQuote": {
+          "amountKrw": 315160,
+          "observedAt": "2026-10-10T10:11:37.676Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "requiredFollowUp": "Confirm exact domestic retailer boxed order code and approve retail product binding without changing this installed-model reference."
+      }
+    },
+    {
+      "localProductId": "317da120-7875-474d-a6f3-b5a90df89dfa",
+      "canonicalId": "4f86bcec-6d33-3b5c-80bc-d99991927a5e",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "6c0ac2b9-20b2-40f8-b206-06877dc8f047"
+      },
+      "identity": {
+        "canonicalId": "4f86bcec-6d33-3b5c-80bc-d99991927a5e",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5800X3D",
+        "partNumber": "100-100000651POF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "READY",
+      "reasonCode": "VERIFIED_DOMESTIC_BOX_AND_INDEPENDENT_SELLER_PRICE_REOBSERVED_AFTER_REVIEW_OUTLIER_WARNING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000651POF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000651POF",
+        "priorCandidate": {
+          "externalId": "122711750",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=122711750",
+          "title": "AMD 라이젠 7 -4세대 5800X 3D AM4 10주년 기념 에디션 (버미어)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-7-5800x3d.html",
+        "observedAt": "2026-10-10T10:11:37.785Z",
+        "responseSha256": "5c30597b1e98a15d4f88d12ecffd9e9ab515283bd123ab345ded522cae45fe8f",
+        "pageTitle": "AMD Ryzen 7 5800X3D Gaming Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000651POF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000651POF"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+          "observedAt": "2026-10-10T10:11:38.804Z",
+          "responseSha256": "f884ade802afc5b0aa30ef1793c7853637c100744c211defcf5d9fa609056d9d",
+          "pageTitle": "AMD 라이젠7-4세대 5800X3D (버미어) (정품) : 다나와 가격비교",
+          "externalId": "16872089",
+          "productTitle": "AMD 라이젠7-4세대 5800X3D (버미어) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": {
+            "amountKrw": 582330,
+            "observedAt": "2026-10-10T10:11:38.804Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceParseReason": null
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+          "externalId": "16872089",
+          "discoveryMethod": "Reobserved same reviewed exact domestic boxed product after independent seller review completed",
+          "expectedTitle": "AMD 라이젠7-4세대 5800X3D (버미어) (정품)",
+          "reviewCompletedAt": "2026-10-10T10:19:34.196Z",
+          "regularPrice": {
+            "amountKrw": 582330,
+            "observedAt": "2026-10-10T10:26:36.295Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:26:36.295Z",
+          "responseSha256": "23d793c7e8e82fc534858e88c87f5144a03f99bb0fdaa9438945602ae72a7422",
+          "productTitle": "AMD 라이젠7-4세대 5800X3D (버미어) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "amountChanged": false,
+          "matchesPreviouslyVerifiedSellerAmount": true
+        }
+      ],
+      "currentQuote": {
+        "amountKrw": 582330,
+        "observedAt": "2026-10-10T10:26:36.295Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "saleIdentityVerified": true,
+      "verifiedSaleSku": "100-100000651POF",
+      "verificationScope": "Exact CPU and advertised domestic 정품 BOX/WOF matched to current manufacturer boxed PN; ordinary price and stock/purchase evidence independently match original seller page. High/scarce boxed-price warning requires explicit review before apply.",
+      "outlierReview": {
+        "flag": "SCARCE_BOX_OR_EXTREME_PRICE_REVIEW",
+        "amountKrw": 582330,
+        "aggregatorQuoteConfirmed": true,
+        "sellerEvidence": [
+          {
+            "seller": "상품보기",
+            "amountKrw": 582330,
+            "bridge": {
+              "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=960&cate4=0&pcode=16872089&cmpnyc=PV203&safe_trade=4&fee_type=A&link_pcode=5565701670&package=0&setpc=0&r=17916273926286",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T10:16:33.356Z",
+              "responseSha256": "d3de112fa3daecfab93453ff2677039e44019c6f91a05a76451fdbaff99911e5",
+              "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+              "redirectLocation": null
+            },
+            "actualSellerPage": null
+          },
+          {
+            "seller": "컴오아시스",
+            "amountKrw": 582330,
+            "actualSellerPage": {
+              "sourceUrl": "https://www.comoasis.co.kr/shop/item.php?it_id=5565701670&service_id=pcdn",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T10:19:32.979Z",
+              "responseSha256": "3d9f12f0fa05872dd7e48b659e5e8f7b4e2c803417cde82f325499b0afa60cc7",
+              "pageTitle": "컴오아시스",
+              "seller": "컴오아시스",
+              "verificationScope": "The seller original product page is independent of the Danawa quote. Confirmed exact CPU number, domestic 정품 packaging, ordinary KRW product amount and active purchase/in-stock evidence. Delivered physical box is not inspected.",
+              "confirmedProduct": {
+                "productId": "5565701670",
+                "name": "AMD 라이젠7-4세대 5800X3D (버미어) (정품)",
+                "advertisedPackage": "정품",
+                "ordinaryProductPriceKrw": 582330,
+                "priceField": "name=it_price id=it_price value",
+                "activePurchaseForm": true
+              },
+              "pagePriceContext": "AMD 라이젠7-4세대 5800X3D (버미어) (정품) AMD(소켓AM4) / 8코어 / 16스레드 / 메모리 규격:DDR4 / 내장그래픽:미탑재 / 4세대(Zen3) / 7nm / 기본 클럭:3.4GHz / 최대 클럭:4.5GHz / L2 캐시:4MB / L3 캐시:96MB / TDP:105W / PPT:142W / ",
+              "exactAdvertisedModelAndPackageMatches": true,
+              "ordinaryPriceMatchesDanawa": true,
+              "currentSaleEvidence": true
+            }
+          }
+        ],
+        "sellerConfirmed": true,
+        "recommendation": "READY_FOR_EXPLICIT_PRICE_CONFIRMATION_WITH_OUTLIER_WARNING",
+        "originalAmountKrw": 582330,
+        "latestQuoteMatchesVerifiedSellerAmount": true
+      },
+      "detailedReviewCompletedAt": "2026-10-10T10:19:34.196Z",
+      "initialAggregatorInspectionAt": "2026-10-10T10:11:38.804Z",
+      "initialPriceObservation": {
+        "amountKrw": 582330,
+        "observedAt": "2026-10-10T10:11:38.804Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "localProductId": "95174e54-42c2-4b53-95c6-65f4da611e63",
+      "canonicalId": "72a91279-3934-3fee-b462-644b802f2ba5",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "dd073712-0a1f-4e7f-a7e0-40f40aea600c"
+      },
+      "identity": {
+        "canonicalId": "72a91279-3934-3fee-b462-644b802f2ba5",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 3 3300X",
+        "partNumber": "100-100000159BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000159BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000159BOX",
+        "priorCandidate": {
+          "externalId": "11236053",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11236053",
+          "title": "AMD 라이젠 3 -3세대 3300X (마티스)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-3-3300x.html",
+        "observedAt": "2026-10-10T10:11:40.588Z",
+        "responseSha256": "68d03909c06bf67694c2ff272be08877cabbaef14b685ddfeb9b2c67134f2f51",
+        "pageTitle": "AMD Ryzen 3 3300X Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000159BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000159BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11236053",
+          "observedAt": "2026-10-10T10:11:40.897Z",
+          "responseSha256": "aaa54dfad5c094f5ae1d0d6cd13263d3c4ded565f1f39850ad7e0f0196b4d5e2",
+          "pageTitle": "AMD 라이젠3-3세대 3300X (마티스) (정품) : 다나와 가격비교",
+          "externalId": "11236053",
+          "productTitle": "AMD 라이젠3-3세대 3300X (마티스) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": null,
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "d2d1f646-c789-4b64-88fa-d0a60b424037",
+      "canonicalId": "771337ca-07bf-388e-b6a9-236a09b9064f",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8fc4b00d-bab9-40e6-b277-bc8d77bea153"
+      },
+      "identity": {
+        "canonicalId": "771337ca-07bf-388e-b6a9-236a09b9064f",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5700G",
+        "partNumber": "100-100000263BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000263BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000263BOX",
+        "priorCandidate": {
+          "externalId": "14927759",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=14927759",
+          "title": "AMD 라이젠 7 -4세대 5700G (세잔)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700g.html",
+        "observedAt": "2026-10-10T10:11:40.951Z",
+        "responseSha256": "a86bd25b37a22127c20a8b350466e2a5ec4aef6a3ac260b3c1db4639f09d8686",
+        "pageTitle": "AMD Ryzen 7 5700G Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000263BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000263BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=14927759",
+          "observedAt": "2026-10-10T10:11:42.327Z",
+          "responseSha256": "f7b528283e3a53bae2a1939fd37ab00bcea2e6a173b029e5c933f7c841c2a474",
+          "pageTitle": "AMD 라이젠7-4세대 5700G (세잔) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "14927759",
+          "productTitle": "AMD 라이젠7-4세대 5700G (세잔) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "14927759"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "14937365"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=14927753",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:12.615Z",
+          "responseSha256": "fcfaedc4e7a7cc687fb566025fa8cbf4b19ed9b0bc08f5ed0c7c13858333dc92",
+          "pageTitle": "AMD 라이젠7-4세대 5700G (세잔) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "14927753",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠7-4세대 5700G (세잔) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "Wraith Stealth 포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "1f759563-68ef-4949-ae51-325976997891",
+      "canonicalId": "799483d5-14f5-3d52-9004-4098e8aefae7",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7a9c7440-6aca-4f8e-a6a1-9ae438789cd9"
+      },
+      "identity": {
+        "canonicalId": "799483d5-14f5-3d52-9004-4098e8aefae7",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 3 3100",
+        "partNumber": "100-100000284BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000284BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000284BOX",
+        "priorCandidate": {
+          "externalId": "12200864",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12200864",
+          "title": "AMD 라이젠 3 -3세대 3100 (마티스)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-3-3100.html",
+        "observedAt": "2026-10-10T10:11:42.573Z",
+        "responseSha256": "d4e37472977bd448e808f457422aa159f95dbcd383fc4af6dd9c622d5c192f25",
+        "pageTitle": "AMD Ryzen 3 3100 Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000284BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000284BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12200864",
+          "observedAt": "2026-10-10T10:11:43.176Z",
+          "responseSha256": "6cc6555c652f4b08df6f5e546836754b8644ddec290515f9a2d9dcbbf4e274cd",
+          "pageTitle": "AMD 라이젠3-3세대 3100 (마티스) (해외구매) : 다나와 가격비교",
+          "externalId": "12200864",
+          "productTitle": "AMD 라이젠3-3세대 3100 (마티스) (해외구매)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": []
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11236047",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:13.663Z",
+          "responseSha256": "35c78345ea276e7e9afb8cbed093713be8bafea11220ab1badc626a69431d7ca",
+          "pageTitle": "AMD 라이젠3-3세대 3100 (마티스) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "11236047",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠3-3세대 3100 (마티스) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "Wraith Stealth 포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "0a341774-25d8-4b11-a791-f0cd2e1444f4",
+      "canonicalId": "81c90402-61f5-31e0-bb0d-d3413467ec55",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "0800f2cd-ce39-4a64-b400-5d1e5d26e7cd"
+      },
+      "identity": {
+        "canonicalId": "81c90402-61f5-31e0-bb0d-d3413467ec55",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-12600KF",
+        "partNumber": "BX8071512600KF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "BX8071512600KF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=BX8071512600KF",
+        "priorCandidate": {
+          "externalId": "15752597",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15752597",
+          "title": "인텔 코어i5-12세대 12600KF (엘더레이크)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/134590/intel-core-i512600kf-processor-20m-cache-up-to-4-90-ghz/ordering.html",
+        "observedAt": "2026-10-10T10:11:43.321Z",
+        "responseSha256": "ebb7fe33de1e7a6b362b6e1288d18d9ff73d04e03609e45ed375c89c7f3edc8c",
+        "pageTitle": "Intel Core i5-12600KF Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "BX8071512600KF",
+          "BXC8071512600KF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BX8071512600KF",
+            "context": "Boxed Intel Core i5-12600KF Processor (20M Cache, up to 4.90 GHz) FC-LGA16A Ordering Code BX8071512600KF Spec Code SRL4U Shipping Media BOX Stepping C0 MDDS Content IDs 690795 , 850139 PCN Content IDs 798714 , 798811 , 800380 , 810487 , 811981 , 815134 , 853587 , 869847 , 919379 Recommended Customer"
+          },
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BXC8071512600KF",
+            "context": "Boxed Intel Core i5-12600KF Processor (20M Cache, up to 4.90 GHz) FC-LGA16A, for China Ordering Code BXC8071512600KF Spec Code SRL4U Shipping Media BOX Stepping C0 MDDS Content IDs 690795 , 850139 PCN Content IDs 798714 , 798811 , 800380 , 810487 , 811981 , 815134 , 848503 , 853587 , 869847 , 919379"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15594446",
+          "observedAt": "2026-10-10T10:11:44.216Z",
+          "responseSha256": "f55c6b9c76d74c4e76e9caab9e94b3087c724d0ee378b5ac8acb7ec131ae86c8",
+          "pageTitle": "인텔 코어i5-12세대 12600KF (엘더레이크) (정품) : 다나와 가격비교",
+          "externalId": "15594446",
+          "productTitle": "인텔 코어i5-12세대 12600KF (엘더레이크) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": null,
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "7c336963-b4fb-4c39-98cb-80c1cfd00e71",
+      "canonicalId": "924bc232-0b05-30f8-874e-a1f584d4c75f",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f34f9bc1-0136-43ee-bd78-a9efbd0e5f17"
+      },
+      "identity": {
+        "canonicalId": "924bc232-0b05-30f8-874e-a1f584d4c75f",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 3600",
+        "partNumber": "100-100000031BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-initial/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000031BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000031BOX",
+        "priorCandidate": {
+          "externalId": "8459973",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8459973",
+          "title": "AMD 라이젠 5 -3세대 3600 (마티스)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-5-3600.html",
+        "observedAt": "2026-10-10T10:11:44.446Z",
+        "responseSha256": "0a8d366eb0b43cf0b473c8cd2f9f0c31847208efbc96260501fa4b1e72992590",
+        "pageTitle": "AMD Ryzen 5 3600 Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000031BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000031BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8459973",
+          "observedAt": "2026-10-10T10:11:45.408Z",
+          "responseSha256": "8253eb939ebc8f85f07683855b9f60bdb384c9cb8b46f422104c73a17729ed81",
+          "pageTitle": "AMD 라이젠5-3세대 3600 (마티스) (정품) : 다나와 가격비교",
+          "externalId": "8459973",
+          "productTitle": "AMD 라이젠5-3세대 3600 (마티스) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": null,
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "0291aadf-c724-4ef6-b08e-67efad1a4033",
+      "canonicalId": "9826be6d-0f41-365c-ac84-a648dd1f0c29",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e16a10af-3e6e-4d60-8f7b-96f054281fa6"
+      },
+      "identity": {
+        "canonicalId": "9826be6d-0f41-365c-ac84-a648dd1f0c29",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i3-13100F",
+        "partNumber": "BX8071513100F",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "BX8071513100F",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=BX8071513100F",
+        "priorCandidate": {
+          "externalId": "18702614",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18702614",
+          "title": "인텔 코어i3-13세대 13100F (랩터레이크)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230576/intel-core-i313100f-processor-12m-cache-up-to-4-50-ghz/ordering.html",
+        "observedAt": "2026-10-10T10:11:45.605Z",
+        "responseSha256": "5c2cbd78d84eee0d9e74d857c774e1dc30b0d64daa344394b7755c4e6c54a399",
+        "pageTitle": "Intel Core i3-13100F Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "BX8071513100F",
+          "BXC8071513100F"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BX8071513100F",
+            "context": "Boxed Intel Core i3-13100F Processor (12M Cache, up to 4.50 GHz) FC-LGA16A Ordering Code BX8071513100F Spec Code SRMBV Shipping Media BOX Stepping H0 MDDS Content IDs 766475 , 849052 PCN Content IDs 798714 , 798811 , 800380 , 805837 , 811173 , 811981 , 815134 , 845254 , 853587 , 919379 Recommended C"
+          },
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BXC8071513100F",
+            "context": "Boxed Intel Core i3-13100F Processor (12M Cache, up to 4.50 GHz) FC-LGA16A, for China Ordering Code BXC8071513100F Spec Code SRMBV Shipping Media BOX Stepping H0 MDDS Content IDs 766475 , 849052 PCN Content IDs 798714 , 798811 , 800380 , 805837 , 811173 , 811981 , 815134 , 845254 , 853587 , 919379 T"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18640106",
+          "observedAt": "2026-10-10T10:11:46.448Z",
+          "responseSha256": "6f16b68b92684d41f158a93e77323aec9372c21d97392188e68fd338b063ed7a",
+          "pageTitle": "인텔 코어i3-13세대 13100F (랩터레이크) (정품) : 다나와 가격비교",
+          "externalId": "18640106",
+          "productTitle": "인텔 코어i3-13세대 13100F (랩터레이크) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": null,
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "4bcea5a6-da9c-4590-9bd1-4c51ba998e84",
+      "canonicalId": "9a23895c-b762-3076-b92f-430fa22bd53a",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b"
+      },
+      "identity": {
+        "canonicalId": "9a23895c-b762-3076-b92f-430fa22bd53a",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5700X",
+        "partNumber": "100-100000926WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "HELD",
+      "reasonCode": "NO_VERIFIED_DOMESTIC_BOX_PAGE",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-amd/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000926WOF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000926WOF",
+        "priorCandidate": {
+          "externalId": "16741349",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16741349",
+          "title": "AMD 라이젠 7 -4세대 5700X (버미어)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700x.html",
+        "observedAt": "2026-10-10T10:11:46.680Z",
+        "responseSha256": "c4c970916885b27b2538c3f430177d242b4aa53bbfc2694661021aaa04bf2e2b",
+        "pageTitle": "AMD Ryzen 7 5700X Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [],
+        "boxedRecords": [],
+        "partNumberMatches": false
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16741349",
+          "observedAt": "2026-10-10T10:11:47.791Z",
+          "responseSha256": "60b6e4583141c78a8d0b381fb5fa68425245fa401cc5444c0360de339ac02005",
+          "pageTitle": "AMD 라이젠7-4세대 5700X (버미어) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "16741349",
+          "productTitle": "AMD 라이젠7-4세대 5700X (버미어) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "16741349"
+            },
+            {
+              "label": "벌크 병행 용어사전 레이어 보기",
+              "pcode": "17858363"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "16951109"
+            }
+          ]
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed discovery/variant lists showed only bulk, multipack, overseas or used offers; this research did not verify a qualifying boxed page. This is not global unavailability evidence."
+    },
+    {
+      "localProductId": "f11beddb-4adc-433e-967a-7e4c70c1db75",
+      "canonicalId": "9b064051-a89c-3219-bee9-acaaeb98bb94",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "045802be-240a-4bce-9e67-2722f885e671"
+      },
+      "identity": {
+        "canonicalId": "9b064051-a89c-3219-bee9-acaaeb98bb94",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i9-13900K",
+        "partNumber": "BX8071513900K",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "HELD",
+      "reasonCode": "BOX_PRICE_OUTLIER_INDEPENDENT_SELLER_CONFIRMATION_REQUIRED",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "BX8071513900K",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=BX8071513900K",
+        "priorCandidate": {
+          "externalId": "18039569",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18039569",
+          "title": "인텔 코어i9-13세대 13900K (랩터레이크)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230496/intel-core-i913900k-processor-36m-cache-up-to-5-80-ghz/ordering.html",
+        "observedAt": "2026-10-10T10:11:47.970Z",
+        "responseSha256": "9c2ade421282122f6f87524741da5c44ac7dbb78d15b7a4f02dc8506d29f828a",
+        "pageTitle": "Intel Core i9-13900K Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "BX8071513900K"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BX8071513900K",
+            "context": "Boxed Intel Core i9-13900K Processor (36M Cache, up to 5.80 GHz) FC-LGA16A Ordering Code BX8071513900K Spec Code SRMBH Shipping Media BOX Stepping B0 MDDS Content IDs 750128 , 850146 PCN Content IDs 798714 , 798811 , 800380 , 801617 , 811981 , 815134 , 818660 Trade Compliance Information ECCN 5A992."
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18039569",
+          "observedAt": "2026-10-10T10:11:48.825Z",
+          "responseSha256": "431aa5da62e783a6b70524f3e7a8f2ac9dc4e2dee7a4ba6be89d75310e8d2701",
+          "pageTitle": "인텔 코어i9-13세대 13900K (랩터레이크) (정품) : 다나와 가격비교",
+          "externalId": "18039569",
+          "productTitle": "인텔 코어i9-13세대 13900K (랩터레이크) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": {
+            "amountKrw": 10000000,
+            "observedAt": "2026-10-10T10:11:48.825Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=18039569",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceParseReason": null
+        }
+      ],
+      "currentQuote": {
+        "amountKrw": 10000000,
+        "observedAt": "2026-10-10T10:11:48.825Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18039569",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "saleIdentityVerified": false,
+      "verifiedSaleSku": "BX8071513900K",
+      "verificationScope": "Exact model and advertised domestic retail BOX/WOF packaging matched to manufacturer boxed code; physical delivered box is not inspected.",
+      "outlierReview": {
+        "flag": "SCARCE_BOX_OR_EXTREME_PRICE_REVIEW",
+        "amountKrw": 10000000,
+        "aggregatorQuoteConfirmed": true,
+        "sellerEvidence": [
+          {
+            "seller": "IT의 형제들",
+            "amountKrw": 10000000,
+            "bridge": {
+              "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=959&cate4=0&pcode=18039569&cmpnyc=TY3178&safe_trade=4&fee_type=N&link_pcode=13558759931&package=0&setpc=0&r=17916273944681",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T10:16:35.586Z",
+              "responseSha256": "65206d51d0375096e7c08a4711982cfa30fad2cccd79ae640d04684ee36f2b71",
+              "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+              "redirectLocation": null
+            },
+            "actualSellerPage": {
+              "sourceUrl": "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F13558759931&service_id=pcdn",
+              "httpStatus": 429,
+              "observedAt": "2026-10-10T10:16:35.630Z",
+              "responseSha256": "5f4fb552ab36eb82dd328727e335542d99dd5d309e1c0d47f5eb50153f671e9b",
+              "pageTitle": "[에러] 에러페이지 - 시스템오류",
+              "redirectLocation": null,
+              "error": "HTTP 429"
+            }
+          }
+        ],
+        "sellerConfirmed": false
+      }
+    },
+    {
+      "localProductId": "1c40a545-56ed-4687-b8d2-0194f9455c32",
+      "canonicalId": "9ce7cb18-f9e8-34cc-92e3-1bd8cc5e2b4b",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4fb54223-132b-42ac-b668-4be50bb6df71"
+      },
+      "identity": {
+        "canonicalId": "9ce7cb18-f9e8-34cc-92e3-1bd8cc5e2b4b",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7950X3D",
+        "partNumber": "100-100000908WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000908WOF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000908WOF",
+        "priorCandidate": {
+          "externalId": "19627601",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19627601",
+          "title": "AMD 라이젠 9 -5세대 7950X3D (라파엘)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7950x3d.html",
+        "observedAt": "2026-10-10T10:11:49.078Z",
+        "responseSha256": "1d7a56fef21fdbf6df9567b59f1e5bb74a3d2b916176817bf5c4a00b4832374e",
+        "pageTitle": "AMD Ryzen 9 7950X3D Gaming Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000908WOF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000908WOF"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19627601",
+          "observedAt": "2026-10-10T10:11:49.985Z",
+          "responseSha256": "12fa34c9cb3ce52a6313889e120d6333b3631f974beb5c65a3037a1ec3ff338a",
+          "pageTitle": "AMD 라이젠9-5세대 7950X3D (라파엘) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "19627601",
+          "productTitle": "AMD 라이젠9-5세대 7950X3D (라파엘) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "19627601"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "52062869"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19174415",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:14.820Z",
+          "responseSha256": "4580a9a4bb21fbf9e77e65d32f0a51b0436a9bb3c24c701f6f1f57e5f2813907",
+          "pageTitle": "AMD 라이젠9-5세대 7950X3D (라파엘) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "19174415",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠9-5세대 7950X3D (라파엘) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "미포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "33f12798-9f6d-4461-a2ca-3470be9984c1",
+      "canonicalId": "a12d4ede-564b-3aa8-a935-9f0c20a7c199",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ab4fadad-e3a1-41ff-82fd-e16e5af8a324"
+      },
+      "identity": {
+        "canonicalId": "a12d4ede-564b-3aa8-a935-9f0c20a7c199",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 7700",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-initial/manifest.json",
+      "discoveryEvidence": {
+        "query": "AMD Ryzen 7 7700",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=AMD%20Ryzen%207%207700",
+        "priorCandidate": {
+          "externalId": "18718538",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718538",
+          "title": "AMD 라이젠 7 -5세대 7700 (라파엘)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7700.html",
+        "httpStatus": 200,
+        "observedAt": "2026-10-10T10:16:14.935Z",
+        "responseSha256": "b6eba13dd2762bde5b260a834acb50afbce156c5ad3dad9560e24d5028b6c5d2",
+        "pageTitle": "AMD Ryzen 7 7700 Gaming Processor",
+        "redirectLocation": null,
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000592SBX",
+          "100-100000592WOZ"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed *Due to the AMD SR4 cooler reaching EOL status, select AMD Ryzen 7000 and 5000 Product ID Boxed models are updated to no longer include a cooler, removing the AMD SR4 cooler, starting 8/1/2025. Contact your local AMD Sales Representative for more information.&lt;/p> \" tabindex=\"0\" data-bs-html=\"true\" ref=\"info\">",
+            "value": "100-100000592SBX* , 100-100000592WOZ*"
+          }
+        ],
+        "partNumberMatches": null
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718538",
+          "observedAt": "2026-10-10T10:11:51.261Z",
+          "responseSha256": "fd0969982829463ca7e8d570deacafe86ca2166337106511a0b1d149f53dde65",
+          "pageTitle": "AMD 라이젠7-5세대 7700 (라파엘) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "18718538",
+          "productTitle": "AMD 라이젠7-5세대 7700 (라파엘) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "18718538"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "19286273"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718532",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:15.852Z",
+          "responseSha256": "abb4272611540819c4f802e6b9f69a0a0785c30350b4d582adead96d2c7197dc",
+          "pageTitle": "AMD 라이젠7-5세대 7700 (라파엘) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "18718532",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠7-5세대 7700 (라파엘) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "Wraith PRISM 포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "requiredFollowUp": "Current manufacturer boxed variants changed; confirm retailer order code and included cooler against official BOX/SBX/CSX/WOF/WOZ variant before assigning a price.",
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "a85d7ab1-bf64-4788-9e05-512545974211",
+      "canonicalId": "a1dc1ad4-c777-3829-a22f-4052ef3731a7",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "0f8f2a55-de64-490d-8f62-a11398b6f8f8"
+      },
+      "identity": {
+        "canonicalId": "a1dc1ad4-c777-3829-a22f-4052ef3731a7",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 3600X",
+        "partNumber": "100-100000022BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000022BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000022BOX",
+        "priorCandidate": {
+          "externalId": "8459925",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8459925",
+          "title": "AMD 라이젠 5 -3세대 3600X (마티스)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-5-3600x.html",
+        "observedAt": "2026-10-10T10:11:51.657Z",
+        "responseSha256": "8bb5effbb50d554c874cfd41d1c00bd349cb041b931c46604f5a32554cb12216",
+        "pageTitle": "AMD Ryzen 5 3600X Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000022BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000022BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8459925",
+          "observedAt": "2026-10-10T10:11:52.254Z",
+          "responseSha256": "470df2a030d556657b029ca0ae9a0c9220b0c1ba3e4392dc6aac2d750297cde9",
+          "pageTitle": "AMD 라이젠5-3세대 3600X (마티스) (정품) : 다나와 가격비교",
+          "externalId": "8459925",
+          "productTitle": "AMD 라이젠5-3세대 3600X (마티스) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": null,
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "7f6a0c2b-330a-45ab-87ea-83dd1aebe4d5",
+      "canonicalId": "ac4a793f-7e5c-370f-8008-6b5e3f2e1df7",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a58188f8-e9da-4ead-8d52-74117306545c"
+      },
+      "identity": {
+        "canonicalId": "ac4a793f-7e5c-370f-8008-6b5e3f2e1df7",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-13600KF",
+        "partNumber": "BX8071513600KF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-intel/manifest.json",
+      "discoveryEvidence": {
+        "query": "BX8071513600KF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=BX8071513600KF",
+        "priorCandidate": {
+          "externalId": "18169253",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18169253",
+          "title": "인텔 코어i5-13세대 13600KF (랩터레이크)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230494/intel-core-i513600kf-processor-24m-cache-up-to-5-10-ghz/ordering.html",
+        "observedAt": "2026-10-10T10:11:52.454Z",
+        "responseSha256": "b737a0f454cacbbeef76d32284a388e1f30181edb5dbf0bdac6a6b09560138c1",
+        "pageTitle": "Intel Core i5-13600KF Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "BXC8071513600KF",
+          "BX8071513600KF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BXC8071513600KF",
+            "context": "Boxed Intel Core i5-13600KF Processor (24M Cache, up to 5.10 GHz) FC-LGA16A, for China Ordering Code BXC8071513600KF Spec Code SRMBE Shipping Media BOX Stepping B0 MDDS Content IDs 750128 , 850146 PCN Content IDs 798714 , 798811 , 800380 , 811173 , 811981 , 815134 , 818660 Retired and discontinued I"
+          },
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BX8071513600KF",
+            "context": "Boxed Intel Core i5-13600KF Processor (24M Cache, up to 5.10 GHz) FC-LGA16A Ordering Code BX8071513600KF Spec Code SRMBE Shipping Media BOX Stepping B0 MDDS Content IDs 750128 , 850146 PCN Content IDs 798714 , 798811 , 800380 , 811173 , 811981 , 815134 , 818660 Recommended Customer Price $304.00 Tra"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18038831",
+          "observedAt": "2026-10-10T10:11:53.242Z",
+          "responseSha256": "e70ad0e2f434cab5b626fce57309ebd819f0688d0d877a6c0c41c90913445898",
+          "pageTitle": "인텔 코어i5-13세대 13600KF (랩터레이크) (정품) : 다나와 가격비교",
+          "externalId": "18038831",
+          "productTitle": "인텔 코어i5-13세대 13600KF (랩터레이크) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": null,
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "0c7be6ce-6e3a-4b26-982c-ac1a854ecc42",
+      "canonicalId": "bef6a894-1407-3185-8f2c-2cc1745a042d",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "2c0ed4a5-939f-4902-bfeb-cb16c0890ef2"
+      },
+      "identity": {
+        "canonicalId": "bef6a894-1407-3185-8f2c-2cc1745a042d",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 3950X",
+        "partNumber": "100-100000051WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000051WOF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000051WOF",
+        "priorCandidate": {
+          "externalId": "9996480",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=9996480",
+          "title": "AMD 라이젠 9 -3세대 3950X (마티스)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-9-3950x.html",
+        "observedAt": "2026-10-10T10:11:53.528Z",
+        "responseSha256": "e842e61fe6699f505e39258dd09bc1b34817f3864df3a24209a3c85dc0f1b03c",
+        "pageTitle": "AMD Ryzen 9 3950X Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000051WOF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000051WOF"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=9996480",
+          "observedAt": "2026-10-10T10:11:54.318Z",
+          "responseSha256": "e798f4c2aa5ede252b67dba5fa06cb651d05ea1c6cbfc52acba0500c18bbacfb",
+          "pageTitle": "AMD 라이젠9-3세대 3950X (마티스) (정품) : 다나와 가격비교",
+          "externalId": "9996480",
+          "productTitle": "AMD 라이젠9-3세대 3950X (마티스) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": null,
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "be906e41-7d3d-48ea-8243-2576dc1e45e1",
+      "canonicalId": "bf8e8b8a-6f0f-39a1-a633-bdc7bd405322",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bf36a706-491a-45e8-ba4a-8529d3ef91e9"
+      },
+      "identity": {
+        "canonicalId": "bf8e8b8a-6f0f-39a1-a633-bdc7bd405322",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 5500",
+        "partNumber": "100-100000457BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000457BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000457BOX",
+        "priorCandidate": {
+          "externalId": "106688090",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=106688090",
+          "title": "AMD 라이젠 5 -4세대 5500 (세잔)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-5-5500.html",
+        "observedAt": "2026-10-10T10:11:54.669Z",
+        "responseSha256": "983e8b221d17b46647e09e297e02d78060106f24a1c6743215feced09b110869",
+        "pageTitle": "AMD Ryzen 5 5500 Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000457BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000457BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=106688090",
+          "observedAt": "2026-10-10T10:11:55.540Z",
+          "responseSha256": "33d48b50a0eaff43afca58b16c42c09cdc1b7587ec220331b5555d4c8948e4c9",
+          "pageTitle": "AMD 라이젠5-4세대 5500 (세잔) (벌크 정품) : 다나와 가격비교",
+          "externalId": "106688090",
+          "productTitle": "AMD 라이젠5-4세대 5500 (세잔) (벌크 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "벌크 정품",
+              "pcode": "106688090"
+            },
+            {
+              "label": "중고 용어사전 레이어 보기",
+              "pcode": "64465532"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "16950422"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16740791",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:17.067Z",
+          "responseSha256": "28bc5e9a6e25522f43d93a5f1caee8999009aea2f59306a40da7789f21e1ef3c",
+          "pageTitle": "AMD 라이젠5-4세대 5500 (세잔) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "16740791",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠5-4세대 5500 (세잔) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "Wraith Stealth 포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "16aeed8e-5b91-4a91-9143-4b0913f2a39a",
+      "canonicalId": "cb11f240-2d1d-32a8-af69-ae3645dd8037",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "63f23f26-d52c-4e3c-be6e-0d25163cff59"
+      },
+      "identity": {
+        "canonicalId": "cb11f240-2d1d-32a8-af69-ae3645dd8037",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7950X",
+        "partNumber": "100-100000514WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "READY",
+      "reasonCode": "VERIFIED_DOMESTIC_BOX_AND_INDEPENDENT_SELLER_PRICE_REOBSERVED_AFTER_REVIEW_OUTLIER_WARNING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000514WOF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000514WOF",
+        "priorCandidate": {
+          "externalId": "20613197",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=20613197",
+          "title": "AMD 라이젠 9 -5세대 7950X (라파엘)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7950x.html",
+        "observedAt": "2026-10-10T10:11:55.758Z",
+        "responseSha256": "67b8f20797c7b19e6903fded645000d38a23b2350aa39fc2ccb94fdaf7c47fb8",
+        "pageTitle": "AMD Ryzen 9 7950X Desktop Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000514WOF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000514WOF"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=20613197",
+          "observedAt": "2026-10-10T10:11:56.663Z",
+          "responseSha256": "3a79dabd6108ebdc56b7b7425041f69f285e35eb80d4ae96c3cb8fe660182eaa",
+          "pageTitle": "AMD 라이젠9-5세대 7950X (라파엘) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "20613197",
+          "productTitle": "AMD 라이젠9-5세대 7950X (라파엘) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "20613197"
+            },
+            {
+              "label": "정품 용어사전 레이어 보기",
+              "pcode": "17913980"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "13165053"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+          "observedAt": "2026-10-10T10:11:57.792Z",
+          "responseSha256": "bb567be78550a476ec5a8a013a105bf75cb734c2133a5f7ea203e53e7f6ff1b6",
+          "pageTitle": "AMD 라이젠9-5세대 7950X (라파엘) (정품) : 다나와 가격비교",
+          "externalId": "17913980",
+          "productTitle": "AMD 라이젠9-5세대 7950X (라파엘) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": {
+            "amountKrw": 1840490,
+            "observedAt": "2026-10-10T10:11:57.792Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceParseReason": null
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+          "externalId": "17913980",
+          "discoveryMethod": "Reobserved same reviewed exact domestic boxed product after independent seller review completed",
+          "expectedTitle": "AMD 라이젠9-5세대 7950X (라파엘) (정품)",
+          "reviewCompletedAt": "2026-10-10T10:19:34.196Z",
+          "regularPrice": {
+            "amountKrw": 1840490,
+            "observedAt": "2026-10-10T10:26:37.901Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:26:37.901Z",
+          "responseSha256": "38cb1a050dd99241cdaeb0c5a2daccddf1e0a0d338c5cf21e3700023da2b45a6",
+          "productTitle": "AMD 라이젠9-5세대 7950X (라파엘) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "amountChanged": false,
+          "matchesPreviouslyVerifiedSellerAmount": true
+        }
+      ],
+      "currentQuote": {
+        "amountKrw": 1840490,
+        "observedAt": "2026-10-10T10:26:37.901Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "saleIdentityVerified": true,
+      "verifiedSaleSku": "100-100000514WOF",
+      "verificationScope": "Exact CPU and advertised domestic 정품 BOX/WOF matched to current manufacturer boxed PN; ordinary price and stock/purchase evidence independently match original seller page. High/scarce boxed-price warning requires explicit review before apply.",
+      "outlierReview": {
+        "flag": "SCARCE_BOX_OR_EXTREME_PRICE_REVIEW",
+        "amountKrw": 1840490,
+        "aggregatorQuoteConfirmed": true,
+        "sellerEvidence": [
+          {
+            "seller": "상품보기",
+            "amountKrw": 1840490,
+            "bridge": {
+              "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=960&cate4=0&pcode=17913980&cmpnyc=TH201&safe_trade=4&fee_type=T&link_pcode=7419866839&package=0&setpc=0&r=17916273969156",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T10:16:37.784Z",
+              "responseSha256": "d5c1d23ba753efbca0ee0965f8e6ba16dfaa3b9fa902c9761e2c8f43c701b9a9",
+              "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+              "redirectLocation": null
+            },
+            "actualSellerPage": {
+              "sourceUrl": "https://11pcs.11st.co.kr/?appLnkWyCd=04&prdNo=7419866839&goUrl=https%3A%2F%2Fm.11st.co.kr%2Fproducts%2Fma%2F7419866839&XSITE=1000000081&service_id=pcdn",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T10:16:37.816Z",
+              "responseSha256": "db7fabc6bb2b316fe41f351525c67e75326000c46e3fc1d8b30a4013783f491e",
+              "pageTitle": "앱설치 안내 - 11번가 모바일",
+              "redirectLocation": null,
+              "productIdentityTitleMatches": false,
+              "partNumberTextHintOnly": false,
+              "schemaProductName": null,
+              "schemaOffer": null,
+              "verification": "Review only: a text PN occurrence or redirected gate does not verify an exact in-stock sale product."
+            }
+          },
+          {
+            "seller": "11번가",
+            "amountKrw": 1840490,
+            "actualSellerPage": {
+              "sourceUrl": "https://www.11st.co.kr/products/7419866839",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T10:19:31.507Z",
+              "responseSha256": "2eb005dc37d360563cc7f7eecbf7e4e6748313a5d5c341414989d66a85680e54",
+              "pageTitle": "AMD 라이젠9-5세대 7950X (라파엘) (정품)",
+              "seller": "11번가",
+              "verificationScope": "The seller original product page is independent of the Danawa quote. Confirmed exact CPU number, domestic 정품 packaging, ordinary KRW product amount and active purchase/in-stock evidence. Delivered physical box is not inspected.",
+              "confirmedProduct": {
+                "productId": "7419866839",
+                "name": "AMD 라이젠9-5세대 7950X (라파엘) (정품)",
+                "advertisedPackage": "정품",
+                "offer": {
+                  "price": 1840490,
+                  "priceCurrency": "KRW",
+                  "availability": "http://schema.org/InStock"
+                }
+              },
+              "sellerMetadataWarning": null,
+              "exactAdvertisedModelAndPackageMatches": true,
+              "ordinaryPriceMatchesDanawa": true,
+              "currentSaleEvidence": true
+            }
+          }
+        ],
+        "sellerConfirmed": true,
+        "recommendation": "READY_FOR_EXPLICIT_PRICE_CONFIRMATION_WITH_OUTLIER_WARNING",
+        "originalAmountKrw": 1840490,
+        "latestQuoteMatchesVerifiedSellerAmount": true
+      },
+      "detailedReviewCompletedAt": "2026-10-10T10:19:34.196Z",
+      "initialAggregatorInspectionAt": "2026-10-10T10:11:57.792Z",
+      "initialPriceObservation": {
+        "amountKrw": 1840490,
+        "observedAt": "2026-10-10T10:11:57.792Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "localProductId": "fe942923-68b5-4b16-9cd0-fa852e9d78ab",
+      "canonicalId": "d0cf5632-a21f-3b86-9c7a-48ecffb36897",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "78196eaf-6ffa-4232-976b-c50e0680157e"
+      },
+      "identity": {
+        "canonicalId": "d0cf5632-a21f-3b86-9c7a-48ecffb36897",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7900X3D",
+        "partNumber": "100-100000909WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000909WOF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000909WOF",
+        "priorCandidate": {
+          "externalId": "19627457",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19627457",
+          "title": "AMD 라이젠 9 -5세대 7900X3D (라파엘)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7900x3d.html",
+        "observedAt": "2026-10-10T10:11:58.104Z",
+        "responseSha256": "3ab31522b1c7d0e9fee1f4d68cd3c3cf15fb9ee2fafb1da12f9f4362cfd68a8b",
+        "pageTitle": "AMD Ryzen 9 7900X3D Desktop Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000909WOF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000909WOF"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19627457",
+          "observedAt": "2026-10-10T10:11:58.884Z",
+          "responseSha256": "b869e590ca73a7fe7f2a28ddd13f1c09adecdfbe6381431e9d972927a2a23342",
+          "pageTitle": "AMD 라이젠9-5세대 7900X3D (라파엘) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "19627457",
+          "productTitle": "AMD 라이젠9-5세대 7900X3D (라파엘) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "19627457"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "31950143"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19174175",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:18.114Z",
+          "responseSha256": "409f2aa027dd60f0a22a0b8832e492b3c0946bbd99acb737fbffe4b88d40f076",
+          "pageTitle": "AMD 라이젠9-5세대 7900X3D (라파엘) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "19174175",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠9-5세대 7900X3D (라파엘) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "미포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "1ee3137f-6e5e-4dfc-a61f-8a3c8253c7e8",
+      "canonicalId": "d42f53fd-ef2b-391d-938e-3bfe2214578d",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1380a6eb-8357-4ce2-be1c-190fa045a108"
+      },
+      "identity": {
+        "canonicalId": "d42f53fd-ef2b-391d-938e-3bfe2214578d",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 4600G",
+        "partNumber": "100-100000147BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "HELD",
+      "reasonCode": "NO_VERIFIED_DOMESTIC_BOX_PAGE",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000147BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000147BOX",
+        "priorCandidate": {
+          "externalId": "17287790",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17287790",
+          "title": "AMD 라이젠 5 -3세대 4600G (르누아르)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-4000-series/amd-ryzen-5-4600g.html",
+        "observedAt": "2026-10-10T10:11:59.128Z",
+        "responseSha256": "48a82887ee7f921abd76c717dcc4d62382308056de30c76e35f0c0cf27f649fd",
+        "pageTitle": "AMD Ryzen 5 4600G Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000147BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000147BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17287790",
+          "observedAt": "2026-10-10T10:11:59.992Z",
+          "responseSha256": "850d617fffa3dc27220b094935acb49fd89e20fcb16105d649e737d41e7281ab",
+          "pageTitle": "AMD 라이젠5-3세대 4600G (르누아르) (해외구매) : 다나와 가격비교",
+          "externalId": "17287790",
+          "productTitle": "AMD 라이젠5-3세대 4600G (르누아르) (해외구매)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "17287790"
+            },
+            {
+              "label": "중고 용어사전 레이어 보기",
+              "pcode": "23537372"
+            }
+          ]
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed discovery/variant lists showed only bulk, multipack, overseas or used offers; this research did not verify a qualifying boxed page. This is not global unavailability evidence."
+    },
+    {
+      "localProductId": "92e16149-cb9d-4d80-b042-07a49a511455",
+      "canonicalId": "d7d4c8ed-ad62-30d6-afe4-aedf46847f75",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d47b30db-de48-4806-95bb-f3ee27d254bf"
+      },
+      "identity": {
+        "canonicalId": "d7d4c8ed-ad62-30d6-afe4-aedf46847f75",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 5950X",
+        "partNumber": "100-100000059WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000059WOF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000059WOF",
+        "priorCandidate": {
+          "externalId": "13172262",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13172262",
+          "title": "AMD 라이젠 9 -4세대 5950X (버미어)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-9-5950x.html",
+        "observedAt": "2026-10-10T10:12:00.268Z",
+        "responseSha256": "89e4440f0842afd0560981c0533057f8b290cc68416ea2231f6bd59cecc10767",
+        "pageTitle": "AMD Ryzen 9 5950X Desktop Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000059WOF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000059WOF"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13172262",
+          "observedAt": "2026-10-10T10:12:01.040Z",
+          "responseSha256": "295facf2a25ae024760ebf01e1e53d614e615356a1ac315c630a28c9081d8051",
+          "pageTitle": "AMD 라이젠9-4세대 5950X (버미어) (벌크 병행) : 다나와 가격비교",
+          "externalId": "13172262",
+          "productTitle": "AMD 라이젠9-4세대 5950X (버미어) (벌크 병행)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "벌크 병행 용어사전 레이어 보기",
+              "pcode": "13172262"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "13851932"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12622319",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:19.318Z",
+          "responseSha256": "020cf0b980d2b5fa38e4dbba6a60996ff8a1ce209c32aba424424b7eb01b00f2",
+          "pageTitle": "AMD 라이젠9-4세대 5950X (버미어) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "12622319",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠9-4세대 5950X (버미어) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "미포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "3ca99f89-4d65-40ca-83e4-d76d143406d5",
+      "canonicalId": "da9c1c4e-aa54-3000-b096-70016e8d26c6",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ed3c1bda-9520-40b5-bb05-e7e44ae7bfc1"
+      },
+      "identity": {
+        "canonicalId": "da9c1c4e-aa54-3000-b096-70016e8d26c6",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-13600K",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "Intel Core i5-13600K",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=Intel%20Core%20i5-13600K",
+        "priorCandidate": {
+          "externalId": "18169127",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18169127",
+          "title": "인텔 코어i5-13세대 13600K (랩터레이크)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230493/intel-core-i513600k-processor-24m-cache-up-to-5-10-ghz/ordering.html",
+        "observedAt": "2026-10-10T10:12:01.189Z",
+        "responseSha256": "0e539aafa939d3fd1b5f8fc9612c9738e28d3a304e75c75c3096e80bd8cc1f36",
+        "pageTitle": "Intel Core i5-13600K Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "BX8071513600K",
+          "BXC8071513600K"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BX8071513600K",
+            "context": "Boxed Intel Core i5-13600K Processor (24M Cache, up to 5.10 GHz) FC-LGA16A Ordering Code BX8071513600K Spec Code SRMBD Shipping Media BOX Stepping B0 MDDS Content IDs 750128 , 850146 PCN Content IDs 798714 , 798811 , 800380 , 811173 , 811981 , 815134 , 818660 "
+          },
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BXC8071513600K",
+            "context": "Boxed Intel Core i5-13600K Processor (24M Cache, up to 5.10 GHz) FC-LGA16A, for China Ordering Code BXC8071513600K Spec Code SRMBD Shipping Media BOX Stepping B0 MDDS Content IDs 750128 , 850146 PCN Content IDs 798714 , 798811 , 800380 , 811173 , 811981 , 815134 , 818660 Trade Compliance Information"
+          }
+        ],
+        "partNumberMatches": null
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18169127",
+          "observedAt": "2026-10-10T10:12:02.206Z",
+          "responseSha256": "a3ed3a9943cd4d5ca2c76520614343d48389116dbce294ad88bee06b18a8221b",
+          "pageTitle": "인텔 코어i5-13세대 13600K (랩터레이크) (벌크 + 쿨러) : 다나와 가격비교",
+          "externalId": "18169127",
+          "productTitle": "인텔 코어i5-13세대 13600K (랩터레이크) (벌크 + 쿨러)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "벌크 + 쿨러 용어사전 레이어 보기",
+              "pcode": "18169127"
+            },
+            {
+              "label": "벌크 용어사전 레이어 보기",
+              "pcode": "18169169"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "18071333"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18039269",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:20.362Z",
+          "responseSha256": "66ce85ac2a0c09057e6409f6ed8a9878e17c2c2a6481e1612e792a12c1a77cec",
+          "pageTitle": "인텔 코어i5-13세대 13600K (랩터레이크) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "18039269",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "인텔 코어i5-13세대 13600K (랩터레이크) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "미포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "75e48991-3a0b-4363-91fe-aae19d3fb005",
+      "canonicalId": "dda7f599-9514-39db-bc64-03d1c288a1d3",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e11970e8-4f2c-426d-872c-92c0f4160ec4"
+      },
+      "identity": {
+        "canonicalId": "dda7f599-9514-39db-bc64-03d1c288a1d3",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5700X3D",
+        "partNumber": "100-100001503WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "HELD",
+      "reasonCode": "NO_VERIFIED_DOMESTIC_BOX_PAGE",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-amd/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100001503WOF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100001503WOF",
+        "priorCandidate": {
+          "externalId": "47839244",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=47839244",
+          "title": "AMD 라이젠 7 -4세대 5700X3D (버미어)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700x3d.html",
+        "observedAt": "2026-10-10T10:12:02.611Z",
+        "responseSha256": "74ea845d6e3864c9aec31d664762b4e59ff146e64b49001747f0bda150732245",
+        "pageTitle": "AMD Ryzen 7 5700X3D Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100001503WOF",
+          "100-100001503"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100001503WOF , 100-100001503"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=47839244",
+          "observedAt": "2026-10-10T10:12:03.427Z",
+          "responseSha256": "2c93ed2f3c04a50057770ab94247dd1bb7bf5915831d9b900b65036830ef13f3",
+          "pageTitle": "AMD 라이젠7-4세대 5700X3D (버미어) (해외구매) : 다나와 가격비교",
+          "externalId": "47839244",
+          "productTitle": "AMD 라이젠7-4세대 5700X3D (버미어) (해외구매)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": []
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed discovery/variant lists showed only bulk, multipack, overseas or used offers; this research did not verify a qualifying boxed page. This is not global unavailability evidence."
+    },
+    {
+      "localProductId": "b05fe082-84f5-46a5-9e46-c8995eead596",
+      "canonicalId": "e2add2ba-c999-35bf-b886-3f30eb60cacc",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "88335ff6-ffb7-4410-87d0-2b28cf7b1008"
+      },
+      "identity": {
+        "canonicalId": "e2add2ba-c999-35bf-b886-3f30eb60cacc",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 5900X",
+        "partNumber": "100-100000061WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000061WOF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000061WOF",
+        "priorCandidate": {
+          "externalId": "12837425",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12837425",
+          "title": "AMD 라이젠 9 -4세대 5900X (버미어)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-9-5900x.html",
+        "observedAt": "2026-10-10T10:12:03.731Z",
+        "responseSha256": "2defe646588752f2eaa75253e8b12d0b59da23af6db15d538969a86b1e930e3c",
+        "pageTitle": "AMD Ryzen 9 5900X Desktop Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000061WOF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000061WOF"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12837425",
+          "observedAt": "2026-10-10T10:12:04.549Z",
+          "responseSha256": "9c602f38787dc9884f9d788adb5299e78bcadd56e0956affe77083a7a67b2ca6",
+          "pageTitle": "AMD 라이젠9-4세대 5900X (버미어) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "12837425",
+          "productTitle": "AMD 라이젠9-4세대 5900X (버미어) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "12837425"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "12975302"
+            },
+            {
+              "label": "중고 용어사전 레이어 보기",
+              "pcode": "17576381"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12622091",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:21.475Z",
+          "responseSha256": "c678873b98f6cdc3badfec7c2e4f5d281d8043f7f68765c68afd4224dea157a2",
+          "pageTitle": "AMD 라이젠9-4세대 5900X (버미어) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "12622091",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠9-4세대 5900X (버미어) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "미포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "9350ad11-8a31-4083-96bf-3bf6cbf80e78",
+      "canonicalId": "ef545658-d152-34d2-8fc6-dcd29c1a843f",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "2ab00ac9-d91e-4250-9297-2bdd6f617d41"
+      },
+      "identity": {
+        "canonicalId": "ef545658-d152-34d2-8fc6-dcd29c1a843f",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7900",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "HELD",
+      "reasonCode": "RETAIL_COOLER_VARIANT_AND_CURRENT_MANUFACTURER_BOXED_CODE_REVIEW_REQUIRED",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "discoveryEvidence": {
+        "query": "AMD Ryzen 9 7900",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=AMD%20Ryzen%209%207900",
+        "priorCandidate": {
+          "externalId": "18718631",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718631",
+          "title": "AMD 라이젠 9 -5세대 7900 (라파엘)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7900.html",
+        "httpStatus": 200,
+        "observedAt": "2026-10-10T10:16:21.545Z",
+        "responseSha256": "12080149dc1422f223b1b156b0cd6e87fa5b4e9b4cae02a47c87a8f8652362f2",
+        "pageTitle": "AMD Ryzen 9 7900",
+        "redirectLocation": null,
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000590WOF",
+          "100-100000590WOZ"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed *Due to the AMD SR4 cooler reaching EOL status, select AMD Ryzen 7000 and 5000 Product ID Boxed models are updated to no longer include a cooler, removing the AMD SR4 cooler, starting 8/1/2025. Contact your local AMD Sales Representative for more information.&lt;/p> \" tabindex=\"0\" data-bs-html=\"true\" ref=\"info\">",
+            "value": "100-100000590WOF* , 100-100000590WOZ*"
+          }
+        ],
+        "partNumberMatches": null
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718631",
+          "observedAt": "2026-10-10T10:12:05.712Z",
+          "responseSha256": "0f02f9cbf06e69feaf96e2ad44e173d9cddbf088038d62825e9af597e836bdfd",
+          "pageTitle": "AMD 라이젠9-5세대 7900 (라파엘) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "18718631",
+          "productTitle": "AMD 라이젠9-5세대 7900 (라파엘) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "18718631"
+            },
+            {
+              "label": "정품 용어사전 레이어 보기",
+              "pcode": "18718592"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "18771416"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718592",
+          "observedAt": "2026-10-10T10:12:06.700Z",
+          "responseSha256": "663e4fdd671dfe3cbc2ff017087e91b663ec1c301796a8ec70233ad5c7c09a8a",
+          "pageTitle": "AMD 라이젠9-5세대 7900 (라파엘) (정품) : 다나와 가격비교",
+          "externalId": "18718592",
+          "productTitle": "AMD 라이젠9-5세대 7900 (라파엘) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": {
+            "amountKrw": 488890,
+            "observedAt": "2026-10-10T10:12:06.700Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=18718592",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceParseReason": null
+        }
+      ],
+      "currentQuote": {
+        "amountKrw": 488890,
+        "observedAt": "2026-10-10T10:12:06.700Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18718592",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "saleIdentityVerified": false,
+      "requiredFollowUp": "Current manufacturer boxed variants changed; confirm retailer order code and included cooler against official BOX/SBX/CSX/WOF/WOZ variant before assigning a price.",
+      "statusScope": "Current manufacturer boxed IDs are WOF/WOZ variants without the former cooler; the retailer 정품 page does not identify its actual boxed order code. Preserve observed 488890 KRW separately until package/cooler SKU is verified."
+    },
+    {
+      "localProductId": "6f59c439-f924-4a9a-9ac5-a1ad9fda7fd3",
+      "canonicalId": "efd1a48f-dd70-3e1d-9080-a5c061835dd6",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "89eeefbe-a6d6-4f77-9c4d-025df2f10a3e"
+      },
+      "identity": {
+        "canonicalId": "efd1a48f-dd70-3e1d-9080-a5c061835dd6",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 3700X",
+        "partNumber": "100-100000071BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000071BOX",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000071BOX",
+        "priorCandidate": {
+          "externalId": "9421629",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=9421629",
+          "title": "AMD 라이젠 7 -3세대 3700X (마티스)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-7-3700x.html",
+        "observedAt": "2026-10-10T10:12:07.110Z",
+        "responseSha256": "5c1aed829aa2b4b43cff0ed20a3d0c9b5642c08367bd796de6d7f127cc8c2340",
+        "pageTitle": "AMD Ryzen 7 3700X Drivers and Downloads | Latest Version",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000071BOX"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000071BOX"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=9421629",
+          "observedAt": "2026-10-10T10:12:07.662Z",
+          "responseSha256": "0ebe8cd64f3e4fcf6e46265adf379fdd2bff3b262a4bbaa813c4029d434691da",
+          "pageTitle": "AMD 라이젠7-3세대 3700X (마티스) (멀티팩 정품) : 다나와 가격비교",
+          "externalId": "9421629",
+          "productTitle": "AMD 라이젠7-3세대 3700X (마티스) (멀티팩 정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "멀티팩 정품 용어사전 레이어 보기",
+              "pcode": "9421629"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "11021388"
+            },
+            {
+              "label": "중고 용어사전 레이어 보기",
+              "pcode": "16414823"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8459829",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:22.602Z",
+          "responseSha256": "6d6fd6f3d39c3d0a996798c673bd6a58411a5d62c60bb783c3861e3e338cf121",
+          "pageTitle": "AMD 라이젠7-3세대 3700X (마티스) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "8459829",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠7-3세대 3700X (마티스) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "Wraith PRISM 포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "77fad406-901e-4ce4-bbcc-6cfff8032d83",
+      "canonicalId": "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:245694:model"
+      },
+      "identity": {
+        "canonicalId": "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 250K Plus",
+        "partNumber": null,
+        "identityKind": "MODEL_REFERENCE",
+        "role": "INSTALLED_PC_REFERENCE",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "HELD",
+      "reasonCode": "MODEL_REFERENCE_REQUIRES_SEPARATE_RETAIL_SKU_REVIEW",
+      "seedEvidenceFile": null,
+      "discoveryEvidence": {
+        "query": "Intel Core Ultra 5 250K Plus",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=Intel%20Core%20Ultra%205%20250K%20Plus",
+        "priorCandidate": {
+          "externalId": "108424286",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=108424286",
+          "title": "인텔 코어 울트라7 시리즈2 270K Plus (애로우레이크 리프레시)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/245694/intel-core-ultra-5-processor-250k-plus-30m-cache-up-to-5-30-ghz/ordering.html",
+        "observedAt": "2026-10-10T10:12:07.799Z",
+        "responseSha256": "0d73b7c18cb99ee627de59e28504fbf3041d956a3ad13ffe7ee946a42060ec7c",
+        "pageTitle": "Intel Core Ultra 5 processor 250K Plus",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "BX80768250K",
+          "BXC80768250K"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BX80768250K",
+            "context": "Boxed Intel Core Ultra 5 processor 250K Plus (30M Cache, up to 5.30 GHz) FCLGA18W Ordering Code BX80768250K Spec Code SA4UZ Shipping Media BOX Stepping B0 MDDS Content IDs 914948 PCN Content IDs 919379 Recommended Customer Price $229.00 "
+          },
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BXC80768250K",
+            "context": "Boxed Intel Core Ultra 5 processor 250K Plus (30M Cache, up to 5.30 GHz) FCLGA18W, for China Ordering Code BXC80768250K Spec Code SA4UZ Shipping Media BOX Stepping B0 MDDS Content IDs 914948 PCN Content IDs 919379 Trade Compliance Information ECCN 5A992.C CCATS 740.17B1 US HTS 8542310050 Get the lat"
+          }
+        ],
+        "partNumberMatches": null
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=108424451",
+          "observedAt": "2026-10-10T10:12:08.790Z",
+          "responseSha256": "84bcbb8cebc2d4569c1bbecabb502d0bffd63a477c7a5a221a4db0c71d28dc13",
+          "pageTitle": "인텔 코어 울트라5 시리즈2 250K Plus (애로우레이크 리프레시) (정품) : 다나와 가격비교",
+          "externalId": "108424451",
+          "productTitle": "인텔 코어 울트라5 시리즈2 250K Plus (애로우레이크 리프레시) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "regularPrice": {
+            "amountKrw": 340130,
+            "observedAt": "2026-10-10T10:12:08.790Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=108424451",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceParseReason": null
+        }
+      ],
+      "currentQuote": {
+        "amountKrw": 340130,
+        "observedAt": "2026-10-10T10:12:08.790Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=108424451",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "saleIdentityVerified": false,
+      "proposedRetailSku": {
+        "partNumber": "BX80768250K",
+        "productTitle": "인텔 코어 울트라5 시리즈2 250K Plus (애로우레이크 리프레시) (정품)",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=108424451",
+        "currentQuote": {
+          "amountKrw": 340130,
+          "observedAt": "2026-10-10T10:12:08.790Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=108424451",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "requiredFollowUp": "Confirm exact domestic retailer boxed order code and approve retail product binding without changing this installed-model reference."
+      }
+    },
+    {
+      "localProductId": "47016749-457b-4d17-9dcd-eabdb0f4b6ec",
+      "canonicalId": "f34b5452-6798-3592-b027-2722230886bd",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8f4be642-fc35-4ec2-aa3d-e06c5eb21b10"
+      },
+      "identity": {
+        "canonicalId": "f34b5452-6798-3592-b027-2722230886bd",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5800X",
+        "partNumber": "100-100000063WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "100-100000063WOF",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000063WOF",
+        "priorCandidate": {
+          "externalId": "122711750",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=122711750",
+          "title": "AMD 라이젠 7 -4세대 5800X 3D AM4 10주년 기념 에디션 (버미어)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-7-5800x.html",
+        "observedAt": "2026-10-10T10:12:09.042Z",
+        "responseSha256": "a299077fde5812a2a08720f9ebb06a733408cd280d1581832c4ed170e7537642",
+        "pageTitle": "AMD Ryzen 7 5800X Desktop Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "100-100000063WOF"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Product ID Boxed",
+            "value": "100-100000063WOF"
+          }
+        ],
+        "partNumberMatches": true
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=122711750",
+          "observedAt": "2026-10-10T10:12:10.013Z",
+          "responseSha256": "152d8c1108ffb83f26f7555c478871cd0c8768447c778608672ec7d422c01af5",
+          "pageTitle": "AMD 라이젠7-4세대 5800X3D AM4 10주년 기념 에디션 (버미어) (정품) : 다나와 가격비교",
+          "externalId": "122711750",
+          "productTitle": "AMD 라이젠7-4세대 5800X3D AM4 10주년 기념 에디션 (버미어) (정품)",
+          "modelIdentityMatches": false,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": []
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12621953",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:23.827Z",
+          "responseSha256": "cc24444303f7ca53e8bc3bf00b091c29eb0196ee7b8179e2fdd97eb58fc41a1b",
+          "pageTitle": "AMD 라이젠7-4세대 5800X (버미어) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "12621953",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "AMD 라이젠7-4세대 5800X (버미어) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "미포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    },
+    {
+      "localProductId": "da1f3753-83ca-41c1-a163-e22c23a5a389",
+      "canonicalId": "f3a9f7bc-a2de-3159-bd19-e39ba19f0677",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c14d84a3-7c13-4611-a367-7e034693266f"
+      },
+      "identity": {
+        "canonicalId": "f3a9f7bc-a2de-3159-bd19-e39ba19f0677",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-12600K",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "status": "NO_CURRENT_QUOTE",
+      "reasonCode": "REGULAR_PRICE_SECTION_MISSING",
+      "seedEvidenceFile": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "discoveryEvidence": {
+        "query": "Intel Core i5-12600K",
+        "sourceUrl": "https://search.danawa.com/dsearch.php?query=Intel%20Core%20i5-12600K",
+        "priorCandidate": {
+          "externalId": "15752510",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15752510",
+          "title": "인텔 코어i5-12세대 12600K (엘더레이크)"
+        }
+      },
+      "manufacturerEvidence": {
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/134589/intel-core-i512600k-processor-20m-cache-up-to-4-90-ghz/ordering.html",
+        "observedAt": "2026-10-10T10:12:10.130Z",
+        "responseSha256": "e229c2bc52eee48d00654c16d0c69e5a50e30fb400f0a14eb1b847f7b095b0fd",
+        "pageTitle": "Intel Core i5-12600K Processor",
+        "modelIdentityMatches": true,
+        "boxedIds": [
+          "BX8071512600K",
+          "BXC8071512600K"
+        ],
+        "boxedRecords": [
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BX8071512600K",
+            "context": "Boxed Intel Core i5-12600K Processor (20M Cache, up to 4.90 GHz) FC-LGA16A Ordering Code BX8071512600K Spec Code SRL4T Shipping Media BOX Stepping C0 MDDS Content IDs 690795 , 850139 PCN Content IDs 798714 , 798811 , 800380 , 810487 , 811981 , 815134 , 853587 , 869847 , 919379 Recommended Customer P"
+          },
+          {
+            "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+            "value": "BXC8071512600K",
+            "context": "Boxed Intel Core i5-12600K Processor (20M Cache, up to 4.90 GHz) FC-LGA16A, for China Ordering Code BXC8071512600K Spec Code SRL4T Shipping Media BOX Stepping C0 MDDS Content IDs 690795 , 850139 PCN Content IDs 798714 , 798811 , 800380 , 810487 , 811981 , 815134 , 848503 , 853587 , 869847 , 919379 T"
+          }
+        ],
+        "partNumberMatches": null
+      },
+      "retailPages": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15752510",
+          "observedAt": "2026-10-10T10:12:11.206Z",
+          "responseSha256": "83fd0dc526f8b9ba788435af1fef31eca59885bb018cf1e91803a18461b46a44",
+          "pageTitle": "인텔 코어i5-12세대 12600K (엘더레이크) (벌크 + 쿨러) : 다나와 가격비교",
+          "externalId": "15752510",
+          "productTitle": "인텔 코어i5-12세대 12600K (엘더레이크) (벌크 + 쿨러)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": false,
+          "regularPrice": null,
+          "priceParseReason": null,
+          "otherPackageVariants": [
+            {
+              "label": "벌크 + 쿨러 용어사전 레이어 보기",
+              "pcode": "15752510"
+            },
+            {
+              "label": "벌크 용어사전 레이어 보기",
+              "pcode": "15752468"
+            },
+            {
+              "label": "해외구매 용어사전 레이어 보기",
+              "pcode": "15752435"
+            }
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15594263",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:24.856Z",
+          "responseSha256": "a85fadf741c4a00acc5bb36a7906eecb7867acb1f8d6c5d7badf37ec5bf7bb93",
+          "pageTitle": "인텔 코어i5-12세대 12600K (엘더레이크) (정품) : 다나와 가격비교",
+          "redirectLocation": null,
+          "externalId": "15594263",
+          "discoveryMethod": "Exact boxed alternate URL discovered from public web search; cached prices not used",
+          "regularPrice": null,
+          "productTitle": "인텔 코어i5-12세대 12600K (엘더레이크) (정품)",
+          "modelIdentityMatches": true,
+          "domesticRetailBoxMatches": true,
+          "advertisedCooler": "미포함 ",
+          "priceParseReason": "REGULAR_PRICE_SECTION_MISSING"
+        }
+      ],
+      "currentQuote": null,
+      "saleIdentityVerified": false,
+      "statusScope": "Reviewed exact domestic 정품 BOX/WOF page had no active ordinary price section at observation; other sellers or packaging may exist."
+    }
+  ],
+  "previewPayload": {
+    "schemaVersion": 1,
+    "items": [
+      {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "43597450-8c66-4f59-9ef5-c347c0a45fd4",
+          "manufacturer": "AMD",
+          "modelName": "Ryzen 7 3800X",
+          "partNumber": "100-100000025BOX"
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "8459781",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+          "saleSku": "100-100000025BOX",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-10T10:19:34.196Z"
+        },
+        "price": {
+          "amountKrw": 560760,
+          "observedAt": "2026-10-10T10:26:34.472Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+          "condition": "NEW",
+          "inStock": true
+        }
+      },
+      {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "6c0ac2b9-20b2-40f8-b206-06877dc8f047",
+          "manufacturer": "AMD",
+          "modelName": "Ryzen 7 5800X3D",
+          "partNumber": "100-100000651POF"
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "16872089",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+          "saleSku": "100-100000651POF",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-10T10:19:34.196Z"
+        },
+        "price": {
+          "amountKrw": 582330,
+          "observedAt": "2026-10-10T10:26:36.295Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+          "condition": "NEW",
+          "inStock": true
+        }
+      },
+      {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "63f23f26-d52c-4e3c-be6e-0d25163cff59",
+          "manufacturer": "AMD",
+          "modelName": "Ryzen 9 7950X",
+          "partNumber": "100-100000514WOF"
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "17913980",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+          "saleSku": "100-100000514WOF",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-10T10:19:34.196Z"
+        },
+        "price": {
+          "amountKrw": 1840490,
+          "observedAt": "2026-10-10T10:26:37.901Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+          "condition": "NEW",
+          "inStock": true
+        }
+      }
+    ]
+  },
+  "completed": 39,
+  "updatedAt": "2026-10-10T10:26:39.116Z",
+  "summary": {
+    "READY": 3,
+    "HELD": 10,
+    "NO_CURRENT_QUOTE": 26
+  },
+  "previewCount": 3,
+  "finishedAt": "2026-10-10T10:19:34.196Z",
+  "accessLimitations": [
+    {
+      "domain": "smartstore.naver.com",
+      "result": "HTTP_429",
+      "actions": "Three distinct public seller links returned HTTP 429; stopped this domain without retries, login, alternate access or bypass."
+    }
+  ],
+  "currentBoxQuotes": 9,
+  "finalValidation": {
+    "requested": 39,
+    "completed": 39,
+    "uniqueCanonicalIds": 39,
+    "uniqueSourceIds": 39,
+    "previewMatchesReady": true,
+    "active75Unchanged": true,
+    "databaseWrites": 0,
+    "deployments": 0,
+    "readyObservationsAfterReview": true
+  },
+  "postReviewPriceReobservation": {
+    "stage": "PRICE_OBSERVATION_AFTER_COMPLETED_INDEPENDENT_SELLER_REVIEW",
+    "verificationCompletedAt": "2026-10-10T10:19:34.196Z",
+    "verificationTimeMeaning": "Preserved existing finishedAt of completed manufacturer PN, exact advertised domestic boxed SKU and independent seller review. This is the actual prior review completion record, not a substituted price-observation timestamp.",
+    "startedAt": "2026-10-10T10:26:33.956Z",
+    "requested": 3,
+    "results": [
+      {
+        "canonicalId": "3f8a80d4-ebdb-33e1-83c2-8a0c026ab129",
+        "modelName": "Ryzen 7 3800X",
+        "status": "READY",
+        "verifiedAt": "2026-10-10T10:19:34.196Z",
+        "observedAt": "2026-10-10T10:26:34.472Z",
+        "amountKrw": 560760,
+        "previousAmountKrw": 560760,
+        "amountChanged": false,
+        "responseSha256": "b0b1d69b3c804375087ed1eb2bbf7bce07f30a9635abb3ae047f8d11c12cd4c7",
+        "observationFollowsCompletedReview": true
+      },
+      {
+        "canonicalId": "4f86bcec-6d33-3b5c-80bc-d99991927a5e",
+        "modelName": "Ryzen 7 5800X3D",
+        "status": "READY",
+        "verifiedAt": "2026-10-10T10:19:34.196Z",
+        "observedAt": "2026-10-10T10:26:36.295Z",
+        "amountKrw": 582330,
+        "previousAmountKrw": 582330,
+        "amountChanged": false,
+        "responseSha256": "23d793c7e8e82fc534858e88c87f5144a03f99bb0fdaa9438945602ae72a7422",
+        "observationFollowsCompletedReview": true
+      },
+      {
+        "canonicalId": "cb11f240-2d1d-32a8-af69-ae3645dd8037",
+        "modelName": "Ryzen 9 7950X",
+        "status": "READY",
+        "verifiedAt": "2026-10-10T10:19:34.196Z",
+        "observedAt": "2026-10-10T10:26:37.901Z",
+        "amountKrw": 1840490,
+        "previousAmountKrw": 1840490,
+        "amountChanged": false,
+        "responseSha256": "38cb1a050dd99241cdaeb0c5a2daccddf1e0a0d338c5cf21e3700023da2b45a6",
+        "observationFollowsCompletedReview": true
+      }
+    ],
+    "completedAt": "2026-10-10T10:26:39.116Z",
+    "completed": 3
+  }
+}

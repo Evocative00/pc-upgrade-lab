@@ -22,7 +22,7 @@ class SharedPricePublisherTest {
     private final HttpClient http = HttpClient.newHttpClient();
 
     @Test void bundledApprovalPreservesTheFourteenExactIdentitiesAndEightPrices() {
-        var snapshot = SharedCatalogSnapshot.load();
+        var snapshot = SharedCatalogSnapshot.loadPilot();
         assertThat(snapshot.products()).hasSize(14);
         assertThat(snapshot.products().values().stream().filter(entry -> entry.price() != null)).hasSize(8);
         assertThat(snapshot.products().values()).allSatisfy(entry -> {
@@ -47,12 +47,12 @@ class SharedPricePublisherTest {
         }
         var priceFile = review.resolve("pilot-approved-prices-2026-10-10.json");
         Files.writeString(priceFile, Files.readString(priceFile).replace("939000", "1"));
-        assertThatThrownBy(() -> SharedCatalogSnapshot.load(root)).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> SharedCatalogSnapshot.loadPilot(root)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("approved fixed snapshot");
     }
 
     @Test void realHttpReturnsOnlyRequestedPublicIdentitiesAndOriginalObservations() throws Exception {
-        var snapshot = SharedCatalogSnapshot.load();
+        var snapshot = SharedCatalogSnapshot.loadPilot();
         var now = latestObservation(snapshot).plusSeconds(3600);
         try (var publisher = SharedPricePublisher.start(snapshot, Clock.fixed(now, ZoneOffset.UTC), SharedPriceFreshness.defaults(), 0)) {
             String query = String.join(",", snapshot.products().keySet());
@@ -77,7 +77,7 @@ class SharedPricePublisherTest {
     }
 
     @Test void validUnknownUuidIsDistinctFromAnApprovedProductWithoutPrice() throws Exception {
-        var snapshot = SharedCatalogSnapshot.load();
+        var snapshot = SharedCatalogSnapshot.loadPilot();
         var missingPriceId = snapshot.products().entrySet().stream().filter(entry -> entry.getValue().price() == null).findFirst().orElseThrow().getKey();
         var unknown = UUID.randomUUID().toString();
         try (var publisher = SharedPricePublisher.start(snapshot, Clock.systemUTC(), SharedPriceFreshness.defaults(), 0)) {
@@ -95,7 +95,7 @@ class SharedPricePublisherTest {
     }
 
     @Test void malformedOrDuplicateRequestsAndOtherRoutesAreRejected() throws Exception {
-        var snapshot = SharedCatalogSnapshot.load();
+        var snapshot = SharedCatalogSnapshot.loadPilot();
         String id = snapshot.products().keySet().iterator().next();
         try (var publisher = SharedPricePublisher.start(snapshot, Clock.systemUTC(), SharedPriceFreshness.defaults(), 0)) {
             for (String query : new String[]{"", "?canonicalIds=", "?canonicalIds=bad", "?ids=" + id,
@@ -115,7 +115,7 @@ class SharedPricePublisherTest {
     }
 
     @Test void publicationUsesTheExactFreshnessBoundariesWithoutRewritingObservedAt() throws Exception {
-        var snapshot = SharedCatalogSnapshot.load();
+        var snapshot = SharedCatalogSnapshot.loadPilot();
         var selected = snapshot.products().values().stream().filter(entry -> entry.price() != null)
                 .max(java.util.Comparator.comparing(entry -> entry.price().observedAt())).orElseThrow();
         var observed = selected.price().observedAt();

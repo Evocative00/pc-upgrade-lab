@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "stage": "READ_ONLY_DATA_QUALITY_CORRECTION",
+  "reviewedAt": "2026-10-10T11:36:25.742Z",
+  "partNumber": "CMK32GX5M2E6000C36",
+  "canonicalId": "8b3655de-1bf6-3ddc-9669-2065b56e952c",
+  "localProductId": "1b68935f-3b4c-4784-8746-bb0f57dbb677",
+  "priorClaim": {
+    "file": "data/catalog-review/remaining232-price-review-2026-10-10.json",
+    "field": "dataConflicts[0].storedValue",
+    "claimedDbVoltageV": 1.4
+  },
+  "correctedFinding": {
+    "currentDbVoltageV": 1.35,
+    "currentManufacturerTestedVoltageV": 1.35,
+    "dbConflict": false,
+    "explanation": "The earlier 1.4V value belongs to the raw upstream Buildcores payload. It was incorrectly labelled as the actual stored DB specification. The seed manifest and running backend detail are 1.35V."
+  },
+  "liveRead": {
+    "url": "http://127.0.0.1:8080/api/catalog/products/1b68935f-3b4c-4784-8746-bb0f57dbb677",
+    "httpStatus": 200,
+    "observedAt": "2026-10-10T11:36:25.742Z",
+    "responseSha256": "ca4c7c54528e2be9e66e58bc8096e672b6b3433aeeab36e403e83de4b7af0fd0",
+    "specification": {
+      "memoryType": "DDR5",
+      "moduleCapacityBytes": 17179869184,
+      "moduleCount": 2,
+      "dataRateMts": 6000,
+      "moduleFormFactor": "DIMM",
+      "pinCount": null,
+      "isEcc": null,
+      "bufferType": "UNBUFFERED",
+      "voltageV": 1.35,
+      "heightMm": null
+    }
+  },
+  "manufacturerRead": {
+    "canonicalId": "8b3655de-1bf6-3ddc-9669-2065b56e952c",
+    "partNumber": "CMK32GX5M2E6000C36",
+    "sourceUrl": "https://www.corsair.com/kr/ko/p/memory/cmk32gx5m2e6000c36/vengeance-32gb-2x16gb-ddr5-dram-6000mt-s-c36-memory-kit-black-cmk32gx5m2e6000c36",
+    "expectedSpecification": {
+      "memoryType": "DDR5",
+      "moduleCapacityBytes": 17179869184,
+      "moduleCount": 2,
+      "dataRateMts": 6000,
+      "moduleFormFactor": "DIMM",
+      "pinCount": null,
+      "isEcc": null,
+      "bufferType": "UNBUFFERED",
+      "voltageV": 1.35,
+      "heightMm": null
+    },
+    "expectedSaleConfiguration": {
+      "partNumber": "CMK32GX5M2E6000C36",
+      "memoryType": "DDR5",
+      "dataRateMts": 6000,
+      "casLatencyCl": 36,
+      "fullTiming": "36-44-44-96",
+      "voltageV": 1.35,
+      "moduleCapacityBytes": 17179869184,
+      "moduleCount": 2,
+      "totalCapacityBytes": 34359738368,
+      "profileSupport": [
+        "XMP 3.0"
+      ],
+      "rgb": null,
+      "color": "BLACK",
+      "unknownsRemainNull": true,
+      "sourceScope": "Existing exact-PN curated manufacturer evidence plus explicitly listed fresh primary review; PN/title inference does not fill unknowns"
+    },
+    "httpStatus": 200,
+    "observedAt": "2026-10-10T11:32:44.924Z",
+    "responseSha256": "14b908d7b622f88f52c752b31ba6e717caffa434c0aeef2bf11a594a146944bb",
+    "pageTitle": "VENGEANCE® 32GB (2x16GB) DDR5 DRAM 6000MT/s CL36 Memory Kit — Black",
+    "characterCount": 954143,
+    "status": "RAW_PRIMARY_FACTS_NEED_CONTEXT_REVIEW",
+    "renderedTableFacts": {
+      "Memory Size": [
+        "32GB (2 x 16GB)"
+      ],
+      "Tested Latency": [
+        "36"
+      ],
+      "Tested Speed": [
+        "6000 MT/s"
+      ],
+      "Tested Voltage": [
+        "1.35V"
+      ],
+      "SPD Voltage": [
+        "1.1V"
+      ],
+      "Speed Rating": [
+        "PC5-48000 (DDR5-6000)"
+      ],
+      "SPD Speed": [
+        "4800MHz"
+      ],
+      "SPD Latency": [
+        "40"
+      ],
+      "Performance Profile": [
+        "Intel XMP"
+      ],
+      "Package Memory Format": [
+        "UDIMM"
+      ],
+      "Package Memory Pin": [
+        "288"
+      ],
+      "Weight": [
+        "0kg"
+      ],
+      "Heat Spreader": [
+        "Aluminum"
+      ],
+      "Fan Included": [
+        "No"
+      ],
+      "Memory Color": [
+        "BLACK"
+      ],
+      "Memory Compatibility": [
+        "Intel 700 Series,Intel 800 Series"
+      ],
+      "Memory Detail Compatibility": [
+        "Intel 700 Series, Intel 800 Series"
+      ],
+      "Memory Type": [
+        "DDR5"
+      ],
+      "PMIC Type": [
+        "Overclock PMIC"
+      ]
+    },
+    "selectedSkuVisible": true,
+    "domContextScope": "Rendered non-script HTML technical table only; embedded JSON for other variants is excluded.",
+    "currentVoltage": 1.35,
+    "reviewedAt": "2026-10-10T11:33:32.896Z",
+    "manifestVoltageComparison": null
+  },
+  "databaseWrites": 0,
+  "specificationChanges": 0,
+  "deployments": 0
+}

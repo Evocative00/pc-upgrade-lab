@@ -48,6 +48,32 @@ export function formatCurrentPrice(price: CurrentPrice | null, status?: CatalogP
   return amount ?? '현재 상품가 미확인'
 }
 
+export function referencePriceLabel(price: NonNullable<CatalogProduct['referenceEstimate']>): string {
+  switch (price.basis) {
+    case 'LAUNCH_PRICE': return '출시 참고가'
+    case 'HISTORICAL_RETAIL': return '과거 판매가'
+    case 'MODEL_RETAIL_REFERENCE': return '모델 참고가'
+    default: return '추정 참고가'
+  }
+}
+
+export function formatProjectPrice(product: CatalogProduct): string {
+  if (product.currentPrice || !product.referenceEstimate)
+    return formatCurrentPrice(product.currentPrice, product.priceStatus).replace('(합계 제외)', '(현재가 합계 제외)')
+  const estimate = product.referenceEstimate
+  return `${referencePriceLabel(estimate)} ${estimate.confidence === 'ESTIMATED' ? '약 ' : ''}${estimate.amountKrw.toLocaleString('ko-KR')}원`
+}
+
+// 참고 합계는 확인된 과거 관측도 사용한다. 현재 구매가 합계의 만료·장애 규칙과 별도로 계산한다.
+export function hasObservedReferencePrice(product: CatalogProduct): boolean {
+  const price = product.currentPrice
+  if (!price || !Number.isSafeInteger(price.amountKrw) || price.amountKrw <= 0 || price.amountKrw > 999_999_999_999) return false
+  const status = product.priceStatus
+  return !status || status.origin === 'LOCAL' && status.lookupStatus === 'NOT_IN_SCOPE'
+    || status.origin === 'SHARED' && Boolean(status.catalogVersion) && Boolean(status.lastSuccessAt)
+    && ['OK', 'UNAVAILABLE'].includes(status.lookupStatus) && ['FRESH', 'STALE', 'EXPIRED'].includes(String(status.freshness))
+}
+
 export function catalogPriceStatusLabel(status?: CatalogPriceStatus | null): string {
   if (!status) return '로컬 가격'
   if (status.origin === 'LOCAL') return '로컬 가격 · 중앙 대상 범위 밖'

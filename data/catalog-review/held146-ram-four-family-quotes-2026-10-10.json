@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "observations": [
+    {
+      "code": "16761047",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16761047",
+      "title": "킹스톤 FURY DDR5-5200 CL40 Beast (16GB)",
+      "observedAt": "2026-10-10T11:17:13.204Z",
+      "httpStatus": 200,
+      "sha256": "d3430a24029c1226c2f7d259804cb1b5b2c61a5c0f396dec68707a8b5fde952c",
+      "price": {
+        "amountKrw": 426000,
+        "observedAt": "2026-10-10T11:17:13.204Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16761047",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "offers": [
+        {
+          "amount": "426000",
+          "bridges": [
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=874&cate3=221725&cate4=0&pcode=16761047&cmpnyc=TY3284&safe_trade=4&fee_type=N&link_pcode=13684568225&package=0&setpc=0&r=17916310334047"
+          ],
+          "seller": ""
+        }
+      ]
+    },
+    {
+      "code": "7013641",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=7013641",
+      "title": "킹스톤 DDR4-2666 (8GB)",
+      "observedAt": "2026-10-10T11:17:17.600Z",
+      "httpStatus": 200,
+      "sha256": "48a76ea13195c3799039a6dbda1082fd4f4d19a2007a1ad830d503e49f470595",
+      "price": {
+        "amountKrw": 85900,
+        "observedAt": "2026-10-10T11:17:17.600Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=7013641",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "offers": [
+        {
+          "amount": "85900",
+          "bridges": [
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=874&cate3=56243&cate4=0&pcode=7013641&cmpnyc=TS935&safe_trade=4&fee_type=N&link_pcode=4891554014&package=0&setpc=0&r=17916310376831"
+          ],
+          "seller": ""
+        }
+      ]
+    },
+    {
+      "code": "96773492",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=96773492",
+      "title": "킹스톤 DDR5-5600 CL46 코잇 (16GB)",
+      "observedAt": "2026-10-10T11:17:22.117Z",
+      "httpStatus": 200,
+      "sha256": "9da3c19717bf30f0b240717ebfbf4b29f082c37d2981c7b0cc6524ceb9763206",
+      "price": {
+        "amountKrw": 444770,
+        "observedAt": "2026-10-10T11:17:22.117Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=96773492",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "offers": [
+        {
+          "amount": "444770",
+          "bridges": [
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=874&cate3=221725&cate4=0&pcode=96773492&cmpnyc=PV203&safe_trade=4&fee_type=A&link_pcode=5749614893&package=0&setpc=0&r=17916310411089"
+          ],
+          "seller": ""
+        }
+      ]
+    },
+    {
+      "code": "96773477",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=96773477",
+      "title": "킹스톤 DDR5-5600 CL46 코잇 (32GB)",
+      "observedAt": "2026-10-10T11:17:26.616Z",
+      "httpStatus": 200,
+      "sha256": "4a896a488ab162948da95d72a1d2ad276cc5739ff7d13b00fceccffac2df9c1f",
+      "price": {
+        "amountKrw": 938720,
+        "observedAt": "2026-10-10T11:17:26.616Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=96773477",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "offers": [
+        {
+          "amount": "938720",
+          "bridges": [
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=874&cate3=221725&cate4=0&pcode=96773477&cmpnyc=PV203&safe_trade=4&fee_type=A&link_pcode=5749614894&package=0&setpc=0&r=17916310465888"
+          ],
+          "seller": ""
+        }
+      ]
+    }
+  ],
+  "saleIdentityVerified": false,
+  "publicationApproved": false,
+  "databaseWrites": 0,
+  "deployments": 0
+}

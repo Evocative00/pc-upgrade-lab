@@ -76,15 +76,63 @@ tasks.named('processResources') {
                 'pilot-ram-gpu-evidence-2026-10-10.json', 'pilot-storage-evidence-2026-10-10.json',
                 'pilot-existing-prices-2026-10-10.json', 'pilot-existing-prices-2026-10-10.json.report.json',
                 'pilot-existing-price-assessment-2026-10-10.json', 'pilot-model-price-review-2026-10-10.json',
-                'pilot-storage-price-review-2026-10-10.json'
+                'pilot-storage-price-review-2026-10-10.json', 'retail-four-preview-2026-10-10.json'
         into 'catalog/shared'
+    }
+    from('../data/catalog-shared') {
+        include 'all-catalog-identities-2026-10-10.json', 'approved-prices-2026-10-10.json',
+                'active-approved-prices.json', 'approved-retail-extension-2026-10-10.json'
+        into 'catalog/shared/full'
+    }
+    from('../data/catalog-shared') {
+        include 'reference-prices-preview-2026-10-10.json', 'active-reference-prices.json'
+        into 'catalog/shared/reference'
+    }
+}
+
+// Full catalog preparation is explicit and does not open the personal database.
+tasks.register('prepareAllSharedCatalog', JavaExec) {
+    group = 'verification'
+    description = 'Generate 307 shared identities and preserve the 74 reviewed price observations, without a database.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.AllCatalogManifestApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    args rootDir.parentFile.absolutePath
+}
+
+tasks.register('verifyAllSharedCatalog', JavaExec) {
+    group = 'verification'
+    description = 'Verify the full public catalog inputs against source records, without a database.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.AllCatalogManifestApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    args rootDir.parentFile.absolutePath, '--check'
+}
+
+tasks.register('importAllSharedIdentities', JavaExec) {
+    group = 'application'
+    description = 'Preview 293 canonical bindings; explicit checkSharedIdentitiesDb/applySharedIdentities enables local DB access.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.AllCatalogIdentityImportApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+    doFirst {
+        def apply = providers.gradleProperty('applySharedIdentities').getOrElse('false')
+        def check = providers.gradleProperty('checkSharedIdentitiesDb').getOrElse('false')
+        if (!(apply in ['true','false']) || !(check in ['true','false']) || (apply == 'true' && check == 'true'))
+            throw new GradleException('Choose only one: -PcheckSharedIdentitiesDb=true or -PapplySharedIdentities=true')
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath]
+            + (apply == 'true' ? ['--apply'] : check == 'true' ? ['--check-db'] : []))
     }
 }
 
 // Independent public snapshot provider: no application profile, private settings, JDBC or Flyway.
 tasks.register('sharedCatalogPrices', JavaExec) {
     group = 'application'
-    description = 'Serve the approved 14-product/8-price snapshot on loopback (default port 8081).'
+    description = 'Serve the reviewed 307-product/74-price v2 baseline on loopback (default port 8081).'
     dependsOn tasks.named('classes')
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'com.pcupgradelab.catalog.shared.SharedPricePublisher'
@@ -100,6 +148,97 @@ tasks.register('verifySharedCatalog', JavaExec) {
     mainClass = 'com.pcupgradelab.catalog.shared.SharedPricePublisher'
     javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
     args '--check'
+}
+
+// Export only approved public data; no application context, database or cloud connection.
+tasks.register('exportSharedCatalog', JavaExec) {
+    group = 'verification'
+    description = 'Generate the approved Worker snapshot and Java HTTP reference fixtures.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.SharedCatalogExportApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    args rootDir.parentFile.absolutePath
+    doFirst {
+        def prices = providers.gradleProperty('reviewedSharedPricesFile').orNull
+        if (prices) setArgs([rootDir.parentFile.absolutePath, '--prices', rootProject.file(prices).absolutePath])
+    }
+}
+
+tasks.register('verifyWorkerCatalog', JavaExec) {
+    group = 'verification'
+    description = 'Check Worker public artifacts against approved inputs and Java HTTP reference responses.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.SharedCatalogExportApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    args rootDir.parentFile.absolutePath, '--check'
+    doFirst {
+        def prices = providers.gradleProperty('reviewedSharedPricesFile').orNull
+        if (prices) setArgs([rootDir.parentFile.absolutePath, '--check', '--prices', rootProject.file(prices).absolutePath])
+    }
+}
+
+tasks.register('verifyWorkerPriceClient', JavaExec) {
+    group = 'verification'
+    description = 'Check the Java client against a running local Worker; no application or database startup.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.SharedWorkerClientVerification'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    doFirst {
+        def baseUrl = providers.gradleProperty('workerProbeBaseUrl').orNull
+        if (!baseUrl) throw new GradleException('Use the Worker test:java-client command to supply a loopback URL.')
+        setArgs([baseUrl])
+    }
+}
+
+// Uses a temporary local Worker and synthetic credentials; no Spring, JDBC or deployment.
+tasks.register('verifyReferencePriceClient', JavaExec) {
+    group = 'verification'
+    description = 'Compare all 227 unpublished references and 81 preserved current prices against a local Worker.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.ReferencePricePreviewApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    doFirst {
+        def baseUrl = providers.gradleProperty('workerProbeBaseUrl').orNull
+        if (!baseUrl) throw new GradleException('Use the Worker test:reference-preview command to supply a loopback URL.')
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath, '--base-url', baseUrl])
+    }
+}
+
+tasks.register('verifyDeployedReferencePrices', JavaExec) {
+    group = 'verification'
+    description = 'Read-only HTTPS check of 227 approved references and 81 preserved current prices.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.DeployedReferencePriceVerification'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    doFirst {
+        def baseUrl = providers.gradleProperty('deployedPricesBaseUrl').orNull
+        if (!baseUrl) throw new GradleException('Supply the approved HTTPS Worker origin with -PdeployedPricesBaseUrl.')
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath, '--base-url', baseUrl])
+    }
+}
+
+// Requires an explicit approved deployment URL and a private environment token; never runs in test/build.
+tasks.register('verifyDeployedPrices', JavaExec) {
+    group = 'verification'
+    description = 'Read-only Java HTTPS verification of the approved workers.dev provider.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.DeployedSharedPriceVerification'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    doFirst {
+        def baseUrl = providers.gradleProperty('deployedPricesBaseUrl').orNull
+        if (!baseUrl) throw new GradleException('Supply the approved HTTPS Worker origin with -PdeployedPricesBaseUrl.')
+        def full = providers.gradleProperty('deployedPricesFullCatalog').getOrElse('false')
+        def retail = providers.gradleProperty('deployedPricesRetailCatalog').getOrElse('false')
+        if (!(full in ['true','false']) || !(retail in ['true','false']) || (full == 'true' && retail == 'true'))
+            throw new GradleException('Choose one: deployedPricesFullCatalog or deployedPricesRetailCatalog')
+        setArgs([baseUrl] + (retail == 'true' ? ['--active'] : full == 'true' ? ['--full'] : []))
+    }
 }
 
 // Research preview only: no Spring startup, JDBC, Flyway or catalog apply implementation.
@@ -201,7 +340,52 @@ tasks.register('setupDevCatalog', JavaExec) {
     }
 }
 
+// Four sale-product candidates only; no Spring/JDBC/Flyway/private properties or apply path.
+tasks.register('previewRetailCatalog', JavaExec) {
+    group = 'application'
+    description = 'Validate four reviewed sale-product candidates and export ignored local Worker preview files.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.RetailCatalogPreviewApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+    doFirst {
+        if (project.properties.any { key, value ->
+            key.toString().toLowerCase().startsWith('apply') && value.toString().toLowerCase() != 'false'
+        }) throw new GradleException('previewRetailCatalog is read-only; actual product/price application needs separate approval.')
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath] + (getArgs() ?: []))
+    }
+}
+
 // mysqlTest를 직접 실행할 때만 실제 DB를 검사한다. 일반 test/build는 H2를 사용하며 이 작업을 포함하지 않는다.
+tasks.register('importRetailCatalog', JavaExec) {
+    group = 'application'
+    description = 'Validate the approved ASUS sale product; explicit checkRetailDb/applyRetailCatalog enables local DB access.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.RetailCatalogApplyApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+    doFirst {
+        def apply = providers.gradleProperty('applyRetailCatalog').getOrElse('false')
+        def check = providers.gradleProperty('checkRetailDb').getOrElse('false')
+        if (!(apply in ['true','false']) || !(check in ['true','false']) || (apply == 'true' && check == 'true'))
+            throw new GradleException('Choose only one: -PcheckRetailDb=true or -PapplyRetailCatalog=true')
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath]
+                + (apply == 'true' ? ['--apply'] : check == 'true' ? ['--check-db'] : []))
+    }
+}
+
+tasks.register('exportApprovedRetailCatalog', JavaExec) {
+    group = 'verification'
+    description = 'Export the approved 308-product/81-price Worker snapshot, preserving the existing 307-product endpoint.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.SharedCatalogExportApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    args rootDir.parentFile.absolutePath, '--retail-approved'
+}
+
 tasks.register('mysqlTest', Test) {
     group = 'verification'
     description = 'Verify PC persistence and application restart against local MySQL.'

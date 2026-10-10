@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-10T10:37:13.823Z",
+  "approvalSource": "Human reply to request_user_input_async: 5종 모두 중앙에 반영",
+  "scope": "Publish only the five reviewed prices to the existing free Cloudflare Worker; preserve the previous 75 prices, all 307 identities and existing token/settings. No MySQL or specification changes.",
+  "publicationApproved": true,
+  "additionalPrices": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "43597450-8c66-4f59-9ef5-c347c0a45fd4",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 3800X",
+        "partNumber": "100-100000025BOX"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "8459781",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+        "saleSku": "100-100000025BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-10T10:19:34.196Z"
+      },
+      "price": {
+        "amountKrw": 560760,
+        "observedAt": "2026-10-10T10:26:34.472Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "6c0ac2b9-20b2-40f8-b206-06877dc8f047",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5800X3D",
+        "partNumber": "100-100000651POF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16872089",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+        "saleSku": "100-100000651POF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-10T10:19:34.196Z"
+      },
+      "price": {
+        "amountKrw": 582330,
+        "observedAt": "2026-10-10T10:26:36.295Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "63f23f26-d52c-4e3c-be6e-0d25163cff59",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7950X",
+        "partNumber": "100-100000514WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17913980",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+        "saleSku": "100-100000514WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-10T10:19:34.196Z"
+      },
+      "price": {
+        "amountKrw": 1840490,
+        "observedAt": "2026-10-10T10:26:37.901Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "375208cd-5585-427a-97b9-9cc3eaf5eb6a",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 3060 VENTUS 2X 8G OC",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18279782",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18279782",
+        "saleSku": "GeForce RTX 3060 VENTUS 2X 8G OC",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-10T10:07:18.276Z"
+      },
+      "price": {
+        "amountKrw": 472590,
+        "observedAt": "2026-10-10T10:07:55.671Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18279782",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c479ed77-62fa-48fa-84e5-923b087843c1",
+        "manufacturer": "MSI",
+        "modelName": "MPG B650 CARBON WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17971178",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+        "saleSku": "MPG B650 CARBON WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-10T09:36:26.792Z"
+      },
+      "price": {
+        "amountKrw": 915000,
+        "observedAt": "2026-10-10T10:17:15.897Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+        "condition": "NEW",
+        "inStock": true
+      }
+    }
+  ],
+  "approvedPriceFile": "data/catalog-review/remaining232-price-proposal-2026-10-10.json",
+  "approvedPriceFileSha256": "7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc",
+  "previousActivePriceSha256": "cdb8e354e2932f2d53045f76fe7f284dd8529527e43952a385304defd58984d4",
+  "localPriceImportApproved": false,
+  "databaseWrites": 0,
+  "deployments": 1,
+  "deploymentStatus": "DEPLOYED_VERIFIED",
+  "verifiedAt": "2026-10-10T10:40:43.114Z",
+  "productionVerification": {
+    "result": "PASSED",
+    "workerBaseUrl": "https://pc-upgrade-shared-prices.joony1024.workers.dev",
+    "catalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+    "priceVersion": "prices-v1-7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc",
+    "workerRequests": 4,
+    "workerCounts": {
+      "OK": 80,
+      "NO_PRICE": 227,
+      "FRESH": 80
+    },
+    "v1Products": 14,
+    "v1Prices": 8,
+    "missingAuthenticationStatus": 401,
+    "homepageProxyUrl": "http://127.0.0.1:5173/api/catalog/products",
+    "homepagePageRequests": 7,
+    "homepageCounts": {
+      "SHARED": 307,
+      "LOCAL": 0,
+      "OK": 80,
+      "NO_PRICE": 227,
+      "UNAVAILABLE": 0,
+      "FRESH": 80,
+      "includedInTotal": 80
+    },
+    "additionalDetailRequests": 5,
+    "additionalPrices": [
+      {
+        "canonicalId": "3f8a80d4-ebdb-33e1-83c2-8a0c026ab129",
+        "modelName": "Ryzen 7 3800X",
+        "price": {
+          "amountKrw": 560760,
+          "sourceName": "DANAWA",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+          "observedAt": "2026-10-10T10:26:34.472Z"
+        },
+        "priceStatus": {
+          "origin": "SHARED",
+          "lookupStatus": "OK",
+          "freshness": "FRESH",
+          "catalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+          "checkedAt": "2026-10-10T10:40:41.797232800Z",
+          "lastSuccessAt": "2026-10-10T10:40:41.987355100Z",
+          "includedInTotal": true
+        }
+      },
+      {
+        "canonicalId": "4f86bcec-6d33-3b5c-80bc-d99991927a5e",
+        "modelName": "Ryzen 7 5800X3D",
+        "price": {
+          "amountKrw": 582330,
+          "sourceName": "DANAWA",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+          "observedAt": "2026-10-10T10:26:36.295Z"
+        },
+        "priceStatus": {
+          "origin": "SHARED",
+          "lookupStatus": "OK",
+          "freshness": "FRESH",
+          "catalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+          "checkedAt": "2026-10-10T10:40:41.797232800Z",
+          "lastSuccessAt": "2026-10-10T10:40:41.987355100Z",
+          "includedInTotal": true
+        }
+      },
+      {
+        "canonicalId": "cb11f240-2d1d-32a8-af69-ae3645dd8037",
+        "modelName": "Ryzen 9 7950X",
+        "price": {
+          "amountKrw": 1840490,
+          "sourceName": "DANAWA",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+          "observedAt": "2026-10-10T10:26:37.901Z"
+        },
+        "priceStatus": {
+          "origin": "SHARED",
+          "lookupStatus": "OK",
+          "freshness": "FRESH",
+          "catalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+          "checkedAt": "2026-10-10T10:40:41.797232800Z",
+          "lastSuccessAt": "2026-10-10T10:40:41.987355100Z",
+          "includedInTotal": true
+        }
+      },
+      {
+        "canonicalId": "1c295333-8053-351c-82cd-071dc4f131db",
+        "modelName": "GeForce RTX 3060 VENTUS 2X 8G OC",
+        "price": {
+          "amountKrw": 472590,
+          "sourceName": "DANAWA",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18279782",
+          "observedAt": "2026-10-10T10:07:55.671Z"
+        },
+        "priceStatus": {
+          "origin": "SHARED",
+          "lookupStatus": "OK",
+          "freshness": "FRESH",
+          "catalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+          "checkedAt": "2026-10-10T10:40:42.149740300Z",
+          "lastSuccessAt": "2026-10-10T10:40:42.235222200Z",
+          "includedInTotal": true
+        }
+      },
+      {
+        "canonicalId": "cbb05666-c220-3fe4-ac38-68e574ae51ce",
+        "modelName": "MPG B650 CARBON WIFI",
+        "price": {
+          "amountKrw": 915000,
+          "sourceName": "DANAWA",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+          "observedAt": "2026-10-10T10:17:15.897Z"
+        },
+        "priceStatus": {
+          "origin": "SHARED",
+          "lookupStatus": "OK",
+          "freshness": "FRESH",
+          "catalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+          "checkedAt": "2026-10-10T10:40:42.370576100Z",
+          "lastSuccessAt": "2026-10-10T10:40:42.438184200Z",
+          "includedInTotal": true
+        }
+      }
+    ],
+    "browserUiVerified": false,
+    "databaseWrites": 0,
+    "productSpecificationChanges": 0,
+    "backendRestarts": 0,
+    "environmentChanges": 0
+  },
+  "workerDeployment": {
+    "id": "63016ff8-d994-4152-8034-4b3c4d914385",
+    "created_on": "2026-10-10T10:38:44.649971Z",
+    "versions": [
+      {
+        "version_id": "a12e2ae2-4431-4024-bd9b-7f72e11f1563",
+        "percentage": 100
+      }
+    ],
+    "source": "wrangler",
+    "strategy": "percentage"
+  },
+  "localValidation": {
+    "javaExportAndArtifactComparison": "PASSED",
+    "pilotJavaHttpFixtures": 53,
+    "fullJavaHttpFixtures": 491,
+    "workerTestsPassed": 554,
+    "workerTestsFailed": 0,
+    "typecheck": "PASSED",
+    "workerBuild": "PASSED",
+    "backendFullTestRerun": false,
+    "reason": "Only approved public prices changed; existing backend code, DB and configuration preserved."
+  },
+  "currentActivePriceSha256": "7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc"
+}

@@ -5,8 +5,9 @@ import { CatalogModelPicker } from './CatalogModelPicker.tsx'
 import { CatalogProductIdentity } from './CatalogProductIdentity.tsx'
 import { CatalogSearchHelp } from './CatalogSearchHelp.tsx'
 import { CatalogAttributions, CatalogProductDetail } from './CatalogProductDetail.tsx'
-import { formatCurrentPrice, VERIFICATION_LABEL } from './catalogPresentation.ts'
+import { formatProjectPrice, VERIFICATION_LABEL } from './catalogPresentation.ts'
 import { CurrentPriceSource } from './CurrentPriceSource.tsx'
+import { ReferencePriceSource } from './ReferencePriceSource.tsx'
 import type { CatalogDetail, CatalogModel, CatalogPage, CatalogProduct } from './catalogTypes.ts'
 
 type Props = {
@@ -167,11 +168,12 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
                   <span><span className="muted">{product.manufacturer}</span> {product.modelName}</span>
                   <CatalogProductIdentity product={product} />
                   <span className="catalog-picker__meta muted">
-                    {VERIFICATION_LABEL[product.verificationStatus]} · {formatCurrentPrice(product.currentPrice, product.priceStatus)}
-                    {product.currentPrice && (type === 'RAM' ? ' / 판매 묶음' : ' / 1개')} · 상세 보기
+                    {VERIFICATION_LABEL[product.verificationStatus]} · {formatProjectPrice(product)}
+                    {(product.currentPrice || product.referenceEstimate) && (type === 'RAM' ? ' / 판매 단위' : ' / 1개')} · 상세 보기
                   </span>
                 </button>
-                <CurrentPriceSource price={product.currentPrice} status={product.priceStatus} />
+                {(product.currentPrice || !product.referenceEstimate) && <CurrentPriceSource price={product.currentPrice} status={product.priceStatus} />}
+                <ReferencePriceSource price={product.referenceEstimate} />
               </li>
             ))}
           </ul>

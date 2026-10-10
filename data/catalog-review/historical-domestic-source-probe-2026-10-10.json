@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "stage": "PRIMARY_DOMESTIC_LAUNCH_REFERENCE_EVIDENCE_ONLY",
+  "reviewCompletedAt": "2026-10-10T14:13:18Z",
+  "scope": {
+    "remainingUnpricedProducts": 227,
+    "boundedPrimaryLaunchProbesRetained": 3,
+    "all227PricesEstablished": false,
+    "databaseWrites": 0,
+    "deployments": 0
+  },
+  "priceInterpretation": {
+    "basis": "LAUNCH_PRICE",
+    "matchingScope": "MODEL_FAMILY",
+    "evidenceKind": "MANUFACTURER_DECLARED_DOMESTIC_SHIPMENT_PRICE",
+    "currency": "KRW",
+    "shippingIncluded": false,
+    "conditionalPromotionsIncluded": false,
+    "currentPurchasePriceClaimed": false,
+    "exactRegionalRetailSkuClaimed": false,
+    "sourceDateMeaning": "Publication date of the manufacturer announcement; not the web verification date and not automatically the first sale date.",
+    "reviewCompletedAtMeaning": "Completion time of this bounded evidence review; it does not reset the age of the underlying prices."
+  },
+  "items": [
+    {
+      "canonicalId": "8673d4e7-b745-300f-a6d6-58429af51ab8",
+      "catalogIdentity": {
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "27GL850-B",
+        "partNumber": "27GL850-B",
+        "saleUnit": "PRODUCT"
+      },
+      "referencePrice": {
+        "amountKrw": 799000,
+        "currency": "KRW",
+        "basis": "LAUNCH_PRICE",
+        "matchingScope": "MODEL_FAMILY",
+        "sourceDeclaredModel": "27GL850",
+        "sourceDate": "2019-08-07",
+        "declaredDomesticFirstSaleDate": "2019-08-12",
+        "saleUnit": "ONE_MONITOR",
+        "sourceUrl": "https://www.lg.co.kr/media/release/20871",
+        "sourcePublisher": "LG전자 / LG 그룹 공식 보도자료",
+        "sourceTitle": "LG전자, 'LG 울트라기어' 게이밍 모니터, 세계 최초로 'IPS 패널'에 가장 빠른 응답속도(1ms) 갖추다",
+        "factSummary": "LG's dated domestic announcement identifies 27GL850, states its Korean shipment price as KRW 799,000 and announces domestic sales beginning on August 12."
+      },
+      "mappingLimits": "The announcement names the domestic base model 27GL850. It does not establish that the catalog's global -B SKU and every Korean region suffix are the same exact retail SKU. Use as declared model-family launch reference only."
+    },
+    {
+      "canonicalId": "96ba5762-d62d-3898-aef0-b8618d4c34f3",
+      "catalogIdentity": {
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "27GP950-B",
+        "partNumber": "27GP950-B",
+        "saleUnit": "PRODUCT"
+      },
+      "referencePrice": {
+        "amountKrw": 1090000,
+        "currency": "KRW",
+        "basis": "LAUNCH_PRICE",
+        "matchingScope": "MODEL_FAMILY",
+        "sourceDeclaredModel": "27GP950",
+        "sourceDate": "2021-04-26",
+        "declaredDomesticFirstSaleDate": "2021-05-03",
+        "saleUnit": "ONE_MONITOR",
+        "sourceUrl": "https://www.lg.co.kr/media/release/23308",
+        "sourcePublisher": "LG전자 / LG 그룹 공식 보도자료",
+        "sourceTitle": "LG전자, 'LG 울트라기어' 모니터 신제품 출시",
+        "factSummary": "LG's dated domestic announcement identifies 27GP950, states its Korean shipment price as KRW 1,090,000 and announces domestic release on May 3."
+      },
+      "mappingLimits": "The announcement names the domestic base model 27GP950. It does not prove exact retail equivalence to every global -B or Korean suffix. Use as declared model-family launch reference only."
+    },
+    {
+      "canonicalId": "e8773768-b314-3ee8-b7d5-8a3cd4542e89",
+      "catalogIdentity": {
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "32GQ950-B",
+        "partNumber": "32GQ950-B",
+        "saleUnit": "PRODUCT"
+      },
+      "referencePrice": {
+        "amountKrw": 1690000,
+        "currency": "KRW",
+        "basis": "LAUNCH_PRICE",
+        "matchingScope": "MODEL_FAMILY",
+        "sourceDeclaredModel": "32GQ950",
+        "sourceDate": "2022-05-25",
+        "declaredDomesticFirstSaleDate": null,
+        "saleUnit": "ONE_MONITOR",
+        "sourceUrl": "https://www.lg.co.kr/media/release/24845",
+        "sourcePublisher": "LG전자 / LG 그룹 공식 보도자료",
+        "sourceTitle": "LG전자, 울트라기어 게이밍 모니터 3종 출시",
+        "factSummary": "LG's dated announcement separately assigns a Korean shipment price of KRW 1,690,000 to 32GQ950. It announces sequential launches starting in Japan at month end but gives no exact first Korean sale date."
+      },
+      "mappingLimits": "Use the explicitly announced domestic price for the 32GQ950 model family. Do not treat May 25 as the first Korean sale date or claim exact equivalence to every -B/region retail SKU."
+    }
+  ],
+  "reuseStrategy": [
+    "Store source basis, identity matching scope, original source date, source URL and verification time as separate fields.",
+    "Keep these declared domestic model-family launch prices distinct from current exact-SKU purchase quotes.",
+    "Display a launch reference label and original date, and apply the newly approved reference-price policy rather than pretending the source was freshly priced today.",
+    "Prefer a retained verified domestic product quote or declared launch price; where only an estimate is permitted, preserve its source basis and mark it as an estimate."
+  ],
+  "boundedResearchLimits": [
+    "This file establishes three primary domestic manufacturer launch prices, not prices for every remaining product.",
+    "AMD's 2019 CPU announcement specifies USD SEP, so it cannot directly establish historical Korean retail KRW without a separate declared conversion basis.",
+    "A GPU chip or Founders Edition launch price cannot be represented as an exact MSI, Sapphire or other partner board selling price.",
+    "A seller page with a price but a different capacity, RAM kit count, PCB revision, used condition or overseas purchase basis requires the scope to remain explicit."
+  ]
+}

@@ -1,0 +1,2085 @@
+{
+  "schemaVersion": 1,
+  "stage": "UNAPPROVED_HELD_CPU_EXACT_BOX_FOLLOWUP",
+  "priceImportApproved": false,
+  "productImportApproved": false,
+  "databaseWrites": 0,
+  "deployments": 0,
+  "gitChanges": 0,
+  "requested": 10,
+  "startedAt": "2026-10-10T11:16:20.936Z",
+  "inputEvidence": {
+    "heldAggregate": "data/catalog-review/remaining232-price-review-2026-10-10.json",
+    "heldAggregateSha256": "6e67f3edc118253b76d25ccdffe2ad2c4f45d7a70484bf2ecff8315efc7b82a3",
+    "priorCpuReport": "data/catalog-review/remaining232-cpu-prices-2026-10-10.json",
+    "priorCpuReportSha256": "6494f18cb7b4be7d8d814ad1606514e93b21ac5f022b6ea7e0f233e1cbe36d50",
+    "active80Sha256": "7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc",
+    "identities307Sha256": "8ad681a1cd634eb4c990ec20714fe332d6972dd1e22aff3feef54c6261466792"
+  },
+  "rules": [
+    "Domestic NEW exact retail BOX/WOF only; no bulk, multipack, overseas, used, cash, shipping or promotional prices.",
+    "Search/cached price is discovery only. Every new original response has its actual observedAt and raw-body SHA256.",
+    "Model-reference MANUFACTURER identities with null partNumber require a separately approved exact retail SKU; no product creation in this research.",
+    "Import preview uses only currently accepted DANAWA or SAMSUNG_CNH price source providers. Other seller quotes are evidence/policy-expansion proposals only.",
+    "Stop domains on HTTP403/429; no login, alternate access or bypass.",
+    "If exact product package is verified, current ordinary price must be observed after the verification record."
+  ],
+  "items": [
+    {
+      "canonicalId": "10039536-d228-3f0c-a740-ea75a2df6b05",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ac833b07-53eb-4d59-8be5-bcd20ad26e79"
+      },
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 8600G",
+      "partNumber": "100-100001237BOX",
+      "saleUnit": "PRODUCT",
+      "moduleCount": null,
+      "status": "HELD",
+      "reasonCodes": [
+        "DOMESTIC_EXACT_BOX_SELLER_UNVERIFIED"
+      ],
+      "reason": null,
+      "detailedEvidenceFile": "data/catalog-review/remaining232-cpu-prices-2026-10-10.json",
+      "publicationApproved": false,
+      "identity": {
+        "canonicalId": "10039536-d228-3f0c-a740-ea75a2df6b05",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 8600G",
+        "partNumber": "100-100001237BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "priorResearch": {
+        "reasonCode": "BOX_PRICE_OUTLIER_INDEPENDENT_SELLER_CONFIRMATION_REQUIRED",
+        "currentQuote": {
+          "amountKrw": 975000,
+          "observedAt": "2026-10-10T10:11:29.854Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=34336475",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "manufacturerEvidence": {
+          "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/8000-series/amd-ryzen-5-8600g.html",
+          "observedAt": "2026-10-10T10:11:27.812Z",
+          "responseSha256": "6c04bc7e23a0f6ce405a456d16b9caa10f902d2cef5ad30e281b83fb077ac603",
+          "pageTitle": "AMD Ryzen 5 8600G Desktop Processor",
+          "modelIdentityMatches": true,
+          "boxedIds": [
+            "100-100001237BOX"
+          ],
+          "boxedRecords": [
+            {
+              "label": "Product ID Boxed",
+              "value": "100-100001237BOX"
+            }
+          ],
+          "partNumberMatches": true
+        },
+        "retailPages": [
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=60170204",
+            "productTitle": "AMD 라이젠5-5세대 8600G (피닉스) (멀티팩 정품)",
+            "observedAt": "2026-10-10T10:11:28.814Z",
+            "responseSha256": "8e69959f9b09e4dc1d114abf9352eb59016c9abc323b636e50ad68b0da1de4aa"
+          },
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=34336475",
+            "productTitle": "AMD 라이젠5-5세대 8600G (피닉스) (정품)",
+            "observedAt": "2026-10-10T10:11:29.854Z",
+            "responseSha256": "e856c3c531e258ed5fd2caeaa050e4a16fc0d1900a091a8485e761d4922ef73b"
+          }
+        ],
+        "outlierReview": {
+          "flag": "SCARCE_BOX_OR_EXTREME_PRICE_REVIEW",
+          "amountKrw": 975000,
+          "aggregatorQuoteConfirmed": true,
+          "sellerEvidence": [
+            {
+              "seller": "SHPC컴퓨터",
+              "amountKrw": 975000,
+              "bridge": {
+                "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=960&cate4=0&pcode=34336475&cmpnyc=TV2175&safe_trade=4&fee_type=N&link_pcode=9927889411&package=0&setpc=0&r=17916273853850",
+                "httpStatus": 200,
+                "observedAt": "2026-10-10T10:16:26.700Z",
+                "responseSha256": "fd01f832be7ebd43594dd4d338c922bb18d568842002c0714b6c00886b2fd0f0",
+                "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+                "redirectLocation": null
+              },
+              "actualSellerPage": {
+                "sourceUrl": "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F9927889411&service_id=pcdn",
+                "httpStatus": 429,
+                "observedAt": "2026-10-10T10:16:26.763Z",
+                "responseSha256": "5f4fb552ab36eb82dd328727e335542d99dd5d309e1c0d47f5eb50153f671e9b",
+                "pageTitle": "[에러] 에러페이지 - 시스템오류",
+                "redirectLocation": null,
+                "error": "HTTP 429"
+              }
+            }
+          ],
+          "sellerConfirmed": false
+        }
+      },
+      "primaryEvidence": [
+        {
+          "kind": "CURRENT_MANUFACTURER_KOREAN_PRODUCT_ORDER_CODE",
+          "sourceUrl": "https://www.amd.com/ko/products/processors/desktops/ryzen/8000-series/amd-ryzen-5-8600g.html",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:16:21.295Z",
+          "responseSha256": "85790b9507589622911528bcd1d087c6b327d1e14e7b5b8a2f5d65b2dc3b20a5",
+          "pageTitle": "AMD Ryzen 5 8600G 데스크탑 프로세서",
+          "redirectLocation": null,
+          "boxedRecords": [
+            {
+              "label": "제품 ID 박스 포장됨",
+              "value": "100-100001237BOX"
+            }
+          ],
+          "boxedPartNumbers": [
+            "100-100001237BOX"
+          ],
+          "modelIdentityMatches": true,
+          "catalogPartNumberMatches": true
+        },
+        {
+          "kind": "NEW_DOMESTIC_STORE_ORIGINAL_PRODUCT_REVIEW",
+          "scope": "DOMESTIC_EXACT_BOX_OR_MULTIPACK_REVIEW",
+          "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?BigDivNo=&DivNo=0&MediumDivNo=1012&ProductNo=1164584",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:16:31.437Z",
+          "responseSha256": "10479047f4cbfe5ca73b308852b07cc2a4b131552bb8abe3c7423d8d5b88d7f5",
+          "pageTitle": null,
+          "redirectLocation": null,
+          "exactManufacturerPnMatches": false,
+          "exclusionReason": null,
+          "ownProductContext": null,
+          "titleMatches": true,
+          "partNumberOccurrenceIsOnlyHint": true,
+          "multipackInTitle": false,
+          "overseasProductEvidence": false,
+          "unavailableEvidence": false,
+          "packagingFacts": [],
+          "eligibility": "SUPERSEDED_ENCODING_ERROR",
+          "encodingIssue": "EUC-KR decoded as UTF-8; corrected by later raw-byte EUC-KR observation"
+        },
+        {
+          "kind": "NEW_ORIGINAL_PUBLIC_PAGE_REVIEW",
+          "scope": "DOMESTIC_MULTIPACK_EXCLUSION",
+          "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?BigDivNo=&DivNo=0&MediumDivNo=1012&ProductNo=1164584",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:22:50.630Z",
+          "responseSha256": "05335a96b348a723ce7e67ac0b0b338099cbfcb90886c5c42414bb1625fb9268",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "euc-kr",
+          "pageTitle": "[AMD] 라이젠5 피닉스 8600G (6코어/12스레드/4.3GHz/쿨러포함/대리점정품) 멀티팩 : 컴퓨존",
+          "redirectLocation": null,
+          "expectedPartNumber": "100-100001237BOX",
+          "partNumberLiteralPresent": false,
+          "currentOwnPageFacts": {
+            "jsFields": {
+              "ProductNo": "1164584"
+            },
+            "contexts": [
+              {
+                "needle": "멀티팩",
+                "context": "[AMD] 라이젠5 피닉스 8600G (6코어/12스레드/4.3GHz/쿨러포함/대리점정품) 멀티팩 : 컴퓨존 네이버 페이 결제 안내 노트북 업그레이드 상품 은 네이버페이 결제가 불가합니다. 주문방법 1. 해당 상품을 장바구니에 담은 후, 장바구니 페이지 하단 '선택 주문하기' 혹은 '전체 주문하기' 클릭 2. 주문/결제 페이지에서 Npay 결제 방법 선택 확인 네이버페이 주의사항 안내 네이버페이 결제는 컴퓨존이 아닌 네이버에서 결제가 진행됩니다. 결제 진행 전 아래의 주의사항을 충분히 숙지하신 후 확인 버튼을 눌러주세요. 1. 컴퓨존에 로그인한 상태로"
+              }
+            ],
+            "scriptFacts": []
+          },
+          "eligibleForImport": false
+        },
+        {
+          "kind": "FRESH_HIGH_PRICE_MALL_BRIDGE_INDEPENDENT_SELLER_ATTEMPT",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=34336475",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:31:57.967Z",
+          "responseSha256": "019f9eb33a27bb0382d03b6aa0ca524a9636a809cbee74c5925fdb0121c0e25d",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "productTitle": "AMD 라이젠5-5세대 8600G (피닉스) (정품) 상품비교",
+          "currentDanawaRegularQuote": null,
+          "priceError": "TITLE_MISMATCH",
+          "bridgeEvidence": [
+            {
+              "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=960&cate4=0&pcode=34336475&cmpnyc=TV2175&safe_trade=4&fee_type=N&link_pcode=9927889411&package=0&setpc=0&r=17916319177553",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T11:31:59.479Z",
+              "responseSha256": "0bf81b1852bf729cbb1af7cba5c25ee2f5505e817da0191003042c1a52bfe3be",
+              "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+              "redirectLocation": null,
+              "merchantUrls": [
+                "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F9927889411&service_id=pcdn"
+              ],
+              "blockedMerchantUrls": [
+                "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F9927889411&service_id=pcdn"
+              ],
+              "merchantActualGet": null
+            },
+            {
+              "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=960&cate4=0&pcode=34336475&cmpnyc=TV2175&safe_trade=4&fee_type=N&link_pcode=9927889411&package=0&setpc=0&r=17916319171623",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T11:32:00.938Z",
+              "responseSha256": "70563616a6d5454cef34237284b53662734dcc7d4826544a8378559d16471470",
+              "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+              "redirectLocation": null,
+              "merchantUrls": [
+                "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F9927889411&service_id=pcdn"
+              ],
+              "blockedMerchantUrls": [
+                "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F9927889411&service_id=pcdn"
+              ],
+              "merchantActualGet": null
+            }
+          ],
+          "highAmountAloneIsNotExclusion": true,
+          "currentExactIndependentSellerVerified": false,
+          "eligibleForImport": false
+        },
+        {
+          "kind": "FRESH_DANAWA_HIGH_REGULAR_PRICE_QUARANTINED",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=34336475",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:51.501Z",
+          "responseSha256": "d9f27fbf09633df9c0bd512f235e399dfc2c78be577f005ec34a581914529a6c",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "productTitle": "AMD 라이젠5-5세대 8600G (피닉스) (정품)",
+          "currentDanawaRegularQuote": {
+            "amountKrw": 975000,
+            "observedAt": "2026-10-10T11:33:51.501Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=34336475",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceError": null,
+          "highAmountAloneIsNotExclusion": true,
+          "independentCurrentExactBoxSellerVerified": false,
+          "eligibleForImport": false
+        }
+      ],
+      "currentQuotes": [],
+      "retailSkuProposal": null,
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "followUpReason": "현재 AMD 한국 공식 BOX PN은 기존 100-100001237BOX와 일치합니다. 새 컴퓨존 원문 상품은 대리점 정품이지만 멀티팩입니다. 정품이라는 표현만으로 기존 BOX SKU와 연결하지 않습니다. 기존 고가 다나와 호가는 재고·정확 BOX 독립 판매처 확인이 필요하며 이번 추가 반영 대상이 아닙니다. 추가 현재 다나와 일반몰 bridge 조사에서도 정확 BOX와 구매 가능한 독립 판매처 원문을 검증하지 못했습니다. 고가 자체를 가격 반영 불가 사유로 확정하지 않습니다.",
+      "followUpReasonCode": "DOMESTIC_EXACT_BOX_SELLER_UNVERIFIED",
+      "verificationScope": "DOMESTIC_EXACT_SALE_SKU_NOT_FULLY_VERIFIED",
+      "completedAt": "2026-10-10T11:29:36.532Z"
+    },
+    {
+      "canonicalId": "13a50823-a1b5-3741-998d-362ccfbab984",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ea28e46f-dc70-4547-9701-eca335890462"
+      },
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 7500F",
+      "partNumber": "100-100000597BOX",
+      "saleUnit": "PRODUCT",
+      "moduleCount": null,
+      "status": "HELD",
+      "reasonCodes": [
+        "DOMESTIC_MULTIPACK_DOES_NOT_MATCH_BOX"
+      ],
+      "reason": "Reviewed discovery/variant lists showed only bulk, multipack, overseas or used offers; this research did not verify a qualifying boxed page. This is not global unavailability evidence.",
+      "detailedEvidenceFile": "data/catalog-review/remaining232-cpu-prices-2026-10-10.json",
+      "publicationApproved": false,
+      "identity": {
+        "canonicalId": "13a50823-a1b5-3741-998d-362ccfbab984",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 7500F",
+        "partNumber": "100-100000597BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "priorResearch": {
+        "reasonCode": "NO_VERIFIED_DOMESTIC_BOX_PAGE",
+        "currentQuote": null,
+        "manufacturerEvidence": {
+          "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7500f.html",
+          "observedAt": "2026-10-10T10:11:30.218Z",
+          "responseSha256": "99df473ba1721711a87f31dfde7ba8065d954a97cf99b00e75bb802a7588676c",
+          "pageTitle": "AMD Ryzen 5 7500F",
+          "modelIdentityMatches": true,
+          "boxedIds": [
+            "100-100000597BOX"
+          ],
+          "boxedRecords": [
+            {
+              "label": "Product ID Boxed",
+              "value": "100-100000597BOX"
+            }
+          ],
+          "partNumberMatches": true
+        },
+        "retailPages": [
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=21694499",
+            "productTitle": "AMD 라이젠5-5세대 7500F (라파엘) (멀티팩 정품)",
+            "observedAt": "2026-10-10T10:11:30.964Z",
+            "responseSha256": "4794d20e02144c930888edfdb02a26691cd6279b39785b19b5af5cfd4758547c"
+          }
+        ],
+        "outlierReview": null
+      },
+      "primaryEvidence": [
+        {
+          "kind": "CURRENT_MANUFACTURER_KOREAN_PRODUCT_ORDER_CODE",
+          "sourceUrl": "https://www.amd.com/ko/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7500f.html",
+          "httpStatus": 404,
+          "observedAt": "2026-10-10T11:16:22.772Z",
+          "responseSha256": "0514145d7d81663d2310484a0ac23bed9cc7d7aa3c87cabdf8fb527fed285f3b",
+          "pageTitle": "404 페이지를 찾을 수 없음",
+          "redirectLocation": null,
+          "error": "HTTP 404",
+          "boxedRecords": [],
+          "boxedPartNumbers": [],
+          "modelIdentityMatches": false
+        },
+        {
+          "kind": "NEW_ORIGINAL_PUBLIC_PAGE_REVIEW",
+          "scope": "GLOBAL_MANUFACTURER_BOX_CODE_FALLBACK",
+          "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7500f.html",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:23:02.003Z",
+          "responseSha256": "db847d4aab1eec53d992f47504a8021066e65c8a4d4a38bdb3fa99b347f0ecd0",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "utf-8",
+          "pageTitle": "AMD Ryzen™ 5 7500F",
+          "redirectLocation": null,
+          "expectedPartNumber": "100-100000597BOX",
+          "partNumberLiteralPresent": true,
+          "currentOwnPageFacts": {
+            "jsFields": {
+              "product_type": "Accelerators",
+              "price": "Unit Price"
+            },
+            "contexts": [
+              {
+                "needle": "Product ID Boxed",
+                "context": "ires mobo support) Graphics Capabilities Graphics Model Discrete Graphics Card Required Product IDs Product ID Boxed 100-100000597BOX Product ID Tray 100-000000597 Product ID MPK 100-100000597MPK Key Features Supported Technologies AMD EXPO™ Technology , AMD Ryzen™ Technologies Drivers and Resources Driver & Software Downloads Access the latest drivers, soft"
+              }
+            ],
+            "scriptFacts": []
+          },
+          "eligibleForImport": false
+        },
+        {
+          "kind": "NEW_DOMESTIC_ORIGINAL_PAGE_REVIEW",
+          "scope": "NEW_DOMESTIC_MULTIPACK_EXCLUSION",
+          "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?BigDivNo=&DivNo=&MediumDivNo=&ProductNo=1050102",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:26:12.080Z",
+          "responseSha256": "2137099c3c21ee5a96a84bc5828a6b7dca51a80ef9a1939872d665876c58acf6",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "euc-kr",
+          "pageTitle": "[AMD] 라이젠5 라파엘 7500F (6코어/12스레드/3.7GHz/대리점정품/멀티팩) 쿨러포함 : 컴퓨존",
+          "redirectLocation": null,
+          "expectedPn": "100-100000597BOX",
+          "partNumberLiteralPresent": false,
+          "multipackInOwnTitle": true,
+          "unavailableOwnPageEvidence": []
+        }
+      ],
+      "currentQuotes": [],
+      "retailSkuProposal": null,
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "followUpReason": "한국 AMD 제품 URL은 404이며 영어 공식 페이지에서 100-100000597BOX와 별도 MPK PN을 확인했습니다. 새 컴퓨존 판매 상품은 멀티팩·쿨러 포함이며 기존 BOX PN의 국내 판매 증거가 아닙니다. BOX의 국내 현재 판매가를 확인하지 못했다는 조사 결과이며 국내 전체 품절을 의미하지 않습니다.",
+      "followUpReasonCode": "DOMESTIC_MULTIPACK_DOES_NOT_MATCH_BOX",
+      "verificationScope": "DOMESTIC_EXACT_SALE_SKU_NOT_FULLY_VERIFIED",
+      "completedAt": "2026-10-10T11:29:36.532Z"
+    },
+    {
+      "canonicalId": "1aaff72f-29fa-38c4-888a-c654a54c81a9",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "70bae351-5e16-46d2-ac14-821d393b6244"
+      },
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 3900X",
+      "partNumber": "100-100000023BOX",
+      "saleUnit": "PRODUCT",
+      "moduleCount": null,
+      "status": "HELD",
+      "reasonCodes": [
+        "NO_PURCHASABLE_INDEPENDENT_BOX_SELLER"
+      ],
+      "reason": null,
+      "detailedEvidenceFile": "data/catalog-review/remaining232-cpu-prices-2026-10-10.json",
+      "publicationApproved": false,
+      "identity": {
+        "canonicalId": "1aaff72f-29fa-38c4-888a-c654a54c81a9",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 3900X",
+        "partNumber": "100-100000023BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "priorResearch": {
+        "reasonCode": "BOX_PRICE_OUTLIER_INDEPENDENT_SELLER_CONFIRMATION_REQUIRED",
+        "currentQuote": {
+          "amountKrw": 1500000,
+          "observedAt": "2026-10-10T10:11:33.107Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "manufacturerEvidence": {
+          "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-9-3900x.html",
+          "observedAt": "2026-10-10T10:11:32.191Z",
+          "responseSha256": "8bf72f16a3e29a872a4ad7cb86de466e3dc33911f7632555c5270806291cb8e6",
+          "pageTitle": "AMD Ryzen 9 3900X Drivers and Downloads | Latest Version",
+          "modelIdentityMatches": true,
+          "boxedIds": [
+            "100-100000023BOX"
+          ],
+          "boxedRecords": [
+            {
+              "label": "Product ID Boxed",
+              "value": "100-100000023BOX"
+            }
+          ],
+          "partNumberMatches": true
+        },
+        "retailPages": [
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+            "productTitle": "AMD 라이젠9-3세대 3900X (마티스) (정품)",
+            "observedAt": "2026-10-10T10:11:33.107Z",
+            "responseSha256": "c88b9c84ef85b3d99316014498c9308b8b0bd1bab6adeb94e7764194f0bc6747"
+          }
+        ],
+        "outlierReview": {
+          "flag": "SCARCE_BOX_OR_EXTREME_PRICE_REVIEW",
+          "amountKrw": 1500000,
+          "aggregatorQuoteConfirmed": true,
+          "sellerEvidence": [
+            {
+              "seller": "에프에이치디",
+              "amountKrw": 1500000,
+              "bridge": {
+                "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=960&cate4=0&pcode=8457111&cmpnyc=TY3179&safe_trade=4&fee_type=N&link_pcode=13558918388&package=0&setpc=0&r=17916273872917",
+                "httpStatus": 200,
+                "observedAt": "2026-10-10T10:16:28.948Z",
+                "responseSha256": "3db00a84965f36828c9b947034a86f4931f2d675db1b59304028a545e44bcbb0",
+                "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+                "redirectLocation": null
+              },
+              "actualSellerPage": {
+                "sourceUrl": "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F13558918388&service_id=pcdn",
+                "httpStatus": 429,
+                "observedAt": "2026-10-10T10:16:28.967Z",
+                "responseSha256": "5f4fb552ab36eb82dd328727e335542d99dd5d309e1c0d47f5eb50153f671e9b",
+                "pageTitle": "[에러] 에러페이지 - 시스템오류",
+                "redirectLocation": null,
+                "error": "HTTP 429"
+              }
+            }
+          ],
+          "sellerConfirmed": false
+        }
+      },
+      "primaryEvidence": [
+        {
+          "kind": "CURRENT_MANUFACTURER_KOREAN_PRODUCT_ORDER_CODE",
+          "sourceUrl": "https://www.amd.com/ko/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-9-3900x.html",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:16:23.595Z",
+          "responseSha256": "42e2af435146a5db6076ff810ec0fec0c4d7346616a1effa1178be61172597a4",
+          "pageTitle": "AMD Ryzen 9 3900X Drivers and Downloads | Latest Version",
+          "redirectLocation": null,
+          "boxedRecords": [
+            {
+              "label": "제품 ID 박스 포장됨",
+              "value": "100-100000023BOX"
+            }
+          ],
+          "boxedPartNumbers": [
+            "100-100000023BOX"
+          ],
+          "modelIdentityMatches": true,
+          "catalogPartNumberMatches": true
+        },
+        {
+          "kind": "NEW_ORIGINAL_PUBLIC_PAGE_REVIEW",
+          "scope": "DOMESTIC_RETAIL_BOX_STOCK_REVIEW",
+          "sourceUrl": "https://www.11st.co.kr/products/2487483235",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:22:58.650Z",
+          "responseSha256": "a5feacaf114221107898e95b690c57c8dba45706e544fe8c66f5b4f9d97c5b83",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "utf-8",
+          "pageTitle": "GC AMD 라이젠 9 3900x (마티스) (정품) 쿨러 포함",
+          "redirectLocation": null,
+          "expectedPartNumber": "100-100000023BOX",
+          "partNumberLiteralPresent": false,
+          "currentOwnPageFacts": {
+            "jsFields": {
+              "pno": "434770215"
+            },
+            "contexts": [
+              {
+                "needle": "현재 판매중인 상품이 아닙니다.",
+                "context": ") (정품) 쿨러 포함 찜하기 찜 완료 찜 이 되었습니다. 찜한상품 전체보기 닫기 찜해제 완료 찜 이 취소 되었습니다. 닫기 공유하기 공유하기 페이스북 X 카카오스토리 복사 닫기 현재 판매중인 상품이 아닙니다. 최대 적립 포인트 20,170P 최대 적립 포인트 열기 11pay 포인트 20,170P button'); const toBeOpen = btn.attr('aria-expanded') === 'false'; if(toBeOpen) { maxSPFn.closeAllLayers(); el.addClass('active'); btn.attr('aria-expanded', 'true'); } else { el.removeClass('act"
+              }
+            ],
+            "scriptFacts": [
+              {
+                "name": "GC AMD 라이젠 9 3900x (마티스) (정품) 쿨러 포함",
+                "productID": "2487483235",
+                "offers": {
+                  "price": 644010,
+                  "priceCurrency": "KRW",
+                  "availability": "http://schema.org/InStock",
+                  "url": "https://www.11st.co.kr/products/2487483235",
+                  "priceSpecification": {
+                    "price": 644010,
+                    "priceCurrency": "KRW",
+                    "availability": "https://schema.org/StrikethroughPrice",
+                    "@type": "UnitPriceSpecification"
+                  },
+                  "@type": "Offer"
+                }
+              }
+            ]
+          },
+          "eligibleForImport": false,
+          "actualOwnPagePurchasable": false,
+          "availabilityConflict": "JSON-LD InStock conflicts with current not-for-sale product-price area; ordinary import forbidden."
+        },
+        {
+          "kind": "NEW_ORIGINAL_PUBLIC_PAGE_REVIEW",
+          "scope": "DOMESTIC_RETAIL_BOX_STOCK_REVIEW",
+          "sourceUrl": "https://www.11st.co.kr/products/2930880552",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:23:00.455Z",
+          "responseSha256": "508b61d75b693f6c309ca174d643dcef65869f2b809539b6de7faa11b74feb9d",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "utf-8",
+          "pageTitle": "AMD 라이젠 9 3900X 마티스 정품 CPU",
+          "redirectLocation": null,
+          "expectedPartNumber": "100-100000023BOX",
+          "partNumberLiteralPresent": false,
+          "currentOwnPageFacts": {
+            "jsFields": {},
+            "contexts": [
+              {
+                "needle": "현재 판매중인 상품이 아닙니다.",
+                "context": "X 마티스 정품 CPU 찜하기 찜 완료 찜 이 되었습니다. 찜한상품 전체보기 닫기 찜해제 완료 찜 이 취소 되었습니다. 닫기 공유하기 공유하기 페이스북 X 카카오스토리 복사 닫기 현재 판매중인 상품이 아닙니다. 최대 적립 포인트 20,170P 최대 적립 포인트 열기 11pay 포인트 20,170P button'); const toBeOpen = btn.attr('aria-expanded') === 'false'; if(toBeOpen) { maxSPFn.closeAllLayers(); el.addClass('active'); btn.attr('aria-expanded', 'true'); } else { el.removeClass('act"
+              }
+            ],
+            "scriptFacts": [
+              {
+                "name": "AMD 라이젠 9 3900X 마티스 정품 CPU",
+                "productID": "2930880552",
+                "offers": {
+                  "price": 1199990,
+                  "priceCurrency": "KRW",
+                  "availability": "http://schema.org/InStock",
+                  "url": "https://www.11st.co.kr/products/2930880552",
+                  "priceSpecification": {
+                    "price": 1200000,
+                    "priceCurrency": "KRW",
+                    "availability": "https://schema.org/StrikethroughPrice",
+                    "@type": "UnitPriceSpecification"
+                  },
+                  "@type": "Offer"
+                }
+              }
+            ]
+          },
+          "eligibleForImport": false,
+          "actualOwnPagePurchasable": false,
+          "availabilityConflict": "JSON-LD InStock conflicts with current not-for-sale product-price area; ordinary import forbidden."
+        },
+        {
+          "kind": "FRESH_HIGH_PRICE_MALL_BRIDGE_INDEPENDENT_SELLER_ATTEMPT",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:32:02.730Z",
+          "responseSha256": "0d722124343c21e08a9c9fb7481a9e13a20327f5e3b63ebb169968207b561cbf",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "productTitle": "AMD 라이젠9-3세대 3900X (마티스) (정품) 상품비교",
+          "currentDanawaRegularQuote": null,
+          "priceError": "TITLE_MISMATCH",
+          "bridgeEvidence": [
+            {
+              "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=960&cate4=0&pcode=8457111&cmpnyc=TY3284&safe_trade=4&fee_type=N&link_pcode=13557376929&package=0&setpc=0&r=17916319226905",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T11:32:04.262Z",
+              "responseSha256": "d6b26ff93936289dca362b0ee8b6d90754a76de2b90b8e9682b219c814347345",
+              "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+              "redirectLocation": null,
+              "merchantUrls": [
+                "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F13557376929&service_id=pcdn"
+              ],
+              "blockedMerchantUrls": [
+                "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F13557376929&service_id=pcdn"
+              ],
+              "merchantActualGet": null
+            },
+            {
+              "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=960&cate4=0&pcode=8457111&cmpnyc=TY3284&safe_trade=4&fee_type=N&link_pcode=13557376929&package=0&setpc=0&r=17916319225558",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T11:32:05.719Z",
+              "responseSha256": "b21359c501dd60ae684546bfa05614ed840718f60b98cf734fd3c897ebf14364",
+              "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+              "redirectLocation": null,
+              "merchantUrls": [
+                "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F13557376929&service_id=pcdn"
+              ],
+              "blockedMerchantUrls": [
+                "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F13557376929&service_id=pcdn"
+              ],
+              "merchantActualGet": null
+            }
+          ],
+          "highAmountAloneIsNotExclusion": true,
+          "currentExactIndependentSellerVerified": false,
+          "eligibleForImport": false
+        },
+        {
+          "kind": "FRESH_DANAWA_HIGH_REGULAR_PRICE_QUARANTINED",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:53.265Z",
+          "responseSha256": "0b768f601ebb2f1ea11f732ed332eec187524ae0ebbc5cc87d9044ae84bfc570",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "productTitle": "AMD 라이젠9-3세대 3900X (마티스) (정품)",
+          "currentDanawaRegularQuote": {
+            "amountKrw": 1500000,
+            "observedAt": "2026-10-10T11:33:53.265Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=8457111",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceError": null,
+          "highAmountAloneIsNotExclusion": true,
+          "independentCurrentExactBoxSellerVerified": false,
+          "eligibleForImport": false
+        }
+      ],
+      "currentQuotes": [],
+      "retailSkuProposal": null,
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "followUpReason": "AMD 한국 공식 100-100000023BOX는 일치합니다. 새 11번가 정품 후보 2개는 현재 상품 영역에 판매중이 아니라고 표시합니다. JSON-LD InStock·가격은 구매 가능 증거로 채택하지 않습니다. 기존 다나와 고가 호가와 독립 구매 가능한 BOX 판매 증거를 연결하지 못해 보류합니다. 추가 현재 다나와 일반몰 bridge 조사에서도 정확 BOX와 구매 가능한 독립 판매처 원문을 검증하지 못했습니다. 고가 자체를 가격 반영 불가 사유로 확정하지 않습니다.",
+      "followUpReasonCode": "NO_PURCHASABLE_INDEPENDENT_BOX_SELLER",
+      "verificationScope": "DOMESTIC_EXACT_SALE_SKU_NOT_FULLY_VERIFIED",
+      "completedAt": "2026-10-10T11:29:36.532Z"
+    },
+    {
+      "canonicalId": "4328778c-84af-324b-bc60-e51891fff949",
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:241067:model"
+      },
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 245K",
+      "partNumber": null,
+      "saleUnit": "PRODUCT",
+      "moduleCount": null,
+      "status": "HELD",
+      "reasonCodes": [
+        "SEPARATE_RETAIL_SKU_PROPOSAL_REQUIRED"
+      ],
+      "reason": null,
+      "detailedEvidenceFile": "data/catalog-review/remaining232-cpu-prices-2026-10-10.json",
+      "publicationApproved": false,
+      "identity": {
+        "canonicalId": "4328778c-84af-324b-bc60-e51891fff949",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 245K",
+        "partNumber": null,
+        "identityKind": "MODEL_REFERENCE",
+        "role": "INSTALLED_PC_REFERENCE",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "priorResearch": {
+        "reasonCode": "MODEL_REFERENCE_REQUIRES_SEPARATE_RETAIL_SKU_REVIEW",
+        "currentQuote": {
+          "amountKrw": 315160,
+          "observedAt": "2026-10-10T10:11:37.676Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "manufacturerEvidence": {
+          "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/ordering.html",
+          "observedAt": "2026-10-10T10:11:36.605Z",
+          "responseSha256": "813dff06eb134f2ec4e6ac609aff49a767e0f04dd8997261530e9eb2a6febefe",
+          "pageTitle": "Intel Core Ultra 5 Processor 245K",
+          "modelIdentityMatches": true,
+          "boxedIds": [
+            "BXC80768245K",
+            "BX80768245K"
+          ],
+          "boxedRecords": [
+            {
+              "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+              "value": "BXC80768245K",
+              "context": "Boxed Intel Core Ultra 5 processor 245K (24M Cache, up to 5.20 GHz) FCLGA18W, for China Ordering Code BXC80768245K Spec Code SRQCT Shipping Media BOX Stepping B0 PCN Content IDs 853587 , 917638 , 919379 Retired and discontinued "
+            },
+            {
+              "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+              "value": "BX80768245K",
+              "context": "Boxed Intel Core Ultra 5 processor 245K (24M Cache, up to 5.20 GHz) FCLGA18W Ordering Code BX80768245K Spec Code SRQCT Shipping Media BOX Stepping B0 PCN Content IDs 917638 , 853587 , 919379 Recommended Customer Price $319.00 Trade Compliance Information ECCN 5A992.C CCATS 740.17B1 US HTS 8542310050"
+            }
+          ],
+          "partNumberMatches": null
+        },
+        "retailPages": [
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+            "productTitle": "인텔 코어 울트라5 시리즈2 245K (애로우레이크) (정품)",
+            "observedAt": "2026-10-10T10:11:37.676Z",
+            "responseSha256": "5b3c278d92fc039d5ebc7751858f7576e30d740f54e9e3a73a938c7d2528e8a6"
+          }
+        ],
+        "outlierReview": null
+      },
+      "primaryEvidence": [
+        {
+          "kind": "CURRENT_MANUFACTURER_KOREAN_PRODUCT_ORDER_CODE",
+          "sourceUrl": "https://www.intel.co.kr/content/www/kr/ko/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/ordering.html",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:16:24.717Z",
+          "responseSha256": "62d405b91fc37338e21beb1c63a35490c3aead29aa749b40470efc33c7d7a98c",
+          "pageTitle": "인텔 코어 Ultra 5 프로세서 245K",
+          "redirectLocation": null,
+          "boxedRecords": [
+            {
+              "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+              "value": "BXC80768245K",
+              "context": "Boxed Intel Core Ultra 5 processor 245K (24M Cache, up to 5.20 GHz) FCLGA18W, for China 주문 코드 BXC80768245K 사양 코드 SRQCT 운송 매체 BOX 스테핑 B0 PCN 콘텐츠 ID 853587 , 917638 , 919379 지원 종료 및 단종 "
+            },
+            {
+              "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+              "value": "BX80768245K",
+              "context": "Boxed Intel Core Ultra 5 processor 245K (24M Cache, up to 5.20 GHz) FCLGA18W 주문 코드 BX80768245K 사양 코드 SRQCT 운송 매체 BOX 스테핑 B0 PCN 콘텐츠 ID 917638 , 853587 , 919379 권장 소비자 가격 $319.00 "
+            }
+          ],
+          "boxedPartNumbers": [
+            "BXC80768245K",
+            "BX80768245K"
+          ],
+          "modelIdentityMatches": true,
+          "lifecycleHeadings": [
+            "지원 종료 및 단종"
+          ],
+          "catalogPartNumberMatches": null
+        },
+        {
+          "kind": "NEW_ORIGINAL_PUBLIC_PAGE_REVIEW",
+          "scope": "DOMESTIC_RETAIL_BOX_NEW_SKU_PROPOSAL",
+          "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:22:52.427Z",
+          "responseSha256": "e8335925f0309817bf527b2887df5cbd71e06f0d92ab3d3f3521c1a2d85fcb73",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "euc-kr",
+          "pageTitle": "[INTEL] 인텔 코어 Ultra 5 프로세서 245K (애로우 레이크/4.2GHz/26MB/쿨러미포함) [정품박스] : 컴퓨존",
+          "redirectLocation": null,
+          "expectedPartNumber": "BX80768245K",
+          "partNumberLiteralPresent": false,
+          "currentOwnPageFacts": {
+            "jsFields": {
+              "ProductNo": "1183680"
+            },
+            "contexts": [
+              {
+                "needle": "정품박스",
+                "context": "[INTEL] 인텔 코어 Ultra 5 프로세서 245K (애로우 레이크/4.2GHz/26MB/쿨러미포함) [정품박스] : 컴퓨존 네이버 페이 결제 안내 노트북 업그레이드 상품 은 네이버페이 결제가 불가합니다. 주문방법 1. 해당 상품을 장바구니에 담은 후, 장바구니 페이지 하단 '선택 주문하기' 혹은 '전체 주문하기' 클릭 2. 주문/결제 페이지에서 Npay 결제 방법 선택 확인 네이버페이 주의사항 안내 네이버페이 결제는 컴퓨존이 아닌 네이버에서 결제가 진행됩니다. 결제 진행 전 아래의 주의사항을 충분히 숙지하신 후 확인 버튼을 눌러주세요. 1. 컴퓨존에 로그인한 상"
+              }
+            ],
+            "scriptFacts": []
+          },
+          "eligibleForImport": false
+        },
+        {
+          "kind": "MODEL_AND_RETAIL_PACKAGE_QUOTE_REOBSERVATION_AFTER_SCOPED_REVIEW",
+          "scope": "MODEL_AND_ADVERTISED_DOMESTIC_BOX_PACKAGE_ONLY",
+          "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:23:43.747Z",
+          "scopedVerifiedAt": "2026-10-10T11:23:41.674Z",
+          "responseSha256": "b7e99bc293bced82a551e0cfff4db7791630390f96300fa23dc27715afbd73e6",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "euc-kr",
+          "ownProductName": "[INTEL] 인텔 코어 Ultra 5 프로세서 245K (애로우 레이크/4.2GHz/26MB/쿨러미포함) [정품박스] : 컴퓨존",
+          "ownNormalPriceField": null,
+          "ownPriceSectionText": "",
+          "domesticExactOrderCodeVerified": false,
+          "eligibleForImport": false
+        },
+        {
+          "kind": "CURRENT_COMPuzone_OWN_PRICE_FIELD_REVIEW",
+          "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:24:06.018Z",
+          "responseSha256": "93f3c0c4597b8a13509958763e6285ad03f3fb4ab6f7d82043e873627715a3d6",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "euc-kr",
+          "contexts": [
+            {
+              "needle": "info_price",
+              "text": "상품번호 : 1183680 판매가 326,500 &#51;&#51;&#48;,&#53;&#48;&#48; 원 할인혜택 [토스페이 X 농협카드] 5% 즉시할인 (800,000원 이상 결제 시) [토스페이 X 삼성카드] 5% 즉시할인 (800,000원 이상 결제 시) 할인혜택 안내 토스페이 X 농협카드 즉시할인 기간 10/01(목) ~ 10/31(토) 내용 800,000원 이상 결제 시 5% 할인 한도 행사기간 내 최대 3회 할인 적용은 토스 APP에서 확인 가능 토스페이 내 대상카드로 결제시에만 할인 적용 토스페이 X 삼성카드 즉시할인 기간 10/01(목) ~ 10/31(토) 내용 800,000원 이상 결제 시 5% 할인 한도 행사기간 내 최대 3회 할인 적용은 토스 APP에서 확인 가능 토스페이 내 대상카드로 결제시에만 할인 적용 ※ 로그인 후 대상 상품으로만 주문 시 배송비를 포함한 최종 결제금액 기준으로 할인이 적용됩니다. ※ 행사별 할인 조건 및 한도에 따라 상품 상세와 결제 페이지에서 보이는 혜택 가는 다를 수 있습니다. ※ 즉시할인은 결제 시 반영됩니다. ※ 즉시 할인금액은 결제 완료 후 주문내역 페이지에서 확인 가능합니다. 상품평 5 (267건) 결제혜택 5% 포인트 적립금 660원 <div class=\"pd info_ca"
+            },
+            {
+              "needle": "price_inner",
+              "text": "rgt\"> 상품번호 : 1183680 판매가 326,500 &#51;&#51;&#48;,&#53;&#48;&#48; 원 할인혜택 [토스페이 X 농협카드] 5% 즉시할인 (800,000원 이상 결제 시) [토스페이 X 삼성카드] 5% 즉시할인 (800,000원 이상 결제 시) 할인혜택 안내 토스페이 X 농협카드 즉시할인 기간 10/01(목) ~ 10/31(토) 내용 800,000원 이상 결제 시 5% 할인 한도 행사기간 내 최대 3회 할인 적용은 토스 APP에서 확인 가능 토스페이 내 대상카드로 결제시에만 할인 적용 토스페이 X 삼성카드 즉시할인 기간 10/01(목) ~ 10/31(토) 내용 800,000원 이상 결제 시 5% 할인 한도 행사기간 내 최대 3회 할인 적용은 토스 APP에서 확인 가능 토스페이 내 대상카드로 결제시에만 할인 적용 ※ 로그인 후 대상 상품으로만 주문 시 배송비를 포함한 최종 결제금액 기준으로 할인이 적용됩니다. ※ 행사별 할인 조건 및 한도에 따라 상품 상세와 결제 페이지에서 보이는 혜택 가는 다를 수 있습니다. ※ 즉시할인은 결제 시 반영됩니다. ※ 즉시 할인금액은 결제 완료 후 주문내역 페이지에서 확인 가능합니다. 상품평 5 (267건) 결제혜택 5% 포인트 적립금 660원 카드혜택 <div class=\"ct card_inner\" style=\"positio"
+            },
+            {
+              "needle": "price_real",
+              "text": "상품번호 : 1183680 판매가 326,500 &#51;&#51;&#48;,&#53;&#48;&#48; 원 할인혜택 [토스페이 X 농협카드] 5% 즉시할인 (800,000원 이상 결제 시) [토스페이 X 삼성카드] 5% 즉시할인 (800,000원 이상 결제 시) 할인혜택 안내 토스페이 X 농협카드 즉시할인 기간 10/01(목) ~ 10/31(토) 내용 800,000원 이상 결제 시 5% 할인 한도 행사기간 내 최대 3회 할인 적용은 토스 APP에서 확인 가능 토스페이 내 대상카드로 결제시에만 할인 적용 토스페이 X 삼성카드 즉시할인 기간 10/01(목) ~ 10/31(토) 내용 800,000원 이상 결제 시 5% 할인 한도 행사기간 내 최대 3회 할인 적용은 토스 APP에서 확인 가능 토스페이 내 대상카드로 결제시에만 할인 적용 ※ 로그인 후 대상 상품으로만 주문 시 배송비를 포함한 최종 결제금액 기준으로 할인이 적용됩니다. ※ 행사별 할인 조건 및 한도에 따라 상품 상세와 결제 페이지에서 보이는 혜택 가는 다를 수 있습니다. ※ 즉시할인은 결제 시 반영됩니다. ※ 즉시 할인금액은 결제 완료 후 주문내역 페이지에서 확인 가능합니다. 상품평 5 (267건) 결제혜택 5% 포인트 적립금 660원 카드혜택 <button class=\"txt btn_ct\" type=\"button\" onclick=\"changeP"
+            },
+            {
+              "needle": "Ly_end_price0",
+              "text": "} var Total_Price = Product_Price*Product_Ea; All_Total_Price = All_Total_Price + Total_Price; $(\".Price_\"+ProductNo).html(NumberFormat(Total_Price)+\"원\"); } } } document.getElementById('end_price0').innerHTML = NumberFormat(All_Total_Price); document.getElementById('Ly_end_price0').innerHTML = NumberFormat(All_Total_Price); lyr_server_cale_price(); } // 옵션이 설정되어있는 그룹/추가상품의 경우.. function Add_Option_Order(ProductType,ProductNo,StockChk,select_option_value,select_option_no,maxea,minea,textOptionVal){ if(ProductType==\"PGNo\"){//묶음 제품이면 구매사항 select박스에 표시해준다. if($('.last_'+ProductNo+'_'+select_option_no).val()!=null){ alert(\"이미 선택한 옵션입니다.\"); return false; }else{ var OptionInfo = false; var Selected = ColorSelectHtml = OptionSelectHtml = ''; //그룹상품의 옵션이 있는 경우 if(ProductNo){ var ajax_url = \"./product_function.php?actype=getProductOptionSubNewPGNo&ProductNo=\"+ProductNo+\"&ProductType=\"+ProductType+\"&select_option_value=\"+select_option_value+\"&select_option_no=\"+select_option_no+\"&maxea=\"+maxea+\"&minea=\"+minea+\"&textOptionVal=\"+textOptionVal; $.ajax({ url:ajax_url, success:function(html){ var ul = document.createElement(\"ul\"); var ul_list = \"\"; var ul_count = $(\"#Add_Product > ul\").size(); $(ul).addClass('item_result'); if(ul_count == 0) $(\"#Add_Product\").html(\"\"); ColorSelectHtml = html; if( ColorSelectHtml ) ul_list += ColorSelectHtml; ul_list += \" \"; ul.innerHTML = ul_list; document.get"
+            }
+          ],
+          "eligibleForImport": false
+        },
+        {
+          "kind": "NEW_DOMESTIC_ORIGINAL_PAGE_REVIEW",
+          "scope": "MODEL_AND_PACKAGE_QUOTE_REOBSERVATION_AFTER_SCOPED_VERIFICATION",
+          "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+          "observedAt": "2026-10-10T11:26:20.596Z",
+          "error": "Whitespace-only parsing mismatch; no market price change established. Later proper normalized fresh GET is authoritative.",
+          "eligibleForImport": false,
+          "eligibility": "SUPERSEDED_WHITESPACE_PARSER_ERROR"
+        },
+        {
+          "kind": "NEW_DOMESTIC_ORIGINAL_PAGE_REVIEW",
+          "scope": "MODEL_AND_PACKAGE_QUOTE_REOBSERVATION_AFTER_SCOPED_VERIFICATION",
+          "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:27:18.462Z",
+          "responseSha256": "d56608416501ba978ad48c20a03a92484792137487a4f0baf6456171477758e3",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "euc-kr",
+          "pageTitle": "[INTEL] 인텔 코어 Ultra 5 프로세서 245K (애로우 레이크/4.2GHz/26MB/쿨러미포함) [정품박스] : 컴퓨존",
+          "redirectLocation": null,
+          "expectedPn": null,
+          "partNumberLiteralPresent": null,
+          "multipackInOwnTitle": false,
+          "unavailableOwnPageEvidence": [],
+          "normalProductPriceKrw": 330500,
+          "priceFieldSelector": ".pdtl_col_rgt .info_price .price_real (hidden display:none descendant removed)",
+          "normalVisiblePriceText": "330,500 원",
+          "excludedHiddenPriceKrw": 326500,
+          "scopedVerifiedAt": "2026-10-10T11:23:41.674Z",
+          "domesticExactOrderCodeVerified": false,
+          "eligibleForImport": false
+        }
+      ],
+      "currentQuotes": [
+        {
+          "sourceProvider": "COMPUZONE",
+          "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+          "priceKrw": 330500,
+          "currency": "KRW",
+          "observedAt": "2026-10-10T11:27:18.462Z",
+          "responseSha256": "d56608416501ba978ad48c20a03a92484792137487a4f0baf6456171477758e3",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "modelAndAdvertisedRetailPackageVerifiedAt": "2026-10-10T11:23:41.674Z",
+          "fullyVerifiedAt": null,
+          "domesticExactOrderCodeVerified": false,
+          "condition": "NEW",
+          "packaging": "DOMESTIC_AUTHORIZED_BOX_WITHOUT_COOLER",
+          "priceBasis": "ORDINARY_PRODUCT_ONLY_NO_SHIPPING_OR_PROMOTIONS",
+          "importEligible": false,
+          "requiresProviderPolicyExpansion": true
+        }
+      ],
+      "retailSkuProposal": {
+        "stage": "UNAPPROVED_MODEL_PACKAGE_PRICE_EVIDENCE_ONLY",
+        "existingModelCanonicalId": "4328778c-84af-324b-bc60-e51891fff949",
+        "existingModelSourceIdentity": {
+          "sourceName": "MANUFACTURER",
+          "externalId": "intel:ark:241067:model"
+        },
+        "existingModelPreserved": true,
+        "newCanonicalId": null,
+        "newSourceIdentity": null,
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 245K",
+        "candidatePartNumber": "BX80768245K",
+        "alternativeChinaPartNumber": "BXC80768245K",
+        "saleUnit": "PRODUCT",
+        "moduleCount": null,
+        "domesticRetailDeclaredPackaging": "AUTHORIZED_BOX_WITHOUT_COOLER",
+        "domesticPhysicalPartNumberConfirmed": false,
+        "manufacturerSourceUrl": "https://www.intel.co.kr/content/www/kr/ko/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/ordering.html",
+        "domesticRetailSourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+        "modelPackagePriceEvidence": {
+          "sourceProvider": "COMPUZONE",
+          "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+          "priceKrw": 330500,
+          "currency": "KRW",
+          "observedAt": "2026-10-10T11:27:18.462Z",
+          "responseSha256": "d56608416501ba978ad48c20a03a92484792137487a4f0baf6456171477758e3",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "modelAndAdvertisedRetailPackageVerifiedAt": "2026-10-10T11:23:41.674Z",
+          "fullyVerifiedAt": null,
+          "domesticExactOrderCodeVerified": false,
+          "condition": "NEW",
+          "packaging": "DOMESTIC_AUTHORIZED_BOX_WITHOUT_COOLER",
+          "priceBasis": "ORDINARY_PRODUCT_ONLY_NO_SHIPPING_OR_PROMOTIONS",
+          "importEligible": false,
+          "requiresProviderPolicyExpansion": true
+        },
+        "remainingChecks": [
+          "판매처 자체 주문코드·라벨 등 실제 출고 BOX PN의 공개 1차 증거",
+          "신규 판매 상품·모델 연결을 별도 컨펌",
+          "현재 지원되지 않는 판매처 가격 공급자 정책 확장을 별도 검토"
+        ],
+        "productsAdded": 0
+      },
+      "verifiedAt": null,
+      "newPriceObservedAt": "2026-10-10T11:27:18.462Z",
+      "followUpReason": "Intel 한국 주문 페이지의 BOX 코드와 새 컴퓨존 국내 정품 박스 자체 상품명을 대조하고 일반 상품가 330,500원을 재관측했습니다. 현재 ID는 PN 없는 설치 모델 참고이므로 기존 ID 가격으로 반영하지 않습니다. BX80768245K 판매 SKU 추가 후보를 별도로 제안하되, 실제 출고 주문코드가 판매처 원문에 없다는 한계를 명시합니다.",
+      "modelAndAdvertisedRetailPackageVerification": {
+        "verifiedAt": "2026-10-10T11:23:41.674Z",
+        "manufacturerSourceUrl": "https://www.intel.co.kr/content/www/kr/ko/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/ordering.html",
+        "manufacturerObservedAt": "2026-10-10T11:16:24.717Z",
+        "retailerSourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+        "retailerObservedAt": "2026-10-10T11:22:52.427Z",
+        "manufacturerGlobalBoxCode": "BX80768245K",
+        "domesticExactOrderCodeVerified": false,
+        "scope": "MODEL_AND_ADVERTISED_DOMESTIC_BOX_PACKAGE_ONLY",
+        "missingVerification": "Retailer own product does not expose the actual shipped BOX order code; global BOX order code is a proposal, not an established SKU binding."
+      },
+      "followUpReasonCode": "SEPARATE_RETAIL_SKU_PROPOSAL_REQUIRED",
+      "verificationScope": "DOMESTIC_EXACT_SALE_SKU_NOT_FULLY_VERIFIED",
+      "completedAt": "2026-10-10T11:29:36.532Z"
+    },
+    {
+      "canonicalId": "9a23895c-b762-3076-b92f-430fa22bd53a",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b"
+      },
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5700X",
+      "partNumber": "100-100000926WOF",
+      "saleUnit": "PRODUCT",
+      "moduleCount": null,
+      "status": "HELD",
+      "reasonCodes": [
+        "DOMESTIC_MULTIPACK_DOES_NOT_MATCH_WOF"
+      ],
+      "reason": "Reviewed discovery/variant lists showed only bulk, multipack, overseas or used offers; this research did not verify a qualifying boxed page. This is not global unavailability evidence.",
+      "detailedEvidenceFile": "data/catalog-review/remaining232-cpu-prices-2026-10-10.json",
+      "publicationApproved": false,
+      "identity": {
+        "canonicalId": "9a23895c-b762-3076-b92f-430fa22bd53a",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5700X",
+        "partNumber": "100-100000926WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "priorResearch": {
+        "reasonCode": "NO_VERIFIED_DOMESTIC_BOX_PAGE",
+        "currentQuote": null,
+        "manufacturerEvidence": {
+          "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700x.html",
+          "observedAt": "2026-10-10T10:11:46.680Z",
+          "responseSha256": "c4c970916885b27b2538c3f430177d242b4aa53bbfc2694661021aaa04bf2e2b",
+          "pageTitle": "AMD Ryzen 7 5700X Drivers and Downloads | Latest Version",
+          "modelIdentityMatches": true,
+          "boxedIds": [],
+          "boxedRecords": [],
+          "partNumberMatches": false
+        },
+        "retailPages": [
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=16741349",
+            "productTitle": "AMD 라이젠7-4세대 5700X (버미어) (멀티팩 정품)",
+            "observedAt": "2026-10-10T10:11:47.791Z",
+            "responseSha256": "60b6e4583141c78a8d0b381fb5fa68425245fa401cc5444c0360de339ac02005"
+          }
+        ],
+        "outlierReview": null
+      },
+      "primaryEvidence": [
+        {
+          "kind": "CURRENT_MANUFACTURER_KOREAN_PRODUCT_ORDER_CODE",
+          "sourceUrl": "https://www.amd.com/ko/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700x.html",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:16:25.033Z",
+          "responseSha256": "1bc4b613a2ea1acab90250114a9b63bfa70877c2b705a80035e3aa2e07e8779a",
+          "pageTitle": "AMD Ryzen 7 5700X Drivers and Downloads | Latest Version",
+          "redirectLocation": null,
+          "boxedRecords": [
+            {
+              "label": "제품 ID 박스 포장됨 *AMD SR4 쿨러가 EOL 상태에 도달하기 때문에 일부 AMD Ryzen 7000, 5000 제품 ID 박스형 모델은 더 이상 쿨러를 포함하지 않도록 업데이트되어 2025년 8월 1일부터 AMD SR4 쿨러가 제거됩니다. 추가 정보는 현지 AMD 영업 담당자에게 문의하세요.&lt;/p> \" tabindex=\"0\" data-bs-html=\"true\" ref=\"info\">",
+              "value": "100-100000926WOF* , 100-100000926WOZ*"
+            }
+          ],
+          "boxedPartNumbers": [
+            "100-100000926WOF",
+            "100-100000926WOZ"
+          ],
+          "modelIdentityMatches": true,
+          "catalogPartNumberMatches": true
+        },
+        {
+          "kind": "NEW_DOMESTIC_STORE_ORIGINAL_PRODUCT_REVIEW",
+          "scope": "EXACT_BOX_WORDING_BUT_DOMESTIC_OR_OVERSEAS_REVIEW",
+          "sourceUrl": "https://item.gmarket.co.kr/Item?goodsCode=4794136615",
+          "httpStatus": 403,
+          "observedAt": "2026-10-10T11:16:29.887Z",
+          "responseSha256": "e78a9bb083066e290557ed17fb644e6777317378ffcde0332e13e7535360000b",
+          "pageTitle": "G마켓 - 쇼핑을 바꾸는 쇼핑",
+          "redirectLocation": null,
+          "error": "HTTP 403",
+          "exactManufacturerPnMatches": null,
+          "exclusionReason": null,
+          "eligibility": "ACCESS_BLOCKED_NO_CURRENT_PRODUCT_VERIFICATION"
+        },
+        {
+          "kind": "NEW_DOMESTIC_ORIGINAL_PAGE_REVIEW",
+          "scope": "NEW_DOMESTIC_MULTIPACK_EXCLUSION",
+          "sourceUrl": "https://usr.icoda.co.kr/item/view/1255470",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:26:14.483Z",
+          "responseSha256": "1751cb4d6634e68f547e0554be2abe0d0d24aee7ca125d71791a45204c22d26a",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "utf-8",
+          "pageTitle": "아이코다",
+          "redirectLocation": null,
+          "expectedPn": "100-100000926WOF",
+          "partNumberLiteralPresent": false,
+          "multipackInOwnTitle": false,
+          "unavailableOwnPageEvidence": []
+        },
+        {
+          "kind": "NEW_DOMESTIC_EXACT_OWN_PACKAGE_EXCLUSION",
+          "sourceUrl": "https://usr.icoda.co.kr/item/view/1255470",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:27:54.537Z",
+          "responseSha256": "622fcde3ccd44e733f6155251b7f67228f11b78c451febf0b5a8606ddd094dc9",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "utf-8",
+          "ownProductName": "AMD 라이젠 정품 R7 5700X CPU (멀티팩/버미어/AM4/쿨러미포함)",
+          "ownModelPackageContext": "AMD 라이젠 정품 R7 5700X CPU (멀티팩/버미어/AM4/쿨러미포함) --> 307,000 원 최대할인가 307,000 ~ 307,000 구매후기 100P 아이코다 회원 혜택가 판매가 : 307,000 무통장 최대할인가 : 307,000 무통장 결제포인트 0 + 등급포인트 0 사용시 신용카드 최대할인가 : 307,000 등급포인트 0 사용시 카드혜택 무이자할부 보기 배송방법 아이코다배송 배송비 유료배송 2,500원 배",
+          "multipackDeclared": true,
+          "exclusionReason": "MULTIPACK_IS_NOT_CATALOG_BOX_SKU",
+          "eligibleForImport": false
+        }
+      ],
+      "currentQuotes": [],
+      "retailSkuProposal": null,
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "followUpReason": "현재 AMD 한국 공식 페이지에는 기존 100-100000926WOF 및 별도 WOZ 코드가 있습니다. 새 아이코다 자체 상품명은 멀티팩입니다. 기존 WOF BOX로 가격을 전용하지 않습니다. G마켓 BOX 제목 후보의 현재 원문은 403이어서 검색 캐시의 배송·가격을 사실로 확정하지 않고 요청을 중단했습니다.",
+      "followUpReasonCode": "DOMESTIC_MULTIPACK_DOES_NOT_MATCH_WOF",
+      "verificationScope": "DOMESTIC_EXACT_SALE_SKU_NOT_FULLY_VERIFIED",
+      "completedAt": "2026-10-10T11:29:36.532Z"
+    },
+    {
+      "canonicalId": "9b064051-a89c-3219-bee9-acaaeb98bb94",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "045802be-240a-4bce-9e67-2722f885e671"
+      },
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i9-13900K",
+      "partNumber": "BX8071513900K",
+      "saleUnit": "PRODUCT",
+      "moduleCount": null,
+      "status": "HELD",
+      "reasonCodes": [
+        "NO_PURCHASABLE_INDEPENDENT_BOX_SELLER"
+      ],
+      "reason": null,
+      "detailedEvidenceFile": "data/catalog-review/remaining232-cpu-prices-2026-10-10.json",
+      "publicationApproved": false,
+      "identity": {
+        "canonicalId": "9b064051-a89c-3219-bee9-acaaeb98bb94",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i9-13900K",
+        "partNumber": "BX8071513900K",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "priorResearch": {
+        "reasonCode": "BOX_PRICE_OUTLIER_INDEPENDENT_SELLER_CONFIRMATION_REQUIRED",
+        "currentQuote": {
+          "amountKrw": 10000000,
+          "observedAt": "2026-10-10T10:11:48.825Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=18039569",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "manufacturerEvidence": {
+          "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/230496/intel-core-i913900k-processor-36m-cache-up-to-5-80-ghz/ordering.html",
+          "observedAt": "2026-10-10T10:11:47.970Z",
+          "responseSha256": "9c2ade421282122f6f87524741da5c44ac7dbb78d15b7a4f02dc8506d29f828a",
+          "pageTitle": "Intel Core i9-13900K Processor",
+          "modelIdentityMatches": true,
+          "boxedIds": [
+            "BX8071513900K"
+          ],
+          "boxedRecords": [
+            {
+              "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+              "value": "BX8071513900K",
+              "context": "Boxed Intel Core i9-13900K Processor (36M Cache, up to 5.80 GHz) FC-LGA16A Ordering Code BX8071513900K Spec Code SRMBH Shipping Media BOX Stepping B0 MDDS Content IDs 750128 , 850146 PCN Content IDs 798714 , 798811 , 800380 , 801617 , 811981 , 815134 , 818660 Trade Compliance Information ECCN 5A992."
+            }
+          ],
+          "partNumberMatches": true
+        },
+        "retailPages": [
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=18039569",
+            "productTitle": "인텔 코어i9-13세대 13900K (랩터레이크) (정품)",
+            "observedAt": "2026-10-10T10:11:48.825Z",
+            "responseSha256": "431aa5da62e783a6b70524f3e7a8f2ac9dc4e2dee7a4ba6be89d75310e8d2701"
+          }
+        ],
+        "outlierReview": {
+          "flag": "SCARCE_BOX_OR_EXTREME_PRICE_REVIEW",
+          "amountKrw": 10000000,
+          "aggregatorQuoteConfirmed": true,
+          "sellerEvidence": [
+            {
+              "seller": "IT의 형제들",
+              "amountKrw": 10000000,
+              "bridge": {
+                "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=873&cate3=959&cate4=0&pcode=18039569&cmpnyc=TY3178&safe_trade=4&fee_type=N&link_pcode=13558759931&package=0&setpc=0&r=17916273944681",
+                "httpStatus": 200,
+                "observedAt": "2026-10-10T10:16:35.586Z",
+                "responseSha256": "65206d51d0375096e7c08a4711982cfa30fad2cccd79ae640d04684ee36f2b71",
+                "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+                "redirectLocation": null
+              },
+              "actualSellerPage": {
+                "sourceUrl": "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F13558759931&service_id=pcdn",
+                "httpStatus": 429,
+                "observedAt": "2026-10-10T10:16:35.630Z",
+                "responseSha256": "5f4fb552ab36eb82dd328727e335542d99dd5d309e1c0d47f5eb50153f671e9b",
+                "pageTitle": "[에러] 에러페이지 - 시스템오류",
+                "redirectLocation": null,
+                "error": "HTTP 429"
+              }
+            }
+          ],
+          "sellerConfirmed": false
+        }
+      },
+      "primaryEvidence": [
+        {
+          "kind": "CURRENT_MANUFACTURER_KOREAN_PRODUCT_ORDER_CODE",
+          "sourceUrl": "https://www.intel.co.kr/content/www/kr/ko/products/sku/230496/intel-core-i913900k-processor-36m-cache-up-to-5-80-ghz/ordering.html",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:16:25.213Z",
+          "responseSha256": "86e982ecb5648b8db3f9b0ea7c8f4684539c0b8f6a001d77c3335edf199db9fa",
+          "pageTitle": "인텔 코어 i9-13900K 프로세서",
+          "redirectLocation": null,
+          "boxedRecords": [
+            {
+              "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+              "value": "BX8071513900K",
+              "context": "Boxed Intel Core i9-13900K Processor (36M Cache, up to 5.80 GHz) FC-LGA16A 주문 코드 BX8071513900K 사양 코드 SRMBH 운송 매체 BOX 스테핑 B0 MDDS 콘텐츠 ID 750128 , 850146 PCN 콘텐츠 ID 798714 , 798811 , 800380 , 801617 , 811981 , 815134 , 818660 "
+            }
+          ],
+          "boxedPartNumbers": [
+            "BX8071513900K"
+          ],
+          "modelIdentityMatches": true,
+          "lifecycleHeadings": [
+            "지원 종료 및 단종"
+          ],
+          "catalogPartNumberMatches": true
+        },
+        {
+          "kind": "NEW_DOMESTIC_STORE_ORIGINAL_PRODUCT_REVIEW",
+          "scope": "DOMESTIC_RETAIL_BOX_STOCK_REVIEW",
+          "sourceUrl": "https://usr.icoda.co.kr/item/view/1321665",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:16:31.022Z",
+          "responseSha256": "0abc4dec27952b9bf5449a037ef37516a38d8fe560d17a9c2f895af5570ca7b9",
+          "pageTitle": "아이코다",
+          "redirectLocation": null,
+          "exactManufacturerPnMatches": false,
+          "exclusionReason": "NO_CURRENT_PURCHASABLE_QUOTE",
+          "ownProductContext": " 정품 쿨러유무 쿨러미포함 버퍼메모리 36MB 그래픽 인텔 UHD 770 전력소모량 125 박스 인텔 코어13세대 정품 i9-13900K CPU (랩터레이크/LGA1700/쿨러미포함) --> 715,000 원 최대할인가 715,000 ~ 715,000 구매후기 100P 아이코다 회원 혜택가 판매가 : 715,000 무통장 최대할인가 : 715,000 무통장 결제포인트 0 + 등급포인트 0 사용시 신용카드 최대할인가 : 715,000 등급포인트 0 사용시 카드혜택 무이자할부 보기 배송방법 아이코다배송 배송비 무료배송 배송혜택 회원전용 혜택보기 합계 715,000 원 일시품절 입고알림 상품문의 리스트그룹 [품절] 박스 인텔 코어13세대 정품 i9-13900K CPU (랩터레이크/LGA1700/쿨러미포함) 715,000 원 [품절] 벌크 병행상품 인텔 코어13세대 i9-13900K CPU (랩터레이크/LGA1700/쿨러미포함) 626,000 원 [품절] 박스 인텔 코어13세대 정품 i9-13900K CPU (랩터레이크/LG",
+          "titleMatches": false,
+          "partNumberOccurrenceIsOnlyHint": true,
+          "multipackInTitle": false,
+          "overseasProductEvidence": false,
+          "unavailableEvidence": true,
+          "packagingFacts": [
+            "포장 박스 코어수 24코어 쓰레드 32쓰레드 유통 대리점 정품 쿨러유무 쿨러미포함 버퍼메모리 36MB 그래픽 인텔 UHD 770 전력소모량 125 박스 인텔 코어13세대 정품 i9-13900K CPU (",
+            "품명 및 모델명 정품 i9-13900K KCC 인증 필 유무 인증코드없음 정격전압,소비전력,에너지소비효율등급 해당없음 동일모델의 출시년월 202210 제조자,수입품의 경우 수입자를 함께 표기 인텔 제조국 중국 크기",
+            "포장-박스 코어수-24코어 쓰레드-32개 유통-대리점 정품 쿨러유무-쿨러미포함 버퍼메모리-36MB 그래픽-인텔 UHD 770 전력소모량-125W 품질보증기준 무상 36개월 , 유상 0개월 AS책임자와 ",
+            "포장이 미개봉인 경우에 한하여 (배송 완료일 기준 15일 이내 가능) 배송된 상품이 주문내용 및 상품 정보와 다른 경우 (배송 완료일 기준 15일 이내 가능) 초기불량 및 하자의 사유인 경우 (단, 일"
+          ]
+        },
+        {
+          "kind": "NEW_ORIGINAL_PUBLIC_PAGE_REVIEW",
+          "scope": "DOMESTIC_RETAIL_BOX_STOCK_REVIEW",
+          "sourceUrl": "https://usr.icoda.co.kr/item/view/1321665",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:22:56.893Z",
+          "responseSha256": "0affeae93f85c35e4fe4060655ff33dec845510c1a19b2c2786298f94f5fca03",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "utf-8",
+          "pageTitle": "아이코다",
+          "redirectLocation": null,
+          "expectedPartNumber": "BX8071513900K",
+          "partNumberLiteralPresent": false,
+          "currentOwnPageFacts": {
+            "jsFields": {
+              "view_name": "박스 인텔 코어13세대 정품 i9-13900K CPU (랩터레이크/LGA1700/쿨러미포함)",
+              "stock_cnt": "353",
+              "pno": "1321665",
+              "product_type": "110",
+              "price": "715000"
+            },
+            "contexts": [
+              {
+                "needle": "판매가 :",
+                "context": " 정품 i9-13900K CPU (랩터레이크/LGA1700/쿨러미포함) --> 715,000 원 최대할인가 715,000 ~ 715,000 구매후기 100P 아이코다 회원 혜택가 판매가 : 715,000 무통장 최대할인가 : 715,000 무통장 결제포인트 0 + 등급포인트 0 사용시 신용카드 최대할인가 : 715,000 등급포인트 0 사용시 카드혜택 무이자할부 보기 배송방법 아이코다배송 배송비 무료배송 배송혜택 회원전용 혜택보기 합계 715,000 원 일시품절 입고알림 상품문의 리스트그룹 [품절] 박스 인텔 코어13세대 정품 i9-13900K CPU (랩터레이크/LGA1700/쿨러미포함) 715,000 원 [품절] 벌크 병행상품 인텔 "
+              },
+              {
+                "needle": "일시품절",
+                "context": "사용시 신용카드 최대할인가 : 715,000 등급포인트 0 사용시 카드혜택 무이자할부 보기 배송방법 아이코다배송 배송비 무료배송 배송혜택 회원전용 혜택보기 합계 715,000 원 일시품절 입고알림 상품문의 리스트그룹 [품절] 박스 인텔 코어13세대 정품 i9-13900K CPU (랩터레이크/LGA1700/쿨러미포함) 715,000 원 [품절] 벌크 병행상품 인텔 코어13세대 i9-13900K CPU (랩터레이크/LGA1700/쿨러미포함) 626,000 원 [품절] 박스 인텔 코어13세대 정품 i9-13900K CPU (랩터레이크/LGA1700/쿨러미포함) 715,000 원 [품절] 벌크 병행상품 인텔 코어13세대 i9-13900K CPU"
+              },
+              {
+                "needle": "포장 박스",
+                "context": "카카오톡 페이스북 트위터 URL 복사 상품문의 > 상품정보 상품번호 1321665 등록일 2022.10.05 브랜드 코어 i9 세대 13세대 클럭 3.0GHz 소켓 소켓 1700 포장 박스 코어수 24코어 쓰레드 32쓰레드 유통 대리점 정품 쿨러유무 쿨러미포함 버퍼메모리 36MB 그래픽 인텔 UHD 770 전력소모량 125 박스 인텔 코어13세대 정품 i9-13900K CPU (랩터레이크/LGA1700/쿨러미포함) --> 715,000 원 최대할인가 715,000 ~ 715,000 구매후기 100P 아이코다 회원 혜택가 판매가 : 715,000 무통장 최대할인가 : 715,000 무통장 결제포인트 0 + 등급포인트 0 사용시 신용카드 최"
+              },
+              {
+                "needle": "유통 대리점 정품",
+                "context": " > 상품정보 상품번호 1321665 등록일 2022.10.05 브랜드 코어 i9 세대 13세대 클럭 3.0GHz 소켓 소켓 1700 포장 박스 코어수 24코어 쓰레드 32쓰레드 유통 대리점 정품 쿨러유무 쿨러미포함 버퍼메모리 36MB 그래픽 인텔 UHD 770 전력소모량 125 박스 인텔 코어13세대 정품 i9-13900K CPU (랩터레이크/LGA1700/쿨러미포함) --> 715,000 원 최대할인가 715,000 ~ 715,000 구매후기 100P 아이코다 회원 혜택가 판매가 : 715,000 무통장 최대할인가 : 715,000 무통장 결제포인트 0 + 등급포인트 0 사용시 신용카드 최대할인가 : 715,000 등급포인트 0 사용"
+              }
+            ],
+            "scriptFacts": []
+          },
+          "eligibleForImport": false
+        }
+      ],
+      "currentQuotes": [],
+      "retailSkuProposal": null,
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "followUpReason": "Intel 한국 공식 BOX 코드 BX8071513900K와 새 아이코다 국내 정품 박스 상품명은 모델·포장이 일치합니다. 아이코다 판매가 715,000원 표시는 일시품절 영역의 금액으로 현재 구매가가 아닙니다. 페이지의 내부 stock_cnt가 양수여도 일시품절 표시를 우선합니다. 기존 다나와 10,000,000원 호가는 현재 독립 판매 검증이 없어 반영하지 않습니다.",
+      "followUpReasonCode": "NO_PURCHASABLE_INDEPENDENT_BOX_SELLER",
+      "verificationScope": "DOMESTIC_EXACT_SALE_SKU_NOT_FULLY_VERIFIED",
+      "rejectedCurrentDisplayAmounts": [
+        {
+          "sourceUrl": "https://usr.icoda.co.kr/item/view/1321665",
+          "displayedPriceKrw": 715000,
+          "observedAt": "2026-10-10T11:22:56.893Z",
+          "responseSha256": "0affeae93f85c35e4fe4060655ff33dec845510c1a19b2c2786298f94f5fca03",
+          "actualOwnPagePurchasable": false,
+          "reason": "TEMPORARILY_OUT_OF_STOCK_IN_OWN_PRODUCT_AREA",
+          "metadataStockIsNotPurchasability": true
+        }
+      ],
+      "completedAt": "2026-10-10T11:29:36.532Z"
+    },
+    {
+      "canonicalId": "d42f53fd-ef2b-391d-938e-3bfe2214578d",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1380a6eb-8357-4ce2-be1c-190fa045a108"
+      },
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 4600G",
+      "partNumber": "100-100000147BOX",
+      "saleUnit": "PRODUCT",
+      "moduleCount": null,
+      "status": "HELD",
+      "reasonCodes": [
+        "DOMESTIC_MULTIPACK_DOES_NOT_MATCH_BOX"
+      ],
+      "reason": "Reviewed discovery/variant lists showed only bulk, multipack, overseas or used offers; this research did not verify a qualifying boxed page. This is not global unavailability evidence.",
+      "detailedEvidenceFile": "data/catalog-review/remaining232-cpu-prices-2026-10-10.json",
+      "publicationApproved": false,
+      "identity": {
+        "canonicalId": "d42f53fd-ef2b-391d-938e-3bfe2214578d",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 4600G",
+        "partNumber": "100-100000147BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "priorResearch": {
+        "reasonCode": "NO_VERIFIED_DOMESTIC_BOX_PAGE",
+        "currentQuote": null,
+        "manufacturerEvidence": {
+          "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-4000-series/amd-ryzen-5-4600g.html",
+          "observedAt": "2026-10-10T10:11:59.128Z",
+          "responseSha256": "48a82887ee7f921abd76c717dcc4d62382308056de30c76e35f0c0cf27f649fd",
+          "pageTitle": "AMD Ryzen 5 4600G Drivers and Downloads | Latest Version",
+          "modelIdentityMatches": true,
+          "boxedIds": [
+            "100-100000147BOX"
+          ],
+          "boxedRecords": [
+            {
+              "label": "Product ID Boxed",
+              "value": "100-100000147BOX"
+            }
+          ],
+          "partNumberMatches": true
+        },
+        "retailPages": [
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=17287790",
+            "productTitle": "AMD 라이젠5-3세대 4600G (르누아르) (해외구매)",
+            "observedAt": "2026-10-10T10:11:59.992Z",
+            "responseSha256": "850d617fffa3dc27220b094935acb49fd89e20fcb16105d649e737d41e7281ab"
+          }
+        ],
+        "outlierReview": null
+      },
+      "primaryEvidence": [
+        {
+          "kind": "CURRENT_MANUFACTURER_KOREAN_PRODUCT_ORDER_CODE",
+          "sourceUrl": "https://www.amd.com/ko/support/downloads/drivers.html/processors/ryzen/ryzen-4000-series/amd-ryzen-5-4600g.html",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:16:28.069Z",
+          "responseSha256": "dfa3aacfd74bd21dcaea3473e8735cc5b1fdc2a81a1fe0326bc1fce900dee010",
+          "pageTitle": "AMD Ryzen 5 4600G Drivers and Downloads | Latest Version",
+          "redirectLocation": null,
+          "boxedRecords": [
+            {
+              "label": "제품 ID 박스 포장됨",
+              "value": "100-100000147BOX"
+            }
+          ],
+          "boxedPartNumbers": [
+            "100-100000147BOX"
+          ],
+          "modelIdentityMatches": true,
+          "catalogPartNumberMatches": true
+        },
+        {
+          "kind": "NEW_DOMESTIC_ORIGINAL_PAGE_REVIEW",
+          "scope": "NEW_DOMESTIC_MULTIPACK_EXCLUSION",
+          "sourceUrl": "https://pc-factory.co.kr/shop/product_detail.html?pd_no=152148",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:26:16.279Z",
+          "responseSha256": "2bc0d5196b93e005ae45a9ffc20b7f518b9c5bab6e550740077b8afa2b9de126",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "euc-kr",
+          "pageTitle": "피씨팩토리",
+          "redirectLocation": null,
+          "expectedPn": "100-100000147BOX",
+          "partNumberLiteralPresent": false,
+          "multipackInOwnTitle": false,
+          "unavailableOwnPageEvidence": [
+            "6,000 원 무이자할부 정보 대량구매/상담 택배 3,000 제조사 AMD 수량 적립금 0 총 상품금액 판매가 원 맞춤가 원 품절 상품입니다. 함께 보면 좋은 \"1분 요약 영상\" 상품 쿨러마스터 MASTERLIQUID 360 ATMOS II VRM Fan (블랙) 판매가 183,700 ",
+            "평균 3일 이내로 배송됩니다. 토요일/공휴일은 배송기간에 포함되지 않습니다. 도서/산간지역은 추가 2~3일 정도 소요됩니다. 일시품절, 제조사 상품수급 문제, 천재지변 등의 사유로 배송이 늦어질 수 있습니다. 배송지역 전국 (일부지역 제외) 배송비 도서 산간지역은 추가비용이 발생할 수 "
+          ]
+        },
+        {
+          "kind": "NEW_DOMESTIC_EXACT_OWN_PACKAGE_EXCLUSION",
+          "sourceUrl": "https://pc-factory.co.kr/shop/product_detail.html?pd_no=152148",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:27:56.388Z",
+          "responseSha256": "82f2e83971b6ba7a0adef654c62ee203c718318ade898d25550d58d90d6efacc",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "euc-kr",
+          "ownProductName": "AMD 라이젠5-3세대 4600G (르누아르) (멀티팩(정품)) AMD / 세대명 : 3세대(Zen 2) 르누아르 / 라이젠 5 4600G / 코어 갯수 : 6 / 쓰레드 : 12 / 소켓 형태 : AM4 / 동작 클럭 : 3.7(GHz) / 터보 클럭 : 4.2(GHz) / 내장그래픽 / 그래픽 코어 모델 : 라데온 그래픽 7 / 1,900(MHz) / StoreMI / 멀티팩(Wraith Stealth쿨러 포함) / 상품번",
+          "ownModelPackageContext": "AMD 라이젠5-3세대 4600G (르누아르) (멀티팩(정품)) AMD / 세대명 : 3세대(Zen 2) 르누아르 / 라이젠 5 4600G / 코어 갯수 : 6 / 쓰레드 : 12 / 소켓 형태 : AM4 / 동작 클럭 : 3.7(GHz) / 터보 클럭 : 4.2(GHz) / 내장그래픽 / 그래픽 코어 모델 : 라데온 그래픽 7 / 1,900(MHz) / StoreMI / 멀티팩(Wraith Stealth쿨러 포함) / 상품번",
+          "multipackDeclared": true,
+          "exclusionReason": "MULTIPACK_IS_NOT_CATALOG_BOX_SKU",
+          "eligibleForImport": false
+        }
+      ],
+      "currentQuotes": [],
+      "retailSkuProposal": null,
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "followUpReason": "AMD 한국 공식 100-100000147BOX는 일치합니다. 새 피씨팩토리 원문의 자체 상품명은 멀티팩이며 품절 상품입니다. 국내 BOX 판매가로 채택할 수 없습니다. 확인한 판매처 범위를 넘어 전체 국내 BOX 재고 부재나 단종을 확정하지 않습니다.",
+      "followUpReasonCode": "DOMESTIC_MULTIPACK_DOES_NOT_MATCH_BOX",
+      "verificationScope": "DOMESTIC_EXACT_SALE_SKU_NOT_FULLY_VERIFIED",
+      "completedAt": "2026-10-10T11:29:36.532Z"
+    },
+    {
+      "canonicalId": "dda7f599-9514-39db-bc64-03d1c288a1d3",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e11970e8-4f2c-426d-872c-92c0f4160ec4"
+      },
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5700X3D",
+      "partNumber": "100-100001503WOF",
+      "saleUnit": "PRODUCT",
+      "moduleCount": null,
+      "status": "HELD",
+      "reasonCodes": [
+        "DOMESTIC_MULTIPACK_OR_OVERSEAS_NOT_EXACT_WOF"
+      ],
+      "reason": "Reviewed discovery/variant lists showed only bulk, multipack, overseas or used offers; this research did not verify a qualifying boxed page. This is not global unavailability evidence.",
+      "detailedEvidenceFile": "data/catalog-review/remaining232-cpu-prices-2026-10-10.json",
+      "publicationApproved": false,
+      "identity": {
+        "canonicalId": "dda7f599-9514-39db-bc64-03d1c288a1d3",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5700X3D",
+        "partNumber": "100-100001503WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "priorResearch": {
+        "reasonCode": "NO_VERIFIED_DOMESTIC_BOX_PAGE",
+        "currentQuote": null,
+        "manufacturerEvidence": {
+          "sourceUrl": "https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700x3d.html",
+          "observedAt": "2026-10-10T10:12:02.611Z",
+          "responseSha256": "74ea845d6e3864c9aec31d664762b4e59ff146e64b49001747f0bda150732245",
+          "pageTitle": "AMD Ryzen 7 5700X3D Drivers and Downloads | Latest Version",
+          "modelIdentityMatches": true,
+          "boxedIds": [
+            "100-100001503WOF",
+            "100-100001503"
+          ],
+          "boxedRecords": [
+            {
+              "label": "Product ID Boxed",
+              "value": "100-100001503WOF , 100-100001503"
+            }
+          ],
+          "partNumberMatches": true
+        },
+        "retailPages": [
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=47839244",
+            "productTitle": "AMD 라이젠7-4세대 5700X3D (버미어) (해외구매)",
+            "observedAt": "2026-10-10T10:12:03.427Z",
+            "responseSha256": "2c93ed2f3c04a50057770ab94247dd1bb7bf5915831d9b900b65036830ef13f3"
+          }
+        ],
+        "outlierReview": null
+      },
+      "primaryEvidence": [
+        {
+          "kind": "CURRENT_MANUFACTURER_KOREAN_PRODUCT_ORDER_CODE",
+          "sourceUrl": "https://www.amd.com/ko/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700x3d.html",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:16:28.297Z",
+          "responseSha256": "51298b62c508fca5d0b8d411028d7ba952f49bb3621d10561f5f09f20d6c1649",
+          "pageTitle": "AMD Ryzen 7 5700X3D Drivers and Downloads | Latest Version",
+          "redirectLocation": null,
+          "boxedRecords": [
+            {
+              "label": "제품 ID 박스 포장됨",
+              "value": "100-100001503WOF , 100-100001503"
+            }
+          ],
+          "boxedPartNumbers": [
+            "100-100001503WOF",
+            "100-100001503"
+          ],
+          "modelIdentityMatches": true,
+          "catalogPartNumberMatches": true
+        },
+        {
+          "kind": "NEW_DOMESTIC_STORE_ORIGINAL_PRODUCT_REVIEW",
+          "scope": "EXACT_MANUFACTURER_PN_BUT_DOMESTIC_OR_OVERSEAS_REVIEW",
+          "sourceUrl": "https://www.ssg.com/item/itemView.ssg?itemId=1000642531845",
+          "httpStatus": 403,
+          "observedAt": "2026-10-10T11:16:29.978Z",
+          "responseSha256": "7538868024a90bb1b566cbc57b982ae05feb9b8910fa8ef36322bdd10696d1a1",
+          "pageTitle": "신세계적 쇼핑포털 SSG.COM",
+          "redirectLocation": null,
+          "error": "HTTP 403",
+          "exactManufacturerPnMatches": null,
+          "exclusionReason": null,
+          "eligibility": "ACCESS_BLOCKED_NO_CURRENT_PRODUCT_VERIFICATION"
+        },
+        {
+          "kind": "NEW_DOMESTIC_ORIGINAL_PAGE_REVIEW",
+          "scope": "NEW_DOMESTIC_MULTIPACK_EXCLUSION",
+          "sourceUrl": "https://www.etlandmall.co.kr/pc/product/product.do?prdMstCd=S6293460",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:26:18.776Z",
+          "responseSha256": "d0451e3008bbe9d44180b4136453f714c9e4215fe2c8db424a5b9670a61dd4b6",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "utf-8",
+          "pageTitle": "AMD 라이젠7-4세대 5700X3D (버미어) (멀티팩 정품)",
+          "redirectLocation": null,
+          "expectedPn": "100-100001503WOF",
+          "partNumberLiteralPresent": false,
+          "multipackInOwnTitle": true,
+          "unavailableOwnPageEvidence": [
+            "기 온라인 단독 리뷰 건 AMD 라이젠7-4세대 5700X3D (버미어) (멀티팩 정품) 상품번호 S6293460 1 / 1 현재 판매중인 상품이 아닙니다. 할인 · 혜택 모두보기 팝업 닫기 정상가 288,000원 e.POINT 최대적립 i 창닫기 최대 적립 포인트는 할인가 기준으로 계"
+          ]
+        }
+      ],
+      "currentQuotes": [],
+      "retailSkuProposal": null,
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "followUpReason": "AMD 한국 공식 100-100001503WOF는 확인했습니다. 새 전자랜드 원문은 멀티팩 정품이며 현재 판매중이 아닙니다. 정확 PN을 제목에 포함한 SSG 후보는 현재 403이어서 해외배송 여부·가격을 원문 사실로 확정하지 않았으며 재요청하지 않습니다.",
+      "followUpReasonCode": "DOMESTIC_MULTIPACK_OR_OVERSEAS_NOT_EXACT_WOF",
+      "verificationScope": "DOMESTIC_EXACT_SALE_SKU_NOT_FULLY_VERIFIED",
+      "completedAt": "2026-10-10T11:29:36.532Z"
+    },
+    {
+      "canonicalId": "ef545658-d152-34d2-8fc6-dcd29c1a843f",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "2ab00ac9-d91e-4250-9297-2bdd6f617d41"
+      },
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 7900",
+      "partNumber": null,
+      "saleUnit": "PRODUCT",
+      "moduleCount": null,
+      "status": "HELD",
+      "reasonCodes": [
+        "CURRENT_BOX_ORDER_CODES_AND_COOLER_VARIANT_UNRESOLVED"
+      ],
+      "reason": "Current manufacturer boxed IDs are WOF/WOZ variants without the former cooler; the retailer 정품 page does not identify its actual boxed order code. Preserve observed 488890 KRW separately until package/cooler SKU is verified.",
+      "detailedEvidenceFile": "data/catalog-review/remaining232-cpu-prices-2026-10-10.json",
+      "publicationApproved": false,
+      "identity": {
+        "canonicalId": "ef545658-d152-34d2-8fc6-dcd29c1a843f",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7900",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "priorResearch": {
+        "reasonCode": "RETAIL_COOLER_VARIANT_AND_CURRENT_MANUFACTURER_BOXED_CODE_REVIEW_REQUIRED",
+        "currentQuote": {
+          "amountKrw": 488890,
+          "observedAt": "2026-10-10T10:12:06.700Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=18718592",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "manufacturerEvidence": {
+          "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7900.html",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T10:16:21.545Z",
+          "responseSha256": "12080149dc1422f223b1b156b0cd6e87fa5b4e9b4cae02a47c87a8f8652362f2",
+          "pageTitle": "AMD Ryzen 9 7900",
+          "redirectLocation": null,
+          "modelIdentityMatches": true,
+          "boxedIds": [
+            "100-100000590WOF",
+            "100-100000590WOZ"
+          ],
+          "boxedRecords": [
+            {
+              "label": "Product ID Boxed *Due to the AMD SR4 cooler reaching EOL status, select AMD Ryzen 7000 and 5000 Product ID Boxed models are updated to no longer include a cooler, removing the AMD SR4 cooler, starting 8/1/2025. Contact your local AMD Sales Representative for more information.&lt;/p> \" tabindex=\"0\" data-bs-html=\"true\" ref=\"info\">",
+              "value": "100-100000590WOF* , 100-100000590WOZ*"
+            }
+          ],
+          "partNumberMatches": null
+        },
+        "retailPages": [
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=18718631",
+            "productTitle": "AMD 라이젠9-5세대 7900 (라파엘) (멀티팩 정품)",
+            "observedAt": "2026-10-10T10:12:05.712Z",
+            "responseSha256": "0f02f9cbf06e69feaf96e2ad44e173d9cddbf088038d62825e9af597e836bdfd"
+          },
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=18718592",
+            "productTitle": "AMD 라이젠9-5세대 7900 (라파엘) (정품)",
+            "observedAt": "2026-10-10T10:12:06.700Z",
+            "responseSha256": "663e4fdd671dfe3cbc2ff017087e91b663ec1c301796a8ec70233ad5c7c09a8a"
+          }
+        ],
+        "outlierReview": null
+      },
+      "primaryEvidence": [
+        {
+          "kind": "CURRENT_MANUFACTURER_KOREAN_PRODUCT_ORDER_CODE",
+          "sourceUrl": "https://www.amd.com/ko/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7900.html",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:16:29.589Z",
+          "responseSha256": "6cc1b2d5a5b2c2ba364d9344a03b1742f9e8ec21db3cf7c0e4074e75be24dadd",
+          "pageTitle": "AMD Ryzen 9 7900",
+          "redirectLocation": null,
+          "boxedRecords": [
+            {
+              "label": "제품 ID 박스 포장됨 (쿨러 EOL 안내 별도 기록)",
+              "value": "100-100000590WOF* , 100-100000590WOZ*"
+            }
+          ],
+          "boxedPartNumbers": [
+            "100-100000590WOF",
+            "100-100000590WOZ"
+          ],
+          "modelIdentityMatches": true,
+          "catalogPartNumberMatches": null
+        }
+      ],
+      "currentQuotes": [],
+      "retailSkuProposal": null,
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "followUpReason": "현재 AMD 한국 공식 박스 코드는 100-100000590WOF·WOZ이며, 2025-08-01부터 일부 박스형 제품의 SR4 쿨러가 제거된다는 공지가 있습니다. 기존 정품 후보의 쿨러 포함 설명과 현재 WOF·WOZ를 같은 판매 SKU로 확정할 수 없습니다. PN 없는 기존 레거시 ID에 BOX/WOF/WOZ를 임의 연결하지 않고 국내 실제 판매 포장·쿨러·출고 주문코드 확인을 남깁니다.",
+      "followUpReasonCode": "CURRENT_BOX_ORDER_CODES_AND_COOLER_VARIANT_UNRESOLVED",
+      "verificationScope": "DOMESTIC_EXACT_SALE_SKU_NOT_FULLY_VERIFIED",
+      "currentManufacturerPackagingChange": {
+        "manufacturerSourceUrl": "https://www.amd.com/ko/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7900.html",
+        "observedAt": "2026-10-10T11:16:29.589Z",
+        "responseSha256": "6cc1b2d5a5b2c2ba364d9344a03b1742f9e8ec21db3cf7c0e4074e75be24dadd",
+        "boxedPartNumbers": [
+          "100-100000590WOF",
+          "100-100000590WOZ"
+        ],
+        "coolerRemovalEffectiveDate": "2025-08-01",
+        "domesticPackagingAffectedExactlyVerified": false
+      },
+      "completedAt": "2026-10-10T11:29:36.532Z"
+    },
+    {
+      "canonicalId": "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:245694:model"
+      },
+      "type": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 250K Plus",
+      "partNumber": null,
+      "saleUnit": "PRODUCT",
+      "moduleCount": null,
+      "status": "HELD",
+      "reasonCodes": [
+        "SEPARATE_RETAIL_SKU_PROPOSAL_REQUIRED"
+      ],
+      "reason": null,
+      "detailedEvidenceFile": "data/catalog-review/remaining232-cpu-prices-2026-10-10.json",
+      "publicationApproved": false,
+      "identity": {
+        "canonicalId": "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 250K Plus",
+        "partNumber": null,
+        "identityKind": "MODEL_REFERENCE",
+        "role": "INSTALLED_PC_REFERENCE",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      },
+      "priorResearch": {
+        "reasonCode": "MODEL_REFERENCE_REQUIRES_SEPARATE_RETAIL_SKU_REVIEW",
+        "currentQuote": {
+          "amountKrw": 340130,
+          "observedAt": "2026-10-10T10:12:08.790Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=108424451",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "manufacturerEvidence": {
+          "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/245694/intel-core-ultra-5-processor-250k-plus-30m-cache-up-to-5-30-ghz/ordering.html",
+          "observedAt": "2026-10-10T10:12:07.799Z",
+          "responseSha256": "0d73b7c18cb99ee627de59e28504fbf3041d956a3ad13ffe7ee946a42060ec7c",
+          "pageTitle": "Intel Core Ultra 5 processor 250K Plus",
+          "modelIdentityMatches": true,
+          "boxedIds": [
+            "BX80768250K",
+            "BXC80768250K"
+          ],
+          "boxedRecords": [
+            {
+              "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+              "value": "BX80768250K",
+              "context": "Boxed Intel Core Ultra 5 processor 250K Plus (30M Cache, up to 5.30 GHz) FCLGA18W Ordering Code BX80768250K Spec Code SA4UZ Shipping Media BOX Stepping B0 MDDS Content IDs 914948 PCN Content IDs 919379 Recommended Customer Price $229.00 "
+            },
+            {
+              "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+              "value": "BXC80768250K",
+              "context": "Boxed Intel Core Ultra 5 processor 250K Plus (30M Cache, up to 5.30 GHz) FCLGA18W, for China Ordering Code BXC80768250K Spec Code SA4UZ Shipping Media BOX Stepping B0 MDDS Content IDs 914948 PCN Content IDs 919379 Trade Compliance Information ECCN 5A992.C CCATS 740.17B1 US HTS 8542310050 Get the lat"
+            }
+          ],
+          "partNumberMatches": null
+        },
+        "retailPages": [
+          {
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=108424451",
+            "productTitle": "인텔 코어 울트라5 시리즈2 250K Plus (애로우레이크 리프레시) (정품)",
+            "observedAt": "2026-10-10T10:12:08.790Z",
+            "responseSha256": "84bcbb8cebc2d4569c1bbecabb502d0bffd63a477c7a5a221a4db0c71d28dc13"
+          }
+        ],
+        "outlierReview": null
+      },
+      "primaryEvidence": [
+        {
+          "kind": "CURRENT_MANUFACTURER_KOREAN_PRODUCT_ORDER_CODE",
+          "sourceUrl": "https://www.intel.co.kr/content/www/kr/ko/products/sku/245694/intel-core-ultra-5-processor-250k-plus-30m-cache-up-to-5-30-ghz/ordering.html",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:16:29.854Z",
+          "responseSha256": "a87816454989e14ad6b9c2f1d34866eedcc5fef5a1902465786184b69773c039",
+          "pageTitle": "Intel Core Ultra 5 processor 250K Plus",
+          "redirectLocation": null,
+          "boxedRecords": [
+            {
+              "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+              "value": "BX80768250K",
+              "context": "Boxed Intel Core Ultra 5 processor 250K Plus (30M Cache, up to 5.30 GHz) FCLGA18W 주문 코드 BX80768250K 사양 코드 SA4UZ 운송 매체 BOX 스테핑 B0 MDDS 콘텐츠 ID 914948 PCN 콘텐츠 ID 919379 권장 소비자 가격 $229.00 "
+            },
+            {
+              "label": "Boxed Intel Ordering Code / Shipping Media BOX",
+              "value": "BXC80768250K",
+              "context": "Boxed Intel Core Ultra 5 processor 250K Plus (30M Cache, up to 5.30 GHz) FCLGA18W, for China 주문 코드 BXC80768250K 사양 코드 SA4UZ 운송 매체 BOX 스테핑 B0 MDDS 콘텐츠 ID 914948 PCN 콘텐츠 ID 919379 "
+            }
+          ],
+          "boxedPartNumbers": [
+            "BX80768250K",
+            "BXC80768250K"
+          ],
+          "modelIdentityMatches": true,
+          "lifecycleHeadings": [],
+          "catalogPartNumberMatches": null
+        },
+        {
+          "kind": "NEW_ORIGINAL_PUBLIC_PAGE_REVIEW",
+          "scope": "DOMESTIC_RETAIL_BOX_NEW_SKU_PROPOSAL",
+          "sourceUrl": "https://usr.icoda.co.kr/item/view/1739432",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:22:54.670Z",
+          "responseSha256": "0594c7bbfd8069d5c49cb721e72ad696c387a043ffece7317f06b0c0bea73d13",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "utf-8",
+          "pageTitle": "아이코다",
+          "redirectLocation": null,
+          "expectedPartNumber": "BX80768250K",
+          "partNumberLiteralPresent": false,
+          "currentOwnPageFacts": {
+            "jsFields": {
+              "view_name": "박스 인텔 코어 울트라 5 정품 250K PLUS CPU (애로우레이크 리프레시/LGA1851/쿨러미포함)",
+              "stock_cnt": "478",
+              "pno": "1739432",
+              "product_type": "110",
+              "price": "342100"
+            },
+            "contexts": [
+              {
+                "needle": "판매가 :",
+                "context": "0K PLUS CPU (애로우레이크 리프레시/LGA1851/쿨러미포함) --> 342,100 원 최대할인가 342,100 ~ 342,100 구매후기 100P 아이코다 회원 혜택가 판매가 : 342,100 무통장 최대할인가 : 342,100 무통장 결제포인트 0 + 등급포인트 0 사용시 신용카드 최대할인가 : 342,100 등급포인트 0 사용시 카드혜택 무이자할부 보기 배송방법 아이코다배송 배송비 유료배송 2,500원 배송혜택 회원전용 혜택보기 합계 342,100 원 장바구니 바로구매 상품문의 리스트그룹 박스 인텔 코어 울트라 5 정품 250K PLUS CPU (애로우레이크 리프레시/LGA1851/쿨러미포함) 342,100 원 벌크 정품 "
+              },
+              {
+                "needle": "포장 박스",
+                "context": "트위터 URL 복사 상품문의 > 상품정보 상품번호 1739432 등록일 2026.03.24 브랜드 코어 울트라5 세대 코어 울트라 시리즈 2 클럭 4.2GHz 소켓 소켓 1851 포장 박스 코어수 18코어 쓰레드 18쓰레드 유통 대리점 정품 쿨러유무 쿨러미포함 버퍼메모리 30MB 그래픽 인텔 그래픽스 전력소모량 125 박스 인텔 코어 울트라 5 정품 250K PLUS CPU (애로우레이크 리프레시/LGA1851/쿨러미포함) --> 342,100 원 최대할인가 342,100 ~ 342,100 구매후기 100P 아이코다 회원 혜택가 판매가 : 342,100 무통장 최대할인가 : 342,100 무통장 결제포인트 0 + 등급포인트 0 사용시 신"
+              },
+              {
+                "needle": "유통 대리점 정품",
+                "context": "번호 1739432 등록일 2026.03.24 브랜드 코어 울트라5 세대 코어 울트라 시리즈 2 클럭 4.2GHz 소켓 소켓 1851 포장 박스 코어수 18코어 쓰레드 18쓰레드 유통 대리점 정품 쿨러유무 쿨러미포함 버퍼메모리 30MB 그래픽 인텔 그래픽스 전력소모량 125 박스 인텔 코어 울트라 5 정품 250K PLUS CPU (애로우레이크 리프레시/LGA1851/쿨러미포함) --> 342,100 원 최대할인가 342,100 ~ 342,100 구매후기 100P 아이코다 회원 혜택가 판매가 : 342,100 무통장 최대할인가 : 342,100 무통장 결제포인트 0 + 등급포인트 0 사용시 신용카드 최대할인가 : 342,100 등급포인트"
+              }
+            ],
+            "scriptFacts": []
+          },
+          "eligibleForImport": false
+        },
+        {
+          "kind": "MODEL_AND_RETAIL_PACKAGE_QUOTE_REOBSERVATION_AFTER_SCOPED_REVIEW",
+          "scope": "MODEL_AND_ADVERTISED_DOMESTIC_BOX_PACKAGE_ONLY",
+          "sourceUrl": "https://usr.icoda.co.kr/item/view/1739432",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:23:46.432Z",
+          "scopedVerifiedAt": "2026-10-10T11:23:43.751Z",
+          "responseSha256": "a8dea8f87c5d42479d00ae3d4917ddcd919b2de9c08a1888082523eb74f19728",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "utf-8",
+          "ownProductName": "박스 인텔 코어 울트라 5 정품 250K PLUS CPU (애로우레이크 리프레시/LGA1851/쿨러미포함)",
+          "ownNormalPriceField": "342,100",
+          "ownPriceSectionText": "",
+          "domesticExactOrderCodeVerified": false,
+          "eligibleForImport": false
+        }
+      ],
+      "currentQuotes": [
+        {
+          "sourceProvider": "ICODA",
+          "sourceUrl": "https://usr.icoda.co.kr/item/view/1739432",
+          "priceKrw": 342100,
+          "currency": "KRW",
+          "observedAt": "2026-10-10T11:23:46.432Z",
+          "responseSha256": "a8dea8f87c5d42479d00ae3d4917ddcd919b2de9c08a1888082523eb74f19728",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "modelAndAdvertisedRetailPackageVerifiedAt": "2026-10-10T11:23:43.751Z",
+          "fullyVerifiedAt": null,
+          "domesticExactOrderCodeVerified": false,
+          "condition": "NEW",
+          "packaging": "DOMESTIC_AUTHORIZED_BOX_WITHOUT_COOLER",
+          "priceBasis": "ORDINARY_PRODUCT_ONLY_NO_SHIPPING_OR_PROMOTIONS",
+          "importEligible": false,
+          "requiresProviderPolicyExpansion": true
+        }
+      ],
+      "retailSkuProposal": {
+        "stage": "UNAPPROVED_MODEL_PACKAGE_PRICE_EVIDENCE_ONLY",
+        "existingModelCanonicalId": "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+        "existingModelSourceIdentity": {
+          "sourceName": "MANUFACTURER",
+          "externalId": "intel:ark:245694:model"
+        },
+        "existingModelPreserved": true,
+        "newCanonicalId": null,
+        "newSourceIdentity": null,
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 250K Plus",
+        "candidatePartNumber": "BX80768250K",
+        "alternativeChinaPartNumber": "BXC80768250K",
+        "saleUnit": "PRODUCT",
+        "moduleCount": null,
+        "domesticRetailDeclaredPackaging": "AUTHORIZED_BOX_WITHOUT_COOLER",
+        "domesticPhysicalPartNumberConfirmed": false,
+        "manufacturerSourceUrl": "https://www.intel.co.kr/content/www/kr/ko/products/sku/245694/intel-core-ultra-5-processor-250k-plus-30m-cache-up-to-5-30-ghz/ordering.html",
+        "domesticRetailSourceUrl": "https://usr.icoda.co.kr/item/view/1739432",
+        "modelPackagePriceEvidence": {
+          "sourceProvider": "ICODA",
+          "sourceUrl": "https://usr.icoda.co.kr/item/view/1739432",
+          "priceKrw": 342100,
+          "currency": "KRW",
+          "observedAt": "2026-10-10T11:23:46.432Z",
+          "responseSha256": "a8dea8f87c5d42479d00ae3d4917ddcd919b2de9c08a1888082523eb74f19728",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "modelAndAdvertisedRetailPackageVerifiedAt": "2026-10-10T11:23:43.751Z",
+          "fullyVerifiedAt": null,
+          "domesticExactOrderCodeVerified": false,
+          "condition": "NEW",
+          "packaging": "DOMESTIC_AUTHORIZED_BOX_WITHOUT_COOLER",
+          "priceBasis": "ORDINARY_PRODUCT_ONLY_NO_SHIPPING_OR_PROMOTIONS",
+          "importEligible": false,
+          "requiresProviderPolicyExpansion": true
+        },
+        "remainingChecks": [
+          "판매처 자체 주문코드·라벨 등 실제 출고 BOX PN의 공개 1차 증거",
+          "신규 판매 상품·모델 연결을 별도 컨펌",
+          "현재 지원되지 않는 판매처 가격 공급자 정책 확장을 별도 검토"
+        ],
+        "productsAdded": 0
+      },
+      "verifiedAt": null,
+      "newPriceObservedAt": "2026-10-10T11:23:46.432Z",
+      "followUpReason": "Intel 한국 주문 페이지의 BX80768250K BOX 코드와 새 아이코다 자체 상품명의 박스·대리점 정품·쿨러 미포함·250K PLUS를 대조했습니다. 일반 상품가 342,100원을 검토 후 재관측했습니다. 현재 ID는 PN 없는 설치 모델 참고이므로 가격을 반영하지 않고 별도 판매 SKU 후보와 공급자 정책 확장 필요성을 남깁니다.",
+      "modelAndAdvertisedRetailPackageVerification": {
+        "verifiedAt": "2026-10-10T11:23:43.751Z",
+        "manufacturerSourceUrl": "https://www.intel.co.kr/content/www/kr/ko/products/sku/245694/intel-core-ultra-5-processor-250k-plus-30m-cache-up-to-5-30-ghz/ordering.html",
+        "manufacturerObservedAt": "2026-10-10T11:16:29.854Z",
+        "retailerSourceUrl": "https://usr.icoda.co.kr/item/view/1739432",
+        "retailerObservedAt": "2026-10-10T11:22:54.670Z",
+        "manufacturerGlobalBoxCode": "BX80768250K",
+        "domesticExactOrderCodeVerified": false,
+        "scope": "MODEL_AND_ADVERTISED_DOMESTIC_BOX_PACKAGE_ONLY",
+        "missingVerification": "Retailer own product does not expose the actual shipped BOX order code; global BOX order code is a proposal, not an established SKU binding."
+      },
+      "followUpReasonCode": "SEPARATE_RETAIL_SKU_PROPOSAL_REQUIRED",
+      "verificationScope": "DOMESTIC_EXACT_SALE_SKU_NOT_FULLY_VERIFIED",
+      "completedAt": "2026-10-10T11:29:36.532Z"
+    }
+  ],
+  "previewPayload": {
+    "schemaVersion": 1,
+    "items": []
+  },
+  "policyExpansionRequired": [
+    {
+      "canonicalId": "4328778c-84af-324b-bc60-e51891fff949",
+      "modelName": "Core Ultra 5 245K",
+      "candidatePartNumber": "BX80768245K",
+      "sourceProvider": "COMPUZONE",
+      "sourceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+      "priceKrw": 330500,
+      "currency": "KRW",
+      "observedAt": "2026-10-10T11:27:18.462Z",
+      "responseSha256": "d56608416501ba978ad48c20a03a92484792137487a4f0baf6456171477758e3",
+      "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+      "modelAndAdvertisedRetailPackageVerifiedAt": "2026-10-10T11:23:41.674Z",
+      "fullyVerifiedAt": null,
+      "domesticExactOrderCodeVerified": false,
+      "condition": "NEW",
+      "packaging": "DOMESTIC_AUTHORIZED_BOX_WITHOUT_COOLER",
+      "priceBasis": "ORDINARY_PRODUCT_ONLY_NO_SHIPPING_OR_PROMOTIONS",
+      "importEligible": false,
+      "requiresProviderPolicyExpansion": true,
+      "reason": "Provider currently not allowed; separate sale SKU needed; exact dispatched BOX order code remains unverified. This is evidence only, not a valid import row."
+    },
+    {
+      "canonicalId": "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+      "modelName": "Core Ultra 5 250K Plus",
+      "candidatePartNumber": "BX80768250K",
+      "sourceProvider": "ICODA",
+      "sourceUrl": "https://usr.icoda.co.kr/item/view/1739432",
+      "priceKrw": 342100,
+      "currency": "KRW",
+      "observedAt": "2026-10-10T11:23:46.432Z",
+      "responseSha256": "a8dea8f87c5d42479d00ae3d4917ddcd919b2de9c08a1888082523eb74f19728",
+      "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+      "modelAndAdvertisedRetailPackageVerifiedAt": "2026-10-10T11:23:43.751Z",
+      "fullyVerifiedAt": null,
+      "domesticExactOrderCodeVerified": false,
+      "condition": "NEW",
+      "packaging": "DOMESTIC_AUTHORIZED_BOX_WITHOUT_COOLER",
+      "priceBasis": "ORDINARY_PRODUCT_ONLY_NO_SHIPPING_OR_PROMOTIONS",
+      "importEligible": false,
+      "requiresProviderPolicyExpansion": true,
+      "reason": "Provider currently not allowed; separate sale SKU needed; exact dispatched BOX order code remains unverified. This is evidence only, not a valid import row."
+    }
+  ],
+  "completed": 10,
+  "summary": {
+    "total": 10,
+    "READY": 0,
+    "HELD": 10,
+    "NO_CURRENT_QUOTE": 0,
+    "RETAIL_SKU_PROPOSAL": 2,
+    "POLICY_EXPANSION_REQUIRED": 2,
+    "MODEL_PACKAGE_CURRENT_QUOTE_EVIDENCE_ONLY": 2,
+    "INDEPENDENT_SELLER_NOT_PURCHASABLE": 2,
+    "CURRENT_MANUFACTURER_ORDER_CODE_REVIEWED": 10,
+    "PREVIEW_PRICE_ROWS": 0
+  },
+  "updatedAt": "2026-10-10T11:40:33.212Z",
+  "retailDiscoveryListing": {
+    "sourceUrl": "https://www1.icoda.co.kr/list/102708",
+    "httpStatus": 200,
+    "observedAt": "2026-10-10T11:16:31.638Z",
+    "responseSha256": "4917d3ea4fe7f4da528d82c6459d768eecdff2d17112ba55c522ec7470f983d0",
+    "pageTitle": "아이코다",
+    "redirectLocation": null,
+    "exactTargetRows": [
+      {
+        "modelToken": "245K",
+        "targetRowFound": false
+      },
+      {
+        "modelToken": "250K PLUS",
+        "targetRowFound": false
+      }
+    ],
+    "eligibility": "CLIENT_RENDERED_LIST_ORIGINAL_DID_NOT_EXPOSE_TARGET_ROWS"
+  },
+  "statusDefinitions": {
+    "HELD": "기존 canonical ID에 정확한 국내 신품 판매 SKU·구매 가능 상품가를 연결할 근거가 충분하지 않음. 특정 판매처 품절을 국내 전체 가격 부재나 단종으로 확대하지 않음.",
+    "READY": "기존 ID의 정확한 판매 구성, 제조사 근거, 허용 공급자의 현재 일반 상품가를 실제 검증 후 관측하여 미리보기에 넣을 수 있음.",
+    "NO_CURRENT_QUOTE": "정확 판매 구성은 확인했지만 조사 범위에서 현재 일반가 없음. 이번 CPU 10종은 정확 판매 구성 검토도 미완성이므로 HELD 유지."
+  },
+  "blockedDomains": [
+    {
+      "host": "item.gmarket.co.kr",
+      "status": 403,
+      "retries": 0
+    },
+    {
+      "host": "www.ssg.com",
+      "status": 403,
+      "retries": 0
+    },
+    {
+      "host": "smartstore.naver.com",
+      "status": 429,
+      "basis": "Prior task blocked; no request in followup",
+      "retries": 0
+    }
+  ],
+  "limitations": [
+    "검색 결과는 다른 원문 URL을 찾는 데만 사용했습니다. 검색 캐시 금액·재고·배송은 새 관측으로 저장하지 않았습니다.",
+    "한국 제조사 페이지의 글로벌 BOX 코드와 판매처의 국내 정품 박스 선언만으로 실제 출고 PN을 확정하지 않았습니다.",
+    "245K·250K Plus 가격 관측은 모델·광고된 포장 검토 뒤의 실제 원문 일반가입니다. 완전한 SKU verifiedAt은 null입니다.",
+    "이번 공급자 정책은 DANAWA/SAMSUNG_CNH만 허용합니다. COMPUZONE/ICODA 견적 증거는 가격 미리보기에 넣지 않습니다.",
+    "11번가 JSON-LD InStock 및 아이코다 stock_cnt 같은 메타데이터가 실제 판매중지·일시품절 표시와 충돌하면 구매 가능 견적으로 쓰지 않습니다."
+  ],
+  "validation": {
+    "heldAggregateUnchanged": true,
+    "priorCpuReportUnchanged": true,
+    "active80Unchanged": true,
+    "identities307Unchanged": true,
+    "completeCpuHeld10": true,
+    "uniqueCanonicalIds": 10,
+    "currentAllowedProviderPreviewRows": 0,
+    "quoteObservationsStrictlyAfterScopedVerification": true,
+    "priceWrites": 0,
+    "productWrites": 0,
+    "specWrites": 0,
+    "databaseAccess": 0,
+    "deployments": 0,
+    "gitCommits": 0,
+    "gitPushes": 0
+  },
+  "completedAt": "2026-10-10T11:40:33.212Z",
+  "initialCompletedAt": "2026-10-10T11:29:36.532Z",
+  "additionalHighPriceBridgeFollowup": {
+    "completedAt": "2026-10-10T11:40:33.212Z",
+    "scopeModels": [
+      "Ryzen 5 8600G",
+      "Ryzen 9 3900X"
+    ],
+    "regularCurrentAmountsPreserved": [
+      975000,
+      1500000
+    ],
+    "independentRetailerVerified": 0,
+    "highAmountAloneDoesNotExclude": true,
+    "knownBlockedMerchantDomainNotRetried": true
+  }
+}

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import test from 'node:test'
 import { CatalogApiError, createHttpCatalogClient } from '../src/features/catalog/catalogClient.ts'
-import type { CatalogDetail, CatalogPage, CatalogPriceStatus, CatalogProduct, CatalogSpecification } from '../src/features/catalog/catalogTypes.ts'
+import type { CatalogDetail, CatalogPage, CatalogPriceStatus, CatalogProduct, CatalogSpecification, ReferenceEstimate } from '../src/features/catalog/catalogTypes.ts'
 
 const attributions = [{ name: 'BuildCores OpenDB', notice: 'Contains data from BuildCores OpenDB.',
   url: 'https://github.com/buildcores/buildcores-open-db', license: 'ODC-By-1.0',
@@ -32,6 +32,40 @@ const hasCode = (code: string) => (error: unknown) => error instanceof CatalogAp
 const sharedPriceStatus = (overrides: Partial<CatalogPriceStatus> = {}): CatalogPriceStatus => ({
   origin: 'SHARED', lookupStatus: 'OK', freshness: 'FRESH', catalogVersion: 'pilot-2026-10-10-v1',
   checkedAt: '2026-10-10T12:00:00Z', lastSuccessAt: '2026-10-10T11:00:00Z', includedInTotal: true, ...overrides,
+})
+
+test('실제 참고가 227종을 현재 상품가와 분리해 읽고 단일 RAM·판매 키트 단위를 보존한다', async () => {
+  const preview = JSON.parse(readFileSync(new URL('../../data/catalog-shared/reference-prices-preview-2026-10-10.json', import.meta.url), 'utf8')) as {
+    publicationApproved: boolean; products: { identity: { type: CatalogProduct['type'] }; referenceEstimate: ReferenceEstimate }[]
+  }
+  assert.equal(preview.publicationApproved, false)
+  assert.equal(preview.products.length, 227)
+  for (const record of preview.products) {
+    const product = { ...gpu[0], type: record.identity.type, currentPrice: null, referenceEstimate: record.referenceEstimate }
+    const client = createHttpCatalogClient(async () => json(page([product])))
+    const result = (await client.search(product.type, '')).items[0]
+    assert.deepEqual(result.referenceEstimate, record.referenceEstimate)
+    assert.equal(result.currentPrice, null)
+  }
+})
+
+test('참고가 근거·범위·원가격 단위·실제 날짜가 모순되면 API 응답을 거절한다', async () => {
+  const preview = JSON.parse(readFileSync(new URL('../../data/catalog-shared/reference-prices-preview-2026-10-10.json', import.meta.url), 'utf8'))
+  const base = preview.products.find((p: { identity: { type: string }; referenceEstimate: ReferenceEstimate }) =>
+    p.identity.type === 'GPU' && p.referenceEstimate.confidence === 'ESTIMATED').referenceEstimate as ReferenceEstimate
+  const invalid = [
+    { ...base, amountKrw: 0 }, { ...base, rangeLowKrw: base.amountKrw + 1 }, { ...base, rangeHighKrw: null },
+    { ...base, sourceDate: '2026-02-30' }, { ...base, confidence: 'VERIFIED_MODEL' },
+    { ...base, saleUnit: 'RAM_KIT', moduleCount: 2 },
+    { ...base, sourceQuotes: [{ ...base.sourceQuotes[0], sourceUrl: 'http://shop.example/p/1' }] },
+    { ...base, sourceQuotes: [{ ...base.sourceQuotes[0], moduleCount: 2 }] },
+    { ...base, sourceQuotes: [] },
+    { ...base, basis: 'LAUNCH_PRICE', confidence: 'VERIFIED_MODEL', rangeLowKrw: null, rangeHighKrw: null, identityScope: 'EXACT_PRODUCT' },
+  ]
+  for (const referenceEstimate of invalid) {
+    const client = createHttpCatalogClient(async () => json(page([{ ...gpu[0], referenceEstimate } as CatalogProduct])))
+    await assert.rejects(() => client.search('GPU', ''), hasCode('INVALID_RESPONSE'))
+  }
 })
 
 test('목록 규격·페이지·검색어 인코딩을 API와 맞춘다', async () => {

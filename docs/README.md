@@ -4,7 +4,11 @@
 현재 제공된 기능은 **Windows 사양 자동 인식, PC 저장 계층, 공통 데이터 규격**이다.
 PC 등록·조회·수정 API와 전체 입력 화면은 이 기반에 연결할 작업이다.
 
+2026-10-10 중앙 가격 운영은 **307종·가격 80종·가격 미확인 227종**이다. 최초 75종 전환의 로컬 DB 공통 ID 연결·backend 재시작 이후, 승인한 5종 가격만 Workers Free에 추가 재배포했다. 이번에는 DB·제품/제원·환경변수·팀 토큰 변경과 backend 재시작이 없다. 팀원·다른 기기의 설정은 [실행 안내 2.3](week1-setup.md#23-전체-307종-중앙-가격-연결), 적용 근거와 남은 가격 확보는 [전체 중앙 가격 안내](catalog-all-shared-prices-2026-10-10.md)를 확인한다.
+
 ## 처음 읽는 순서
+
+남은 가격 중 판매 구성 확인이 필요한 146종을 조사했고, 첫 4종의 별도 판매상품·가격 적재 미리보기를 준비했다. 현재 반영 후보는 ASUS 보드 1종이고 CPU 2종·MSI 보드 1종은 보류다. 운영 307종·가격 80종은 유지했다. 결과와 DB 없는 실행 명령은 [판매 구성 146종 후속 검토와 4종 미리보기](catalog-all-shared-prices-2026-10-10.md#판매-구성-146종-후속-검토와-4종-미리보기)를 확인한다.
 
 1. [실행 방법](week1-setup.md): 최신 dev를 받아 내 PC에서 실행한다.
 2. [공통 규격](week1-contract.md): 부품 필드, 단위, API 요청·응답을 확인한다.
@@ -70,6 +74,8 @@ H2 검사가 실제 MySQL 검사를 대신하지 않으며, 저장 계층 검사
 
 ## 그 밖의 문서
 
+- [전체 307종 중앙 가격 전환과 가격 확보](catalog-all-shared-prices-2026-10-10.md): 현재 307종·80가격·227 미확인 운영과 승인 5종 가격 추가 결과, 최초 MySQL 293개 공통 ID 연결·자료 보존 이력, 232종 조사 판정과 독립 가격 버전 갱신 방법.
+
 - [로그인·PC 조립 스크롤 화면](../frontend/README.md): 최신 화면 변경, 팀원 실행 방법과 검증 범위.
 - [PC 장면 제작 안내](../art/pc-assembly/README.md): Blender 원본, 고해상도 렌더와 홈페이지용 이미지 재현 방법.
 - [인증 ↔ PC 연결 규격](week2-auth-pc-contract.md): 로그인 회원 전달, 인증 API, 리다이렉트, CSRF, 접근 규칙 (2주차, 이슈 #18).
@@ -83,9 +89,10 @@ H2 검사가 실제 MySQL 검사를 대신하지 않으며, 저장 계층 검사
 - [카탈로그 확장 구현·적용·미리보기](catalog-expansion-implementation-2026-10-09.md): 승인한 V13·V14 로컬 MySQL 적용·기존 자료 보존, 백엔드 실행 구성과 팀원 준비, DB 없는 `previewCatalogExpansion`, 최신 우선 52종과 후속 자료 검토 범위.
 - [첫 부품 적용 후보 14종](catalog-pilot-selection-2026-10-10.md): 기존 7종·신규 7종의 선정안, AMD·Intel 대표 흐름, 가격 6종의 과거 근거와 8종 신규 확보 범위, 목록/실제 반영 컨펌.
 - [14종 상세 검토와 승인된 수동 적재](catalog-pilot-review-2026-10-10.md): 승인된 로컬 MySQL 반영, 상품 307종·가격 보유 74종, H2 345개·기존 행 보존 감사·재검사 통과. `importPilotCatalog`의 기본 DB 없는 미리보기·`-PcheckPilotDb=true` 사전검사·`-PapplyPilotCatalog=true` 반영, V14/개인 DB 준비와 보류 SKU를 정리했다. 일반 backend의 새 설정은 필요 없으며 pull/서버 시작에서 자동 적재하지 않는다.
-- [국내 신품 상품가](catalog-current-prices.md): 현재가 저장·수집·판매 SKU 검토와 DB 반영 절차.
+- [국내 신품 상품가·참고가](catalog-current-prices.md): 판매가 81종·모델/출시/추정 참고가 227종 게시 완료, 308종 전수 조회·참고 합계·승인본 운영 규칙.
 - [첫 14종 검색과 PC 연결 검증](catalog-pilot-search-pc-verification-2026-10-10.md): 실제 MySQL 읽기 전용 검색 14종·PN 9종, H2 검색·저장·재조회 39개, 승인한 분류 표시·연결 모델 조회·0건 검색 안내와 프론트 전체 124개 검사.
 - [첫 14종 중앙 가격 공유 구현안](catalog-shared-prices-plan-2026-10-10.md): 사용자 직접 검수 후 다음 단계의 범위·완료 기준. 승인 14종·가격 8종으로 공통 ID 조회·로컬 연결·신선도·장애 표시를 검증하며 실제 배포와 정기 수집은 별도 컨펌한다.
-- [첫 14종 중앙 가격 공유 실행 안내](catalog-shared-prices-2026-10-10.md): 승인된 API·로컬 연결·48시간/7일 정책·장애 표시, DB 없는 제공 서버와 선택 backend 설정. 기본 로컬 실행은 유지하고 실제 중앙 배포·정기 수집은 별도 단계다.
-- [중앙 가격 API 최소비용 배포 추천안](catalog-price-api-deployment-options-2026-10-10.md): 10명 미만 내부 사용 기준 Workers 무료·Cloud Run·Railway·Render·Oracle 비교와 비용 조건, 팀용 토큰·스냅샷 운영 제안. 실제 배포는 별도 컨펌이다.
+- [첫 14종 중앙 가격 공유 실행 안내](catalog-shared-prices-2026-10-10.md): 최초 14종 API·로컬 연결·48시간/7일 정책·장애 표시와 DB 없는 제공 서버의 기록. 현재 307종 운영은 전체 전환·Worker 실행 안내를 따른다.
+- [중앙 가격 API 최소비용 배포 추천안](catalog-price-api-deployment-options-2026-10-10.md): 10명 미만 내부 사용 기준 Workers 무료·Cloud Run·Railway·Render·Oracle 비교와 비용 조건, 승인한 무료 배포 방식과 팀용 토큰·스냅샷 운영의 선정 근거.
+- [Cloudflare Worker와 팀 토큰 실행 안내](catalog-worker-prices-2026-10-10.md): 308종 전체의 가격 자료(판매가 81·참고가 227), 무료 게시·기존 307종/v1 호환·Java HTTPS 검증과 변경 없는 환경변수 세 개.
 - [스캔 결과 예시](examples/scan-result.json): 자동 인식 JSON 형식을 이해하기 위한 개발용 샘플.

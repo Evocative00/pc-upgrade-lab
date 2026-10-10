@@ -4,6 +4,7 @@ import com.pcupgradelab.catalog.CatalogProductView;
 import com.pcupgradelab.catalog.RamSpecRepository;
 import com.pcupgradelab.pc.PartType;
 import java.time.Clock;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -11,28 +12,36 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
-/** 중앙 14종의 읽기 결과만 메모리에 보관한다. 조회 실패 시 로컬 DB 가격으로 대체하지 않는다. */
+/** 중앙 조회 결과만 승인된 공통 ID 범위에서 메모리에 보관한다. 조회 실패 시 로컬 DB 가격으로 대체하지 않는다. */
 public final class SharedPriceAdapter {
     private final SharedCatalogSnapshot snapshot;
     private final SharedPriceClient client;
     private final Clock clock;
     private final SharedPriceFreshness freshness;
     private final RamSpecRepository ram;
+    private final SharedReferencePriceAdapter references;
     private final Map<String, Cached> cache = new ConcurrentHashMap<>();
-    private record Cached(SharedPriceDtos.Item item, Instant receivedAt) { }
+    private record Cached(SharedPriceDtos.Item item, Instant receivedAt, Instant servedAt) { }
 
-    private SharedPriceAdapter() { snapshot = null; client = null; clock = null; freshness = null; ram = null; }
+    private SharedPriceAdapter() {
+        snapshot = null; client = null; clock = null; freshness = null; ram = null;
+        references = SharedReferencePriceAdapter.disabled();
+    }
     public static SharedPriceAdapter disabled() { return new SharedPriceAdapter(); }
 
     public SharedPriceAdapter(SharedCatalogSnapshot snapshot, SharedPriceClient client, Clock clock,
                               SharedPriceFreshness freshness, RamSpecRepository ram) {
+        this(snapshot, client, clock, freshness, ram, SharedReferencePriceAdapter.disabled());
+    }
+
+    public SharedPriceAdapter(SharedCatalogSnapshot snapshot, SharedPriceClient client, Clock clock,
+                              SharedPriceFreshness freshness, RamSpecRepository ram,
+                              SharedReferencePriceAdapter references) {
         this.snapshot = Objects.requireNonNull(snapshot); this.client = Objects.requireNonNull(client);
         this.clock = Objects.requireNonNull(clock); this.freshness = Objects.requireNonNull(freshness);
         this.ram = Objects.requireNonNull(ram);
-        if (snapshot.products().size() > 14) throw new IllegalArgumentException("Shared price scope exceeds fourteen products");
+        this.references = Objects.requireNonNull(references);
     }
 
     public List<CatalogProductView> enrich(List<CatalogProductView> products) {
@@ -52,39 +61,40 @@ public final class SharedPriceAdapter {
         var requested = new LinkedHashSet<String>();
         for (var product : products) if (inScope(product) && identityMatches(product, moduleCounts))
             requested.add(product.canonicalId());
-        Map<String, SharedPriceDtos.Item> response = Map.of();
-        Instant successAt = null;
-        boolean succeeded = false;
-        if (!requested.isEmpty()) {
+        var response = new LinkedHashMap<String, Cached>();
+        var ids = List.copyOf(requested);
+        for (int start = 0; start < ids.size(); start += client.batchSize()) {
+            var batch = new LinkedHashSet<>(ids.subList(start, Math.min(ids.size(), start + client.batchSize())));
             try {
-                response = client.fetch(requested).items().stream().collect(Collectors.toMap(
-                        SharedPriceDtos.Item::canonicalId, Function.identity()));
+                var result = client.fetch(batch);
                 var receivedAt = clock.instant();
-                // HTTP는 잠금 없이 병렬로 수행한다. 승인된 14개 키 안에서 최신 성공만 짧게 갱신한다.
-                for (var item : response.values()) cache.compute(item.canonicalId(), (id, previous) ->
-                        previous != null && previous.receivedAt().isAfter(receivedAt)
-                                ? previous : new Cached(item, receivedAt));
-                successAt = receivedAt;
-                succeeded = true;
+                // Each validated batch is atomic; failure only affects this bounded request.
+                for (var item : result.items()) {
+                    var observed = new Cached(item, receivedAt, result.servedAt());
+                    response.put(item.canonicalId(), observed);
+                    cache.compute(item.canonicalId(), (id, previous) ->
+                            previous != null && previous.receivedAt().isAfter(receivedAt)
+                                    ? previous : observed);
+                }
             } catch (RuntimeException ex) {
                 // 실패·계약 불일치는 공개 응답의 UNAVAILABLE로 표시한다. 마지막 정상 관측만 보존한다.
             }
         }
         var byId = response;
-        var receivedAt = successAt;
-        boolean available = succeeded;
-        return products.stream().map(product -> {
+        var enriched = products.stream().map(product -> {
             if (!inScope(product)) return product.withPrice(product.currentPrice(), new CatalogProductView.PriceStatus(
                     "LOCAL", "NOT_IN_SCOPE", null, null, null, null, product.currentPrice() != null));
             if (!identityMatches(product, moduleCounts)) return unavailable(product, null, checkedAt);
             var cached = cache.get(product.canonicalId());
-            if (!available || !byId.containsKey(product.canonicalId())) return unavailable(product, cached, checkedAt);
-            var item = byId.get(product.canonicalId());
-            String state = classify(item.price(), clock.instant());
+            if (!byId.containsKey(product.canonicalId())) return unavailable(product, cached, checkedAt);
+            var successful = byId.get(product.canonicalId());
+            var item = successful.item();
+            String state = classify(successful);
             boolean included = item.status() == SharedPriceDtos.Status.OK && !"EXPIRED".equals(state);
             return product.withPrice(item.price(), new CatalogProductView.PriceStatus("SHARED", item.status().name(),
-                    state, snapshot.version(), checkedAt, receivedAt, included));
+                    state, snapshot.version(), checkedAt, successful.receivedAt(), included));
         }).toList();
+        return references.enrich(enriched, moduleCounts);
     }
 
     private boolean inScope(CatalogProductView product) {
@@ -105,12 +115,17 @@ public final class SharedPriceAdapter {
 
     private CatalogProductView unavailable(CatalogProductView product, Cached cached, Instant checkedAt) {
         var price = cached == null ? null : cached.item().price();
-        String state = cached == null ? null : classify(price, clock.instant());
+        String state = cached == null ? null : classify(cached);
         return product.withPrice(price, new CatalogProductView.PriceStatus("SHARED", "UNAVAILABLE", state,
                 snapshot.version(), checkedAt, cached == null ? null : cached.receivedAt(), false));
     }
 
-    private String classify(CatalogProductView.CurrentPrice price, Instant now) {
-        return freshness.classify(price == null ? null : price.observedAt(), now).name();
+    private String classify(Cached observed) {
+        // Advance the validated server clock by elapsed local time. A backward local clock step
+        // never places the estimate before that validated timestamp.
+        var elapsed = Duration.between(observed.receivedAt(), clock.instant());
+        var estimatedServerTime = observed.servedAt().plus(elapsed.isNegative() ? Duration.ZERO : elapsed);
+        var price = observed.item().price();
+        return freshness.classify(price == null ? null : price.observedAt(), estimatedServerTime).name();
     }
 }

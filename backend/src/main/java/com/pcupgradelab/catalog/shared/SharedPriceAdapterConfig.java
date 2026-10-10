@@ -21,18 +21,41 @@ public class SharedPriceAdapterConfig {
     SharedPriceAdapter sharedPriceAdapter(
             @Value("${catalog.shared-prices.enabled:false}") boolean enabled,
             @Value("${catalog.shared-prices.base-url:}") String baseUrl,
+            @Value("${catalog.shared-prices.api-token:${CATALOG_SHARED_PRICES_API_TOKEN:}}") String apiToken,
             @Value("${catalog.shared-prices.timeout-ms:2000}") long timeoutMs,
             @Value("${catalog.shared-prices.max-response-bytes:65536}") int maxResponseBytes,
             @Value("${catalog.shared-prices.stale-after-seconds:172800}") long staleSeconds,
             @Value("${catalog.shared-prices.expire-after-seconds:604800}") long expireSeconds,
             @Qualifier("sharedPriceClock") Clock clock, RamSpecRepository ram) {
-        var freshness = new SharedPriceFreshness(Duration.ofSeconds(staleSeconds), Duration.ofSeconds(expireSeconds));
         if (!enabled) return SharedPriceAdapter.disabled();
+        var freshness = new SharedPriceFreshness(Duration.ofSeconds(staleSeconds), Duration.ofSeconds(expireSeconds));
         if (baseUrl.isBlank() || !baseUrl.equals(baseUrl.strip()))
             throw new IllegalArgumentException("Enabled shared prices require an explicit base URL");
-        var snapshot = SharedCatalogSnapshot.load();
+        var snapshot = SharedCatalogSnapshot.loadActive();
         var client = new SharedPriceClient(URI.create(baseUrl), Duration.ofMillis(timeoutMs), maxResponseBytes,
-                snapshot, clock, freshness);
-        return new SharedPriceAdapter(snapshot, client, clock, freshness, ram);
+                snapshot, clock, freshness, apiToken);
+        return new SharedPriceAdapter(snapshot, client, clock, freshness, ram,
+                referenceAdapter(snapshot, URI.create(baseUrl), Duration.ofMillis(timeoutMs), maxResponseBytes,
+                        clock, apiToken));
+    }
+
+    /** Unpublished preview data never enables a production reference request or becomes a fallback price. */
+    SharedReferencePriceAdapter referenceAdapter(SharedCatalogSnapshot snapshot, URI baseUrl, Duration timeout,
+                                               int maxResponseBytes, Clock clock, String apiToken) {
+        try {
+            return referenceAdapter(snapshot, baseUrl, timeout, maxResponseBytes, clock, apiToken,
+                    SharedReferencePriceSnapshot.loadBundled(snapshot));
+        } catch (RuntimeException ex) {
+            // An invalid/missing reference publication cannot disable the existing approved current-price service.
+            return SharedReferencePriceAdapter.disabled();
+        }
+    }
+
+    SharedReferencePriceAdapter referenceAdapter(SharedCatalogSnapshot snapshot, URI baseUrl, Duration timeout,
+                                               int maxResponseBytes, Clock clock, String apiToken,
+                                               SharedReferencePriceDtos.Snapshot references) {
+        if (!references.publicationApproved()) return SharedReferencePriceAdapter.disabled();
+        return new SharedReferencePriceAdapter(snapshot, new SharedReferencePriceClient(baseUrl, timeout,
+                maxResponseBytes, snapshot, clock, apiToken));
     }
 }

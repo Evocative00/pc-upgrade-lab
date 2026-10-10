@@ -24,4 +24,10 @@ public final class SharedPriceDtos {
                            List<Item> items) {
         public Envelope { items = List.copyOf(items); }
     }
+    /** v2 freezes catalog identity independently of subsequently approved price observations. */
+    public record EnvelopeV2(int schemaVersion, String catalogVersion, String priceVersion, Instant servedAt,
+                             Policy policy, List<Item> items) {
+        public EnvelopeV2 { items = List.copyOf(items); }
+        public Envelope toEnvelope() { return new Envelope(schemaVersion, catalogVersion, servedAt, policy, items); }
+    }
 }

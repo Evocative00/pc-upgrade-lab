@@ -1,0 +1,1190 @@
+{
+  "schemaVersion": 1,
+  "stage": "UNAPPROVED_HELD_GSKILL_EXACT_PN_PRICE_FOLLOWUP",
+  "startedAt": "2026-10-10T11:33:31.208Z",
+  "sourceFile": "data/catalog-review/remaining232-ram-prices-2026-10-10.json",
+  "inputEvidence": {
+    "sourceSha256": "e7e18af105c7ed3b95ef292dbfe8fc99c1b0087a771596b0bd2e2a5f0f39b9cd",
+    "active80Sha256": "7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc",
+    "identities307Sha256": "8ad681a1cd634eb4c990ec20714fe332d6972dd1e22aff3feef54c6261466792"
+  },
+  "scope": {
+    "requestedHeldProducts": 6,
+    "allAdditionalProducts": 0
+  },
+  "items": [
+    {
+      "canonicalId": "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1555eede-7e03-4038-824d-91d8fb21a6e2"
+      },
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1555eede-7e03-4038-824d-91d8fb21a6e2",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "F5-6000J3636F16GX2-RS5K"
+      },
+      "expectedSpecification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "dataRateMts": 6000,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": null
+      },
+      "expectedSaleConfiguration": {
+        "partNumber": "F5-6000J3636F16GX2-RS5K",
+        "memoryType": "DDR5",
+        "dataRateMts": 6000,
+        "casLatencyCl": 36,
+        "fullTiming": null,
+        "voltageV": 1.35,
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "totalCapacityBytes": 34359738368,
+        "profileSupport": [
+          "XMP 3.0",
+          "EXPO"
+        ],
+        "rgb": null,
+        "color": null,
+        "unknownsRemainNull": true,
+        "sourceScope": "Existing exact-PN curated manufacturer evidence plus explicitly listed fresh primary review; PN/title inference does not fill unknowns"
+      },
+      "priorManufacturerEvidence": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/377/1664845977/F5-6000J3636F16GX2-RS5K-Specification",
+          "retrievedAt": "2026-10-04T07:27:51.009082+00:00",
+          "documentAuthor": "G.SKILL",
+          "verifiedPartNumber": "F5-6000J3636F16GX2-RS5K",
+          "selectedFacts": {
+            "memoryType": "DDR5",
+            "moduleCapacityGiB": 16,
+            "moduleCount": 2,
+            "totalCapacityGiB": 32,
+            "dataRateMts": 6000,
+            "casLatencyCl": 36,
+            "moduleFormFactor": "DIMM",
+            "bufferType": "UNBUFFERED",
+            "isEcc": false,
+            "voltageV": 1.35,
+            "defaultJedecMts": 4800,
+            "profileSupport": [
+              "XMP 3.0",
+              "EXPO"
+            ]
+          },
+          "profileBasis": null,
+          "evidenceScope": "Existing curated manufacturer extract reused; not a new network retrieval",
+          "sourceIsDirectManufacturer": true
+        }
+      ],
+      "priorReason": "기존 공개 검색에서 정확 국내 신품 판매 SKU 후보를 확인하지 못함. 국내 단종·전국 품절을 뜻하지 않음.",
+      "status": "HELD",
+      "manufacturerReview": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/377/1664845977/F5-6000J3636F16GX2-RS5K-Specification",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:34.199Z",
+          "responseSha256": "ae69d08457df488a78bd9e6e5acac0f1c551252a8c99408d63786cfae98ab4b4",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "pageTitle": "F5-6000J3636F16GX2-RS5K - Specification - G.SKILL International Enterprise Co., Ltd.",
+          "productHeading": "F5-6000J3636F16GX2-RS5K",
+          "exactPnLiteralPresent": true,
+          "productContext": null,
+          "specificationContext": "Memory Type DDR5 Capacity 32GB (16GBx2) Multi-Channel Kit Dual Channel Kit OC Profile Support Intel XMP 3.0 / AMD EXPO Tested Speed (XMP/EXPO) Up to 6000* MT/s * Requires overclocking/BIOS adjustments. Maximum speed and performance depend on system components, including motherboard and CPU. Tested Latency (XMP/EXPO) 36-36-36-96 Tested Voltage (XMP/EXPO) 1.35V Registered/Unbuffered Unbuffered Error Checking (ECC) Non-ECC SPD Speed (Default) 4800 MT/s SPD Voltage (Default) 1.10V Fan Included No Warranty Limited Lifetime Features Intel XMP 3.0 & AMD EXPO™ Memory Overclock Profile Additional Notes Do not mix memory k"
+        }
+      ],
+      "retailerReview": [
+        {
+          "kind": "NEW_DOMESTIC_SELLER_ORIGINAL_PAGE",
+          "sourceUrl": "https://www.tradek.co.kr/product/gskill-ripjaws-s5-series-32gb-2-x-16gb-288-pin-pc-ram-ddr5-6000-pc5-48/28901/category/249/display/1/",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:35:52.047Z",
+          "responseSha256": "4033ff48884363a3c77fddf57217a0cb3b10b1890493e4e8a66a03b19fba73c5",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "utf-8",
+          "redirectLocation": null,
+          "pageTitle": "G.SKILL Ripjaws S5 Series 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6000 (PC5 48000) 데스크톱 메모리 모델 F5-6000J3636F16GX2-RS5K - TradeK",
+          "exactPnLiteralPresent": true,
+          "contexts": [
+            {
+              "needle": "F5-6000J3636F16GX2-RS5K",
+              "context": "G.SKILL Ripjaws S5 Series 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6000 (PC5 48000) 데스크톱 메모리 모델 F5-6000J3636F16GX2-RS5K - TradeK 전체상품목록 바로가기 본문 바로가기 첫 쇼핑을 지원하는 3,000원 할인 회원가입 쿠폰 오늘 하루 보지 않기 닫기 한국어 한국어 한국어 한국어 한국어 한국어 한국어 한국어 한국어 한국어 회원"
+            },
+            {
+              "needle": "판매가",
+              "context": "Series 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6000 (PC5 48000) 데스크톱 메모리 모델 F5-6000J3636F16GX2-RS5K 소비자가 842,530원 판매가 834,020원 배송비 9,900원 해외배송비 상품 고유번호 AZ8NV96B 수집 일자 2026-04-13 월 렌탈 금액 월 원 ( 개월 기준) 개월 / 월 원 정기결제 구매방법 정기배송 할인 1회구매 배송주"
+            },
+            {
+              "needle": "해외배송",
+              "context": "88-Pin PC RAM DDR5 6000 (PC5 48000) 데스크톱 메모리 모델 F5-6000J3636F16GX2-RS5K 소비자가 842,530원 판매가 834,020원 배송비 9,900원 해외배송비 상품 고유번호 AZ8NV96B 수집 일자 2026-04-13 월 렌탈 금액 월 원 ( 개월 기준) 개월 / 월 원 정기결제 구매방법 정기배송 할인 1회구매 배송주기 정기배송 횟수 안내사항 정기배송 할인 s"
+            },
+            {
+              "needle": "해외구매",
+              "context": "( ) 옵션 정보 단독구매상품 총 합계 (수량) 0 (0개) 할인가가 적용된 최종 결제예정금액은 주문 시 확인할 수 있습니다. 품절 구매하기 예약주문 정기배송 장바구니 품절 위시리스트 대량구매문의 해외구매대행 상품 안내 상품 문의 시 고유번호를 알려주시면 빠르게 확인해드립니다. 가격 하락 알림 받기 💬 카카오톡 문의하기 가격이 내려가면 카카오톡으로 알려드려요! 알림 발송을 위한 개인정보 수집·이용에 동의합니"
+            },
+            {
+              "needle": "품절",
+              "context": "-6000J3636F16GX2-RS5K 수량증가 수량감소 834020 ( ) 옵션 정보 단독구매상품 총 합계 (수량) 0 (0개) 할인가가 적용된 최종 결제예정금액은 주문 시 확인할 수 있습니다. 품절 구매하기 예약주문 정기배송 장바구니 품절 위시리스트 대량구매문의 해외구매대행 상품 안내 상품 문의 시 고유번호를 알려주시면 빠르게 확인해드립니다. 가격 하락 알림 받기 💬 카카오톡 문의하기 가격이 내려가면 카"
+            }
+          ],
+          "jsonFields": [],
+          "productJson": [
+            {
+              "name": "G.SKILL Ripjaws S5 Series 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6000 (PC5 48000) 데스크톱 메모리 모델 F5-6000J3636F16GX2-RS5K",
+              "sku": "cafe24_gninein_1_28901",
+              "offers": {
+                "@type": "Offer",
+                "url": "https://www.tradek.co.kr/product/gskill-ripjaws-s5-series-32gb-2-x-16gb-288-pin-pc-ram-ddr5-6000-pc5-48/28901/",
+                "priceCurrency": "KRW",
+                "price": 834020,
+                "availability": "https://schema.org/InStock"
+              },
+              "description": "• DDR5 6000 (PC5 48000)\n• Timing 36-36-36-96\n• CAS Latency CL36\n• Voltage 1.35V\n\nBest Seller Ranking: #75 in Desktop Memory\nBrand: G.SKILL\nSeries: Ripjaws S5 Series\nModel: F5-6000J3636F16GX2-RS5K\nCapacity: 32GB (2 x 16GB)\nType: 288-Pin PC RAM\nSpeed: DDR5"
+            }
+          ],
+          "saleIdentityVerified": false,
+          "priceEligibleForCurrentProvider": false,
+          "exclusionReason": "OVERSEAS_PURCHASE_SERVICE_NOT_DOMESTIC_NEW",
+          "eligibleForImport": false
+        }
+      ],
+      "danawaReview": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16192424",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:44.607Z",
+          "responseSha256": "42fc0a171008f7f40d1078d4b0ff38f57ca7216f04621a94a80f78de5e829dc6",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "pcode": "16192424",
+          "productTitle": "G.SKILL DDR5-6000 CL36 TRIDENT Z5 J 패키지 (32GB(16Gx2))",
+          "currentRegularQuote": {
+            "amountKrw": 832010,
+            "observedAt": "2026-10-10T11:33:44.607Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=16192424",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "priceError": null,
+          "exactPnLiteralPresent": false,
+          "pnContexts": [],
+          "ownSpecRows": [
+            "G.SKILL DDR5-6000 CL36 TRIDENT Z5 J 패키지 (32GB(16Gx2)) 최저가 832,010 원 자세히보기 판매점 : 100개 ㅣ 제조사 : G.SKILL ㅣ 등록월: 2022.01."
+          ],
+          "detailImgUrls": [],
+          "saleIdentityVerified": false,
+          "rejectionReason": "TRIDENT_Z5_IS_NOT_RIPJAWS_S5"
+        }
+      ],
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "reason": "현재 후보 16192424는 TRIDENT Z5 J 32GB 상품이며 대상 Ripjaws S5 RS5K와 다릅니다. 정확 PN이 있는 새 TradeK 원문은 해외배송비·해외구매대행 안내가 있어 국내 신품 견적에서 제외합니다. 현재 원문 가격 표시는 증거로 남기지만 국내 구매가로 채택하지 않습니다.",
+      "reviewedManufacturerFacts": {
+        "partNumber": "F5-6000J3636F16GX2-RS5K",
+        "memoryType": "DDR5",
+        "moduleCapacityGiB": 16,
+        "moduleCount": 2,
+        "totalCapacityGiB": 32,
+        "dataRateMts": 6000,
+        "fullTiming": "36-36-36-96",
+        "voltageV": 1.35,
+        "profileSupport": [
+          "Intel XMP 3.0",
+          "AMD EXPO"
+        ],
+        "color": null,
+        "rgb": null,
+        "colorRgbRemainUnknown": true,
+        "sourceUrl": "https://www.gskill.com/specification/165/377/1664845977/F5-6000J3636F16GX2-RS5K-Specification",
+        "observedAt": "2026-10-10T11:33:34.199Z",
+        "responseSha256": "ae69d08457df488a78bd9e6e5acac0f1c551252a8c99408d63786cfae98ab4b4",
+        "sourceScope": "Actual current exact-PN manufacturer specification; no database updates"
+      },
+      "manufacturerSpecificationVerifiedAt": "2026-10-10T11:40:33.212Z",
+      "saleUnit": "RAM_KIT",
+      "moduleCount": 2,
+      "currentQuote": null,
+      "completedAt": "2026-10-10T11:40:33.212Z",
+      "reasonCodes": [
+        "CANDIDATE_FAMILY_MISMATCH",
+        "EXACT_OTHER_LISTING_IS_OVERSEAS_PURCHASE"
+      ]
+    },
+    {
+      "canonicalId": "98163a70-96e7-3e4c-a5c5-c8c334637867",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c10975d5-ae7e-488f-95e7-f9270a5beb68"
+      },
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c10975d5-ae7e-488f-95e7-f9270a5beb68",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 32GB (2x16GB)",
+        "partNumber": "F4-3200C16D-32GVK"
+      },
+      "expectedSpecification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": null
+      },
+      "expectedSaleConfiguration": {
+        "partNumber": "F4-3200C16D-32GVK",
+        "memoryType": "DDR4",
+        "dataRateMts": 3200,
+        "casLatencyCl": null,
+        "fullTiming": null,
+        "voltageV": 1.35,
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "totalCapacityBytes": 34359738368,
+        "profileSupport": null,
+        "rgb": null,
+        "color": null,
+        "unknownsRemainNull": true,
+        "sourceScope": "Existing exact-PN curated manufacturer evidence plus explicitly listed fresh primary review; PN/title inference does not fill unknowns"
+      },
+      "priorManufacturerEvidence": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/184/1536110922/F4-3200C16D-32GVK-Specification",
+          "retrievedAt": "2026-10-03T10:46:42Z",
+          "documentAuthor": "G.SKILL",
+          "verifiedPartNumber": "F4-3200C16D-32GVK",
+          "selectedFacts": {
+            "part_number": "F4-3200C16D-32GVK",
+            "memory_type": "DDR4",
+            "module_gib": 16,
+            "module_count": 2,
+            "data_rate_mts": 3200,
+            "voltage_v": 1.35,
+            "pin_count": null,
+            "ecc": false,
+            "buffer_type": "UNBUFFERED"
+          },
+          "profileBasis": null,
+          "evidenceScope": "Existing curated manufacturer extract reused; not a new network retrieval",
+          "sourceIsDirectManufacturer": true
+        }
+      ],
+      "priorReason": "첫 후보는64GB(32Gx2), 대상은32GB(16Gx2). 다른3500759은 용량 패밀리 일치하지만 full PN·일반상품가가 확인되지 않음.",
+      "status": "HELD",
+      "manufacturerReview": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/184/1536110922/F4-3200C16D-32GVK-Specification",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:35.949Z",
+          "responseSha256": "572b0a2efe5f798d80931379221dc0094a88896001ec2549e587e2112b7d0710",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "pageTitle": "F4-3200C16D-32GVK - Specification - G.SKILL International Enterprise Co., Ltd.",
+          "productHeading": "F4-3200C16D-32GVK",
+          "exactPnLiteralPresent": true,
+          "productContext": null,
+          "specificationContext": "Memory Type DDR4 Capacity 32GB (16GBx2) Multi-Channel Kit Dual Channel Kit OC Profile Support Intel XMP 2.0 Tested Speed (XMP) Up to 3200* MT/s * Requires overclocking/BIOS adjustments. Maximum speed and performance depend on system components, including motherboard and CPU. Tested Latency (XMP) 16-18-18-38 Tested Voltage (XMP) 1.35V Registered/Unbuffered Unbuffered Error Checking (ECC) Non-ECC SPD Speed (Default) 2133 MT/s SPD Voltage (Default) 1.20V Fan Included No Warranty Limited Lifetime Features Intel XMP 2.0 Memory Overclock Profile Additional Notes Do not mix memory kits. Memory kits are sold in matched k"
+        }
+      ],
+      "retailerReview": [],
+      "danawaReview": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3500759",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:49.743Z",
+          "responseSha256": "b4d5bb0d12323522b2cc7bd32c742ab39acf0ad4834cd26e55f5c9b03765d0eb",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "pcode": "3500759",
+          "productTitle": "G.SKILL DDR4-3200 RIPJAWS VK 패키지 (32GB(16Gx2))",
+          "currentRegularQuote": null,
+          "priceError": "REGULAR_PRICE_SECTION_MISSING",
+          "exactPnLiteralPresent": false,
+          "pnContexts": [],
+          "ownSpecRows": [
+            "G.SKILL DDR4-3200 RIPJAWS VK 패키지 (32GB(16Gx2)) 최저가 0 원 자세히보기 판매점 : 0개 ㅣ 제조사 : G.SKILL ㅣ 등록월: 2015.10."
+          ],
+          "detailImgUrls": [],
+          "saleIdentityVerified": false
+        }
+      ],
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "reason": "3500759은 현재 32GB(16GB×2) 패밀리로 관측됐지만 원문 full PN이 없고 일반 상품가 영역도 없습니다. 10019382의 64GB 가격을 전용하지 않습니다. 국내 정확 PN 판매처를 추가로 확인하지 못했으며 해외·중고 검색 결과의 금액은 사용하지 않습니다.",
+      "reviewedManufacturerFacts": {
+        "partNumber": "F4-3200C16D-32GVK",
+        "memoryType": "DDR4",
+        "moduleCapacityGiB": 16,
+        "moduleCount": 2,
+        "totalCapacityGiB": 32,
+        "dataRateMts": 3200,
+        "fullTiming": "16-18-18-38",
+        "voltageV": 1.35,
+        "profileSupport": [
+          "Intel XMP 2.0"
+        ],
+        "color": null,
+        "rgb": null,
+        "colorRgbRemainUnknown": true,
+        "sourceUrl": "https://www.gskill.com/specification/165/184/1536110922/F4-3200C16D-32GVK-Specification",
+        "observedAt": "2026-10-10T11:33:35.949Z",
+        "responseSha256": "572b0a2efe5f798d80931379221dc0094a88896001ec2549e587e2112b7d0710",
+        "sourceScope": "Actual current exact-PN manufacturer specification; no database updates"
+      },
+      "manufacturerSpecificationVerifiedAt": "2026-10-10T11:40:33.212Z",
+      "saleUnit": "RAM_KIT",
+      "moduleCount": 2,
+      "currentQuote": null,
+      "completedAt": "2026-10-10T11:40:33.212Z",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PN_UNVERIFIED",
+        "REVIEWED_DANAWA_PAGE_NO_CURRENT_REGULAR_QUOTE"
+      ]
+    },
+    {
+      "canonicalId": "99347182-e833-3958-8b25-76243995c988",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "15b65b34-f647-4ffc-8b61-a0a9f5a0006c"
+      },
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "15b65b34-f647-4ffc-8b61-a0a9f5a0006c",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3600 32GB (2x16GB)",
+        "partNumber": "F4-3600C18D-32GVK"
+      },
+      "expectedSpecification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "dataRateMts": 3600,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": null
+      },
+      "expectedSaleConfiguration": {
+        "partNumber": "F4-3600C18D-32GVK",
+        "memoryType": "DDR4",
+        "dataRateMts": 3600,
+        "casLatencyCl": null,
+        "fullTiming": null,
+        "voltageV": 1.35,
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "totalCapacityBytes": 34359738368,
+        "profileSupport": null,
+        "rgb": null,
+        "color": null,
+        "unknownsRemainNull": true,
+        "sourceScope": "Existing exact-PN curated manufacturer evidence plus explicitly listed fresh primary review; PN/title inference does not fill unknowns"
+      },
+      "priorManufacturerEvidence": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/184/1562833535/F4-3600C18D-32GVK-Specification",
+          "retrievedAt": "2026-10-03T10:46:42Z",
+          "documentAuthor": "G.SKILL",
+          "verifiedPartNumber": "F4-3600C18D-32GVK",
+          "selectedFacts": {
+            "part_number": "F4-3600C18D-32GVK",
+            "memory_type": "DDR4",
+            "module_gib": 16,
+            "module_count": 2,
+            "data_rate_mts": 3600,
+            "voltage_v": 1.35,
+            "pin_count": null,
+            "ecc": false,
+            "buffer_type": "UNBUFFERED"
+          },
+          "profileBasis": null,
+          "evidenceScope": "Existing curated manufacturer extract reused; not a new network retrieval",
+          "sourceIsDirectManufacturer": true
+        }
+      ],
+      "priorReason": "기존 공개 검색에서 정확 국내 신품 판매 SKU 후보를 확인하지 못함. 국내 단종·전국 품절을 뜻하지 않음.",
+      "status": "HELD",
+      "manufacturerReview": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/184/1562833535/F4-3600C18D-32GVK-Specification",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:37.596Z",
+          "responseSha256": "d10607bc6615a39830bdd7abfeacd35e1beb79da814c6f610d65b348c05d714b",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "pageTitle": "F4-3600C18D-32GVK - Specification - G.SKILL International Enterprise Co., Ltd.",
+          "productHeading": "F4-3600C18D-32GVK",
+          "exactPnLiteralPresent": true,
+          "productContext": null,
+          "specificationContext": "Memory Type DDR4 Capacity 32GB (16GBx2) Multi-Channel Kit Dual Channel Kit OC Profile Support Intel XMP 2.0 Tested Speed (XMP) Up to 3600* MT/s * Requires overclocking/BIOS adjustments. Maximum speed and performance depend on system components, including motherboard and CPU. Tested Latency (XMP) 18-22-22-42 Tested Voltage (XMP) 1.35V Registered/Unbuffered Unbuffered Error Checking (ECC) Non-ECC SPD Speed (Default) 2133 MT/s SPD Voltage (Default) 1.20V Fan Included No Warranty Limited Lifetime Features Intel XMP 2.0 Memory Overclock Profile Additional Notes Do not mix memory kits. Memory kits are sold in matched k"
+        }
+      ],
+      "retailerReview": [],
+      "danawaReview": [],
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "reason": "현재 제조사 원문에서 DDR4-3600, 16GB×2, 18-22-22-42, 1.35V, XMP 2.0을 확인했습니다. 새 공개 검색에서 정확 PN의 국내 신품 일반 판매처를 확인하지 못했습니다. 해외구매대행 목록·가격 캐시는 견적으로 사용하지 않습니다.",
+      "reviewedManufacturerFacts": {
+        "partNumber": "F4-3600C18D-32GVK",
+        "memoryType": "DDR4",
+        "moduleCapacityGiB": 16,
+        "moduleCount": 2,
+        "totalCapacityGiB": 32,
+        "dataRateMts": 3600,
+        "fullTiming": "18-22-22-42",
+        "voltageV": 1.35,
+        "profileSupport": [
+          "Intel XMP 2.0"
+        ],
+        "color": null,
+        "rgb": null,
+        "colorRgbRemainUnknown": true,
+        "sourceUrl": "https://www.gskill.com/specification/165/184/1562833535/F4-3600C18D-32GVK-Specification",
+        "observedAt": "2026-10-10T11:33:37.596Z",
+        "responseSha256": "d10607bc6615a39830bdd7abfeacd35e1beb79da814c6f610d65b348c05d714b",
+        "sourceScope": "Actual current exact-PN manufacturer specification; no database updates"
+      },
+      "manufacturerSpecificationVerifiedAt": "2026-10-10T11:40:33.212Z",
+      "saleUnit": "RAM_KIT",
+      "moduleCount": 2,
+      "currentQuote": null,
+      "completedAt": "2026-10-10T11:40:33.212Z",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_PN_EVIDENCE"
+      ]
+    },
+    {
+      "canonicalId": "9ba50ffb-4690-3c0f-a775-1751d4d9bcf9",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7019a3a6-2b1a-4d34-a98a-d7a9e0bea5e4"
+      },
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7019a3a6-2b1a-4d34-a98a-d7a9e0bea5e4",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 CL16 64GB (2x32GB)",
+        "partNumber": "F4-3200C16D-64GVK"
+      },
+      "expectedSpecification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 34359738368,
+        "moduleCount": 2,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": null
+      },
+      "expectedSaleConfiguration": {
+        "partNumber": "F4-3200C16D-64GVK",
+        "memoryType": "DDR4",
+        "dataRateMts": 3200,
+        "casLatencyCl": 16,
+        "fullTiming": null,
+        "voltageV": 1.35,
+        "moduleCapacityBytes": 34359738368,
+        "moduleCount": 2,
+        "totalCapacityBytes": 68719476736,
+        "profileSupport": [
+          "XMP 2.0"
+        ],
+        "rgb": null,
+        "color": null,
+        "unknownsRemainNull": true,
+        "sourceScope": "Existing exact-PN curated manufacturer evidence plus explicitly listed fresh primary review; PN/title inference does not fill unknowns"
+      },
+      "priorManufacturerEvidence": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/184/1571733948/F4-3200C16D-64GVK-Specification",
+          "retrievedAt": "2026-10-04T07:27:51.082529+00:00",
+          "documentAuthor": "G.SKILL",
+          "verifiedPartNumber": "F4-3200C16D-64GVK",
+          "selectedFacts": {
+            "memoryType": "DDR4",
+            "moduleCapacityGiB": 32,
+            "moduleCount": 2,
+            "totalCapacityGiB": 64,
+            "dataRateMts": 3200,
+            "casLatencyCl": 16,
+            "moduleFormFactor": "DIMM",
+            "bufferType": "UNBUFFERED",
+            "isEcc": false,
+            "voltageV": 1.35,
+            "defaultJedecMts": 2666,
+            "profileSupport": [
+              "XMP 2.0"
+            ]
+          },
+          "profileBasis": null,
+          "evidenceScope": "Existing curated manufacturer extract reused; not a new network retrieval",
+          "sourceIsDirectManufacturer": true
+        }
+      ],
+      "priorReason": "10019382는 VK64GB(32Gx2)패밀리에 맞지만 full PN확인과 현재 일반판매 offer가 부족하며 NO_ACTIVE_OFFER 관측을 가격0으로 대체하지 않음.",
+      "status": "HELD",
+      "manufacturerReview": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/184/1571733948/F4-3200C16D-64GVK-Specification",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:39.284Z",
+          "responseSha256": "56da06485a9d7f810697afd52d9eb30e65e8154fdf6a003958bb0125206c13b1",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "pageTitle": "F4-3200C16D-64GVK - Specification - G.SKILL International Enterprise Co., Ltd.",
+          "productHeading": "F4-3200C16D-64GVK",
+          "exactPnLiteralPresent": true,
+          "productContext": null,
+          "specificationContext": "Memory Type DDR4 Capacity 64GB (32GBx2) Multi-Channel Kit Dual Channel Kit OC Profile Support Intel XMP 2.0 Tested Speed (XMP) Up to 3200* MT/s * Requires overclocking/BIOS adjustments. Maximum speed and performance depend on system components, including motherboard and CPU. Tested Latency (XMP) 16-18-18-38 Tested Voltage (XMP) 1.35V Registered/Unbuffered Unbuffered Error Checking (ECC) Non-ECC SPD Speed (Default) 2666 MT/s SPD Voltage (Default) 1.20V Fan Included No Warranty Limited Lifetime Features Intel XMP 2.0 Memory Overclock Profile Additional Notes Do not mix memory kits. Memory kits are sold in matched k"
+        }
+      ],
+      "retailerReview": [
+        {
+          "kind": "MINISHOP_FOLLOWUP_CHAIN",
+          "chain": [
+            {
+              "kind": "CURRENT_DANAWA_MINISHOP_GENERAL_STORE_LINK_REVIEW",
+              "sourceUrl": "https://shop.danawa.com/virtualestimate/?controller=estimate&methods=moveEstimateMiniShop&memberId=PU80F&productSeq=10019382&serviceId=blog&marketPlaceSeq=33",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T11:37:39.263Z",
+              "responseSha256": "dca902d9c4d13284579b43f37b6ddaddd1eb2b1155e586b914a5c4996691fb89",
+              "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+              "redirectLocation": null,
+              "pageTitle": "",
+              "exactPnLiteralPresent": false,
+              "pnContext": null,
+              "productContext": null,
+              "eligibleForImport": false
+            }
+          ],
+          "exactSaleIdentityVerified": false,
+          "providerParserExtensionRequired": true,
+          "currentProvider": "DANAWA",
+          "priceEligibleForImport": false
+        },
+        {
+          "kind": "MINISHOP_PUBLIC_REDIRECT_CHAIN",
+          "chain": [
+            {
+              "kind": "CURRENT_DANAWA_MINISHOP_JAVASCRIPT_REDIRECT_REVIEW",
+              "sourceUrl": "https://shop.danawa.com/virtualestimate/?controller=estimate&methods=moveEstimateMiniShop&memberId=PU80F&productSeq=10019382&serviceId=blog&marketPlaceSeq=33",
+              "httpStatus": 200,
+              "observedAt": "2026-10-10T11:39:00.028Z",
+              "responseSha256": "dca902d9c4d13284579b43f37b6ddaddd1eb2b1155e586b914a5c4996691fb89",
+              "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+              "publicRedirectTargets": [],
+              "ownExactPnInOriginal": false,
+              "pageTitle": "",
+              "ownProductExcerpt": null,
+              "eligibleForImport": false
+            }
+          ],
+          "exactSaleIdentityVerified": false
+        }
+      ],
+      "danawaReview": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=10019382",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:46.422Z",
+          "responseSha256": "bc4af902477e03eeedc111d0601751d90583bb5a27c081a9437c24af4ff5cc65",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "pcode": "10019382",
+          "productTitle": "G.SKILL DDR4-3200 CL16 RIPJAWS V VK 패키지 (64GB(32Gx2))",
+          "currentRegularQuote": null,
+          "priceError": "NO_ACTIVE_OFFER",
+          "exactPnLiteralPresent": false,
+          "pnContexts": [],
+          "ownSpecRows": [
+            "G.SKILL DDR4-3200 CL16 RIPJAWS V VK 패키지 (64GB(32Gx2)) 최저가 627,010 원 자세히보기 판매점 : 3개 ㅣ 제조사 : G.SKILL ㅣ 등록월: 2019.11."
+          ],
+          "detailImgUrls": [],
+          "saleIdentityVerified": false
+        },
+        {
+          "kind": "CURRENT_DANAWA_GENERAL_MALL_ROW_REVIEW",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=10019382",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:36:56.299Z",
+          "responseSha256": "1d0d6acbb61cc18ce20915ca74ec6f205ec53d6704dd269863c14fec6e97a875",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "generalSectionFound": true,
+          "rows": [
+            {
+              "text": "최저가 627,010 원 3,000원",
+              "bridges": [],
+              "basePriceAttributes": [
+                "627010"
+              ]
+            },
+            {
+              "text": "현금 600,000 원 3,000원",
+              "bridges": [],
+              "basePriceAttributes": []
+            }
+          ],
+          "priceEligible": false,
+          "saleIdentityVerified": false
+        }
+      ],
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "reason": "현재 10019382의 일반몰 원문에 627,010원 data-base-price가 있으나 구매 링크는 loadingBridge가 아닌 shop.danawa 미니샵 견적 링크입니다. 기존 수집기가 이 형태를 지원하지 않아 NO_ACTIVE_OFFER를 반환합니다. 이를 시장 가격 없음으로 단정하지 않습니다. 국내 판매처의 full PN·정확 키트 주문 가능 여부를 검증하지 못해 반영 보류합니다. 현금 600,000원은 제외했습니다.",
+      "reviewedManufacturerFacts": {
+        "partNumber": "F4-3200C16D-64GVK",
+        "memoryType": "DDR4",
+        "moduleCapacityGiB": 32,
+        "moduleCount": 2,
+        "totalCapacityGiB": 64,
+        "dataRateMts": 3200,
+        "fullTiming": "16-18-18-38",
+        "voltageV": 1.35,
+        "profileSupport": [
+          "Intel XMP 2.0"
+        ],
+        "color": null,
+        "rgb": null,
+        "colorRgbRemainUnknown": true,
+        "sourceUrl": "https://www.gskill.com/specification/165/184/1571733948/F4-3200C16D-64GVK-Specification",
+        "observedAt": "2026-10-10T11:33:39.284Z",
+        "responseSha256": "56da06485a9d7f810697afd52d9eb30e65e8154fdf6a003958bb0125206c13b1",
+        "sourceScope": "Actual current exact-PN manufacturer specification; no database updates"
+      },
+      "manufacturerSpecificationVerifiedAt": "2026-10-10T11:40:33.212Z",
+      "saleUnit": "RAM_KIT",
+      "moduleCount": 2,
+      "currentQuote": null,
+      "completedAt": "2026-10-10T11:40:33.212Z",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PN_UNVERIFIED",
+        "DANAWA_MINISHOP_LINK_NOT_SUPPORTED_BY_COLLECTOR"
+      ]
+    },
+    {
+      "canonicalId": "d36faa9f-7724-336e-b57e-24ea5e5cdb84",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3ae2dd82-9e72-49e0-9a36-8d86a70cc72a"
+      },
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3ae2dd82-9e72-49e0-9a36-8d86a70cc72a",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3600 CL16 32GB (2x16GB)",
+        "partNumber": "F4-3600C16D-32GVKC"
+      },
+      "expectedSpecification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "dataRateMts": 3600,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": null
+      },
+      "expectedSaleConfiguration": {
+        "partNumber": "F4-3600C16D-32GVKC",
+        "memoryType": "DDR4",
+        "dataRateMts": 3600,
+        "casLatencyCl": 16,
+        "fullTiming": null,
+        "voltageV": 1.35,
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "totalCapacityBytes": 34359738368,
+        "profileSupport": [
+          "XMP 2.0"
+        ],
+        "rgb": null,
+        "color": null,
+        "unknownsRemainNull": true,
+        "sourceScope": "Existing exact-PN curated manufacturer evidence plus explicitly listed fresh primary review; PN/title inference does not fill unknowns"
+      },
+      "priorManufacturerEvidence": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/184/1562831784/F4-3600C16D-32GVKC-Specification",
+          "retrievedAt": "2026-10-04T07:27:51.143420+00:00",
+          "documentAuthor": "G.SKILL",
+          "verifiedPartNumber": "F4-3600C16D-32GVKC",
+          "selectedFacts": {
+            "memoryType": "DDR4",
+            "moduleCapacityGiB": 16,
+            "moduleCount": 2,
+            "totalCapacityGiB": 32,
+            "dataRateMts": 3600,
+            "casLatencyCl": 16,
+            "moduleFormFactor": "DIMM",
+            "bufferType": "UNBUFFERED",
+            "isEcc": false,
+            "voltageV": 1.35,
+            "defaultJedecMts": 2133,
+            "profileSupport": [
+              "XMP 2.0"
+            ]
+          },
+          "profileBasis": null,
+          "evidenceScope": "Existing curated manufacturer extract reused; not a new network retrieval",
+          "sourceIsDirectManufacturer": true
+        }
+      ],
+      "priorReason": "첫 후보는 CL17 16GB(8Gx2)이고 대상은 CL16 32GB(16Gx2)여서 제외.",
+      "status": "HELD",
+      "manufacturerReview": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/184/1562831784/F4-3600C16D-32GVKC-Specification",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:40.914Z",
+          "responseSha256": "e4c1463014b1a23d725541486b878ef8cef11f655a7626867cb913e2d058f82a",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "pageTitle": "F4-3600C16D-32GVKC - Specification - G.SKILL International Enterprise Co., Ltd.",
+          "productHeading": "F4-3600C16D-32GVKC",
+          "exactPnLiteralPresent": true,
+          "productContext": null,
+          "specificationContext": "Memory Type DDR4 Capacity 32GB (16GBx2) Multi-Channel Kit Dual Channel Kit OC Profile Support Intel XMP 2.0 Tested Speed (XMP) Up to 3600* MT/s * Requires overclocking/BIOS adjustments. Maximum speed and performance depend on system components, including motherboard and CPU. Tested Latency (XMP) 16-19-19-39 Tested Voltage (XMP) 1.35V Registered/Unbuffered Unbuffered Error Checking (ECC) Non-ECC SPD Speed (Default) 2133 MT/s SPD Voltage (Default) 1.20V Fan Included No Warranty Limited Lifetime Features Intel XMP 2.0 Memory Overclock Profile Additional Notes Do not mix memory kits. Memory kits are sold in matched k"
+        }
+      ],
+      "retailerReview": [],
+      "danawaReview": [],
+      "verifiedAt": null,
+      "newPriceObservedAt": null,
+      "reason": "현재 제조사 원문은 16GB×2, DDR4-3600, 16-19-19-39, 1.35V, XMP 2.0입니다. 기존 3987011 CL17 후보를 CL16 대상에 연결하지 않습니다. 새 공개 검색에서 정확 국내 신품 PN 판매 근거를 확인하지 못했으며 중고 금액으로 대체하지 않습니다.",
+      "reviewedManufacturerFacts": {
+        "partNumber": "F4-3600C16D-32GVKC",
+        "memoryType": "DDR4",
+        "moduleCapacityGiB": 16,
+        "moduleCount": 2,
+        "totalCapacityGiB": 32,
+        "dataRateMts": 3600,
+        "fullTiming": "16-19-19-39",
+        "voltageV": 1.35,
+        "profileSupport": [
+          "Intel XMP 2.0"
+        ],
+        "color": null,
+        "rgb": null,
+        "colorRgbRemainUnknown": true,
+        "sourceUrl": "https://www.gskill.com/specification/165/184/1562831784/F4-3600C16D-32GVKC-Specification",
+        "observedAt": "2026-10-10T11:33:40.914Z",
+        "responseSha256": "e4c1463014b1a23d725541486b878ef8cef11f655a7626867cb913e2d058f82a",
+        "sourceScope": "Actual current exact-PN manufacturer specification; no database updates"
+      },
+      "manufacturerSpecificationVerifiedAt": "2026-10-10T11:40:33.212Z",
+      "saleUnit": "RAM_KIT",
+      "moduleCount": 2,
+      "currentQuote": null,
+      "completedAt": "2026-10-10T11:40:33.212Z",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_PN_EVIDENCE",
+        "CL17_FAMILY_NOT_CL16_SKU"
+      ]
+    },
+    {
+      "canonicalId": "dc9ab5d2-79a4-3bbc-876f-30bc31809dd4",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8fc33ad6-0dfc-43ab-9261-02b866190abf"
+      },
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8fc33ad6-0dfc-43ab-9261-02b866190abf",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 16GB (2x8GB)",
+        "partNumber": "F4-3200C16D-16GVKB"
+      },
+      "expectedSpecification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 8589934592,
+        "moduleCount": 2,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": null
+      },
+      "expectedSaleConfiguration": {
+        "partNumber": "F4-3200C16D-16GVKB",
+        "memoryType": "DDR4",
+        "dataRateMts": 3200,
+        "casLatencyCl": null,
+        "fullTiming": null,
+        "voltageV": 1.35,
+        "moduleCapacityBytes": 8589934592,
+        "moduleCount": 2,
+        "totalCapacityBytes": 17179869184,
+        "profileSupport": null,
+        "rgb": null,
+        "color": null,
+        "unknownsRemainNull": true,
+        "sourceScope": "Existing exact-PN curated manufacturer evidence plus explicitly listed fresh primary review; PN/title inference does not fill unknowns"
+      },
+      "priorManufacturerEvidence": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/184/1536110676/F4-3200C16D-16GVKB-Specification",
+          "retrievedAt": "2026-10-03T10:46:42Z",
+          "documentAuthor": "G.SKILL",
+          "verifiedPartNumber": "F4-3200C16D-16GVKB",
+          "selectedFacts": {
+            "part_number": "F4-3200C16D-16GVKB",
+            "memory_type": "DDR4",
+            "module_gib": 8,
+            "module_count": 2,
+            "data_rate_mts": 3200,
+            "voltage_v": 1.35,
+            "pin_count": null,
+            "ecc": false,
+            "buffer_type": "UNBUFFERED"
+          },
+          "profileBasis": null,
+          "evidenceScope": "Existing curated manufacturer extract reused; not a new network retrieval",
+          "sourceIsDirectManufacturer": true
+        }
+      ],
+      "priorReason": "3444778은 VKB16GB(8Gx2)패밀리에 맞지만 full PN및 현재 일반상품가 미확인. 다른3340852는 VK로 VKB와 임의동일시하지 않음.",
+      "status": "NO_CURRENT_QUOTE",
+      "manufacturerReview": [
+        {
+          "sourceUrl": "https://www.gskill.com/specification/165/184/1536110676/F4-3200C16D-16GVKB-Specification",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:42.557Z",
+          "responseSha256": "68d88bcf592aea40c12397f22d45698f3146592d9aacbc0a77a85c5c1de9ab82",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "pageTitle": "F4-3200C16D-16GVKB - Specification - G.SKILL International Enterprise Co., Ltd.",
+          "productHeading": "F4-3200C16D-16GVKB",
+          "exactPnLiteralPresent": true,
+          "productContext": null,
+          "specificationContext": "Memory Type DDR4 Capacity 16GB (8GBx2) Multi-Channel Kit Dual Channel Kit OC Profile Support Intel XMP 2.0 Tested Speed (XMP) Up to 3200* MT/s * Requires overclocking/BIOS adjustments. Maximum speed and performance depend on system components, including motherboard and CPU. Tested Latency (XMP) 16-18-18-38 Tested Voltage (XMP) 1.35V Registered/Unbuffered Unbuffered Error Checking (ECC) Non-ECC SPD Speed (Default) 2133 MT/s SPD Voltage (Default) 1.20V Fan Included No Warranty Limited Lifetime Features Intel XMP 2.0 Memory Overclock Profile Additional Notes Do not mix memory kits. Memory kits are sold in matched ki"
+        }
+      ],
+      "retailerReview": [
+        {
+          "kind": "NEW_DOMESTIC_SELLER_ORIGINAL_PAGE",
+          "sourceUrl": "https://www.e-himart.co.kr/app/goods/goodsDetail?goodsNo=0024076635",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:35:48.039Z",
+          "responseSha256": "9d5f3dc7845099cef3a96168081588d2430db011a0ba4531712d04f1488cc90d",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "UTF-8",
+          "redirectLocation": null,
+          "pageTitle": "롯데하이마트 | [서린공식] 지스킬 DDR4-3200 CL16 RIPJAWS V VKB 패키지 (16GB(8Gx2))",
+          "exactPnLiteralPresent": true,
+          "contexts": [
+            {
+              "needle": "F4-3200C16D-16GVKB",
+              "context": "목록 추가 바로 상담 예약 AR보기 실제 공간에 배치해 볼 수 있어요! 지스킬 영상상담 [서린공식] 지스킬 DDR4-3200 CL16 RIPJAWS V VKB 패키지 (16GB(8Gx2)) 모델명 F4-3200C16D-16GVKB 210,000원 모든 쿠폰 보기 최대혜택가 187,110원 정상가 210,000 10월 PC부품_다운로드_1% 쿠폰받기 2026.09.30~2026.10.31 2,100 삼성, 롯데 카드 즉시할인 카드혜택 알림 신청 20,790 할인 "
+            },
+            {
+              "needle": "정상가",
+              "context": "공식] 지스킬 DDR4-3200 CL16 RIPJAWS V VKB 패키지 (16GB(8Gx2)) 모델명 F4-3200C16D-16GVKB 210,000원 모든 쿠폰 보기 최대혜택가 187,110원 정상가 210,000 10월 PC부품_다운로드_1% 쿠폰받기 2026.09.30~2026.10.31 2,100 삼성, 롯데 카드 즉시할인 카드혜택 알림 신청 20,790 할인 혜택 유의사항 현대카드 즉시할인 18,710 카카오페이 즉시할인 18,710 신한카드 즉시할인"
+            },
+            {
+              "needle": "품절",
+              "context": "유하기 해당 브라우저에서는 결제가 정상 작동하지 않을 수 있으니 크롬 브라우저를 통해 접속 해 주시길 바랍니다. 똑똑한 쇼핑파트너 요청하신 화면으로 이동하고 있습니다. 잠시만 기다려 주세요. 일시 품절된 상품입니다. 재입고 알림 신청 AI 대화는 이어서 가능해요 상단으로 이동하기 닫기 선물하기 구매하기 구매툴 닫기 지스킬 [서린공식] 지스킬 DDR4-3200 CL16 RIPJAWS V VKB 패키지 (16GB(8Gx2)) 연장보증보험 원 원 원 가전교체서비스 원"
+            }
+          ],
+          "jsonFields": [],
+          "productJson": [
+            {
+              "name": "[서린공식] 지스킬 DDR4-3200 CL16 RIPJAWS V VKB 패키지 (16GB(8Gx2))",
+              "model": "F4-3200C16D-16GVKB",
+              "sku": "0024076635",
+              "offers": {
+                "url": "https://www.e-himart.co.kr/app/goods/goodsDetail?goodsNo=0024076635",
+                "priceCurrency": "KRW",
+                "price": "210000",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/OutOfStock",
+                "@type": "Offer"
+              },
+              "additionalProperty": [
+                {
+                  "name": "RAM 용량",
+                  "value": "8GB",
+                  "@type": "PropertyValue"
+                },
+                {
+                  "name": "메모리종류",
+                  "value": "DDR4",
+                  "@type": "PropertyValue"
+                },
+                {
+                  "name": "RAM 전압",
+                  "value": "1.35V",
+                  "@type": "PropertyValue"
+                },
+                {
+                  "name": "동작속도",
+                  "value": "3200MHz",
+                  "@type": "PropertyValue"
+                },
+                {
+                  "name": "RAM 개수",
+                  "value": "2개",
+                  "@type": "PropertyValue"
+                },
+                {
+                  "name": "RAM 타이밍",
+                  "value": "CL16",
+                  "@type": "PropertyValue"
+                },
+                {
+                  "name": "히트싱크",
+                  "value": "포함",
+                  "@type": "PropertyValue"
+                },
+                {
+                  "name": "용도",
+                  "value": "데스크탑용",
+                  "@type": "PropertyValue"
+                },
+                {
+                  "name": "부가기능",
+                  "value": "XMP",
+                  "@type": "PropertyValue"
+                }
+              ]
+            }
+          ],
+          "saleIdentityVerified": true,
+          "priceEligibleForCurrentProvider": false,
+          "domesticExactSalePnVerified": true,
+          "availability": "OUT_OF_STOCK",
+          "eligibleForImport": false
+        },
+        {
+          "kind": "NEW_DOMESTIC_SELLER_ORIGINAL_PAGE",
+          "sourceUrl": "https://m.yes24.com/Goods/Detail/90525574",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:35:49.715Z",
+          "responseSha256": "c0a74ff7e026abbc0b33458ebdec18f6a9fb735a5f4379c76015f9bc96c23a97",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "charset": "UTF8",
+          "redirectLocation": null,
+          "pageTitle": "(G.SKILL) DDR4 16G PC4-25600 CL16 RIPJAWS V VKB 8G X 2 | 컴퓨터주변기기 | 지우몰 - 예스24",
+          "exactPnLiteralPresent": true,
+          "contexts": [
+            {
+              "needle": "F4-3200C16D-16GVKB",
+              "context": "자료 부가 영상 제작사 리뷰 전문가 리뷰 추천평 업체 공지사항 필수 공지사항 제품소개 제품소개 더보기 펼치기 관련 분류 카테고리 분류 문구/GIFT 디지털 PC부품 RAM 품목정보 품명 및 모델명 F4-3200C16D-16GVKB 제조자/수입자 G.SKILL/(주)서린씨앤아이 제조국 또는 원산지 대만 관련 연락처 (주)서린씨앤아이/070-4917-8889 허가관련 상세설명참조 리뷰 0 혜택 및 유의사항 첫번째 리뷰어가 되어주세요. 리뷰 쓰기 리뷰전체 리뷰전체 구"
+            },
+            {
+              "needle": "품절",
+              "context": "요. 한줄평 쓰기 클린봇 으로 착한 글만 확인해보세요! 클린봇 이 부적절한 글을 감지 중입니다. 설정 구매한줄평 추천순 최근순 추천순 평점높은순 평점낮은순 한줄평 전체보기 배송/반품/교환 안내 일시품절 더 이상 보지 않기 닫기"
+            }
+          ],
+          "jsonFields": [],
+          "productJson": [
+            {
+              "name": "(G.SKILL) DDR4 16G PC4-25600 CL16 RIPJAWS V VKB 8G X 2",
+              "sku": "90525574",
+              "offers": {
+                "@type": "Offer",
+                "price": 131300,
+                "priceCurrency": "KRW",
+                "availability": "https://schema.org/OutOfStock",
+                "url": "https://m.yes24.com/goods/detail/90525574",
+                "itemCondition": "https://schema.org/NewCondition",
+                "seller": {
+                  "@type": "Organization",
+                  "name": "YES24"
+                }
+              }
+            }
+          ],
+          "saleIdentityVerified": true,
+          "priceEligibleForCurrentProvider": false,
+          "domesticExactSalePnVerified": true,
+          "availability": "OUT_OF_STOCK",
+          "eligibleForImport": false
+        }
+      ],
+      "danawaReview": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3444778",
+          "httpStatus": 200,
+          "observedAt": "2026-10-10T11:33:48.060Z",
+          "responseSha256": "82cbb9cd4f57d250b113905fdf551676e0c0fd4b18c8b625e386dad0f4015776",
+          "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+          "redirectLocation": null,
+          "pcode": "3444778",
+          "productTitle": "G.SKILL DDR4-3200 RIPJAWS VKB 패키지 (16GB(8Gx2))",
+          "currentRegularQuote": null,
+          "priceError": "REGULAR_PRICE_SECTION_MISSING",
+          "exactPnLiteralPresent": false,
+          "pnContexts": [],
+          "ownSpecRows": [
+            "G.SKILL DDR4-3200 RIPJAWS VKB 패키지 (16GB(8Gx2)) 최저가 0 원 자세히보기 판매점 : 0개 ㅣ 제조사 : G.SKILL ㅣ 등록월: 2015.09."
+          ],
+          "detailImgUrls": [],
+          "saleIdentityVerified": false
+        }
+      ],
+      "verifiedAt": "2026-10-10T11:40:33.212Z",
+      "newPriceObservedAt": null,
+      "reason": "새 국내 하이마트와 YES24 자체 모델/품목정보가 정확 PN F4-3200C16D-16GVKB를 명시하고, 하이마트는 8GB×2·DDR4-3200·CL16·1.35V·XMP 구성도 확인합니다. 두 원문 모두 OutOfStock·품절 표시입니다. 하이마트 정상가 210,000원과 YES24 표시가 131,300원은 품절 표시 금액이므로 구매 가능한 가격 미리보기에 넣지 않습니다. 정확 SKU는 확인했고 현재 신품 구매가 확인이 남습니다.",
+      "reviewedManufacturerFacts": {
+        "partNumber": "F4-3200C16D-16GVKB",
+        "memoryType": "DDR4",
+        "moduleCapacityGiB": 8,
+        "moduleCount": 2,
+        "totalCapacityGiB": 16,
+        "dataRateMts": 3200,
+        "fullTiming": "16-18-18-38",
+        "voltageV": 1.35,
+        "profileSupport": [
+          "Intel XMP 2.0"
+        ],
+        "color": null,
+        "rgb": null,
+        "colorRgbRemainUnknown": true,
+        "sourceUrl": "https://www.gskill.com/specification/165/184/1536110676/F4-3200C16D-16GVKB-Specification",
+        "observedAt": "2026-10-10T11:33:42.557Z",
+        "responseSha256": "68d88bcf592aea40c12397f22d45698f3146592d9aacbc0a77a85c5c1de9ab82",
+        "sourceScope": "Actual current exact-PN manufacturer specification; no database updates"
+      },
+      "manufacturerSpecificationVerifiedAt": "2026-10-10T11:40:33.212Z",
+      "saleUnit": "RAM_KIT",
+      "moduleCount": 2,
+      "currentQuote": null,
+      "completedAt": "2026-10-10T11:40:33.212Z",
+      "verificationScope": "EXACT_DOMESTIC_LISTING_PN_AND_KIT_CONFIGURATION_NO_CURRENT_PURCHASABLE_QUOTE",
+      "domesticExactSalePnVerified": true,
+      "saleIdentityVerified": true,
+      "reasonCodes": [
+        "EXACT_DOMESTIC_SALE_PN_VERIFIED",
+        "SELLERS_CURRENTLY_OUT_OF_STOCK",
+        "DANAWA_REGULAR_PRICE_SECTION_MISSING"
+      ],
+      "rejectedDisplayAmounts": [
+        {
+          "sourceProvider": "HIMART",
+          "sourceUrl": "https://www.e-himart.co.kr/app/goods/goodsDetail?goodsNo=0024076635",
+          "priceKrw": 210000,
+          "observedAt": "2026-10-10T11:35:48.039Z",
+          "responseSha256": "9d5f3dc7845099cef3a96168081588d2430db011a0ba4531712d04f1488cc90d",
+          "priceBasis": "NORMAL_PRODUCT_DISPLAYED_PRICE",
+          "availability": "OUT_OF_STOCK",
+          "eligibleForImport": false
+        },
+        {
+          "sourceProvider": "YES24",
+          "sourceUrl": "https://m.yes24.com/Goods/Detail/90525574",
+          "priceKrw": 131300,
+          "observedAt": "2026-10-10T11:35:49.715Z",
+          "responseSha256": "c0a74ff7e026abbc0b33458ebdec18f6a9fb735a5f4379c76015f9bc96c23a97",
+          "availability": "OUT_OF_STOCK",
+          "eligibleForImport": false
+        }
+      ]
+    }
+  ],
+  "previewPayload": {
+    "schemaVersion": 1,
+    "items": []
+  },
+  "policyExpansionRequired": [],
+  "databaseAccess": 0,
+  "databaseWrites": 0,
+  "deployments": 0,
+  "gitCommits": 0,
+  "priceImportApproved": false,
+  "productImportApproved": false,
+  "updatedAt": "2026-10-10T11:40:33.212Z",
+  "blockedDomains": [],
+  "inputPathUnsupportedCandidates": [
+    {
+      "canonicalId": "9ba50ffb-4690-3c0f-a775-1751d4d9bcf9",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7019a3a6-2b1a-4d34-a98a-d7a9e0bea5e4"
+      },
+      "partNumber": "F4-3200C16D-64GVK",
+      "sourceProvider": "DANAWA",
+      "externalId": "10019382",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=10019382",
+      "observedPriceKrw": 627010,
+      "currency": "KRW",
+      "observedAt": "2026-10-10T11:36:56.299Z",
+      "responseSha256": "1d0d6acbb61cc18ce20915ca74ec6f205ec53d6704dd269863c14fec6e97a875",
+      "responseHashScope": "RAW_HTTP_RESPONSE_BYTES",
+      "priceBasis": "REGULAR_MALL_EXPLICIT_DATA_BASE_PRICE_PRODUCT_ONLY",
+      "merchantDisplayName": "주식회사 우린전자",
+      "publicStoreUrl": "https://shop.danawa.com/virtualestimate/?controller=estimate&methods=moveEstimateMiniShop&memberId=PU80F&productSeq=10019382&serviceId=blog&marketPlaceSeq=33",
+      "excludedCashPriceKrw": 600000,
+      "exactDomesticSalePnVerified": false,
+      "fullSaleIdentityVerifiedAt": null,
+      "collectorPurchaseLinkSupportRequired": true,
+      "providerPolicyExpansionRequired": false,
+      "previewEligible": false,
+      "nextEvidence": [
+        "미니샵 실제 판매 상품의 full PN·64GB(32GB×2) 키트·신품·구매 가능 여부 1차 증거",
+        "DANAWA 일반 미니샵 링크의 수집기 지원 검토",
+        "정확 SKU 검토 완료 뒤 현재 일반 상품가 재관측"
+      ]
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "READY": 0,
+    "HELD": 5,
+    "NO_CURRENT_QUOTE": 1,
+    "EXACT_DOMESTIC_SALE_PN_RESOLVED": 1,
+    "INPUT_PATH_UNSUPPORTED_CANDIDATES": 1,
+    "PROVIDER_POLICY_EXPANSION_PRICE_CANDIDATES": 0,
+    "PREVIEW_PRICE_ROWS": 0
+  },
+  "statusDefinitions": {
+    "NO_CURRENT_QUOTE": "정확 국내 판매 PN·키트 구성을 확인했지만 조사한 현재 판매처가 품절이거나 구매 가능한 일반 상품가를 확인하지 못함. 전국 재고나 단종을 확정하는 의미가 아님.",
+    "HELD": "정확 국내 판매 PN·구매 가능한 일반 상품가·지원 수집 경로 중 하나 이상이 검증되지 않아 가격 반영 보류.",
+    "INPUT_PATH_UNSUPPORTED_CANDIDATES": "현재 원문의 일반가가 있지만 기존 수집기가 해당 판매점 링크 형태를 지원하지 않으며, 정확 SKU 검토가 추가로 필요함."
+  },
+  "limitations": [
+    "검색 결과는 판매 원문 URL을 찾는 용도로만 사용했고 캐시 금액을 가격으로 저장하지 않았습니다.",
+    "TRIDENT Z5 32GB와 RIPJAWS S5 32GB는 DDR/용량/CL이 같아도 다른 판매 SKU입니다.",
+    "16GVKB·32GVK·64GVK 및 CL16·CL18·CL17 suffix를 서로 전용하지 않았습니다.",
+    "제조사 원문에서 확인한 full timing·전압·프로필은 검토 자료로만 기록했으며 기존 상품 제원은 변경하지 않았습니다.",
+    "정확 PN이 공개된 국내 두 판매처는 현재 품절이므로 표시 금액이 있어도 새 구매가로 반영하지 않았습니다.",
+    "일반 미니샵 가격의 NO_ACTIVE_OFFER는 현 수집기의 링크 지원 제한이며 시장 가격 부재를 의미하지 않습니다.",
+    "색상/RGB는 직접 텍스트 증거가 부족한 항목에 null을 유지했습니다."
+  ],
+  "validation": {
+    "priorRamReportUnchanged": true,
+    "active80Unchanged": true,
+    "identities307Unchanged": true,
+    "completeHeldGskill6": true,
+    "manufacturerExactPnCurrentHeadingConfirmed": true,
+    "priceRowsToApply": 0,
+    "productWrites": 0,
+    "specWrites": 0,
+    "databaseAccess": 0,
+    "databaseWrites": 0,
+    "deployments": 0,
+    "gitCommits": 0,
+    "gitPushes": 0
+  },
+  "completedAt": "2026-10-10T11:40:33.212Z"
+}

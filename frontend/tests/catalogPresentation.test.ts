@@ -5,8 +5,8 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import * as jsxRuntime from 'react/jsx-runtime'
 import ts from 'typescript'
 import * as presentation from '../src/features/catalog/catalogPresentation.ts'
-import { catalogIdentityDescription, catalogIdentityLabel, catalogPriceStatusLabel, catalogRoleLabel, formatCatalogPrice, formatCurrentPrice, formatPriceObservedAt, ramKitLabel, specificationRows } from '../src/features/catalog/catalogPresentation.ts'
-import type { CatalogPriceStatus, CurrentPrice } from '../src/features/catalog/catalogTypes.ts'
+import { catalogIdentityDescription, catalogIdentityLabel, catalogPriceStatusLabel, catalogRoleLabel, formatCatalogPrice, formatCurrentPrice, formatProjectPrice, formatPriceObservedAt, ramKitLabel, specificationRows } from '../src/features/catalog/catalogPresentation.ts'
+import type { CatalogPriceStatus, CatalogProduct, CurrentPrice, ReferenceEstimate } from '../src/features/catalog/catalogTypes.ts'
 
 const price: CurrentPrice = { amountKrw: 123456, sourceName: 'DANAWA', sourceUrl: 'https://shop.example/p/1', observedAt: '2026-10-06T01:00:00Z' }
 const sharedStatus = (overrides: Partial<CatalogPriceStatus> = {}): CatalogPriceStatus => ({
@@ -23,6 +23,42 @@ function renderPriceSource(currentPrice: CurrentPrice | null, status: CatalogPri
   new Function('require', 'exports', 'module', code)(require, module.exports, module)
   return renderToStaticMarkup(module.exports.CurrentPriceSource!({ price: currentPrice, status }))
 }
+
+function renderReferenceSource(price: ReferenceEstimate, detailed = true) {
+  const code = ts.transpileModule(readFileSync(new URL('../src/features/catalog/ReferencePriceSource.tsx', import.meta.url), 'utf8'), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX },
+  }).outputText
+  const module = { exports: {} as { ReferencePriceSource?: (props: { price: ReferenceEstimate; detailed: boolean }) => ReturnType<typeof jsxRuntime.jsx> } }
+  const require = (name: string) => name === 'react/jsx-runtime' ? jsxRuntime : presentation
+  new Function('require', 'exports', 'module', code)(require, module.exports, module)
+  return renderToStaticMarkup(module.exports.ReferencePriceSource!({ price, detailed }))
+}
+
+test('추정 참고가의 약 표시·범위·원 판매 단위·출처를 렌더링하고 현재가를 만들지 않는다', () => {
+  const preview = JSON.parse(readFileSync(new URL('../../data/catalog-shared/reference-prices-preview-2026-10-10.json', import.meta.url), 'utf8'))
+  const referenceEstimate = preview.products.find((p: { referenceEstimate: ReferenceEstimate }) => p.referenceEstimate.confidence === 'ESTIMATED').referenceEstimate as ReferenceEstimate
+  const product = { currentPrice: null, referenceEstimate } as CatalogProduct
+  assert.match(formatProjectPrice(product), /^추정 참고가 약 /)
+  const html = renderReferenceSource(referenceEstimate)
+  assert.match(html, /유사 부품 가격으로 추정/)
+  assert.match(html, /중앙 · 추정 참고가/)
+  assert.match(html, /참고 범위/)
+  assert.match(html, /rel="noopener noreferrer"/)
+  assert.ok(!html.includes('최근 관측'))
+  assert.equal(product.currentPrice, null)
+  assert.equal(formatProjectPrice({ ...product, currentPrice: price }), '123,456원')
+  assert.equal(formatProjectPrice({ ...product, currentPrice: price,
+    priceStatus: sharedStatus({ freshness: 'EXPIRED', includedInTotal: false }) }), '과거 관측 123,456원 (현재가 합계 제외)')
+})
+
+test('공식 출시 참고가는 원래 날짜를 표시하고 미확인 날짜를 추정 관측일로 바꾸지 않는다', () => {
+  const preview = JSON.parse(readFileSync(new URL('../../data/catalog-shared/reference-prices-preview-2026-10-10.json', import.meta.url), 'utf8'))
+  const launch = preview.products.find((p: { referenceEstimate: ReferenceEstimate }) => p.referenceEstimate.basis === 'LAUNCH_PRICE').referenceEstimate as ReferenceEstimate
+  assert.match(formatProjectPrice({ currentPrice: null, referenceEstimate: launch } as CatalogProduct), /^출시 참고가 /)
+  assert.match(renderReferenceSource(launch), new RegExp(`가격 기준 ${launch.sourceDate}`))
+  assert.match(renderReferenceSource({ ...launch, sourceDate: null }), /가격 기준일 미확인/)
+  assert.ok(!renderReferenceSource({ ...launch, sourceDate: null }).includes('유사 부품 가격으로 추정'))
+})
 
 test('설치 모델 참고·판매 키트·정확 상품 자료·미분류를 별도로 표시한다', () => {
   assert.equal(catalogIdentityLabel('MODEL_REFERENCE'), '설치 모델 참고')
@@ -102,7 +138,7 @@ test('가격 미확인·중앙 미등록·연결 실패를 같은 빈 가격으�
 test('중앙 연결 실패 시 마지막 가격의 원관측 시각·출처와 마지막 성공 조회를 함께 표시한다', () => {
   const status = sharedStatus({ lookupStatus: 'UNAVAILABLE', includedInTotal: false })
   const html = renderPriceSource(price, status)
-  assert.match(html, /중앙 가격 · 연결 실패 · 합계 제외/)
+  assert.match(html, /중앙 가격 · 연결 실패 · 현재가 합계 제외/)
   assert.match(html, /href="https:\/\/shop.example\/p\/1"/)
   assert.match(html, /datetime="2026-10-06T01:00:00Z"/i)
   assert.match(html, /마지막 성공 조회/)

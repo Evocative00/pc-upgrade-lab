@@ -25,12 +25,15 @@ import tools.jackson.databind.json.JsonMapper;
 
 /** 승인된 canonical ID만 보내는 제한된 읽기 클라이언트. 쿠키·로컬 제품 ID·PC 자료는 전송하지 않는다. */
 public final class SharedPriceClient {
+    /** Both past and future server clock drift are bounded; observations still cannot exceed servedAt. */
+    public static final Duration MAX_SERVER_CLOCK_SKEW = Duration.ofSeconds(5);
     private final URI baseUrl;
     private final Duration timeout;
     private final int maxResponseBytes;
     private final SharedCatalogSnapshot snapshot;
     private final Clock clock;
     private final SharedPriceFreshness freshness;
+    private final String apiToken;
     private final HttpClient http;
     private final JsonMapper mapper = JsonMapper.builder()
             .enable(DeserializationFeature.FAIL_ON_READING_DUP_TREE_KEY)
@@ -44,7 +47,14 @@ public final class SharedPriceClient {
 
     public SharedPriceClient(URI baseUrl, Duration timeout, int maxResponseBytes,
                              SharedCatalogSnapshot snapshot, Clock clock, SharedPriceFreshness freshness) {
+        this(baseUrl, timeout, maxResponseBytes, snapshot, clock, freshness, "");
+    }
+
+    public SharedPriceClient(URI baseUrl, Duration timeout, int maxResponseBytes,
+                             SharedCatalogSnapshot snapshot, Clock clock, SharedPriceFreshness freshness,
+                             String apiToken) {
         this.baseUrl = validateBaseUrl(baseUrl);
+        this.apiToken = validateApiToken(apiToken, this.baseUrl);
         if (timeout == null || timeout.compareTo(Duration.ofMillis(100)) < 0
                 || timeout.compareTo(Duration.ofSeconds(10)) > 0)
             throw new IllegalArgumentException("Shared price timeout must be 100..10000 milliseconds");
@@ -56,6 +66,17 @@ public final class SharedPriceClient {
         this.clock = Objects.requireNonNull(clock);
         this.freshness = Objects.requireNonNull(freshness);
         this.http = HttpClient.newBuilder().connectTimeout(timeout).followRedirects(HttpClient.Redirect.NEVER).build();
+    }
+
+    private static String validateApiToken(String token, URI origin) {
+        if (token == null || token.isEmpty()) {
+            if ("https".equals(origin.getScheme()))
+                throw new IllegalArgumentException("HTTPS shared prices require a team API token");
+            return "";
+        }
+        if (!token.matches("[0-9a-fA-F]{64}"))
+            throw new IllegalArgumentException("Shared price API token must be a 64-character hexadecimal value");
+        return token;
     }
 
     public static URI validateBaseUrl(URI uri) {
@@ -76,15 +97,19 @@ public final class SharedPriceClient {
 
     public SharedPriceDtos.Envelope fetch(Set<String> canonicalIds) {
         var requested = new LinkedHashSet<>(Objects.requireNonNull(canonicalIds));
-        if (requested.isEmpty() || requested.size() > 14 || !snapshot.products().keySet().containsAll(requested))
+        if (requested.isEmpty() || requested.size() > batchSize() || !snapshot.products().keySet().containsAll(requested))
             throw new IllegalArgumentException("Only approved shared canonical IDs may be requested");
         for (String id : requested) {
             if (id == null || !UUID.fromString(id).toString().equals(id))
                 throw new IllegalArgumentException("Canonical ID must be an exact UUID");
         }
-        var request = HttpRequest.newBuilder(baseUrl.resolve("/api/v1/prices?canonicalIds="
+        var builder = HttpRequest.newBuilder(baseUrl.resolve(snapshot.apiPath() + "?canonicalIds="
                         + requested.stream().sorted().collect(java.util.stream.Collectors.joining(","))))
-                .timeout(timeout).header("Accept", "application/json").GET().build();
+                .timeout(timeout).header("Accept", "application/json");
+        if (snapshot.isFull()) builder.header("X-Catalog-Version", snapshot.version());
+        if (!apiToken.isEmpty()) builder.header("Authorization", "Bearer " + apiToken);
+        var request = builder.GET().build();
+        var requestStarted = clock.instant();
         try {
             // 전체 본문 수신까지 deadline을 둔다. 헤더만 먼저 보내고 본문을 지연시키는 서버도 종료한다.
             var pending = http.sendAsync(request, info -> new BoundedBody(maxResponseBytes));
@@ -93,27 +118,42 @@ public final class SharedPriceClient {
             catch (InterruptedException ex) { pending.cancel(true); throw ex; }
             catch (java.util.concurrent.TimeoutException ex) {
                 pending.cancel(true);
-                throw new IllegalStateException("Shared price lookup timed out", ex);
+                throw new IllegalStateException("Shared price lookup timed out");
             }
             if (response.statusCode() != 200) throw new IllegalArgumentException("Shared price HTTP response is unavailable");
             String contentType = response.headers().firstValue("Content-Type").orElse("");
             if (!contentType.split(";", 2)[0].strip().equalsIgnoreCase("application/json"))
                 throw new IllegalArgumentException("Shared price response must be JSON");
-            var result = mapper.treeToValue(mapper.readTree(response.body()), SharedPriceDtos.Envelope.class);
-            validate(result, requested);
+            SharedPriceDtos.Envelope result;
+            try {
+                if (snapshot.isFull()) {
+                    var full = mapper.treeToValue(mapper.readTree(response.body()), SharedPriceDtos.EnvelopeV2.class);
+                    if (full.priceVersion() == null || !full.priceVersion().matches("prices-v1-[0-9a-f]{64}"))
+                        throw new IllegalArgumentException("Invalid shared price revision");
+                    result = full.toEnvelope();
+                } else result = mapper.treeToValue(mapper.readTree(response.body()), SharedPriceDtos.Envelope.class);
+            } catch (RuntimeException ex) {
+                // JSON 오류의 원문/원인은 헤더를 반사한 서버의 토큰을 포함할 수 있다.
+                throw new IllegalArgumentException("Shared price response does not match the approved JSON contract");
+            }
+            validate(result, requested, requestStarted);
             return result;
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
-            throw new IllegalStateException("Shared price lookup interrupted", ex);
+            throw new IllegalStateException("Shared price lookup interrupted");
         } catch (java.util.concurrent.ExecutionException ex) {
-            throw new IllegalStateException("Shared price lookup failed", ex);
+            throw new IllegalStateException("Shared price lookup failed");
         }
     }
 
-    private void validate(SharedPriceDtos.Envelope response, Set<String> requested) {
+    private void validate(SharedPriceDtos.Envelope response, Set<String> requested, java.time.Instant requestStarted) {
         var now = clock.instant();
-        if (response == null || response.schemaVersion() != 1 || !snapshot.version().equals(response.catalogVersion())
-                || response.servedAt() == null || response.servedAt().isAfter(now)
+        if (response != null && !snapshot.version().equals(response.catalogVersion()))
+            throw new IllegalArgumentException("Shared price catalog identity revision does not match");
+        if (response != null && (response.servedAt() == null || response.servedAt().isAfter(now.plus(MAX_SERVER_CLOCK_SKEW))
+                || response.servedAt().isBefore(requestStarted.minus(MAX_SERVER_CLOCK_SKEW))))
+            throw new IllegalArgumentException("Shared price server timestamp is invalid");
+        if (response == null || response.schemaVersion() != snapshot.schemaVersion()
                 || !freshness.toView().equals(response.policy()) || response.items().size() != requested.size())
             throw new IllegalArgumentException("Shared price envelope does not match the approved contract");
         var received = new HashSet<String>();
@@ -130,16 +170,24 @@ public final class SharedPriceClient {
             if (!expected.identity().equals(item.product()))
                 throw new IllegalArgumentException("Shared product identity or sale unit does not match approval");
             if (item.status() == SharedPriceDtos.Status.NO_PRICE) {
-                if (expected.price() != null || item.price() != null || item.freshness() != SharedPriceDtos.Freshness.NO_PRICE)
+                if ((!snapshot.isFull() && expected.price() != null) || item.price() != null
+                        || item.freshness() != SharedPriceDtos.Freshness.NO_PRICE)
                     throw new IllegalArgumentException("NO_PRICE is only valid for an approved unpriced product");
                 continue;
             }
-            if (item.price() == null || item.price().amountKrw() <= 0 || !item.price().equals(expected.price())
-                    || item.price().observedAt() == null || item.price().observedAt().isAfter(response.servedAt())
+            if (item.status() != SharedPriceDtos.Status.OK || item.price() == null || item.price().amountKrw() <= 0
+                    || item.price().amountKrw() > 999999999999L
+                    || (!snapshot.isFull() && !item.price().equals(expected.price()))
+                    || (snapshot.isFull() && !SharedCatalogSnapshot.validPriceSource(item.price().sourceName(), item.price().sourceUrl()))
+                    || item.price().observedAt() == null || item.price().observedAt().isBefore(java.time.Instant.EPOCH)
+                    || item.price().observedAt().isAfter(response.servedAt())
                     || freshness.classify(item.price().observedAt(), response.servedAt()) != item.freshness())
                 throw new IllegalArgumentException("Shared price does not match its approved observation");
         }
     }
+
+    /** Bound each HTTP body while allowing later observations without changing the local catalog. */
+    public int batchSize() { return snapshot.isFull() ? 50 : 14; }
 
     /** 제한을 초과하거나 끝나지 않는 본문도 HttpRequest timeout 범위에서 종료한다. */
     private static final class BoundedBody implements HttpResponse.BodySubscriber<byte[]> {

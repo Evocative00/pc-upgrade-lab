@@ -1,0 +1,803 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-10T09:29:08.842Z",
+  "scope": "Six selected motherboard records; exact domestic new sale configuration and ordinary product amounts only. No authority to add to approved 75.",
+  "priceImportApproved": false,
+  "databaseWrites": 0,
+  "deployments": 0,
+  "codeChanges": 0,
+  "gradleRuns": 0,
+  "browserVerified": false,
+  "sourceAudit": "data/catalog-review/all-catalog-price-acquisition-2026-10-10.json",
+  "sourceCandidatePageAudit": "data/catalog-review/all-catalog-price-candidate-pages-2026-10-10.json",
+  "sourceIdentityFile": "data/catalog-shared/all-catalog-identities-2026-10-10.json",
+  "requestPolicy": {
+    "sequential": true,
+    "minimumIntervalMs": 2000,
+    "stopOnHttpOrConnectionError": true
+  },
+  "products": [
+    {
+      "localProductId": "54ff0994-8f3c-4f26-8209-5e0bcf94068c",
+      "canonicalId": "cbb05666-c220-3fe4-ac38-68e574ae51ce",
+      "type": "MOTHERBOARD",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c479ed77-62fa-48fa-84e5-923b087843c1",
+        "manufacturer": "MSI",
+        "modelName": "MPG B650 CARBON WIFI",
+        "partNumber": null
+      },
+      "catalogueIdentityKind": "LEGACY_UNCLASSIFIED",
+      "catalogueRole": "UNASSIGNED",
+      "catalogueActive": false,
+      "previousAcquisitionState": "HOLD_REOBSERVED_PRICE_OUTLIER",
+      "status": "PRICE_PREVIEW_READY_UNAPPROVED",
+      "cataloguePriceAmountKrw": null,
+      "stockStatus": "SELLER_DECLARED_IN_STOCK",
+      "manufacturerEvidenceUrls": [
+        "https://www.msi.com/Motherboard/MPG-B650-CARBON-WIFI/Specification"
+      ],
+      "initialDiscoveryCandidate": {
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+        "pcode": "17971178",
+        "title": "MSI MPG B650 카본 WIFI",
+        "reason": "EXACT_FAMILY_BUT_PREVIOUS_PRICE_OUTLIER",
+        "accepted": false
+      },
+      "researchCandidates": [
+        {
+          "pcode": "17971178",
+          "expectedTitle": "MSI MPG B650 카본 WIFI",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+          "pcode": "17971178",
+          "expectedTitle": "MSI MPG B650 카본 WIFI",
+          "actualProductTitle": "MSI MPG B650 카본 WIFI",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T09:30:03.230Z",
+          "httpStatus": 200,
+          "bodyBytes": 142009,
+          "sha256": "885570d66826f2f4453bdb8f8bce6bf266cade8d799351384fcea69d016148d0",
+          "availabilityText": [],
+          "regularSectionCount": 1,
+          "priceIsImportable": false,
+          "price": {
+            "amountKrw": 915000,
+            "observedAt": "2026-10-10T09:30:03.230Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "collectionStatus": "PRE_REVIEW_OBSERVATION_NOT_IMPORTED",
+          "shippingExcluded": true,
+          "promotionsExcluded": true,
+          "priceAndSeparateDeliveryEvidence": "<div class=\"sell-price\" data-base-price=\"915000\" data-delivery-price=\"3000\">",
+          "stockEvidenceExtent": "ACTIVE_DANAWA_ORDINARY_LISTING_ONLY_NOT_WAREHOUSE_STOCK",
+          "publicSellerBridgeCandidates": [
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=875&cate3=969&cate4=0&pcode=17971178&cmpnyc=TH201&safe_trade=4&fee_type=T&link_pcode=6266640653&package=0&setpc=0&r=17916246034131"
+          ]
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+          "pcode": "17971178",
+          "expectedTitle": "MSI MPG B650 카본 WIFI",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "requestStartedAt": "2026-10-10T09:37:10.336Z",
+          "observedAt": "2026-10-10T09:37:10.875Z",
+          "httpStatus": 200,
+          "bodyBytes": 141990,
+          "sha256": "c02e2cd52d7d9a4c2902cecf7c33ec418e9b8c78d7311500a5faba4d22dab658",
+          "priceImportApproved": false,
+          "warehouseStockVerified": false,
+          "price": {
+            "amountKrw": 915000,
+            "observedAt": "2026-10-10T09:37:10.875Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "collectionStatus": "EXACT_MAPPING_PRICE_PREVIEW_READY_UNAPPROVED",
+          "priceIsImportable": true,
+          "shippingExcluded": true,
+          "promotionsExcluded": true,
+          "priceAndSeparateDeliveryEvidence": "<div class=\"sell-price\" data-base-price=\"915000\" data-delivery-price=\"3000\">",
+          "stockEvidenceExtent": "ACTIVE_DANAWA_ORDINARY_LISTING_AND_INDEPENDENT_SELLER_DECLARED_IN_STOCK_NOT_WAREHOUSE_STOCK"
+        }
+      ],
+      "identityReview": {
+        "reviewedAt": "2026-10-10T09:36:26.792Z",
+        "method": "Manufacturer specification/manual and exact domestic product page comparison; no catalogue identity, activation or source PN changed",
+        "hardwareRevisionPrinted": false,
+        "hardwareRevisionClaimed": false,
+        "result": "EXACT_MARKETED_MODEL_MATCH_NULL_CATALOGUE_PN_PRESERVED",
+        "manufacturerModel": "MPG B650 CARBON WIFI",
+        "manufacturerFacts": {
+          "socket": "AM5",
+          "chipset": "AMD B650",
+          "memoryGeneration": "DDR5",
+          "formFactor": "ATX",
+          "wifi": "Preinstalled Wi-Fi 6E module"
+        },
+        "domesticSaleConfiguration": {
+          "title": "MSI MPG B650 카본 WIFI",
+          "condition": "NEW",
+          "unit": "One standalone motherboard",
+          "noAdvertisedIIorMAXSuffix": true
+        },
+        "evidenceUrls": [
+          "https://www.msi.com/Motherboard/MPG-B650-CARBON-WIFI/Specification",
+          "https://prod.danawa.com/info/?pcode=17971178",
+          "https://www.11st.co.kr/products/6266640653"
+        ],
+        "revisionScope": "The source catalogue names the original MPG B650 CARBON WIFI marketed model without a manufacturing revision or II/MAX suffix. The manufacturer and domestic listing name this same original model. No unseen PCB revision, serial number or package PN is inferred.",
+        "priorOutlierReview": {
+          "result": "UNUSUAL_PRICE_CORROBORATED_BY_ACTUAL_SELLER_PAGE",
+          "amountKrw": 915000,
+          "independentRetailerUrl": "https://www.11st.co.kr/products/6266640653",
+          "retailerObservedAt": "2026-10-10T09:31:27.117Z",
+          "claim": "This is the current public seller asking price, not a fair-value estimate or evidence of the usual market price."
+        },
+        "warehouseStockVerified": false
+      },
+      "mapping": {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "c479ed77-62fa-48fa-84e5-923b087843c1",
+          "manufacturer": "MSI",
+          "modelName": "MPG B650 CARBON WIFI",
+          "partNumber": null
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "17971178",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+          "saleSku": "MPG B650 CARBON WIFI",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-10T09:36:26.792Z"
+        },
+        "review": {
+          "expectedTitle": "MSI MPG B650 카본 WIFI",
+          "identityEvidenceUrls": [
+            "https://www.msi.com/Motherboard/MPG-B650-CARBON-WIFI/Specification",
+            "https://prod.danawa.com/info/?pcode=17971178",
+            "https://www.11st.co.kr/products/6266640653"
+          ],
+          "reason": "Original MSI MPG B650 CARBON WIFI exact marketed model: AM5, B650, DDR5, ATX and preinstalled Wi-Fi 6E. Current independent 11st seller page labels the standalone item NEW and lists ordinary KRW 915000 with separate delivery. The unusual amount is seller corroborated; no II/MAX or other model is substituted.",
+          "domesticPnEvidenceUrl": "https://www.11st.co.kr/products/6266640653",
+          "domesticPnReview": "The catalogue partNumber is null and remains null. The full marketed model name is the sale identity; neither a part number nor a PCB revision is invented. The 11st product name and manufacturer page refer to the same original MSI MPG B650 CARBON WIFI model.",
+          "timingCheck": "Identity reviewed and verifiedAt recorded before the next actual Danawa observation."
+        }
+      },
+      "priceImportApproved": false,
+      "independentRetailerEvidence": {
+        "sourceUrl": "https://www.11st.co.kr/products/6266640653",
+        "retailer": "11ST",
+        "retailerProductId": "6266640653",
+        "requestMethod": "GET",
+        "readOnly": true,
+        "observedAt": "2026-10-10T09:31:27.117Z",
+        "httpStatus": 200,
+        "bodyBytes": 264772,
+        "sha256": "b6080bdb8f1c26b4fbf9767fbdb398351e2a160b87b330acd027ab24afb858fd",
+        "title": "MSI MPG B650 카본 WIFI",
+        "condition": "NEW",
+        "ordinaryAmountKrw": 915000,
+        "discountedAmountKrw": 915000,
+        "hasMemberPrice": false,
+        "seller": "지니프라자",
+        "sellerId": "genie-plaza",
+        "listedAvailability": "http://schema.org/InStock",
+        "deliveryAmountKrwEvidenceOnly": 3000,
+        "deliveryExcludedFromProductAmount": true,
+        "promotionAppliedToProductAmount": false,
+        "conditionEvidence": "상품상태 새상품",
+        "priceEvidence": "\"selPrc\":915000,\"finalDscPrc\":915000,\"memberFinalDscPrc\":0,\"hasMemberPrice\":false",
+        "reviewExplanation": "The current domestic-market retailer page identifies MSI MPG B650 CARBON WIFI as a new standalone motherboard. The seller registered price and final ordinary price are both KRW 915000; the listed delivery fee is separate. The page declares InStock. This is a public seller listing signal, not an independent warehouse or physical-package inspection.",
+        "priceAdopted": false,
+        "warehouseStockVerified": false
+      },
+      "warehouseStockVerified": false,
+      "importReady": true,
+      "mappingReviewedAt": "2026-10-10T09:36:26.792Z",
+      "latestObservationAt": "2026-10-10T09:37:10.875Z"
+    },
+    {
+      "localProductId": "e726b02e-1d88-4c62-a896-1d7e9f3c428d",
+      "canonicalId": "62ae8bbd-b5f3-3ce3-a5f8-a461fc0e858a",
+      "type": "MOTHERBOARD",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1cfe802d-7364-442d-9d1b-897ad8556790",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B760M-PLUS WIFI",
+        "partNumber": null
+      },
+      "catalogueIdentityKind": "LEGACY_UNCLASSIFIED",
+      "catalogueRole": "UNASSIGNED",
+      "catalogueActive": false,
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "status": "NO_PRICE",
+      "cataloguePriceAmountKrw": null,
+      "stockStatus": "UNKNOWN",
+      "manufacturerEvidenceUrls": [
+        "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b760m-plus-wifi/techspec/"
+      ],
+      "initialDiscoveryCandidate": {
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19756199",
+        "pcode": "19756199",
+        "title": "ASUS TUF Gaming B760-PLUS WIFI 코잇",
+        "reason": "FIRST_CANDIDATE_ATX_NON_M_MODEL",
+        "accepted": false
+      },
+      "researchCandidates": [
+        {
+          "pcode": "19903640",
+          "expectedTitle": "ASUS TUF Gaming B760M-PLUS WIFI 코잇",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19903640"
+        },
+        {
+          "pcode": "19608629",
+          "expectedTitle": "ASUS TUF Gaming B760M-PLUS WIFI STCOM",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19608629"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19903640",
+          "pcode": "19903640",
+          "expectedTitle": "ASUS TUF Gaming B760M-PLUS WIFI 코잇",
+          "actualProductTitle": "ASUS TUF Gaming B760M-PLUS WIFI 코잇",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T09:30:03.555Z",
+          "httpStatus": 200,
+          "bodyBytes": 126307,
+          "sha256": "8ee13753077546eddfc40d22625ce618a57f99fd657dd18883ca374110deb228",
+          "availabilityText": [
+            "가격비교 중지"
+          ],
+          "regularSectionCount": 0,
+          "priceIsImportable": false,
+          "price": null,
+          "collectionStatus": "NO_PRICE",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          }
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19608629",
+          "pcode": "19608629",
+          "expectedTitle": "ASUS TUF Gaming B760M-PLUS WIFI STCOM",
+          "actualProductTitle": "ASUS TUF Gaming B760M-PLUS WIFI STCOM",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T09:30:05.505Z",
+          "httpStatus": 200,
+          "bodyBytes": 123165,
+          "sha256": "34f4a2054d406188e1d9d47cb28e72664e5b37cb3fdd15747adbd176b9d9ab60",
+          "availabilityText": [
+            "가격비교 중지"
+          ],
+          "regularSectionCount": 0,
+          "priceIsImportable": false,
+          "price": null,
+          "collectionStatus": "NO_PRICE",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          }
+        }
+      ],
+      "identityReview": {
+        "reviewedAt": "2026-10-10T09:36:26.792Z",
+        "method": "Manufacturer specification/manual and exact domestic product page comparison; no catalogue identity, activation or source PN changed",
+        "hardwareRevisionPrinted": false,
+        "hardwareRevisionClaimed": false,
+        "result": "EXACT_MARKETED_MODEL_FOUND_NO_CURRENT_ORDINARY_PRICE",
+        "manufacturerFacts": {
+          "socket": "LGA1700",
+          "chipset": "Intel B760",
+          "memoryGeneration": "DDR5",
+          "formFactor": "Micro ATX",
+          "wifi": "Wi-Fi 6"
+        },
+        "domesticSaleConfiguration": {
+          "matchedDistributorPages": [
+            "COIT",
+            "STCOM",
+            "Intek&Company"
+          ],
+          "excludedVariants": [
+            "B760-PLUS WIFI (ATX non-M)",
+            "B760M-PLUS WIFI D4 (DDR4)",
+            "B760M-PLUS WIFI II"
+          ]
+        },
+        "evidenceUrls": [
+          "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b760m-plus-wifi/techspec/",
+          "https://prod.danawa.com/info/?pcode=19903640",
+          "https://prod.danawa.com/info/?pcode=19608629",
+          "https://prod.danawa.com/info/?pcode=19772786"
+        ],
+        "primaryPageCheckedAt": "2026-10-10T09:28:26.000Z",
+        "reason": "Exact DDR5 Micro ATX model distributor pages show price comparison stopped. Current raw COIT and STCOM reads each contain zero active ordinary mall-price sections. No price is inferred from another model or an unavailable page.",
+        "noPriceInterpretation": "No current ordinary price on the checked pages; this does not prove global unavailability or discontinuation."
+      },
+      "mapping": null,
+      "priceImportApproved": false,
+      "holdReason": "NO_CURRENT_ORDINARY_PRICE_ON_EXACT_PAGES",
+      "warehouseStockVerified": false
+    },
+    {
+      "localProductId": "880de7f7-ca07-4e78-8a88-4569cd4a58b0",
+      "canonicalId": "4ae272af-a190-3a24-994e-89e4c0f9d9dd",
+      "type": "MOTHERBOARD",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "198724ee-bbf9-478f-ad19-3f80695e2bbe",
+        "manufacturer": "MSI",
+        "modelName": "B650M GAMING PLUS WIFI",
+        "partNumber": "B650M GAMING PLUS WIFI"
+      },
+      "catalogueIdentityKind": "LEGACY_UNCLASSIFIED",
+      "catalogueRole": "UNASSIGNED",
+      "catalogueActive": false,
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "status": "NO_PRICE",
+      "cataloguePriceAmountKrw": null,
+      "stockStatus": "UNKNOWN",
+      "manufacturerEvidenceUrls": [
+        "https://www.msi.com/Motherboard/B650M-GAMING-PLUS-WIFI/Specification"
+      ],
+      "initialDiscoveryCandidate": {
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18044522",
+        "pcode": "18044522",
+        "title": "ASUS TUF Gaming B650M-PLUS WIFI STCOM",
+        "reason": "FIRST_CANDIDATE_ASUS_NOT_MSI",
+        "accepted": false
+      },
+      "researchCandidates": [],
+      "candidateObservations": [],
+      "identityReview": {
+        "reviewedAt": "2026-10-10T09:36:26.792Z",
+        "method": "Manufacturer specification/manual and exact domestic product page comparison; no catalogue identity, activation or source PN changed",
+        "hardwareRevisionPrinted": false,
+        "hardwareRevisionClaimed": false,
+        "result": "DOMESTIC_EXACT_STANDALONE_SALE_MAPPING_NOT_ESTABLISHED",
+        "manufacturerFacts": {
+          "socket": "AM5",
+          "chipset": "AMD B650",
+          "memoryGeneration": "DDR5",
+          "formFactor": "Micro ATX",
+          "wifi": "Preinstalled Wi-Fi 6E module"
+        },
+        "evidenceUrls": [
+          "https://www.msi.com/Motherboard/B650M-GAMING-PLUS-WIFI/Specification"
+        ],
+        "excludedFirstCandidateReason": "First Danawa hit is ASUS TUF Gaming B650M-PLUS WIFI, a different manufacturer and model.",
+        "searchExtent": "Exact MSI model searches found overseas listings and assembled PCs; no verified current domestic standalone NEW Danawa product mapping was established in this bounded review.",
+        "noPriceInterpretation": "No verified domestic exact mapping, not proof of discontinuation or absence of all domestic sellers."
+      },
+      "mapping": null,
+      "priceImportApproved": false,
+      "holdReason": "DOMESTIC_EXACT_SALE_MAPPING_NOT_ESTABLISHED",
+      "warehouseStockVerified": false
+    },
+    {
+      "localProductId": "2aa10423-e5ed-456c-8aec-910e89eadf07",
+      "canonicalId": "c87d1152-cfc0-3157-a3a4-ab9071b52980",
+      "type": "MOTHERBOARD",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3a4791ed-2415-439c-a97e-43dd1e761880",
+        "manufacturer": "MSI",
+        "modelName": "PRO B760M-A WIFI DDR4",
+        "partNumber": null
+      },
+      "catalogueIdentityKind": "LEGACY_UNCLASSIFIED",
+      "catalogueRole": "UNASSIGNED",
+      "catalogueActive": false,
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "status": "NO_PRICE",
+      "cataloguePriceAmountKrw": null,
+      "stockStatus": "UNKNOWN",
+      "manufacturerEvidenceUrls": [
+        "https://us.msi.com/Motherboard/PRO-B760M-A-WIFI-DDR4/Specification"
+      ],
+      "initialDiscoveryCandidate": {
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19241759",
+        "pcode": "19241759",
+        "title": "MSI PRO B760M-A WIFI",
+        "reason": "FIRST_CANDIDATE_DDR5_NOT_DDR4",
+        "accepted": false
+      },
+      "researchCandidates": [
+        {
+          "pcode": "18652883",
+          "expectedTitle": "MSI PRO B760M-A WIFI DDR4",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18652883"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18652883",
+          "pcode": "18652883",
+          "expectedTitle": "MSI PRO B760M-A WIFI DDR4",
+          "actualProductTitle": "MSI PRO B760M-A WIFI DDR4",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T09:30:07.726Z",
+          "httpStatus": 200,
+          "bodyBytes": 122498,
+          "sha256": "3af149537f8d0a1255cdc85a98ab63f7c68d83cb4b39d4a3d5f0d1cb5b360397",
+          "availabilityText": [
+            "가격비교 중지"
+          ],
+          "regularSectionCount": 0,
+          "priceIsImportable": false,
+          "price": null,
+          "collectionStatus": "NO_PRICE",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          }
+        }
+      ],
+      "identityReview": {
+        "reviewedAt": "2026-10-10T09:36:26.792Z",
+        "method": "Manufacturer specification/manual and exact domestic product page comparison; no catalogue identity, activation or source PN changed",
+        "hardwareRevisionPrinted": false,
+        "hardwareRevisionClaimed": false,
+        "result": "EXACT_MARKETED_MODEL_FOUND_NO_CURRENT_ORDINARY_PRICE",
+        "manufacturerFacts": {
+          "socket": "LGA1700",
+          "chipset": "Intel B760",
+          "memoryGeneration": "DDR4",
+          "formFactor": "Micro ATX",
+          "wifi": "Preinstalled Wi-Fi 6E module"
+        },
+        "domesticSaleConfiguration": {
+          "matchedTitle": "MSI PRO B760M-A WIFI DDR4",
+          "excludedVariants": [
+            "PRO B760M-A WIFI (DDR5)",
+            "PRO B760M-A WIFI DDR4 II",
+            "Non-WIFI variants"
+          ]
+        },
+        "evidenceUrls": [
+          "https://us.msi.com/Motherboard/PRO-B760M-A-WIFI-DDR4/Specification",
+          "https://prod.danawa.com/info/?pcode=18652883"
+        ],
+        "reason": "Original DDR4 Wi-Fi model matches. Current exact raw page shows price comparison stopped and zero active ordinary mall-price sections.",
+        "noPriceInterpretation": "No current ordinary price on this checked exact page; no discontinuation or global stock claim."
+      },
+      "mapping": null,
+      "priceImportApproved": false,
+      "holdReason": "NO_CURRENT_ORDINARY_PRICE_ON_EXACT_PAGE",
+      "warehouseStockVerified": false
+    },
+    {
+      "localProductId": "5e68a954-3f32-4b88-9d05-001fa2304726",
+      "canonicalId": "656c192f-dfee-3cb1-893f-f0000cc8f53b",
+      "type": "MOTHERBOARD",
+      "product": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "asrock:B850M Pro RS:model",
+        "manufacturer": "ASRock",
+        "modelName": "B850M Pro RS",
+        "partNumber": null
+      },
+      "catalogueIdentityKind": "MODEL_REFERENCE",
+      "catalogueRole": "INSTALLED_PC_REFERENCE",
+      "catalogueActive": false,
+      "previousAcquisitionState": "HOLD_MODEL_REFERENCE_NO_EXACT_SALE_VARIANT",
+      "status": "NO_PRICE",
+      "cataloguePriceAmountKrw": null,
+      "stockStatus": "UNKNOWN",
+      "manufacturerEvidenceUrls": [
+        "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS/index.asp",
+        "https://download.asrock.com/Manual/B850M%20Pro%20RS.pdf"
+      ],
+      "initialDiscoveryCandidate": {
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=73952525",
+        "pcode": "73952525",
+        "title": "ASRock B850 Pro RS 에즈윈",
+        "reason": "FIRST_CANDIDATE_ATX_NON_M_MODEL",
+        "accepted": false
+      },
+      "researchCandidates": [
+        {
+          "pcode": "75538394",
+          "expectedTitle": "ASRock B850M Pro RS 대원씨티에스",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=75538394"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=75538394",
+          "pcode": "75538394",
+          "expectedTitle": "ASRock B850M Pro RS 대원씨티에스",
+          "actualProductTitle": "ASRock B850M Pro RS 대원씨티에스",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T09:30:09.916Z",
+          "httpStatus": 200,
+          "bodyBytes": 164897,
+          "sha256": "f74adf1bf55f12e88390e74a7177219057d3c6efb329df53f695ac5a9ea64b02",
+          "availabilityText": [],
+          "regularSectionCount": 1,
+          "priceIsImportable": false,
+          "price": {
+            "amountKrw": 196980,
+            "observedAt": "2026-10-10T09:30:09.916Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=75538394",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "collectionStatus": "RESEARCH_ONLY_MODEL_REFERENCE_PRICE",
+          "shippingExcluded": true,
+          "promotionsExcluded": true,
+          "priceAndSeparateDeliveryEvidence": "<div class=\"sell-price\" data-base-price=\"196980\" data-delivery-price=\"4000\">",
+          "stockEvidenceExtent": "ACTIVE_DANAWA_ORDINARY_LISTING_ONLY_NOT_WAREHOUSE_STOCK",
+          "publicSellerBridgeCandidates": [
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=875&cate3=969&cate4=0&pcode=75538394&cmpnyc=PV203&safe_trade=4&fee_type=A&link_pcode=5706173578&package=0&setpc=0&r=17916246091116",
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=875&cate3=969&cate4=0&pcode=75538394&cmpnyc=TN118&safe_trade=4&fee_type=T&link_pcode=1000646482494&package=0&setpc=0&r=17916246093343",
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=875&cate3=969&cate4=0&pcode=75538394&cmpnyc=EE311&safe_trade=4&fee_type=T&link_pcode=1000704593783&package=0&setpc=0&r=17916246096736",
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=875&cate3=969&cate4=0&pcode=75538394&cmpnyc=TN118&safe_trade=4&fee_type=T&link_pcode=1000704593783&package=0&setpc=0&r=17916246092505",
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=875&cate3=969&cate4=0&pcode=75538394&cmpnyc=EE715&safe_trade=4&fee_type=T&link_pcode=E887507383&package=0&setpc=0&r=17916246097553"
+          ]
+        }
+      ],
+      "identityReview": {
+        "reviewedAt": "2026-10-10T09:36:26.792Z",
+        "method": "Manufacturer specification/manual and exact domestic product page comparison; no catalogue identity, activation or source PN changed",
+        "hardwareRevisionPrinted": false,
+        "hardwareRevisionClaimed": false,
+        "result": "EXACT_BASE_MODEL_SALE_FOUND_CATALOGUE_MODEL_REFERENCE_BLOCKED",
+        "manufacturerFacts": {
+          "socket": "AM5",
+          "chipset": "AMD B850",
+          "memoryGeneration": "DDR5",
+          "formFactor": "Micro ATX",
+          "wifi": "Base B850M Pro RS has an optional separately sold wireless module; do not substitute B850M Pro RS WiFi"
+        },
+        "domesticSaleConfiguration": {
+          "matchedTitle": "ASRock B850M Pro RS 대원씨티에스",
+          "excludedVariants": [
+            "B850 Pro RS (ATX non-M)",
+            "B850M Pro RS WiFi",
+            "White or wireless-module bundles"
+          ]
+        },
+        "evidenceUrls": [
+          "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS/index.asp",
+          "https://download.asrock.com/Manual/B850M%20Pro%20RS.pdf",
+          "https://prod.danawa.com/info/?pcode=75538394",
+          "https://prod.danawa.com/info/?pcode=73952729",
+          "https://prod.danawa.com/info/?pcode=75600842"
+        ],
+        "primaryPageCheckedAt": "2026-10-10T09:28:26.000Z",
+        "manufacturerPageAmbiguity": "Overview wireless text is not sufficient: the manufacturer manual distinguishes the WiFi model and optional separately purchased module for the base model.",
+        "reason": "A matching domestic marketed base-model listing and ordinary price were observed, but this catalogue entry is MANUFACTURER / null PN / MODEL_REFERENCE / INSTALLED_PC_REFERENCE. No physical retail identity is approved and price import is blocked."
+      },
+      "mapping": null,
+      "priceImportApproved": false,
+      "holdReason": "MODEL_REFERENCE_NO_APPROVED_PHYSICAL_SALE_IDENTITY",
+      "warehouseStockVerified": false
+    },
+    {
+      "localProductId": "0e4090fc-f3d3-4ff0-8098-01746cb35a14",
+      "canonicalId": "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+      "type": "MOTHERBOARD",
+      "product": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "asus:TUF GAMING B860-PLUS WIFI:model",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B860-PLUS WIFI",
+        "partNumber": null
+      },
+      "catalogueIdentityKind": "MODEL_REFERENCE",
+      "catalogueRole": "INSTALLED_PC_REFERENCE",
+      "catalogueActive": false,
+      "previousAcquisitionState": "HOLD_MODEL_REFERENCE_NO_EXACT_SALE_VARIANT",
+      "status": "NO_PRICE",
+      "cataloguePriceAmountKrw": null,
+      "stockStatus": "UNKNOWN",
+      "manufacturerEvidenceUrls": [
+        "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/"
+      ],
+      "initialDiscoveryCandidate": {
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=74254814",
+        "pcode": "74254814",
+        "title": "ASUS TUF Gaming B860M-PLUS WIFI STCOM",
+        "reason": "FIRST_CANDIDATE_MICRO_ATX_M_MODEL",
+        "accepted": false
+      },
+      "researchCandidates": [
+        {
+          "pcode": "74255378",
+          "expectedTitle": "ASUS TUF Gaming B860-PLUS WIFI 인텍앤컴퍼니",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=74255378"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+          "pcode": "74255378",
+          "expectedTitle": "ASUS TUF Gaming B860-PLUS WIFI 인텍앤컴퍼니",
+          "actualProductTitle": "ASUS TUF Gaming B860-PLUS WIFI 인텍앤컴퍼니",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T09:30:11.920Z",
+          "httpStatus": 200,
+          "bodyBytes": 169681,
+          "sha256": "b5e9f02828df200eb17d5cda364ad6f8edbfd5dad2bf4e2491773b76b4e0abe0",
+          "availabilityText": [],
+          "regularSectionCount": 1,
+          "priceIsImportable": false,
+          "price": {
+            "amountKrw": 275350,
+            "observedAt": "2026-10-10T09:30:11.920Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "collectionStatus": "RESEARCH_ONLY_MODEL_REFERENCE_PRICE",
+          "shippingExcluded": true,
+          "promotionsExcluded": true,
+          "priceAndSeparateDeliveryEvidence": "<div class=\"sell-price\" data-base-price=\"275350\" data-delivery-price=\"3000\">",
+          "stockEvidenceExtent": "ACTIVE_DANAWA_ORDINARY_LISTING_ONLY_NOT_WAREHOUSE_STOCK",
+          "publicSellerBridgeCandidates": [
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=875&cate3=968&cate4=0&pcode=74255378&cmpnyc=EE715&safe_trade=4&fee_type=T&link_pcode=F609548148&package=0&setpc=0&r=17916246119196",
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=875&cate3=968&cate4=0&pcode=74255378&cmpnyc=ED901&safe_trade=4&fee_type=T&link_pcode=1000855221003&package=0&setpc=0&r=17916246119387",
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=875&cate3=968&cate4=0&pcode=74255378&cmpnyc=EE128&safe_trade=4&fee_type=T&link_pcode=4801953201&package=0&setpc=0&r=17916246113209",
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=875&cate3=968&cate4=0&pcode=74255378&cmpnyc=ED901&safe_trade=4&fee_type=T&link_pcode=1000855221003&package=0&setpc=0&r=17916246113017",
+            "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=875&cate3=968&cate4=0&pcode=74255378&cmpnyc=TN118&safe_trade=4&fee_type=T&link_pcode=1000855221003&package=0&setpc=0&r=17916246111242"
+          ]
+        }
+      ],
+      "identityReview": {
+        "reviewedAt": "2026-10-10T09:36:26.792Z",
+        "method": "Manufacturer specification/manual and exact domestic product page comparison; no catalogue identity, activation or source PN changed",
+        "hardwareRevisionPrinted": false,
+        "hardwareRevisionClaimed": false,
+        "result": "EXACT_MARKETED_MODEL_SALE_FOUND_CATALOGUE_MODEL_REFERENCE_BLOCKED",
+        "manufacturerFacts": {
+          "socket": "LGA1851",
+          "chipset": "Intel B860",
+          "memoryGeneration": "DDR5",
+          "formFactor": "ATX",
+          "wifi": "Wi-Fi 7"
+        },
+        "domesticSaleConfiguration": {
+          "matchedTitle": "ASUS TUF Gaming B860-PLUS WIFI 인텍앤컴퍼니",
+          "excludedVariants": [
+            "B860M-PLUS WIFI (Micro ATX M model)"
+          ]
+        },
+        "evidenceUrls": [
+          "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+          "https://prod.danawa.com/info/?pcode=74255378",
+          "https://prod.danawa.com/info/?pcode=74338622"
+        ],
+        "primaryPageCheckedAt": "2026-10-10T09:28:26.000Z",
+        "reason": "A matching ATX DDR5 domestic marketed-model listing and ordinary price were observed, but the catalogue entry is MANUFACTURER / null PN / MODEL_REFERENCE / INSTALLED_PC_REFERENCE. No physical retail identity is approved and price import is blocked."
+      },
+      "mapping": null,
+      "priceImportApproved": false,
+      "holdReason": "MODEL_REFERENCE_NO_APPROVED_PHYSICAL_SALE_IDENTITY",
+      "warehouseStockVerified": false
+    }
+  ],
+  "reviewedMappings": {
+    "schemaVersion": 1,
+    "items": [
+      {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "c479ed77-62fa-48fa-84e5-923b087843c1",
+          "manufacturer": "MSI",
+          "modelName": "MPG B650 CARBON WIFI",
+          "partNumber": null
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "17971178",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+          "saleSku": "MPG B650 CARBON WIFI",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-10T09:36:26.792Z"
+        },
+        "review": {
+          "expectedTitle": "MSI MPG B650 카본 WIFI",
+          "identityEvidenceUrls": [
+            "https://www.msi.com/Motherboard/MPG-B650-CARBON-WIFI/Specification",
+            "https://prod.danawa.com/info/?pcode=17971178",
+            "https://www.11st.co.kr/products/6266640653"
+          ],
+          "reason": "Original MSI MPG B650 CARBON WIFI exact marketed model: AM5, B650, DDR5, ATX and preinstalled Wi-Fi 6E. Current independent 11st seller page labels the standalone item NEW and lists ordinary KRW 915000 with separate delivery. The unusual amount is seller corroborated; no II/MAX or other model is substituted.",
+          "domesticPnEvidenceUrl": "https://www.11st.co.kr/products/6266640653",
+          "domesticPnReview": "The catalogue partNumber is null and remains null. The full marketed model name is the sale identity; neither a part number nor a PCB revision is invented. The 11st product name and manufacturer page refer to the same original MSI MPG B650 CARBON WIFI model.",
+          "timingCheck": "Identity reviewed and verifiedAt recorded before the next actual Danawa observation."
+        }
+      }
+    ]
+  },
+  "previewPayload": {
+    "schemaVersion": 1,
+    "items": [
+      {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "c479ed77-62fa-48fa-84e5-923b087843c1",
+          "manufacturer": "MSI",
+          "modelName": "MPG B650 CARBON WIFI",
+          "partNumber": null
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "17971178",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+          "saleSku": "MPG B650 CARBON WIFI",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-10T09:36:26.792Z"
+        },
+        "price": {
+          "amountKrw": 915000,
+          "observedAt": "2026-10-10T09:37:10.875Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+          "condition": "NEW",
+          "inStock": true
+        }
+      }
+    ]
+  },
+  "notes": [
+    "Existing artifacts are preserved. This new file is a research proposal only; DB, deployment, Gradle and approval changes are zero.",
+    "Manufacturer/model with matching DDR, form factor, WIFI and marketed revision variants is required. A first search hit is not proof of identity.",
+    "Installed MODEL_REFERENCE entries with MANUFACTURER source and null PN are not physical retail price import identities; no automatic identity promotion or invented PN.",
+    "An active ordinary Danawa listing signal is not independent proof of retailer warehouse stock.",
+    "Any import proposal records actual verifiedAt after identity review, then reobserves actual observedAt afterward without timestamp manipulation."
+  ],
+  "initialCollectionCompletedAt": "2026-10-10T09:30:11.927Z",
+  "identityReviewCompletedAt": "2026-10-10T09:36:26.792Z",
+  "sourceIdentityValidation": {
+    "checked": 6,
+    "exactSourceIdentityMatches": 6,
+    "catalogueFieldsChanged": 0
+  },
+  "summary": {
+    "selectedProducts": 6,
+    "exactSourceIdentityMatches": 6,
+    "firstSearchCandidateModelMismatchesRejected": 5,
+    "exactDomesticMarketedModelsFound": 5,
+    "distinctModelsWithOrdinaryPriceObserved": 3,
+    "exactMappingPricePreviewsReadyUnapproved": 1,
+    "modelReferencePriceCandidatesBlocked": 2,
+    "exactModelPagesWithoutCurrentOrdinaryPrice": 2,
+    "domesticExactSaleMappingNotEstablished": 1,
+    "rawDanawaRequests": 7,
+    "rawDanawaHttpFailures": 0,
+    "independentRetailerRawRequests": 1,
+    "stockClaimExtent": "Seller-declared availability and active listing; no physical or warehouse stock verification",
+    "cataloguePricesWritten": 0,
+    "priceImportApproved": false
+  },
+  "completedAt": "2026-10-10T09:37:10.900Z",
+  "validation": {
+    "mappingManifestValidated": true,
+    "sourceIdentityMatches": 6,
+    "previewItems": 1,
+    "observationAtOrAfterMappingVerification": true,
+    "existingApprovedPriceProposalEdited": false,
+    "browserVerified": false
+  }
+}

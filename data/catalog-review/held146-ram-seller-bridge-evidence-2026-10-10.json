@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "observations": [
+    {
+      "pcode": "16761047",
+      "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=874&cate3=221725&cate4=0&pcode=16761047&cmpnyc=TY3284&safe_trade=4&fee_type=N&link_pcode=13684568225&package=0&setpc=0&r=17916310334047",
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:19:11.023Z",
+      "location": null,
+      "responseSha256": "9e4a940ae63cf8ec33d6e89d923eb21661a2c2abcc55557f940abb96e4122261",
+      "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+      "publicPageExcerpt": " 행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com (function (w, d, s, u) { if (w.oaiq) return; var q = function () { q.q.push(arguments); }; q.q = []; w.oaiq = q; var js = d.createElement(s); js.async = true; js.src = u; var f = d.getElementsByTagName(s)[0]; f.parentNode.insertBefore(js, f); })(window, document, \"script\", \"https://bzrcdn.openai.com/sdk/oaiq.min.js\"); oaiq(\"init\", { pixelId: \"FF98dcqjJTFPN2ZwwuemWX\" }); oaiq(\"measure\", \"page_viewed\", { type: \"contents\", contents: [{ id: \"purchase_bridge\", content_type: \"page\" }] }); $(function() { setProdLink(); }); $(function() { setRecentProd(); }); var myTimer = self.setTimeout(function() { goLink(\"https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F13684568225&service_id=pcdn\"); }, 1000); self.setTimeout(function() { self.clearTimeout(loadingBarTimer); }, 1100); var loadingBarTimer = self.setInterval(\"loadingBar()\", 1",
+      "publicUrls": [
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd",
+        "http://www.w3.org/1999/xhtml",
+        "https://bzrcdn.openai.com/sdk/oaiq.min.js",
+        "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F13684568225&service_id=pcdn",
+        "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F13684568225&service_id=pcdn",
+        "https://www.googletagmanager.com/gtm.js?id=",
+        "https://cdn.evgnet.com/beacon/m55685555561u3u3c13n3n3z089564273/danawa/scripts/evergage.min.js",
+        "https://www.googletagmanager.com/ns.html?id=GTM-WLPCFBQ"
+      ]
+    },
+    {
+      "pcode": "7013641",
+      "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=874&cate3=56243&cate4=0&pcode=7013641&cmpnyc=TS935&safe_trade=4&fee_type=N&link_pcode=4891554014&package=0&setpc=0&r=17916310376831",
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:19:15.149Z",
+      "location": null,
+      "responseSha256": "e0549d1efab12c761e60d259e6b4cd31a57b0d164d95349ead67119a0a831ae8",
+      "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+      "publicPageExcerpt": " 행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com (function (w, d, s, u) { if (w.oaiq) return; var q = function () { q.q.push(arguments); }; q.q = []; w.oaiq = q; var js = d.createElement(s); js.async = true; js.src = u; var f = d.getElementsByTagName(s)[0]; f.parentNode.insertBefore(js, f); })(window, document, \"script\", \"https://bzrcdn.openai.com/sdk/oaiq.min.js\"); oaiq(\"init\", { pixelId: \"FF98dcqjJTFPN2ZwwuemWX\" }); oaiq(\"measure\", \"page_viewed\", { type: \"contents\", contents: [{ id: \"purchase_bridge\", content_type: \"page\" }] }); $(function() { setProdLink(); }); $(function() { setRecentProd(); }); var myTimer = self.setTimeout(function() { goLink(\"https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F4891554014&service_id=pcdn\"); }, 1000); self.setTimeout(function() { self.clearTimeout(loadingBarTimer); }, 1100); var loadingBarTimer = self.setInterval(\"loadingBar()\", 10",
+      "publicUrls": [
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd",
+        "http://www.w3.org/1999/xhtml",
+        "https://bzrcdn.openai.com/sdk/oaiq.min.js",
+        "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F4891554014&service_id=pcdn",
+        "https://smartstore.naver.com/inflow/ep/gw?url=%2Finflow%2Fep%2Fdanawa%2Fproducts%2F4891554014&service_id=pcdn",
+        "https://www.googletagmanager.com/gtm.js?id=",
+        "https://cdn.evgnet.com/beacon/m55685555561u3u3c13n3n3z089564273/danawa/scripts/evergage.min.js",
+        "https://www.googletagmanager.com/ns.html?id=GTM-WLPCFBQ"
+      ]
+    },
+    {
+      "pcode": "96773492",
+      "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=874&cate3=221725&cate4=0&pcode=96773492&cmpnyc=PV203&safe_trade=4&fee_type=A&link_pcode=5749614893&package=0&setpc=0&r=17916310411089",
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:19:19.275Z",
+      "location": null,
+      "responseSha256": "ff648f1ec2151c09045ecc27cddba678ca133c7d5e4b771f913f3663d41efbcf",
+      "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+      "publicPageExcerpt": " 행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com (function (w, d, s, u) { if (w.oaiq) return; var q = function () { q.q.push(arguments); }; q.q = []; w.oaiq = q; var js = d.createElement(s); js.async = true; js.src = u; var f = d.getElementsByTagName(s)[0]; f.parentNode.insertBefore(js, f); })(window, document, \"script\", \"https://bzrcdn.openai.com/sdk/oaiq.min.js\"); oaiq(\"init\", { pixelId: \"FF98dcqjJTFPN2ZwwuemWX\" }); oaiq(\"measure\", \"page_viewed\", { type: \"contents\", contents: [{ id: \"purchase_bridge\", content_type: \"page\" }] }); $(function() { setRecentProd(); }); var myTimer = self.setTimeout(function() { goLink(\"https://www.comoasis.co.kr/shop/item.php?it_id=5749614893&service_id=pcdn\"); }, 1000); self.setTimeout(function() { self.clearTimeout(loadingBarTimer); }, 1100); var loadingBarTimer = self.setInterval(\"loadingBar()\", 100); function setRecentProd() { var baseUrl = '//prod.danawa.com'; if (",
+      "publicUrls": [
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd",
+        "http://www.w3.org/1999/xhtml",
+        "https://bzrcdn.openai.com/sdk/oaiq.min.js",
+        "https://www.comoasis.co.kr/shop/item.php?it_id=5749614893&service_id=pcdn",
+        "https://www.comoasis.co.kr/shop/item.php?it_id=5749614893&service_id=pcdn",
+        "https://www.googletagmanager.com/gtm.js?id=",
+        "https://cdn.evgnet.com/beacon/m55685555561u3u3c13n3n3z089564273/danawa/scripts/evergage.min.js",
+        "https://www.googletagmanager.com/ns.html?id=GTM-WLPCFBQ"
+      ]
+    },
+    {
+      "pcode": "96773477",
+      "sourceUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=861&cate2=874&cate3=221725&cate4=0&pcode=96773477&cmpnyc=PV203&safe_trade=4&fee_type=A&link_pcode=5749614894&package=0&setpc=0&r=17916310465888",
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:19:23.413Z",
+      "location": null,
+      "responseSha256": "e6c3ff2b0979f60f67022554df11f210ddb34ac866c6d960e5f74af94aeed64e",
+      "pageTitle": "행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com",
+      "publicPageExcerpt": " 행복쇼핑의 시작 ! 다나와 (가격비교) - Danawa.com (function (w, d, s, u) { if (w.oaiq) return; var q = function () { q.q.push(arguments); }; q.q = []; w.oaiq = q; var js = d.createElement(s); js.async = true; js.src = u; var f = d.getElementsByTagName(s)[0]; f.parentNode.insertBefore(js, f); })(window, document, \"script\", \"https://bzrcdn.openai.com/sdk/oaiq.min.js\"); oaiq(\"init\", { pixelId: \"FF98dcqjJTFPN2ZwwuemWX\" }); oaiq(\"measure\", \"page_viewed\", { type: \"contents\", contents: [{ id: \"purchase_bridge\", content_type: \"page\" }] }); $(function() { setRecentProd(); }); var myTimer = self.setTimeout(function() { goLink(\"https://www.comoasis.co.kr/shop/item.php?it_id=5749614894&service_id=pcdn\"); }, 1000); self.setTimeout(function() { self.clearTimeout(loadingBarTimer); }, 1100); var loadingBarTimer = self.setInterval(\"loadingBar()\", 100); function setRecentProd() { var baseUrl = '//prod.danawa.com'; if (",
+      "publicUrls": [
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd",
+        "http://www.w3.org/1999/xhtml",
+        "https://bzrcdn.openai.com/sdk/oaiq.min.js",
+        "https://www.comoasis.co.kr/shop/item.php?it_id=5749614894&service_id=pcdn",
+        "https://www.comoasis.co.kr/shop/item.php?it_id=5749614894&service_id=pcdn",
+        "https://www.googletagmanager.com/gtm.js?id=",
+        "https://cdn.evgnet.com/beacon/m55685555561u3u3c13n3n3z089564273/danawa/scripts/evergage.min.js",
+        "https://www.googletagmanager.com/ns.html?id=GTM-WLPCFBQ"
+      ]
+    }
+  ],
+  "publicationApproved": false,
+  "databaseWrites": 0,
+  "deployments": 0
+}

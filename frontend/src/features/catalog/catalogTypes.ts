@@ -7,6 +7,24 @@ export type CurrentPrice = {
   observedAt: string
 }
 
+export type ReferenceEstimate = {
+  amountKrw: number
+  basis: 'HISTORICAL_RETAIL' | 'MODEL_RETAIL_REFERENCE' | 'LAUNCH_PRICE' | 'SIMILAR_PART_ESTIMATE'
+  identityScope: 'EXACT_PRODUCT' | 'MODEL' | 'SIMILAR_SPEC'
+  saleUnit: 'PRODUCT' | 'RAM_KIT'
+  moduleCount: number | null
+  sourceDate: string | null
+  reviewedAt: string
+  confidence: 'VERIFIED_MODEL' | 'ESTIMATED'
+  method: 'DIRECT_MODEL_QUOTE' | 'OFFICIAL_MODEL_LAUNCH' | 'SPEC_NEIGHBOUR_MEDIAN'
+  rangeLowKrw: number | null
+  rangeHighKrw: number | null
+  sourceQuotes: { canonicalId: string | null; modelName: string; amountKrw: number;
+    sourceName: string; sourceUrl: string; sourceDate: string | null;
+    saleUnit: 'PRODUCT' | 'RAM_KIT'; moduleCount: number | null }[]
+  notes: string
+}
+
 export type CatalogPriceStatus = {
   origin: 'LOCAL' | 'SHARED'
   lookupStatus: 'OK' | 'NO_PRICE' | 'NOT_IN_SCOPE' | 'UNKNOWN_PRODUCT' | 'UNAVAILABLE'
@@ -30,6 +48,7 @@ export type CatalogProduct = {
   verificationStatus: 'UNVERIFIED' | 'PARTIAL' | 'CORE_VERIFIED'
   active: boolean
   currentPrice: CurrentPrice | null
+  referenceEstimate?: ReferenceEstimate | null
   priceStatus?: CatalogPriceStatus | null
   referencePrice: {
     amountKrw: number | null

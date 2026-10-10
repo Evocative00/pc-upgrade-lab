@@ -24,6 +24,7 @@ import tools.jackson.databind.json.JsonMapper;
 /** Explicit loopback prototype: approved public prices only, with no Spring/JDBC/Flyway startup. */
 public final class SharedPricePublisher implements AutoCloseable {
     public static final String PATH = "/api/v1/prices";
+    public static final String V2_PATH = "/api/v2/prices";
     private final HttpServer server;
     private final ThreadPoolExecutor executor;
     private final SharedCatalogSnapshot snapshot;
@@ -58,7 +59,7 @@ public final class SharedPricePublisher implements AutoCloseable {
 
     private void handle(HttpExchange exchange) throws IOException {
         try (exchange) {
-            if (!PATH.equals(exchange.getRequestURI().getRawPath())) {
+            if (!snapshot.apiPath().equals(exchange.getRequestURI().getRawPath())) {
                 send(exchange, 404, Map.of("error", "NOT_FOUND"));
                 return;
             }
@@ -86,7 +87,9 @@ public final class SharedPricePublisher implements AutoCloseable {
                             freshness.classify(entry.price() == null ? null : entry.price().observedAt(), now)));
                 }
             }
-            send(exchange, 200, new SharedPriceDtos.Envelope(1, snapshot.version(), now, freshness.toView(), items));
+            send(exchange, 200, snapshot.isFull()
+                    ? new SharedPriceDtos.EnvelopeV2(2, snapshot.version(), snapshot.priceVersion(), now, freshness.toView(), items)
+                    : new SharedPriceDtos.Envelope(1, snapshot.version(), now, freshness.toView(), items));
         }
     }
 
@@ -132,13 +135,15 @@ public final class SharedPricePublisher implements AutoCloseable {
         if (port < 1 || port > 65535) throw new IllegalArgumentException("Port must be 1..65535");
         var snapshot = SharedCatalogSnapshot.load();
         if (check) {
-            System.out.println("Approved shared snapshot verified: products=14 prices=8 databaseAccess=0 version=" + snapshot.version());
+            System.out.println("Shared snapshot verified: products=" + snapshot.products().size()
+                    + " prices=" + snapshot.products().values().stream().filter(entry -> entry.price() != null).count()
+                    + " databaseAccess=0 version=" + snapshot.version());
             return;
         }
         var stopped = new CountDownLatch(1);
         try (var publisher = start(snapshot, Clock.systemUTC(), SharedPriceFreshness.defaults(), port)) {
             Runtime.getRuntime().addShutdownHook(new Thread(() -> { publisher.close(); stopped.countDown(); }));
-            System.out.println("Approved shared price prototype listening at " + publisher.baseUri() + PATH);
+            System.out.println("Shared price prototype listening at " + publisher.baseUri() + snapshot.apiPath());
             stopped.await();
         }
     }

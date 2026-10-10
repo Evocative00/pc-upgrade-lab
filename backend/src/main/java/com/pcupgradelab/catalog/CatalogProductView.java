@@ -24,7 +24,8 @@ public record CatalogProductView(
         String modelId,
         CatalogIdentityKind identityKind,
         CatalogRole role,
-        PriceStatus priceStatus
+        PriceStatus priceStatus,
+        CatalogReferenceEstimate referenceEstimate
 ) {
     public record ReferencePrice(BigDecimal amountKrw, CatalogPriceStatus status, Instant updatedAt) { }
 
@@ -39,6 +40,15 @@ public record CatalogProductView(
                               String partNumber, CatalogVerificationStatus verificationStatus,
                               boolean active, Instant createdAt, Instant updatedAt, ReferencePrice referencePrice,
                               CurrentPrice currentPrice, String canonicalId, String modelId,
+                              CatalogIdentityKind identityKind, CatalogRole role, PriceStatus priceStatus) {
+        this(id, type, manufacturer, modelName, partNumber, verificationStatus, active, createdAt, updatedAt,
+                referencePrice, currentPrice, canonicalId, modelId, identityKind, role, priceStatus, null);
+    }
+
+    public CatalogProductView(String id, PartType type, String manufacturer, String modelName,
+                              String partNumber, CatalogVerificationStatus verificationStatus,
+                              boolean active, Instant createdAt, Instant updatedAt, ReferencePrice referencePrice,
+                              CurrentPrice currentPrice, String canonicalId, String modelId,
                               CatalogIdentityKind identityKind, CatalogRole role) {
         this(id, type, manufacturer, modelName, partNumber, verificationStatus, active, createdAt, updatedAt,
                 referencePrice, currentPrice, canonicalId, modelId, identityKind, role, null);
@@ -46,7 +56,14 @@ public record CatalogProductView(
 
     public CatalogProductView withPrice(CurrentPrice price, PriceStatus status) {
         return new CatalogProductView(id, type, manufacturer, modelName, partNumber, verificationStatus,
-                active, createdAt, updatedAt, referencePrice, price, canonicalId, modelId, identityKind, role, status);
+                active, createdAt, updatedAt, referencePrice, price, canonicalId, modelId, identityKind, role, status,
+                referenceEstimate);
+    }
+
+    public CatalogProductView withReferenceEstimate(CatalogReferenceEstimate estimate) {
+        return new CatalogProductView(id, type, manufacturer, modelName, partNumber, verificationStatus,
+                active, createdAt, updatedAt, referencePrice, currentPrice, canonicalId, modelId, identityKind, role,
+                priceStatus, estimate);
     }
 
     public CatalogProductView(String id, PartType type, String manufacturer, String modelName,

@@ -1,5 +1,5 @@
 import type { CatalogDetail, CatalogModel, CatalogProduct, CatalogSpecification } from '../catalog/catalogTypes.ts'
-import { isCurrentPriceIncluded } from '../catalog/catalogPresentation.ts'
+import { hasObservedReferencePrice, isCurrentPriceIncluded } from '../catalog/catalogPresentation.ts'
 import type { PartType } from '../pc-scan/types.ts'
 import { createManualDraft, getPartStatus, linkCatalog, linkCatalogModel, withEmptyRows } from '../pc/partDraft.ts'
 import type { PartDraft } from '../pc/types.ts'
@@ -94,6 +94,17 @@ export type PriceLine = { draft: PartDraft; detail: CatalogDetail | null }
 // 일반 부품은 장치 수, RAM은 동일 제품의 실제 모듈 합계를 판매 묶음 수로 바꿔 계산한다.
 // 묶음이 딱 맞지 않거나 단위가 미확인이면 임의로 나누거나 올림하지 않는다.
 export function priceTotal(lines: PriceLine[]): { currentKrw: number; pricedItems: number; unpriced: number; quantityNeedsCheck: number } {
+  const { amountKrw, ...counts } = calculatePrices(lines, false)
+  return { currentKrw: amountKrw, ...counts }
+}
+
+// 참고 합계는 확인한 판매가(과거 관측 포함)를 우선하고, 없을 때만 별도 참고가를 쓴다.
+export function referencePriceTotal(lines: PriceLine[]): { referenceKrw: number; pricedItems: number; unpriced: number; quantityNeedsCheck: number } {
+  const { amountKrw, ...counts } = calculatePrices(lines, true)
+  return { referenceKrw: amountKrw, ...counts }
+}
+
+function calculatePrices(lines: PriceLine[], reference: boolean) {
   let currentKrw = 0
   let pricedItems = 0
   let unpriced = 0
@@ -106,8 +117,11 @@ export function priceTotal(lines: PriceLine[]): { currentKrw: number; pricedItem
     } else quantityNeedsCheck += 1
   }
   for (const { draft, detail } of lines) {
-    const price = detail?.product.currentPrice
-    if (!detail || detail.product.type !== draft.type || !price || !isCurrentPriceIncluded(detail.product) ||
+    const observed = detail && (reference ? hasObservedReferencePrice(detail.product) : isCurrentPriceIncluded(detail.product))
+      ? detail.product.currentPrice : null
+    const estimate = reference && !observed ? detail?.product.referenceEstimate : null
+    const price = observed ?? estimate
+    if (!detail || detail.product.type !== draft.type || !price ||
       draft.catalogModelId && !draft.catalogProductId) {
       unpriced += 1
       continue
@@ -117,13 +131,15 @@ export function priceTotal(lines: PriceLine[]): { currentKrw: number; pricedItem
       else quantityNeedsCheck += 1
       continue
     }
+    const kit = estimate ? estimate.moduleCount === detail.specification.moduleCount ? estimate.moduleCount : undefined
+      : detail.specification.moduleCount
     const group = ramGroups.get(detail.product.id) ?? {
-      amount: price.amountKrw, kit: detail.specification.moduleCount, quantity: 0, items: 0, valid: true,
+      amount: price.amountKrw, kit, quantity: 0, items: 0, valid: true,
     }
     group.quantity += draft.quantity
     group.items += 1
     group.valid &&= validQuantity(draft.quantity) && group.amount === price.amountKrw &&
-      group.kit === detail.specification.moduleCount
+      group.kit === kit
     ramGroups.set(detail.product.id, group)
   }
   for (const { amount, kit, quantity, items, valid } of ramGroups.values()) {
@@ -131,7 +147,7 @@ export function priceTotal(lines: PriceLine[]): { currentKrw: number; pricedItem
       addPrice(amount * (quantity / kit), items)
     } else quantityNeedsCheck += 1
   }
-  return { currentKrw, pricedItems, unpriced, quantityNeedsCheck }
+  return { amountKrw: currentKrw, pricedItems, unpriced, quantityNeedsCheck }
 }
 
 // 최신 입력을 기준으로 연결한다. 검색 중 수량을 고쳤거나 항목을 지워도 옛 상태를 복원하지 않는다.

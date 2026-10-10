@@ -41,9 +41,11 @@ git switch -c feature/pc-api
 IntelliJ에서 프로젝트를 열고 오른쪽 Gradle 창에서 다시 로드한다. 기존 build/bootRun 실행 구성이 있다면 유지한다.
 처음 환경을 준비한다면 [루트의 개발환경 안내](../README.md)로 JDK·MySQL·IDE를 준비하고, 1주차 코드의 실행·테스트 방식은 아래 내용을 따른다.
 
-**Git pull로 팀원의 MySQL 데이터나 개인 실행 설정이 복사되지는 않는다.** 각자의 `application-local.properties`, IntelliJ 환경변수와 DB는 별도로 준비한다. 카탈로그 제품이 보이는데 상품가만 없으면 아래 **2.2 상품가 가져오기**를 확인한다. 소셜 로그인 버튼 준비는 **2.1**을 따른다.
+**Git pull로 팀원의 MySQL 데이터나 개인 실행 설정이 복사되지는 않는다.** 각자의 `application-local.properties`, IntelliJ 환경변수와 DB는 별도로 준비한다. 중앙 가격을 사용하려면 아래 **2.3 전체 307종 중앙 가격 연결**, 로컬 가격 자료를 사용할 때는 **2.2**를 확인한다. 소셜 로그인 버튼 준비는 **2.1**을 따른다.
 
-2026-10-10 첫 14종 중앙 가격 공유 코드는 **기본으로 꺼져 있어 기존 backend 실행 구성을 바꿀 필요가 없다.** 중앙 조회를 검수할 때만 별도 `sharedCatalogPrices` 제공 서버와 `CATALOG_SHARED_PRICES_ENABLED=true`, `CATALOG_SHARED_PRICES_BASE_URL=http://127.0.0.1:8081` 설정을 사용한다. [실행 안내](catalog-shared-prices-2026-10-10.md)에 순서와 장애 확인 방법을 정리했다. 실제 중앙 배포·자동 가격 수집은 별도 단계다.
+2026-10-10 Workers Free 중앙 API에 **전체 307종·가격 80종·가격 미확인 227종**을 반영했다. 중앙 가격 기능은 **기본으로 꺼져 있어 기존 backend 실행 구성을 바꿀 필요가 없다.** 사용할 때만 backend에 `CATALOG_SHARED_PRICES_ENABLED=true`, `CATALOG_SHARED_PRICES_BASE_URL=https://pc-upgrade-shared-prices.joony1024.workers.dev`, `CATALOG_SHARED_PRICES_API_TOKEN`을 추가하고 재시작한다. 이미 중앙 연결을 완료했다면 이 세 값은 그대로 사용하며, 이번 승인 5종 가격 추가에는 backend 재시작이 필요하지 않다. 실제 값과 배포 검증은 [Worker 실행 안내](catalog-worker-prices-2026-10-10.md)를 따른다. 자동 가격 수집은 아직 없다.
+
+전체 307종 backend는 v2 API를 사용하며 기존 v1 14종·8가격도 운영에서 유지한다. 최초 75종 가격 전환 때 승인한 로컬 DB의 공통 ID 293개 연결과 backend 재시작을 완료했다. 이후 승인한 5종 가격만 중앙에 추가했으며 DB·제품/제원·환경변수·팀 토큰 변경은 없다. **팀원·다른 기기의 DB에는 기존 307종 준비와 공통 ID의 일회성 명시 연결이 필요하다.** [전체 전환 결과와 적용 순서](catalog-all-shared-prices-2026-10-10.md)를 확인한다. 이번 전환의 새 마이그레이션은 없으며 개인 DB/OAuth 설정을 유지한다.
 
 ## 2. DB와 서버
 
@@ -100,9 +102,9 @@ if (-not (Test-Path .\backend\src\main\resources\application-local.properties)) 
 
 `SPRING_PROFILES_ACTIVE=local`, `DB_PASSWORD`를 유지하고 백엔드를 다시 실행한 뒤 `GET http://127.0.0.1:8080/api/auth/providers`를 확인한다. Kakao/Naver는 등록 설정이 있어야 응답과 로그인 화면에 나타난다. Google은 기본 표시되므로 버튼이 보인다는 것만으로 키가 유효하다는 뜻은 아니다. 실제 화면은 `http://127.0.0.1:5173/#/login`을 사용하고 `DEV_USER_ID`를 설정하지 않으며 `app.auth.dev-header.enabled`는 `false`로 둔다. 실제 계정 로그인 완료는 개발자 콘솔의 콜백·동의 설정까지 별도로 확인한다.
 
-### 2.2 팀원 DB에 상품가 가져오기
+### 2.2 로컬 상품가 자료 가져오기
 
-상품가는 각자의 MySQL에 저장된 관측값이다. 코드와 검토한 관측 파일은 pull로 받지만, 다른 PC에서 적용한 가격 행은 전달되지 않는다. 화면의 **가격 새로고침**은 내 백엔드의 저장값을 다시 읽으며 판매처를 실시간으로 수집하지 않는다.
+중앙 조회를 끈 경우 상품가는 각자의 MySQL에 저장된 관측값이다. 코드와 검토한 관측 파일은 pull로 받지만, 다른 PC에서 적용한 가격 행은 전달되지 않는다. 이 경우 화면의 **가격 새로고침**은 내 백엔드의 저장값을 다시 읽으며 판매처를 실시간으로 수집하지 않는다. 중앙 조회를 사용할 때는 아래 **2.3**을 따른다.
 
 가격 미리보기와 실제 DB 반영에는 **V14까지 마이그레이션된 DB**가 필요하며 준비 작업 자체는 Flyway를 실행하지 않는다. 현재 코드의 JPA 검증은 가격 테이블뿐 아니라 식별·저장장치 테이블도 검사한다. 처음 만든 MySQL DB와 V14 이전의 기존 DB는 앞의 개인 DB 설정을 확인하고, 승인된 DB 변경 범위에서 일반 `backend [bootRun]`을 재시작해 최신 마이그레이션을 적용한 뒤 종료한다. 그다음 `importCatalogPrices`나 `setupDevCatalog -PapplyDevCatalog=true`를 실행한다. 기존 DB는 소유자·마이그레이션 이력을 확인하고, 적용된 마이그레이션을 수정하거나 DB를 초기화하지 않는다. 아래 `setupDevCatalog`의 기본 자료 미리보기는 DB 없이도 실행된다.
 
@@ -145,6 +147,36 @@ JDK 21을 준비하고 프로젝트 루트에서 사용할 검토 자료의 건�
 5. `COMMITTED`를 확인한 뒤 일반 백엔드와 프런트엔드를 실행하고 상품가를 다시 조회한다. 같은 배치 재실행은 중복 관측을 추가하지 않으며, 이미 적용됐다면 미리보기의 `newMappings=0`, `newObservations=0`, `unchanged=72`가 나온다.
 
 가져오는 자료는 2026-10-06·2026-10-08에 확인한 **72종의 저장된 가격 스냅샷**이다. 300종 중 나머지 228종은 상품가 미확인으로 `null`이며, 정상적으로 가져왔어도 모든 부품에 가격이 생기지는 않는다. 새 판매가 수집과 검토는 별도 작업이다. 제품 ID는 각 DB의 식별 결과를 사용하므로 다른 사람의 내부 ID를 복사하지 않는다. 자세한 검증·재실행 규칙은 [국내 신품 상품가](catalog-current-prices.md)를 참고한다.
+
+### 2.3 전체 307종 중앙 가격 연결
+
+현재 중앙 운영은 307종·가격 80종·미확인 227종이다. 중앙 가격은 각 기기의 MySQL 가격 행과 별개이며, 같은 공통 ID와 팀 토큰으로 조회한다.
+
+1. 최신 코드를 받고 JDK 21·V14까지 준비된 개인 DB를 확인한다. 카탈로그는 기존 300종과 승인 pilot의 신규 7종을 포함한 **307종**이어야 한다. 부족하면 위 카탈로그 준비와 [첫 14종 적재 안내](catalog-pilot-review-2026-10-10.md)를 통해 해당 DB의 승인 범위에서 먼저 준비한다.
+2. 프로젝트 루트에서 공통 ID 자료를 미리 보고, 개인 DB 설정·실행 환경의 `DB_PASSWORD`로 읽기 전용 사전검사를 한다. OAuth 키는 필요 없다.
+
+   ```powershell
+   .\backend\gradlew.bat --project-dir .\backend importAllSharedIdentities
+   .\backend\gradlew.bat --project-dir .\backend importAllSharedIdentities -PcheckSharedIdentitiesDb=true
+   ```
+
+3. 사전검사 결과를 확인하고 해당 DB에 반영하기로 한 경우에만 한 번 연결한다. 기존 14종은 유지하고 나머지 293종의 공통 ID·검토 기록만 추가한다. 제품·제원·가격·PC 연결·분류를 변경하거나 중앙 가격을 로컬 DB에 적재하지 않는다.
+
+   ```powershell
+   .\backend\gradlew.bat --project-dir .\backend importAllSharedIdentities -PapplySharedIdentities=true
+   ```
+
+4. 기존 backend 실행 구성에 아래 세 환경변수를 설정하고 재시작한다. 이미 중앙 연결을 완료했다면 이번 5종 가격 추가에는 값 변경이나 재시작이 필요하지 않다. 기존 `SPRING_PROFILES_ACTIVE=local`·DB/OAuth 설정은 보존한다.
+
+   ```text
+   CATALOG_SHARED_PRICES_ENABLED=true
+   CATALOG_SHARED_PRICES_BASE_URL=https://pc-upgrade-shared-prices.joony1024.workers.dev
+   CATALOG_SHARED_PRICES_API_TOKEN=<기존 운영 팀 토큰>
+   ```
+
+팀 토큰은 개인적으로 전달하고 Git·채팅·로그에 넣지 않는다. `.env` 파일만 만들면 Spring이 읽지 않으므로 **실제로 backend를 실행하는 IntelliJ 구성이나 터미널의 환경변수**에 넣는다. pull·일반 backend 시작·build/test는 공통 ID를 자동 연결하지 않는다.
+
+정상 연결된 307종은 중앙 조회로 표시된다. 승인한 로컬 환경의 홈페이지 프록시에서 중앙 307종·정상 가격 80종·미확인 227종·로컬 0종·연결 실패 0종을 확인했다. 227종의 **중앙 가격 미확인**은 연결 성공 후 등록 가격이 없다는 뜻이며 합계에 넣지 않는다. 화면의 가격 새로고침은 중앙의 마지막 승인 관측을 다시 읽는다. 자동 수집은 없고 관측 후 48시간부터 경고, 7일부터 합계 제외다. 설정 문제와 상세 검증은 [Worker 실행 안내](catalog-worker-prices-2026-10-10.md)를 확인한다.
 
 ## 3. Windows 보조 프로그램 설치
 
@@ -228,6 +260,8 @@ powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File .\collector\window
 실제 Windows 실행 결과는 [검증 현황](week1-progress.md)에 PC별로 구분해 기록한다. fixture 성공을 실제 하드웨어 검증으로 기록하지 않는다.
 
 ## 6. 통합 인계
+
+선택적 중앙 가격 조회에 배포된 Cloudflare Worker를 사용할 때는 위 **2.3**과 [Worker 실행 안내](catalog-worker-prices-2026-10-10.md)의 backend 전용 세 환경변수 설정을 따른다. 최신 운영 HTTPS 검증에서 307종·80가격·227 미확인과 인증을 확인했으며, 최초 전체 전환 때 최대100개 조회도 검증했다. 기존 기본 실행은 유지하며 두 실제 기기의 화면 검수는 별도로 진행한다.
 
 - 문경민: `week1-contract.md`의 Repository와 DTO 규격으로 PC API 구현.
 - 김재훈: 자동 인식 결과 반영, 9개 부품 입력·보완, 목록·상세·수정 화면 연결.

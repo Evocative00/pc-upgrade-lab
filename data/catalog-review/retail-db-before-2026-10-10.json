@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "snapshotDate": "2026-10-10",
+  "snapshotTimezone": "Asia/Seoul",
+  "mysqlVersion": "8.4.11",
+  "migrationVersion": "14",
+  "snapshotTransaction": "REPEATABLE_READ_WITH_CONSISTENT_SNAPSHOT_READ_ONLY",
+  "databaseWrites": 0,
+  "rowDigestAlgorithm": "SHA-256 over column values in column order: null byte 0; non-null byte 1 + big-endian 4-byte length + JDBC getBytes; table digest over sorted hex row digests",
+  "tables": {
+    "catalog_model": {
+      "rows": 13,
+      "allColumnsDigest": "a8cf41209949f98b4b2aeb4becdb2e391b2c55bed6a62bee7af8553def58b633",
+      "columnCount": 12
+    },
+    "catalog_model_alias": {
+      "rows": 0,
+      "allColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "columnCount": 5
+    },
+    "catalog_model_source": {
+      "rows": 14,
+      "allColumnsDigest": "996f1bf9c26a55d92655588a70a2efec61759d3a9af2d3b7dc9ddee113961dfc",
+      "columnCount": 9
+    },
+    "catalog_price_mapping": {
+      "rows": 74,
+      "allColumnsDigest": "82395acad990dce8d7d5f82d6fe4556031f9d1f43b764d5a53d9f7bcd37c8333",
+      "columnCount": 9
+    },
+    "catalog_price_observation": {
+      "rows": 80,
+      "allColumnsDigest": "053b87946ba5ec491054d6b59b5a3e1f984c9bb60b0e1cf9ef60dc5e5f18ec25",
+      "columnCount": 6
+    },
+    "catalog_product": {
+      "rows": 307,
+      "allColumnsDigest": "398767a4a89ff73d53aed8034aa42fdc4e9d7e7f64f2e167876c591ea3ea678b",
+      "columnCount": 16
+    },
+    "catalog_product_source": {
+      "rows": 853,
+      "allColumnsDigest": "be1b570c5befb92e48d9f9696474399d2b51907966bc7bd222b0877e649dd5b0",
+      "columnCount": 8
+    },
+    "catalog_reference_price": {
+      "rows": 307,
+      "allColumnsDigest": "6802eff3e83bb165faa77c6e79852e9ddce2c1a540a942e7585fed904e93407e",
+      "columnCount": 13
+    },
+    "cpu_memory_support": {
+      "rows": 72,
+      "allColumnsDigest": "401d63303328e461b38ea18ffebe5ec3db1c5f4e0d3393f75f654c3ffc716a3b",
+      "columnCount": 6
+    },
+    "cpu_memory_type_support": {
+      "rows": 103,
+      "allColumnsDigest": "6174debec28650de07fcdbc4b5b7fd7bc0d96b4b8d67e5c479f694aea9da72c0",
+      "columnCount": 4
+    },
+    "cpu_spec": {
+      "rows": 72,
+      "allColumnsDigest": "53363b0cc73614eda9868914d76b36d36aba6d42697ffb52058f0af87fe23d1f",
+      "columnCount": 17
+    },
+    "flyway_schema_history": {
+      "rows": 14,
+      "allColumnsDigest": "b2d3b6689f87dc79a265d217971831a62a414f83814b3b6ff9a14144e935bd2d",
+      "columnCount": 10
+    },
+    "gpu_power_connector": {
+      "rows": 90,
+      "allColumnsDigest": "611cc8d1a6d1af769f3113c0532db7b0ab2b61b7c21f03f47cc62152bfb8cae4",
+      "columnCount": 3
+    },
+    "gpu_spec": {
+      "rows": 80,
+      "allColumnsDigest": "45b5fb3306e2bb427328903aa7dc7907376144912064018578eda34f3940cd25",
+      "columnCount": 17
+    },
+    "monitor_spec": {
+      "rows": 20,
+      "allColumnsDigest": "bf5b26b0ba1994b8bda950b11b2e3d3a0260b3d07fe7ebb040f5f9ccc961d438",
+      "columnCount": 11
+    },
+    "motherboard_cpu_support": {
+      "rows": 1813,
+      "allColumnsDigest": "df1ecd8aa408e6c643a2e36ca32ac493649737bc86ad67a427153fc4fbe9e6b9",
+      "columnCount": 12
+    },
+    "motherboard_cpu_support_profile": {
+      "rows": 73,
+      "allColumnsDigest": "67f8857b4f26738dbb0407874632117e138e66db9c7c0e46f30b22e3ea0bde91",
+      "columnCount": 6
+    },
+    "motherboard_spec": {
+      "rows": 73,
+      "allColumnsDigest": "6d69d82f575a640ff5b30e0af1851bd7495c6e5bde57a7efd80054d7e0782933",
+      "columnCount": 9
+    },
+    "motherboard_storage_profile": {
+      "rows": 4,
+      "allColumnsDigest": "e92387531a81f630455859d2e6518aed4778a5d290390d7052111aa49e8078fc",
+      "columnCount": 7
+    },
+    "motherboard_storage_rule": {
+      "rows": 3,
+      "allColumnsDigest": "c6b23571cb4d54d151fa3c76c08452f1d8524d1cea3a90836dd6b20330027144",
+      "columnCount": 8
+    },
+    "motherboard_storage_slot": {
+      "rows": 19,
+      "allColumnsDigest": "cea46c0e59bf814351e1c1f047485d00dc1b04bd3ce72d7f0ceaff91275aed50",
+      "columnCount": 11
+    },
+    "motherboard_storage_slot_bus": {
+      "rows": 19,
+      "allColumnsDigest": "ffb5d3ec365e9a836e02558d1f8e2d0e229885d2e2d3aa65e0649256e3db9843",
+      "columnCount": 2
+    },
+    "motherboard_storage_slot_length": {
+      "rows": 20,
+      "allColumnsDigest": "8b71f7c8fca8f687a368a4aeb898e96cb0beb7e23dca209d8e93f6fe537e885a",
+      "columnCount": 2
+    },
+    "motherboard_storage_slot_protocol": {
+      "rows": 5,
+      "allColumnsDigest": "204d0817c70f3fde064ab15ea294c9d001c518a3df816ffe911ec4c842a0bedf",
+      "columnCount": 2
+    },
+    "motherboard_storage_source": {
+      "rows": 6,
+      "allColumnsDigest": "bc54d2086df0d44be83b78b3bd293172c0a068d0d58c8eb588c9b813ac575614",
+      "columnCount": 7
+    },
+    "pc_configuration": {
+      "rows": 1,
+      "allColumnsDigest": "f455116af9b8cd0387a28defa12ef8d20bb32959bdfac3b46633a69de786f9ea",
+      "columnCount": 8
+    },
+    "pc_part": {
+      "rows": 14,
+      "allColumnsDigest": "7c5d7e159f9401b9066b86f1a950cd0f290994b38d209f832c83568ff701c039",
+      "columnCount": 12
+    },
+    "ram_spec": {
+      "rows": 60,
+      "allColumnsDigest": "f3e40158ef5153aec643ad5f4d8625e7d691c249312afd9c854f1327a295153e",
+      "columnCount": 11
+    },
+    "social_accounts": {
+      "rows": 3,
+      "allColumnsDigest": "c7105a41b6af3d333a3f26c82433136fc5216c316bccd2b7d322d64367c26e05",
+      "columnCount": 5
+    },
+    "storage_spec": {
+      "rows": 2,
+      "allColumnsDigest": "ecd37c1c8c40b685e8cbe3ac299f9eaa0d8fb0ec39f4f366fa646af5caebdbc8",
+      "columnCount": 19
+    },
+    "users": {
+      "rows": 3,
+      "allColumnsDigest": "19d86010ef14cbf6a2f92acc4e509d47cb32700e9960299b59d8d049f7b34b31",
+      "columnCount": 5
+    }
+  },
+  "catalogStates": [
+    {
+      "identity_kind": "LEGACY_UNCLASSIFIED",
+      "role": "UNASSIGNED",
+      "verification_status": "UNVERIFIED",
+      "products": 293
+    },
+    {
+      "identity_kind": "MODEL_REFERENCE",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "products": 6
+    },
+    {
+      "identity_kind": "PHYSICAL_VARIANT",
+      "role": "BOTH",
+      "verification_status": "UNVERIFIED",
+      "products": 6
+    },
+    {
+      "identity_kind": "RETAIL_KIT",
+      "role": "PURCHASE_CANDIDATE",
+      "verification_status": "UNVERIFIED",
+      "products": 2
+    }
+  ],
+  "pricedProducts": 74,
+  "productsWithCanonicalId": 307,
+  "productsWithModelId": 14,
+  "pcPartsWithModelId": 0,
+  "modelStates": [
+    {
+      "type": "CPU",
+      "kind": "CPU_MODEL",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "models": 4
+    },
+    {
+      "type": "GPU",
+      "kind": "GPU_CHIP_MODEL",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "models": 2
+    },
+    {
+      "type": "MOTHERBOARD",
+      "kind": "BOARD_MODEL",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "models": 4
+    },
+    {
+      "type": "RAM",
+      "kind": "RAM_SPEC_GROUP",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "models": 1
+    },
+    {
+      "type": "STORAGE",
+      "kind": "STORAGE_MODEL",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "models": 2
+    }
+  ],
+  "backup": {
+    "format": "SQL_SCHEMA_AND_FULL_DATA_WITH_TYPED_VALUES",
+    "scope": "all base tables",
+    "rows": 4217,
+    "restoreExecuted": false,
+    "privateBackupSha256": "5814d2c425c149f7b93229674680f0e7bafe1439f264ea497ef04ba99a8028ac",
+    "privateBackupBytes": 11813363,
+    "privateValuesAreExcludedFromPublicFile": true,
+    "protection": "WINDOWS_DPAPI_CURRENT_USER",
+    "encryptionRoundTripVerified": true,
+    "plaintextRemoved": true
+  }
+}
