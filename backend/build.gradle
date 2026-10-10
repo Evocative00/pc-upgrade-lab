@@ -96,6 +96,47 @@ tasks.register('previewCatalogExpansion', JavaExec) {
     }
 }
 
+// First-14 detailed review only. No Spring, JDBC, Flyway, private properties or apply path.
+tasks.register('previewPilotCatalog', JavaExec) {
+    group = 'application'
+    description = 'Validate the first 14 reviewed parts, model plans, slot excerpts and price quotes without a database.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.pilot.CatalogPilotPreviewApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+    doFirst {
+        def applyRequested = project.properties.any { key, value ->
+            key.toString().toLowerCase().startsWith('apply') && value.toString().toLowerCase() != 'false'
+        }
+        if (applyRequested) {
+            throw new GradleException('previewPilotCatalog is DB-free; apply is unavailable and requires separate approval.')
+        }
+        def requestedArgs = getArgs() ?: []
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath] + requestedArgs)
+    }
+}
+
+// Approved pilot snapshots are explicit and preserve their original observation dates.
+tasks.register('importPilotCatalog', JavaExec) {
+    group = 'application'
+    description = 'Review the approved first 14 parts; explicit checkPilotDb/applyPilotCatalog properties enable local DB access.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.pilot.CatalogPilotImportApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+    doFirst {
+        def apply = providers.gradleProperty('applyPilotCatalog').getOrElse('false')
+        def check = providers.gradleProperty('checkPilotDb').getOrElse('false')
+        if (!(apply in ['true','false']) || !(check in ['true','false']) || (apply == 'true' && check == 'true')) {
+            throw new GradleException('Choose only one: -PcheckPilotDb=true or -PapplyPilotCatalog=true')
+        }
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath]
+            + (apply == 'true' ? ['--apply'] : check == 'true' ? ['--check-db'] : []))
+    }
+}
+
 // 일반 서버 시작·build·test에서는 DB 자료를 넣지 않는다. 두 작업 모두 기본값은 미리보기다.
 tasks.register('importCatalogPrices', JavaExec) {
     group = 'application'

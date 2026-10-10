@@ -5,6 +5,33 @@ export const VERIFICATION_LABEL: Record<CatalogProduct['verificationStatus'], st
   UNVERIFIED: '미검증', PARTIAL: '일부 제원 확인', CORE_VERIFIED: '핵심 제원 확인',
 }
 
+export function catalogIdentityLabel(identityKind: CatalogProduct['identityKind']): string {
+  switch (identityKind) {
+    case 'MODEL_REFERENCE': return '설치 모델 참고'
+    case 'RETAIL_KIT': return '판매 키트'
+    case 'PHYSICAL_VARIANT': return '정확 상품 자료'
+    default: return '식별 범위 미확인'
+  }
+}
+
+export function catalogRoleLabel(role: CatalogProduct['role']): string {
+  switch (role) {
+    case 'INSTALLED_PC_REFERENCE': return '설치 모델 참고용'
+    case 'PURCHASE_CANDIDATE': return '구매 후보 자료'
+    case 'BOTH': return '설치·구매 참고용'
+    default: return '용도 미분류'
+  }
+}
+
+export function catalogIdentityDescription(identityKind: CatalogProduct['identityKind']): string {
+  switch (identityKind) {
+    case 'MODEL_REFERENCE': return '모델 수준의 참고 자료입니다. 정확한 판매 구성이나 보드 리비전은 별도로 확인해 주세요.'
+    case 'RETAIL_KIT': return '판매 묶음 기준 자료입니다. 내 PC에 장착한 모듈 수와 모듈 1개당 용량을 별도로 확인해 주세요.'
+    case 'PHYSICAL_VARIANT': return '부품번호와 특정 상품 변형을 구분한 자료입니다. 내 PC 실물과 같은 구성인지 확인해 주세요.'
+    default: return '제품의 식별 범위가 아직 분류되지 않았습니다. 모델명과 부품번호를 확인해 연결해 주세요.'
+  }
+}
+
 export function formatCatalogPrice(price: CatalogProduct['referencePrice']): string {
   if (price.status === 'INSUFFICIENT_HISTORY') return '가격 자료 부족'
   if (price.status !== 'CONFIRMED' || price.amountKrw === null) return '가격 미확정'

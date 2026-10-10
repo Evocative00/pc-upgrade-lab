@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+        "partNumber": "G5060-8V2C"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "90956033",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+        "saleSku": "G5060-8V2C",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 668860,
+        "observedAt": "2026-10-09T16:27:54.952Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+        "partNumber": "11350-03-20G"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "91909571",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+        "saleSku": "11350-03-20G",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 822300,
+        "observedAt": "2026-10-09T16:27:55.879Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650M MORTAR WIFI",
+        "partNumber": "MAG B650M MORTAR WIFI"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17971187",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971187",
+        "saleSku": "MAG B650M MORTAR WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 202710,
+        "observedAt": "2026-10-09T16:27:57.186Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971187",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+        "manufacturer": "G.SKILL",
+        "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "F5-6000J3038F16GX2-TZ5N"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17932031",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+        "saleSku": "F5-6000J3038F16GX2-TZ5N",
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2,
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 939000,
+        "observedAt": "2026-10-09T16:27:58.112Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 9700X",
+        "partNumber": "100-100001404WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "62653715",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+        "saleSku": "100-100001404WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 686000,
+        "observedAt": "2026-10-09T16:27:59.097Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 9600X",
+        "partNumber": "100-100001405WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "62653718",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+        "saleSku": "100-100001405WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 399000,
+        "observedAt": "2026-10-09T16:28:00.260Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "samsung:MZ-77E1T0BW",
+        "manufacturer": "Samsung",
+        "modelName": "870 EVO 1TB",
+        "partNumber": "MZ-77E1T0BW"
+      },
+      "offer": {
+        "sourceName": "SAMSUNG_CNH",
+        "externalId": "1000000066",
+        "sourceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+        "saleSku": "MZ-77E1T0BW",
+        "saleUnit": "PRODUCT",
+        "moduleCount": null,
+        "verifiedAt": "2026-10-09T16:29:31.420Z"
+      },
+      "price": {
+        "amountKrw": 459000,
+        "observedAt": "2026-10-09T16:29:31.420Z",
+        "evidenceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "samsung:MZ-V9P1T0BW",
+        "manufacturer": "Samsung",
+        "modelName": "990 PRO 1TB",
+        "partNumber": "MZ-V9P1T0BW"
+      },
+      "offer": {
+        "sourceName": "SAMSUNG_CNH",
+        "externalId": "1000000113",
+        "sourceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+        "saleSku": "MZ-V9P1T0BW",
+        "saleUnit": "PRODUCT",
+        "moduleCount": null,
+        "verifiedAt": "2026-10-09T16:29:31.430Z"
+      },
+      "price": {
+        "amountKrw": 399000,
+        "observedAt": "2026-10-09T16:29:31.430Z",
+        "evidenceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+        "condition": "NEW",
+        "inStock": true
+      }
+    }
+  ]
+}

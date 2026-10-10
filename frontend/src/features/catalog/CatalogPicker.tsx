@@ -2,6 +2,8 @@ import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import type { PartType } from '../pc-scan/types.ts'
 import { catalogClient } from './catalogClient.ts'
 import { CatalogModelPicker } from './CatalogModelPicker.tsx'
+import { CatalogProductIdentity } from './CatalogProductIdentity.tsx'
+import { CatalogSearchHelp } from './CatalogSearchHelp.tsx'
 import { CatalogAttributions, CatalogProductDetail } from './CatalogProductDetail.tsx'
 import { formatCurrentPrice, VERIFICATION_LABEL } from './catalogPresentation.ts'
 import { CurrentPriceSource } from './CurrentPriceSource.tsx'
@@ -86,6 +88,13 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
     setSearch({ status: 'idle' })
   }
 
+  function showModels() {
+    searchController.current?.abort()
+    clearDetail()
+    setSearch({ status: 'idle' })
+    setMode('model')
+  }
+
   // 부품 입력 폼 안에 있으므로 Enter가 폼 전체를 제출하지 않게 막는다.
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.nativeEvent.isComposing) return
@@ -102,10 +111,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
     <div className="catalog-picker" aria-label="부품 카탈로그 검색">
       {onSelectModel && <div className="catalog-picker__bar" aria-label="확인 범위">
         <button type="button" className="button" aria-pressed={mode === 'product'} onClick={() => setMode('product')}>제품 연결</button>
-        <button type="button" className="button" aria-pressed={mode === 'model'} onClick={() => {
-          searchController.current?.abort(); detailController.current?.abort()
-          setSearch({ status: 'idle' }); setDetail({ status: 'idle' }); setMode('model')
-        }}>모델만 확인</button>
+        <button type="button" className="button" aria-pressed={mode === 'model'} onClick={showModels}>모델만 확인</button>
       </div>}
       {mode === 'model' && onSelectModel ? <CatalogModelPicker type={type} initialQuery={query}
         onSelect={onSelectModel} onClose={onClose} /> : <>
@@ -147,7 +153,10 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
       {search.status === 'done' && <>
         <p role="status" className="muted">{search.keyword ? `‘${search.keyword}’ 검색 결과` : '등록 부품'} {search.result.totalElements}개</p>
         {search.result.items.length === 0 ? (
-          <p className="muted">일치하는 제품이 없습니다. 현재 입력한 내용은 유지되며 직접 입력해 저장할 수 있습니다.</p>
+          <>
+            <p className="muted">일치하는 제품이 없습니다. 현재 입력한 내용은 유지되며 직접 입력해 저장할 수 있습니다.</p>
+            <CatalogSearchHelp type={type} mode="product" onShowModels={onSelectModel ? showModels : undefined} />
+          </>
         ) : <>
           <ul className="catalog-picker__results">
             {search.result.items.map((product) => (
@@ -156,6 +165,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
                   aria-expanded={detail.status !== 'idle' && detail.product.id === product.id}
                   aria-label={`${product.modelName} 상세 보기`}>
                   <span><span className="muted">{product.manufacturer}</span> {product.modelName}</span>
+                  <CatalogProductIdentity product={product} />
                   <span className="catalog-picker__meta muted">
                     {VERIFICATION_LABEL[product.verificationStatus]} · {formatCurrentPrice(product.currentPrice)}
                     {product.currentPrice && (type === 'RAM' ? ' / 판매 묶음' : ' / 1개')} · 상세 보기
@@ -179,7 +189,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
         <p className="error">{detail.message}</p>
         <button type="button" className="button" onClick={() => void showDetail(detail.product)}>상세 다시 조회</button>
       </div>}
-      {detail.status === 'done' && <CatalogProductDetail detail={detail.result} onSelect={onSelect}
+      {detail.status === 'done' && <CatalogProductDetail detail={detail.result} onSelect={onSelect} onSelectModel={onSelectModel}
         onRefresh={() => void showDetail(detail.product)} />}
       {(detail.status === 'done' || search.status === 'done') && (
         <CatalogAttributions items={detail.status === 'done' ? detail.result.attributions

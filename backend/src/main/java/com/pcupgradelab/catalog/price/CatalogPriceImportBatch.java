@@ -28,13 +28,16 @@ public record CatalogPriceImportBatch(Integer schemaVersion, List<Item> items) {
     public record Product(CatalogSourceName sourceName, String externalId,
                           String manufacturer, String modelName, String partNumber) {
         public Product {
-            if (sourceName != CatalogSourceName.BUILDCORES) {
-                throw new IllegalArgumentException("Product identity must use BUILDCORES sourceName");
+            if (sourceName != CatalogSourceName.BUILDCORES && sourceName != CatalogSourceName.MANUFACTURER) {
+                throw new IllegalArgumentException("Product identity must use BUILDCORES or MANUFACTURER sourceName");
             }
             externalId = text(externalId, "product.externalId", 128);
             manufacturer = text(manufacturer, "product.manufacturer", 100);
             modelName = text(modelName, "product.modelName", 255);
             if (partNumber != null) partNumber = text(partNumber, "product.partNumber", 128);
+            if (sourceName == CatalogSourceName.MANUFACTURER && partNumber == null) {
+                throw new IllegalArgumentException("MANUFACTURER price identity requires an exact product.partNumber");
+            }
         }
     }
 

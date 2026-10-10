@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "researchDate": "2026-10-10",
+  "categoryGroup": "STORAGE",
+  "purpose": "승인된 첫 후보 14종 중 SSD 2종의 공식 제원·국내 동일 PN 근거를 보강한 DB 미반영 검토 자료",
+  "approvalScope": {
+    "selectionApproved": true,
+    "detailedEvidenceReviewApproved": true,
+    "catalogAdoptionApproved": false,
+    "databaseApplyApproved": false,
+    "newPriceApplyApproved": false
+  },
+  "reusedResearch": {
+    "path": "data/catalog-review/candidates-ssd-2026-10-09.json",
+    "sha256": "11e65c2491e35d3e4bb02da06eb0e953229defb7d1b363608ea79ec596c33ecf",
+    "candidateKeys": ["ssd-samsung-870-evo-1tb", "ssd-samsung-990-pro-1tb"],
+    "originalFileModified": false
+  },
+  "scopeLimitations": [
+    "가격·배송료·할인·프로모션 금액은 수집하거나 저장하지 않는다. 웹 검색·페이지 캐시의 가격은 현재 관측값으로 취급하지 않는다.",
+    "정확한 BW PN이 삼성 대한민국의 상품·지원 페이지에 존재한다. BW를 해외 전용이라고 가정하거나 /KR·/AM·/EU·/CN 접미사를 제거하여 판매 SKU를 합치지 않는다.",
+    "국내 판매 페이지에서 동일 PN을 확인한 것은 그 페이지의 상품 표기 근거다. 배송될 실물의 진품·박스·보증을 검사한 결과나 다른 판매점에 대한 승인으로 확장하지 않는다.",
+    "다나와 pcode는 모델·용량·방열판 구분 근거다. 집계 페이지의 모든 판매점이 같은 PN·신품·국내 정품 유통임을 입증하지 않는다.",
+    "보드 슬롯별 호환·공유·CPU/BIOS·NVMe 부팅 판단은 별도 플랫폼 근거와 실제 구성 확인이 필요하다.",
+    "최근 판매 순위·인기도·설치 비율은 조사하지 않았다. 이번 결과는 구매 추천 완료나 실제 제품 적재가 아니다."
+  ],
+  "sources": [
+    {
+      "sourceKey": "samsung-kr-870-product",
+      "sourceType": "MANUFACTURER_KOREAN_PRODUCT",
+      "url": "https://www.samsung.com/sec/memory-storage/MZ-77E1T0BW-d2c/MZ-77E1T0BW/",
+      "title": "삼성 대한민국 내장 SSD 870 EVO SATA 1TB",
+      "checkedDate": "2026-10-10",
+      "supportedFacts": ["국내 공식 상품 SKU MZ-77E1T0BW", "870 EVO 1TB", "국내 정품 메모리/스토리지 안내"],
+      "doesNotEstablish": ["실시간 재고", "현재 구매 가능한 일반 상품가", "다른 판매점의 유통·보증"]
+    },
+    {
+      "sourceKey": "samsung-kr-870-support",
+      "sourceType": "MANUFACTURER_KOREAN_SUPPORT",
+      "url": "https://www.samsung.com/sec/support/model/MZ-77E1T0BW/",
+      "title": "삼성 대한민국 MZ-77E1T0BW 지원·스펙",
+      "checkedDate": "2026-10-10",
+      "supportedFacts": ["1000GB 및 decimal 1GB=10^9 bytes", "2.5형", "SATA 6Gb/s", "100×69.85×6.8mm", "설치 키트 없음", "5년 또는 600TBW 제한보증", "소비전력 평균 2.5W·burst 최대 4.0W·idle 최대 30mW", "5V ±5%"]
+    },
+    {
+      "sourceKey": "samsung-870-datasheet-r1-1",
+      "sourceType": "MANUFACTURER_DATASHEET",
+      "url": "https://image.semiconductor.samsung.com/resources/data-sheet/Samsung_SSD_870_EVO_Data_Sheet_Rev1.1.pdf",
+      "title": "Samsung SSD 870 EVO Data Sheet Revision 1.1",
+      "checkedDate": "2026-10-10",
+      "documentRevision": "1.1",
+      "documentLocations": ["page 3 technical specifications", "page 4 product lineup"],
+      "supportedFacts": ["MZ-77E1T0 모델과 MZ-77E1T0BW 박스 모델 구분", "1TB의 별도 모델 코드 BW·B/AM·B/EU·B/CN", "SSD와 보증 문서의 박스 구성", "100×69.85×6.8mm", "SATA 6Gb/s", "decimal 명목 용량"]
+    },
+    {
+      "sourceKey": "samsung-cnh-870-offer-identity",
+      "sourceType": "DOMESTIC_SELLER_PRODUCT_IDENTITY",
+      "url": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+      "title": "삼성씨앤에이치 870 EVO 1TB 상품",
+      "checkedDate": "2026-10-10",
+      "supportedFacts": ["MZ-77E1T0BW 모델명", "국내 판매 페이지", "정품·공식인증 판매자 표시", "SSD 단품과 추가 SATA 케이블 선택 구분"],
+      "verificationLimit": "웹 도구가 오래된 본문을 반환했다. 안정적인 PN 표기는 국내 상품 동일성 보강에만 사용하고, 실시간 가격·재고는 별도로 직접 관측해야 한다. 공식인증은 판매자 표시이며 제조사로부터 별도 인증 목록을 대조하지 않았다."
+    },
+    {
+      "sourceKey": "danawa-870-model-1tb",
+      "sourceType": "DOMESTIC_AGGREGATOR_MODEL",
+      "url": "https://prod.danawa.com/info/?pcode=13190573",
+      "title": "삼성전자 870 EVO (1TB)",
+      "checkedDate": "2026-10-10",
+      "supportedFacts": ["870 EVO 1TB 국내 모델 페이지", "2.5형 SATA"],
+      "doesNotEstablish": ["개별 판매점의 정확한 박스 PN", "모든 판매점의 국내 정품 유통"]
+    },
+    {
+      "sourceKey": "samsung-kr-990-product",
+      "sourceType": "MANUFACTURER_KOREAN_PRODUCT",
+      "url": "https://www.samsung.com/sec/memory-storage/990-pro-nvme-ssd-d2c2/MZ-V9P1T0BW/",
+      "title": "삼성 대한민국 내장 SSD 990 PRO NVMe 1TB",
+      "checkedDate": "2026-10-10",
+      "supportedFacts": ["국내 공식 상품 SKU MZ-V9P1T0BW", "990 PRO 1TB"],
+      "doesNotEstablish": ["실시간 재고", "현재 구매 가능한 일반 상품가", "다른 판매점의 유통·보증"]
+    },
+    {
+      "sourceKey": "samsung-kr-990-support",
+      "sourceType": "MANUFACTURER_KOREAN_SUPPORT",
+      "url": "https://www.samsung.com/sec/support/model/MZ-V9P1T0BW/",
+      "title": "삼성 대한민국 MZ-V9P1T0BW 지원·스펙",
+      "checkedDate": "2026-10-10",
+      "supportedFacts": ["1000GB 및 decimal 1GB=10^9 bytes", "M.2 2280", "PCIe 4.0 x4", "NVMe 2.0", "80×22×2.3mm", "설치 키트 없음", "5년 또는 600TBW 제한보증", "소비전력 평균 5.5W·burst 최대 7.8W·idle 최대 50mW", "3.3V ±5%"]
+    },
+    {
+      "sourceKey": "samsung-990-datasheet-r1-0",
+      "sourceType": "MANUFACTURER_DATASHEET",
+      "url": "https://download.semiconductor.samsung.com/resources/data-sheet/Samsung_NVMe_SSD_990_PRO_Datasheet_Rev.1.0_10129514049640.pdf",
+      "title": "Samsung NVMe SSD 990 PRO Data Sheet Revision 1.0",
+      "checkedDate": "2026-10-10",
+      "documentRevision": "1.0",
+      "documentLocations": ["page 3 technical specifications", "page 4 product lineup"],
+      "supportedFacts": ["MZ-V9P1T0 모델과 MZ-V9P1T0BW 박스 모델 구분", "1TB의 별도 박스 모델 BW·B/AM", "SSD와 보증 문서의 박스 구성", "치수 각각 최대 80×22×2.3mm", "PCIe 4.0 x4·NVMe 2.0·M.2 2280", "decimal 명목 용량", "PCIe 3.0 하위 호환"],
+      "verificationLimit": "현재 삼성 지원 페이지에 연결된 Rev3.0 with-heatsink PDF와 설치 가이드는 웹 도구에서 접근 실패했다. Rev1.0 및 현재 국내 지원 스펙이 일치하는 일반 BW 항목만 사용하고, 최신 히트싱크 문서의 제원을 가져오지 않았다."
+    },
+    {
+      "sourceKey": "samsung-magician-990-variant-list",
+      "sourceType": "MANUFACTURER_MODEL_LIST",
+      "url": "https://semiconductor.samsung.com/consumer-storage/magician/",
+      "title": "Samsung Magician 공식 지원 모델 목록",
+      "checkedDate": "2026-10-10",
+      "supportedFacts": ["일반 990 PRO 1TB MZ-V9P1T0BW", "990 PRO with Heatsink 1TB MZ-V9P1T0CW·MZ-V9P1T0GW 별도 구분"]
+    },
+    {
+      "sourceKey": "samsung-cnh-990-offer-identity",
+      "sourceType": "DOMESTIC_SELLER_PRODUCT_IDENTITY",
+      "url": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+      "title": "삼성씨앤에이치 내장 SSD 990 PRO NVMe 1TB",
+      "checkedDate": "2026-10-10",
+      "supportedFacts": ["MZ-V9P1T0BW 모델명", "1TB 단품 국내 판매 페이지", "판매자 사이트의 삼성 공식파트너 표시"],
+      "verificationLimit": "판매자 파트너 표시를 제조사 인증 목록과 별도 대조하지 않았다. PN 동일성은 확인했지만 실시간 가격·재고·개별 구매 조건은 가격 관측 단계의 별도 검토 대상이다."
+    },
+    {
+      "sourceKey": "danawa-990-model-1tb",
+      "sourceType": "DOMESTIC_AGGREGATOR_MODEL",
+      "url": "https://prod.danawa.com/info/?pcode=18297002",
+      "title": "삼성전자 990 PRO M.2 NVMe (1TB)",
+      "checkedDate": "2026-10-10",
+      "supportedFacts": ["990 PRO 1TB 국내 모델 페이지", "PCIe 4.0 x4·M.2 2280", "방열판 미포함"],
+      "doesNotEstablish": ["개별 판매점의 정확한 박스 PN", "모든 판매점의 국내 정품 유통"]
+    }
+  ],
+  "candidates": [
+    {
+      "selectionNumber": 13,
+      "candidateKey": "ssd-samsung-870-evo-1tb",
+      "type": "STORAGE",
+      "manufacturer": "Samsung",
+      "modelName": "870 EVO 1TB",
+      "modelKind": "STORAGE_MODEL",
+      "modelPartNumber": "MZ-77E1T0",
+      "selectedRetailPartNumber": "MZ-77E1T0BW",
+      "proposedIdentityKind": "PHYSICAL_VARIANT",
+      "saleUnit": "PRODUCT",
+      "devicesPerSaleUnit": 1,
+      "existingCatalogExternalId": null,
+      "localProductId": null,
+      "canonicalId": null,
+      "storageSpecification": {
+        "storageKind": "SSD",
+        "capacityBytes": 1000000000000,
+        "advertisedCapacityGb": 1000,
+        "capacityBasis": "DECIMAL_GB",
+        "formFactor": "TWO_POINT_FIVE_INCH",
+        "busInterface": "SATA",
+        "interfaceProtocol": null,
+        "pcieVersion": null,
+        "pcieLanes": null,
+        "nvmeVersion": null,
+        "sataVersion": "3.0",
+        "connectorKey": null,
+        "m2LengthCode": null,
+        "lengthMm": 100,
+        "widthMm": 69.85,
+        "heightMm": 6.8,
+        "dimensionsBasis": "PUBLISHED",
+        "heatsinkIncluded": null
+      },
+      "specificationEvidenceSourceKeys": ["samsung-kr-870-support", "samsung-870-datasheet-r1-1"],
+      "normalizationNotes": [
+        "광고 1TB=1000GB=10^12 bytes는 장치 한 개의 명목 용량이다. 스캔한 실제 bytes나 파일시스템 사용 가능 용량과 구분한다.",
+        "제조사 SATA 6Gb/s 표기를 SATA 3.0 연결 세대로 정규화한다. ATA 명령 집합·버전은 별도 확인되지 않았으므로 interfaceProtocol을 null로 유지한다.",
+        "PCIe·NVMe·M.2 key/length는 SATA 2.5형에 비해당이며 null이다.",
+        "100×69.85×6.8mm를 길이·폭·높이로 정규화한다. 데이터시트에 최대치 표기가 없어 dimensionsBasis는 PUBLISHED다.",
+        "설치 키트 없음은 확인했지만 독립 heatsinkIncluded 항목의 명시 근거가 없어 null로 유지한다."
+      ],
+      "domesticSaleIdentityReview": {
+        "status": "SAME_DECLARED_FULL_PN_CONFIRMED_FOR_NAMED_PAGE",
+        "manufacturerKoreaPartNumber": "MZ-77E1T0BW",
+        "sellerDeclaredPartNumber": "MZ-77E1T0BW",
+        "sellerDeclaredDistribution": "국내 정품·공식인증 표시",
+        "sellerIdentitySourceKey": "samsung-cnh-870-offer-identity",
+        "manufacturerIdentitySourceKey": "samsung-kr-870-product",
+        "domesticAggregatorPcode": "13190573",
+        "aggregatorMatchLevel": "MODEL_CAPACITY_ONLY_NOT_ALL_SELLER_SKUS",
+        "priceEligibility": "NAMED_FULL_PN_OFFER_ELIGIBLE_FOR_LIVE_PRICE_REVIEW",
+        "priceStatus": "NOT_COLLECTED_BY_STORAGE_RESEARCH",
+        "otherSuffixesAreAliases": false,
+        "blockedMappings": ["PN 없는 판매점", "병행·벌크·중고 구성", "MZ-77E1T0B/KR·BW/KR 등 미검증 판매자 표기를 BW로 치환", "용량 변형", "케이블·추가 구성 포함 가격"]
+      },
+      "compatibilityPrerequisites": ["2.5형 장착 공간", "사용 가능한 SATA 포트와 데이터 케이블", "SATA 전원 연결", "보드별 공유·비활성화 조건"],
+      "adoptionStatus": "REVIEW_PREVIEW_ONLY_NOT_APPLIED"
+    },
+    {
+      "selectionNumber": 14,
+      "candidateKey": "ssd-samsung-990-pro-1tb",
+      "type": "STORAGE",
+      "manufacturer": "Samsung",
+      "modelName": "990 PRO 1TB",
+      "modelKind": "STORAGE_MODEL",
+      "modelPartNumber": "MZ-V9P1T0",
+      "selectedRetailPartNumber": "MZ-V9P1T0BW",
+      "proposedIdentityKind": "PHYSICAL_VARIANT",
+      "saleUnit": "PRODUCT",
+      "devicesPerSaleUnit": 1,
+      "existingCatalogExternalId": null,
+      "localProductId": null,
+      "canonicalId": null,
+      "storageSpecification": {
+        "storageKind": "SSD",
+        "capacityBytes": 1000000000000,
+        "advertisedCapacityGb": 1000,
+        "capacityBasis": "DECIMAL_GB",
+        "formFactor": "M2",
+        "busInterface": "PCIE",
+        "interfaceProtocol": "NVME",
+        "pcieVersion": "4.0",
+        "pcieLanes": 4,
+        "nvmeVersion": "2.0",
+        "sataVersion": null,
+        "connectorKey": null,
+        "m2LengthCode": "2280",
+        "lengthMm": 80,
+        "widthMm": 22,
+        "heightMm": 2.3,
+        "dimensionsBasis": "MANUFACTURER_MAXIMUM",
+        "heatsinkIncluded": false
+      },
+      "specificationEvidenceSourceKeys": ["samsung-kr-990-support", "samsung-990-datasheet-r1-0", "samsung-magician-990-variant-list"],
+      "normalizationNotes": [
+        "광고 1TB=1000GB=10^12 bytes는 장치 한 개의 명목 용량이다. 스캔한 실제 bytes나 파일시스템 사용 가능 용량과 구분한다.",
+        "M.2 2280을 formFactor=M2와 m2LengthCode=2280으로 분리한다. SATA 버전은 비해당이며 null이다.",
+        "Rev1.0 데이터시트가 각 치수를 Max로 표시하므로 dimensionsBasis는 MANUFACTURER_MAXIMUM이다. 현재 국내 지원 페이지의 동일 숫자와 대조했다.",
+        "공식 모델 목록은 일반 BW와 방열판 포함 CW/GW를 구분하므로 BW의 heatsinkIncluded=false를 제안한다.",
+        "선정 SKU를 직접 명시하는 M-key 문구는 확인하지 못했다. 다른 삼성 NVMe 모델의 FAQ나 PCIe x4만으로 키를 확정하지 않고 connectorKey=null로 유지한다."
+      ],
+      "domesticSaleIdentityReview": {
+        "status": "SAME_DECLARED_FULL_PN_CONFIRMED_FOR_NAMED_PAGE",
+        "manufacturerKoreaPartNumber": "MZ-V9P1T0BW",
+        "sellerDeclaredPartNumber": "MZ-V9P1T0BW",
+        "sellerDeclaredDistribution": "삼성 공식파트너 사이트 표시; 개별 실물·보증 미검사",
+        "sellerIdentitySourceKey": "samsung-cnh-990-offer-identity",
+        "manufacturerIdentitySourceKey": "samsung-kr-990-product",
+        "domesticAggregatorPcode": "18297002",
+        "aggregatorMatchLevel": "MODEL_CAPACITY_HEATSINK_ONLY_NOT_ALL_SELLER_SKUS",
+        "priceEligibility": "NAMED_FULL_PN_OFFER_ELIGIBLE_FOR_LIVE_PRICE_REVIEW",
+        "priceStatus": "NOT_COLLECTED_BY_STORAGE_RESEARCH",
+        "otherSuffixesAreAliases": false,
+        "blockedMappings": ["PN 없는 판매점", "병행·벌크·중고 구성", "B/AM 등 다른 지역 박스 접미사를 BW로 치환", "CW/GW 방열판 모델", "다른 용량", "990·990 EVO·990 EVO Plus 등 다른 제품군", "추가 구성 포함 가격"]
+      },
+      "compatibilityPrerequisites": ["슬롯별 PCIe NVMe와 2280 지원", "커넥터 키 직접 확인", "CPU·칩셋 경로와 레인 수·공유 조건", "보드 방열판·높이·기류 조건", "부팅용이면 NVMe 부팅 지원과 OS 이전 조건"],
+      "openChecks": ["정확 SKU의 connectorKey 추가 근거", "가격 수집 판매점의 국내 정품·신품·동일 단품 구성 및 실시간 관측"],
+      "adoptionStatus": "REVIEW_PREVIEW_ONLY_NOT_APPLIED"
+    }
+  ],
+  "verification": {
+    "storageRecordEnumSource": "backend/src/main/java/com/pcupgradelab/catalog/CatalogSpecification.java",
+    "storageRecordFieldCount": 18,
+    "databaseAccessed": false,
+    "databaseChanged": false,
+    "pricesWritten": 0,
+    "migrationOrSeedExecuted": false,
+    "privateSettingsAccessed": false,
+    "catalogAdoptionDecisionRequired": true
+  }
+}

@@ -1,0 +1,1799 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-10",
+  "preparedAt": "2026-10-09T16:30:03Z",
+  "status": "READY_PARTIAL_REVIEW_ARTIFACT_ONLY",
+  "recordKind": "CURATED_OFFICIAL_FACT_EXTRACT",
+  "purpose": "Pilot CPU/motherboard evidence and DTO-shaped preview inputs; no database application or purchase activation.",
+  "authorizationScope": "14-part selection and detailed review approved; DB/price apply not approved.",
+  "dtoFieldShapes": {
+    "spec": "CatalogSpecification.Cpu or .Motherboard",
+    "memorySupport": "CpuMemorySupport",
+    "storageSupport": "MotherboardStorageSupport",
+    "cpuSupportPairs": "Reference-aware evidence; entry.cpuExternalId=null for new CPU until approved identity resolution, not directly importable."
+  },
+  "units": {
+    "memoryCapacity": "Manufacturer 256GB normalized using existing memory convention 256*1024^3 bytes; not SSD decimal-capacity convention.",
+    "clock": "MHz",
+    "memoryDataRate": "MT/s",
+    "power": "W; Intel processorBasePower/maximumTurboPower are not copied to tdpW."
+  },
+  "summary": {
+    "parts": 8,
+    "cpus": 4,
+    "motherboards": 4,
+    "reusedParts": 3,
+    "newCandidateParts": 5,
+    "cpuSupportPairs": 8,
+    "currentListedPairs": 4,
+    "priorListedPairsReused": 2,
+    "unverifiedPairs": 2,
+    "globalBoxLifecycleHolds": 1,
+    "newProductIdsGenerated": 0,
+    "dbAccessed": false,
+    "dbWrites": 0,
+    "pricesCollectedByThisArtifact": 0
+  },
+  "scopeConditions": [
+    "No popularity, benchmark or price ranking inferred.",
+    "Ordering code, spec code and stepping are package-row facts; unknown installed CPU stepping remains null.",
+    "Model scope does not prove a sales PN, PCB revision, installed BIOS, DIMM QVL/rank or SSD physical fit.",
+    "Storage completeDataKnown=false; missing protocol/boot/port facts stay unknown.",
+    "No implicit CPU support upgrade from socket/Series 2 or ambiguous BIOS release notes.",
+    "Official PDF text reviewed; requested screenshots were not returned as viewable images, so figure-only positions/dimensions were not promoted."
+  ],
+  "repoSources": [
+    {
+      "file": "data/catalog-review/pilot-selection-2026-10-10.json",
+      "normalizedSha256": "3dcae49ab6fb336d47b3d1941346587ed7b816a46dd6b99d43046f26e03da439"
+    },
+    {
+      "file": "data/catalog-review/catalog-selection-2026-10-09.json",
+      "normalizedSha256": "347424269ee9a462ab5d7adc824099673fb89ad53d28d322485ae83eff3cfd90"
+    },
+    {
+      "file": "data/catalog-review/candidates-current-amd-2026-10-09.json",
+      "normalizedSha256": "72d213e2f1579893ae6f5b9ea808a3ad5c5766cdf6dde259f3e902249a8a9890"
+    },
+    {
+      "file": "data/catalog-review/candidates-current-intel-2026-10-09.json",
+      "normalizedSha256": "2f71af77d567a6d5d77fccc88801b4bc06cb5e6c7392cbe02c5d2e8d8255c4c6"
+    },
+    {
+      "file": "backend/src/main/resources/catalog/enrichment/motherboard-cpu-expand300.json",
+      "normalizedSha256": "7ec6d5d755049ebc156486eee251694a1970dd56ca00719e0984e1b39810d2c6"
+    }
+  ],
+  "sources": [
+    {
+      "id": "AMD_9600X",
+      "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9600x.html",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "CPU, boxed/tray PN, DDR5 configuration limits"
+    },
+    {
+      "id": "AMD_9700X",
+      "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9700x.html",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "CPU, boxed/tray PN, DDR5 configuration limits"
+    },
+    {
+      "id": "INTEL_245K_SPEC",
+      "url": "https://www.intel.com/content/www/us/en/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/specifications.html",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "CPU and ARK maximum DDR5 speed"
+    },
+    {
+      "id": "INTEL_245K_ORDER",
+      "url": "https://www.intel.com/content/www/us/en/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/ordering.html",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "Ordering code and lifecycle section"
+    },
+    {
+      "id": "INTEL_250K_PLUS_SPEC",
+      "url": "https://www.intel.com/content/www/us/en/products/sku/245694/intel-core-ultra-5-processor-250k-plus-30m-cache-up-to-5-30-ghz/specifications.html",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "CPU and ARK maximum DDR5 speed"
+    },
+    {
+      "id": "INTEL_250K_PLUS_ORDER",
+      "url": "https://www.intel.com/content/www/us/en/products/sku/245694/intel-core-ultra-5-processor-250k-plus-30m-cache-up-to-5-30-ghz/ordering.html",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "Ordering code and package type"
+    },
+    {
+      "id": "INTEL_DDR5_MATRIX_007",
+      "url": "https://edc.intel.com/content/www/jp/ja/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "Desktop S/S Plus UDIMM/CUDIMM and DPC/rank limits",
+      "documentId": "832586",
+      "documentRevision": "007",
+      "canonicalEnglishUrl": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+      "canonicalEnglishAccess": "TIMEOUT; same current document opened through official Japanese locale"
+    },
+    {
+      "id": "MSI_B650_SPEC",
+      "url": "https://www.msi.com/Motherboard/MAG-B650M-MORTAR-WIFI/Specification",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "Motherboard memory, M.2, SATA and CPU-family conditions"
+    },
+    {
+      "id": "MSI_B650_CPU_PRIOR",
+      "url": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B650M-MORTAR-WIFI&type=cpu&limit=2000",
+      "checkedDate": "2026-10-10",
+      "method": "REPO_CURATED_EXTRACT_REUSE",
+      "scope": "Exact selected CPU support rows",
+      "file": "backend/src/main/resources/catalog/enrichment/motherboard-cpu-expand300.json",
+      "originalRetrievedAt": "2026-10-04T07:27:58.469782+00:00",
+      "currentTableReverified": false
+    },
+    {
+      "id": "MSI_B650_BIOS",
+      "url": "https://id.msi.com/Motherboard/MAG-B650M-MORTAR-WIFI/support",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_SEARCH_EXTRACT",
+      "scope": "7D76vAE BIOS release date; supplemental, not a new CPU-table verification"
+    },
+    {
+      "id": "MSI_B650_MANUAL",
+      "url": "https://download.msi.com/archive/mnu_exe/mb/MAGB650MMORTARWIFI.pdf",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_SEARCH_EXTRACT",
+      "scope": "SSD own-heatsink rule",
+      "documentLocation": "Printed p.30; PDF open and alternate download-2 mirror unavailable",
+      "fullDocumentReviewed": false
+    },
+    {
+      "id": "ASROCK_B850_SPEC",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS/index.asp",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "Exact non-WiFi board model, memory and storage"
+    },
+    {
+      "id": "ASROCK_B850_CPU_9600X",
+      "url": "https://www.asrock.com/support/cpu.asp?s=AM5&u=767",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "Ryzen 5 9600X CPU table: B850M Pro RS minimum BIOS 3.12"
+    },
+    {
+      "id": "ASROCK_B850_CPU_9700X",
+      "url": "https://www.asrock.com/support/cpu.asp?s=AM5&u=766",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "Ryzen 7 9700X CPU table: B850M Pro RS minimum BIOS 3.12"
+    },
+    {
+      "id": "ASROCK_B850_BIOS",
+      "url": "https://www.asrock.com/support/index.asp?cat=ComboAM5",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "B850M Pro RS BIOS 4.10 release; supplemental only"
+    },
+    {
+      "id": "ASROCK_B850_MANUAL",
+      "url": "https://download.asrock.com/Manual/B850M%20Pro%20RS.pdf",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_PDF_TEXT",
+      "scope": "Storage specification, SATA connector names, M.2 installation",
+      "documentPages": 71,
+      "documentLocations": [
+        "Printed p.4 / PDF page index 7: storage",
+        "Printed p.8 / PDF page index 11: SATA labels",
+        "Printed p.40 / PDF page index 43: SATA speed",
+        "Printed p.55 / PDF page index 58: M2_1",
+        "Printed p.58 / PDF page index 61: M2_2/3"
+      ],
+      "screenshotRequestsIssued": true,
+      "screenshotImagesAvailableToReviewer": false
+    },
+    {
+      "id": "MSI_B860_SPEC",
+      "url": "https://www.msi.com/Motherboard/MAG-B860M-MORTAR-WIFI/Specification",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "Memory type, capacity, storage and lane origin"
+    },
+    {
+      "id": "MSI_B860_CPU",
+      "url": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B860M-MORTAR-WIFI&type=cpu&limit=2000",
+      "checkedDate": "2026-10-10",
+      "method": "HTTP_ACCESS_FAILED",
+      "scope": "Exact 245K/250K Plus CPU rows sought",
+      "result": "403 on read-only public API request; dynamic support pages supplied template rather than rows",
+      "cpuSupportVerified": false,
+      "retryPolicy": "Stop after API and regional support fallback failure; no inference from Series 2 or BIOS notes"
+    },
+    {
+      "id": "MSI_B860_BIOS",
+      "url": "https://in.msi.com/Motherboard/MAG-B860M-MORTAR-WIFI/support",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_SEARCH_EXTRACT",
+      "scope": "BIOS release notes; no exact CPU-to-minimum-BIOS mapping"
+    },
+    {
+      "id": "MSI_B860_MANUAL",
+      "url": "https://download.msi.com/archive/mnu_exe/mb/MAGB860MMORTARWIFI_French.pdf",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_PDF_TEXT",
+      "scope": "M-key slots, SATA5..8, own SSD heatsink and UEFI-ROM/RST condition",
+      "language": "French",
+      "documentPages": 74,
+      "documentLocations": [
+        "Printed p.16-17 / PDF indexes 15-16: memory and storage",
+        "Printed p.36 / PDF index 35: M.2 and heatsink",
+        "Printed p.43 / PDF index 42: SATA5..8"
+      ],
+      "screenshotRequestsIssued": true,
+      "screenshotImagesAvailableToReviewer": false
+    },
+    {
+      "id": "ASUS_B860_SPEC",
+      "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "DDR5 non-ECC/CUDIMM, M.2, SATA and expansion sharing"
+    },
+    {
+      "id": "ASUS_B860_CPU",
+      "url": "https://www.asus.com/in/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/helpdesk_qvl_cpu/?model2Name=TUF-GAMING-B860-PLUS-WIFI",
+      "checkedDate": "2026-10-10",
+      "method": "WEB_OPEN_TEXT",
+      "scope": "Exact CPU support rows and manufacturer BIOS labels",
+      "region": "India official support page for exact same model; not a Korean sales-SKU verification"
+    }
+  ],
+  "items": [
+    {
+      "selectionNumber": 1,
+      "type": "CPU",
+      "platform": "AMD_AM5",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 9600X",
+      "existingCatalogExternalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "researchCandidateKey": null,
+      "referenceKey": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "status": "READY_PARTIAL",
+      "identity": {
+        "canonicalModelName": "Ryzen 5 9600X",
+        "selectedPartNumber": "100-100001405WOF",
+        "manufacturerOrderingPartNumber": "100-100001405WOF",
+        "hardwareRevision": null,
+        "modelCpuStepping": null,
+        "domesticSalesVariantConfirmed": false,
+        "packageType": "BOXED_WITHOUT_INCLUDED_COOLER",
+        "trayPartNumber": "100-000001405"
+      },
+      "spec": {
+        "socketCode": "AM5",
+        "coreCount": 6,
+        "threadCount": 12,
+        "baseClockMhz": 3900,
+        "boostClockMhz": 5400,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "integratedGraphicsModel": "AMD Radeon Graphics",
+        "processorBasePowerW": null,
+        "maximumTurboPowerW": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "performanceCoreBaseClockMhz": null,
+        "efficientCoreBaseClockMhz": null,
+        "performanceCoreBoostClockMhz": null,
+        "efficientCoreBoostClockMhz": null
+      },
+      "memorySupport": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "제조사 최대 256GB. CPU·보드·BIOS·DIMM 구성 조건이며 현재 장착 용량의 확인이 아니다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "공식 DDR5 UDIMM 표: 2x1R/2x2R 5600, 4x1R/4x2R 3600 MT/s. rank 미확인 상태에서 5600 달성을 보장하지 않는다. EXPO와 표준 속도를 구분한다."
+          }
+        ]
+      },
+      "storageSupport": null,
+      "review": {
+        "spec": {
+          "status": "READY"
+        },
+        "memorySupport": {
+          "status": "READY_WITH_CONFIGURATION_CONDITIONS"
+        },
+        "boxedOrderingCode": {
+          "status": "READY"
+        },
+        "domesticSaleVariant": {
+          "status": "NOT_REVIEWED_HERE"
+        }
+      },
+      "evidenceIds": [
+        "AMD_9600X"
+      ],
+      "openChecks": [
+        "실제 판매 SKU와 boxed PN 확인",
+        "장착 RAM의 SPD/rank 및 보드 QVL 확인",
+        "사용자 보드 리비전·설치 BIOS 확인"
+      ],
+      "memoryConditions": {
+        "moduleKind": "UDIMM",
+        "publishedConfigurationMatrix": [
+          {
+            "installedModules": 2,
+            "ranksPerModule": 1,
+            "maxStandardDataRateMts": 5600
+          },
+          {
+            "installedModules": 2,
+            "ranksPerModule": 2,
+            "maxStandardDataRateMts": 5600
+          },
+          {
+            "installedModules": 4,
+            "ranksPerModule": 1,
+            "maxStandardDataRateMts": 3600
+          },
+          {
+            "installedModules": 4,
+            "ranksPerModule": 2,
+            "maxStandardDataRateMts": 3600
+          }
+        ],
+        "selectedDimmRank": null,
+        "selectedDimmQvlMatch": null,
+        "eccSupport": true,
+        "eccConditions": "CPU ECC 지원에는 메인보드와 모든 DIMM의 ECC 지원이 필요하다."
+      }
+    },
+    {
+      "selectionNumber": 2,
+      "type": "CPU",
+      "platform": "AMD_AM5",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 9700X",
+      "existingCatalogExternalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+      "researchCandidateKey": null,
+      "referenceKey": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+      "status": "READY_PARTIAL",
+      "identity": {
+        "canonicalModelName": "Ryzen 7 9700X",
+        "selectedPartNumber": "100-100001404WOF",
+        "manufacturerOrderingPartNumber": "100-100001404WOF",
+        "hardwareRevision": null,
+        "modelCpuStepping": null,
+        "domesticSalesVariantConfirmed": false,
+        "packageType": "BOXED_WITHOUT_INCLUDED_COOLER",
+        "trayPartNumber": "100-000001404"
+      },
+      "spec": {
+        "socketCode": "AM5",
+        "coreCount": 8,
+        "threadCount": 16,
+        "baseClockMhz": 3800,
+        "boostClockMhz": 5500,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "integratedGraphicsModel": "AMD Radeon™ Graphics",
+        "processorBasePowerW": null,
+        "maximumTurboPowerW": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "performanceCoreBaseClockMhz": null,
+        "efficientCoreBaseClockMhz": null,
+        "performanceCoreBoostClockMhz": null,
+        "efficientCoreBoostClockMhz": null
+      },
+      "memorySupport": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "제조사 최대 256GB. CPU·보드·BIOS·DIMM 구성 조건이며 현재 장착 용량의 확인이 아니다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "공식 DDR5 UDIMM 표: 2x1R/2x2R 5600, 4x1R/4x2R 3600 MT/s. rank 미확인 상태에서 5600 달성을 보장하지 않는다. EXPO와 표준 속도를 구분한다."
+          }
+        ]
+      },
+      "storageSupport": null,
+      "review": {
+        "spec": {
+          "status": "READY"
+        },
+        "memorySupport": {
+          "status": "READY_WITH_CONFIGURATION_CONDITIONS"
+        },
+        "boxedOrderingCode": {
+          "status": "READY"
+        },
+        "domesticSaleVariant": {
+          "status": "NOT_REVIEWED_HERE"
+        }
+      },
+      "evidenceIds": [
+        "AMD_9700X"
+      ],
+      "openChecks": [
+        "실제 판매 SKU와 boxed PN 확인",
+        "장착 RAM의 SPD/rank 및 보드 QVL 확인",
+        "사용자 보드 리비전·설치 BIOS 확인"
+      ],
+      "memoryConditions": {
+        "moduleKind": "UDIMM",
+        "publishedConfigurationMatrix": [
+          {
+            "installedModules": 2,
+            "ranksPerModule": 1,
+            "maxStandardDataRateMts": 5600
+          },
+          {
+            "installedModules": 2,
+            "ranksPerModule": 2,
+            "maxStandardDataRateMts": 5600
+          },
+          {
+            "installedModules": 4,
+            "ranksPerModule": 1,
+            "maxStandardDataRateMts": 3600
+          },
+          {
+            "installedModules": 4,
+            "ranksPerModule": 2,
+            "maxStandardDataRateMts": 3600
+          }
+        ],
+        "selectedDimmRank": null,
+        "selectedDimmQvlMatch": null,
+        "eccSupport": true,
+        "eccConditions": "CPU ECC 지원에는 메인보드와 모든 DIMM의 ECC 지원이 필요하다."
+      }
+    },
+    {
+      "selectionNumber": 3,
+      "type": "CPU",
+      "platform": "INTEL_LGA1851",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 245K",
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "CURRENT-INTEL-CPU-U5-245K",
+      "referenceKey": "CURRENT-INTEL-CPU-U5-245K",
+      "status": "READY_PARTIAL",
+      "identity": {
+        "canonicalModelName": "Core Ultra 5 245K",
+        "selectedPartNumber": null,
+        "manufacturerOrderingPartNumber": "BX80768245K",
+        "hardwareRevision": null,
+        "modelCpuStepping": null,
+        "domesticSalesVariantConfirmed": false,
+        "packageType": "BOX"
+      },
+      "spec": {
+        "socketCode": "LGA1851",
+        "coreCount": 14,
+        "threadCount": 14,
+        "baseClockMhz": null,
+        "boostClockMhz": 5200,
+        "tdpW": null,
+        "hasIntegratedGraphics": true,
+        "integratedGraphicsModel": "Intel Graphics",
+        "processorBasePowerW": 125,
+        "maximumTurboPowerW": 159,
+        "performanceCoreCount": 6,
+        "efficientCoreCount": 8,
+        "performanceCoreBaseClockMhz": 4200,
+        "efficientCoreBaseClockMhz": 3600,
+        "performanceCoreBoostClockMhz": 5200,
+        "efficientCoreBoostClockMhz": 4600
+      },
+      "memorySupport": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "ARK 최대 256GB/2채널. 공표된 SKU 한계이며 보드·BIOS·DIMM 구성별 실제 용량 검증은 별도다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 6400,
+            "dataRateConditions": "ARK 최고 6400 MT/s와 문서 832586 rev007의 조건을 함께 적용한다. 일반 UDIMM은 1DPC 5600이며, 6400는 CUDIMM/1DPC 조건이다. 1DPC는 채널당 슬롯 하나가 배선된 보드다. 선택 4슬롯 보드에 두 모듈을 꽂아도 1DPC 보드로 승격하지 않는다. 2DPC 채널: 단일 DIMM 1R/2R 5600, 두 DIMM 1R 4800/2R 4400. 혼합 PN 속도 미보장; rank 미확인."
+          }
+        ]
+      },
+      "storageSupport": null,
+      "review": {
+        "spec": {
+          "status": "READY"
+        },
+        "memorySupport": {
+          "status": "READY_WITH_CONFIGURATION_CONDITIONS"
+        },
+        "boxedOrderingCode": {
+          "status": "READY"
+        },
+        "domesticSaleVariant": {
+          "status": "NOT_REVIEWED_HERE"
+        },
+        "boxedLifecycle": {
+          "status": "HOLD",
+          "reason": "Global BOX is in retired/discontinued ordering section"
+        }
+      },
+      "evidenceIds": [
+        "INTEL_245K_SPEC",
+        "INTEL_245K_ORDER",
+        "INTEL_DDR5_MATRIX_007"
+      ],
+      "openChecks": [
+        "실제 판매 BOX/TRAY PN 확인",
+        "DIMM UDIMM/CUDIMM·rank·SPD·QVL 확인",
+        "보드별 정확 CPU 지원 조건 확인"
+      ],
+      "memoryConditions": {
+        "matrixId": "INTEL_DDR5_MATRIX_007",
+        "ordinaryUdimmMaxStandardDataRateMts": 5600,
+        "cudimmOneSlotPerChannelMaxStandardDataRateMts": 6400,
+        "selectedBoardRoutedSlotsPerChannel": 2,
+        "selectedDimmRank": null,
+        "selectedDimmQvlMatch": null,
+        "oneDimmPerTwoSlotChannel": "Populate far slot; board manual determines exact connector",
+        "withinChannelMixedPartNumbersSpeedGuaranteed": false,
+        "eccSupport": true,
+        "eccMaximumDataRateMts": 6400
+      },
+      "orderingReview": {
+        "globalBox": {
+          "orderingCode": "BX80768245K",
+          "packageType": "BOX",
+          "specCode": "SRQCT",
+          "stepping": "B0",
+          "manufacturerSection": "Retired and discontinued"
+        },
+        "otherListedCodes": [
+          {
+            "orderingCode": "AT807680640F",
+            "packageType": "TRAY",
+            "specCode": "SRQCT",
+            "stepping": "B0"
+          },
+          {
+            "orderingCode": "AT807680513D",
+            "packageType": "TRAY",
+            "specCode": "Q33Q",
+            "stepping": "B0"
+          },
+          {
+            "orderingCode": "BXC80768245K",
+            "packageType": "BOX_CHINA",
+            "specCode": "SRQCT",
+            "stepping": "B0"
+          }
+        ],
+        "purchaseActivationStatus": "HOLD_LIFECYCLE_AND_SALE_VARIANT_REVIEW",
+        "conditions": "글로벌 BOX 코드의 제조사 분류만 확인했다. 모든 245K 생산·유통·국내 신품 재고가 종료되었다는 판정은 아니다. 다른 주문코드로 임의 대체하지 않는다."
+      }
+    },
+    {
+      "selectionNumber": 4,
+      "type": "CPU",
+      "platform": "INTEL_LGA1851",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 250K Plus",
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "referenceKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "status": "READY_PARTIAL",
+      "identity": {
+        "canonicalModelName": "Core Ultra 5 250K Plus",
+        "selectedPartNumber": null,
+        "manufacturerOrderingPartNumber": "BX80768250K",
+        "hardwareRevision": null,
+        "modelCpuStepping": null,
+        "domesticSalesVariantConfirmed": false,
+        "packageType": "BOX"
+      },
+      "spec": {
+        "socketCode": "LGA1851",
+        "coreCount": 18,
+        "threadCount": 18,
+        "baseClockMhz": null,
+        "boostClockMhz": 5300,
+        "tdpW": null,
+        "hasIntegratedGraphics": true,
+        "integratedGraphicsModel": "Intel Graphics",
+        "processorBasePowerW": 125,
+        "maximumTurboPowerW": 159,
+        "performanceCoreCount": 6,
+        "efficientCoreCount": 12,
+        "performanceCoreBaseClockMhz": 4200,
+        "efficientCoreBaseClockMhz": 3300,
+        "performanceCoreBoostClockMhz": 5300,
+        "efficientCoreBoostClockMhz": 4600
+      },
+      "memorySupport": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "ARK 최대 256GB/2채널. 공표된 SKU 한계이며 보드·BIOS·DIMM 구성별 실제 용량 검증은 별도다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 7200,
+            "dataRateConditions": "ARK 최고 7200 MT/s와 문서 832586 rev007의 조건을 함께 적용한다. 일반 UDIMM은 1DPC 5600이며, 7200는 CUDIMM/1DPC 조건이다. 1DPC는 채널당 슬롯 하나가 배선된 보드다. 선택 4슬롯 보드에 두 모듈을 꽂아도 1DPC 보드로 승격하지 않는다. 2DPC 채널: 단일 DIMM 1R/2R 5600, 두 DIMM 1R 4800/2R 4400. 혼합 PN 속도 미보장; rank 미확인."
+          }
+        ]
+      },
+      "storageSupport": null,
+      "review": {
+        "spec": {
+          "status": "READY"
+        },
+        "memorySupport": {
+          "status": "READY_WITH_CONFIGURATION_CONDITIONS"
+        },
+        "boxedOrderingCode": {
+          "status": "READY"
+        },
+        "domesticSaleVariant": {
+          "status": "NOT_REVIEWED_HERE"
+        }
+      },
+      "evidenceIds": [
+        "INTEL_250K_PLUS_SPEC",
+        "INTEL_250K_PLUS_ORDER",
+        "INTEL_DDR5_MATRIX_007"
+      ],
+      "openChecks": [
+        "실제 판매 BOX/TRAY PN 확인",
+        "DIMM UDIMM/CUDIMM·rank·SPD·QVL 확인",
+        "보드별 정확 CPU 지원 조건 확인"
+      ],
+      "memoryConditions": {
+        "matrixId": "INTEL_DDR5_MATRIX_007",
+        "ordinaryUdimmMaxStandardDataRateMts": 5600,
+        "cudimmOneSlotPerChannelMaxStandardDataRateMts": 7200,
+        "selectedBoardRoutedSlotsPerChannel": 2,
+        "selectedDimmRank": null,
+        "selectedDimmQvlMatch": null,
+        "oneDimmPerTwoSlotChannel": "Populate far slot; board manual determines exact connector",
+        "withinChannelMixedPartNumbersSpeedGuaranteed": false,
+        "eccSupport": true,
+        "eccMaximumDataRateMts": 6400
+      },
+      "orderingReview": {
+        "globalBox": {
+          "orderingCode": "BX80768250K",
+          "packageType": "BOX",
+          "specCode": "SA4UZ",
+          "stepping": "B0",
+          "manufacturerSection": "Ordering and spec information"
+        },
+        "otherListedCodes": [
+          {
+            "orderingCode": "AT807683B9B4886",
+            "packageType": "TRAY",
+            "specCode": "SA4UZ",
+            "stepping": "B0"
+          },
+          {
+            "orderingCode": "AT807683B9B434F",
+            "packageType": "TRAY",
+            "specCode": "Q9LK",
+            "stepping": "B0"
+          },
+          {
+            "orderingCode": "BXC80768250K",
+            "packageType": "BOX_CHINA",
+            "specCode": "SA4UZ",
+            "stepping": "B0"
+          }
+        ],
+        "purchaseActivationStatus": "PENDING_DOMESTIC_EXACT_SALE_VARIANT",
+        "conditions": "Ordering rows are package-specific. B0/spec code is not an inferred stepping for every installed CPU."
+      }
+    },
+    {
+      "selectionNumber": 5,
+      "type": "MOTHERBOARD",
+      "platform": "AMD_AM5",
+      "manufacturer": "MSI",
+      "modelName": "MAG B650M MORTAR WIFI",
+      "existingCatalogExternalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "researchCandidateKey": null,
+      "referenceKey": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "status": "READY_PARTIAL",
+      "identity": {
+        "canonicalModelName": "MAG B650M MORTAR WIFI",
+        "selectedPartNumber": "MAG B650M MORTAR WIFI",
+        "manufacturerOrderingPartNumber": null,
+        "hardwareRevision": null,
+        "modelCpuStepping": null,
+        "domesticSalesVariantConfirmed": false,
+        "partNumberStatus": "LEGACY_CATALOG_MODEL_NAME_NOT_NUMERIC_ORDERING_CODE"
+      },
+      "spec": {
+        "socketCode": "AM5",
+        "chipset": "AMD B650",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": null
+      },
+      "memorySupport": null,
+      "storageSupport": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "completeDataKnown": false,
+        "conditions": "Model-level M.2 excerpt; SATA count known but all individual port labels not reviewed. NVMe boot, M-key and exact revision remain unknown.",
+        "slots": [
+          {
+            "slotKey": "M2_1",
+            "connectorType": "M2",
+            "connectorKey": null,
+            "supportedLengthCodes": [
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [
+              "NVME"
+            ],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_2",
+            "connectorType": "M2",
+            "connectorKey": null,
+            "supportedLengthCodes": [
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [
+              "NVME"
+            ],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": [
+              {
+                "ruleKey": "RYZEN_8500_8300_M2_2_UNAVAILABLE",
+                "cpuCondition": "Ryzen 8500/8300 Series",
+                "biosCondition": null,
+                "effect": "DISABLED",
+                "affectedSlotKey": "M2_2",
+                "rawCondition": "M2_2 is unavailable with Ryzen 8500/8300 Series CPUs."
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.msi.com/Motherboard/MAG-B650M-MORTAR-WIFI/Specification",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Storage / RAID",
+            "supportedFacts": "2 CPU PCIe4 x4 M.2 (2260/2280), NVMe storage; 6 SATA 6G; M2_2 CPU-family restriction."
+          }
+        ]
+      },
+      "review": {
+        "spec": {
+          "status": "READY"
+        },
+        "cpuSupport": {
+          "status": "READY_PRIOR_OFFICIAL_ROWS_REUSED"
+        },
+        "storageSupport": {
+          "status": "READY_PARTIAL"
+        },
+        "hardwareRevision": {
+          "status": "UNKNOWN"
+        },
+        "saleVariant": {
+          "status": "NOT_REVIEWED_HERE"
+        }
+      },
+      "evidenceIds": [
+        "MSI_B650_SPEC",
+        "MSI_B650_CPU_PRIOR",
+        "MSI_B650_BIOS",
+        "MSI_B650_MANUAL"
+      ],
+      "openChecks": [
+        "실제 보드 PCB 리비전·설치 BIOS",
+        "SATA 개별 포트명·M-key·NVMe 부팅 명시 근거",
+        "보드 RAM QVL과 실제 DIMM rank"
+      ],
+      "storageCounts": {
+        "m2Slots": 2,
+        "sataPorts": 6,
+        "individualSataPortLabelsComplete": false
+      },
+      "heatsinkReview": {
+        "status": "READY_PARTIAL",
+        "maxHeightMm": null,
+        "maxWidthMm": null,
+        "condition": "SSD 자체 방열판을 쓰면 보드 M.2 플레이트/고무 큐브를 제거하고 보드 방열판을 다시 장착하지 않는다.",
+        "evidenceIds": [
+          "MSI_B650_MANUAL"
+        ]
+      }
+    },
+    {
+      "selectionNumber": 6,
+      "type": "MOTHERBOARD",
+      "platform": "AMD_AM5",
+      "manufacturer": "ASRock",
+      "modelName": "B850M Pro RS",
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "referenceKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "status": "READY_PARTIAL",
+      "identity": {
+        "canonicalModelName": "B850M Pro RS",
+        "selectedPartNumber": null,
+        "manufacturerOrderingPartNumber": null,
+        "hardwareRevision": null,
+        "modelCpuStepping": null,
+        "domesticSalesVariantConfirmed": false,
+        "partNumberStatus": "MODEL_CODE_CONFIRMED_ORDERING_CODE_UNKNOWN",
+        "wifiVariant": false
+      },
+      "spec": {
+        "socketCode": "AM5",
+        "chipset": "AMD B850",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": true
+      },
+      "memorySupport": null,
+      "storageSupport": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "completeDataKnown": false,
+        "conditions": "Exact non-WiFi model; physical PCB revision unconfirmed. PCIE2 is an expansion slot, preserved as affected key rather than invented storage connector.",
+        "slots": [
+          {
+            "slotKey": "M2_1",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [
+              "NVME"
+            ],
+            "maxPcieVersion": "5.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": true,
+            "notes": null,
+            "rules": [
+              {
+                "ruleKey": "CPU_DEPENDENT_M2_1_LINK",
+                "cpuCondition": "Ryzen 9000/7000 or Phoenix 1/Phoenix 2",
+                "biosCondition": null,
+                "effect": "LANES_REDUCED",
+                "affectedSlotKey": "M2_1",
+                "rawCondition": "Ryzen 9000/7000: PCIe5 x4; Phoenix 1: PCIe4 x4; Phoenix 2: PCIe4 x2."
+              }
+            ]
+          },
+          {
+            "slotKey": "M2_2",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [
+              "NVME"
+            ],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": true,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_3",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [
+              "NVME"
+            ],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": true,
+            "notes": null,
+            "rules": [
+              {
+                "ruleKey": "M2_3_OCCUPIED_DISABLES_PCIE2",
+                "cpuCondition": null,
+                "biosCondition": null,
+                "effect": "DISABLED",
+                "affectedSlotKey": "PCIE2",
+                "rawCondition": "When M2_3 is occupied, PCIE2 is disabled."
+              }
+            ]
+          },
+          {
+            "slotKey": "SATA3_1",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": null,
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA3_2",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": null,
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA3_3",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": null,
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA3_4",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": null,
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          }
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS/index.asp",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Storage",
+            "supportedFacts": "3 M-key 2280 PCIe NVMe slots, boot support, CPU lanes and M2_3/PCIE2 condition."
+          },
+          {
+            "sourceUrl": "https://download.asrock.com/Manual/B850M%20Pro%20RS.pdf",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Printed p.4, p.8, p.40, p.55, p.58",
+            "supportedFacts": "Slot specifications, four exact SATA3 connector labels and 6 Gb/s rate."
+          }
+        ]
+      },
+      "review": {
+        "spec": {
+          "status": "READY"
+        },
+        "cpuSupport": {
+          "status": "READY"
+        },
+        "storageSupport": {
+          "status": "READY_PARTIAL"
+        },
+        "hardwareRevision": {
+          "status": "UNKNOWN"
+        },
+        "saleVariant": {
+          "status": "NOT_REVIEWED_HERE"
+        }
+      },
+      "evidenceIds": [
+        "ASROCK_B850_SPEC",
+        "ASROCK_B850_CPU_9600X",
+        "ASROCK_B850_CPU_9700X",
+        "ASROCK_B850_BIOS",
+        "ASROCK_B850_MANUAL"
+      ],
+      "openChecks": [
+        "보드 판매 PN·PCB 리비전",
+        "RAM QVL/실제 rank",
+        "SSD 자체 방열판 높이·주변 GPU 간섭"
+      ],
+      "storageCounts": {
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "individualSataPortLabelsComplete": true
+      },
+      "eccReview": {
+        "status": "PUBLISHED_CONDITIONAL_SUPPORT",
+        "condition": "Supports ECC/non-ECC unbuffered DDR5 per board specification; CPU/DIMM and BIOS must support ECC. Not equivalent to DDR5 on-die ECC."
+      },
+      "heatsinkReview": {
+        "status": "UNKNOWN_CLEARANCE",
+        "maxHeightMm": null,
+        "maxWidthMm": null,
+        "evidenceIds": [
+          "ASROCK_B850_MANUAL"
+        ]
+      }
+    },
+    {
+      "selectionNumber": 7,
+      "type": "MOTHERBOARD",
+      "platform": "INTEL_LGA1851",
+      "manufacturer": "MSI",
+      "modelName": "MAG B860M MORTAR WIFI",
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "referenceKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "status": "READY_PARTIAL",
+      "identity": {
+        "canonicalModelName": "MAG B860M MORTAR WIFI",
+        "selectedPartNumber": null,
+        "manufacturerOrderingPartNumber": null,
+        "hardwareRevision": null,
+        "modelCpuStepping": null,
+        "domesticSalesVariantConfirmed": false,
+        "partNumberStatus": "MODEL_CODE_CONFIRMED_ORDERING_CODE_UNKNOWN"
+      },
+      "spec": {
+        "socketCode": "LGA1851",
+        "chipset": "Intel B860",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": false
+      },
+      "memorySupport": null,
+      "storageSupport": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "completeDataKnown": false,
+        "conditions": "NVMe protocol/boot are not promoted from PCIe bus alone; empty supportedProtocols denotes no excerpted fact. Exact revision and CPU support rows remain unverified.",
+        "slots": [
+          {
+            "slotKey": "M2_1",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2242",
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "5.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_2",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_3",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "SATA5",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA6",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA7",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA8",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          }
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.msi.com/Motherboard/MAG-B860M-MORTAR-WIFI/Specification",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Storage",
+            "supportedFacts": "M.2 lengths and CPU/chipset PCIe lane origins; four SATA6G."
+          },
+          {
+            "sourceUrl": "https://download.msi.com/archive/mnu_exe/mb/MAGB860MMORTARWIFI_French.pdf",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Printed p.16-17, p.36, p.43",
+            "supportedFacts": "M-key, SATA5..8, own-heatsink restriction; Intel RST requires M.2 PCIe SSD with UEFI ROM."
+          }
+        ]
+      },
+      "review": {
+        "spec": {
+          "status": "READY"
+        },
+        "cpuSupport": {
+          "status": "BLOCKED_EXACT_ROWS_UNVERIFIED"
+        },
+        "storageSupport": {
+          "status": "READY_PARTIAL"
+        },
+        "hardwareRevision": {
+          "status": "UNKNOWN"
+        },
+        "saleVariant": {
+          "status": "NOT_REVIEWED_HERE"
+        }
+      },
+      "evidenceIds": [
+        "MSI_B860_SPEC",
+        "MSI_B860_CPU",
+        "MSI_B860_BIOS",
+        "MSI_B860_MANUAL"
+      ],
+      "openChecks": [
+        "245K·250K Plus 공식 지원표 개별 행·최소 BIOS",
+        "NVMe protocol/boot 명시 근거",
+        "방열판 폭 제한 그림의 슬롯 대응·실제 높이",
+        "DIMM QVL/rank·판매 PN·PCB 리비전"
+      ],
+      "storageCounts": {
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "individualSataPortLabelsComplete": true
+      },
+      "heatsinkReview": {
+        "status": "READY_PARTIAL",
+        "maxHeightMm": null,
+        "maxWidthMm": null,
+        "unmappedPublishedWidthLimitsMm": [
+          25,
+          22,
+          22
+        ],
+        "condition": "SSD 자체 방열판을 쓰면 M.2 플레이트/고무 큐브를 제거하며 보드 제공 방열판을 다시 장착하지 않는다. 폭 제한 그림은 슬롯별 대응 시각검토 전까지 숫자 필드로 승격하지 않는다.",
+        "evidenceIds": [
+          "MSI_B860_MANUAL"
+        ]
+      },
+      "memoryNotes": {
+        "moduleForm": "UDIMM",
+        "cudimmSupported": true,
+        "eccSupported": false,
+        "firstSingleModuleSlot": "DIMMA2",
+        "twoModulePositions": null,
+        "qvlMatch": null,
+        "ocIsStandardSpeed": false
+      }
+    },
+    {
+      "selectionNumber": 8,
+      "type": "MOTHERBOARD",
+      "platform": "INTEL_LGA1851",
+      "manufacturer": "ASUS",
+      "modelName": "TUF GAMING B860-PLUS WIFI",
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "referenceKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "status": "READY_PARTIAL",
+      "identity": {
+        "canonicalModelName": "TUF GAMING B860-PLUS WIFI",
+        "selectedPartNumber": null,
+        "manufacturerOrderingPartNumber": null,
+        "hardwareRevision": null,
+        "modelCpuStepping": null,
+        "domesticSalesVariantConfirmed": false,
+        "partNumberStatus": "MODEL_CODE_CONFIRMED_ORDERING_CODE_UNKNOWN"
+      },
+      "spec": {
+        "socketCode": "LGA1851",
+        "chipset": "Intel B860",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": false
+      },
+      "memorySupport": null,
+      "storageSupport": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "completeDataKnown": false,
+        "conditions": "SATA count known but exact connector labels not reviewed. NVMe protocol and boot remain unknown in this extract. Model-level profile, not exact PCB revision.",
+        "slots": [
+          {
+            "slotKey": "M2_1",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "5.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_2",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2280",
+              "22110"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_3",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2242",
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          }
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Storage",
+            "supportedFacts": "3 M-key M.2 slots with exact lengths and PCIe links; 4 SATA6G."
+          }
+        ]
+      },
+      "review": {
+        "spec": {
+          "status": "READY"
+        },
+        "cpuSupport": {
+          "status": "READY_MANUFACTURER_ALL_LABEL"
+        },
+        "storageSupport": {
+          "status": "READY_PARTIAL"
+        },
+        "hardwareRevision": {
+          "status": "UNKNOWN"
+        },
+        "saleVariant": {
+          "status": "NOT_REVIEWED_HERE"
+        }
+      },
+      "evidenceIds": [
+        "ASUS_B860_SPEC",
+        "ASUS_B860_CPU"
+      ],
+      "openChecks": [
+        "ALL/all 제조사 라벨을 수치 최소 BIOS나 최신 BIOS로 변환하지 않기",
+        "SATA 개별 포트명·NVMe protocol/boot·SSD 방열판 간섭",
+        "DIMM QVL/rank·판매 PN·PCB 리비전"
+      ],
+      "storageCounts": {
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "individualSataPortLabelsComplete": false
+      },
+      "otherExpansionConditions": [
+        {
+          "slotKey": "PCIEX16(G4)",
+          "affectedSlotKey": "PCIEX1(G4)",
+          "effect": "LANES_REDUCED",
+          "rawCondition": "PCIEX16(G4) shares bandwidth with PCIEX1(G4); when PCIEX1(G4) is x1, PCIEX16(G4) runs x2."
+        }
+      ],
+      "memoryNotes": {
+        "moduleForm": "UDIMM",
+        "cudimmSupported": true,
+        "eccSupported": false,
+        "onDieEccDoesNotProveEccDimmSupport": true,
+        "qvlMatch": null,
+        "ocIsStandardSpeed": false
+      },
+      "heatsinkReview": {
+        "status": "UNKNOWN_CLEARANCE",
+        "maxHeightMm": null,
+        "maxWidthMm": null
+      }
+    }
+  ],
+  "cpuSupportPairs": [
+    {
+      "boardReferenceKey": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "boardSelectionNumber": 5,
+      "boardExternalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "boardCandidateKey": null,
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "cpuSelectionNumber": 1,
+      "cpuExternalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "cpuCandidateKey": null,
+      "entry": {
+        "cpuExternalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+        "variantKey": "B0-ecf83e537f27",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ryzen 5 Ryzen 5 9600X",
+        "cpuStepping": "B0",
+        "biosRequirement": "VERSION",
+        "minimumBiosVersion": "7D76vAE",
+        "manufacturerBiosLabel": "7D76vAE.zip",
+        "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B650M-MORTAR-WIFI&type=cpu&limit=2000",
+        "conditions": "제조사 지원표의 정확한 CPU 항목을 발췌했다. BIOS 문자열은 자동 비교하지 않으며 최소 지원 BIOS는 최신 권장 BIOS나 성능·안정성 보증이 아니다."
+      },
+      "evidenceIds": [
+        "MSI_B650_CPU_PRIOR",
+        "MSI_B650_BIOS"
+      ],
+      "evidenceReview": "PRIOR_MANUFACTURER_ROW_REUSED",
+      "checkedDate": "2026-10-10",
+      "originalRetrievedAt": "2026-10-04T07:27:58.469782+00:00",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "boardSelectionNumber": 6,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "cpuSelectionNumber": 1,
+      "cpuExternalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "cpuCandidateKey": null,
+      "entry": {
+        "cpuExternalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+        "variantKey": "MODEL-Ryzen_5_9600X",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ryzen 5 9600X",
+        "cpuStepping": null,
+        "biosRequirement": "VERSION",
+        "minimumBiosVersion": "3.12",
+        "manufacturerBiosLabel": "3.12",
+        "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=AM5&u=767",
+        "conditions": "Exact B850M Pro RS row. CPU table does not publish a stepping value; null retained. Minimum BIOS is not a latest-version recommendation."
+      },
+      "evidenceIds": [
+        "ASROCK_B850_CPU_9600X"
+      ],
+      "evidenceReview": "CURRENT_MANUFACTURER_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "boardSelectionNumber": 5,
+      "boardExternalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "boardCandidateKey": null,
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+      "cpuSelectionNumber": 2,
+      "cpuExternalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+      "cpuCandidateKey": null,
+      "entry": {
+        "cpuExternalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+        "variantKey": "B0-3a933ea549d3",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ryzen 7 9700X",
+        "cpuStepping": "B0",
+        "biosRequirement": "VERSION",
+        "minimumBiosVersion": "7D76vAE",
+        "manufacturerBiosLabel": "7D76vAE.zip",
+        "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B650M-MORTAR-WIFI&type=cpu&limit=2000",
+        "conditions": "제조사의 해당 CPU 항목을 직접 확인했다. 최소 BIOS는 최신 권장 버전 또는 성능·안정성 보증이 아니다."
+      },
+      "evidenceIds": [
+        "MSI_B650_CPU_PRIOR",
+        "MSI_B650_BIOS"
+      ],
+      "evidenceReview": "PRIOR_MANUFACTURER_ROW_REUSED",
+      "checkedDate": "2026-10-10",
+      "originalRetrievedAt": "2026-10-04T07:27:58.469782+00:00",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "boardSelectionNumber": 6,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+      "cpuSelectionNumber": 2,
+      "cpuExternalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+      "cpuCandidateKey": null,
+      "entry": {
+        "cpuExternalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+        "variantKey": "MODEL-Ryzen_7_9700X",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ryzen 7 9700X",
+        "cpuStepping": null,
+        "biosRequirement": "VERSION",
+        "minimumBiosVersion": "3.12",
+        "manufacturerBiosLabel": "3.12",
+        "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=AM5&u=766",
+        "conditions": "Exact B850M Pro RS row. CPU table does not publish a stepping value; null retained. Minimum BIOS is not a latest-version recommendation."
+      },
+      "evidenceIds": [
+        "ASROCK_B850_CPU_9700X"
+      ],
+      "evidenceReview": "CURRENT_MANUFACTURER_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "boardSelectionNumber": 7,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "CURRENT-INTEL-CPU-U5-245K",
+      "cpuSelectionNumber": 3,
+      "cpuExternalId": null,
+      "cpuCandidateKey": "CURRENT-INTEL-CPU-U5-245K",
+      "entry": {
+        "cpuExternalId": null,
+        "variantKey": "UNVERIFIED",
+        "supportStatus": "UNVERIFIED",
+        "reportedCpuName": "Core Ultra 5 245K",
+        "cpuStepping": null,
+        "biosRequirement": "UNKNOWN",
+        "minimumBiosVersion": null,
+        "manufacturerBiosLabel": null,
+        "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B860M-MORTAR-WIFI&type=cpu&limit=2000",
+        "conditions": "Series 2/LGA1851 and generic future-CPU BIOS notes do not prove this exact CPU. Public API denied access; stop retries and hold support activation."
+      },
+      "evidenceIds": [
+        "MSI_B860_CPU",
+        "MSI_B860_BIOS"
+      ],
+      "evidenceReview": "BLOCKED_EXACT_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "boardSelectionNumber": 8,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "CURRENT-INTEL-CPU-U5-245K",
+      "cpuSelectionNumber": 3,
+      "cpuExternalId": null,
+      "cpuCandidateKey": "CURRENT-INTEL-CPU-U5-245K",
+      "entry": {
+        "cpuExternalId": null,
+        "variantKey": "B0-Core_Ultra_5_245K",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ultra 5-245K",
+        "cpuStepping": "B0",
+        "biosRequirement": "ALL",
+        "minimumBiosVersion": null,
+        "manufacturerBiosLabel": "all",
+        "sourceUrl": "https://www.asus.com/in/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/helpdesk_qvl_cpu/?model2Name=TUF-GAMING-B860-PLUS-WIFI",
+        "conditions": "Manufacturer exact CPU row says ALL/all. Keep that label; do not invent a numeric minimum or infer latest BIOS. Resolve approved CPU UUID before constructing import DTO."
+      },
+      "evidenceIds": [
+        "ASUS_B860_CPU"
+      ],
+      "evidenceReview": "CURRENT_MANUFACTURER_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "boardSelectionNumber": 7,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "cpuSelectionNumber": 4,
+      "cpuExternalId": null,
+      "cpuCandidateKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "entry": {
+        "cpuExternalId": null,
+        "variantKey": "UNVERIFIED",
+        "supportStatus": "UNVERIFIED",
+        "reportedCpuName": "Core Ultra 5 250K Plus",
+        "cpuStepping": null,
+        "biosRequirement": "UNKNOWN",
+        "minimumBiosVersion": null,
+        "manufacturerBiosLabel": null,
+        "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B860M-MORTAR-WIFI&type=cpu&limit=2000",
+        "conditions": "Series 2/LGA1851 and generic future-CPU BIOS notes do not prove this exact CPU. Public API denied access; stop retries and hold support activation."
+      },
+      "evidenceIds": [
+        "MSI_B860_CPU",
+        "MSI_B860_BIOS"
+      ],
+      "evidenceReview": "BLOCKED_EXACT_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "boardSelectionNumber": 8,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "cpuSelectionNumber": 4,
+      "cpuExternalId": null,
+      "cpuCandidateKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "entry": {
+        "cpuExternalId": null,
+        "variantKey": "B0-Core_Ultra_5_250K_Plus",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ultra 5-250K Plus",
+        "cpuStepping": "B0",
+        "biosRequirement": "ALL",
+        "minimumBiosVersion": null,
+        "manufacturerBiosLabel": "ALL",
+        "sourceUrl": "https://www.asus.com/in/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/helpdesk_qvl_cpu/?model2Name=TUF-GAMING-B860-PLUS-WIFI",
+        "conditions": "Manufacturer exact CPU row says ALL/all. Keep that label; do not invent a numeric minimum or infer latest BIOS. Resolve approved CPU UUID before constructing import DTO."
+      },
+      "evidenceIds": [
+        "ASUS_B860_CPU"
+      ],
+      "evidenceReview": "CURRENT_MANUFACTURER_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    }
+  ],
+  "biosReleaseEvidence": [
+    {
+      "boardReferenceKey": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "version": "7D76vAE",
+      "releaseDate": "2024-05-27",
+      "summary": "AGESA ComboPI 1.1.8.0",
+      "evidenceIds": [
+        "MSI_B650_BIOS"
+      ],
+      "use": "Supplemental release existence; original minimum mapping remains prior CPU row."
+    },
+    {
+      "boardReferenceKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "version": "4.10",
+      "releaseDate": "2026-02-24",
+      "summary": "AGESA ComboAM5 PI 1.3.0.0a; memory compatibility and selected-CPU boot fixes",
+      "evidenceIds": [
+        "ASROCK_B850_BIOS"
+      ],
+      "use": "Supplemental release, not minimum BIOS 3.12 and not a latest-version guarantee."
+    },
+    {
+      "boardReferenceKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "version": "7E40v1A81",
+      "releaseDate": "2026-03-10",
+      "summary": "Release notes mention future Intel Core Ultra CPU support without naming either selected CPU.",
+      "evidenceIds": [
+        "MSI_B860_BIOS"
+      ],
+      "use": "Do not promote into a minimum BIOS or exact CPU support."
+    },
+    {
+      "boardReferenceKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "version": "7E40v1AA0",
+      "releaseDate": "2026-07-24",
+      "summary": "HUDIMM support and memory compatibility fixes",
+      "evidenceIds": [
+        "MSI_B860_BIOS"
+      ],
+      "use": "Release evidence only; CPU mapping unresolved."
+    }
+  ],
+  "nextRequiredChecks": [
+    "Root combines exact domestic product-price evidence separately; unconfirmed retail PN/revision remains quarantined.",
+    "Resolve MSI B860 exact CPU support rows before enabling either CPU compatibility pair.",
+    "Retain 245K global BOX lifecycle hold until purchase policy and exact domestic stock variant reviewed.",
+    "Resolve missing storage protocol/boot and SATA-port label evidence only where needed by the pilot compatibility flow.",
+    "Construct deterministic identity/import preview only after these reviewed facts and holds are accepted."
+  ]
+}

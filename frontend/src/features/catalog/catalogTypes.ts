@@ -86,3 +86,15 @@ export type CatalogModelPage = {
   totalElements: number
   totalPages: number
 }
+
+export type CatalogModelSource = CatalogSource & { reviewScope: string }
+
+export type CatalogModelProductCandidate = Pick<CatalogProduct,
+  'id' | 'canonicalId' | 'type' | 'manufacturer' | 'modelName' | 'partNumber' | 'identityKind' | 'role'>
+
+export type CatalogModelDetail = {
+  model: CatalogModel
+  aliases: { rawAlias: string; normalizedAlias: string; evidence: CatalogModelSource }[]
+  sources: CatalogModelSource[]
+  productCandidates: CatalogModelProductCandidate[]
+}

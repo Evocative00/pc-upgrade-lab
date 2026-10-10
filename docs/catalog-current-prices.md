@@ -6,6 +6,10 @@
 
 **Git은 각 PC의 MySQL 데이터를 공유하지 않는다.** 저장소에 있는 관측 파일과 다른 개발자의 DB에 저장한 관측 행은 별개다. 카탈로그 300종이 이미 보여도 `catalog_price_mapping`·`catalog_price_observation`에 가격을 가져오지 않았다면 `currentPrice`는 `null`이다. 화면의 가격 새로고침은 저장된 API 값을 다시 읽을 뿐, DB를 채우거나 판매처를 새로 수집하지 않는다.
 
+2026-10-10 첫 14종 보강용 `importPilotCatalog`는 아래 기존 72종 준비 경로에 이어 실행하는 별도 작업이다. 기존 6종 가격을 재관측하고 정확 PN의 Samsung SSD 2종 가격을 추가하는 승인된 자료를 사용한다. 기본 실행은 DB 없는 검증, `-PcheckPilotDb=true`는 실제 DB 읽기 전용 대조, `-PapplyPilotCatalog=true`는 신규 상품·식별·호환 근거와 8종 관측을 함께 반영한다. 자세한 명령·승인 범위·보류 항목은 [첫 14종 상세 검토와 적용 안내](catalog-pilot-review-2026-10-10.md)를 따른다. 관측 파일의 시각을 유지하며 현재 판매처를 다시 수집하거나 자동 갱신하지 않는다.
+
+2026-10-10 02:35(한국 시간), 명시적 승인 후 로컬 MySQL에 첫 보강을 반영했다. 카탈로그는 **307종**, 가격이 있는 제품은 **74종**, 전체 가격 관측은 **80건**이다. 기존 72건의 관측·매핑은 모두 보존했고, 같은 자료의 반영 후 미리보기는 추가 대상 0을 확인했다. 14종을 자동 활성화하지 않았으며 정확한 판매 구성이 부족한 가격은 보류했다. [실제 DB 적용 감사](../data/catalog-review/pilot-applied-2026-10-10.json)는 이 로컬 DB의 결과다.
+
 2026-10-08 추가한 Gradle 작업 `importCatalogPrices`는 검토한 기존 22종과 추가 50종, **총 72종**을 한 번 실행하고 종료한다. 웹 서버를 띄우지 않으므로 일반 서버의 8080 포트와 겹치지 않는다. JDK 21, 실행 중인 MySQL, 개인 `application-local.properties`의 DB URL·계정과 실행 환경의 `DB_PASSWORD`를 준비한다. 가격 작업에는 Google/Kakao/Naver 키가 필요 없으며 OAuth 등록 설정을 사용하지 않는다. IntelliJ `bootRun`에 넣은 환경변수는 PowerShell이나 다른 실행 구성에 자동 전달되지 않고 `.env`도 자동으로 읽히지 않는다.
 
 현재 코드의 가격 미리보기와 실제 DB 반영에는 **V14까지 적용된 DB**가 필요하다. JPA 검증은 가격 테이블 외에 V13·V14의 식별·저장장치 테이블도 검사하지만, 가져오기 작업은 Flyway를 실행하지 않는다. 처음 만든 MySQL DB와 V14 이전의 기존 DB는 개인 설정을 확인하고, 승인된 DB 변경 범위에서 일반 `bootRun`을 재시작해 최신 마이그레이션을 적용한 뒤 종료한다. 그다음 `importCatalogPrices`나 `setupDevCatalog -PapplyDevCatalog=true`를 실행한다. 기존 DB는 이력과 소유자를 확인하며 초기화하지 않는다. 일반 `bootRun`, pull, build/test에서는 카탈로그·가격을 자동 적재하지 않는다. 아래 `setupDevCatalog`의 기본 미리보기에는 DB가 필요 없다.

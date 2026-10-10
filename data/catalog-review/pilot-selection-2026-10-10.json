@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 1,
+  "selectionDate": "2026-10-10",
+  "status": "SELECTION_APPROVED_REVIEW_IN_PROGRESS",
+  "selectionApproval": {
+    "date": "2026-10-10",
+    "decision": "14종 선정 승인·상세 검토 진행",
+    "databaseOrPriceApplyApproved": false
+  },
+  "purpose": "Verify representative AMD/Intel upgrade data flows with a small reviewed batch before expanding 52 candidates",
+  "basis": "Coverage and evidence reuse; domestic popularity or performance-per-price ranking is not established",
+  "sources": [
+    {
+      "file": "data/catalog-review/catalog-selection-2026-10-09.json",
+      "normalizedSha256": "347424269ee9a462ab5d7adc824099673fb89ad53d28d322485ae83eff3cfd90"
+    },
+    {
+      "file": "data/catalog-review/catalog-expansion-candidates-2026-10-09.json",
+      "normalizedSha256": "330cbb6e10ec2a2c6f43846e2c547b5b183954aa1ba11d981f9fd1d11da37c61"
+    },
+    {
+      "file": "data/catalog-review/schema-applied-2026-10-09.json",
+      "normalizedSha256": "21e56847d419585eb6aedf658b8b746111cdd548a91765f44f8a45107f47445f"
+    }
+  ],
+  "summary": {
+    "selectedParts": 14,
+    "reusedCatalogParts": 7,
+    "proposedNewParts": 7,
+    "historicalPriceEvidence": 6,
+    "withoutHistoricalPrice": 8,
+    "freshPricesCollected": 0,
+    "databaseAccessed": false,
+    "databaseWrites": 0
+  },
+  "approvalGates": [
+    "Selection approved; complete detailed compatibility/SKU/price review and import preparation",
+    "Approve concrete data/price changes before actual MySQL application"
+  ],
+  "ramQuantityPolicy": {
+    "saleUnit": "32GB 2x16GB kit",
+    "pcQuantity": 2,
+    "capacityBytesPerDevice": 17179869184,
+    "modulePartNumberConfirmedByKitPartNumber": false
+  },
+  "deferredScope": [
+    "Remaining 52/78 research candidates",
+    "PCIe 5.0 SSD and Z890/CPU overclocking coverage",
+    "Global reclassification of existing 300 products",
+    "Central price service and scheduled collection"
+  ],
+  "items": [
+    {
+      "selectionNumber": 1,
+      "type": "CPU",
+      "platform": "AMD_AM5",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 9600X",
+      "partNumber": "100-100001405WOF",
+      "existingCatalogExternalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "researchCandidateKey": null,
+      "catalogPlan": "REUSE_EXISTING_PRODUCT_ID_AFTER_REVIEW",
+      "reasonForSelection": "기존 Ryzen 9000 6코어 자료와 가격 연결을 재사용한다.",
+      "officialIdentityReview": {
+        "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9600x.html",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=62653718"
+      ],
+      "historicalApprovedPrice": {
+        "amountKrw": 399000,
+        "observedAt": "2026-10-08T10:26:57.700Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+        "saleUnit": "PRODUCT",
+        "status": "HISTORICAL_APPROVED_SNAPSHOT_NOT_CURRENT_PRICE"
+      },
+      "priceWork": "RECHECK_EXACT_SALE_VARIANT_AND_OBSERVE_AGAIN",
+      "openChecks": [
+        "정품 판매 패키지와 공식 PN 대조",
+        "선택 보드의 정확 CPU 지원표와 설치 BIOS"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 2,
+      "type": "CPU",
+      "platform": "AMD_AM5",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 9700X",
+      "partNumber": "100-100001404WOF",
+      "existingCatalogExternalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+      "researchCandidateKey": null,
+      "catalogPlan": "REUSE_EXISTING_PRODUCT_ID_AFTER_REVIEW",
+      "reasonForSelection": "같은 AM5 플랫폼의 8코어 모델을 별도 식별하고 연결한다.",
+      "officialIdentityReview": {
+        "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9700x.html",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=62653715"
+      ],
+      "historicalApprovedPrice": {
+        "amountKrw": 686000,
+        "observedAt": "2026-10-08T10:26:53.784Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+        "saleUnit": "PRODUCT",
+        "status": "HISTORICAL_APPROVED_SNAPSHOT_NOT_CURRENT_PRICE"
+      },
+      "priceWork": "RECHECK_EXACT_SALE_VARIANT_AND_OBSERVE_AGAIN",
+      "openChecks": [
+        "정품 판매 패키지와 공식 PN 대조",
+        "선택 보드의 정확 CPU 지원표와 설치 BIOS"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 3,
+      "type": "CPU",
+      "platform": "INTEL_LGA1851",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 245K",
+      "partNumber": null,
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "CURRENT-INTEL-CPU-U5-245K",
+      "catalogPlan": "PROPOSE_NEW_PRODUCT_AFTER_REVIEW",
+      "reasonForSelection": "Core Ultra 200S 기본 모델과 Plus 모델을 구분한다.",
+      "officialIdentityReview": {
+        "url": "https://www.intel.com/content/www/us/en/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/specifications.html",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=69059753"
+      ],
+      "historicalApprovedPrice": null,
+      "priceWork": "VERIFY_EXACT_SALE_VARIANT_AND_COLLECT",
+      "openChecks": [
+        "국내 정품 판매 구성과 제조사 주문 번호",
+        "보드별 CPU 지원표와 최소 BIOS",
+        "B860 조합의 기본 동작만 검증; CPU 오버클럭 범위 제외"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 4,
+      "type": "CPU",
+      "platform": "INTEL_LGA1851",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 250K Plus",
+      "partNumber": null,
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "catalogPlan": "PROPOSE_NEW_PRODUCT_AFTER_REVIEW",
+      "reasonForSelection": "최신 200S Plus 모델을 첫 묶음에 포함해 BIOS·OS 조건을 다룬다.",
+      "officialIdentityReview": {
+        "url": "https://www.intel.com/content/www/us/en/products/sku/245694/intel-core-ultra-5-processor-250k-plus-30m-cache-up-to-5-30-ghz/specifications.html",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=108424451"
+      ],
+      "historicalApprovedPrice": null,
+      "priceWork": "VERIFY_EXACT_SALE_VARIANT_AND_COLLECT",
+      "openChecks": [
+        "국내 정품 판매 구성과 제조사 주문 번호",
+        "보드별 Plus CPU 지원표와 최소 BIOS",
+        "보드가 제시하는 OS 조건을 CPU 지원과 별도 확인"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 5,
+      "type": "MOTHERBOARD",
+      "platform": "AMD_AM5",
+      "manufacturer": "MSI",
+      "modelName": "MAG B650M MORTAR WIFI",
+      "partNumber": "MAG B650M MORTAR WIFI",
+      "existingCatalogExternalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "researchCandidateKey": null,
+      "catalogPlan": "REUSE_EXISTING_PRODUCT_ID_AFTER_REVIEW",
+      "reasonForSelection": "기존 가격·CPU 지원 근거를 재사용하고 슬롯 조건을 보강한다.",
+      "officialIdentityReview": {
+        "url": "https://www.msi.com/Motherboard/MAG-B650M-MORTAR-WIFI/Specification",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=17971187"
+      ],
+      "historicalApprovedPrice": {
+        "amountKrw": 205050,
+        "observedAt": "2026-10-06T12:39:17.724Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971187",
+        "saleUnit": "PRODUCT",
+        "status": "HISTORICAL_APPROVED_SNAPSHOT_NOT_CURRENT_PRICE"
+      },
+      "priceWork": "RECHECK_EXACT_SALE_VARIANT_AND_OBSERVE_AGAIN",
+      "openChecks": [
+        "보드 리비전과 국내 판매 구성",
+        "과거 CPU 지원 근거와 최신 지원표 대조",
+        "M.2·SATA 포트별 연결 및 공유 조건"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 6,
+      "type": "MOTHERBOARD",
+      "platform": "AMD_AM5",
+      "manufacturer": "ASRock",
+      "modelName": "B850M Pro RS",
+      "partNumber": null,
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "catalogPlan": "PROPOSE_NEW_PRODUCT_AFTER_REVIEW",
+      "reasonForSelection": "B850과 M.2/PCIe 슬롯 공유 조건을 추가한다.",
+      "officialIdentityReview": {
+        "url": "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS/index.asp",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=75538394"
+      ],
+      "historicalApprovedPrice": null,
+      "priceWork": "VERIFY_EXACT_SALE_VARIANT_AND_COLLECT",
+      "openChecks": [
+        "WiFi 없는 정확 모델과 리비전·국내 유통 구성",
+        "CPU별 최소 BIOS는 아직 미확인",
+        "M2_3/PCIE2 공유 조건과 슬롯별 CPU 경로"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 7,
+      "type": "MOTHERBOARD",
+      "platform": "INTEL_LGA1851",
+      "manufacturer": "MSI",
+      "modelName": "MAG B860M MORTAR WIFI",
+      "partNumber": null,
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "catalogPlan": "PROPOSE_NEW_PRODUCT_AFTER_REVIEW",
+      "reasonForSelection": "LGA1851 mATX 보드의 CPU·RAM·슬롯 조건을 검증한다.",
+      "officialIdentityReview": {
+        "url": "https://www.msi.com/Motherboard/MAG-B860M-MORTAR-WIFI/Specification",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=74340266"
+      ],
+      "historicalApprovedPrice": null,
+      "priceWork": "VERIFY_EXACT_SALE_VARIANT_AND_COLLECT",
+      "openChecks": [
+        "리비전·국내 유통 구성",
+        "245K/250K Plus 최소 BIOS는 아직 미확인",
+        "DIMM 종류·QVL·슬롯 방열판 조건"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 8,
+      "type": "MOTHERBOARD",
+      "platform": "INTEL_LGA1851",
+      "manufacturer": "ASUS",
+      "modelName": "TUF GAMING B860-PLUS WIFI",
+      "partNumber": null,
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "catalogPlan": "PROPOSE_NEW_PRODUCT_AFTER_REVIEW",
+      "reasonForSelection": "다른 제조사의 ATX·슬롯 공유·Plus 조건을 비교한다.",
+      "officialIdentityReview": {
+        "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=74255378"
+      ],
+      "historicalApprovedPrice": null,
+      "priceWork": "VERIFY_EXACT_SALE_VARIANT_AND_COLLECT",
+      "openChecks": [
+        "리비전·국내 유통 구성",
+        "245K/250K Plus 최소 BIOS는 아직 미확인",
+        "Plus OS 조건·DIMM QVL·슬롯 공유"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 9,
+      "type": "RAM",
+      "platform": "DDR5",
+      "manufacturer": "G.SKILL",
+      "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+      "partNumber": "F5-6000J3038F16GX2-TZ5N",
+      "existingCatalogExternalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+      "researchCandidateKey": null,
+      "catalogPlan": "REUSE_EXISTING_PRODUCT_ID_AFTER_REVIEW",
+      "reasonForSelection": "정확한 DDR5 32GB(16GB×2) 키트와 기존 가격 매핑을 검증한다.",
+      "officialIdentityReview": {
+        "url": "https://www.gskill.com/specification/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-Specification",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=17932031"
+      ],
+      "historicalApprovedPrice": {
+        "amountKrw": 963120,
+        "observedAt": "2026-10-06T12:39:26.336Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+        "saleUnit": "RAM_KIT",
+        "status": "HISTORICAL_APPROVED_SNAPSHOT_NOT_CURRENT_PRICE"
+      },
+      "priceWork": "RECHECK_EXACT_SALE_VARIANT_AND_OBSERVE_AGAIN",
+      "openChecks": [
+        "키트 PN과 개별 모듈 PN 구분",
+        "SPD 기본 속도와 OC 6000·프로필 구분",
+        "CPU/보드별 QVL·rank·장착 수",
+        "Neo라는 이름만으로 AMD 전용으로 분류하지 않음"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 10,
+      "type": "RAM",
+      "platform": "DDR5",
+      "manufacturer": "G.SKILL",
+      "modelName": "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+      "partNumber": "F5-6000J3636F16GX2-RS5K",
+      "existingCatalogExternalId": "1555eede-7e03-4038-824d-91d8fb21a6e2",
+      "researchCandidateKey": null,
+      "catalogPlan": "REUSE_EXISTING_PRODUCT_ID_AFTER_REVIEW",
+      "reasonForSelection": "기존 정확 키트의 신규 가격 확보와 용량·타이밍 변형 구분을 검증한다.",
+      "officialIdentityReview": {
+        "url": "https://www.gskill.com/specification/165/377/1664845977/F5-6000J3636F16GX2-RS5K-Specification",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [],
+      "historicalApprovedPrice": null,
+      "priceWork": "VERIFY_EXACT_SALE_VARIANT_AND_COLLECT",
+      "openChecks": [
+        "국내 동일 PN 32GB(16GB×2) 판매 키트",
+        "키트 PN과 개별 모듈 PN 구분",
+        "SPD/OC 속도와 CPU/보드별 QVL",
+        "Ripjaws라는 이름만으로 Intel 전용으로 분류하지 않음"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 11,
+      "type": "GPU",
+      "platform": "PCIE",
+      "manufacturer": "MSI",
+      "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+      "partNumber": "G5060-8V2C",
+      "existingCatalogExternalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+      "researchCandidateKey": null,
+      "catalogPlan": "REUSE_EXISTING_PRODUCT_ID_AFTER_REVIEW",
+      "reasonForSelection": "기존 NVIDIA 카드의 정확 변형과 가격 연결을 재사용한다.",
+      "officialIdentityReview": {
+        "url": "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-5060-8G-VENTUS-2X-OC.pdf",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=90956033"
+      ],
+      "historicalApprovedPrice": {
+        "amountKrw": 675000,
+        "observedAt": "2026-10-06T12:39:10.953Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+        "saleUnit": "PRODUCT",
+        "status": "HISTORICAL_APPROVED_SNAPSHOT_NOT_CURRENT_PRICE"
+      },
+      "priceWork": "RECHECK_EXACT_SALE_VARIANT_AND_OBSERVE_AGAIN",
+      "openChecks": [
+        "G5060-8V2C 정확 카드; MAX/WHITE 등 변형 제외",
+        "케이스·PSU·전원 커넥터는 실제 PC와 별도 확인",
+        "GPU 칩 이름만으로 정확 카드 확정 금지"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 12,
+      "type": "GPU",
+      "platform": "PCIE",
+      "manufacturer": "Sapphire",
+      "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+      "partNumber": "11350-03-20G",
+      "existingCatalogExternalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+      "researchCandidateKey": null,
+      "catalogPlan": "REUSE_EXISTING_PRODUCT_ID_AFTER_REVIEW",
+      "reasonForSelection": "기존 AMD 카드의 OC·VRAM 변형과 가격 연결을 재사용한다.",
+      "officialIdentityReview": {
+        "url": "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9060-xt-16g-gddr6",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=91909571"
+      ],
+      "historicalApprovedPrice": {
+        "amountKrw": 821000,
+        "observedAt": "2026-10-06T12:39:14.292Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+        "saleUnit": "PRODUCT",
+        "status": "HISTORICAL_APPROVED_SNAPSHOT_NOT_CURRENT_PRICE"
+      },
+      "priceWork": "RECHECK_EXACT_SALE_VARIANT_AND_OBSERVE_AGAIN",
+      "openChecks": [
+        "11350-03-20G OC 16GB; 8GB/non-OC 변형 제외",
+        "케이스·PSU·전원 커넥터는 실제 PC와 별도 확인",
+        "GPU 칩 이름만으로 정확 카드 확정 금지"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 13,
+      "type": "STORAGE",
+      "platform": "SATA",
+      "manufacturer": "Samsung",
+      "modelName": "870 EVO 1TB",
+      "partNumber": "MZ-77E1T0BW",
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "ssd-samsung-870-evo-1tb",
+      "catalogPlan": "PROPOSE_NEW_PRODUCT_AFTER_REVIEW",
+      "reasonForSelection": "2.5형 SATA 업그레이드와 NVMe 비해당·포트 공유 처리를 검증한다.",
+      "officialIdentityReview": {
+        "url": "https://www.samsung.com/sg/memory-storage/sata-ssd/870-evo-1tb-sata-3-2-5-ssd-mz-77e1t0bw/",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=13190573"
+      ],
+      "historicalApprovedPrice": null,
+      "priceWork": "VERIFY_EXACT_SALE_VARIANT_AND_COLLECT",
+      "openChecks": [
+        "국내 박스 PN·유통·보증과 공식 MZ-77E1T0BW 대조",
+        "SATA 포트·데이터 케이블·전원·2.5형 장착 공간",
+        "다른 용량과 벌크·병행·추가 구성 구분"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "selectionNumber": 14,
+      "type": "STORAGE",
+      "platform": "PCIE_NVME",
+      "manufacturer": "Samsung",
+      "modelName": "990 PRO 1TB",
+      "partNumber": "MZ-V9P1T0BW",
+      "existingCatalogExternalId": null,
+      "researchCandidateKey": "ssd-samsung-990-pro-1tb",
+      "catalogPlan": "PROPOSE_NEW_PRODUCT_AFTER_REVIEW",
+      "reasonForSelection": "PCIe 4.0 NVMe·2280·십진 1TB와 방열판 변형 구분을 검증한다.",
+      "officialIdentityReview": {
+        "url": "https://www.samsung.com/es/memory-storage/nvme-ssd/990-pro-1tb-nvme-pcie-gen-4-mz-v9p1t0bw/",
+        "checkedDate": "2026-10-10",
+        "scope": "Selection identity/specification page only; not complete compatibility, domestic SKU or current-price approval"
+      },
+      "domesticResearchUrls": [
+        "https://prod.danawa.com/info/?pcode=18297002"
+      ],
+      "historicalApprovedPrice": null,
+      "priceWork": "VERIFY_EXACT_SALE_VARIANT_AND_COLLECT",
+      "openChecks": [
+        "국내 박스 PN·유통·보증과 공식 MZ-V9P1T0BW 대조",
+        "방열판 미포함 BW와 CW/GW 변형 구분",
+        "슬롯별 NVMe·2280·레인·공유·부팅 근거"
+      ],
+      "adoptionStatus": "PROPOSED_NOT_APPROVED"
+    }
+  ]
+}

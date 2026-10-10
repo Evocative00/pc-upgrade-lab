@@ -53,6 +53,15 @@ public class CatalogIdentityService {
         return CatalogIdentityDtos.Model.from(model);
     }
 
+    /** A database preview checks the complete registration without invoking any creation path. */
+    public CatalogIdentityDtos.Model verifyModel(CatalogIdentityRequests.ModelRegistration input) {
+        if (input == null) throw new IllegalArgumentException("model registration is required");
+        var model = models.findByCanonicalId(input.canonicalId()).orElseThrow(() -> new IllegalArgumentException("Unknown model"));
+        if (!model.matches(input)) throw new IllegalArgumentException("Existing model differs; no implicit overwrite");
+        assertExistingSourcesAndAliases(model, input);
+        return CatalogIdentityDtos.Model.from(model);
+    }
+
     @Transactional
     public CatalogIdentityDtos.ProductCandidate bindProduct(CatalogIdentityRequests.ProductBinding input) {
         if (input == null) throw new IllegalArgumentException("product binding is required");

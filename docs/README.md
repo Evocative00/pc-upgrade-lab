@@ -81,5 +81,8 @@ H2 검사가 실제 MySQL 검사를 대신하지 않으며, 저장 계층 검사
 - [국내 데스크톱 부품 DB 보강 후보](catalog-expansion-candidates-2026-10-09.md): 구형 설치 참조부터 Intel Core Ultra 200S·Plus와 AMD 최신 X3D·800 계열 보드, 누락 GPU·RAM·SSD까지 후보 78종과 별도 보류 범위. 실제 DB에 반영한 목록은 아니다.
 - [카탈로그·가격 DB 확장 설계안](catalog-db-expansion-design-2026-10-09.md): 모델/판매 구성 구분, 기존 UUID 유지·공통 ID, SSD·보드 슬롯·메모리 조건, 중앙 가격 API와 수집·신선도, 단계별 구현과 컨펌 범위.
 - [카탈로그 확장 구현·적용·미리보기](catalog-expansion-implementation-2026-10-09.md): 승인한 V13·V14 로컬 MySQL 적용·기존 자료 보존, 백엔드 실행 구성과 팀원 준비, DB 없는 `previewCatalogExpansion`, 최신 우선 52종과 후속 자료 검토 범위.
+- [첫 부품 적용 후보 14종](catalog-pilot-selection-2026-10-10.md): 기존 7종·신규 7종의 선정안, AMD·Intel 대표 흐름, 가격 6종의 과거 근거와 8종 신규 확보 범위, 목록/실제 반영 컨펌.
+- [14종 상세 검토와 승인된 수동 적재](catalog-pilot-review-2026-10-10.md): 승인된 로컬 MySQL 반영, 상품 307종·가격 보유 74종, H2 345개·기존 행 보존 감사·재검사 통과. `importPilotCatalog`의 기본 DB 없는 미리보기·`-PcheckPilotDb=true` 사전검사·`-PapplyPilotCatalog=true` 반영, V14/개인 DB 준비와 보류 SKU를 정리했다. 일반 backend의 새 설정은 필요 없으며 pull/서버 시작에서 자동 적재하지 않는다.
 - [국내 신품 상품가](catalog-current-prices.md): 현재가 저장·수집·판매 SKU 검토와 DB 반영 절차.
+- [첫 14종 검색과 PC 연결 검증](catalog-pilot-search-pc-verification-2026-10-10.md): 실제 MySQL 읽기 전용 검색 14종·PN 9종, H2 검색·저장·재조회 39개, 승인한 분류 표시·연결 모델 조회·0건 검색 안내와 프론트 전체 124개 검사.
 - [스캔 결과 예시](examples/scan-result.json): 자동 인식 JSON 형식을 이해하기 위한 개발용 샘플.

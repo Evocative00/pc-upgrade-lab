@@ -2,7 +2,9 @@ import { useId } from 'react'
 import { formatCurrentPrice, ramKitLabel, specificationRows, VERIFICATION_LABEL } from './catalogPresentation.ts'
 import { CurrentPriceSource } from './CurrentPriceSource.tsx'
 import { MotherboardStorageDetail } from './MotherboardStorageDetail.tsx'
-import type { CatalogAttribution, CatalogDetail, CatalogProduct } from './catalogTypes.ts'
+import { CatalogProductIdentity } from './CatalogProductIdentity.tsx'
+import { CatalogLinkedModel } from './CatalogLinkedModel.tsx'
+import type { CatalogAttribution, CatalogDetail, CatalogModel, CatalogProduct } from './catalogTypes.ts'
 
 export function CatalogAttributions({ items }: { items: CatalogAttribution[] }) {
   return (
@@ -18,10 +20,11 @@ export function CatalogAttributions({ items }: { items: CatalogAttribution[] }) 
   )
 }
 
-export function CatalogProductDetail({ detail, onSelect, onRefresh }: {
+export function CatalogProductDetail({ detail, onSelect, onRefresh, onSelectModel }: {
   detail: CatalogDetail
   onSelect: (product: CatalogProduct) => void
   onRefresh: () => void
+  onSelectModel?: (model: CatalogModel) => void
 }) {
   const headingId = useId()
   const { product, specification, sources } = detail
@@ -38,6 +41,9 @@ export function CatalogProductDetail({ detail, onSelect, onRefresh }: {
         <CurrentPriceSource price={product.currentPrice} />
         <button type="button" className="button button--ghost" onClick={onRefresh}>가격·제원 새로고침</button>
       </div>
+
+      <CatalogProductIdentity product={product} detailed />
+      <CatalogLinkedModel key={`${product.id}:${product.modelId ?? ''}`} product={product} onSelectModel={onSelectModel} />
 
       {product.type === 'RAM' && (
         <p className="notice">

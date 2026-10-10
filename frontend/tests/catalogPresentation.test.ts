@@ -1,6 +1,29 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { formatCatalogPrice, formatCurrentPrice, formatPriceObservedAt, ramKitLabel, specificationRows } from '../src/features/catalog/catalogPresentation.ts'
+import { catalogIdentityDescription, catalogIdentityLabel, catalogRoleLabel, formatCatalogPrice, formatCurrentPrice, formatPriceObservedAt, ramKitLabel, specificationRows } from '../src/features/catalog/catalogPresentation.ts'
+
+test('설치 모델 참고·판매 키트·정확 상품 자료·미분류를 별도로 표시한다', () => {
+  assert.equal(catalogIdentityLabel('MODEL_REFERENCE'), '설치 모델 참고')
+  assert.equal(catalogIdentityLabel('RETAIL_KIT'), '판매 키트')
+  assert.equal(catalogIdentityLabel('PHYSICAL_VARIANT'), '정확 상품 자료')
+  assert.equal(catalogIdentityLabel('LEGACY_UNCLASSIFIED'), '식별 범위 미확인')
+  assert.match(catalogIdentityDescription('MODEL_REFERENCE'), /판매 구성이나 보드 리비전은 별도로 확인/)
+  assert.match(catalogIdentityDescription('RETAIL_KIT'), /장착한 모듈 수와 모듈 1개당 용량/)
+  assert.match(catalogIdentityDescription('PHYSICAL_VARIANT'), /내 PC 실물과 같은 구성인지 확인/)
+})
+
+test('상품의 자료 용도를 구매 추천 여부와 구분해 표시한다', () => {
+  assert.equal(catalogRoleLabel('INSTALLED_PC_REFERENCE'), '설치 모델 참고용')
+  assert.equal(catalogRoleLabel('PURCHASE_CANDIDATE'), '구매 후보 자료')
+  assert.equal(catalogRoleLabel('BOTH'), '설치·구매 참고용')
+  assert.equal(catalogRoleLabel('UNASSIGNED'), '용도 미분류')
+})
+
+test('이전 응답에 식별·용도 필드가 없으면 제품 확인 수준을 추정하지 않는다', () => {
+  assert.equal(catalogIdentityLabel(undefined), catalogIdentityLabel('LEGACY_UNCLASSIFIED'))
+  assert.equal(catalogRoleLabel(undefined), catalogRoleLabel('UNASSIGNED'))
+  assert.equal(catalogIdentityDescription(undefined), catalogIdentityDescription('LEGACY_UNCLASSIFIED'))
+})
 
 test('SSD 십진 광고 용량·실제 공표 치수와 SATA 비해당을 구분한다', () => {
   const sata = Object.fromEntries(specificationRows('STORAGE', { storageKind: 'SSD', advertisedCapacityGb: 1000,

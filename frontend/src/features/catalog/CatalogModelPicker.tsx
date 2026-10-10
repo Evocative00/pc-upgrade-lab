@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react'
 import type { PartType } from '../pc-scan/types.ts'
 import { catalogModelClient } from './catalogModelClient.ts'
 import { VERIFICATION_LABEL } from './catalogPresentation.ts'
+import { CatalogSearchHelp } from './CatalogSearchHelp.tsx'
 import type { CatalogModel, CatalogModelPage } from './catalogTypes.ts'
 
 export function CatalogModelPicker({ type, initialQuery, onSelect, onClose }: {
@@ -48,7 +49,10 @@ export function CatalogModelPicker({ type, initialQuery, onSelect, onClose }: {
     {error && <p className="error" role="alert">{error}</p>}
     {result && <>
       <p className="muted" role="status">확인 모델 {result.totalElements}개</p>
-      {result.items.length === 0 && <p className="muted">등록된 모델이 없습니다. 입력한 내용을 직접 저장할 수 있습니다.</p>}
+      {result.items.length === 0 && <>
+        <p className="muted">일치하는 모델이 없습니다. 입력한 내용을 직접 저장할 수 있습니다.</p>
+        <CatalogSearchHelp type={type} mode="model" />
+      </>}
       <ul className="catalog-picker__results">{result.items.map((model) => <li key={model.id}>
         <button type="button" onClick={() => onSelect(model)}>
           <span>{model.manufacturer} {model.modelName}</span>

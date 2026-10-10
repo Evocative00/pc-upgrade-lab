@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { createCatalogModelClient } from '../src/features/catalog/catalogModelClient.ts'
+import { CatalogApiError } from '../src/features/catalog/catalogClient.ts'
+import { readLinkedCatalogModel } from '../src/features/catalog/catalogLinkedModelRead.ts'
 import { createStorageSupportClient } from '../src/features/catalog/storageSupportClient.ts'
-import type { CatalogModel } from '../src/features/catalog/catalogTypes.ts'
+import type { CatalogModel, CatalogModelDetail } from '../src/features/catalog/catalogTypes.ts'
 import { applyCatalogModelSelection, priceTotal } from '../src/features/builder/buildSlots.ts'
 import { getPartStatus, linkCatalog, linkCatalogModel, planScanApply, renameDraft, toDraft,
   toPartInputs, toPersistedDraft, unlinkCatalog, validatePcRequest } from '../src/features/pc/partDraft.ts'
@@ -16,6 +18,15 @@ const model: CatalogModel = { id: 'model-id', canonicalId: 'canonical-id', type:
   modelName: 'DDR5 16GB 규격군', kind: 'RAM_SPEC_GROUP', role: 'INSTALLED_PC_REFERENCE',
   verificationStatus: 'PARTIAL', family: null, series: null, createdAt: '2026-10-09T00:00:00Z', updatedAt: '2026-10-09T00:00:00Z' }
 const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { 'Content-Type': 'application/json' } })
+const source = { sourceName: 'MANUFACTURER' as const, externalId: 'manufacturer:ram-spec', sourceRevision: null,
+  sourceUrl: 'https://manufacturer.example/ram', retrievedAt: model.updatedAt, reviewScope: 'DDR5 DIMM 규격만 확인' }
+const modelDetail: CatalogModelDetail = { model, sources: [source],
+  aliases: [{ rawAlias: 'DDR5 DIMM 16GB', normalizedAlias: 'ddr5 dimm 16gb', evidence: source }],
+  productCandidates: [{ id: 'kit-product', canonicalId: 'kit-canonical-id', type: 'RAM',
+    manufacturer: 'G.SKILL', modelName: '2×16GB 판매 키트', partNumber: 'EXACT-KIT-PN',
+    identityKind: 'RETAIL_KIT', role: 'PURCHASE_CANDIDATE' }] }
+const linkedProduct = { id: 'kit-product', type: 'RAM' as const, modelId: model.id }
+const invalidResponse = (error: unknown) => error instanceof CatalogApiError && error.code === 'INVALID_RESPONSE'
 
 test('RAM 규격군은 모델로 왕복 저장하고 판매 묶음·가격으로 확정하지 않는다', () => {
   const draft = linkCatalogModel(toDraft(part), model)
@@ -86,6 +97,112 @@ test('모델 검색은 GET만 사용하고 유형 불일치·잘못된 모델 �
   await assert.rejects(invalid.search('RAM', ''), /응답 형식/)
   const unassigned = createCatalogModelClient((async () => json({ ...page, items: [{ ...model, role: 'UNASSIGNED' }] })) as typeof fetch)
   assert.equal((await unassigned.search('RAM', '')).items[0].role, 'UNASSIGNED')
+})
+
+test('연결 모델은 저장된 ID로 직접 GET하며 별칭·근거·관련 상품을 그대로 읽는다', async () => {
+  const requestedId = 'saved/model + %'
+  const expected = { ...modelDetail, model: { ...model, id: requestedId } }
+  const calls: string[] = []
+  const client = createCatalogModelClient(async (url, options) => {
+    calls.push(String(url))
+    assert.equal(options?.method, 'GET')
+    assert.equal(options?.cache, 'no-store')
+    assert.equal(options?.body, undefined)
+    return json(expected)
+  })
+  assert.deepEqual(await readLinkedCatalogModel(client, { ...linkedProduct, modelId: requestedId }), expected)
+  assert.deepEqual(calls, [`/api/catalog/models/${encodeURIComponent(requestedId)}`])
+})
+
+test('상품에 연결된 모델만 확인하면 상품·가격 연결을 해제하고 장착 정보는 보존한다', async () => {
+  const original = linkCatalog(toDraft(part), { ...linkedProduct, modelName: '2×16GB 판매 키트' })
+  assert.equal(original.catalogProductId, linkedProduct.id)
+  const detail = await readLinkedCatalogModel(createCatalogModelClient(async () => json(modelDetail)), linkedProduct)
+  // 상세 조회만으로 초안이 바뀌지 않으며, 모델 선택을 명시한 뒤에만 상품 연결을 해제한다.
+  assert.equal(original.catalogProductId, linkedProduct.id)
+  const updated = linkCatalogModel(original, detail.model)
+  assert.equal(updated.catalogProductId, null)
+  assert.equal(updated.catalogModelId, model.id)
+  assert.equal(updated.matchStatus, 'UNMATCHED')
+  assert.equal(updated.recognitionLevel, 'SPEC_GROUP')
+  assert.equal(updated.quantity, part.quantity)
+  assert.deepEqual(updated.specs, part.specs)
+  assert.equal(updated.rawName, part.rawName)
+  assert.equal(updated.source, part.source)
+  assert.deepEqual(priceTotal([{ draft: updated, detail: null }]),
+    { currentKrw: 0, pricedItems: 0, unpriced: 1, quantityNeedsCheck: 0 })
+})
+
+test('다른 모델 ID·모델 종류·상품 관계의 응답으로 모델을 확인하지 않는다', async () => {
+  for (const response of [
+    { ...modelDetail, model: { ...model, id: 'other-model' } },
+    { ...modelDetail, model: { ...model, kind: 'GPU_CHIP_MODEL' } },
+    { ...modelDetail, productCandidates: [{ ...modelDetail.productCandidates[0], type: 'CPU' }] },
+    { ...modelDetail, productCandidates: [{ ...modelDetail.productCandidates[0], id: 'other-kit' }] },
+    { ...modelDetail, productCandidates: [] },
+  ]) {
+    const client = createCatalogModelClient(async () => json(response))
+    await assert.rejects(readLinkedCatalogModel(client, linkedProduct), invalidResponse)
+  }
+  const client = createCatalogModelClient(async () => json(modelDetail))
+  await assert.rejects(readLinkedCatalogModel(client, { ...linkedProduct, type: 'CPU' }), invalidResponse)
+})
+
+test('모델 상세의 잘못된 출처·별칭·상품 분류를 응답 형식 오류로 거부한다', async () => {
+  for (const response of [
+    { ...modelDetail, sources: [{ ...source, sourceUrl: 'javascript:alert(1)' }] },
+    { ...modelDetail, aliases: [{ ...modelDetail.aliases[0], evidence: null }] },
+    { ...modelDetail, productCandidates: [{ ...modelDetail.productCandidates[0], identityKind: 'SKU_GUESS' }] },
+  ]) {
+    await assert.rejects(createCatalogModelClient(async () => json(response)).get(model.id), invalidResponse)
+  }
+})
+
+test('저장된 모델 ID가 없으면 조회하지 않고 모델 상세 404를 오류로 전달한다', async () => {
+  let calls = 0
+  const client = createCatalogModelClient(async () => {
+    calls += 1
+    return new Response(JSON.stringify({ code: 'CATALOG_MODEL_NOT_FOUND', message: '모델을 찾을 수 없습니다.' }),
+      { status: 404, headers: { 'Content-Type': 'application/json' } })
+  })
+  await assert.rejects(readLinkedCatalogModel(client, { ...linkedProduct, modelId: null }))
+  assert.equal(calls, 0)
+  await assert.rejects(client.get(model.id), (error: unknown) => error instanceof CatalogApiError &&
+    error.status === 404 && error.code === 'CATALOG_MODEL_NOT_FOUND')
+  assert.equal(calls, 1)
+})
+
+test('다른 제품 조회 뒤 도착한 이전 모델 응답은 취소되며 최신 결과만 전달한다', async () => {
+  let completePrevious: ((response: Response) => void) | undefined
+  const previousId = model.id
+  const nextModel = { ...model, id: 'next-model' }
+  const nextProduct = { ...linkedProduct, id: 'next-kit', modelId: nextModel.id }
+  const nextDetail = { ...modelDetail, model: nextModel,
+    productCandidates: [{ ...modelDetail.productCandidates[0], id: nextProduct.id }] }
+  const client = createCatalogModelClient(async (url) => {
+    if (String(url).endsWith(`/${previousId}`)) return new Promise<Response>((resolve) => { completePrevious = resolve })
+    return json(nextDetail)
+  })
+  const previous = new AbortController()
+  const pending = readLinkedCatalogModel(client, linkedProduct, previous.signal)
+  const rejected = assert.rejects(pending, (error: unknown) => error instanceof DOMException && error.name === 'AbortError')
+  previous.abort()
+  assert.deepEqual(await readLinkedCatalogModel(client, nextProduct), nextDetail)
+  assert.ok(completePrevious)
+  completePrevious(json(modelDetail))
+  await rejected
+})
+
+test('조회 중 닫거나 해제한 모델은 HTTP 오류가 뒤늦게 도착해도 취소로 처리한다', async () => {
+  let complete: ((response: Response) => void) | undefined
+  const client = createCatalogModelClient(async () => new Promise<Response>((resolve) => { complete = resolve }))
+  const controller = new AbortController()
+  const pending = readLinkedCatalogModel(client, linkedProduct, controller.signal)
+  const rejected = assert.rejects(pending, (error: unknown) => error instanceof DOMException && error.name === 'AbortError')
+  controller.abort()
+  assert.ok(complete)
+  complete(new Response('{}', { status: 500 }))
+  await rejected
 })
 
 test('슬롯 근거 없음은 미지원이 아니며 보드 ID 불일치·근거 없는 전체확인은 거부한다', async () => {

@@ -149,6 +149,8 @@ public class CatalogProduct {
     public String getModelId() { return modelId; }
     public CatalogIdentityKind getIdentityKind() { return identityKind; }
     public CatalogRole getRole() { return role; }
+    public Long getIdentityEvidenceSourceId() { return identityEvidenceSourceId; }
+    public String getIdentityReviewScope() { return identityReviewScope; }
     public CatalogVerificationStatus getVerificationStatus() { return verificationStatus; }
     public boolean isActive() { return active; }
     public Instant getCreatedAt() { return createdAt; }
