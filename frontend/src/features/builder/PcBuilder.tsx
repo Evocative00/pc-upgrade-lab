@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react'
 import { CatalogPickerDialog } from './CatalogPickerDialog.tsx'
 import { formatProjectPrice } from '../catalog/catalogPresentation.ts'
-import { CurrentPriceSource } from '../catalog/CurrentPriceSource.tsx'
-import { ReferencePriceSource } from '../catalog/ReferencePriceSource.tsx'
 import type { CatalogModel, CatalogProduct } from '../catalog/catalogTypes.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { getPartStatus, withEmptyRows } from '../pc/partDraft.ts'
@@ -146,12 +144,7 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
                     ))}
                     {!draft.catalogProductId
                       ? <span className="muted">{draft.catalogModelId ? '모델 확인 · 상품 미연결' : '카탈로그 미연결'} · 현재 상품가 없음</span>
-                      : detail ? <>
-                        <span className="muted">{formatProjectPrice(detail.product)}
-                          {(detail.product.currentPrice || detail.product.referenceEstimate) && (draft.type === 'RAM' ? ' / 판매 단위' : ' / 1개')}</span>
-                        {(detail.product.currentPrice || !detail.product.referenceEstimate) && <CurrentPriceSource price={detail.product.currentPrice} status={detail.product.priceStatus} />}
-                        <ReferencePriceSource price={detail.product.referenceEstimate} />
-                      </>
+                      : detail ? <span className="muted">{formatProjectPrice(detail.product)}</span>
                         : entry?.status === 'error'
                           ? <>
                             <span className="error">가격·제원 조회 실패: {entry.message}</span>

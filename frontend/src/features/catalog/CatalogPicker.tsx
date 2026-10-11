@@ -2,12 +2,9 @@ import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import type { PartType } from '../pc-scan/types.ts'
 import { catalogClient } from './catalogClient.ts'
 import { CatalogModelPicker } from './CatalogModelPicker.tsx'
-import { CatalogProductIdentity } from './CatalogProductIdentity.tsx'
 import { CatalogSearchHelp } from './CatalogSearchHelp.tsx'
 import { CatalogAttributions, CatalogProductDetail } from './CatalogProductDetail.tsx'
-import { formatProjectPrice, VERIFICATION_LABEL } from './catalogPresentation.ts'
-import { CurrentPriceSource } from './CurrentPriceSource.tsx'
-import { ReferencePriceSource } from './ReferencePriceSource.tsx'
+import { formatProjectPrice } from './catalogPresentation.ts'
 import type { CatalogDetail, CatalogModel, CatalogPage, CatalogProduct } from './catalogTypes.ts'
 
 type Props = {
@@ -166,14 +163,11 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
                   aria-expanded={detail.status !== 'idle' && detail.product.id === product.id}
                   aria-label={`${product.modelName} 상세 보기`}>
                   <span><span className="muted">{product.manufacturer}</span> {product.modelName}</span>
-                  <CatalogProductIdentity product={product} />
                   <span className="catalog-picker__meta muted">
-                    {VERIFICATION_LABEL[product.verificationStatus]} · {formatProjectPrice(product)}
-                    {(product.currentPrice || product.referenceEstimate) && (type === 'RAM' ? ' / 판매 단위' : ' / 1개')} · 상세 보기
+                    {formatProjectPrice(product)}
+                    {' · 상세 보기'}
                   </span>
                 </button>
-                {(product.currentPrice || !product.referenceEstimate) && <CurrentPriceSource price={product.currentPrice} status={product.priceStatus} />}
-                <ReferencePriceSource price={product.referenceEstimate} />
               </li>
             ))}
           </ul>

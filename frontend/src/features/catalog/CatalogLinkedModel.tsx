@@ -2,7 +2,6 @@ import { useEffect, useId, useRef, useState } from 'react'
 import { catalogModelClient } from './catalogModelClient.ts'
 import { readLinkedCatalogModel } from './catalogLinkedModelRead.ts'
 import type { LinkedModelProduct } from './catalogLinkedModelRead.ts'
-import { VERIFICATION_LABEL } from './catalogPresentation.ts'
 import type { CatalogModel, CatalogModelDetail } from './catalogTypes.ts'
 
 type Props = { product: LinkedModelProduct; onSelectModel?: (model: CatalogModel) => void }
@@ -50,9 +49,8 @@ function LinkedModelView({ product, onSelectModel }: Props) {
       {view.phase === 'error' && <p className="error" role="alert">{view.message}</p>}
       {detail && <>
         <p><strong>{detail.model.manufacturer} {detail.model.modelName}</strong></p>
-        <p className="muted">{VERIFICATION_LABEL[detail.model.verificationStatus]} ·
-          {detail.model.kind === 'RAM_SPEC_GROUP' ? ' RAM 규격군' :
-            detail.model.kind === 'GPU_CHIP_MODEL' ? ' GPU 칩 모델' : ' 부품 모델'}</p>
+        <p className="muted">{detail.model.kind === 'RAM_SPEC_GROUP' ? 'RAM 규격군' :
+          detail.model.kind === 'GPU_CHIP_MODEL' ? 'GPU 칩 모델' : '부품 모델'}</p>
         <p className="notice">모델만 확인하면 정확한 판매 상품과 현재 상품가는 연결되지 않습니다.
           {detail.model.kind === 'RAM_SPEC_GROUP' && ' 이 규격군은 개별 RAM 모듈의 부품번호나 판매 키트를 확인한 자료가 아닙니다.'}
           {detail.model.kind === 'GPU_CHIP_MODEL' && ' 이 칩 모델만으로 제조사별 그래픽 카드의 크기·전원·판매 상품을 확정할 수 없습니다.'}</p>

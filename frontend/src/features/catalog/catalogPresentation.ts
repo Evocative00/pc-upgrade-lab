@@ -1,36 +1,5 @@
 import type { PartType } from '../pc-scan/types.ts'
-import type { CatalogPriceStatus, CatalogProduct, CatalogSpecification, CurrentPrice } from './catalogTypes.ts'
-
-export const VERIFICATION_LABEL: Record<CatalogProduct['verificationStatus'], string> = {
-  UNVERIFIED: '미검증', PARTIAL: '일부 제원 확인', CORE_VERIFIED: '핵심 제원 확인',
-}
-
-export function catalogIdentityLabel(identityKind: CatalogProduct['identityKind']): string {
-  switch (identityKind) {
-    case 'MODEL_REFERENCE': return '설치 모델 참고'
-    case 'RETAIL_KIT': return '판매 키트'
-    case 'PHYSICAL_VARIANT': return '정확 상품 자료'
-    default: return '식별 범위 미확인'
-  }
-}
-
-export function catalogRoleLabel(role: CatalogProduct['role']): string {
-  switch (role) {
-    case 'INSTALLED_PC_REFERENCE': return '설치 모델 참고용'
-    case 'PURCHASE_CANDIDATE': return '구매 후보 자료'
-    case 'BOTH': return '설치·구매 참고용'
-    default: return '용도 미분류'
-  }
-}
-
-export function catalogIdentityDescription(identityKind: CatalogProduct['identityKind']): string {
-  switch (identityKind) {
-    case 'MODEL_REFERENCE': return '모델 수준의 참고 자료입니다. 정확한 판매 구성이나 보드 리비전은 별도로 확인해 주세요.'
-    case 'RETAIL_KIT': return '판매 묶음 기준 자료입니다. 내 PC에 장착한 모듈 수와 모듈 1개당 용량을 별도로 확인해 주세요.'
-    case 'PHYSICAL_VARIANT': return '부품번호와 특정 상품 변형을 구분한 자료입니다. 내 PC 실물과 같은 구성인지 확인해 주세요.'
-    default: return '제품의 식별 범위가 아직 분류되지 않았습니다. 모델명과 부품번호를 확인해 연결해 주세요.'
-  }
-}
+import type { CatalogProduct, CatalogSpecification } from './catalogTypes.ts'
 
 export function formatCatalogPrice(price: CatalogProduct['referencePrice']): string {
   if (price.status === 'INSUFFICIENT_HISTORY') return '가격 자료 부족'
@@ -38,30 +7,9 @@ export function formatCatalogPrice(price: CatalogProduct['referencePrice']): str
   return `${price.amountKrw.toLocaleString('ko-KR', { maximumFractionDigits: 2 })}원`
 }
 
-export function formatCurrentPrice(price: CurrentPrice | null, status?: CatalogPriceStatus | null): string {
-  const amount = price ? `${price.amountKrw.toLocaleString('ko-KR')}원` : null
-  if (status?.lookupStatus === 'UNAVAILABLE') {
-    return amount ? `마지막 확인 가격 ${amount} (합계 제외)` : '중앙 가격 연결 실패 · 확인한 가격 없음'
-  }
-  if (status?.lookupStatus === 'UNKNOWN_PRODUCT') return '중앙 카탈로그 미등록'
-  if (status?.freshness === 'EXPIRED') return amount ? `과거 관측 ${amount} (합계 제외)` : '과거 가격 미확인'
-  return amount ?? '현재 상품가 미확인'
-}
-
-export function referencePriceLabel(price: NonNullable<CatalogProduct['referenceEstimate']>): string {
-  switch (price.basis) {
-    case 'LAUNCH_PRICE': return '출시 참고가'
-    case 'HISTORICAL_RETAIL': return '과거 판매가'
-    case 'MODEL_RETAIL_REFERENCE': return '모델 참고가'
-    default: return '추정 참고가'
-  }
-}
-
 export function formatProjectPrice(product: CatalogProduct): string {
-  if (product.currentPrice || !product.referenceEstimate)
-    return formatCurrentPrice(product.currentPrice, product.priceStatus).replace('(합계 제외)', '(현재가 합계 제외)')
-  const estimate = product.referenceEstimate
-  return `${referencePriceLabel(estimate)} ${estimate.confidence === 'ESTIMATED' ? '약 ' : ''}${estimate.amountKrw.toLocaleString('ko-KR')}원`
+  const price = product.currentPrice ?? product.referenceEstimate
+  return price ? `${price.amountKrw.toLocaleString('ko-KR')}원` : '가격 미확인'
 }
 
 // 참고 합계는 확인된 과거 관측도 사용한다. 현재 구매가 합계의 만료·장애 규칙과 별도로 계산한다.
@@ -72,22 +20,6 @@ export function hasObservedReferencePrice(product: CatalogProduct): boolean {
   return !status || status.origin === 'LOCAL' && status.lookupStatus === 'NOT_IN_SCOPE'
     || status.origin === 'SHARED' && Boolean(status.catalogVersion) && Boolean(status.lastSuccessAt)
     && ['OK', 'UNAVAILABLE'].includes(status.lookupStatus) && ['FRESH', 'STALE', 'EXPIRED'].includes(String(status.freshness))
-}
-
-export function catalogPriceStatusLabel(status?: CatalogPriceStatus | null): string {
-  if (!status) return '로컬 가격'
-  if (status.origin === 'LOCAL') return '로컬 가격 · 중앙 대상 범위 밖'
-  switch (status.lookupStatus) {
-    case 'UNAVAILABLE': return '중앙 가격 · 연결 실패 · 합계 제외'
-    case 'UNKNOWN_PRODUCT': return '중앙 가격 · 카탈로그 미등록 · 합계 제외'
-    case 'NO_PRICE': return '중앙 가격 · 현재 상품가 미확인'
-    default:
-      switch (status.freshness) {
-        case 'STALE': return '중앙 가격 · 오래된 관측 · 구매 전 확인'
-        case 'EXPIRED': return '중앙 가격 · 관측 만료 · 합계 제외'
-        default: return '중앙 가격 · 최근 관측'
-      }
-  }
 }
 
 // 중앙 서버가 전달한 신선도·합계 정책을 따른다. 브라우저 시계로 관측 나이를 다시 판정하지 않는다.
@@ -103,15 +35,6 @@ export function isCurrentPriceIncluded(product: CatalogProduct): boolean {
     (status.freshness === 'FRESH' || status.freshness === 'STALE') &&
     typeof status.catalogVersion === 'string' && status.catalogVersion.trim().length > 0 &&
     typeof status.checkedAt === 'string' && typeof status.lastSuccessAt === 'string'
-}
-
-export function formatPriceObservedAt(observedAt: string): string {
-  const date = new Date(observedAt)
-  if (!Number.isFinite(date.getTime())) return '확인 시각 미확인'
-  return `${new Intl.DateTimeFormat('ko-KR', {
-    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
-    hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
-  }).format(date)} (한국 시간)`
 }
 
 type Field = [key: string, label: string, unit?: string]

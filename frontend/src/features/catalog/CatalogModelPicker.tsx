@@ -1,7 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import type { PartType } from '../pc-scan/types.ts'
 import { catalogModelClient } from './catalogModelClient.ts'
-import { VERIFICATION_LABEL } from './catalogPresentation.ts'
 import { CatalogSearchHelp } from './CatalogSearchHelp.tsx'
 import type { CatalogModel, CatalogModelPage } from './catalogTypes.ts'
 
@@ -56,8 +55,8 @@ export function CatalogModelPicker({ type, initialQuery, onSelect, onClose }: {
       <ul className="catalog-picker__results">{result.items.map((model) => <li key={model.id}>
         <button type="button" onClick={() => onSelect(model)}>
           <span>{model.manufacturer} {model.modelName}</span>
-          <span className="catalog-picker__meta muted">{VERIFICATION_LABEL[model.verificationStatus]} ·
-            {model.kind === 'RAM_SPEC_GROUP' ? ' 규격군으로 기록' : ' 모델로 기록'}</span>
+          <span className="catalog-picker__meta muted">
+            {model.kind === 'RAM_SPEC_GROUP' ? '규격군으로 기록' : '모델로 기록'}</span>
         </button>
       </li>)}</ul>
       {result.totalPages > 1 && <div className="catalog-pagination">

@@ -1,9 +1,6 @@
 import { useId } from 'react'
-import { formatProjectPrice, ramKitLabel, specificationRows, VERIFICATION_LABEL } from './catalogPresentation.ts'
-import { CurrentPriceSource } from './CurrentPriceSource.tsx'
-import { ReferencePriceSource } from './ReferencePriceSource.tsx'
+import { formatProjectPrice, ramKitLabel, specificationRows } from './catalogPresentation.ts'
 import { MotherboardStorageDetail } from './MotherboardStorageDetail.tsx'
-import { CatalogProductIdentity } from './CatalogProductIdentity.tsx'
 import { CatalogLinkedModel } from './CatalogLinkedModel.tsx'
 import type { CatalogAttribution, CatalogDetail, CatalogModel, CatalogProduct } from './catalogTypes.ts'
 
@@ -34,17 +31,13 @@ export function CatalogProductDetail({ detail, onSelect, onRefresh, onSelectMode
   return (
     <section className="catalog-detail" aria-labelledby={headingId}>
       <div>
-        <p className="muted">{product.manufacturer} · {VERIFICATION_LABEL[product.verificationStatus]}{!product.active && ' · 검토용'}</p>
+        <p className="muted">{product.manufacturer}</p>
         <h3 id={headingId}>{product.modelName}</h3>
         <p className="muted">부품번호: {product.partNumber ?? '미확인'}</p>
-        <p>가격: {formatProjectPrice(product)}{(product.currentPrice || product.referenceEstimate) &&
-          (product.type === 'RAM' ? ' / 판매 단위' : ' / 1개')}</p>
-        {(product.currentPrice || !product.referenceEstimate) && <CurrentPriceSource price={product.currentPrice} status={product.priceStatus} />}
-        <ReferencePriceSource price={product.referenceEstimate} detailed />
+        <p>가격: {formatProjectPrice(product)}</p>
         <button type="button" className="button button--ghost" onClick={onRefresh}>가격·제원 새로고침</button>
       </div>
 
-      <CatalogProductIdentity product={product} detailed />
       <CatalogLinkedModel key={`${product.id}:${product.modelId ?? ''}`} product={product} onSelectModel={onSelectModel} />
 
       {product.type === 'RAM' && (
