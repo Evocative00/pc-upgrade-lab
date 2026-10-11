@@ -75,8 +75,8 @@ function InternalScoreRows({ parts, minimum, recommended }: {
 export function GameRequirementsDiagnosis({ games, parts }: { games: string[]; parts: PartInput[] }) {
   return <section className="planner-card" aria-labelledby="planner-game-diagnosis">
     <h2 id="planner-game-diagnosis">게임별 공식 요구 사양 비교</h2>
-    <p className="planner-caveat">RAM·VRAM 용량은 수치로 비교합니다. 공식 사양 카드의 CPU·GPU는 공식 예시와 동일한 모델만
-      확인하고, 다른 모델과의 비교는 아래 점수·등급 비교에서 따로 보여 줍니다. 이 결과는 목표 FPS나 전체 실행 가능 여부를
+    <p className="planner-caveat">RAM·VRAM 용량은 수치로 비교합니다. CPU·GPU는 공식 예시와 같은 모델이면 그대로 충족으로 보고,
+      다른 모델이면 공개 벤치마크로 공식 예시 대비 배율을 비교합니다. 이 결과는 목표 FPS나 전체 실행 가능 여부를
       보증하지 않습니다.</p>
     <div className="planner-game-list">
       {games.map((name) => {

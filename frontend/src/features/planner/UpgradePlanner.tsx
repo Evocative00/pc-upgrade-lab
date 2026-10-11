@@ -42,7 +42,7 @@ function CurrentPc({ pcName, parts }: Pick<Props, 'pcName' | 'parts'>) {
 function ScopeNotice({ gameDiagnosis }: { gameDiagnosis: boolean }) {
   return <p className="planner-scope" role="status">
     {gameDiagnosis
-      ? '공식 요구 사양 판정과 시연용 내부 등급 비교를 분리해 표시합니다. 예상 가격·FPS, 특정 제품 선정과 교체 후 호환성은 아직 계산하지 않습니다.'
+      ? '공식 요구 사양과 공개 벤치마크 기준 상대 성능을 함께 표시합니다. 예상 가격·FPS, 특정 제품 선정과 교체 후 호환성은 아직 계산하지 않습니다.'
       : '현재 화면은 흐름 확인용입니다. 제품 선정, 예상 가격·FPS와 교체 후 호환성 판정은 아직 계산하지 않습니다.'}
   </p>
 }
