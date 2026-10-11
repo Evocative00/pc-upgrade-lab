@@ -4,6 +4,7 @@ import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { GameRequirementsDiagnosis } from './GameRequirementsDiagnosis.tsx'
 import { UpgradeGoalForm } from './UpgradeGoalForm.tsx'
 import { defaultGoal, goalSummary, type UpgradeGoal } from './plannerGoal.ts'
+import { recommendPrototypeFocus } from './prototypeRecommendation.ts'
 import './planner.css'
 
 type Step = 2 | 3 | 4 | 5
@@ -41,7 +42,7 @@ function CurrentPc({ pcName, parts }: Pick<Props, 'pcName' | 'parts'>) {
 function ScopeNotice({ gameDiagnosis }: { gameDiagnosis: boolean }) {
   return <p className="planner-scope" role="status">
     {gameDiagnosis
-      ? '공식 요구 사양 중 확인 가능한 항목만 비교합니다. CPU·GPU 성능 순위, 예상 가격·FPS, 제품 선정과 교체 후 호환성은 아직 계산하지 않습니다.'
+      ? '공식 요구 사양 판정과 시연용 내부 등급 비교를 분리해 표시합니다. 예상 가격·FPS, 특정 제품 선정과 교체 후 호환성은 아직 계산하지 않습니다.'
       : '현재 화면은 흐름 확인용입니다. 제품 선정, 예상 가격·FPS와 교체 후 호환성 판정은 아직 계산하지 않습니다.'}
   </p>
 }
@@ -49,6 +50,7 @@ function ScopeNotice({ gameDiagnosis }: { gameDiagnosis: boolean }) {
 export function UpgradePlanner({ pcName, parts, onBackToPc }: Props) {
   const [step, setStep] = useState<Step>(2)
   const [goal, setGoal] = useState<UpgradeGoal>(defaultGoal)
+  const focus = goal.purpose === 'GAME' ? recommendPrototypeFocus(parts, goal.games) : null
 
   if (step === 2) return <UpgradeGoalForm pcName={pcName} parts={parts} goal={goal} onChange={setGoal}
     onBack={onBackToPc} onNext={() => setStep(3)} />
@@ -81,13 +83,17 @@ export function UpgradePlanner({ pcName, parts, onBackToPc }: Props) {
     </div>}
     {step === 4 && <div className="planner-main">
       <section className="planner-card planner-plan-card">
-        <div className="planner-card-head"><h2>추천 플랜 1개</h2><span className="badge badge--empty">선정 기준 준비 중</span></div>
-        <p>현재 부품과 목표를 비교해, 확인 가능한 호환성을 우선하고 교체 부품 수를 줄이는 방향으로 채울 예정입니다.</p>
+        <div className="planner-card-head"><h2>추천 플랜 1개</h2><span className="badge badge--empty">시연용 점검 방향</span></div>
+        <p>{focus?.reason ?? '선택한 작업에 대한 비교 점수는 아직 준비 중입니다.'}</p>
         <div className="planner-placeholder-grid">
-          <div><span>교체할 부품</span><strong>아직 선정하지 않았어요</strong></div>
-          <div><span>유지할 부품</span><strong>확인 기준 준비 중</strong></div>
-          <div><span>예상 비용·성능</span><strong>데이터 확정 후 제공</strong></div>
+          <div><span>먼저 점검할 부품</span><strong>{focus?.part === 'RAM' ? '메모리' : focus?.part === 'GPU' ? '그래픽카드'
+            : focus?.part === 'CPU' ? 'CPU' : '판단 보류'}</strong></div>
+          <div><span>판단 근거</span><strong>{focus?.basis === 'OFFICIAL_CAPACITY' ? '공식 권장 용량'
+            : focus?.basis === 'INTERNAL_SCORE' ? '팀 내부 상대 등급' : '추가 자료 필요'}</strong></div>
+          <div><span>제품·비용·FPS</span><strong>아직 선정·계산하지 않음</strong></div>
         </div>
+        <p className="planner-caveat">이 화면은 구매할 제품을 확정한 추천이 아닙니다. 입력 예산과 목표 해상도·FPS는
+          아직 계산에 반영되지 않으며, 실제 교체 전에는 제원과 호환성을 별도로 확인해야 합니다.</p>
       </section>
       <section className="planner-card">
         <h2>현재 구성과 추천 구성 비교</h2>
