@@ -46,12 +46,34 @@ export function isSpecificHardwareModel(name: string): boolean {
   return !/^(?:core i[3579]|ryzen [3579])$/i.test(name.trim())
 }
 
+function validScore(score: number | undefined): number | null {
+  return typeof score === 'number' && Number.isFinite(score) && score > 0 ? score : null
+}
+
 function scoreFor(model: string, dataset: BenchmarkDataset): number | null {
   const key = normalizeHardwareModel(model)
   const matches = Object.entries(dataset.scores).filter(([name]) => normalizeHardwareModel(name) === key)
   if (!key || matches.length !== 1) return null
-  const score = matches[0]?.[1]
-  return typeof score === 'number' && Number.isFinite(score) && score > 0 ? score : null
+  return validScore(matches[0]?.[1])
+}
+
+// 내 부품은 카탈로그 판매 제품명(예: 'GeForce GTX 1660 SUPER VENTUS XS OC')일 수 있다.
+// 정확히 같은 이름이 없으면 이름 안에 들어 있는 자료 모델 중 가장 긴 것을 쓴다('GTX 1660'보다 'GTX 1660 SUPER').
+// 오매칭을 막기 위해 영문자·숫자가 모두 있는 모델만 찾고, 바로 뒤에 숫자가 이어지면(1060 → 10600) 같은 모델로 보지 않는다.
+// 노트북 GPU는 같은 이름의 데스크톱 칩과 성능이 달라 이 방식으로 찾지 않는다.
+function scoreForPart(model: string, dataset: BenchmarkDataset): number | null {
+  const exact = scoreFor(model, dataset)
+  if (exact !== null || /laptop|mobile|max-q/i.test(model)) return exact
+  const key = normalizeHardwareModel(model)
+  const found = Object.entries(dataset.scores).map(([name, score]) => ({ name: normalizeHardwareModel(name), score }))
+    .filter(({ name }) => /[a-z]/.test(name) && /\d/.test(name))
+    .filter(({ name }) => {
+      const at = key.indexOf(name)
+      return at >= 0 && !/\d/.test(key.charAt(at + name.length))
+    })
+  const longest = Math.max(0, ...found.map(({ name }) => name.length))
+  const best = found.filter(({ name }) => name.length === longest)
+  return best.length === 1 ? validScore(best[0].score) : null
 }
 
 export function compareBenchmarkScores(kind: ComponentKind, actualModel: string,
@@ -68,7 +90,7 @@ export function compareBenchmarkScores(kind: ComponentKind, actualModel: string,
   if (requirementModels.length === 0 || requirementModels.some((model) => !isSpecificHardwareModel(model))) {
     return unknown('공식 요구 사양이 특정 모델이 아닌 계열로 제시됐습니다.')
   }
-  const actualScore = scoreFor(actualModel, dataset)
+  const actualScore = scoreForPart(actualModel, dataset)
   if (actualScore === null) return unknown('내 부품의 점수가 자료에 없습니다.')
   const baselines = requirementModels.map((model) => ({ model, score: scoreFor(model, dataset) }))
   if (baselines.some((item) => item.score === null)) {

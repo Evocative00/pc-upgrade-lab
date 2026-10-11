@@ -91,3 +91,15 @@ test('배율은 소수 둘째 자리까지, 10배부터는 묶어서 보여 준�
   assert.equal(formatRatio(0.654), '0.65배')
   assert.equal(formatRatio(54.4), '10배 이상')
 })
+
+test('카탈로그 판매 제품명도 이름 안의 가장 구체적인 칩셋으로 비교한다', () => {
+  const cyberpunk = GAME_REQUIREMENTS['사이버펑크 2077']
+  const super1660 = comparePartScore('GPU', [part('GPU', 'GeForce GTX 1660 SUPER VENTUS XS OC')], cyberpunk.minimum.gpu)
+  const ti1660 = comparePartScore('GPU', [part('GPU', 'GeForce GTX 1660 Ti VENTUS XS 6G OC')], cyberpunk.minimum.gpu)
+  assert.equal(super1660.actualScore, GPU_RELATIVE_DATASET.scores['GeForce GTX 1660 SUPER'])
+  assert.equal(ti1660.actualScore, GPU_RELATIVE_DATASET.scores['GeForce GTX 1660 Ti'])
+  assert.equal(comparePartScore('GPU', [part('GPU', 'PULSE Radeon RX 7900 GRE 16GB')], cyberpunk.recommended.gpu).actualScore,
+    GPU_RELATIVE_DATASET.scores['Radeon RX 7900 GRE'])
+  // 노트북 GPU는 이름에 데스크톱 칩셋이 들어 있어도 같은 성능으로 보지 않는다.
+  assert.equal(comparePartScore('GPU', [part('GPU', 'GeForce RTX 4060 Laptop GPU')], cyberpunk.recommended.gpu).status, 'UNKNOWN')
+})
