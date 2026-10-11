@@ -13,6 +13,8 @@ export type BenchmarkDataset = {
   sourceUrl: string
   checkedOn: string
   scores: Record<string, number>
+  // 모델별 측정 횟수. 자료가 제공할 때만 있다.
+  sampleCounts?: Record<string, number>
 }
 
 export type ScoreComparison = {
@@ -25,10 +27,14 @@ export type ScoreComparison = {
 }
 
 // 제조사·상표 표기와 WMI가 붙이는 설명만 제거한다. 숫자·Ti/SUPER 등 제품 변형은 유지한다.
+// 'nth Gen' 접두어와 내장 그래픽 설명(with Radeon ... Graphics)도 모델명이 아니므로 제거한다.
+// 메모리 용량은 1~2자리(8G, 12GB)만 지워 5600G 같은 모델 번호의 G 접미사를 보존한다.
 export function normalizeHardwareModel(name: string): string {
   return name.toLowerCase().replace(/@\s*[\d.]+\s*ghz\b/g, '')
+    .replace(/\b\d{1,2}(?:st|nd|rd|th)\s+gen\b/g, '')
+    .replace(/\s(?:with|w\/)\s+radeon\b.*$/g, '')
     .replace(/\b(intel|amd|nvidia|geforce|radeon)\b/g, '')
-    .replace(/\b(?:\d+gb|\d+g|\d+-core|six-core|processor|graphics|cpu|gpu|core|tm|r)\b/g, '')
+    .replace(/\b(?:\d{1,2}gb?|(?:\d+|dual|quad|six|eight|twelve|sixteen)-core|processor|graphics|cpu|gpu|core|tm|r)\b/g, '')
     .replace(/\b(?:series|계열)\b/g, '')
     .replace(/[^a-z0-9]+/g, '')
 }

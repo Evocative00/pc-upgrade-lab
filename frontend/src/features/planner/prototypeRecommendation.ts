@@ -1,19 +1,20 @@
 import type { PartInput } from '../pc-scan/types.ts'
 import { diagnoseGame } from './gameDiagnosis.ts'
 import { GAME_REQUIREMENTS } from './gameRequirements.ts'
-import { compareInternalScore, type ScoredPart } from './internalScores.ts'
+import type { ScoredPart } from './internalScores.ts'
+import { comparePartScore, type ScoreBasis } from './partScores.ts'
 
 export type PrototypeRecommendation = {
   status: 'FOCUS' | 'UNKNOWN' | 'NO_DEFICIT'
   part: 'CPU' | 'GPU' | 'RAM' | null
-  basis: 'OFFICIAL_CAPACITY' | 'INTERNAL_SCORE' | null
+  basis: 'OFFICIAL_CAPACITY' | ScoreBasis | null
   reason: string
   games: string[]
 }
 
 type Candidate = {
   part: 'CPU' | 'GPU' | 'RAM'
-  basis: 'OFFICIAL_CAPACITY' | 'INTERNAL_SCORE'
+  basis: 'OFFICIAL_CAPACITY' | ScoreBasis
   gap: number
   games: Set<string>
 }
@@ -41,10 +42,8 @@ export function recommendPrototypeFocus(parts: PartInput[], selectedGames: strin
       if (verdict === 'UNKNOWN') hasUnknown = true
     }
     for (const kind of ['CPU', 'GPU'] as ScoredPart[]) {
-      const result = compareInternalScore(kind, parts, game.recommended[kind.toLowerCase() as 'cpu' | 'gpu'])
-      if (result.status === 'BELOW_BASELINE') {
-        add(kind, 'INTERNAL_SCORE', name, Number(result.baselineGrade) - Number(result.actualGrade))
-      }
+      const result = comparePartScore(kind, parts, game.recommended[kind.toLowerCase() as 'cpu' | 'gpu'])
+      if (result.status === 'BELOW_BASELINE') add(kind, result.basis, name, result.gap)
       if (result.status === 'UNKNOWN') hasUnknown = true
     }
   }
@@ -56,14 +55,16 @@ export function recommendPrototypeFocus(parts: PartInput[], selectedGames: strin
 
   if (!first) return hasUnknown
     ? { status: 'UNKNOWN', part: null, basis: null,
-      reason: '입력 정보나 내부 등급표가 부족해 교체 우선순위를 정할 수 없습니다.', games: [] }
+      reason: '입력 정보나 점수·등급 자료가 부족해 교체 우선순위를 정할 수 없습니다.', games: [] }
     : { status: 'NO_DEFICIT', part: null, basis: null,
-      reason: '확인 가능한 권장 용량과 시연용 등급에서 부족 항목을 찾지 못했습니다. 교체가 불필요하다는 확정 판정은 아닙니다.', games: [] }
+      reason: '확인 가능한 권장 용량, CPU 벤치마크 점수, GPU 등급에서 부족 항목을 찾지 못했습니다. 교체가 불필요하다는 확정 판정은 아닙니다.', games: [] }
 
   const label = first.part === 'RAM' ? '메모리' : first.part === 'GPU' ? '그래픽카드' : 'CPU'
   const games = [...first.games]
   const reason = first.basis === 'OFFICIAL_CAPACITY'
     ? `${games.join(', ')}의 공식 권장 용량보다 현재 확인된 ${label} 용량이 작아 먼저 점검합니다.`
-    : `${games.join(', ')}의 공식 권장 예시를 팀 내부 등급으로 바꿔 비교했을 때 ${label} 등급이 낮아 먼저 점검합니다.`
+    : first.basis === 'BENCHMARK_SCORE'
+      ? `${games.join(', ')}의 공식 권장 예시와 Blender CPU 벤치마크 점수로 비교했을 때 ${label} 점수가 낮아 먼저 점검합니다.`
+      : `${games.join(', ')}의 공식 권장 예시를 팀 내부 등급으로 바꿔 비교했을 때 ${label} 등급이 낮아 먼저 점검합니다.`
   return { status: 'FOCUS', part: first.part, basis: first.basis, reason, games }
 }

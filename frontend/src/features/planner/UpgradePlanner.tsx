@@ -89,6 +89,7 @@ export function UpgradePlanner({ pcName, parts, onBackToPc }: Props) {
           <div><span>먼저 점검할 부품</span><strong>{focus?.part === 'RAM' ? '메모리' : focus?.part === 'GPU' ? '그래픽카드'
             : focus?.part === 'CPU' ? 'CPU' : '판단 보류'}</strong></div>
           <div><span>판단 근거</span><strong>{focus?.basis === 'OFFICIAL_CAPACITY' ? '공식 권장 용량'
+            : focus?.basis === 'BENCHMARK_SCORE' ? 'Blender CPU 벤치마크 점수'
             : focus?.basis === 'INTERNAL_SCORE' ? '팀 내부 상대 등급' : '추가 자료 필요'}</strong></div>
           <div><span>제품·비용·FPS</span><strong>아직 선정·계산하지 않음</strong></div>
         </div>
