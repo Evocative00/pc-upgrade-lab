@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { PartInput } from '../pc-scan/types.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
+import { GameRequirementsDiagnosis } from './GameRequirementsDiagnosis.tsx'
 import { UpgradeGoalForm } from './UpgradeGoalForm.tsx'
 import { defaultGoal, goalSummary, type UpgradeGoal } from './plannerGoal.ts'
 import './planner.css'
@@ -37,9 +38,11 @@ function CurrentPc({ pcName, parts }: Pick<Props, 'pcName' | 'parts'>) {
   </section>
 }
 
-function ScopeNotice() {
+function ScopeNotice({ gameDiagnosis }: { gameDiagnosis: boolean }) {
   return <p className="planner-scope" role="status">
-    현재 화면은 흐름 확인용입니다. 성능 진단, 제품 선정, 예상 가격·FPS와 교체 후 호환성 판정은 아직 계산하지 않습니다.
+    {gameDiagnosis
+      ? '공식 요구 사양 중 확인 가능한 항목만 비교합니다. CPU·GPU 성능 순위, 예상 가격·FPS, 제품 선정과 교체 후 호환성은 아직 계산하지 않습니다.'
+      : '현재 화면은 흐름 확인용입니다. 제품 선정, 예상 가격·FPS와 교체 후 호환성 판정은 아직 계산하지 않습니다.'}
   </p>
 }
 
@@ -56,18 +59,19 @@ export function UpgradePlanner({ pcName, parts, onBackToPc }: Props) {
       <button type="button" className="planner-text-button" onClick={() => setStep((step - 1) as Step)}>← 이전 단계</button>
       <p className="planner-eyebrow">{goalSummary(goal)}</p>
       <h1>{step === 3 ? '현재 구성 진단' : step === 4 ? '추천 플랜' : '호환성 상세'}</h1>
-      <p>{step === 3 ? '내 PC와 선택한 목표를 한곳에서 확인해 보세요.' :
+      <p>{step === 3 ? '내 PC와 선택한 목표를 공식 요구 사양에 비춰 확인해 보세요.' :
         step === 4 ? '가장 적합한 업그레이드 한 가지를 보여줄 자리입니다.' :
           '교체 전후의 연결 조건을 항목별로 확인할 자리입니다.'}</p>
     </header>
-    <ScopeNotice />
+    <ScopeNotice gameDiagnosis={step === 3 && goal.purpose === 'GAME'} />
     {step === 3 && <div className="planner-result-grid">
       <div className="planner-main">
-        <section className="planner-card planner-highlight">
+        {goal.purpose === 'GAME' ? <GameRequirementsDiagnosis games={goal.games} parts={parts} /> :
+          <section className="planner-card planner-highlight">
           <span className="badge badge--empty">분석 준비 중</span>
           <h2>어떤 부품을 바꾸면 좋을까요?</h2>
           <p>선택한 용도에 맞춰 부품별 여유와 병목을 표시할 예정입니다. 지금은 실제 성능 판단을 제공하지 않습니다.</p>
-        </section>
+        </section>}
         <CurrentPc pcName={pcName} parts={parts} />
       </div>
       <aside className="planner-card planner-aside">

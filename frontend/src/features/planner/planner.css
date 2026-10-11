@@ -91,6 +91,25 @@
 .planner-compare-row span { overflow-wrap: anywhere; }
 .planner-compare-row span:last-child { color: var(--text); }
 .planner-plan-card { border-color: var(--accent-border); }
+.planner-game-list { display: grid; gap: 22px; margin-top: 20px; }
+.planner-game { border-top: 1px solid var(--border); padding-top: 18px; }
+.planner-game h3 { margin: 0; font-size: 18px; }
+.planner-game a { color: var(--accent); font-size: 13px; }
+.planner-source { margin: 6px 0 16px; color: var(--text); font-size: 12px; }
+.planner-tier-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.planner-tier { min-width: 0; padding: 14px; border: 1px solid var(--border); border-radius: 6px; }
+.planner-tier-head { display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; align-items: start; }
+.planner-tier h4 { margin: 0; font-size: 15px; }
+.planner-tier-head p { margin: 4px 0 0; font-size: 12px; color: var(--text); }
+.planner-verdict { display: inline-block; width: fit-content; padding: 4px 7px; border-radius: 4px; font-size: 12px; font-weight: 700; }
+.planner-verdict--pass { color: var(--linked); background: var(--accent-bg); }
+.planner-verdict--fail { color: var(--manual); background: var(--surface); border: 1px solid currentColor; }
+.planner-verdict--unknown { color: var(--text); background: var(--bg); border: 1px solid var(--border); }
+.planner-requirement-list { margin-top: 12px; }
+.planner-requirement-row { display: grid; gap: 7px; padding: 10px 0; border-top: 1px solid var(--border); font-size: 12px; }
+.planner-requirement-row span { overflow-wrap: anywhere; line-height: 1.5; }
+.planner-requirement-row > div { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.planner-requirement-row small { color: var(--text); font-size: 12px; line-height: 1.4; }
 .planner-check-list { list-style: none; padding: 0; margin: 16px 0 0; }
 .planner-check-list li { padding: 12px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: 16px; }
 .planner-check-list li span { color: var(--text); font-size: 13px; text-align: right; }
@@ -98,5 +117,5 @@
 
 @keyframes planner-reveal { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { .planner-reveal { animation: none; } }
-@media (max-width: 800px) { .planner-layout, .planner-result-grid, .planner-entry-options { grid-template-columns: 1fr; } .planner-aside { position: static; } }
+@media (max-width: 800px) { .planner-layout, .planner-result-grid, .planner-entry-options, .planner-tier-grid { grid-template-columns: 1fr; } .planner-aside { position: static; } }
 @media (max-width: 580px) { .planner-card { padding: 16px; } .planner-goal-pair, .planner-workloads, .planner-part-grid, .planner-placeholder-grid { grid-template-columns: 1fr; } .planner-steps { justify-content: flex-start; } .planner-check-list li { flex-direction: column; gap: 4px; } .planner-check-list li span { text-align: left; } }

@@ -65,7 +65,7 @@ export function UpgradeEntryPage() {
           <SavedPcList key={authKey(auth)} page={page} onPageChange={setPage} />}
       </section>
     </div>
-    <p className="planner-scope">현재는 화면 흐름을 확인하는 단계입니다. 성능 진단과 추천 제품·가격·FPS 계산은 아직 제공하지 않습니다.</p>
+    <p className="planner-scope">게임 5종은 공식 최소·권장 사양의 일부 항목을 비교합니다. 추천 제품·가격·예상 FPS 계산은 아직 제공하지 않습니다.</p>
   </div>
 }
 
