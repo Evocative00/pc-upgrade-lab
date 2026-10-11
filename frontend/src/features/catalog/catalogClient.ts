@@ -163,19 +163,59 @@ function isPage(value: unknown): value is CatalogPage {
 
 function isDetail(value: unknown): value is CatalogDetail {
   if (!isObject(value) || !isProduct(value.product) || !isObject(value.specification)) return false
-  // 원본 JSON은 받지 않는다. 제원은 스칼라 값과 GPU 보조전원 목록만 허용한다.
+  const type = value.product.type
+  // 배열은 해당 부품의 검증한 전원 단자와 장착 규격 목록만 받는다.
   const validSpecs = Object.keys(value.specification).length > 0 &&
     Object.entries(value.specification).every(([key, item]) =>
       item === null || typeof item === 'string' || typeof item === 'boolean' ||
       (typeof item === 'number' && Number.isFinite(item)) ||
-      (key === 'powerConnectors' && Array.isArray(item) && item.every((connector: unknown) =>
+      (['GPU', 'PSU'].includes(type) && key === 'powerConnectors' && Array.isArray(item) && item.every((connector: unknown) =>
         isObject(connector) && isText(connector.connectorType) &&
-        Number.isSafeInteger(connector.connectorCount) && Number(connector.connectorCount) > 0)))
-  return validSpecs && Array.isArray(value.sources) && value.sources.length > 0 &&
+        Number.isSafeInteger(connector.connectorCount) && Number(connector.connectorCount) > 0)) ||
+      (type === 'CASE' && ['motherboardFormFactors', 'psuFormFactors'].includes(key)
+        && Array.isArray(item) && item.every((factor) => typeof factor === 'string')))
+  return validSpecs && validHardwareSpecification(value.product.type, value.specification) && Array.isArray(value.sources) && value.sources.length > 0 &&
     value.sources.every((source: unknown) => isObject(source) &&
       ['BUILDCORES', 'MANUFACTURER', 'MANUAL'].includes(String(source.sourceName)) &&
       nullableText(source.externalId) && nullableText(source.sourceRevision) &&
       isWebUrl(source.sourceUrl) && isText(source.retrievedAt)) && isAttributions(value.attributions)
+}
+
+function validHardwareSpecification(type: PartType, specs: Record<string, unknown>): boolean {
+  const positive = (value: unknown) => typeof value === 'number' && Number.isFinite(value) && value > 0
+  const integer = (value: unknown) => Number.isSafeInteger(value) && Number(value) > 0
+  const optional = (value: unknown, validator: (value: unknown) => boolean) => value === null || validator(value)
+  const uniqueCodes = (value: unknown, allowed: string[]) => Array.isArray(value)
+    && new Set(value).size === value.length && value.every((code) => typeof code === 'string' && allowed.includes(code))
+  const psuFactors = ['ATX', 'SFX', 'SFX_L']
+  if (type === 'PSU') {
+    const allowed = ['ATX_24PIN', 'EPS_4_4PIN', 'PCIE_6_2PIN', 'PCIE_6PIN', 'PCIE_8PIN',
+      'PCIE_16PIN_UNSPECIFIED', 'PCIE_12VHPWR', 'PCIE_12V_2X6']
+    return optional(specs.ratedPowerW, integer) && optional(specs.formFactor, (value) => psuFactors.includes(String(value)))
+      && ['lengthMm', 'widthMm', 'heightMm'].every((key) => optional(specs[key], positive))
+      && optional(specs.atxVersion, (value) => typeof value === 'string' && /^[1-9][0-9]?\.[0-9]{1,2}$/.test(value))
+      && typeof specs.powerConnectorsKnown === 'boolean' && Array.isArray(specs.powerConnectors)
+      && (specs.powerConnectorsKnown || specs.powerConnectors.length === 0)
+      && new Set(specs.powerConnectors.map((item) => isObject(item) ? item.connectorType : null)).size === specs.powerConnectors.length
+      && specs.powerConnectors.every((item) => isObject(item) && allowed.includes(String(item.connectorType))
+        && integer(item.connectorCount) && optional(item.independentCableCount, integer)
+        && (item.independentCableCount === null || Number(item.independentCableCount) <= Number(item.connectorCount))
+        && optional(item.maxPowerW, integer))
+  }
+  if (type === 'CASE') {
+    return typeof specs.motherboardFormFactorsKnown === 'boolean' && typeof specs.psuFormFactorsKnown === 'boolean'
+      && uniqueCodes(specs.motherboardFormFactors, ['ATX', 'MICRO_ATX', 'MINI_ITX', 'MINI_DTX', 'E_ATX'])
+      && uniqueCodes(specs.psuFormFactors, psuFactors)
+      && (specs.motherboardFormFactorsKnown || (specs.motherboardFormFactors as string[]).length === 0)
+      && (specs.psuFormFactorsKnown || (specs.psuFormFactors as string[]).length === 0)
+      && ['maxPsuLengthMm', 'maxGpuLengthMm', 'maxGpuHeightMm', 'maxGpuThicknessMm'].every((key) => optional(specs[key], positive))
+      && optional(specs.expansionSlotCount, integer)
+      && ['gpuClearanceConditions', 'psuClearanceConditions'].every((key) => optional(specs[key], (value) => typeof value === 'string'))
+      && typeof specs.gpuClearanceUnconditional === 'boolean' && typeof specs.psuClearanceUnconditional === 'boolean'
+      && (!specs.gpuClearanceUnconditional || ['maxGpuLengthMm', 'maxGpuHeightMm', 'maxGpuThicknessMm'].some((key) => positive(specs[key])))
+      && (!specs.psuClearanceUnconditional || positive(specs.maxPsuLengthMm))
+  }
+  return true
 }
 
 // 상대 주소를 사용하므로 Vite의 기존 /api 프록시와 연결된다. 오류 시 예시 데이터로 대체하지 않는다.

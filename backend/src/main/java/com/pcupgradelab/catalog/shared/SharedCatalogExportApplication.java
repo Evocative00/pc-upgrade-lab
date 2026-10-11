@@ -22,6 +22,8 @@ import tools.jackson.databind.json.JsonMapper;
 public final class SharedCatalogExportApplication {
     public static final String RETAIL_CATALOG_FILE = "catalog-retail-approved.json";
     public static final String RETAIL_CONTRACTS_FILE = "contract-fixtures-retail-approved.json";
+    public static final String POWER_CASE_CATALOG_FILE = "catalog-power-case-approved.json";
+    public static final String POWER_CASE_CONTRACTS_FILE = "contract-fixtures-power-case-approved.json";
     private static final JsonMapper MAPPER = JsonMapper.builder().build();
     private SharedCatalogExportApplication() { }
 
@@ -38,13 +40,20 @@ public final class SharedCatalogExportApplication {
         Path repository = Path.of(args[0]).toAbsolutePath().normalize();
         boolean check = false;
         boolean retailApproved = false;
+        boolean powerCaseApproved = false;
         Path prices = null;
         for (int i = 1; i < args.length; i++) {
             if ("--check".equals(args[i]) && !check) check = true;
             else if ("--retail-approved".equals(args[i]) && !retailApproved) retailApproved = true;
+            else if ("--power-case-approved".equals(args[i]) && !powerCaseApproved) powerCaseApproved = true;
             else if ("--prices".equals(args[i]) && prices == null && i + 1 < args.length)
                 prices = Path.of(args[++i]).toAbsolutePath().normalize();
             else throw new IllegalArgumentException("Use <repository-root> [--check] [--prices <reviewed-price-file> | --retail-approved]");
+        }
+        if (powerCaseApproved) {
+            if (prices != null || retailApproved) throw new IllegalArgumentException("Choose only the exact approved power/case export");
+            exportApprovedPowerCase(repository, check);
+            return;
         }
         if (retailApproved) {
             if (prices != null) throw new IllegalArgumentException("Approved retail export cannot use an arbitrary price override");
@@ -71,8 +80,16 @@ public final class SharedCatalogExportApplication {
     }
 
     private static void exportApprovedRetail(Path repository, boolean check) throws Exception {
-        exportTo(repository.resolve("workers/catalog-prices/generated"), SharedCatalogSnapshot.loadActive(repository),
+        exportTo(repository.resolve("workers/catalog-prices/generated"), SharedCatalogSnapshot.loadApprovedRetail(repository),
                 check, RETAIL_CATALOG_FILE, RETAIL_CONTRACTS_FILE);
+    }
+
+    private static void exportApprovedPowerCase(Path repository, boolean check) throws Exception {
+        var release = SharedPowerCaseRelease.load(repository);
+        var output = repository.resolve("workers/catalog-prices/generated");
+        exportTo(output, release.catalog(), check, POWER_CASE_CATALOG_FILE, POWER_CASE_CONTRACTS_FILE);
+        writeOrCheck(output.resolve("reference-prices-power-case-approved.json"), json(release.references()), check);
+        writeOrCheck(output.resolve("approved-power-case-release.json"), json(release.approval()), check);
     }
 
     private static void exportTo(Path output, SharedCatalogSnapshot snapshot, boolean check) throws Exception {

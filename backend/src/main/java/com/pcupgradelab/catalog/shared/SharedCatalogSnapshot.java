@@ -144,6 +144,22 @@ public final class SharedCatalogSnapshot {
     public String apiPath() { return full ? "/api/v2/prices" : "/api/v1/prices"; }
     public record Entry(SharedPriceDtos.Identity identity, CatalogProductView.CurrentPrice price) {}
 
+    /** Package-only construction for the separately validated, unpublished seven-product stage. */
+    static SharedCatalogSnapshot powerCaseStage(Map<String, Entry> entries) {
+        require(entries.size() == 315 && entries.values().stream().filter(p -> p.price() != null).count() == 83,
+                "PSU/CASE stage must contain 315 products and 83 prices");
+        return new SharedCatalogSnapshot(entries);
+    }
+
+    private SharedCatalogSnapshot(Map<String, Entry> entries) {
+        var ordered = new LinkedHashMap<String, Entry>();
+        entries.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(e -> ordered.put(e.getKey(), e.getValue()));
+        products = Collections.unmodifiableMap(ordered);
+        full = true;
+        catalogVersion = "all-catalog-v1-" + hash(MAPPER.writeValueAsString(ordered.values().stream().map(Entry::identity).toList()));
+        priceVersion = "prices-v1-" + hash(MAPPER.writeValueAsString(ordered.values()));
+    }
+
     public record SourceIdentity(CatalogSourceName sourceName, String externalId) { }
     public record ProductIdentity(SourceIdentity sourceIdentity, SharedPriceDtos.Identity identity,
                                   @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -159,7 +175,12 @@ public final class SharedCatalogSnapshot {
                                           IdentityManifest identities, CatalogPriceImportBatch prices) { }
 
     /** Operational approved extension. Missing approval/resources never fall back to the 307-product baseline. */
-    public static SharedCatalogSnapshot loadActive() {
+    public static SharedCatalogSnapshot loadActive() { return SharedPowerCaseRelease.loadBundled().catalog(); }
+
+    public static SharedCatalogSnapshot loadActive(Path repositoryRoot) { return SharedPowerCaseRelease.load(repositoryRoot).catalog(); }
+
+    /** Previous approved 308-product release remains available to existing clients and stage validation. */
+    public static SharedCatalogSnapshot loadApprovedRetail() {
         try {
             return approvedRetail(readBundled(FULL_IDENTITIES), readBundled("active-approved-prices.json"),
                     readBundled("approved-retail-extension-2026-10-10.json"),
@@ -168,7 +189,7 @@ public final class SharedCatalogSnapshot {
         catch (RuntimeException ex) { throw new IllegalArgumentException("Invalid approved active retail catalog", ex); }
     }
 
-    public static SharedCatalogSnapshot loadActive(Path repositoryRoot) {
+    public static SharedCatalogSnapshot loadApprovedRetail(Path repositoryRoot) {
         require(repositoryRoot != null, "Repository root is required");
         try {
             return approvedRetail(readFile(repositoryRoot.resolve("data/catalog-shared/" + FULL_IDENTITIES)),

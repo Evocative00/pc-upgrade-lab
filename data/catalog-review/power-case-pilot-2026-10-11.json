@@ -1,0 +1,613 @@
+{
+  "schemaVersion": 1,
+  "publicationApproved": false,
+  "databaseApplyApproved": false,
+  "reviewedAt": "2026-10-11T06:42:41.435Z",
+  "products": [
+    {
+      "key": "psu-msi-mag-a650bn",
+      "type": "PSU",
+      "manufacturer": "MSI",
+      "modelName": "MAG A650BN",
+      "partNumber": null,
+      "identityKind": "PHYSICAL_VARIANT",
+      "canonicalId": "b398c8d7-2959-398b-90ac-136b4d00ee1c",
+      "specification": {
+        "ratedPowerW": 650,
+        "formFactor": "ATX",
+        "lengthMm": 140,
+        "widthMm": 150,
+        "heightMm": 86,
+        "atxVersion": null,
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "ATX_24PIN",
+            "connectorCount": 1,
+            "independentCableCount": null,
+            "maxPowerW": null
+          },
+          {
+            "connectorType": "EPS_4_4PIN",
+            "connectorCount": 1,
+            "independentCableCount": null,
+            "maxPowerW": null
+          },
+          {
+            "connectorType": "PCIE_6_2PIN",
+            "connectorCount": 2,
+            "independentCableCount": null,
+            "maxPowerW": null
+          }
+        ]
+      },
+      "sources": [
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.msi.com/Power-Supply/MAG-A650BN/Specification",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": "MAG A650BN",
+          "sourceRevision": null,
+          "notes": [
+            "일반 MAG A650BN이다. MAG A650BN PCIE5 II/III와 동일 제품으로 묶지 않는다.",
+            "제조사 정격 650W와 DxWxH 140x150x86mm, 메인전원/CPU/GPU 출력 커넥터 수를 기록했다.",
+            "ATX 기계 규격은 국내 상세 페이지의 ATX 파워 분류와 대조했다. 전기 규격 ATX 버전은 확인하지 못해 null이다.",
+            "커넥터 개수는 케이블 개수와 다르다. 독립 케이블 수를 확인하지 못해 null로 보존했다.",
+            "이 구조의 powerConnectorsKnown은 메인전원/CPU/GPU 출력 커넥터 범위다. SATA/IDE/FDD 출력은 이번 호환성 범위에 포함하지 않는다."
+          ]
+        }
+      ],
+      "currentPrice": {
+        "amountKrw": 75600,
+        "sourceName": "DANAWA",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15283025",
+        "observedAt": "2026-10-11T06:42:09.480Z"
+      },
+      "priceReview": {
+        "status": "EXACT_VARIANT_OBSERVED",
+        "exactVariantVerified": true,
+        "saleCondition": "NEW",
+        "inStock": true,
+        "offerExternalId": "15283025",
+        "saleSku": "MSI MAG A650BN 80PLUS브론즈",
+        "verifiedAt": "2026-10-11T06:42:09.480Z",
+        "identityEvidence": [
+          "다나와 제목의 MSI MAG A650BN, 650W, 비모듈러, 깊이 140mm, EPS 1개/PCIe 6+2핀 2개가 제조사 일반형과 일치한다.",
+          "PCIE5 III(다나와 99916766)는 EPS 2개/16핀을 가진 별도 제품이므로 제외했다.",
+          "2026-10-11T06:42:09.480Z 직접 HTTP 200 조회에서 정확한 일반형 제목과 활성 일반 판매행의 구매 링크를 기존 parseDanawaPrice로 검증했다. SSG 아이코다 판매 링크는 모델 일반형이다."
+        ],
+        "notes": [
+          "2026-10-11T06:42:09.480Z 신선한 원문 일반 판매행은 data-base-price=75600, 별도 data-delivery-price=3000으로 상품가와 배송료를 구분한다. 기존 parseDanawaPrice가 활성 일반 판매행과 일치하는 pcode 구매 링크를 검증하여 이 상품가를 반환했다.",
+          "동일 원문의 배송비 포함 스위치 id=add_delivery는 checked=false다. 72,600+3,000원 문구는 id=topFixDeliveryIncludeFee, style=display:none;인 숨김 배송 포함용 요소다. 웹 도구 텍스트가 숨김 문구까지 표시한 것이므로 현재 상품가에서 3,000원을 차감할 근거로 사용하지 않는다.",
+          "currentPrice는 상품 1개 기준 배송비 제외 일반 판매가다. 카드/회원/쿠폰/현금 조건 가격과 배송료는 금액에 포함하지 않는다.",
+          "SSG 아이코다 상품1000582159173의 검색 응답도 상품75,600원과 배송3,000원을 별도로 표시하나, 새 직접 HTTP 조회는403이었다. SSG는 배송 표기 조사 근거로만 보존하고 현재 가격의 출처는 신선한 DANAWA 원문이다. 과거 검색 요약56,900원은 사용하지 않는다.",
+          "inStock=true는 다나와 일반 판매행의 활성 구매 링크 기준이다. 판매처 창고 재고나 실제 결제 단계는 별도로 확인하지 않았다.",
+          "가격 공표 및 실제 DB 반영 승인은 아직 받지 않았다."
+        ],
+        "sourceUrls": [
+          "https://prod.danawa.com/info/?pcode=15283025",
+          "https://www.ssg.com/item/itemView.ssg?itemId=1000582159173"
+        ]
+      }
+    },
+    {
+      "key": "psu-msi-mag-a750gl-pcie5-ii",
+      "type": "PSU",
+      "manufacturer": "MSI",
+      "modelName": "MAG A750GL PCIE5 II",
+      "partNumber": null,
+      "identityKind": "PHYSICAL_VARIANT",
+      "canonicalId": "dbf4bdec-6871-39bf-8765-338795b644e8",
+      "specification": {
+        "ratedPowerW": 750,
+        "formFactor": "ATX",
+        "lengthMm": 140,
+        "widthMm": 150,
+        "heightMm": 86,
+        "atxVersion": "3.1",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "ATX_24PIN",
+            "connectorCount": 1,
+            "independentCableCount": 1,
+            "maxPowerW": null
+          },
+          {
+            "connectorType": "EPS_4_4PIN",
+            "connectorCount": 2,
+            "independentCableCount": 2,
+            "maxPowerW": null
+          },
+          {
+            "connectorType": "PCIE_6_2PIN",
+            "connectorCount": 3,
+            "independentCableCount": 2,
+            "maxPowerW": null
+          },
+          {
+            "connectorType": "PCIE_16PIN_UNSPECIFIED",
+            "connectorCount": 1,
+            "independentCableCount": 1,
+            "maxPowerW": null
+          }
+        ]
+      },
+      "sources": [
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.msi.com/Power-Supply/MAG-A750GL-PCIE5-II/Specification",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": "MAG A750GL PCIE5 II",
+          "sourceRevision": null,
+          "notes": [
+            "II 버전의 정격750W, DxWxH140x150x86mm 및 커넥터 수를 확인했다. 일반 PCIE5/GLS 제품과 구분한다.",
+            "제원표는 PCIe5.1 16핀1개와450W를 명시한다.",
+            "같은 제품의 공식 소개 본문은600W로 표시하여 전력 한도 충돌이 있다. 충돌을 해소하기 전 maxPowerW는 null로 보존한다.",
+            "메인전원/CPU/GPU 출력 커넥터만 이번 호환성 구조에 기록했다."
+          ]
+        },
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.msi.com/Power-Supply/MAG-A750GL-PCIE5-II/",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": null,
+          "sourceRevision": null,
+          "notes": [
+            "ATX3.1 지원과 ATX케이블1개, EPS케이블2개, PCIe6+2핀케이블2개, 16핀케이블1개를 확인했다.",
+            "PCIe6+2핀 출력3개를 독립 케이블3개로 잘못 해석하지 않는다.",
+            "16핀을 PCIE_16PIN_UNSPECIFIED로 유지한다. 소개 본문의600W와 제원표450W가 일치하지 않는다."
+          ]
+        },
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://pl-store.msi.com/products/mag-a750gl-pcie5-ii",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": null,
+          "sourceRevision": null,
+          "notes": [
+            "MSI 공식 스토어는 ATX 프레임과12V2x6 450W를 명시한다.",
+            "동일 제조사 소개/제원표와 표현·수치 충돌이 있으므로 커넥터 세부 타입과 전력 한도 확정에는 사용하지 않았다."
+          ]
+        }
+      ],
+      "currentPrice": null,
+      "priceReview": {
+        "status": "HELD_VERSION_IDENTITY",
+        "exactVariantVerified": false,
+        "saleCondition": null,
+        "inStock": null,
+        "offerExternalId": null,
+        "saleSku": null,
+        "verifiedAt": null,
+        "identityEvidence": [],
+        "notes": [
+          "국내 검색에서 MSI MAG A750GL ATX3.1 상세 상품21206882가 발견됐지만 PCIE5 II 식별을 확인하지 못했다.",
+          "ATX3.1 명칭만으로 구형 PCIE5 및 II 버전을 합치거나 가격을 이식하지 않았다.",
+          "해외 금액을 환산한 가격이나 다른 버전의 참조가격을 currentPrice로 생성하지 않았다."
+        ],
+        "sourceUrls": [
+          "https://prod.danawa.com/info/?pcode=21206882"
+        ]
+      }
+    },
+    {
+      "key": "psu-msi-mag-a850gl-pcie5-ii",
+      "type": "PSU",
+      "manufacturer": "MSI",
+      "modelName": "MAG A850GL PCIE5 II",
+      "partNumber": null,
+      "identityKind": "PHYSICAL_VARIANT",
+      "canonicalId": "0d0ffb4a-7815-37c1-a988-0b0ce0ba6917",
+      "specification": {
+        "ratedPowerW": 850,
+        "formFactor": "ATX",
+        "lengthMm": 140,
+        "widthMm": 150,
+        "heightMm": 86,
+        "atxVersion": "3.1",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "ATX_24PIN",
+            "connectorCount": 1,
+            "independentCableCount": 1,
+            "maxPowerW": null
+          },
+          {
+            "connectorType": "EPS_4_4PIN",
+            "connectorCount": 2,
+            "independentCableCount": 2,
+            "maxPowerW": null
+          },
+          {
+            "connectorType": "PCIE_6_2PIN",
+            "connectorCount": 4,
+            "independentCableCount": 2,
+            "maxPowerW": null
+          },
+          {
+            "connectorType": "PCIE_16PIN_UNSPECIFIED",
+            "connectorCount": 1,
+            "independentCableCount": 1,
+            "maxPowerW": 600
+          }
+        ]
+      },
+      "sources": [
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.msi.com/Power-Supply/MAG-A850GL-PCIE5-II/Specification",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": "MAG A850GL PCIE5 II",
+          "sourceRevision": null,
+          "notes": [
+            "II 버전의 정격850W, DxWxH140x150x86mm 및 커넥터 수를 확인했다.",
+            "메인전원/CPU/GPU 출력 커넥터만 이번 호환성 구조에 기록했다."
+          ]
+        },
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.msi.com/Power-Supply/MAG-A850GL-PCIE5-II",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": null,
+          "sourceRevision": null,
+          "notes": [
+            "ATX3.1 및 네이티브16핀 출력 최대600W를 확인했다.",
+            "ATX케이블1개, EPS케이블2개, PCIe6+2핀케이블2개, 16핀케이블1개를 확인했다.",
+            "PCIe6+2핀 출력4개는 독립 케이블2개다.",
+            "이 페이지의 명칭은16핀/PCIe5.1이다. 이 명칭만으로12VHPWR/12V-2x6을 확정하지 않아 PCIE_16PIN_UNSPECIFIED로 보존했다."
+          ]
+        }
+      ],
+      "currentPrice": null,
+      "priceReview": {
+        "status": "HELD_VERSION_IDENTITY",
+        "exactVariantVerified": false,
+        "saleCondition": null,
+        "inStock": null,
+        "offerExternalId": null,
+        "saleSku": null,
+        "verifiedAt": null,
+        "identityEvidence": [],
+        "notes": [
+          "국내 검색에서 MSI MAG A850GL ATX3.1 상품21206702가 발견됐지만 PCIE5 II 식별은 확인하지 못했다.",
+          "기존 국내 상품의 ATX3.0에서3.1 인증 추가 설명은 II 버전의 판매 SKU 확정을 대신하지 않는다.",
+          "화이트/일반 PCIE5/GLS 가격을 승인된 블랙 PCIE5 II 제품에 이식하지 않았다."
+        ],
+        "sourceUrls": [
+          "https://prod.danawa.com/info/?pcode=21206702"
+        ]
+      }
+    },
+    {
+      "key": "psu-corsair-sf1000-cp-9020257-kr",
+      "type": "PSU",
+      "manufacturer": "Corsair",
+      "modelName": "SF1000 Platinum (2024)",
+      "partNumber": "CP-9020257-KR",
+      "identityKind": "PHYSICAL_VARIANT",
+      "canonicalId": "339c869d-4db6-38c4-a32a-cc488058616f",
+      "specification": {
+        "ratedPowerW": 1000,
+        "formFactor": "SFX",
+        "lengthMm": 100,
+        "widthMm": 125,
+        "heightMm": 63.5,
+        "atxVersion": "3.1",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "ATX_24PIN",
+            "connectorCount": 1,
+            "independentCableCount": 1,
+            "maxPowerW": null
+          },
+          {
+            "connectorType": "EPS_4_4PIN",
+            "connectorCount": 2,
+            "independentCableCount": 2,
+            "maxPowerW": null
+          },
+          {
+            "connectorType": "PCIE_6_2PIN",
+            "connectorCount": 4,
+            "independentCableCount": 4,
+            "maxPowerW": null
+          },
+          {
+            "connectorType": "PCIE_16PIN_UNSPECIFIED",
+            "connectorCount": 1,
+            "independentCableCount": 1,
+            "maxPowerW": null
+          }
+        ]
+      },
+      "sources": [
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.corsair.com/kr/ko/p/psu/cp-9020257-kr/sf-series-sf1000-fully-modular-80-plus-platinum-sfx-power-supply-kr-cp-9020257-kr",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": "CP-9020257-KR",
+          "sourceRevision": null,
+          "notes": [
+            "제조사 한국 페이지의 정확 SKU CP-9020257-KR, SFX, 정격1000W, ATX3.1을 확인했다.",
+            "케이블 표에서 ATX1개/EPS2개/PCIe6+2핀4개/16핀1개와 각각의 독립 케이블 수를 확인했다.",
+            "같은 페이지 본문은12V-2x6 포함, 케이블 표는12VHPWR로 표기한다. 세부 타입 충돌을 해소하기 전 PCIE_16PIN_UNSPECIFIED로 보존했다.",
+            "메인전원/CPU/GPU 출력 커넥터만 이번 호환성 구조에 기록했다."
+          ]
+        },
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.corsair.com/kr/ko/explorer/diy-builder/power-supply-units/sf1000-platinum-atx-31-vs-sf1000l-what-are-the-differences/",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": null,
+          "sourceRevision": null,
+          "notes": [
+            "SF1000 CP-9020257의 길이100mm/폭125mm/높이63.5mm와 SFX를 확인했다.",
+            "SF1000L CP-9020246은 SFX-L 길이130mm의 다른 제품이다.",
+            "SFX-to-ATX 브래킷 포함 설명은 확인했지만 케이스의 기본 지원 폼팩터를 자동 확장하지 않는다. 실제 브래킷 적용 여부는 별도 사용자 조건이다."
+          ]
+        }
+      ],
+      "currentPrice": null,
+      "priceReview": {
+        "status": "HELD_REGIONAL_SKU",
+        "exactVariantVerified": false,
+        "saleCondition": null,
+        "inStock": null,
+        "offerExternalId": null,
+        "saleSku": null,
+        "verifiedAt": null,
+        "identityEvidence": [],
+        "notes": [
+          "다나와59929925의 SF1000 ATX3.1 일반최저가323,890원은 발견했지만 상세 본문에 CP-9020257-KR 지역 SKU가 없어 연결을 확정하지 않았다.",
+          "다나와의 PCIe6+2핀3개 설명은 제조사4개 설명과도 일치하지 않아 판매 구성 대조가 필요하다.",
+          "정확 SKU를 적은 국내 corsair.co.kr 판매 페이지는366,000원을 표시하지만 SOLD OUT이므로 재고 있는 현재가로 채택하지 않았다.",
+          "위 금액은 보류 사유를 설명하는 관측 자료이며 currentPrice나 자동 참조가격으로 사용하지 않는다."
+        ],
+        "sourceUrls": [
+          "https://prod.danawa.com/info/?pcode=59929925",
+          "https://www.corsair.co.kr/shop/shopdetail.html?GfDT=bmt7W11A&branduid=1633385&mcode=002&scode=&search=&special=1&xcode=002"
+        ]
+      }
+    },
+    {
+      "key": "case-fractal-pop-air-black-solid-fd-c-poa1a-01",
+      "type": "CASE",
+      "manufacturer": "Fractal Design",
+      "modelName": "Pop Air Black Solid",
+      "partNumber": "FD-C-POA1A-01",
+      "identityKind": "PHYSICAL_VARIANT",
+      "canonicalId": "5ffeb16d-2a45-331f-9630-3de784ef358e",
+      "specification": {
+        "motherboardFormFactorsKnown": true,
+        "motherboardFormFactors": [
+          "ATX",
+          "MICRO_ATX",
+          "MINI_ITX"
+        ],
+        "psuFormFactorsKnown": true,
+        "psuFormFactors": [
+          "ATX"
+        ],
+        "maxPsuLengthMm": 170,
+        "maxGpuLengthMm": 405,
+        "maxGpuHeightMm": null,
+        "maxGpuThicknessMm": null,
+        "expansionSlotCount": 7,
+        "gpuClearanceConditions": "405mm는 전면 기본 팬 장착 기준이다. 전면 라디에이터·수직 GPU 브래킷·전원 케이블 간섭이 없는지는 별도 확인해야 한다.",
+        "psuClearanceConditions": "제조사 기본 ATX 장착 길이 상한170mm. 케이블 배선과 추가 장착물의 공간은 별도 확인한다.",
+        "gpuClearanceUnconditional": false,
+        "psuClearanceUnconditional": true
+      },
+      "sources": [
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.fractal-design.com/products/cases/pop-series/pop-air/pop-air-black-solid/",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": "FD-C-POA1A-01",
+          "sourceRevision": null,
+          "notes": [
+            "Black Solid SKU FD-C-POA1A-01, 강철 측면 패널, ATX/mATX/MiniITX 지원을 확인했다.",
+            "ATX PSU170mm, GPU405mm, 확장 슬롯7개를 확인했다.",
+            "Pop2/PopSilent/PopMini/PopXL/RGB/강화유리/다른 색상과 동일 제품으로 묶지 않는다.",
+            "GPU 높이·두께 상한은 이 자료에서 확인하지 못해 null로 보존했다."
+          ]
+        },
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.fractal-design.com/app/uploads/2022/06/Pop-Air-RGB-Pop-Air_Product-Sheet_EN.pdf",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": null,
+          "sourceRevision": "2022-06 product sheet",
+          "notes": [
+            "GPU405mm는 전면 팬 장착 기준이며 전면 라디에이터로 줄어드는 공간을 일률 추정하지 않는다."
+          ]
+        }
+      ],
+      "currentPrice": {
+        "amountKrw": 149000,
+        "sourceName": "DANAWA",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17357669",
+        "observedAt": "2026-10-11T06:42:09.811Z"
+      },
+      "priceReview": {
+        "status": "EXACT_VARIANT_OBSERVED",
+        "exactVariantVerified": true,
+        "saleCondition": "NEW",
+        "inStock": true,
+        "offerExternalId": "17357669",
+        "saleSku": "Fractal Design Pop Air Solid (블랙)",
+        "verifiedAt": "2026-10-11T06:42:09.811Z",
+        "identityEvidence": [
+          "다나와 제목 Fractal Design Pop Air Solid (블랙)는 제조사 Pop Air Black Solid와 같은 일반 검정 강철 측면판 제품이다. Clear 강화유리, RGB, Mini, XL, Silent 및 Pop 2 버전은 제외했다.",
+          "제조사 제품표의 Black Solid 부품번호 FD-C-POA1A-01과 다나와의 ATX/Micro-ATX/Mini-ITX, 전면팬 2개/후면팬 1개, 405mm GPU 및 170mm PSU 제원이 일치한다.",
+          "2026-10-11T06:42:09.811Z 직접 HTTP 200 조회에서 정확한 Solid 검정 제목과 해인과 재인의 활성 일반 판매행 구매 링크를 기존 parseDanawaPrice로 검증했다."
+        ],
+        "notes": [
+          "2026-10-11T06:42:09.811Z 신선한 원문 일반 판매행은 data-base-price=149000, 별도 data-delivery-price=3000으로 상품가와 배송료를 구분한다. 기존 parseDanawaPrice가 활성 일반 판매행과 일치하는 pcode 구매 링크를 검증하여 이 상품가를 반환했다.",
+          "동일 원문의 배송비 포함 스위치 id=add_delivery는 checked=false다. 146,000+3,000원 문구는 id=topFixDeliveryIncludeFee, style=display:none;인 숨김 배송 포함용 요소다. 웹 도구 텍스트가 숨김 문구까지 표시한 것이므로 현재 상품가에서 3,000원을 차감할 근거로 사용하지 않는다.",
+          "currentPrice는 상품 1개 기준 배송비 제외 일반 판매가다. 카드/회원/쿠폰/현금 조건 가격과 배송료는 금액에 포함하지 않는다.",
+          "컴퓨존 상품926484는 같은 Pop Air Solid 검정이지만 입고예정10월29일과 재입고알림을 표시하여 현재 재고 있는 가격 후보에서 제외했다. 검색 캐시의144,500원 또는149,000원을 현재가로 사용하지 않았다.",
+          "inStock=true는 다나와 일반 판매행의 활성 구매 링크 기준이다. 판매처 창고 재고나 실제 결제 단계는 별도로 확인하지 않았다.",
+          "가격 공표 및 실제 DB 반영 승인은 아직 받지 않았다."
+        ],
+        "sourceUrls": [
+          "https://prod.danawa.com/info/?pcode=17357669",
+          "https://www.compuzone.co.kr/product/product_detail.htm?ProductNo=926484"
+        ]
+      }
+    },
+    {
+      "key": "case-asus-prime-ap201-mesh-black-90dc00g0-b39000",
+      "type": "CASE",
+      "manufacturer": "ASUS",
+      "modelName": "Prime AP201 Mesh Black",
+      "partNumber": "90DC00G0-B39000",
+      "identityKind": "PHYSICAL_VARIANT",
+      "canonicalId": "084baffd-2ae4-3ada-b49d-3c1457d0b73c",
+      "specification": {
+        "motherboardFormFactorsKnown": true,
+        "motherboardFormFactors": [
+          "MICRO_ATX",
+          "MINI_ITX"
+        ],
+        "psuFormFactorsKnown": true,
+        "psuFormFactors": [
+          "ATX"
+        ],
+        "maxPsuLengthMm": 180,
+        "maxGpuLengthMm": 338,
+        "maxGpuHeightMm": null,
+        "maxGpuThicknessMm": null,
+        "expansionSlotCount": 4,
+        "gpuClearanceConditions": "GPU 최대 길이338mm. 전면 PSU 위치·길이와 배선, 상단 냉각장치·저장장치 배치를 확인해야 한다. GPU 높이·두께와 전원 케이블 여유의 상한은 미확인이다.",
+        "psuClearanceConditions": "제원표의 PSU 길이140~180mm는 배치에 따른 범위다. 제조사 PSU 배치 안내의 최적 길이는 Liquid Cooling/Neutral170mm, Full Storage160mm이다. 사용 중 배치를 모르면180mm 이내라는 이유만으로 장착을 확정하지 않는다.",
+        "gpuClearanceUnconditional": false,
+        "psuClearanceUnconditional": false
+      },
+      "sources": [
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://estore.asus.com/es/rog/es/es-product/90dc00g0-b39000-asus-prime-ap201-microatx-case.html",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": "90DC00G0-B39000",
+          "sourceRevision": null,
+          "notes": [
+            "ASUS 공식 스토어 검색 자료가 AP201 Mesh Black과90DC00G0-B39000을 연결한다. 직접 재조회는 웹 도구에서 접근 오류였다.",
+            "동일 물리 변형의 규격은 별도 ASUS 공식 제원표와 대조했다. 강화유리(TG) 및 화이트와 구분한다."
+          ]
+        },
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.asus.com/sg/motherboards-components/cases/prime/asus-prime-ap201-microatx-case/techspec/",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": null,
+          "sourceRevision": null,
+          "notes": [
+            "mATX/MiniITX, 슬롯4개, GPU338mm, PSU140~180mm를 확인했다.",
+            "GPU 높이·두께 상한은 이 자료에서 확인하지 못해 null로 보존했다."
+          ]
+        },
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.asus.com/za/support/faq/1048059/",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": null,
+          "sourceRevision": "2026-08-24",
+          "notes": [
+            "PSU 장착 위치에 따라 냉각장치·저장장치·배선 공간 조건이 달라지는 제조사3개 시나리오를 확인했다.",
+            "170/160mm는 최적 권장 길이이며180mm와 혼합해 하나의 무조건 장착 상한으로 만들지 않는다."
+          ]
+        }
+      ],
+      "currentPrice": null,
+      "priceReview": {
+        "status": "HELD_NO_CURRENT_OFFER",
+        "exactVariantVerified": true,
+        "saleCondition": null,
+        "inStock": false,
+        "offerExternalId": "17353112",
+        "saleSku": "ASUS PRIME AP201 (블랙)",
+        "verifiedAt": "2026-10-11T06:30:11Z",
+        "identityEvidence": [
+          "다나와의 블랙/통풍구 측면 패널이 제조사 AP201 Mesh Black 변형과 일치한다. 메쉬 블랙17353112와 TG 블랙20379782를 구분했다."
+        ],
+        "notes": [
+          "직접 조회한 상세 페이지는 가격비교 중지 및 판매점0개였다. 0원은 상품 가격으로 사용하지 않는다.",
+          "검색 요약의 과거169,360원 및 화이트/강화유리 가격을 현재 블랙 메쉬 가격으로 사용하지 않았다.",
+          "제조사 공식 스토어의 해외 EUR 금액을 KRW로 환산한 가격을 생성하지 않았다."
+        ],
+        "sourceUrls": [
+          "https://prod.danawa.com/info/?pcode=17353112"
+        ]
+      }
+    },
+    {
+      "key": "case-cooler-master-nr200-black-mcb-nr200-knnn-s00",
+      "type": "CASE",
+      "manufacturer": "Cooler Master",
+      "modelName": "MasterBox NR200 Black",
+      "partNumber": "MCB-NR200-KNNN-S00",
+      "identityKind": "PHYSICAL_VARIANT",
+      "canonicalId": "c3306ba5-4f2d-3d66-865b-4650cd4f363d",
+      "specification": {
+        "motherboardFormFactorsKnown": true,
+        "motherboardFormFactors": [
+          "MINI_ITX",
+          "MINI_DTX"
+        ],
+        "psuFormFactorsKnown": true,
+        "psuFormFactors": [
+          "SFX",
+          "SFX_L"
+        ],
+        "maxPsuLengthMm": 130,
+        "maxGpuLengthMm": 330,
+        "maxGpuHeightMm": 156,
+        "maxGpuThicknessMm": 60,
+        "expansionSlotCount": 3,
+        "gpuClearanceConditions": "GPU 길이330mm와 높이156mm는 전원 커넥터 포함 치수다. 두께60mm/3슬롯 및 바닥 팬·라디에이터·수직 배치 간섭도 확인한다. 카드 본체 치수만으로 전원 케이블 공간이 확보됐다고 확정하지 않는다.",
+        "psuClearanceConditions": "기본 SFX/SFX-L 장착 길이 상한130mm. 별도 ATX 브래킷을 실제 장착한 구성은 이번 기본 조건에 포함하지 않는다.",
+        "gpuClearanceUnconditional": false,
+        "psuClearanceUnconditional": true
+      },
+      "sources": [
+        {
+          "sourceName": "MANUFACTURER",
+          "sourceUrl": "https://www.coolermaster.com/ko-kr/products/masterbox-nr200.html",
+          "retrievedAt": "2026-10-11T06:30:11Z",
+          "externalId": "MCB-NR200-KNNN-S00",
+          "sourceRevision": null,
+          "notes": [
+            "일반 NR200 블랙 MCB-NR200-KNNN-S00이다. NR200P/NR200P V2/V3/MAX, 화이트 및 ATX PSU 브래킷 액세서리와 구분한다.",
+            "MiniITX/MiniDTX, SFX/SFX-L130mm, GPU330x156x60mm/슬롯3개를 확인했다.",
+            "제조사는 GPU 길이와 높이가 전원 커넥터 포함이라고 명시한다.",
+            "2.5슬롯보다 두꺼운 GPU는 바닥 슬림 팬을 권장하며 바닥 라디에이터는 별도 GPU 배치 조건이 있다."
+          ]
+        }
+      ],
+      "currentPrice": null,
+      "priceReview": {
+        "status": "HELD_EXACT_DOMESTIC_OFFER_NOT_FOUND",
+        "exactVariantVerified": false,
+        "saleCondition": null,
+        "inStock": null,
+        "offerExternalId": null,
+        "saleSku": null,
+        "verifiedAt": null,
+        "identityEvidence": [],
+        "notes": [
+          "승인된 일반 NR200 블랙의 정확 국내 신규 판매 SKU/현재 가격을 확인하지 못했다.",
+          "국내 검색에 나온 NR200P/NR200P V3/MAX/브래킷 및 해외 NR200 결과는 승인된 단일 상품의 현재가로 사용하지 않았다.",
+          "가격 조사는 실제 구매나 외부 서비스 쓰기 없이 수행했다."
+        ],
+        "sourceUrls": [
+          "https://search.danawa.com/dsearch.php?query=nr200",
+          "https://www.coolermaster.com/ko-kr/products/masterbox-nr200.html"
+        ]
+      }
+    }
+  ]
+}

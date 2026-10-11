@@ -61,11 +61,14 @@ public final class DeployedReferencePriceVerification {
                 if (approved == null) noReferences++; else references.put(item.canonicalId(), item.referenceEstimate());
             }
         }
-        require(references.size() == 227 && noReferences == 81, "Deployed reference coverage differs");
+        require(references.size() == 227 && noReferences == 88, "Deployed 315-product reference coverage differs");
         int currentPrices = verifyCurrent(origin, token, catalog, clock);
+        var retail = SharedCatalogSnapshot.loadApprovedRetail(root);
+        int retailCurrentPrices = verifyCurrent(origin, token, retail, clock);
+        verifyRetailReferences(origin, token, retail, SharedReferencePriceSnapshot.load(root, retail), clock);
         var previous = SharedCatalogSnapshot.loadFull(root);
         int previousCurrentPrices = verifyCurrent(origin, token, previous, clock);
-        require(currentPrices == 81 && previousCurrentPrices == 80, "Deployed current observations changed");
+        require(currentPrices == 83 && retailCurrentPrices == 81 && previousCurrentPrices == 80, "Deployed current observations changed");
         var http = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(2)).followRedirects(HttpClient.Redirect.NEVER).build();
         String query = "?canonicalIds=" + ids.getFirst();
         for (String authorization : new String[] { null, "Bearer " + ("0".repeat(64).equals(token) ? "1".repeat(64) : "0".repeat(64)) }) {
@@ -82,16 +85,32 @@ public final class DeployedReferencePriceVerification {
         report.put("catalogVersion", catalog.version()); report.put("referenceVersion", expected.referenceVersion());
         report.put("products", catalog.products().size()); report.put("referencesVerified", references.size());
         report.put("currentPricesPreserved", currentPrices); report.put("previous307CurrentPricesPreserved", previousCurrentPrices);
+        report.put("previous308CurrentPricesPreserved", retailCurrentPrices);
         report.put("currentProductsWithNoReference", noReferences); report.put("basis", basis);
         report.put("missingAndIncorrectAuthentication", 401); report.put("publicationApproved", true);
         report.put("databaseChanges", 0); report.put("deployments", 0); report.put("serverRestarts", 0);
         var output = Files.createDirectories(root.resolve("backend/build/catalog-reference-publication"));
         Files.write(output.resolve("deployed-reference-verification.json"),
                 JsonMapper.builder().build().writerWithDefaultPrettyPrinter().writeValueAsBytes(report));
-        System.out.println("Deployed HTTPS references verified: 227 references; 81 existing current prices and legacy 307/80 preserved; auth=401; DB/deploy/restart=0.");
+        System.out.println("Deployed HTTPS power/case release verified: 315 products; 83 prices; 227 preserved references; legacy 307/80 and 308/81 preserved; auth=401; DB/deploy/restart=0.");
+    }
+    private static void verifyRetailReferences(URI origin, String token, SharedCatalogSnapshot catalog,
+                                              SharedReferencePriceDtos.Snapshot expected, Clock clock) {
+        var client = new SharedReferencePriceClient(origin, Duration.ofSeconds(2), 65536, catalog, clock, token);
+        var entries = expected.products();
+        for (int start = 0; start < entries.size(); start += client.batchSize()) {
+            var selected = entries.subList(start, Math.min(entries.size(), start + client.batchSize()));
+            var result = client.fetch(selected.stream().map(p -> p.identity().canonicalId()).collect(java.util.stream.Collectors.toCollection(LinkedHashSet::new)));
+            require(expected.referenceVersion().equals(result.referenceVersion()), "Existing 308-product reference revision changed");
+            for (var item : result.items()) {
+                var value = selected.stream().filter(p -> p.identity().canonicalId().equals(item.canonicalId())).findFirst().orElseThrow();
+                require(item.status() == SharedReferencePriceDtos.Status.OK && value.referenceEstimate().equals(item.referenceEstimate()),
+                        "Existing 308-product reference values changed");
+            }
+        }
     }
     private static int verifyCurrent(URI origin, String token, SharedCatalogSnapshot catalog, Clock clock) {
-        var client = new SharedPriceClient(origin, Duration.ofSeconds(2), 65536, catalog, clock, SharedPriceFreshness.defaults(), token);
+        var client = new SharedPriceClient(origin, Duration.ofSeconds(2), 65536, catalog, clock, SharedPriceFreshness.defaults(), token, true);
         var ids = List.copyOf(catalog.products().keySet());
         int prices = 0;
         for (int start = 0; start < ids.size(); start += client.batchSize()) {

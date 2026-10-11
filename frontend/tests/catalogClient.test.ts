@@ -24,6 +24,17 @@ const details: CatalogDetail[] = ['week2-initial', 'week2-gpu', 'week2-monitor']
   }))
 })
 const gpu = details.filter(({ product }) => product.type === 'GPU').map(({ product }) => product)
+const powerCaseDetails: CatalogDetail[] = (JSON.parse(readFileSync(new URL(
+  '../../data/catalog-review/power-case-pilot-2026-10-11.json', import.meta.url), 'utf8')) as {
+    products: { canonicalId: string; type: CatalogProduct['type']; manufacturer: string; modelName: string;
+      partNumber: string | null; specification: CatalogSpecification; sources: CatalogDetail['sources'] }[]
+  }).products.map((record) => ({
+    product: { ...details[0].product, id: record.canonicalId, canonicalId: record.canonicalId,
+      type: record.type, manufacturer: record.manufacturer, modelName: record.modelName,
+      partNumber: record.partNumber, identityKind: 'PHYSICAL_VARIANT', modelId: null },
+    specification: record.specification, sources: record.sources.map(({ sourceName, sourceUrl, retrievedAt, externalId, sourceRevision }) =>
+      ({ sourceName, sourceUrl, retrievedAt, externalId, sourceRevision })), attributions: [],
+  }))
 function page(items: CatalogProduct[], overrides: Partial<CatalogPage> = {}): CatalogPage {
   return { items, page: 0, size: 20, totalElements: items.length, totalPages: items.length ? 1 : 0, attributions, ...overrides }
 }
@@ -93,6 +104,48 @@ test('18종 제원과 null 가격·출처를 상세로 읽는다', async () => {
     })
     assert.deepEqual(await client.get(detail.product.id), detail)
   }
+})
+
+test('실제 파워 4종·케이스 3종의 목록과 전원 케이블·장착 규격 상세를 읽는다', async () => {
+  assert.equal(powerCaseDetails.length, 7)
+  for (const detail of powerCaseDetails) {
+    const client = createHttpCatalogClient(async () => json(detail))
+    assert.deepEqual(await client.get(detail.product.id), detail)
+    const listClient = createHttpCatalogClient(async () => json(page([detail.product], { attributions: [] })))
+    assert.deepEqual((await listClient.search(detail.product.type, '')).items, [detail.product])
+  }
+})
+
+test('파워·케이스의 모순된 목록과 잘못된 케이블 수·규격을 호환 근거로 받아들이지 않는다', async () => {
+  const psu = powerCaseDetails.find(({ product }) => product.type === 'PSU')!
+  const enclosure = powerCaseDetails.find(({ product }) => product.type === 'CASE')!
+  const cable = { connectorType: 'PCIE_6_2PIN', connectorCount: 2, independentCableCount: 1, maxPowerW: null }
+  const invalidPsu = [
+    { ratedPowerW: 0 }, { formFactor: 'UNKNOWN' }, { atxVersion: 'ATX_3_1' },
+    { powerConnectorsKnown: false, powerConnectors: [cable] },
+    ...[0, -1, 3, 1.5].map((independentCableCount) => ({ powerConnectors: [{ ...cable, independentCableCount }] })),
+    { powerConnectors: [{ ...cable, maxPowerW: 0 }] }, { powerConnectors: [cable, cable] },
+    { powerConnectors: [{ ...cable, connectorType: 'CUSTOM_ADAPTER' }] },
+    { powerConnectors: ['PCIE_6_2PIN'] },
+  ]
+  const invalidCase = [
+    { motherboardFormFactors: ['ATX', 'ATX'] }, { psuFormFactors: ['UNKNOWN'] },
+    { motherboardFormFactorsKnown: false }, { psuFormFactorsKnown: false },
+    { maxGpuLengthMm: -1 }, { expansionSlotCount: 2.5 },
+    { gpuClearanceUnconditional: true, maxGpuLengthMm: null, maxGpuHeightMm: null, maxGpuThicknessMm: null },
+    { psuClearanceUnconditional: true, maxPsuLengthMm: null },
+    { gpuClearanceConditions: { note: 'nested' } },
+  ]
+  for (const [detail, invalid] of [[psu, invalidPsu], [enclosure, invalidCase]] as const) {
+    for (const patch of invalid) {
+      const client = createHttpCatalogClient(async () => json({ ...detail, specification: { ...detail.specification, ...patch } }))
+      await assert.rejects(client.get(detail.product.id), hasCode('INVALID_RESPONSE'))
+    }
+  }
+  const wrongType = createHttpCatalogClient(async () => json({ ...details[0], specification: {
+    ...details[0].specification, powerConnectors: [cable],
+  } }))
+  await assert.rejects(wrongType.get(details[0].product.id), hasCode('INVALID_RESPONSE'))
 })
 
 test('빈 목록은 정상 응답이며 미확정 가격을 0으로 바꾸지 않는다', async () => {

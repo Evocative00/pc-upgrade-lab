@@ -34,6 +34,7 @@ public final class SharedPriceClient {
     private final Clock clock;
     private final SharedPriceFreshness freshness;
     private final String apiToken;
+    private final boolean pinnedPreview;
     private final HttpClient http;
     private final JsonMapper mapper = JsonMapper.builder()
             .enable(DeserializationFeature.FAIL_ON_READING_DUP_TREE_KEY)
@@ -53,6 +54,13 @@ public final class SharedPriceClient {
     public SharedPriceClient(URI baseUrl, Duration timeout, int maxResponseBytes,
                              SharedCatalogSnapshot snapshot, Clock clock, SharedPriceFreshness freshness,
                              String apiToken) {
+        this(baseUrl, timeout, maxResponseBytes, snapshot, clock, freshness, apiToken, false);
+    }
+
+    /** Package-only opt-in pins preview observations; normal full catalogs still accept later approved observations. */
+    SharedPriceClient(URI baseUrl, Duration timeout, int maxResponseBytes,
+                      SharedCatalogSnapshot snapshot, Clock clock, SharedPriceFreshness freshness,
+                      String apiToken, boolean pinnedPreview) {
         this.baseUrl = validateBaseUrl(baseUrl);
         this.apiToken = validateApiToken(apiToken, this.baseUrl);
         if (timeout == null || timeout.compareTo(Duration.ofMillis(100)) < 0
@@ -65,6 +73,7 @@ public final class SharedPriceClient {
         this.snapshot = Objects.requireNonNull(snapshot);
         this.clock = Objects.requireNonNull(clock);
         this.freshness = Objects.requireNonNull(freshness);
+        this.pinnedPreview = pinnedPreview;
         this.http = HttpClient.newBuilder().connectTimeout(timeout).followRedirects(HttpClient.Redirect.NEVER).build();
     }
 
@@ -130,6 +139,8 @@ public final class SharedPriceClient {
                     var full = mapper.treeToValue(mapper.readTree(response.body()), SharedPriceDtos.EnvelopeV2.class);
                     if (full.priceVersion() == null || !full.priceVersion().matches("prices-v1-[0-9a-f]{64}"))
                         throw new IllegalArgumentException("Invalid shared price revision");
+                    if (pinnedPreview && !snapshot.priceVersion().equals(full.priceVersion()))
+                        throw new IllegalArgumentException("Shared staging price revision differs");
                     result = full.toEnvelope();
                 } else result = mapper.treeToValue(mapper.readTree(response.body()), SharedPriceDtos.Envelope.class);
             } catch (RuntimeException ex) {
@@ -162,6 +173,10 @@ public final class SharedPriceClient {
                     || item.status() == null || item.freshness() == null)
                 throw new IllegalArgumentException("Shared price response IDs must exactly match the request");
             var expected = snapshot.products().get(item.canonicalId());
+            if (pinnedPreview && (item.status() == SharedPriceDtos.Status.UNKNOWN_PRODUCT
+                    || !Objects.equals(expected.price(), item.price())
+                    || (expected.price() == null ? item.status() != SharedPriceDtos.Status.NO_PRICE : item.status() != SharedPriceDtos.Status.OK)))
+                throw new IllegalArgumentException("Shared staging observation differs from the reviewed proposal");
             if (item.status() == SharedPriceDtos.Status.UNKNOWN_PRODUCT) {
                 if (item.product() != null || item.price() != null || item.freshness() != SharedPriceDtos.Freshness.NO_PRICE)
                     throw new IllegalArgumentException("Unknown shared product must not carry identity or price");

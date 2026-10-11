@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "decision": "APPROVED_POWER_CASE_RELEASE_2026_10_11",
+  "databaseApplyApproved": true,
+  "publicationApproved": true,
+  "autoActivation": false,
+  "stageManifestFile": "data/catalog-shared/power-case-stage-2026-10-11.json",
+  "sourceFile": "data/catalog-review/power-case-pilot-2026-10-11.json",
+  "sourceSha256": "e3575f9217ea88797ceec8788adf8f86e1440f2521c672e41a4ba42fc17e5830",
+  "newProducts": 7,
+  "newPrices": 2,
+  "preservedProducts": 308,
+  "preservedCurrentPrices": 81,
+  "preservedReferences": 227,
+  "catalogVersion": "all-catalog-v1-6bd04f97b7cba4fe30dc5113d15db56847026a744cf6c5f7006da62a1e9e140a",
+  "priceVersion": "prices-v1-dfa1885e2f5d29b7c747eb4c3a730467aa4b78f70830c9d682e2be104825c09b",
+  "referenceVersion": "references-v1-0a60f7fa4c600e99ea6c4c4c74b3398f1c6ebd168ff13ef3af73f9c2ebcc0dfd",
+  "referencesFile": "data/catalog-shared/approved-power-case-reference-prices-2026-10-11.json",
+  "canonicalIds": [
+    "b398c8d7-2959-398b-90ac-136b4d00ee1c",
+    "dbf4bdec-6871-39bf-8765-338795b644e8",
+    "0d0ffb4a-7815-37c1-a988-0b0ce0ba6917",
+    "339c869d-4db6-38c4-a32a-cc488058616f",
+    "5ffeb16d-2a45-331f-9630-3de784ef358e",
+    "084baffd-2ae4-3ada-b49d-3c1457d0b73c",
+    "c3306ba5-4f2d-3d66-865b-4650cd4f363d"
+  ],
+  "priceObservations": [
+    { "canonicalId": "b398c8d7-2959-398b-90ac-136b4d00ee1c", "sourceName": "DANAWA", "sourceUrl": "https://prod.danawa.com/info/?pcode=15283025", "amountKrw": 75600, "observedAt": "2026-10-11T06:42:09.480Z" },
+    { "canonicalId": "5ffeb16d-2a45-331f-9630-3de784ef358e", "sourceName": "DANAWA", "sourceUrl": "https://prod.danawa.com/info/?pcode=17357669", "amountKrw": 149000, "observedAt": "2026-10-11T06:42:09.811Z" }
+  ]
+}

@@ -88,6 +88,38 @@ test('GPU 보조전원 미확인·없음·알려진 규격을 구분한다', () 
   assert.equal(format({ powerConnectorsKnown: true, powerConnectors: [{ connectorType: 'PCIE_12VHPWR', connectorCount: 1 }] }), '12VHPWR 16핀 × 1')
 })
 
+test('파워 플러그 수·독립 케이블 수·출력은 서로 구분해서 표시한다', () => {
+  const rows = Object.fromEntries(specificationRows('PSU', {
+    ratedPowerW: 850, formFactor: 'ATX', atxVersion: '3.1', lengthMm: 140,
+    powerConnectorsKnown: true, powerConnectors: [
+      { connectorType: 'PCIE_6_2PIN', connectorCount: 4, independentCableCount: 2, maxPowerW: null },
+      { connectorType: 'PCIE_16PIN_UNSPECIFIED', connectorCount: 1, independentCableCount: 1, maxPowerW: 600 },
+    ],
+  }))
+  assert.equal(rows['정격 출력'], '850 W')
+  assert.equal(rows['ATX 전원 규격'], '3.1')
+  assert.equal(rows['깊이'], '140 mm')
+  assert.match(rows['제공 전원 플러그'], /PCIe 6\+2핀 × 4 \(독립 케이블 2개\)/)
+  assert.match(rows['제공 전원 플러그'], /16핀 \(세부 규격 미확인\) × 1 \(독립 케이블 1개, 케이블당 600 W\)/)
+  const unknown = Object.fromEntries(specificationRows('PSU', { powerConnectorsKnown: true,
+    powerConnectors: [{ connectorType: 'PCIE_6_2PIN', connectorCount: 2, independentCableCount: null, maxPowerW: null }] }))
+  assert.match(unknown['제공 전원 플러그'], /독립 케이블 미확인/)
+})
+
+test('케이스 지원 목록과 조건부 공간·미확인을 표시한다', () => {
+  const rows = Object.fromEntries(specificationRows('CASE', {
+    motherboardFormFactorsKnown: true, motherboardFormFactors: ['MICRO_ATX', 'MINI_ITX'],
+    psuFormFactorsKnown: true, psuFormFactors: ['ATX'], maxGpuLengthMm: 338,
+    maxGpuHeightMm: null, gpuClearanceConditions: '파워 위치와 길이에 따라 공간이 달라집니다.',
+  }))
+  assert.equal(rows['지원 메인보드 규격'], 'Micro-ATX, Mini-ITX')
+  assert.equal(rows['지원 파워 규격'], 'ATX')
+  assert.equal(rows['그래픽카드 최대 길이'], '338 mm')
+  assert.equal(rows['그래픽카드 최대 높이'], '미확인')
+  assert.equal(rows['그래픽카드 공간 조건'], '파워 위치와 길이에 따라 공간이 달라집니다.')
+  assert.equal(Object.fromEntries(specificationRows('CASE', { psuFormFactorsKnown: false, psuFormFactors: [] }))['지원 파워 규격'], '미확인')
+})
+
 test('CPU는 총 코어·P/E 코어·각 클럭과 TDP·PBP·MTP를 구분한다', () => {
   const rows = Object.fromEntries(specificationRows('CPU', {
     coreCount: 14, threadCount: 20, baseClockMhz: null, boostClockMhz: 5100,

@@ -68,6 +68,8 @@ class CatalogEntryServiceTests {
             assertThat(reloaded.product().referencePrice().status()).isEqualTo(CatalogPriceStatus.UNCONFIRMED);
             assertThat(reloaded.product().referencePrice().amountKrw()).isNull();
             assertThat(reloaded.specification()).isEqualTo(specification);
+            assertThat(created.specification()).isEqualTo(reloaded.specification());
+            assertThat(created.sources()).isEqualTo(reloaded.sources());
             assertThat(reloaded.sources()).hasSize(1);
             assertThat(reloaded.sources().getFirst().rawPayload()).isNull();
             if (reloaded.specification() instanceof CatalogSpecification.Ram value) {

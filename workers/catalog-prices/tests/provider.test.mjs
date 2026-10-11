@@ -8,6 +8,8 @@ import { localWorkerOptions } from "../scripts/miniflare-options.mjs";
 import "./snapshot-validation.test.mjs";
 import "./approved-retail-version.test.mjs";
 import "./reference-prices.test.mjs";
+import "./power-case-preview.test.mjs";
+import "./approved-power-case-version.test.mjs";
 
 const workerRoot = fileURLToPath(new URL("../", import.meta.url));
 const catalog = JSON.parse(await readFile(new URL("../generated/catalog.json", import.meta.url), "utf8"));

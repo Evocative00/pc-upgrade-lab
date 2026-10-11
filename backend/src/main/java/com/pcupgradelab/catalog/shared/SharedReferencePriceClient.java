@@ -33,6 +33,7 @@ public final class SharedReferencePriceClient {
     private final SharedCatalogSnapshot catalog;
     private final Clock clock;
     private final String apiToken;
+    private final SharedReferencePriceDtos.Snapshot pinnedPreview;
     private final HttpClient http;
     private final JsonMapper mapper = strictMapper();
 
@@ -49,6 +50,13 @@ public final class SharedReferencePriceClient {
 
     public SharedReferencePriceClient(URI baseUrl, Duration timeout, int maxResponseBytes,
                                      SharedCatalogSnapshot catalog, Clock clock, String apiToken) {
+        this(baseUrl, timeout, maxResponseBytes, catalog, clock, apiToken, null);
+    }
+
+    /** Staging can pin all response values without changing the operational client's publication contract. */
+    SharedReferencePriceClient(URI baseUrl, Duration timeout, int maxResponseBytes,
+                              SharedCatalogSnapshot catalog, Clock clock, String apiToken,
+                              SharedReferencePriceDtos.Snapshot pinnedPreview) {
         this.baseUrl = SharedPriceClient.validateBaseUrl(baseUrl);
         require(timeout != null && timeout.compareTo(Duration.ofMillis(100)) >= 0
                 && timeout.compareTo(Duration.ofSeconds(10)) <= 0, "Reference timeout must be 100..10000 milliseconds");
@@ -59,6 +67,10 @@ public final class SharedReferencePriceClient {
         this.timeout = timeout; this.maxResponseBytes = maxResponseBytes;
         this.catalog = Objects.requireNonNull(catalog); this.clock = Objects.requireNonNull(clock);
         this.apiToken = token;
+        require(pinnedPreview == null || (!pinnedPreview.publicationApproved()
+                && catalog.version().equals(pinnedPreview.catalogVersion()) && pinnedPreview.products().size() == 227),
+                "Reference staging pin differs from its unpublished catalog");
+        this.pinnedPreview = pinnedPreview;
         this.http = HttpClient.newBuilder().connectTimeout(timeout).followRedirects(HttpClient.Redirect.NEVER).build();
     }
 
@@ -109,10 +121,20 @@ public final class SharedReferencePriceClient {
                 && !response.servedAt().isAfter(now.plus(SharedPriceClient.MAX_SERVER_CLOCK_SKEW))
                 && !response.servedAt().isBefore(startedAt.minus(SharedPriceClient.MAX_SERVER_CLOCK_SKEW))
                 && response.items() != null && response.items().size() == requested.size(), "Reference envelope differs");
+        require(pinnedPreview == null || pinnedPreview.referenceVersion().equals(response.referenceVersion()),
+                "Reference staging revision differs from the preserved review");
         var received = new HashSet<String>();
         for (var item : response.items()) {
             require(item != null && requested.contains(item.canonicalId()) && received.add(item.canonicalId())
                     && item.status() != null, "Reference response IDs must exactly match the request");
+            if (pinnedPreview != null) {
+                var pinned = pinnedPreview.products().stream().filter(p -> p.identity().canonicalId().equals(item.canonicalId()))
+                        .findFirst().orElse(null);
+                require(pinned == null ? item.status() == SharedReferencePriceDtos.Status.NO_REFERENCE && item.referenceEstimate() == null
+                                : item.status() == SharedReferencePriceDtos.Status.OK && pinned.identity().equals(item.product())
+                                    && pinned.referenceEstimate().equals(item.referenceEstimate()),
+                        "Reference staging values differ from the preserved 227 products");
+            }
             var expected = catalog.products().get(item.canonicalId());
             if (item.status() == SharedReferencePriceDtos.Status.UNKNOWN_PRODUCT) {
                 require(item.product() == null && item.referenceEstimate() == null, "Unknown reference must not carry a value");

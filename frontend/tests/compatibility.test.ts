@@ -19,6 +19,65 @@ const result = (status: CompatibilityResult['status']): CompatibilityResult => (
 })
 const tick = () => new Promise((resolve) => setImmediate(resolve))
 
+test('새 부품의 존재와 미연결을 구분하고 기존 CPU·보드·RAM 요청은 보존한다', () => {
+  assert.deepEqual(buildCompatibilityRequest(selection()), {
+    cpuProductId: 'cpu', motherboardProductId: 'board', ram: [{ catalogProductId: 'ram', quantity: 1 }],
+  })
+  assert.equal(buildCompatibilityRequest([createManualDraft('GPU')]), null)
+  const manual = named('PSU', '직접 입력한 파워', { catalogProductId: null, matchStatus: 'UNMATCHED' })
+  assert.deepEqual(buildCompatibilityRequest([manual]), {
+    cpuProductId: null, motherboardProductId: null, ram: [],
+    gpuProductId: null, psuProductId: null, caseProductId: null, presentComponents: ['PSU'],
+  })
+  const expanded = buildCompatibilityRequest([...selection(), named('GPU', 'gpu'), named('PSU', 'psu'), named('CASE', 'case')])!
+  assert.equal(expanded.gpuProductId, 'gpu')
+  assert.equal(expanded.psuProductId, 'psu')
+  assert.equal(expanded.caseProductId, 'case')
+  assert.deepEqual(expanded.presentComponents, ['GPU', 'PSU', 'CASE'])
+})
+
+test('복수 GPU·파워·케이스나 단일 항목의 복수 수량을 하나로 검사하지 않는다', () => {
+  for (const [type, field] of [['GPU', 'gpuProductId'], ['PSU', 'psuProductId'], ['CASE', 'caseProductId']] as const) {
+    for (const rows of [[named(type, 'first'), named(type, 'second')], [named(type, 'quantity', { quantity: 2 })]]) {
+      const request = buildCompatibilityRequest(rows)!
+      assert.equal(request[field], null)
+      assert.equal(localCompatibilityChecks(rows)[0].status, 'NEEDS_CHECK')
+      assert.equal(mergeCompatibilityChecks(result('COMPATIBLE'), localCompatibilityChecks(rows)).status, 'NEEDS_CHECK')
+    }
+  }
+})
+
+test('확인된 새 부품의 불가 판정은 관련 행에 연결된다', () => {
+  const gpu = named('GPU', 'gpu'), psu = named('PSU', 'psu'), pcCase = named('CASE', 'case')
+  const warnings = incompatibleByDraft([gpu, psu, pcCase], { status: 'INCOMPATIBLE', checks: [{
+    code: 'GPU_CASE_LENGTH', status: 'INCOMPATIBLE', message: '카드가 너무 깁니다.', affectedFields: ['gpuProductId', 'caseProductId'],
+  }] })
+  assert.deepEqual(warnings.get(gpu.key), ['카드가 너무 깁니다.'])
+  assert.deepEqual(warnings.get(pcCase.key), ['카드가 너무 깁니다.'])
+  assert.equal(warnings.has(psu.key), false)
+})
+
+test('GPU·파워 검사에서 미연결 CPU·보드가 사라져 전체 초안을 호환으로 표시하지 않는다', () => {
+  const hardware = [named('GPU', 'gpu'), named('PSU', 'psu')]
+  assert.deepEqual(localCompatibilityChecks(hardware), [])
+  for (const type of ['CPU', 'MOTHERBOARD'] as const) {
+    const unlinked = named(type, '이름만 입력', { catalogProductId: null, matchStatus: 'UNMATCHED' })
+    const local = localCompatibilityChecks([...hardware, unlinked])
+    assert.equal(local.length, 1)
+    assert.equal(local[0].code, `${type}_CATALOG_LINK`)
+    assert.equal(mergeCompatibilityChecks(result('COMPATIBLE'), local).status, 'NEEDS_CHECK')
+    assert.equal(mergeCompatibilityChecks(result('INCOMPATIBLE'), local).status, 'INCOMPATIBLE')
+  }
+})
+
+test('새 부품 검사에 구형 백엔드 결과를 호환으로 표시하지 않는다', async () => {
+  const request = buildCompatibilityRequest([named('GPU', 'gpu')])!
+  await assert.rejects(checkCompatibility(request, new AbortController().signal,
+    async () => Response.json({ ...result('COMPATIBLE'), scope: 'CPU_MOTHERBOARD_RAM_V1', fullPcCompatibilityChecked: false })), /백엔드 버전/)
+  const expected = { ...result('NEEDS_CHECK'), scope: 'CPU_MOTHERBOARD_RAM_GPU_PSU_CASE_V2', fullPcCompatibilityChecked: false }
+  assert.deepEqual(await checkCompatibility(request, new AbortController().signal, async () => Response.json(expected)), expected)
+})
+
 test('잘못된 RAM 수량은 서버 요청에서 빠져도 확인 필요로 남고 불가 판정을 덮어쓰지 않는다', () => {
   for (const quantity of [NaN, 0, -1, 65, 1.5, Infinity]) {
     const drafts = [...selection(), named('RAM', 'invalid RAM', { quantity })]
@@ -236,5 +295,22 @@ test('같은 구성을 다시 선택할 때 지난 성공·오류는 새 검사�
     assert.equal(h.render(first).status, previous === 'success' ? 'done' : 'error')
     h.render([named('CPU', 'other-cpu'), ...first.slice(1)])
     assert.equal(h.render(first).status, 'loading')
+  }
+})
+
+test('GPU·파워·케이스 재선택은 재검사하며 취소된 응답을 적용하지 않는다', async () => {
+  for (const type of ['GPU', 'PSU', 'CASE'] as const) {
+    const h = hookHarness()
+    const first = [named(type, 'first')], second = [named(type, 'second')]
+    h.render(first); h.fireTimers()
+    h.render(second); h.fireTimers()
+    assert.equal(h.requests[0].signal.aborted, true)
+    h.requests[1].resolve(result('NEEDS_CHECK'))
+    await tick()
+    h.requests[0].resolve(result('COMPATIBLE'))
+    await tick()
+    const value = h.render(second)
+    assert.equal(value.status, 'done')
+    if (value.status === 'done') assert.equal(value.result.status, 'NEEDS_CHECK')
   }
 })

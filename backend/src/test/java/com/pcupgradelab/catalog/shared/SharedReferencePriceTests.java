@@ -42,7 +42,7 @@ class SharedReferencePriceTests {
     private SharedCatalogSnapshot.Entry priced;
 
     @BeforeEach void fixture() {
-        catalog = SharedCatalogSnapshot.loadActive();
+        catalog = SharedCatalogSnapshot.loadApprovedRetail();
         unpriced = catalog.products().values().stream().filter(e -> e.price() == null
                 && e.identity().type() == PartType.CPU).findFirst().orElseThrow();
         priced = catalog.products().values().stream().filter(e -> e.price() != null

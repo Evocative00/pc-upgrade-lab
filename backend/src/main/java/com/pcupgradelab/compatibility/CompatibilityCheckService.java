@@ -7,7 +7,10 @@ import com.pcupgradelab.catalog.support.MotherboardCpuQueryService;
 import com.pcupgradelab.common.ApiException;
 import com.pcupgradelab.pc.PartType;
 import java.util.LinkedHashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,19 +32,33 @@ public class CompatibilityCheckService {
         if (request == null || request.ram() == null || request.ram().size() > 64) {
             throw invalid("ram 목록은 필수이며 최대 64개 항목까지 검사할 수 있습니다.");
         }
+        if (request.presentComponents() != null && (request.presentComponents().size() > 3
+                || request.presentComponents().stream().anyMatch(type -> type == null || !Set.of("GPU", "PSU", "CASE").contains(type))
+                || new HashSet<>(request.presentComponents()).size() != request.presentComponents().size())) {
+            throw invalid("추가 검사 부품 목록에는 그래픽카드·파워·케이스를 중복 없이 지정해 주세요.");
+        }
         Map<String, CatalogDtos.Detail> details = new LinkedHashMap<>();
         load(details, request.cpuProductId(), PartType.CPU);
         load(details, request.motherboardProductId(), PartType.MOTHERBOARD);
+        load(details, request.gpuProductId(), PartType.GPU);
+        load(details, request.psuProductId(), PartType.PSU);
+        load(details, request.caseProductId(), PartType.CASE);
         for (var ram : request.ram()) {
             if (ram == null || ram.quantity() == null || ram.quantity() < 1 || ram.quantity() > 64) {
-                throw invalid("RAM quantity에는 실제 장착할 모듈 수 1~64를 입력해 주세요.");
+                throw invalid("RAM 수량에는 실제 장착할 모듈 수 1~64를 입력해 주세요.");
             }
             load(details, ram.catalogProductId(), PartType.RAM);
         }
         var cpuMemory = request.cpuProductId() == null ? null : memory.findByProductId(request.cpuProductId());
         var cpuSupport = request.cpuProductId() == null || request.motherboardProductId() == null ? null
                 : support.find(request.motherboardProductId(), request.cpuProductId());
-        return new CompatibilityRules(request, details, cpuMemory, cpuSupport).evaluate();
+        boolean legacySelected = request.cpuProductId() != null || request.motherboardProductId() != null || !request.ram().isEmpty();
+        var result = !request.hardwareScopeRequested() || legacySelected
+                ? new CompatibilityRules(request, details, cpuMemory, cpuSupport).evaluate()
+                : new CompatibilityDtos.Result("CPU_MOTHERBOARD_RAM_V1", CompatibilityDtos.Status.COMPATIBLE, false,
+                        List.of(), new CompatibilityDtos.MemorySummary(0, java.math.BigInteger.ZERO, null, false),
+                        List.of(), List.of(), List.of(), CatalogDtos.ATTRIBUTIONS);
+        return request.hardwareScopeRequested() ? new HardwareCompatibilityRules(request, details).extend(result) : result;
     }
 
     private void load(Map<String, CatalogDtos.Detail> details, String id, PartType expectedType) {
@@ -49,7 +66,7 @@ public class CompatibilityCheckService {
         if (id == null) return;
         var detail = details.computeIfAbsent(id, catalog::findById);
         if (detail.product().type() != expectedType || detail.specification().type() != expectedType) {
-            throw invalid("해당 위치의 부품 종류와 catalogProductId의 제품 종류가 일치하지 않습니다.");
+            throw invalid("선택한 위치의 부품 종류와 연결한 상품의 종류가 일치하지 않습니다.");
         }
     }
 

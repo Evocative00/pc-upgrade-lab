@@ -3,6 +3,7 @@ import { mkdir, readFile, stat } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { exportReferencePreview } from "./export-reference-preview.mjs";
+import { verifyPowerCaseRelease } from "./verify-power-case-release.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const snapshot = JSON.parse(await readFile(path.join(root, "generated/catalog.json"), "utf8"));
@@ -31,6 +32,7 @@ const { validateFullCatalogSnapshot, validateApprovedRetailSnapshot } = await im
 validateFullCatalogSnapshot(fullSnapshot, fullSnapshot);
 validateApprovedRetailSnapshot(retailSnapshot, fullSnapshot);
 await exportReferencePreview({ check: true });
+await verifyPowerCaseRelease();
 await mkdir(path.join(root, "dist"), { recursive: true });
 await build({
   absWorkingDir: root,
@@ -45,4 +47,5 @@ await build({
 });
 const output = await stat(path.join(root, "dist/index.js"));
 console.log(`Local Worker bundle verified: pilotProducts=14 legacyProducts=307 legacyPrices=80`
-  + ` retailProducts=308 retailPrices=81 referencePreviewProducts=227 bytes=${output.size} cloudUpload=0`);
+  + ` retailProducts=308 retailPrices=81 approvedProducts=315 approvedPrices=83 preservedReferences=227`
+  + ` heldPrices=5 bytes=${output.size} cloudUpload=0`);

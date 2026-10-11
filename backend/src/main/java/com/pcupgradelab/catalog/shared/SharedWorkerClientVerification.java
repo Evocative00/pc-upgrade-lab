@@ -19,6 +19,7 @@ public final class SharedWorkerClientVerification {
             throw new IllegalArgumentException("Worker integration verification requires the synthetic test credential; use test:java-client");
         verify(uri, token, SharedCatalogSnapshot.loadPilot());
         verify(uri, token, SharedCatalogSnapshot.loadFull());
+        verify(uri, token, SharedCatalogSnapshot.loadApprovedRetail());
         verify(uri, token, SharedCatalogSnapshot.loadActive());
     }
     private static void verify(URI uri, String token, SharedCatalogSnapshot snapshot) {

@@ -22,15 +22,35 @@ public final class CompatibilityDtos {
             @NotNull @Size(max = 64) List<@NotNull @Valid RamInput> ram,
             @Size(max = 48) String motherboardRevision,
             @Size(max = 64) String cpuStepping,
-            @Size(max = 64) String currentBiosVersion) {
+            @Size(max = 64) String currentBiosVersion,
+            @Size(max = 128) String gpuProductId,
+            @Size(max = 128) String psuProductId,
+            @Size(max = 128) String caseProductId,
+            @Size(max = 3) List<@NotNull @Pattern(regexp = "GPU|PSU|CASE") String> presentComponents) {
+        /** 이전 CPU·메인보드·RAM 호출과 JSON은 같은 검사 범위를 유지한다. */
+        public Request(String cpuProductId, String motherboardProductId, List<RamInput> ram,
+                       String motherboardRevision, String cpuStepping, String currentBiosVersion) {
+            this(cpuProductId, motherboardProductId, ram, motherboardRevision, cpuStepping,
+                    currentBiosVersion, null, null, null, null);
+        }
+
         public Request {
             cpuProductId = optional(cpuProductId);
             motherboardProductId = optional(motherboardProductId);
             motherboardRevision = optional(motherboardRevision);
             cpuStepping = optional(cpuStepping);
             currentBiosVersion = optional(currentBiosVersion);
+            gpuProductId = optional(gpuProductId);
+            psuProductId = optional(psuProductId);
+            caseProductId = optional(caseProductId);
             // null 항목은 @Valid에서 필드 위치와 함께 검증한다.
             if (ram != null) ram = Collections.unmodifiableList(new ArrayList<>(ram));
+            if (presentComponents != null) presentComponents = Collections.unmodifiableList(new ArrayList<>(presentComponents));
+        }
+
+        public boolean hardwareScopeRequested() {
+            return gpuProductId != null || psuProductId != null || caseProductId != null
+                    || presentComponents != null && !presentComponents.isEmpty();
         }
     }
 

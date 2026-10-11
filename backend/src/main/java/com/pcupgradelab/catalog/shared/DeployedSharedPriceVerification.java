@@ -16,15 +16,18 @@ public final class DeployedSharedPriceVerification {
     private DeployedSharedPriceVerification() { }
     public static void main(String[] args) throws Exception {
         if (args.length < 1 || args.length > 2 || (args.length == 2
-                && !"--full".equals(args[1]) && !"--active".equals(args[1])))
-            throw new IllegalArgumentException("Use <deployed-workers-dev-origin> [--full | --active]");
+                && !"--full".equals(args[1]) && !"--retail".equals(args[1]) && !"--active".equals(args[1])))
+            throw new IllegalArgumentException("Use <deployed-workers-dev-origin> [--full | --retail | --active]");
         URI origin = SharedPriceClient.validateBaseUrl(URI.create(args[0]));
         if (!"https".equals(origin.getScheme()) || !origin.getHost()
                 .matches("pc-upgrade-shared-prices\\.[a-z0-9-]+\\.workers\\.dev") || origin.getPort() != -1)
             throw new IllegalArgumentException("Verification requires the approved HTTPS workers.dev origin");
         String token = System.getenv("CATALOG_SHARED_PRICES_API_TOKEN");
-        var snapshot = args.length == 2 ? ("--active".equals(args[1])
-                ? SharedCatalogSnapshot.loadActive() : SharedCatalogSnapshot.loadFull()) : SharedCatalogSnapshot.loadPilot();
+        var snapshot = args.length == 2 ? switch (args[1]) {
+            case "--active" -> SharedCatalogSnapshot.loadActive();
+            case "--retail" -> SharedCatalogSnapshot.loadApprovedRetail();
+            default -> SharedCatalogSnapshot.loadFull();
+        } : SharedCatalogSnapshot.loadPilot();
         var client = new SharedPriceClient(origin, Duration.ofSeconds(2), 65536, snapshot,
                 Clock.systemUTC(), SharedPriceFreshness.defaults(), token);
         var allIds = new ArrayList<>(snapshot.products().keySet());

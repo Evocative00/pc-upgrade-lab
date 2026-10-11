@@ -50,8 +50,8 @@ class SharedApprovedRetailTests {
 
     @Test void approvedRuntimeAndBundledRuntimePreserve307And80AndAddOnlyTheUnactivatedAsusProduct() throws Exception {
         var baseline = SharedCatalogSnapshot.loadFull(temporary);
-        var active = SharedCatalogSnapshot.loadActive(temporary);
-        var bundled = SharedCatalogSnapshot.loadActive();
+        var active = SharedCatalogSnapshot.loadApprovedRetail(temporary);
+        var bundled = SharedCatalogSnapshot.loadApprovedRetail();
         assertThat(baseline.products()).hasSize(307);
         assertThat(baseline.products().values().stream().filter(p -> p.price() != null)).hasSize(80);
         assertThat(active.products()).hasSize(308).containsAllEntriesOf(baseline.products());
@@ -82,7 +82,7 @@ class SharedApprovedRetailTests {
         for (String file : List.of(SharedCatalogSnapshot.APPROVED_RETAIL_FILE, SharedCatalogSnapshot.ACTIVE_PRICES_FILE,
                 RetailCatalogPreviewLoader.FILE)) {
             Files.delete(temporary.resolve(file));
-            assertThatThrownBy(() -> SharedCatalogSnapshot.loadActive(temporary))
+            assertThatThrownBy(() -> SharedCatalogSnapshot.loadApprovedRetail(temporary))
                     .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("no baseline fallback");
             Files.copy(repository.resolve(file), temporary.resolve(file));
         }
@@ -121,7 +121,7 @@ class SharedApprovedRetailTests {
     @Test void reviewTamperingEvenWhenIdentitiesAndPricesStayUnchangedInvalidatesTheApproval() throws Exception {
         Path review = temporary.resolve(RetailCatalogPreviewLoader.FILE);
         Files.writeString(review, Files.readString(review) + "\n ", StandardCharsets.UTF_8);
-        assertThatThrownBy(() -> SharedCatalogSnapshot.loadActive(temporary))
+        assertThatThrownBy(() -> SharedCatalogSnapshot.loadApprovedRetail(temporary))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("unchanged review hash");
     }
 
@@ -141,7 +141,7 @@ class SharedApprovedRetailTests {
         var value = (ObjectNode) mapper.readTree(Files.readString(repository.resolve(SharedCatalogSnapshot.APPROVED_RETAIL_FILE)));
         mutation.accept(value);
         Files.writeString(temporary.resolve(SharedCatalogSnapshot.APPROVED_RETAIL_FILE), mapper.writeValueAsString(value), StandardCharsets.UTF_8);
-        assertThatThrownBy(() -> SharedCatalogSnapshot.loadActive(temporary)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> SharedCatalogSnapshot.loadApprovedRetail(temporary)).isInstanceOf(IllegalArgumentException.class);
     }
     private static ObjectNode approval(ObjectNode value) { return node(value, "approval"); }
     private static ObjectNode addition(ObjectNode value) {

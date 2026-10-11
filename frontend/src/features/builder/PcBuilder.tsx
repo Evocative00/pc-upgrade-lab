@@ -51,7 +51,7 @@ function CompatibilityPanel({ state }: { state: CompatibilityState }) {
         ))}
       </ol>
       {state.status === 'idle' && (
-        <p className="muted" role="status">미검사 · CPU·메인보드·RAM을 카탈로그에서 고르면 검사합니다.</p>
+        <p className="muted" role="status">미검사 · 구성할 부품을 카탈로그에서 고르면 규격을 검사합니다.</p>
       )}
       {state.status === 'loading' && <p className="muted" role="status">호환성 검사 중…</p>}
       {state.status === 'error' && <p className="error" role="alert">{state.message}</p>}
@@ -65,7 +65,8 @@ function CompatibilityPanel({ state }: { state: CompatibilityState }) {
           ))}
         </ul>
       )}
-      <p className="muted">CPU·메인보드·RAM 공표 규격만 검사합니다. 그래픽카드·저장장치·파워·케이스·쿨러는 미검사입니다.</p>
+      <p className="muted">CPU·메인보드·RAM 규격과 그래픽카드·파워·케이스의 장착 및 전원 조건을 검사합니다.
+        저장장치·쿨러, 보드의 그래픽 슬롯·전원 연결과 전체 PC 동작은 별도 확인이 필요합니다.</p>
     </section>
   )
 }

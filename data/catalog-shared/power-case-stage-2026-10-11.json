@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "mode": "STAGED_PREVIEW_ONLY",
+  "publicationApproved": false,
+  "databaseApplyApproved": false,
+  "sourceFile": "data/catalog-review/power-case-pilot-2026-10-11.json",
+  "sourceSha256": "e3575f9217ea88797ceec8788adf8f86e1440f2521c672e41a4ba42fc17e5830",
+  "newProducts": 7,
+  "newPrices": 2
+}

@@ -215,6 +215,17 @@ class CompatibilityRulesTests {
         assertThat(check(result, "CPU_RAM_CAPACITY").status()).isEqualTo(INCOMPATIBLE);
     }
 
+    @Test
+    void capacityMessagesUseReadableUnitsWithoutRoundingOrLeakingInternalFieldNamesAndEnglishConditions() {
+        details.put("ram", detail("ram", ram("DDR4", 128 * GIB + 1, 1, 3200, "DIMM", false, "UNBUFFERED")));
+        var result = run(List.of(new CompatibilityDtos.RamInput("ram", 1)), null, "B0", null);
+        assertThat(check(result, "CPU_RAM_CAPACITY").status()).isEqualTo(INCOMPATIBLE);
+        assertThat(check(result, "CPU_RAM_CAPACITY").message()).contains("128.000000000931322574615478515625 GiB", "128 GiB")
+                .doesNotContain("bytes", "Fixture capacity conditions");
+        assertThat(check(result, "CPU_BIOS").message()).doesNotContain("cpuSupportCandidates");
+        assertThat(result.memory().knownCapacityBytes()).isEqualTo(BigInteger.valueOf(128 * GIB + 1));
+    }
+
     private CompatibilityDtos.Result run(List<CompatibilityDtos.RamInput> ram, String revision, String stepping, String bios) {
         return new CompatibilityRules(new CompatibilityDtos.Request("cpu", "board", ram, revision, stepping, bios),
                 details, memory, support).evaluate();

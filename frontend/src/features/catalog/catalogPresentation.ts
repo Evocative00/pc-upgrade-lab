@@ -1,5 +1,5 @@
 import type { PartType } from '../pc-scan/types.ts'
-import type { CatalogProduct, CatalogSpecification } from './catalogTypes.ts'
+import type { CatalogProduct, CatalogSpecification, PowerConnector, PsuPowerConnector } from './catalogTypes.ts'
 
 export function formatCatalogPrice(price: CatalogProduct['referencePrice']): string {
   if (price.status === 'INSUFFICIENT_HISTORY') return '가격 자료 부족'
@@ -83,6 +83,16 @@ const FIELDS: Partial<Record<PartType, Field[]>> = {
     ['lengthMm', '길이', 'mm'], ['widthMm', '너비', 'mm'], ['heightMm', '높이', 'mm'],
     ['dimensionsBasis', '치수 기준'], ['heatsinkIncluded', '방열판 포함'],
   ],
+  PSU: [
+    ['ratedPowerW', '정격 출력', 'W'], ['formFactor', '장착 규격'], ['atxVersion', 'ATX 전원 규격'],
+    ['lengthMm', '깊이', 'mm'], ['widthMm', '너비', 'mm'], ['heightMm', '높이', 'mm'],
+  ],
+  CASE: [
+    ['maxPsuLengthMm', '파워 최대 깊이', 'mm'], ['maxGpuLengthMm', '그래픽카드 최대 길이', 'mm'],
+    ['maxGpuHeightMm', '그래픽카드 최대 높이', 'mm'], ['maxGpuThicknessMm', '그래픽카드 최대 두께', 'mm'],
+    ['expansionSlotCount', '확장 슬롯', '개'], ['gpuClearanceConditions', '그래픽카드 공간 조건'],
+    ['psuClearanceConditions', '파워 공간 조건'],
+  ],
 }
 
 function formatValue(value: CatalogSpecification[string] | undefined, unit?: string): string {
@@ -92,7 +102,12 @@ function formatValue(value: CatalogSpecification[string] | undefined, unit?: str
     const number = unit === 'GiB' ? value / 1024 ** 3 : value
     return `${number.toLocaleString('ko-KR', { maximumFractionDigits: 3 })}${unit ? ` ${unit}` : ''}`
   }
-  return typeof value === 'string' ? value : '미확인'
+  const labels: Record<string, string> = {
+    MICRO_ATX: 'Micro-ATX', MINI_ITX: 'Mini-ITX', MINI_DTX: 'Mini-DTX', E_ATX: 'E-ATX', SFX_L: 'SFX-L',
+    UNBUFFERED: '비버퍼', REGISTERED: '레지스터', LOAD_REDUCED: '부하 감소형',
+    ATX_3_1: 'ATX 3.1', ATX_3_0: 'ATX 3.0',
+  }
+  return typeof value === 'string' ? labels[value] ?? value : '미확인'
 }
 
 export function ramKitLabel(specs: CatalogSpecification): string {
@@ -128,19 +143,37 @@ export function specificationRows(type: PartType, specs: CatalogSpecification): 
     rows.splice(1, 0, ['기본 해상도', typeof specs.nativeWidthPx === 'number' && typeof specs.nativeHeightPx === 'number'
       ? `${specs.nativeWidthPx} × ${specs.nativeHeightPx}` : '미확인'])
   }
-  if (type === 'GPU') {
-    const connectors = specs.powerConnectors
+  if (type === 'GPU' || type === 'PSU') {
+    const connectors = Array.isArray(specs.powerConnectors) ? specs.powerConnectors.filter(
+      (item): item is PowerConnector | PsuPowerConnector => typeof item === 'object' && item !== null && 'connectorType' in item) : null
     const names: Record<string, string> = {
       PCIE_6PIN: 'PCIe 6핀', PCIE_8PIN: 'PCIe 8핀', PCIE_16PIN_UNSPECIFIED: '16핀 (세부 규격 미확인)',
       PCIE_12VHPWR: '12VHPWR 16핀', PCIE_12V_2X6: '12V-2x6 16핀',
+      ATX_24PIN: '메인보드 24핀', EPS_4_4PIN: 'CPU 4+4핀', PCIE_6_2PIN: 'PCIe 6+2핀',
     }
-    rows.push(['보조전원 단자', specs.powerConnectorsKnown === true && Array.isArray(connectors)
-      ? connectors.length === 0 ? '없음' : connectors.map(({ connectorType, connectorCount }) =>
-        `${names[connectorType] ?? connectorType} × ${connectorCount}`).join(', ')
+    rows.push([type === 'GPU' ? '보조전원 단자' : '제공 전원 플러그', specs.powerConnectorsKnown === true && connectors !== null
+      ? connectors.length === 0 ? '없음' : connectors.map((connector) => {
+        const cables = type === 'PSU' && 'independentCableCount' in connector
+          ? ` (독립 케이블 ${connector.independentCableCount === null ? '미확인' : `${connector.independentCableCount}개`}${
+            connector.maxPowerW === null ? '' : `, 케이블당 ${connector.maxPowerW} W`})` : ''
+        return `${names[connector.connectorType] ?? connector.connectorType} × ${connector.connectorCount}${cables}`
+      }).join(', ')
       : '미확인'])
+  }
+  if (type === 'GPU') {
     const basis: Record<string, string> = { RECOMMENDED: '권장', MINIMUM: '최소' }
     rows.push(['파워 요구량 기준', typeof specs.psuRequirementBasis === 'string'
       ? basis[specs.psuRequirementBasis] ?? specs.psuRequirementBasis : '미확인'])
+  }
+  if (type === 'CASE') {
+    for (const [key, known, label] of [
+      ['motherboardFormFactors', 'motherboardFormFactorsKnown', '지원 메인보드 규격'],
+      ['psuFormFactors', 'psuFormFactorsKnown', '지원 파워 규격'],
+    ]) {
+      const factors = specs[key]
+      rows.push([label, specs[known] === true && Array.isArray(factors)
+        ? factors.length === 0 ? '없음' : factors.map((factor) => typeof factor === 'string' ? formatValue(factor) : '미확인').join(', ') : '미확인'])
+    }
   }
   return rows
 }

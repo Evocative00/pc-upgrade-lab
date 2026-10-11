@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "mode": "READ_ONLY_HTTPS_PRODUCTION_VERIFICATION",
+  "origin": "https://pc-upgrade-shared-prices.joony1024.workers.dev",
+  "startedAt": "2026-10-11T08:02:51.050Z",
+  "status": "PASS",
+  "requests": 36,
+  "tokenHandling": "PRIVATE_FILE_READ_IN_MEMORY_ONLY",
+  "tokenLogged": false,
+  "results": [
+    {
+      "label": "APPROVED_315",
+      "path": "/api/v2/prices",
+      "requestedCatalogVersion": "all-catalog-v1-6bd04f97b7cba4fe30dc5113d15db56847026a744cf6c5f7006da62a1e9e140a",
+      "catalogVersion": "all-catalog-v1-6bd04f97b7cba4fe30dc5113d15db56847026a744cf6c5f7006da62a1e9e140a",
+      "products": 315,
+      "ok": 83,
+      "noPrice": 232,
+      "freshness": {
+        "FRESH": 83,
+        "STALE": 0,
+        "EXPIRED": 0,
+        "NO_PRICE": 232
+      }
+    },
+    {
+      "label": "APPROVED_315_REFERENCES",
+      "path": "/api/v1/reference-prices",
+      "requestedCatalogVersion": "all-catalog-v1-6bd04f97b7cba4fe30dc5113d15db56847026a744cf6c5f7006da62a1e9e140a",
+      "catalogVersion": "all-catalog-v1-6bd04f97b7cba4fe30dc5113d15db56847026a744cf6c5f7006da62a1e9e140a",
+      "products": 315,
+      "ok": 227,
+      "noReference": 88
+    },
+    {
+      "label": "LEGACY_14",
+      "path": "/api/v1/prices",
+      "requestedCatalogVersion": null,
+      "catalogVersion": "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "products": 14,
+      "ok": 8,
+      "noPrice": 6,
+      "freshness": {
+        "FRESH": 8,
+        "STALE": 0,
+        "EXPIRED": 0,
+        "NO_PRICE": 6
+      }
+    },
+    {
+      "label": "DEFAULT_307",
+      "path": "/api/v2/prices",
+      "requestedCatalogVersion": null,
+      "catalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+      "products": 307,
+      "ok": 80,
+      "noPrice": 227,
+      "freshness": {
+        "FRESH": 80,
+        "STALE": 0,
+        "EXPIRED": 0,
+        "NO_PRICE": 227
+      }
+    },
+    {
+      "label": "LEGACY_307_HEADER",
+      "path": "/api/v2/prices",
+      "requestedCatalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+      "catalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+      "products": 307,
+      "ok": 80,
+      "noPrice": 227,
+      "freshness": {
+        "FRESH": 80,
+        "STALE": 0,
+        "EXPIRED": 0,
+        "NO_PRICE": 227
+      }
+    },
+    {
+      "label": "LEGACY_308_HEADER",
+      "path": "/api/v2/prices",
+      "requestedCatalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+      "catalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+      "products": 308,
+      "ok": 81,
+      "noPrice": 227,
+      "freshness": {
+        "FRESH": 81,
+        "STALE": 0,
+        "EXPIRED": 0,
+        "NO_PRICE": 227
+      }
+    },
+    {
+      "label": "DEFAULT_308_REFERENCES",
+      "path": "/api/v1/reference-prices",
+      "requestedCatalogVersion": null,
+      "catalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+      "products": 308,
+      "ok": 227,
+      "noReference": 81
+    },
+    {
+      "label": "LEGACY_308_REFERENCES_HEADER",
+      "path": "/api/v1/reference-prices",
+      "requestedCatalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+      "catalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+      "products": 308,
+      "ok": 227,
+      "noReference": 81
+    },
+    {
+      "label": "DEFAULT_307_NEW_IDS_UNKNOWN",
+      "path": "/api/v2/prices",
+      "requestedCatalogVersion": null,
+      "unknownProducts": 7
+    },
+    {
+      "label": "LEGACY_307_NEW_IDS_UNKNOWN",
+      "path": "/api/v2/prices",
+      "requestedCatalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+      "unknownProducts": 7
+    },
+    {
+      "label": "LEGACY_308_NEW_IDS_UNKNOWN",
+      "path": "/api/v2/prices",
+      "requestedCatalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+      "unknownProducts": 7
+    },
+    {
+      "label": "DEFAULT_REFERENCE_NEW_IDS_UNKNOWN",
+      "path": "/api/v1/reference-prices",
+      "requestedCatalogVersion": null,
+      "unknownProducts": 7
+    },
+    {
+      "label": "LEGACY_REFERENCE_NEW_IDS_UNKNOWN",
+      "path": "/api/v1/reference-prices",
+      "requestedCatalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+      "unknownProducts": 7
+    }
+  ],
+  "newProducts": [
+    {
+      "canonicalId": "084baffd-2ae4-3ada-b49d-3c1457d0b73c",
+      "type": "CASE",
+      "modelName": "Prime AP201 Mesh Black",
+      "currentStatus": "NO_PRICE",
+      "currentPrice": null,
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "0d0ffb4a-7815-37c1-a988-0b0ce0ba6917",
+      "type": "PSU",
+      "modelName": "MAG A850GL PCIE5 II",
+      "currentStatus": "NO_PRICE",
+      "currentPrice": null,
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "339c869d-4db6-38c4-a32a-cc488058616f",
+      "type": "PSU",
+      "modelName": "SF1000 Platinum (2024)",
+      "currentStatus": "NO_PRICE",
+      "currentPrice": null,
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "5ffeb16d-2a45-331f-9630-3de784ef358e",
+      "type": "CASE",
+      "modelName": "Pop Air Black Solid",
+      "currentStatus": "OK",
+      "currentPrice": {
+        "amountKrw": 149000,
+        "sourceName": "DANAWA",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17357669",
+        "observedAt": "2026-10-11T06:42:09.811Z"
+      },
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "b398c8d7-2959-398b-90ac-136b4d00ee1c",
+      "type": "PSU",
+      "modelName": "MAG A650BN",
+      "currentStatus": "OK",
+      "currentPrice": {
+        "amountKrw": 75600,
+        "sourceName": "DANAWA",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15283025",
+        "observedAt": "2026-10-11T06:42:09.480Z"
+      },
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "c3306ba5-4f2d-3d66-865b-4650cd4f363d",
+      "type": "CASE",
+      "modelName": "MasterBox NR200 Black",
+      "currentStatus": "NO_PRICE",
+      "currentPrice": null,
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "dbf4bdec-6871-39bf-8765-338795b644e8",
+      "type": "PSU",
+      "modelName": "MAG A750GL PCIE5 II",
+      "currentStatus": "NO_PRICE",
+      "currentPrice": null,
+      "referenceStatus": "NO_REFERENCE"
+    }
+  ],
+  "unauthorized": [
+    {
+      "path": "/api/v2/prices",
+      "status": 401,
+      "bearerChallenge": true
+    },
+    {
+      "path": "/api/v1/reference-prices",
+      "status": 401,
+      "bearerChallenge": true
+    }
+  ],
+  "failures": [],
+  "catalogVersion": "all-catalog-v1-6bd04f97b7cba4fe30dc5113d15db56847026a744cf6c5f7006da62a1e9e140a",
+  "priceVersion": "prices-v1-dfa1885e2f5d29b7c747eb4c3a730467aa4b78f70830c9d682e2be104825c09b",
+  "referenceVersion": "references-v1-0a60f7fa4c600e99ea6c4c4c74b3398f1c6ebd168ff13ef3af73f9c2ebcc0dfd",
+  "reviewSha256": "e3575f9217ea88797ceec8788adf8f86e1440f2521c672e41a4ba42fc17e5830",
+  "headersVerifiedEveryResponse": true,
+  "completedAt": "2026-10-11T08:02:53.403Z"
+}

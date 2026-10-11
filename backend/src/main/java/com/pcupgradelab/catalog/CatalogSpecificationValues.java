@@ -14,6 +14,11 @@ final class CatalogSpecificationValues {
     private static final Set<String> PSU_REQUIREMENT_BASES = Set.of("MINIMUM", "RECOMMENDED");
     private static final Set<String> GPU_CONNECTOR_TYPES = Set.of("PCIE_6PIN", "PCIE_8PIN",
             "PCIE_16PIN_UNSPECIFIED", "PCIE_12VHPWR", "PCIE_12V_2X6");
+    private static final Set<String> PSU_CONNECTOR_TYPES = Set.of("ATX_24PIN", "EPS_4_4PIN",
+            "PCIE_6_2PIN", "PCIE_6PIN", "PCIE_8PIN", "PCIE_16PIN_UNSPECIFIED",
+            "PCIE_12VHPWR", "PCIE_12V_2X6");
+    private static final Set<String> PSU_FORM_FACTORS = Set.of("ATX", "SFX", "SFX_L");
+    private static final Set<String> CASE_BOARD_FORM_FACTORS = Set.of("ATX", "MICRO_ATX", "MINI_ITX", "MINI_DTX", "E_ATX");
     private static final Set<String> MONITOR_PANEL_TYPES = Set.of("IPS", "VA", "TN", "OLED");
     private static final Set<String> MONITOR_ACTIVE_POWER_BASES = Set.of("MANUFACTURER_TYPICAL", "MEASURED_ACTIVE");
 
@@ -54,6 +59,33 @@ final class CatalogSpecificationValues {
             case "MINI ITX", "MINI-ITX", "MINIITX" -> "MINI_ITX";
             default -> normalized;
         };
+    }
+
+    static String psuFormFactor(String value) {
+        String normalized = code(value, "formFactor", 32);
+        if (normalized == null) return null;
+        normalized = normalized.replace('-', '_').replace(' ', '_');
+        return allowedCode(normalized, "formFactor", 32, PSU_FORM_FACTORS);
+    }
+
+    static String caseMotherboardFormFactor(String value) {
+        String normalized = motherboardFormFactor(value);
+        if (normalized != null) normalized = normalized.replace('-', '_').replace(' ', '_');
+        return allowedCode(normalized, "motherboardFormFactors", 32, CASE_BOARD_FORM_FACTORS);
+    }
+
+    static String psuConnectorType(String value) {
+        String normalized = allowedCode(value, "connectorType", 32, PSU_CONNECTOR_TYPES);
+        if (normalized == null) throw new IllegalArgumentException("connectorType is required");
+        return normalized;
+    }
+
+    static String atxVersion(String value) {
+        String normalized = text(value, "atxVersion", 16);
+        if (normalized != null && !normalized.matches("[1-9][0-9]?\\.[0-9]{1,2}")) {
+            throw new IllegalArgumentException("atxVersion must be a published version such as 3.1");
+        }
+        return normalized;
     }
 
     static String memoryFormFactor(String value, String field) {

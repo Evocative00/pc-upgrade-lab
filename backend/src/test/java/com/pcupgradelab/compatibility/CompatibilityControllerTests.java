@@ -52,7 +52,8 @@ class CompatibilityControllerTests {
     private static final List<String> TABLES = List.of("pc_configuration", "pc_part", "catalog_product",
             "catalog_reference_price", "catalog_product_source", "cpu_spec", "motherboard_spec", "ram_spec",
             "gpu_spec", "gpu_power_connector", "monitor_spec", "cpu_memory_support", "cpu_memory_type_support",
-            "motherboard_cpu_support_profile", "motherboard_cpu_support");
+            "motherboard_cpu_support_profile", "motherboard_cpu_support", "psu_spec", "psu_power_connector",
+            "case_spec", "case_motherboard_form_factor", "case_psu_form_factor");
     private final JsonMapper mapper = JsonMapper.builder().build();
     @Autowired WebApplicationContext context;
     @Autowired CatalogSeedService seeds;
@@ -221,6 +222,30 @@ class CompatibilityControllerTests {
         mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(
                         new CompatibilityDtos.Request(null, null, excessive, null, null, null))))
                 .andExpect(status().isBadRequest()).andExpect(jsonPath("$.code").value("INVALID_INPUT"));
+        assertThat(snapshot()).isEqualTo(before);
+    }
+
+    @Test
+    void hardwarePresenceUsesV2WithoutLegacySelectionNoiseAndNewIdsStillRequireCorrectTypes() throws Exception {
+        var before = snapshot();
+        mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON).content("{\"ram\":[],\"presentComponents\":[]}"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.scope").value("CPU_MOTHERBOARD_RAM_V1"))
+                .andExpect(jsonPath("$.status").value("NEEDS_CHECK"));
+        mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON).content("{\"ram\":[],\"presentComponents\":[\"GPU\"]}"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.scope").value(HardwareCompatibilityRules.SCOPE))
+                .andExpect(jsonPath("$.checks.length()").value(1))
+                .andExpect(jsonPath("$.checks[0].code").value("CATALOG_LINK_gpuProductId"))
+                .andExpect(jsonPath("$.fullPcCompatibilityChecked").value(false));
+        mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON).content("{\"ram\":[],\"gpuProductId\":\"missing-gpu\"}"))
+                .andExpect(status().isNotFound()).andExpect(jsonPath("$.code").value("CATALOG_PRODUCT_NOT_FOUND"));
+        for (String field : List.of("gpuProductId", "psuProductId", "caseProductId")) {
+            mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON)
+                            .content("{\"ram\":[],\"" + field + "\":\"" + id("Ryzen 5 5600X") + "\"}"))
+                    .andExpect(status().isBadRequest()).andExpect(jsonPath("$.code").value("INVALID_COMPATIBILITY_INPUT"));
+        }
+        for (String presence : List.of("[\"COOLER\"]", "[null]", "[\"GPU\",\"GPU\"]", "[\"GPU\",\"PSU\",\"CASE\",\"GPU\"]"))
+            mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON).content("{\"ram\":[],\"presentComponents\":" + presence + "}"))
+                    .andExpect(status().isBadRequest());
         assertThat(snapshot()).isEqualTo(before);
     }
 

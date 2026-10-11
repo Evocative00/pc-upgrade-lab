@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "decision": "APPROVED",
+  "databaseApplyApproved": true,
+  "publicationApproved": false,
+  "previewFile": "data/catalog-review/power-case-pilot-2026-10-11.json",
+  "previewSha256": "e3575f9217ea88797ceec8788adf8f86e1440f2521c672e41a4ba42fc17e5830",
+  "canonicalIds": [
+    "b398c8d7-2959-398b-90ac-136b4d00ee1c",
+    "dbf4bdec-6871-39bf-8765-338795b644e8",
+    "0d0ffb4a-7815-37c1-a988-0b0ce0ba6917",
+    "339c869d-4db6-38c4-a32a-cc488058616f",
+    "5ffeb16d-2a45-331f-9630-3de784ef358e",
+    "084baffd-2ae4-3ada-b49d-3c1457d0b73c",
+    "c3306ba5-4f2d-3d66-865b-4650cd4f363d"
+  ],
+  "registrationRows": {
+    "catalog_product": 7,
+    "catalog_reference_price": 7,
+    "catalog_product_source": 14,
+    "psu_spec": 4,
+    "psu_power_connector": 15,
+    "case_spec": 3,
+    "case_motherboard_form_factor": 7,
+    "case_psu_form_factor": 4,
+    "catalog_model": 0,
+    "catalog_model_source": 0,
+    "catalog_model_alias": 0
+  },
+  "priceRows": {
+    "catalog_price_mapping": 2,
+    "catalog_price_observation": 2
+  },
+  "priceObservations": [
+    {
+      "canonicalId": "b398c8d7-2959-398b-90ac-136b4d00ee1c",
+      "sourceName": "DANAWA",
+      "externalId": "15283025",
+      "amountKrw": 75600,
+      "observedAt": "2026-10-11T06:42:09.48Z"
+    },
+    {
+      "canonicalId": "5ffeb16d-2a45-331f-9630-3de784ef358e",
+      "sourceName": "DANAWA",
+      "externalId": "17357669",
+      "amountKrw": 149000,
+      "observedAt": "2026-10-11T06:42:09.811Z"
+    }
+  ],
+  "modelWrites": 0,
+  "autoActivation": false
+}

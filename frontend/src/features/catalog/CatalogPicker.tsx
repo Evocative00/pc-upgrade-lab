@@ -35,6 +35,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
   const [detail, setDetail] = useState<DetailState>({ status: 'idle' })
   const searchController = useRef<AbortController | null>(null)
   const detailController = useRef<AbortController | null>(null)
+  const modelSelection = ['CPU', 'GPU', 'MOTHERBOARD', 'RAM', 'STORAGE'].includes(type) ? onSelectModel : undefined
 
   useEffect(() => () => {
     searchController.current?.abort()
@@ -107,12 +108,12 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
 
   return (
     <div className="catalog-picker" aria-label="부품 카탈로그 검색">
-      {onSelectModel && <div className="catalog-picker__bar" aria-label="확인 범위">
+      {modelSelection && <div className="catalog-picker__bar" aria-label="확인 범위">
         <button type="button" className="button" aria-pressed={mode === 'product'} onClick={() => setMode('product')}>제품 연결</button>
         <button type="button" className="button" aria-pressed={mode === 'model'} onClick={showModels}>모델만 확인</button>
       </div>}
-      {mode === 'model' && onSelectModel ? <CatalogModelPicker type={type} initialQuery={query}
-        onSelect={onSelectModel} onClose={onClose} /> : <>
+      {mode === 'model' && modelSelection ? <CatalogModelPicker type={type} initialQuery={query}
+        onSelect={modelSelection} onClose={onClose} /> : <>
       <div className="catalog-picker__bar">
         <label htmlFor={inputId} className="visually-hidden">
           부품 검색어
@@ -140,7 +141,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
       </div>
 
       <p className="muted">
-        현재 등록된 검토용 부품을 조회합니다. 제품을 연결한 뒤 구성 화면에서 CPU·메인보드·RAM 호환성을 확인할 수 있습니다.
+        등록된 부품을 조회합니다. 제품을 연결한 뒤 구성 화면에서 규격과 장착·전원 조건을 확인할 수 있습니다.
       </p>
 
       {search.status === 'idle' && <p className="muted">검색어를 입력하거나 ‘전체 보기’로 이 종류의 등록 부품을 확인해 주세요.</p>}
@@ -153,7 +154,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
         {search.result.items.length === 0 ? (
           <>
             <p className="muted">일치하는 제품이 없습니다. 현재 입력한 내용은 유지되며 직접 입력해 저장할 수 있습니다.</p>
-            <CatalogSearchHelp type={type} mode="product" onShowModels={onSelectModel ? showModels : undefined} />
+            <CatalogSearchHelp type={type} mode="product" onShowModels={modelSelection ? showModels : undefined} />
           </>
         ) : <>
           <ul className="catalog-picker__results">
@@ -185,7 +186,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
         <p className="error">{detail.message}</p>
         <button type="button" className="button" onClick={() => void showDetail(detail.product)}>상세 다시 조회</button>
       </div>}
-      {detail.status === 'done' && <CatalogProductDetail detail={detail.result} onSelect={onSelect} onSelectModel={onSelectModel}
+      {detail.status === 'done' && <CatalogProductDetail detail={detail.result} onSelect={onSelect} onSelectModel={modelSelection}
         onRefresh={() => void showDetail(detail.product)} />}
       {(detail.status === 'done' || search.status === 'done') && (
         <CatalogAttributions items={detail.status === 'done' ? detail.result.attributions

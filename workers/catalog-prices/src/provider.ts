@@ -2,9 +2,13 @@ import exportedSnapshot from "../generated/catalog.json";
 import exportedFullSnapshot from "../generated/catalog-v2.json";
 import exportedRetailSnapshot from "../generated/catalog-retail-approved.json";
 import exportedReferenceSnapshot from "../generated/reference-prices-preview.json";
-import type { CatalogSnapshot, PriceItem, ReferenceItem, WorkerEnv } from "./contract";
+import exportedPowerCaseSnapshot from "../generated/catalog-power-case-approved.json";
+import exportedPowerCaseReferences from "../generated/reference-prices-power-case-approved.json";
+import exportedPowerCaseApproval from "../generated/approved-power-case-release.json";
+import type { CatalogSnapshot, PriceItem, ReferenceCatalogSnapshot, ReferenceItem, WorkerEnv } from "./contract";
 import { validateApprovedRetailSnapshot, validateFullCatalogSnapshot } from "./snapshot-validation";
 import { validateReferenceSnapshot } from "./reference-validation";
+import { validateApprovedPowerCaseSnapshots, validatePowerCaseStage } from "./power-case-preview-validation";
 
 const TOKEN_PATTERN = /^[0-9a-fA-F]{64}$/;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
@@ -20,13 +24,25 @@ const catalogs = new Map([
 ]);
 const approvedRetail = indexed(validateApprovedRetailSnapshot(exportedRetailSnapshot,
   exportedFullSnapshot as CatalogSnapshot));
+const references = validateReferenceSnapshot(exportedReferenceSnapshot, approvedRetail.snapshot);
+const powerCaseRelease = validateApprovedPowerCaseSnapshots(exportedPowerCaseSnapshot, exportedPowerCaseReferences,
+  exportedPowerCaseApproval, approvedRetail.snapshot, references);
+const approvedPowerCase = indexed(powerCaseRelease.catalog);
 const approvedFullCatalogs = new Map([
   [exportedFullSnapshot.catalogVersion, catalogs.get("/api/v2/prices")!],
   [approvedRetail.snapshot.catalogVersion, approvedRetail],
+  [approvedPowerCase.snapshot.catalogVersion, approvedPowerCase],
 ]);
-const references = validateReferenceSnapshot(exportedReferenceSnapshot, approvedRetail.snapshot);
-const referenceProducts = new Map(references.products.map(entry => [entry.identity.canonicalId, entry.referenceEstimate]));
-const referenceGeneratedAt = instantNanoseconds(references.generatedAt);
+function referenceContext(snapshot: ReferenceCatalogSnapshot, catalog: ReturnType<typeof indexed>) {
+  return { snapshot, catalog,
+    products: new Map(snapshot.products.map(entry => [entry.identity.canonicalId, entry.referenceEstimate])),
+    generatedAt: instantNanoseconds(snapshot.generatedAt) };
+}
+const defaultReferenceContext = referenceContext(references, approvedRetail);
+const approvedReferenceContexts = new Map([
+  [references.catalogVersion, defaultReferenceContext],
+  [powerCaseRelease.references.catalogVersion, referenceContext(powerCaseRelease.references, approvedPowerCase)],
+]);
 const PREVIEW_REFERENCE_TOKEN = "1".repeat(64);
 
 function indexed(snapshot: CatalogSnapshot) {
@@ -110,8 +126,23 @@ export function createPreviewPriceRequestHandler(candidate: unknown) {
     handleCatalogPriceRequest(request, env, nowMilliseconds, previewCatalogs, previewVersions);
 }
 
+/** Explicit in-memory staging: only the stage version header exposes the reviewed seven additions. */
+export function createPowerCasePreviewPriceRequestHandler(candidate: unknown) {
+  const stage = validatePowerCaseStage(structuredClone(candidate), approvedRetail.snapshot, references);
+  if (stage.catalog.catalogVersion === exportedFullSnapshot.catalogVersion)
+    throw new Error("Power/case preview version already belongs to an approved catalog");
+  const stageCatalog = indexed(stage.catalog);
+  const versions = new Map(approvedFullCatalogs);
+  versions.set(stage.catalog.catalogVersion, stageCatalog);
+  const referenceContexts = new Map(approvedReferenceContexts);
+  referenceContexts.set(stage.catalog.catalogVersion, referenceContext(stage.references, stageCatalog));
+  return (request: Request, env: WorkerEnv, nowMilliseconds: number): Response =>
+    handleCatalogPriceRequest(request, env, nowMilliseconds, catalogs, versions, referenceContexts);
+}
+
 function handleCatalogPriceRequest(request: Request, env: WorkerEnv, nowMilliseconds: number,
-  selectedCatalogs: typeof catalogs, versionedFullCatalogs: typeof approvedFullCatalogs): Response {
+  selectedCatalogs: typeof catalogs, versionedFullCatalogs: typeof approvedFullCatalogs,
+  referenceContexts = approvedReferenceContexts): Response {
   const secret = env.SHARED_PRICES_API_TOKEN;
   if (typeof secret !== "string" || !TOKEN_PATTERN.test(secret))
     return json({ error: "SERVICE_UNAVAILABLE" }, 503);
@@ -119,7 +150,8 @@ function handleCatalogPriceRequest(request: Request, env: WorkerEnv, nowMillisec
     return json({ error: "UNAUTHORIZED" }, 401, { "WWW-Authenticate": "Bearer" });
 
   const url = new URL(request.url);
-  if (url.pathname === "/api/v1/reference-prices") return handleReferenceRequest(request, env, secret, url, nowMilliseconds);
+  if (url.pathname === "/api/v1/reference-prices")
+    return handleReferenceRequest(request, env, secret, url, nowMilliseconds, referenceContexts);
   let catalog = selectedCatalogs.get(url.pathname);
   if (catalog === undefined) return json({ error: "NOT_FOUND" }, 404);
   if (request.method !== "GET")
@@ -171,27 +203,30 @@ function handleCatalogPriceRequest(request: Request, env: WorkerEnv, nowMillisec
 }
 
 /** Historical and estimated evidence has its own publication gate and never supplies current quotes. */
-function handleReferenceRequest(request: Request, env: WorkerEnv, secret: string, url: URL, nowMilliseconds: number): Response {
+function handleReferenceRequest(request: Request, env: WorkerEnv, secret: string, url: URL, nowMilliseconds: number,
+  referenceContexts: typeof approvedReferenceContexts): Response {
   if (request.method !== "GET") return json({ error: "METHOD_NOT_ALLOWED" }, 405, { Allow: "GET" });
-  if (!references.publicationApproved
+  const requestedVersion = request.headers.get("X-Catalog-Version");
+  const context = referenceContexts.get(requestedVersion ?? references.catalogVersion) ?? defaultReferenceContext;
+  const { snapshot, catalog, products, generatedAt } = context;
+  if (!snapshot.publicationApproved
     && !(env.REFERENCE_PRICES_PREVIEW_ENABLED === "true" && secret === PREVIEW_REFERENCE_TOKEN))
     return json({ error: "SERVICE_UNAVAILABLE" }, 503);
-  const requestedVersion = request.headers.get("X-Catalog-Version");
   if (requestedVersion !== null) {
     if (!CATALOG_VERSION_PATTERN.test(requestedVersion)) return json({ error: "INVALID_CATALOG_VERSION" }, 400);
-    if (requestedVersion !== references.catalogVersion) return json({ error: "CATALOG_VERSION_CONFLICT" }, 409);
+    if (!referenceContexts.has(requestedVersion)) return json({ error: "CATALOG_VERSION_CONFLICT" }, 409);
   }
   const ids = canonicalIds(url.search === "" ? null : url.search.substring(1));
   if (ids === null) return json({ error: "INVALID_CANONICAL_IDS" }, 400);
   if (!Number.isSafeInteger(nowMilliseconds) || nowMilliseconds < 0 || nowMilliseconds > 8_640_000_000_000_000
-    || BigInt(nowMilliseconds) * NANOSECONDS_PER_MILLISECOND < referenceGeneratedAt)
+    || BigInt(nowMilliseconds) * NANOSECONDS_PER_MILLISECOND < generatedAt)
     return json({ error: "SERVICE_UNAVAILABLE" }, 503);
   const items: ReferenceItem[] = ids.map(canonicalId => {
-    const product = approvedRetail.products.get(canonicalId)?.identity;
+    const product = catalog.products.get(canonicalId)?.identity;
     if (product === undefined) return { canonicalId, product: null, referenceEstimate: null, status: "UNKNOWN_PRODUCT" };
-    const referenceEstimate = referenceProducts.get(canonicalId) ?? null;
+    const referenceEstimate = products.get(canonicalId) ?? null;
     return { canonicalId, product, referenceEstimate, status: referenceEstimate === null ? "NO_REFERENCE" : "OK" };
   });
-  return json({ schemaVersion: 1, catalogVersion: references.catalogVersion, referenceVersion: references.referenceVersion,
+  return json({ schemaVersion: 1, catalogVersion: snapshot.catalogVersion, referenceVersion: snapshot.referenceVersion,
     servedAt: new Date(nowMilliseconds).toISOString().replace(/\.000Z$/, "Z"), items }, 200);
 }

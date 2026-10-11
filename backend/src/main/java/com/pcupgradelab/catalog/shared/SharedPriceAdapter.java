@@ -30,6 +30,22 @@ public final class SharedPriceAdapter {
     }
     public static SharedPriceAdapter disabled() { return new SharedPriceAdapter(); }
 
+    /** Explicit local staging only; no configuration flag can enable unpublished identities in production. */
+    public static SharedPriceAdapter powerCaseStagedPreview(SharedPowerCaseStage stage, java.net.URI baseUrl,
+                                                           Clock clock, RamSpecRepository ram) {
+        Objects.requireNonNull(stage);
+        var origin = SharedPriceClient.validateBaseUrl(baseUrl);
+        if (!"http".equals(origin.getScheme()))
+            throw new IllegalArgumentException("Unpublished PSU/CASE preview requires literal loopback HTTP");
+        var snapshot = stage.catalog();
+        var policy = SharedPriceFreshness.defaults();
+        String syntheticToken = "1".repeat(64);
+        var current = new SharedPriceClient(origin, Duration.ofSeconds(2), 65536, snapshot, clock, policy, syntheticToken, true);
+        var reference = new SharedReferencePriceClient(origin, Duration.ofSeconds(2), 65536, snapshot, clock, syntheticToken,
+                stage.references());
+        return new SharedPriceAdapter(snapshot, current, clock, policy, ram, new SharedReferencePriceAdapter(snapshot, reference));
+    }
+
     public SharedPriceAdapter(SharedCatalogSnapshot snapshot, SharedPriceClient client, Clock clock,
                               SharedPriceFreshness freshness, RamSpecRepository ram) {
         this(snapshot, client, clock, freshness, ram, SharedReferencePriceAdapter.disabled());

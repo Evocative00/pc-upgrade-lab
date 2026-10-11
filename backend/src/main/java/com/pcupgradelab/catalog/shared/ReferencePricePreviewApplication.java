@@ -37,7 +37,7 @@ public final class ReferencePricePreviewApplication {
                 "Reference preview only accepts a literal loopback HTTP origin");
         require(tokenEnvironment.matches("[A-Z][A-Z0-9_]{0,127}"), "Preview token environment name is invalid");
         var token = System.getenv(tokenEnvironment);
-        var catalog = SharedCatalogSnapshot.loadActive(root);
+        var catalog = SharedCatalogSnapshot.loadApprovedRetail(root);
         var expected = SharedReferencePriceSnapshot.loadReview(root, catalog);
         require(!expected.publicationApproved(), "This command is limited to an unpublished local preview");
         var clock = Clock.systemUTC();

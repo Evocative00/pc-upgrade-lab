@@ -85,7 +85,8 @@ export type CatalogSource = {
 }
 
 export type PowerConnector = { connectorType: string; connectorCount: number }
-export type CatalogSpecification = Record<string, string | number | boolean | null | PowerConnector[]>
+export type PsuPowerConnector = PowerConnector & { independentCableCount: number | null; maxPowerW: number | null }
+export type CatalogSpecification = Record<string, string | number | boolean | null | PowerConnector[] | PsuPowerConnector[] | string[]>
 
 export type CatalogDetail = {
   product: CatalogProduct

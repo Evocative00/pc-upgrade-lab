@@ -6,11 +6,13 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 
 /** 이미 단위가 정리된 제원 입력·조회 값. 각 레코드가 부품 종류와 입력 검증을 함께 책임진다. */
 public sealed interface CatalogSpecification permits CatalogSpecification.Cpu,
         CatalogSpecification.Motherboard, CatalogSpecification.Ram, CatalogSpecification.Gpu,
-        CatalogSpecification.Monitor, CatalogSpecification.Storage {
+        CatalogSpecification.Monitor, CatalogSpecification.Storage, CatalogSpecification.Psu,
+        CatalogSpecification.Case {
     PartType type();
 
     /**
@@ -324,6 +326,104 @@ public sealed interface CatalogSpecification permits CatalogSpecification.Cpu,
 
         @Override
         public PartType type() { return PartType.STORAGE; }
+    }
+
+    /** 정격 연속 출력과 제공 케이블의 부품 쪽 플러그를 기록한다. 피크 출력·PSU 쪽 포트는 별도다. */
+    record Psu(Integer ratedPowerW, String formFactor, BigDecimal lengthMm, BigDecimal widthMm,
+               BigDecimal heightMm, String atxVersion, boolean powerConnectorsKnown,
+               List<PsuPowerConnector> powerConnectors) implements CatalogSpecification {
+        public Psu {
+            ratedPowerW = CatalogSpecificationValues.positiveInt(ratedPowerW, "ratedPowerW");
+            formFactor = CatalogSpecificationValues.psuFormFactor(formFactor);
+            lengthMm = CatalogSpecificationValues.positiveDecimal(lengthMm, "lengthMm", 8, 2);
+            widthMm = CatalogSpecificationValues.positiveDecimal(widthMm, "widthMm", 8, 2);
+            heightMm = CatalogSpecificationValues.positiveDecimal(heightMm, "heightMm", 8, 2);
+            atxVersion = CatalogSpecificationValues.atxVersion(atxVersion);
+            if (powerConnectors == null || powerConnectors.stream().anyMatch(value -> value == null)) {
+                throw new IllegalArgumentException("powerConnectors must be a non-null list without null items");
+            }
+            if (!powerConnectorsKnown && !powerConnectors.isEmpty()) {
+                throw new IllegalArgumentException("Unknown power connectors must have an empty list");
+            }
+            var types = new HashSet<String>();
+            for (PsuPowerConnector connector : powerConnectors) {
+                if (!types.add(connector.connectorType())) {
+                    throw new IllegalArgumentException("A power connector type occurs more than once");
+                }
+            }
+            powerConnectors = powerConnectors.stream()
+                    .sorted(Comparator.comparing(PsuPowerConnector::connectorType)).toList();
+        }
+
+        @Override
+        public PartType type() { return PartType.PSU; }
+    }
+
+    /**
+     * 케이스의 제조사 공표 장착 한도. known=false인 지원 목록은 미확인이다.
+     * 팬·라디에이터·케이지에 따른 한도는 조건을 보존하며 사용자 구성에 자동 적용하지 않는다.
+     */
+    record Case(boolean motherboardFormFactorsKnown, List<String> motherboardFormFactors,
+                boolean psuFormFactorsKnown, List<String> psuFormFactors,
+                BigDecimal maxPsuLengthMm, BigDecimal maxGpuLengthMm, BigDecimal maxGpuHeightMm,
+                BigDecimal maxGpuThicknessMm, Integer expansionSlotCount,
+                String gpuClearanceConditions, String psuClearanceConditions,
+                boolean gpuClearanceUnconditional, boolean psuClearanceUnconditional)
+            implements CatalogSpecification {
+        public Case {
+            motherboardFormFactors = supportedFormFactors(motherboardFormFactorsKnown, motherboardFormFactors,
+                    "motherboardFormFactors", CatalogSpecificationValues::caseMotherboardFormFactor);
+            psuFormFactors = supportedFormFactors(psuFormFactorsKnown, psuFormFactors,
+                    "psuFormFactors", CatalogSpecificationValues::psuFormFactor);
+            maxPsuLengthMm = CatalogSpecificationValues.positiveDecimal(maxPsuLengthMm, "maxPsuLengthMm", 8, 2);
+            maxGpuLengthMm = CatalogSpecificationValues.positiveDecimal(maxGpuLengthMm, "maxGpuLengthMm", 8, 2);
+            maxGpuHeightMm = CatalogSpecificationValues.positiveDecimal(maxGpuHeightMm, "maxGpuHeightMm", 8, 2);
+            maxGpuThicknessMm = CatalogSpecificationValues.positiveDecimal(maxGpuThicknessMm, "maxGpuThicknessMm", 8, 2);
+            expansionSlotCount = CatalogSpecificationValues.positiveSmallInt(expansionSlotCount, "expansionSlotCount");
+            gpuClearanceConditions = CatalogSpecificationValues.text(gpuClearanceConditions, "gpuClearanceConditions", 2000);
+            psuClearanceConditions = CatalogSpecificationValues.text(psuClearanceConditions, "psuClearanceConditions", 2000);
+            if (gpuClearanceUnconditional && maxGpuLengthMm == null && maxGpuHeightMm == null && maxGpuThicknessMm == null) {
+                throw new IllegalArgumentException("Unconditional GPU clearance requires a published maximum dimension");
+            }
+            if (psuClearanceUnconditional && maxPsuLengthMm == null) {
+                throw new IllegalArgumentException("Unconditional PSU clearance requires maxPsuLengthMm");
+            }
+        }
+
+        @Override
+        public PartType type() { return PartType.CASE; }
+    }
+
+    /**
+     * 포함 케이블의 부품 쪽 플러그 수와 독립 케이블 수. null은 미확인이다.
+     * maxPowerW는 케이블 한 개에 제조사가 공표한 전달 한도이며 PSU 총출력이 아니다.
+     * 한 케이블의 여러 플러그를 독립 케이블 여러 개로 세지 않는다.
+     */
+    record PsuPowerConnector(String connectorType, Integer connectorCount,
+                             Integer independentCableCount, Integer maxPowerW) {
+        public PsuPowerConnector {
+            connectorType = CatalogSpecificationValues.psuConnectorType(connectorType);
+            connectorCount = CatalogSpecificationValues.positiveSmallInt(connectorCount, "connectorCount");
+            if (connectorCount == null) throw new IllegalArgumentException("connectorCount is required");
+            independentCableCount = CatalogSpecificationValues.positiveSmallInt(independentCableCount, "independentCableCount");
+            if (independentCableCount != null && independentCableCount > connectorCount) {
+                throw new IllegalArgumentException("independentCableCount must not exceed connectorCount");
+            }
+            maxPowerW = CatalogSpecificationValues.positiveInt(maxPowerW, "maxPowerW");
+        }
+    }
+
+    private static List<String> supportedFormFactors(boolean known, List<String> values, String field,
+                                                      Function<String, String> normalize) {
+        if (values == null || values.stream().anyMatch(value -> value == null)) {
+            throw new IllegalArgumentException(field + " must be a non-null list without null items");
+        }
+        if (!known && !values.isEmpty()) throw new IllegalArgumentException("Unknown " + field + " must have an empty list");
+        var normalized = values.stream().map(normalize).toList();
+        if (normalized.stream().anyMatch(value -> value == null) || new HashSet<>(normalized).size() != normalized.size()) {
+            throw new IllegalArgumentException(field + " cannot contain blank or duplicate form factors");
+        }
+        return normalized.stream().sorted().toList();
     }
 
     /** 카드 본체의 보조전원. 변환 어댑터 쪽 입력 단자 개수는 여기에 섞지 않는다. */

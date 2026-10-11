@@ -3,6 +3,7 @@ package com.pcupgradelab.catalog;
 import com.pcupgradelab.catalog.storage.StorageSpec;
 import com.pcupgradelab.catalog.storage.StorageSpecRepository;
 import com.pcupgradelab.catalog.shared.SharedPriceAdapter;
+import com.pcupgradelab.catalog.price.CatalogPriceDatabaseTimeZone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,16 +25,20 @@ public class CatalogEntryService {
     private final GpuSpecRepository gpus;
     private final MonitorSpecRepository monitors;
     private final StorageSpecRepository storage;
+    private final PsuSpecRepository psus;
+    private final CaseSpecRepository cases;
     private final CatalogProductSourceRepository sources;
+    private final CatalogPriceDatabaseTimeZone sourceTimeZone;
     private final SharedPriceAdapter sharedPrices;
 
     public CatalogEntryService(CatalogProductService productService, CatalogProductRepository products,
                                CpuSpecRepository cpus, MotherboardSpecRepository motherboards,
                                RamSpecRepository ram, GpuSpecRepository gpus,
                                MonitorSpecRepository monitors, StorageSpecRepository storage,
-                               CatalogProductSourceRepository sources) {
-        this(productService, products, cpus, motherboards, ram, gpus, monitors, storage, sources,
-                SharedPriceAdapter.disabled());
+                               PsuSpecRepository psus, CaseSpecRepository cases,
+                               CatalogProductSourceRepository sources, CatalogPriceDatabaseTimeZone sourceTimeZone) {
+        this(productService, products, cpus, motherboards, ram, gpus, monitors, storage, psus, cases, sources,
+                sourceTimeZone, SharedPriceAdapter.disabled());
     }
 
     @Autowired
@@ -41,7 +46,9 @@ public class CatalogEntryService {
                                CpuSpecRepository cpus, MotherboardSpecRepository motherboards,
                                RamSpecRepository ram, GpuSpecRepository gpus,
                                MonitorSpecRepository monitors, StorageSpecRepository storage,
-                               CatalogProductSourceRepository sources, SharedPriceAdapter sharedPrices) {
+                               PsuSpecRepository psus, CaseSpecRepository cases,
+                               CatalogProductSourceRepository sources, CatalogPriceDatabaseTimeZone sourceTimeZone,
+                               SharedPriceAdapter sharedPrices) {
         this.productService = productService;
         this.products = products;
         this.cpus = cpus;
@@ -50,7 +57,10 @@ public class CatalogEntryService {
         this.gpus = gpus;
         this.monitors = monitors;
         this.storage = storage;
+        this.psus = psus;
+        this.cases = cases;
         this.sources = sources;
+        this.sourceTimeZone = sourceTimeZone;
         this.sharedPrices = sharedPrices;
     }
 
@@ -84,16 +94,23 @@ public class CatalogEntryService {
             monitors.saveAndFlush(new MonitorSpec(product, monitor));
         } else if (specification instanceof CatalogSpecification.Storage drive) {
             storage.saveAndFlush(new StorageSpec(product, drive));
+        } else if (specification instanceof CatalogSpecification.Psu power) {
+            psus.saveAndFlush(new PsuSpec(product, power));
+        } else if (specification instanceof CatalogSpecification.Case enclosure) {
+            cases.saveAndFlush(new CaseSpec(product, enclosure));
         } else {
             throw new IllegalArgumentException("Unsupported catalog specification type");
         }
 
+        var savedSourceViews = new java.util.ArrayList<CatalogSourceView>();
         for (var source : request.sources()) {
             // 같은 외부 ID를 동시에 등록하는 요청은 DB의 UNIQUE 제약이 최종 차단한다.
             // 마지막 출처 INSERT가 실패해도 앞서 실행한 제품·가격·제원 INSERT가 모두 롤백된다.
-            sources.saveAndFlush(new CatalogProductSource(product, source));
+            savedSourceViews.add(sources.saveAndFlush(new CatalogProductSource(product, source)).toView());
         }
-        return loadEntry(productView, false);
+        // 신규 UUID에 하나의 검증된 제원만 저장했다. 등록 직후 모든 종류를 재조회하지 않는다.
+        // 기존 행의 정확히 한 제원 검사는 findById/loadEntry에서 계속 수행한다.
+        return new CatalogEntryView(productView, specification, savedSourceViews);
     }
 
     public Optional<CatalogEntryView> findById(String id) {
@@ -107,10 +124,13 @@ public class CatalogEntryService {
         var gpu = gpus.findById(product.id());
         var monitor = monitors.findById(product.id());
         var drive = storage.findById(product.id());
+        var power = psus.findById(product.id());
+        var enclosure = cases.findById(product.id());
         int specificationCount = (cpu.isPresent() ? 1 : 0)
                 + (motherboard.isPresent() ? 1 : 0) + (memory.isPresent() ? 1 : 0)
                 + (gpu.isPresent() ? 1 : 0) + (monitor.isPresent() ? 1 : 0)
-                + (drive.isPresent() ? 1 : 0);
+                + (drive.isPresent() ? 1 : 0) + (power.isPresent() ? 1 : 0)
+                + (enclosure.isPresent() ? 1 : 0);
         if (specificationCount != 1) {
             throw new IllegalStateException("Catalog entry requires exactly one specification: " + product.id());
         }
@@ -126,14 +146,21 @@ public class CatalogEntryService {
             specification = gpu.orElseThrow().toSpecification();
         } else if (monitor.isPresent()) {
             specification = monitor.orElseThrow().toSpecification();
-        } else {
+        } else if (drive.isPresent()) {
             specification = drive.orElseThrow().toSpecification();
+        } else if (power.isPresent()) {
+            specification = power.orElseThrow().toSpecification();
+        } else {
+            specification = enclosure.orElseThrow().toSpecification();
         }
         if (product.type() != specification.type()) {
             throw new IllegalStateException("Stored product and specification types do not match: " + product.id());
         }
-        var sourceViews = sources.findAllByProduct_IdOrderByIdAsc(product.id()).stream()
-                .map(CatalogProductSource::toView).toList();
+        String productId = product.id();
+        // PSU/CASE manufacturer evidence was inserted in the explicit UTC importer scope.
+        // Keep its query and DTO conversion in that same scope; legacy seed timestamps retain their original read contract.
+        var sourceViews = power.isPresent() || enclosure.isPresent()
+                ? sourceTimeZone.read(() -> loadSourceViews(productId)) : loadSourceViews(productId);
         if (sourceViews.isEmpty()) {
             throw new IllegalStateException("Catalog entry is missing its sources: " + product.id());
         }
@@ -143,5 +170,9 @@ public class CatalogEntryService {
             product = sharedPrices.enrich(java.util.List.of(product), counts).getFirst();
         }
         return new CatalogEntryView(product, specification, sourceViews);
+    }
+
+    private java.util.List<CatalogSourceView> loadSourceViews(String productId) {
+        return sources.findAllByProduct_IdOrderByIdAsc(productId).stream().map(CatalogProductSource::toView).toList();
     }
 }

@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 /** Approval gate and content integrity are tested without a running application or database. */
 class SharedReferencePriceSnapshotTests {
     private final JsonMapper mapper = JsonMapper.builder().build();
-    private final SharedCatalogSnapshot catalog = SharedCatalogSnapshot.loadActive();
+    private final SharedCatalogSnapshot catalog = SharedCatalogSnapshot.loadApprovedRetail();
 
     @Test void unpublished227ReviewCoversOnlyMissingCurrentPricesWithNoChangesToTheApproved81() {
         var prices = catalog.products().values().stream().filter(p -> p.price() != null).map(p -> p.price()).toList();

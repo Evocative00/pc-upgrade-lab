@@ -6,6 +6,8 @@ const EXAMPLES: Partial<Record<PartType, string>> = {
   RAM: 'Trident Z5 Neo',
   GPU: 'RTX 5060 VENTUS',
   STORAGE: '990 PRO 1TB',
+  PSU: 'A750GL PCIE5 II 또는 CP-9020257-KR',
+  CASE: 'AP201 또는 NR200',
 }
 
 export function CatalogSearchHelp({ type, mode, onShowModels }: {

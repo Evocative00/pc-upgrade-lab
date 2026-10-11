@@ -88,6 +88,49 @@ tasks.named('processResources') {
         include 'reference-prices-preview-2026-10-10.json', 'active-reference-prices.json'
         into 'catalog/shared/reference'
     }
+    from('../data/catalog-review') {
+        include 'power-case-pilot-2026-10-11.json'
+        into 'catalog/shared/powercase'
+    }
+    from('../data/catalog-shared') {
+        include 'power-case-stage-2026-10-11.json', 'approved-power-case-extension-2026-10-11.json',
+                'approved-power-case-reference-prices-2026-10-11.json'
+        into 'catalog/shared/powercase'
+    }
+}
+
+tasks.register('exportApprovedPowerCaseCatalog', JavaExec) {
+    group = 'verification'
+    description = 'Export the separately approved 315-product/83-price/227-reference Worker release without DB/deployment.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.SharedCatalogExportApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    args rootDir.parentFile.absolutePath, '--power-case-approved'
+}
+
+tasks.register('verifyApprovedPowerCaseCatalog', JavaExec) {
+    group = 'verification'
+    description = 'Check the approved power/case Worker export and Java fixtures without DB/deployment.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.SharedCatalogExportApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    args rootDir.parentFile.absolutePath, '--check', '--power-case-approved'
+}
+
+tasks.register('verifyDeployedPowerCasePrices', JavaExec) {
+    group = 'verification'
+    description = 'Read-only HTTPS verification of approved 315/83/227 and previous 307/308 clients; no DB/deployment.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.DeployedReferencePriceVerification'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    doFirst {
+        def baseUrl = providers.gradleProperty('deployedPricesBaseUrl').orNull
+        if (!baseUrl) throw new GradleException('Supply the approved HTTPS Worker origin with -PdeployedPricesBaseUrl.')
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath, '--base-url', baseUrl])
+    }
 }
 
 // Full catalog preparation is explicit and does not open the personal database.
@@ -237,7 +280,7 @@ tasks.register('verifyDeployedPrices', JavaExec) {
         def retail = providers.gradleProperty('deployedPricesRetailCatalog').getOrElse('false')
         if (!(full in ['true','false']) || !(retail in ['true','false']) || (full == 'true' && retail == 'true'))
             throw new GradleException('Choose one: deployedPricesFullCatalog or deployedPricesRetailCatalog')
-        setArgs([baseUrl] + (retail == 'true' ? ['--active'] : full == 'true' ? ['--full'] : []))
+        setArgs([baseUrl] + (retail == 'true' ? ['--retail'] : full == 'true' ? ['--full'] : []))
     }
 }
 
@@ -337,6 +380,63 @@ tasks.register('setupDevCatalog', JavaExec) {
             throw new GradleException('applyDevCatalog must be true or false')
         }
         setArgs(apply == 'true' ? ['--setup-catalog', '--apply'] : ['--setup-catalog'])
+    }
+}
+
+// 파워 4종·케이스 3종의 공개 자료만 검증한다. DB·개인 설정·실제 반영 경로가 없다.
+tasks.register('previewPowerCaseCatalog', JavaExec) {
+    group = 'verification'
+    description = 'Validate four PSU and three CASE candidates and write proposed-only JSON without database access.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.powercase.PowerCaseCatalogPreviewApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+    doFirst {
+        if (project.properties.any { key, value -> key.toString().toLowerCase().startsWith('apply') })
+            throw new GradleException('previewPowerCaseCatalog is preview-only; apply properties are unavailable and require separate approval.')
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath] + (getArgs() ?: []))
+    }
+}
+
+// Separate explicit DB modes preserve the default DB-free preview and require an exact approval file before writes.
+tasks.register('importPowerCaseCatalog', JavaExec) {
+    group = 'application'
+    description = 'Preview seven reviewed PSU/CASE products; explicit check enables read-only DB access, and apply also requires an exact approval file.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.powercase.PowerCaseCatalogImportApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+    doFirst {
+        def apply = providers.gradleProperty('applyPowerCaseCatalog').getOrElse('false')
+        def check = providers.gradleProperty('checkPowerCaseDb').getOrElse('false')
+        def approval = providers.gradleProperty('powerCaseApprovalFile').orNull
+        if (!(apply in ['true','false']) || !(check in ['true','false']) || (apply == 'true' && check == 'true'))
+            throw new GradleException('Choose only one: -PcheckPowerCaseDb=true or -PapplyPowerCaseCatalog=true')
+        if ((apply == 'true') != (approval != null && !approval.isBlank()))
+            throw new GradleException('Apply requires -PpowerCaseApprovalFile=<separately-approved-manifest>; approval files are apply-only.')
+        if (getArgs()) throw new GradleException('Use the documented PSU/CASE properties; extra CLI arguments are unavailable.')
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath]
+            + (apply == 'true' ? ['--apply', '--approval-file', rootProject.file(approval).absolutePath]
+                : check == 'true' ? ['--check-db'] : []))
+    }
+}
+
+// Proposed shared extension only: active manifests, Worker and deployment remain untouched.
+tasks.register('previewPowerCaseSharedCatalog', JavaExec) {
+    group = 'verification'
+    description = 'Stage a proposed seven-product shared extension without database access or publication.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.catalog.shared.PowerCaseSharedStageApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+    doFirst {
+        if (project.properties.any { key, value -> key.toString().toLowerCase().startsWith('apply') })
+            throw new GradleException('previewPowerCaseSharedCatalog is preview-only; apply properties are unavailable.')
+        if (getArgs()) throw new GradleException('previewPowerCaseSharedCatalog does not accept extra arguments.')
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath])
     }
 }
 
