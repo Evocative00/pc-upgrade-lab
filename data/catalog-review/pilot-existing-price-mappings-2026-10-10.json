@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+        "partNumber": "G5060-8V2C"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "90956033",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+        "saleSku": "G5060-8V2C",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "MSI 지포스 RTX 5060 벤투스 2X OC D7 8GB",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Graphics-Card/GeForce-RTX-5060-8G-VENTUS-2X-OC/Specification"
+        ],
+        "reason": "Exact board manufacturer, GPU, memory capacity and named cooling/OC variant; part number checked against curated manufacturer source."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+        "partNumber": "11350-03-20G"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "91909571",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+        "saleSku": "11350-03-20G",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "SAPPHIRE 라데온 RX 9060 XT PULSE OC D6 16GB",
+        "identityEvidenceUrls": [
+          "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9060-xt-16g-gddr6"
+        ],
+        "reason": "Exact board manufacturer, GPU, memory capacity and named cooling/OC variant; part number checked against curated manufacturer source."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650M MORTAR WIFI",
+        "partNumber": "MAG B650M MORTAR WIFI"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17971187",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971187",
+        "saleSku": "MAG B650M MORTAR WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "MSI MAG B650M 박격포 WIFI",
+        "identityEvidenceUrls": [
+          "https://www.msi.com/Motherboard/MAG-B650M-MORTAR-WIFI/Specification"
+        ],
+        "reason": "MORTAR is the Korean 박격포 naming; AM5/B650/DDR5/WIFI variant."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+        "manufacturer": "G.SKILL",
+        "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "F5-6000J3038F16GX2-TZ5N"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17932031",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+        "saleSku": "F5-6000J3038F16GX2-TZ5N",
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2,
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "review": {
+        "expectedTitle": "G.SKILL DDR5-6000 CL30 TRIDENT Z5 NEO J 패키지 (32GB(16Gx2))",
+        "identityEvidenceUrls": [
+          "https://www.gskill.com/specification/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-Specification"
+        ],
+        "reason": "Exact non-RGB Trident Z5 Neo PN cross-checked against manufacturer page and domestic Compuzone product description; manufacturer capacity matches two-module kit. RGB suffix N/R variants are excluded.",
+        "domesticPnEvidenceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?ProductNo=1124075",
+        "domesticPnReview": "Compuzone product description explicitly identifies F5-6000J3038F16GX2-TZ5N and two modules; title capacity is 32GB (16GB*2).",
+        "timingCheck": "6000 MT/s, CL30-38-38-96, 1.35V"
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 9700X",
+        "partNumber": "100-100001404WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "62653715",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+        "saleSku": "100-100001404WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠7-6세대 9700X (그래니트 릿지) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9700x.html",
+          "https://prod.danawa.com/info/?pcode=62653715"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact AMD Ryzen 7 9700X suffix, AM5 socket, 8 cores/16 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 9600X",
+        "partNumber": "100-100001405WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "62653718",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+        "saleSku": "100-100001405WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "review": {
+        "expectedTitle": "AMD 라이젠5-6세대 9600X (그래니트 릿지) (정품)",
+        "identityEvidenceUrls": [
+          "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9600x.html",
+          "https://prod.danawa.com/info/?pcode=62653718"
+        ],
+        "reason": "Domestic new retail boxed CPU, one PRODUCT. Exact AMD Ryzen 5 9600X suffix, AM5 socket, 6 cores/12 threads and integrated graphics present were reviewed against the supplied official manufacturer-source identity/specification payload and the domestic Danawa product page. Bulk, multipack, value pack and overseas variants were excluded. Catalog part number and seed identity are unchanged.",
+        "domesticPnEvidenceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+        "domesticPnReview": "The domestic Danawa page explicitly separates the (정품) boxed configuration from bulk/multipack/overseas variants. Model and bundled/no-cooler specification are consistent with the manufacturer boxed PN in the catalog. The Danawa page title does not itself expose the numeric PN; identity rests on official boxed PN plus the domestic exact model and boxed packaging. Where catalog PN is null it remains null and sale SKU states model plus domestic retail BOX."
+      }
+    }
+  ]
+}

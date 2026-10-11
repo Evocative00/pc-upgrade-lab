@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "stage": "APPROVED_REFRESH_PUBLISHED_IN_75_PRICE_BUNDLE",
+  "databaseWrites": 0,
+  "deployments": 1,
+  "products": 74,
+  "reobservedProducts": 72,
+  "unchangedOriginalSamsungObservations": 2,
+  "priceAmountChanges": 22,
+  "quoteDatesPreserved": true,
+  "changed": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "04984638-674b-4384-8866-a7b20d55f8b4",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 5600",
+        "partNumber": "100-100000927BOX"
+      },
+      "oldAmountKrw": 158700,
+      "newAmountKrw": 155360,
+      "observedAt": "2026-10-10T08:06:27.400Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17157083"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7ab840c3-8c52-4ced-a65c-7b0922ca479e",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 9800X3D",
+        "partNumber": "100-100001084WOF"
+      },
+      "oldAmountKrw": 720000,
+      "newAmountKrw": 729000,
+      "observedAt": "2026-10-10T08:06:28.460Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=70679912"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-12400F",
+        "partNumber": "BX8071512400F"
+      },
+      "oldAmountKrw": 215990,
+      "newAmountKrw": 215760,
+      "observedAt": "2026-10-10T08:06:29.708Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16101353"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "9f7d0407-954b-492f-86cf-20f0c0150aed",
+        "manufacturer": "Intel",
+        "modelName": "Core i3-14100F",
+        "partNumber": "BX8071514100F"
+      },
+      "oldAmountKrw": 151570,
+      "newAmountKrw": 151550,
+      "observedAt": "2026-10-10T08:06:33.133Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=32038895"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+        "partNumber": "G5060-8V2C"
+      },
+      "oldAmountKrw": 668860,
+      "newAmountKrw": 668760,
+      "observedAt": "2026-10-10T08:06:34.154Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=90956033"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "689f5aea-b1fc-4d0c-9162-568f6e9aeb73",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9070 XT 16GB",
+        "partNumber": "11348-03-20G"
+      },
+      "oldAmountKrw": 1451000,
+      "newAmountKrw": 1452500,
+      "observedAt": "2026-10-10T08:06:36.103Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=77378039"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "01110bc3-78da-4304-8bb6-ec8f0e56fb0e",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 7600 8GB",
+        "partNumber": "11324-01-20G"
+      },
+      "oldAmountKrw": 489400,
+      "newAmountKrw": 493440,
+      "observedAt": "2026-10-10T08:06:38.460Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=20315144"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "48b63b34-ce2f-479d-b46c-b74c572e99bf",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B650M-PLUS WIFI",
+        "partNumber": "TUF GAMING B650M-PLUS WIFI"
+      },
+      "oldAmountKrw": 249100,
+      "newAmountKrw": 248550,
+      "observedAt": "2026-10-10T08:06:41.727Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18044522"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f5b7becd-f2da-4c14-a74a-d34e3bf51d26",
+        "manufacturer": "ASRock",
+        "modelName": "B760M Pro RS",
+        "partNumber": "B760M Pro RS"
+      },
+      "oldAmountKrw": 148500,
+      "newAmountKrw": 146870,
+      "observedAt": "2026-10-10T08:06:44.186Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=19536062"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d60171cb-1cef-4614-a4f7-e7f145f07e30",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B760M-A D4",
+        "partNumber": null
+      },
+      "oldAmountKrw": 128990,
+      "newAmountKrw": 128900,
+      "observedAt": "2026-10-10T08:06:45.109Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=18652898"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "dc95c90b-60d3-4bec-a73c-ef5eb799ae46",
+        "manufacturer": "MSI",
+        "modelName": "PRO B760M-A WIFI",
+        "partNumber": null
+      },
+      "oldAmountKrw": 154950,
+      "newAmountKrw": 154210,
+      "observedAt": "2026-10-10T08:06:46.345Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=19241759"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ff4b4766-4f58-4c17-915e-9881c50ed032",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-12400",
+        "partNumber": null
+      },
+      "oldAmountKrw": 269950,
+      "newAmountKrw": 267360,
+      "observedAt": "2026-10-10T08:10:11.247Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16101326"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "82e101d8-9816-4a6e-9d5a-7090e6933eea",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-12700F",
+        "partNumber": null
+      },
+      "oldAmountKrw": 409480,
+      "newAmountKrw": 409460,
+      "observedAt": "2026-10-10T08:10:12.403Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16101464"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "af402682-92b0-4c17-9228-19b9b5c6dcdd",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-14400",
+        "partNumber": "BX8071514400"
+      },
+      "oldAmountKrw": 277670,
+      "newAmountKrw": 277650,
+      "observedAt": "2026-10-10T08:10:17.956Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=32038580"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "41a8238b-049f-46db-a304-0c8ece1a8d73",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-12700K",
+        "partNumber": null
+      },
+      "oldAmountKrw": 466990,
+      "newAmountKrw": 466970,
+      "observedAt": "2026-10-10T08:10:20.153Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=15594638"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a0535313-5457-4b3a-8ff3-a7550e458406",
+        "manufacturer": "Intel",
+        "modelName": "Core i9-12900K",
+        "partNumber": null
+      },
+      "oldAmountKrw": 818990,
+      "newAmountKrw": 821990,
+      "observedAt": "2026-10-10T08:10:31.210Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=15594887"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e8a66e2e-c53b-49d3-a31c-49a9ee8fe389",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650 TOMAHAWK WIFI",
+        "partNumber": null
+      },
+      "oldAmountKrw": 249110,
+      "newAmountKrw": 249050,
+      "observedAt": "2026-10-10T08:10:34.489Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17971181"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f24caa89-27bd-4797-899c-2bb76b608971",
+        "manufacturer": "MSI",
+        "modelName": "PRO B650M-A WIFI",
+        "partNumber": null
+      },
+      "oldAmountKrw": 165980,
+      "newAmountKrw": 163910,
+      "observedAt": "2026-10-10T08:10:35.785Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17971184"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3190abcf-4bf4-4ae4-b06d-0c29dd1d8120",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME A520M-K",
+        "partNumber": null
+      },
+      "oldAmountKrw": 64990,
+      "newAmountKrw": 64280,
+      "observedAt": "2026-10-10T08:10:37.909Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=12060293"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "aab6da00-a3f4-48e5-bebf-ebc3181ac91f",
+        "manufacturer": "MSI",
+        "modelName": "A520M-A PRO",
+        "partNumber": null
+      },
+      "oldAmountKrw": 69730,
+      "newAmountKrw": 68850,
+      "observedAt": "2026-10-10T08:10:41.261Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=12067598"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "320488a7-b309-490d-80da-235d999eff79",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B550M-PLUS",
+        "partNumber": "TUF GAMING B550M-PLUS"
+      },
+      "oldAmountKrw": 156990,
+      "newAmountKrw": 154930,
+      "observedAt": "2026-10-10T08:10:44.554Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=11571368"
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c4c44fc0-9231-4578-b947-0ccd887d97e1",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 3060 VENTUS 2X 12G OC",
+        "partNumber": null
+      },
+      "oldAmountKrw": 536420,
+      "newAmountKrw": 528200,
+      "observedAt": "2026-10-10T08:10:53.888Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=13512254"
+    }
+  ],
+  "reviewStageBeforeApproval": "CURRENT_PRICE_REFRESH_REVIEW_PENDING",
+  "pricePublicationApproved": true,
+  "localPriceImportPerformed": false,
+  "databasePriceWrites": 0,
+  "publishedAt": "2026-10-10T09:25:45.216455Z",
+  "rolloutReport": "all-catalog-central-rollout-2026-10-10.json"
+}

@@ -1,0 +1,23 @@
+{
+  "verifiedAt" : "2026-10-11T08:05:21.242273100Z",
+  "origin" : "https://pc-upgrade-shared-prices.joony1024.workers.dev",
+  "catalogVersion" : "all-catalog-v1-6bd04f97b7cba4fe30dc5113d15db56847026a744cf6c5f7006da62a1e9e140a",
+  "referenceVersion" : "references-v1-0a60f7fa4c600e99ea6c4c4c74b3398f1c6ebd168ff13ef3af73f9c2ebcc0dfd",
+  "products" : 315,
+  "referencesVerified" : 227,
+  "currentPricesPreserved" : 83,
+  "previous307CurrentPricesPreserved" : 80,
+  "previous308CurrentPricesPreserved" : 81,
+  "currentProductsWithNoReference" : 88,
+  "basis" : {
+    "MODEL_RETAIL_REFERENCE" : 5,
+    "LAUNCH_PRICE" : 3,
+    "SIMILAR_PART_ESTIMATE" : 219,
+    "HISTORICAL_RETAIL" : 0
+  },
+  "missingAndIncorrectAuthentication" : 401,
+  "publicationApproved" : true,
+  "databaseChanges" : 0,
+  "deployments" : 0,
+  "serverRestarts" : 0
+}

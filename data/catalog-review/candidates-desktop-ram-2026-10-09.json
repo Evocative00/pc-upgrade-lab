@@ -1,0 +1,736 @@
+{
+  "schemaVersion": 1,
+  "researchDate": "2026-10-09",
+  "categoryGroup": "DESKTOP_RAM",
+  "scopeLimitations": [
+    "개별 데스크톱 UDIMM 구간 보강 조사이며 실제 설치 수요와 국내 판매 수요는 측정하지 않았다.",
+    "모든 국내 링크는 제품 모델 페이지 존재만 확인했다. 단일 정확 PN·유통사·신품 판매 SKU 매핑 및 상품가 수집/DB 적재는 하지 않았다.",
+    "Samsung 기존 개별 모듈 페이지가 일반 DDR 소개로 이동하여 공식 보드 QVL을 보조 근거로 사용하거나 정확 PN을 null로 남겼다.",
+    "공식 QVL은 해당 시험 구성의 근거이며 DDR 세대가 같다는 이유로 보드·CPU·개수·BIOS 제약을 생략하지 않는다.",
+    "SODIMM(노트북/일부 미니PC), RDIMM·LRDIMM(서버)과 시스템 ECC UDIMM은 일반 데스크톱 non-ECC DIMM 범위와 구분해 이번 후보에서 제외했다.",
+    "DDR3는 구형 PC 참조 확장 시 별도 승인 범위에서 조사할 수 있으나 실제 설치 표본과 Intel 구형 플랫폼 범위가 정해지기 전에는 이번 후보에 포함하지 않았다.",
+    "가격·배송료·할인·프로모션 수치는 조사 결과에 저장하지 않았다.",
+    "PDF QVL의 텍스트는 읽었지만 web screenshot fetch는 cache miss로 실패했다. 실제 카탈로그 적재 전 표 레이아웃과 원본 데이터시트 재검토가 필요하다."
+  ],
+  "candidates": [
+    {
+      "candidateKey": "ram-samsung-ddr4-3200-8gb-identity-review",
+      "category": "RAM",
+      "manufacturer": "Samsung",
+      "modelName": "삼성전자 DDR4-3200 8GB 단일 UDIMM (정확 PN 미확정)",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 300종에 Samsung DDR4-3200 8GB 단일 데스크톱 모듈의 확인된 참조 제품이 없어 용량·세대·속도 구간을 보강하는 후보. 설치/판매 빈도를 측정한 선정은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 8589934592,
+        "moduleCount": 1,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": null,
+        "bufferType": null,
+        "voltageV": null,
+        "heightMm": null
+      },
+      "compatibilityNotes": [
+        "DDR4 지원 데스크톱 CPU·보드와 메모리 슬롯/최대 용량/공식 지원 속도를 함께 확인해야 한다.",
+        "한 모듈 용량과 장착 개수를 별도로 기록한다. 2개 장착을 2개 판매 키트로 간주하지 않는다.",
+        "QVL의 특정 보드·CPU·DIMM 개수 시험 결과를 모든 보드의 호환으로 확대하지 않는다.",
+        "DDR4와 DDR5는 슬롯·전기 특성이 달라 혼용할 수 없다."
+      ],
+      "identificationNotes": [
+        "속도·용량·브랜드 구간 후보이며 정확 모듈 PN은 미확정. 이름만으로 설치 RAM이나 판매 SKU를 확정하지 않는다.",
+        "OEM/벌크 모듈 PN과 유통 패키지·수입사·판매 묶음은 별개로 검토한다. 판매페이지의 이미지/제목만으로 메모리 다이·리비전·랭크를 확정하지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://semiconductor.samsung.com/dram/ddr/",
+          "title": "Samsung DDR: DDR4/DDR5 module overview",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "DDR4/DDR5 구분",
+            "UDIMM·ECC UDIMM·RDIMM·SODIMM 역할 구분"
+          ],
+          "notes": "제품군 설명 자료이며 개별 PN·용량을 인증하는 근거가 아니다. 기존 개별 모듈 URL이 이 페이지로 리디렉션되어 정확 PN 확인을 보류했다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=11541857",
+          "title": "삼성전자 DDR4-3200 (8GB) : 다나와 가격비교",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "브랜드·DDR 세대·정격 속도·용량·램 개수 1개 상품 페이지 확인. 정확 모듈 PN 및 개별 판매처의 신품/벌크/병행 조건은 미확정. 수치 가격은 이번 조사에서 적재하지 않는다. 다나와는 단종 안내와 중고 주의를 표시하며, 신품 재고를 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "공식 자료와 모듈 라벨로 정확 PN 확정",
+        "신품 여부, 벌크/병행/유통사 및 보증 조건 확인",
+        "미확인 pins/ECC/buffer/높이를 정확 모듈 자료로 보완하고 CPU·보드별 지원 용량·속도 근거 검토"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ram-samsung-m378a2g43ab3-cwe",
+      "category": "RAM",
+      "manufacturer": "Samsung",
+      "modelName": "M378A2G43AB3-CWE DDR4-3200 16GB (1x16GB)",
+      "partNumber": "M378A2G43AB3-CWE",
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 300종에 Samsung DDR4-3200 16GB 단일 데스크톱 모듈의 확인된 참조 제품이 없어 용량·세대·속도 구간을 보강하는 후보. 설치/판매 빈도를 측정한 선정은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 1,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": null,
+        "bufferType": null,
+        "voltageV": 1.2,
+        "heightMm": null
+      },
+      "compatibilityNotes": [
+        "DDR4 지원 데스크톱 CPU·보드와 메모리 슬롯/최대 용량/공식 지원 속도를 함께 확인해야 한다.",
+        "한 모듈 용량과 장착 개수를 별도로 기록한다. 2개 장착을 2개 판매 키트로 간주하지 않는다.",
+        "QVL의 특정 보드·CPU·DIMM 개수 시험 결과를 모든 보드의 호환으로 확대하지 않는다.",
+        "DDR4와 DDR5는 슬롯·전기 특성이 달라 혼용할 수 없다."
+      ],
+      "identificationNotes": [
+        "공식 제조사/보드 자료에 등장하는 정확 모듈 PN. 다나와의 동일 속도·용량 묶음 페이지가 이 PN만 판매한다는 뜻은 아니다.",
+        "OEM/벌크 모듈 PN과 유통 패키지·수입사·판매 묶음은 별개로 검토한다. 판매페이지의 이미지/제목만으로 메모리 다이·리비전·랭크를 확정하지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://dlcdnets.asus.com/pub/ASUS/mb/SocketAM4/PRIME_B450M-A/Memory_QVL_for_AMD_Ryzen_5000_G-Series_4DIMM_20210625.pdf",
+          "title": "ASUS PRIME B450M-A Ryzen 5000 G-Series memory QVL, p.14",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "M378A2G43AB3-CWE",
+            "16GB",
+            "DDR4-3200",
+            "1.2V"
+          ],
+          "notes": "공식 보드 제조사 QVL에 적힌 모듈 식별/시험 근거. Samsung 개별 모듈 데이터시트의 대체 자료이며 국내 판매 SKU를 확정하지 않는다. PDF 텍스트 확인, screenshot fetch는 도구 cache miss로 실패."
+        },
+        {
+          "url": "https://semiconductor.samsung.com/dram/ddr/",
+          "title": "Samsung DDR: DDR4/DDR5 module overview",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "DDR4/DDR5 구분",
+            "UDIMM·ECC UDIMM·RDIMM·SODIMM 역할 구분"
+          ],
+          "notes": "제품군 설명 자료이며 개별 PN·용량을 인증하는 근거가 아니다. 기존 개별 모듈 URL이 이 페이지로 리디렉션되어 정확 PN 확인을 보류했다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=11790199",
+          "title": "삼성전자 DDR4-3200 (16GB) : 다나와 가격비교",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "브랜드·DDR 세대·정격 속도·용량·램 개수 1개 상품 페이지 확인. 정확 모듈 PN 및 개별 판매처의 신품/벌크/병행 조건은 미확정. 수치 가격은 이번 조사에서 적재하지 않는다. 다나와는 단종 안내와 중고 주의를 표시하며, 신품 재고를 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 판매처가 이 정확 PN을 공급하는지, 교체 가능한 다른 PN을 묶어 판매하는지 확인",
+        "신품 여부, 벌크/병행/유통사 및 보증 조건 확인",
+        "미확인 pins/ECC/buffer/높이를 정확 모듈 자료로 보완하고 CPU·보드별 지원 용량·속도 근거 검토"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ram-samsung-m378a4g43ab2-cwe",
+      "category": "RAM",
+      "manufacturer": "Samsung",
+      "modelName": "M378A4G43AB2-CWE DDR4-3200 32GB (1x32GB)",
+      "partNumber": "M378A4G43AB2-CWE",
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 300종에 Samsung DDR4-3200 32GB 단일 데스크톱 모듈의 확인된 참조 제품이 없어 용량·세대·속도 구간을 보강하는 후보. 설치/판매 빈도를 측정한 선정은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 34359738368,
+        "moduleCount": 1,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": null,
+        "bufferType": null,
+        "voltageV": 1.2,
+        "heightMm": null
+      },
+      "compatibilityNotes": [
+        "DDR4 지원 데스크톱 CPU·보드와 메모리 슬롯/최대 용량/공식 지원 속도를 함께 확인해야 한다.",
+        "한 모듈 용량과 장착 개수를 별도로 기록한다. 2개 장착을 2개 판매 키트로 간주하지 않는다.",
+        "QVL의 특정 보드·CPU·DIMM 개수 시험 결과를 모든 보드의 호환으로 확대하지 않는다.",
+        "DDR4와 DDR5는 슬롯·전기 특성이 달라 혼용할 수 없다."
+      ],
+      "identificationNotes": [
+        "공식 제조사/보드 자료에 등장하는 정확 모듈 PN. 다나와의 동일 속도·용량 묶음 페이지가 이 PN만 판매한다는 뜻은 아니다.",
+        "OEM/벌크 모듈 PN과 유통 패키지·수입사·판매 묶음은 별개로 검토한다. 판매페이지의 이미지/제목만으로 메모리 다이·리비전·랭크를 확정하지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://dlcdnets.asus.com/pub/ASUS/mb/SocketAM4/PRIME_B450M-A/Memory_QVL_for_AMD_Ryzen_5000_G-Series_4DIMM_20210625.pdf",
+          "title": "ASUS PRIME B450M-A Ryzen 5000 G-Series memory QVL, p.14",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "M378A4G43AB2-CWE",
+            "32GB",
+            "DDR4-3200",
+            "1.2V"
+          ],
+          "notes": "특정 보드/CPU의 QVL 근거. 전체 PC 호환 인증은 아니다."
+        },
+        {
+          "url": "https://semiconductor.samsung.com/dram/ddr/",
+          "title": "Samsung DDR: DDR4/DDR5 module overview",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "DDR4/DDR5 구분",
+            "UDIMM·ECC UDIMM·RDIMM·SODIMM 역할 구분"
+          ],
+          "notes": "제품군 설명 자료이며 개별 PN·용량을 인증하는 근거가 아니다. 기존 개별 모듈 URL이 이 페이지로 리디렉션되어 정확 PN 확인을 보류했다."
+        },
+        {
+          "url": "https://download.gigabyte.com/FileList/QVL/server_mb_qvl_MW34-SP0-00_v1.0.pdf?v=f4d45d3a40ecc89923ed7fb296768bec",
+          "title": "GIGABYTE MW34-SP0 rev.1.0 QVL, p.2",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "M378A4G43AB2-CWE",
+            "32GB",
+            "DDR4-3200",
+            "1.2V",
+            "288-pin"
+          ],
+          "notes": "제조사 공식 QVL 텍스트 확인. screenshot fetch는 도구 cache miss로 실패."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=11028636",
+          "title": "삼성전자 DDR4-3200 (32GB) : 다나와 가격비교",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "브랜드·DDR 세대·정격 속도·용량·램 개수 1개 상품 페이지 확인. 정확 모듈 PN 및 개별 판매처의 신품/벌크/병행 조건은 미확정. 수치 가격은 이번 조사에서 적재하지 않는다. 다나와는 단종 안내와 중고 주의를 표시하며, 신품 재고를 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 판매처가 이 정확 PN을 공급하는지, 교체 가능한 다른 PN을 묶어 판매하는지 확인",
+        "신품 여부, 벌크/병행/유통사 및 보증 조건 확인",
+        "미확인 pins/ECC/buffer/높이를 정확 모듈 자료로 보완하고 CPU·보드별 지원 용량·속도 근거 검토"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ram-samsung-ddr5-4800-16gb-identity-review",
+      "category": "RAM",
+      "manufacturer": "Samsung",
+      "modelName": "삼성전자 DDR5-4800 16GB 단일 UDIMM (정확 PN 미확정)",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 Samsung DDR5-4800 16GB 단일 데스크톱 모듈의 확인된 참조 제품이 없어 용량·세대·속도 구간을 보강하는 후보. 설치/판매 빈도를 측정한 선정은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 1,
+        "dataRateMts": 4800,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": null,
+        "bufferType": null,
+        "voltageV": null,
+        "heightMm": null
+      },
+      "compatibilityNotes": [
+        "DDR5 지원 데스크톱 CPU·보드와 메모리 슬롯/최대 용량/공식 지원 속도를 함께 확인해야 한다.",
+        "한 모듈 용량과 장착 개수를 별도로 기록한다. 2개 장착을 2개 판매 키트로 간주하지 않는다.",
+        "QVL의 특정 보드·CPU·DIMM 개수 시험 결과를 모든 보드의 호환으로 확대하지 않는다.",
+        "DDR4와 DDR5는 슬롯·전기 특성이 달라 혼용할 수 없다."
+      ],
+      "identificationNotes": [
+        "속도·용량·브랜드 구간 후보이며 정확 모듈 PN은 미확정. 이름만으로 설치 RAM이나 판매 SKU를 확정하지 않는다.",
+        "OEM/벌크 모듈 PN과 유통 패키지·수입사·판매 묶음은 별개로 검토한다. 판매페이지의 이미지/제목만으로 메모리 다이·리비전·랭크를 확정하지 않는다.",
+        "DDR5 on-die ECC는 CPU/보드와 모듈을 통한 시스템 ECC 지원과 구분한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://semiconductor.samsung.com/dram/ddr/",
+          "title": "Samsung DDR: DDR4/DDR5 module overview",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "DDR4/DDR5 구분",
+            "UDIMM·ECC UDIMM·RDIMM·SODIMM 역할 구분"
+          ],
+          "notes": "제품군 설명 자료이며 개별 PN·용량을 인증하는 근거가 아니다. 기존 개별 모듈 URL이 이 페이지로 리디렉션되어 정확 PN 확인을 보류했다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=15759071",
+          "title": "삼성전자 DDR5-4800 (16GB) : 다나와 가격비교",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "브랜드·DDR 세대·정격 속도·용량·램 개수 1개 상품 페이지 확인. 정확 모듈 PN 및 개별 판매처의 신품/벌크/병행 조건은 미확정. 수치 가격은 이번 조사에서 적재하지 않는다. 병행수입/벌크/A/S 판매처 확인 안내를 확인했다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "공식 자료와 모듈 라벨로 정확 PN 확정",
+        "신품 여부, 벌크/병행/유통사 및 보증 조건 확인",
+        "미확인 pins/ECC/buffer/높이를 정확 모듈 자료로 보완하고 CPU·보드별 지원 용량·속도 근거 검토"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ram-samsung-ddr5-4800-32gb-identity-review",
+      "category": "RAM",
+      "manufacturer": "Samsung",
+      "modelName": "삼성전자 DDR5-4800 32GB 단일 UDIMM (정확 PN 미확정)",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 Samsung DDR5-4800 32GB 단일 데스크톱 모듈의 확인된 참조 제품이 없어 용량·세대·속도 구간을 보강하는 후보. 설치/판매 빈도를 측정한 선정은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 34359738368,
+        "moduleCount": 1,
+        "dataRateMts": 4800,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": null,
+        "bufferType": null,
+        "voltageV": null,
+        "heightMm": null
+      },
+      "compatibilityNotes": [
+        "DDR5 지원 데스크톱 CPU·보드와 메모리 슬롯/최대 용량/공식 지원 속도를 함께 확인해야 한다.",
+        "한 모듈 용량과 장착 개수를 별도로 기록한다. 2개 장착을 2개 판매 키트로 간주하지 않는다.",
+        "QVL의 특정 보드·CPU·DIMM 개수 시험 결과를 모든 보드의 호환으로 확대하지 않는다.",
+        "DDR4와 DDR5는 슬롯·전기 특성이 달라 혼용할 수 없다."
+      ],
+      "identificationNotes": [
+        "속도·용량·브랜드 구간 후보이며 정확 모듈 PN은 미확정. 이름만으로 설치 RAM이나 판매 SKU를 확정하지 않는다.",
+        "OEM/벌크 모듈 PN과 유통 패키지·수입사·판매 묶음은 별개로 검토한다. 판매페이지의 이미지/제목만으로 메모리 다이·리비전·랭크를 확정하지 않는다.",
+        "DDR5 on-die ECC는 CPU/보드와 모듈을 통한 시스템 ECC 지원과 구분한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://semiconductor.samsung.com/dram/ddr/",
+          "title": "Samsung DDR: DDR4/DDR5 module overview",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "DDR4/DDR5 구분",
+            "UDIMM·ECC UDIMM·RDIMM·SODIMM 역할 구분"
+          ],
+          "notes": "제품군 설명 자료이며 개별 PN·용량을 인증하는 근거가 아니다. 기존 개별 모듈 URL이 이 페이지로 리디렉션되어 정확 PN 확인을 보류했다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=15764342",
+          "title": "삼성전자 DDR5-4800 (32GB) : 다나와 가격비교",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "브랜드·DDR 세대·정격 속도·용량·램 개수 1개 상품 페이지 확인. 정확 모듈 PN 및 개별 판매처의 신품/벌크/병행 조건은 미확정. 수치 가격은 이번 조사에서 적재하지 않는다. 병행수입/벌크/A/S 판매처 확인 안내를 확인했다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "공식 자료와 모듈 라벨로 정확 PN 확정",
+        "신품 여부, 벌크/병행/유통사 및 보증 조건 확인",
+        "미확인 pins/ECC/buffer/높이를 정확 모듈 자료로 보완하고 CPU·보드별 지원 용량·속도 근거 검토"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ram-samsung-ddr5-5600-16gb-identity-review",
+      "category": "RAM",
+      "manufacturer": "Samsung",
+      "modelName": "삼성전자 DDR5-5600 16GB 단일 UDIMM (정확 PN 미확정)",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 Samsung DDR5-5600 16GB 단일 데스크톱 모듈의 확인된 참조 제품이 없어 용량·세대·속도 구간을 보강하는 후보. 설치/판매 빈도를 측정한 선정은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 1,
+        "dataRateMts": 5600,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": null,
+        "bufferType": null,
+        "voltageV": null,
+        "heightMm": null
+      },
+      "compatibilityNotes": [
+        "DDR5 지원 데스크톱 CPU·보드와 메모리 슬롯/최대 용량/공식 지원 속도를 함께 확인해야 한다.",
+        "한 모듈 용량과 장착 개수를 별도로 기록한다. 2개 장착을 2개 판매 키트로 간주하지 않는다.",
+        "QVL의 특정 보드·CPU·DIMM 개수 시험 결과를 모든 보드의 호환으로 확대하지 않는다.",
+        "DDR4와 DDR5는 슬롯·전기 특성이 달라 혼용할 수 없다."
+      ],
+      "identificationNotes": [
+        "속도·용량·브랜드 구간 후보이며 정확 모듈 PN은 미확정. 이름만으로 설치 RAM이나 판매 SKU를 확정하지 않는다.",
+        "OEM/벌크 모듈 PN과 유통 패키지·수입사·판매 묶음은 별개로 검토한다. 판매페이지의 이미지/제목만으로 메모리 다이·리비전·랭크를 확정하지 않는다.",
+        "DDR5 on-die ECC는 CPU/보드와 모듈을 통한 시스템 ECC 지원과 구분한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://semiconductor.samsung.com/dram/ddr/",
+          "title": "Samsung DDR: DDR4/DDR5 module overview",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "DDR4/DDR5 구분",
+            "UDIMM·ECC UDIMM·RDIMM·SODIMM 역할 구분"
+          ],
+          "notes": "제품군 설명 자료이며 개별 PN·용량을 인증하는 근거가 아니다. 기존 개별 모듈 URL이 이 페이지로 리디렉션되어 정확 PN 확인을 보류했다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=18911780",
+          "title": "삼성전자 DDR5-5600 (16GB) : 다나와 가격비교",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "브랜드·DDR 세대·정격 속도·용량·램 개수 1개 상품 페이지 확인. 정확 모듈 PN 및 개별 판매처의 신품/벌크/병행 조건은 미확정. 수치 가격은 이번 조사에서 적재하지 않는다. 병행수입/벌크/A/S 판매처 확인 안내를 확인했다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "공식 자료와 모듈 라벨로 정확 PN 확정",
+        "신품 여부, 벌크/병행/유통사 및 보증 조건 확인",
+        "미확인 pins/ECC/buffer/높이를 정확 모듈 자료로 보완하고 CPU·보드별 지원 용량·속도 근거 검토"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ram-samsung-ddr5-5600-32gb-identity-review",
+      "category": "RAM",
+      "manufacturer": "Samsung",
+      "modelName": "삼성전자 DDR5-5600 32GB 단일 UDIMM (정확 PN 미확정)",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 Samsung DDR5-5600 32GB 단일 데스크톱 모듈의 확인된 참조 제품이 없어 용량·세대·속도 구간을 보강하는 후보. 설치/판매 빈도를 측정한 선정은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 34359738368,
+        "moduleCount": 1,
+        "dataRateMts": 5600,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": null,
+        "bufferType": null,
+        "voltageV": null,
+        "heightMm": null
+      },
+      "compatibilityNotes": [
+        "DDR5 지원 데스크톱 CPU·보드와 메모리 슬롯/최대 용량/공식 지원 속도를 함께 확인해야 한다.",
+        "한 모듈 용량과 장착 개수를 별도로 기록한다. 2개 장착을 2개 판매 키트로 간주하지 않는다.",
+        "QVL의 특정 보드·CPU·DIMM 개수 시험 결과를 모든 보드의 호환으로 확대하지 않는다.",
+        "DDR4와 DDR5는 슬롯·전기 특성이 달라 혼용할 수 없다."
+      ],
+      "identificationNotes": [
+        "속도·용량·브랜드 구간 후보이며 정확 모듈 PN은 미확정. 이름만으로 설치 RAM이나 판매 SKU를 확정하지 않는다.",
+        "OEM/벌크 모듈 PN과 유통 패키지·수입사·판매 묶음은 별개로 검토한다. 판매페이지의 이미지/제목만으로 메모리 다이·리비전·랭크를 확정하지 않는다.",
+        "DDR5 on-die ECC는 CPU/보드와 모듈을 통한 시스템 ECC 지원과 구분한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://semiconductor.samsung.com/dram/ddr/",
+          "title": "Samsung DDR: DDR4/DDR5 module overview",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "DDR4/DDR5 구분",
+            "UDIMM·ECC UDIMM·RDIMM·SODIMM 역할 구분"
+          ],
+          "notes": "제품군 설명 자료이며 개별 PN·용량을 인증하는 근거가 아니다. 기존 개별 모듈 URL이 이 페이지로 리디렉션되어 정확 PN 확인을 보류했다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=20644043",
+          "title": "삼성전자 DDR5-5600 (32GB) : 다나와 가격비교",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "브랜드·DDR 세대·정격 속도·용량·램 개수 1개 상품 페이지 확인. 정확 모듈 PN 및 개별 판매처의 신품/벌크/병행 조건은 미확정. 수치 가격은 이번 조사에서 적재하지 않는다. 병행수입/벌크/A/S 판매처 확인 안내를 확인했다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "공식 자료와 모듈 라벨로 정확 PN 확정",
+        "신품 여부, 벌크/병행/유통사 및 보증 조건 확인",
+        "미확인 pins/ECC/buffer/높이를 정확 모듈 자료로 보완하고 CPU·보드별 지원 용량·속도 근거 검토"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ram-sk-hynix-hma81gu6djr8n-xn",
+      "category": "RAM",
+      "manufacturer": "SK Hynix",
+      "modelName": "HMA81GU6DJR8N-XN DDR4-3200 8GB (1x8GB)",
+      "partNumber": "HMA81GU6DJR8N-XN",
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 300종에 SK Hynix DDR4-3200 8GB 단일 데스크톱 모듈의 확인된 참조 제품이 없어 용량·세대·속도 구간을 보강하는 후보. 설치/판매 빈도를 측정한 선정은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "memoryType": "DDR4",
+        "moduleCapacityBytes": 8589934592,
+        "moduleCount": 1,
+        "dataRateMts": 3200,
+        "moduleFormFactor": "DIMM",
+        "pinCount": 288,
+        "isEcc": null,
+        "bufferType": null,
+        "voltageV": 1.2,
+        "heightMm": null
+      },
+      "compatibilityNotes": [
+        "DDR4 지원 데스크톱 CPU·보드와 메모리 슬롯/최대 용량/공식 지원 속도를 함께 확인해야 한다.",
+        "한 모듈 용량과 장착 개수를 별도로 기록한다. 2개 장착을 2개 판매 키트로 간주하지 않는다.",
+        "QVL의 특정 보드·CPU·DIMM 개수 시험 결과를 모든 보드의 호환으로 확대하지 않는다."
+      ],
+      "identificationNotes": [
+        "공식 제조사/보드 자료에 등장하는 정확 모듈 PN. 다나와의 동일 속도·용량 묶음 페이지가 이 PN만 판매한다는 뜻은 아니다.",
+        "OEM/벌크 모듈 PN과 유통 패키지·수입사·판매 묶음은 별개로 검토한다. 판매페이지의 이미지/제목만으로 메모리 다이·리비전·랭크를 확정하지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://dlcdnets.asus.com/pub/ASUS/mb/SocketAM4/Pro_WS_X570-ACE/Memory_QVL_for_AMD_Ryzen_5000_Series_Processors_X570.pdf",
+          "title": "ASUS Pro WS X570-ACE Ryzen 5000-Series memory QVL, p.15",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "HMA81GU6DJR8N-XN",
+            "SK Hynix",
+            "8GB",
+            "DDR4-3200",
+            "1.2V"
+          ],
+          "notes": "SK hynix 개별 모듈 데이터시트가 아닌 공식 보드 QVL이다. 특정 시험 구성 외 호환을 확정하지 않는다. PDF 텍스트 확인, screenshot fetch는 도구 cache miss로 실패."
+        },
+        {
+          "url": "https://download.gigabyte.com/FileList/QVL/server_mb_qvl_MW34-SP0-00_v1.0.pdf?v=f4d45d3a40ecc89923ed7fb296768bec",
+          "title": "GIGABYTE MW34-SP0 rev.1.0 QVL, p.2",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "HMA81GU6DJR8N-XN",
+            "8GB",
+            "DDR4-3200",
+            "1.2V",
+            "288-pin"
+          ],
+          "notes": "자료 간 랭크 표기가 ASUS SS와 GIGABYTE 2Rx8로 다르므로 랭크를 이번 후보 제원으로 확정하지 않았다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=112969488",
+          "title": "SK하이닉스 DDR4-3200 (8GB) : 다나와 가격비교",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "브랜드·DDR 세대·정격 속도·용량·램 개수 1개 상품 페이지 확인. 정확 모듈 PN 및 개별 판매처의 신품/벌크/병행 조건은 미확정. 수치 가격은 이번 조사에서 적재하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 판매처가 이 정확 PN을 공급하는지, 교체 가능한 다른 PN을 묶어 판매하는지 확인",
+        "신품 여부, 벌크/병행/유통사 및 보증 조건 확인",
+        "미확인 pins/ECC/buffer/높이를 정확 모듈 자료로 보완하고 CPU·보드별 지원 용량·속도 근거 검토",
+        "보드 QVL 사이 랭크 표기 차이와 SK hynix 원본 모듈 데이터시트 확인"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ram-sk-hynix-hmcg78agbua081n",
+      "category": "RAM",
+      "manufacturer": "SK Hynix",
+      "modelName": "HMCG78AGBUA081N DDR5-5600 16GB (1x16GB)",
+      "partNumber": "HMCG78AGBUA081N",
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 SK Hynix DDR5-5600 16GB 단일 데스크톱 모듈의 확인된 참조 제품이 없어 용량·세대·속도 구간을 보강하는 후보. 설치/판매 빈도를 측정한 선정은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 1,
+        "dataRateMts": 5600,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": null,
+        "heightMm": null
+      },
+      "compatibilityNotes": [
+        "DDR5 지원 데스크톱 CPU·보드와 메모리 슬롯/최대 용량/공식 지원 속도를 함께 확인해야 한다.",
+        "한 모듈 용량과 장착 개수를 별도로 기록한다. 2개 장착을 2개 판매 키트로 간주하지 않는다.",
+        "QVL의 특정 보드·CPU·DIMM 개수 시험 결과를 모든 보드의 호환으로 확대하지 않는다."
+      ],
+      "identificationNotes": [
+        "공식 제조사/보드 자료에 등장하는 정확 모듈 PN. 다나와의 동일 속도·용량 묶음 페이지가 이 PN만 판매한다는 뜻은 아니다.",
+        "OEM/벌크 모듈 PN과 유통 패키지·수입사·판매 묶음은 별개로 검토한다. 판매페이지의 이미지/제목만으로 메모리 다이·리비전·랭크를 확정하지 않는다.",
+        "다나와 16GB DDR5-5600 상품군에는 1.10V가 표시되지만 이 정확 PN의 공식 전압 근거가 아니므로 voltageV는 null로 남겼다. 개별 PN 데이터시트로 별도 확인한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.asus.com/microsite/motherboard/Intel-Raptor-Lake-Z790-H770-B760/ch-en/",
+          "title": "ASUS Z790/H770/B760 AEMP II official test configuration",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "HMCG78AGBUA081N",
+            "SK Hynix",
+            "16GB per module",
+            "DDR5-5600",
+            "non-ECC UDIMM"
+          ],
+          "notes": "AEMP II 설명에 4x16GB 시험 모듈로 명시. candidate moduleCount는 물리 모듈 하나인 1이며 4개 판매 키트 PN으로 해석하지 않는다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=18883523",
+          "title": "SK하이닉스 DDR5-5600 (16GB) : 다나와 가격비교",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "브랜드·DDR 세대·정격 속도·용량·램 개수 1개 상품 페이지 확인. 정확 모듈 PN 및 개별 판매처의 신품/벌크/병행 조건은 미확정. 수치 가격은 이번 조사에서 적재하지 않는다. 페이지에 병행/중고 판매처 확인 안내가 있어 신품 가격 대상으로 바로 확정하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 판매처가 이 정확 PN을 공급하는지, 교체 가능한 다른 PN을 묶어 판매하는지 확인",
+        "신품 여부, 벌크/병행/유통사 및 보증 조건 확인",
+        "미확인 pins/ECC/buffer/높이를 정확 모듈 자료로 보완하고 CPU·보드별 지원 용량·속도 근거 검토"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ram-sk-hynix-ddr5-5600-32gb-identity-review",
+      "category": "RAM",
+      "manufacturer": "SK Hynix",
+      "modelName": "SK하이닉스 DDR5-5600 32GB 단일 UDIMM (정확 PN 미확정)",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 SK Hynix DDR5-5600 32GB 단일 데스크톱 모듈의 확인된 참조 제품이 없어 용량·세대·속도 구간을 보강하는 후보. 설치/판매 빈도를 측정한 선정은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 34359738368,
+        "moduleCount": 1,
+        "dataRateMts": 5600,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": null,
+        "bufferType": null,
+        "voltageV": null,
+        "heightMm": null
+      },
+      "compatibilityNotes": [
+        "DDR5 지원 데스크톱 CPU·보드와 메모리 슬롯/최대 용량/공식 지원 속도를 함께 확인해야 한다.",
+        "한 모듈 용량과 장착 개수를 별도로 기록한다. 2개 장착을 2개 판매 키트로 간주하지 않는다.",
+        "QVL의 특정 보드·CPU·DIMM 개수 시험 결과를 모든 보드의 호환으로 확대하지 않는다."
+      ],
+      "identificationNotes": [
+        "속도·용량·브랜드 구간 후보이며 정확 모듈 PN은 미확정. 이름만으로 설치 RAM이나 판매 SKU를 확정하지 않는다.",
+        "OEM/벌크 모듈 PN과 유통 패키지·수입사·판매 묶음은 별개로 검토한다. 판매페이지의 이미지/제목만으로 메모리 다이·리비전·랭크를 확정하지 않는다.",
+        "다나와 32GB DDR5-5600 상품군에는 1.10V가 표시되지만 후보 모듈의 공식 전압 근거가 아니므로 voltageV는 null로 남겼다. 정확 PN을 확인한 뒤 개별 모듈 데이터시트로 검토한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://news.skhynix.com/en/ddr5-opens-up-a-whole-new-dram-world/",
+          "title": "SK hynix DDR5 announcement",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "SK hynix DDR5 개발 제품군"
+          ],
+          "notes": "DDR5 기술군 존재만 확인하는 자료. 32GB DDR5-5600 UDIMM의 정확 PN 및 제원 근거는 아직 확보하지 못해 NEEDS_IDENTITY_REVIEW로 남긴다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=18700841",
+          "title": "SK하이닉스 DDR5-5600 (32GB) : 다나와 가격비교",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "브랜드·DDR 세대·정격 속도·용량·램 개수 1개 상품 페이지 확인. 정확 모듈 PN 및 개별 판매처의 신품/벌크/병행 조건은 미확정. 페이지의 1.10V는 상품군 보조 표기이며 정확 모듈의 공식 전압 근거로 사용하지 않았다. 수치 가격은 이번 조사에서 적재하지 않는다. 페이지에 병행/중고 판매처 확인 안내가 있어 신품 가격 대상으로 바로 확정하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "공식 자료와 모듈 라벨로 정확 PN 확정",
+        "신품 여부, 벌크/병행/유통사 및 보증 조건 확인",
+        "미확인 pins/ECC/buffer/높이를 정확 모듈 자료로 보완하고 CPU·보드별 지원 용량·속도 근거 검토"
+      ],
+      "notInExistingCatalog": true
+    }
+  ]
+}

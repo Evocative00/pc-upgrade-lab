@@ -1,6 +1,47 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import test from 'node:test'
-import { formatCatalogPrice, formatCurrentPrice, formatPriceObservedAt, ramKitLabel, specificationRows } from '../src/features/catalog/catalogPresentation.ts'
+import { formatCatalogPrice, formatProjectPrice, ramKitLabel, specificationRows } from '../src/features/catalog/catalogPresentation.ts'
+import type { CatalogPriceStatus, CatalogProduct, CurrentPrice, ReferenceEstimate } from '../src/features/catalog/catalogTypes.ts'
+
+const price: CurrentPrice = { amountKrw: 123456, sourceName: 'DANAWA', sourceUrl: 'https://shop.example/p/1', observedAt: '2026-10-06T01:00:00Z' }
+const sharedStatus = (overrides: Partial<CatalogPriceStatus> = {}): CatalogPriceStatus => ({
+  origin: 'SHARED', lookupStatus: 'OK', freshness: 'FRESH', catalogVersion: 'pilot-2026-10-10-v1',
+  checkedAt: '2026-10-10T12:00:00Z', lastSuccessAt: '2026-10-10T11:00:00Z', includedInTotal: true, ...overrides,
+})
+
+test('참고 가격과 현재 상품가는 설명 없이 금액만 표시하며 현재 상품가를 우선한다', () => {
+  const preview = JSON.parse(readFileSync(new URL('../../data/catalog-shared/reference-prices-preview-2026-10-10.json', import.meta.url), 'utf8'))
+  const referenceEstimate = preview.products.find((p: { referenceEstimate: ReferenceEstimate }) => p.referenceEstimate.confidence === 'ESTIMATED').referenceEstimate as ReferenceEstimate
+  const product = { currentPrice: null, referenceEstimate } as CatalogProduct
+  assert.equal(formatProjectPrice(product), `${referenceEstimate.amountKrw.toLocaleString('ko-KR')}원`)
+  assert.equal(product.currentPrice, null)
+  assert.equal(formatProjectPrice({ ...product, currentPrice: price }), '123,456원')
+  assert.equal(formatProjectPrice({ ...product, currentPrice: price,
+    priceStatus: sharedStatus({ freshness: 'EXPIRED', includedInTotal: false }) }), '123,456원')
+  assert.equal(formatProjectPrice({ ...product, currentPrice: price,
+    priceStatus: sharedStatus({ lookupStatus: 'UNAVAILABLE', includedInTotal: false }) }), '123,456원')
+  const launch = preview.products.find((p: { referenceEstimate: ReferenceEstimate }) => p.referenceEstimate.basis === 'LAUNCH_PRICE').referenceEstimate as ReferenceEstimate
+  assert.equal(formatProjectPrice({ currentPrice: null, referenceEstimate: launch } as CatalogProduct),
+    `${launch.amountKrw.toLocaleString('ko-KR')}원`)
+})
+
+test('SSD 십진 광고 용량·실제 공표 치수와 SATA 비해당을 구분한다', () => {
+  const sata = Object.fromEntries(specificationRows('STORAGE', { storageKind: 'SSD', advertisedCapacityGb: 1000,
+    capacityBytes: 1_000_000_000_000, capacityBasis: 'DECIMAL_GB', formFactor: 'TWO_POINT_FIVE_INCH',
+    busInterface: 'SATA', pcieVersion: null, pcieLanes: null, nvmeVersion: null, heatsinkIncluded: false }))
+  assert.equal(sata['제조사 표시 용량'], '1,000 GB')
+  assert.equal(sata['명목 용량'], '1,000,000,000,000 bytes')
+  assert.equal(sata['PCIe 세대'], '해당 없음')
+  assert.equal(sata['M.2 키'], '해당 없음')
+  assert.equal(sata['SATA 버전'], '미확인')
+  assert.equal(sata['방열판 포함'], '미포함')
+  const nvme = Object.fromEntries(specificationRows('STORAGE', { busInterface: 'PCIE', formFactor: 'M2',
+    lengthMm: 80.15, widthMm: 22.15, dimensionsBasis: 'MANUFACTURER_MAXIMUM', heatsinkIncluded: null }))
+  assert.equal(nvme['길이'], '80.15 mm')
+  assert.equal(nvme['SATA 버전'], '해당 없음')
+  assert.equal(nvme['방열판 포함'], '미확인')
+})
 
 test('가격 미확정·자료 부족을 0원으로 표시하지 않는다', () => {
   assert.equal(formatCatalogPrice({ amountKrw: null, status: 'UNCONFIRMED', updatedAt: '' }), '가격 미확정')
@@ -8,18 +49,15 @@ test('가격 미확정·자료 부족을 0원으로 표시하지 않는다', () 
   assert.equal(formatCatalogPrice({ amountKrw: 123456.78, status: 'CONFIRMED', updatedAt: '' }), '123,456.78원')
 })
 
-test('현재 상품가는 원 단위로 표시하고 없는 가격은 미확인으로 표시한다', () => {
-  assert.equal(formatCurrentPrice(null), '현재 상품가 미확인')
-  assert.equal(formatCurrentPrice({ amountKrw: 123456, sourceName: '판매처', sourceUrl: 'https://shop.example/p/1',
-    observedAt: '2026-10-06T01:00:00Z' }), '123,456원')
-})
-
-test('가격 확인 시각은 실행 환경의 시간대와 관계없이 한국 시간으로 표시한다', () => {
-  const formatted = formatPriceObservedAt('2026-10-05T15:30:00Z')
-  assert.match(formatted, /2026\. 10\. 06\./)
-  assert.match(formatted, /00:30/)
-  assert.match(formatted, /한국 시간/)
-  assert.equal(formatPriceObservedAt('invalid'), '확인 시각 미확인')
+test('상품가와 참고 가격이 모두 없으면 가격 미확인으로 표시한다', () => {
+  const product = { currentPrice: null, referenceEstimate: null } as CatalogProduct
+  assert.equal(formatProjectPrice(product), '가격 미확인')
+  const noPrice = sharedStatus({ lookupStatus: 'NO_PRICE', freshness: 'NO_PRICE', includedInTotal: false })
+  const unknown = { ...noPrice, lookupStatus: 'UNKNOWN_PRODUCT' as const }
+  const unavailable = sharedStatus({ lookupStatus: 'UNAVAILABLE', includedInTotal: false })
+  for (const priceStatus of [noPrice, unknown, unavailable]) {
+    assert.equal(formatProjectPrice({ ...product, priceStatus }), '가격 미확인')
+  }
 })
 
 test('RAM은 모듈당 용량·묶음 개수·합계를 구분한다', () => {
@@ -48,6 +86,38 @@ test('GPU 보조전원 미확인·없음·알려진 규격을 구분한다', () 
   assert.equal(format({ powerConnectorsKnown: false, powerConnectors: [] }), '미확인')
   assert.equal(format({ powerConnectorsKnown: true, powerConnectors: [] }), '없음')
   assert.equal(format({ powerConnectorsKnown: true, powerConnectors: [{ connectorType: 'PCIE_12VHPWR', connectorCount: 1 }] }), '12VHPWR 16핀 × 1')
+})
+
+test('파워 플러그 수·독립 케이블 수·출력은 서로 구분해서 표시한다', () => {
+  const rows = Object.fromEntries(specificationRows('PSU', {
+    ratedPowerW: 850, formFactor: 'ATX', atxVersion: '3.1', lengthMm: 140,
+    powerConnectorsKnown: true, powerConnectors: [
+      { connectorType: 'PCIE_6_2PIN', connectorCount: 4, independentCableCount: 2, maxPowerW: null },
+      { connectorType: 'PCIE_16PIN_UNSPECIFIED', connectorCount: 1, independentCableCount: 1, maxPowerW: 600 },
+    ],
+  }))
+  assert.equal(rows['정격 출력'], '850 W')
+  assert.equal(rows['ATX 전원 규격'], '3.1')
+  assert.equal(rows['깊이'], '140 mm')
+  assert.match(rows['제공 전원 플러그'], /PCIe 6\+2핀 × 4 \(독립 케이블 2개\)/)
+  assert.match(rows['제공 전원 플러그'], /16핀 \(세부 규격 미확인\) × 1 \(독립 케이블 1개, 케이블당 600 W\)/)
+  const unknown = Object.fromEntries(specificationRows('PSU', { powerConnectorsKnown: true,
+    powerConnectors: [{ connectorType: 'PCIE_6_2PIN', connectorCount: 2, independentCableCount: null, maxPowerW: null }] }))
+  assert.match(unknown['제공 전원 플러그'], /독립 케이블 미확인/)
+})
+
+test('케이스 지원 목록과 조건부 공간·미확인을 표시한다', () => {
+  const rows = Object.fromEntries(specificationRows('CASE', {
+    motherboardFormFactorsKnown: true, motherboardFormFactors: ['MICRO_ATX', 'MINI_ITX'],
+    psuFormFactorsKnown: true, psuFormFactors: ['ATX'], maxGpuLengthMm: 338,
+    maxGpuHeightMm: null, gpuClearanceConditions: '파워 위치와 길이에 따라 공간이 달라집니다.',
+  }))
+  assert.equal(rows['지원 메인보드 규격'], 'Micro-ATX, Mini-ITX')
+  assert.equal(rows['지원 파워 규격'], 'ATX')
+  assert.equal(rows['그래픽카드 최대 길이'], '338 mm')
+  assert.equal(rows['그래픽카드 최대 높이'], '미확인')
+  assert.equal(rows['그래픽카드 공간 조건'], '파워 위치와 길이에 따라 공간이 달라집니다.')
+  assert.equal(Object.fromEntries(specificationRows('CASE', { psuFormFactorsKnown: false, psuFormFactors: [] }))['지원 파워 규격'], '미확인')
 })
 
 test('CPU는 총 코어·P/E 코어·각 클럭과 TDP·PBP·MTP를 구분한다', () => {

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "decision": "APPROVED",
+  "previewFile": "data/catalog-review/retail-four-preview-2026-10-10.json",
+  "previewSha256": "c999d0a1d2f41275ec264b8b9c1ecca29a099c7551c050c8283b65e8a1559cf2",
+  "sourceIdentity": {
+    "sourceName": "MANUFACTURER",
+    "externalId": "asus:TUF GAMING B860-PLUS WIFI:retail:intek:2026-10-10"
+  },
+  "productCanonicalId": "f5d69333-0ab1-382d-bc72-9434811daccf",
+  "modelCanonicalId": "3650ed66-d0bf-3906-9a1c-a77544ce34cf",
+  "scope": {
+    "newProducts": 1,
+    "newProductSources": 1,
+    "motherboardSpecifications": 1,
+    "referencePricePlaceholders": 1,
+    "productBindings": 1,
+    "priceMappings": 1,
+    "priceObservations": 1,
+    "modelWrites": 0,
+    "autoActivation": false
+  }
+}

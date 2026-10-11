@@ -1,7 +1,8 @@
 import { useId } from 'react'
-import { formatCurrentPrice, ramKitLabel, specificationRows, VERIFICATION_LABEL } from './catalogPresentation.ts'
-import { CurrentPriceSource } from './CurrentPriceSource.tsx'
-import type { CatalogAttribution, CatalogDetail, CatalogProduct } from './catalogTypes.ts'
+import { formatProjectPrice, ramKitLabel, specificationRows } from './catalogPresentation.ts'
+import { MotherboardStorageDetail } from './MotherboardStorageDetail.tsx'
+import { CatalogLinkedModel } from './CatalogLinkedModel.tsx'
+import type { CatalogAttribution, CatalogDetail, CatalogModel, CatalogProduct } from './catalogTypes.ts'
 
 export function CatalogAttributions({ items }: { items: CatalogAttribution[] }) {
   return (
@@ -17,10 +18,11 @@ export function CatalogAttributions({ items }: { items: CatalogAttribution[] }) 
   )
 }
 
-export function CatalogProductDetail({ detail, onSelect, onRefresh }: {
+export function CatalogProductDetail({ detail, onSelect, onRefresh, onSelectModel }: {
   detail: CatalogDetail
   onSelect: (product: CatalogProduct) => void
   onRefresh: () => void
+  onSelectModel?: (model: CatalogModel) => void
 }) {
   const headingId = useId()
   const { product, specification, sources } = detail
@@ -29,14 +31,14 @@ export function CatalogProductDetail({ detail, onSelect, onRefresh }: {
   return (
     <section className="catalog-detail" aria-labelledby={headingId}>
       <div>
-        <p className="muted">{product.manufacturer} · {VERIFICATION_LABEL[product.verificationStatus]}{!product.active && ' · 검토용'}</p>
+        <p className="muted">{product.manufacturer}</p>
         <h3 id={headingId}>{product.modelName}</h3>
         <p className="muted">부품번호: {product.partNumber ?? '미확인'}</p>
-        <p>현재 상품가: {formatCurrentPrice(product.currentPrice)}{product.currentPrice &&
-          (product.type === 'RAM' ? ' / 판매 묶음' : ' / 1개')}</p>
-        <CurrentPriceSource price={product.currentPrice} />
+        <p>가격: {formatProjectPrice(product)}</p>
         <button type="button" className="button button--ghost" onClick={onRefresh}>가격·제원 새로고침</button>
       </div>
+
+      <CatalogLinkedModel key={`${product.id}:${product.modelId ?? ''}`} product={product} onSelectModel={onSelectModel} />
 
       {product.type === 'RAM' && (
         <p className="notice">
@@ -54,6 +56,8 @@ export function CatalogProductDetail({ detail, onSelect, onRefresh }: {
       {product.type === 'GPU' && (
         <p className="muted">카드 공표 전력·권장 파워 용량은 실제 사용 전력과 다를 수 있습니다.</p>
       )}
+      {product.type === 'STORAGE' && <p className="muted">판매 용량은 십진 GB 기준이며 Windows 표시 용량과 다를 수 있습니다. M.2는 장착 형태입니다. SATA·PCIe 인터페이스와 NVMe 프로토콜을 각각 확인해 주세요.</p>}
+      {product.type === 'MOTHERBOARD' && <MotherboardStorageDetail key={product.id} productId={product.id} />}
 
       <div className="catalog-sources">
         <span className="muted">제원 출처</span>

@@ -1,0 +1,2449 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-10T11:22:52.328Z",
+  "requested": 58,
+  "queries": [
+    {
+      "canonicalId": "0063e09f-d94a-3656-9531-ccf43fc42885",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "903d7878-c118-4256-b68a-ff9d85901697",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3200 16GB (2x8GB)",
+        "partNumber": "CMK16GX4M2B3200C16"
+      },
+      "query": "커세어 DDR4-3200 16GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR4-3200%2016GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:22:53.949Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR4-3200%2016GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "ae630bdbbdf0c391ff537424389759fdac0073d0f077a4afad873ed9dca08610",
+      "pageTitle": "커세어 DDR4-3200 16GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "13244855",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13244855",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE RGB PRO SL WHITE 패키지"
+        },
+        {
+          "externalId": "13406096",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13406096",
+          "title": "CORSAIR DDR4 - 3200 CL16-20-20 VENGEANCE LPX BLACK 패키지"
+        },
+        {
+          "externalId": "13177994",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13177994",
+          "title": "CORSAIR DDR4 - 3200 CL16-20-20 VENGEANCE PRO RGB WHITE 패키지"
+        },
+        {
+          "externalId": "11518298",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11518298",
+          "title": "CORSAIR DDR4 - 3200 CL16 Dominator Platinum RGB WHITE 패키지"
+        },
+        {
+          "externalId": "8731298",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8731298",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE PRO RGB BLACK AMD 패키지"
+        },
+        {
+          "externalId": "7330927",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=7330927",
+          "title": "CORSAIR DDR4 - 3200 CL14 Dominator Platinum RGB 패키지"
+        },
+        {
+          "externalId": "6474607",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=6474607",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE PRO RGB BLACK INTEL 패키지"
+        },
+        {
+          "externalId": "4982745",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4982745",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE LPX 레드 1.35V 패키지"
+        },
+        {
+          "externalId": "4703603",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4703603",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE LED 블루 패키지"
+        },
+        {
+          "externalId": "4209805",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4209805",
+          "title": "CORSAIR DDR4 - 3200 CL16 Dominator Platinum ROG Edition 패키지"
+        },
+        {
+          "externalId": "4220871",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4220871",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE LED WHITE 패키지"
+        },
+        {
+          "externalId": "4220763",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4220763",
+          "title": "단종"
+        },
+        {
+          "externalId": "4220895",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4220895",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE LED 레드 패키지"
+        },
+        {
+          "externalId": "4220840",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4220840",
+          "title": "단종"
+        },
+        {
+          "externalId": "4063210",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4063210",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE LPX 레드 패키지"
+        },
+        {
+          "externalId": "3540083",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3540083",
+          "title": "단종"
+        },
+        {
+          "externalId": "4067530",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4067530",
+          "title": "단종"
+        },
+        {
+          "externalId": "4017341",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4017341",
+          "title": "CORSAIR DDR4 - 3200 CL16 Dominator Platinum 패키지"
+        },
+        {
+          "externalId": "2895133",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=2895133",
+          "title": "단종"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "03e46f65-c7ba-350f-ae9e-aa65ec43517c",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8ffa5eba-f6f1-4c8b-8a2b-1f97d1d0b965",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5200 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2B5200C40"
+      },
+      "query": "커세어 DDR5-5200 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5200%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:22:58.273Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5200%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "651b6bcc80907d09ad44f0957a93ce384833284fa28d1893067155040eac8d11",
+      "pageTitle": "커세어 DDR5-5200 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "16239491",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16239491",
+          "title": "CORSAIR DDR5 - 5200 CL40 Dominator Platinum RGB 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "05d41532-669c-324d-901b-c58fb88bc310",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3450c943-2555-42ae-b7af-d54f73330635",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-5600 32GB (1x32GB)",
+        "partNumber": "KVR56U46BD8-32"
+      },
+      "query": "킹스톤 DDR5-5600 32GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%2032GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:02.764Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%2032GB",
+      "responseSha256": "86e1c324deb956aee69aed7085edb415073a7a25960d57703bc2e15e0222d15a",
+      "pageTitle": "킹스톤 DDR5-5600 32GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "96773477",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773477",
+          "title": "킹스톤 DDR5 - 5600 CL46 코잇"
+        },
+        {
+          "externalId": "100192376",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=100192376",
+          "title": "킹스톤 FURY DDR5 - 5600 CL36 Beast 화이트 코잇"
+        },
+        {
+          "externalId": "104751425",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=104751425",
+          "title": "킹스톤 FURY DDR5 - 5600 CL36 Beast 블랙 병행수입"
+        },
+        {
+          "externalId": "104595902",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=104595902",
+          "title": "킹스톤 FURY DDR5 - 5600 CL46 병행수입"
+        },
+        {
+          "externalId": "124411945",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=124411945",
+          "title": "킹스톤 DDR5 - 5600 CL46 ECC/REG"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "08a889dc-596d-38c3-bb28-06f453163189",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "84427fd2-d30e-4ade-8bd2-d5b1094bf09e",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 32GB (2x16GB)",
+        "partNumber": "KF560C30BBK2-32"
+      },
+      "query": "킹스톤 DDR5-6000 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:06.987Z",
+      "finalUrl": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "bba2046445b0ec96046e5930255f4ec4f41f16879702caa14dd1d9d89443b5c3",
+      "pageTitle": "킹스톤 DDR5-6000 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "96773279",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "96773297",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773297",
+          "title": "2,010,090원"
+        },
+        {
+          "externalId": "96773315",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773315",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "96773312",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773312",
+          "title": "1,999,990원"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "0bc3003f-779d-3f47-9d26-01445b4eb07d",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "43c90305-680b-4091-9c29-757745742f16",
+        "manufacturer": "SK Hynix",
+        "modelName": "HMA451U6AFR8N-TF DDR4-2133 4GB",
+        "partNumber": "HMA451U6AFR8N-TF"
+      },
+      "query": "SK하이닉스 DDR4-2133 4GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4%20DDR4-2133%204GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:11.604Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4%20DDR4-2133%204GB",
+      "responseSha256": "e82e340ec433abe98f17cafb25fb62cd0fb10d2c97425ba2a3c5db0ab4066068",
+      "pageTitle": "SK하이닉스 DDR4-2133 4GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "4340385",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4340385",
+          "title": "SK 하이닉스 DDR4 - 2133"
+        },
+        {
+          "externalId": "5706426",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5706426",
+          "title": "SK 하이닉스 노트북 DDR4 - 2133 중고"
+        },
+        {
+          "externalId": "5706489",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5706489",
+          "title": "SK 하이닉스 DDR4 - 2133 ECC/REG"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "23933dcc-214a-3c3f-8f31-53399f1e9cfb",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "45adbb33-9ace-451b-b8c4-b4a90bd67e22",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 32GB (1x32GB)",
+        "partNumber": "KF560C36BBE-32"
+      },
+      "query": "킹스톤 DDR5-6000 CL36 32GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL36%2032GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:15.677Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL36%2032GB",
+      "responseSha256": "3a32eef1a51e13c615ef3850a9023510330000bec50ba9cda06c1ff1db349030",
+      "pageTitle": "킹스톤 DDR5-6000 CL36 32GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "96773279",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+          "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 블랙 패키지 코잇"
+        },
+        {
+          "externalId": "96773297",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773297",
+          "title": "2,010,090 원"
+        },
+        {
+          "externalId": "96773315",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773315",
+          "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 화이트 패키지 코잇"
+        },
+        {
+          "externalId": "96773312",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773312",
+          "title": "1,999,990 원"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "2486c84a-abea-3d71-ab40-a13635c3a987",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "50c8eed8-7551-477a-b320-516de7dab52e",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-2666 CL19 16GB (1x16GB)",
+        "partNumber": "KVR26N19D8/16"
+      },
+      "query": "킹스톤 DDR4-2666 CL19 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-2666%20CL19%2016GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:19.794Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-2666%20CL19%2016GB",
+      "responseSha256": "30e2e4517dec865f86d380c5c81ea8b12f8a10c9cf30bfbdc28ad68b9f2f396c",
+      "pageTitle": "킹스톤 DDR4-2666 CL19 16GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "7013641",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=7013641",
+          "title": "킹스톤 DDR4 - 2666"
+        },
+        {
+          "externalId": "7013617",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=7013617",
+          "title": "36,000 원"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "28403447-88f6-31a4-a2f5-31cbbc0e2948",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "2cd7d094-07ba-4416-bbf6-8731ee3efc96",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-2666 CL19 8GB (1x8GB)",
+        "partNumber": "KVR26N19S8/8"
+      },
+      "query": "킹스톤 DDR4-2666 CL19 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-2666%20CL19%208GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:23.676Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-2666%20CL19%208GB",
+      "responseSha256": "f1ba8fd825e8254cc88e6f84e1e6be81d4c7588caa2007078678ab2c70c12997",
+      "pageTitle": "킹스톤 DDR4-2666 CL19 8GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "7013641",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=7013641",
+          "title": "킹스톤 DDR4 - 2666"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "3153bd5e-e8b7-3ee8-be7f-68d1e3a6e7d7",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "384c3029-1406-4f9c-8473-5268ab1feb8e",
+        "manufacturer": "SK Hynix",
+        "modelName": "HMAA2GU6CJR8N-XN DDR4-3200 16GB (1x16GB)",
+        "partNumber": "HMAA2GU6CJR8N-XN"
+      },
+      "query": "SK하이닉스 DDR4-3200 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4%20DDR4-3200%2016GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:28.266Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4%20DDR4-3200%2016GB",
+      "responseSha256": "9362babafd1ad2a219a1ecd9600aa78f0fb5a373fef54c30179ba41bd3446fee",
+      "pageTitle": "SK하이닉스 DDR4-3200 16GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "11787091",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11787091",
+          "title": "ESSENCORE KLEVV DDR4 - 3200 CL22 파인인포"
+        },
+        {
+          "externalId": "15414239",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15414239",
+          "title": "ANACOMDA DDR4 - 3200 CL22 디앤디컴"
+        },
+        {
+          "externalId": "99639581",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=99639581",
+          "title": "SK 하이닉스 DDR4 - 3200"
+        },
+        {
+          "externalId": "124012173",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=124012173",
+          "title": "ANACOMDA DDR4 - 3200 CL22 얼티메이크"
+        },
+        {
+          "externalId": "17030762",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17030762",
+          "title": "SK 하이닉스 DDR4 - 3200 중고"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "319bbcaa-a729-3bd5-937b-7188a7d0be10",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "08a64465-db81-48e6-85c6-014997efb242",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 8GB (1x8GB)",
+        "partNumber": "KF552C40BB-8"
+      },
+      "query": "킹스톤 DDR5-5200 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5200%208GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:32.543Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5200%208GB",
+      "responseSha256": "532c5ecb331e1ab830c75b8c8ff9f90940cb73f0df3c46e15dd92dfbb2d08dfc",
+      "pageTitle": "킹스톤 DDR5-5200 8GB : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "3c8cbbcc-7118-316b-959e-e2619de27e27",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7f126456-6214-4e58-b807-b678edbbe15a",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 16GB (1x16GB)",
+        "partNumber": "KF432C16BB/16"
+      },
+      "query": "킹스톤 DDR4-3200 CL16 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%20CL16%2016GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:36.732Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%20CL16%2016GB",
+      "responseSha256": "b0df33cd95de1e9de2eeb45909d17544033d77549ad604d94ae99cdd74637350",
+      "pageTitle": "킹스톤 DDR4-3200 CL16 16GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "5312022",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5312022",
+          "title": "킹스톤 DDR4 - 3200 CL16 PREDATOR RGB 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "3e29332e-77e7-307d-ac55-b080146811b3",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4067c61b-7153-41a5-ade0-8097c961e9a3",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 8GB (1x8GB)",
+        "partNumber": "KF432C16BB/8"
+      },
+      "query": "킹스톤 DDR4-3200 CL16 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%20CL16%208GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:40.783Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%20CL16%208GB",
+      "responseSha256": "f3649ea54d0f3fa95980cf9e456424d9a1a5e3b63de34af5843c644da622f54d",
+      "pageTitle": "킹스톤 DDR4-3200 CL16 8GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "106776428",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=106776428",
+          "title": "가격비교"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "40d6c20f-74bd-37d6-9670-2fa8e072e64e",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4a7373b7-b021-4eca-90b3-ff9894cbeea2",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5600 CL40 32GB (1x32GB)",
+        "partNumber": "KF556C40BB-32"
+      },
+      "query": "킹스톤 DDR5-5600 CL40 32GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%20CL40%2032GB",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%20CL40%2032GB",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%20CL40%2032GB"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:44.598Z",
+      "finalUrl": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%20CL40%2032GB",
+      "responseSha256": "d518b5bc5caa8ddb198903b09f080a532db0949a664dfb644676b6eac2c285b9",
+      "pageTitle": "킹스톤 DDR5-5600 CL40 32GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "109872281",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=109872281",
+          "title": "가격비교"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "48ae3fc4-3d9e-3bb0-9a5d-26b5150d5c67",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "81793251-0d7e-48c2-a0f5-38e1bdd191e1",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3600 CL18 16GB (1x16GB)",
+        "partNumber": "KF436C18BB/16"
+      },
+      "query": "킹스톤 DDR4-3600 CL18 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3600%20CL18%2016GB",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3600%20CL18%2016GB",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3600%20CL18%2016GB"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:48.694Z",
+      "finalUrl": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3600%20CL18%2016GB",
+      "responseSha256": "f71e76b7d17cfa26358be842937900c77b44bd1456096a96b557d9d35a72ce4c",
+      "pageTitle": "킹스톤 DDR4-3600 CL18 16GB : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "4a004c7f-7275-3faf-90e5-a6ce249686d9",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "59ceb0dc-0b8b-4aa8-868f-e8d60ae8466d",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5600 32GB (2x16GB)",
+        "partNumber": "KF556C40BBK2-32"
+      },
+      "query": "킹스톤 DDR5-5600 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:52.590Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "c42cc07278847d85f482ba0bbb0089974485fc62a0dec8530bd18c110ac33c0a",
+      "pageTitle": "킹스톤 DDR5-5600 32GB 패키지 : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "4d56ff31-af55-30a7-acd1-0e932f1c0af9",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "437cf126-cbaf-49a8-a106-4119977f9f4f",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-5600 16GB (1x16GB)",
+        "partNumber": "KVR56U46BS8-16"
+      },
+      "query": "킹스톤 DDR5-5600 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%2016GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:23:57.027Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%2016GB",
+      "responseSha256": "cb11564680ea2f8add8a58c558002e3045e95cd9139e22e1b668ec789d2c6367",
+      "pageTitle": "킹스톤 DDR5-5600 16GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "96773372",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773372",
+          "title": "킹스톤 FURY DDR5 - 5600 CL36 Beast 블랙 코잇"
+        },
+        {
+          "externalId": "96773399",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773399",
+          "title": "킹스톤 FURY DDR5 - 5600 CL36 Beast 화이트 코잇"
+        },
+        {
+          "externalId": "96773492",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773492",
+          "title": "킹스톤 DDR5 - 5600 CL46 코잇"
+        },
+        {
+          "externalId": "106223180",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=106223180",
+          "title": "킹스톤 FURY DDR5 - 5600 CL46 Beast 블랙 병행수입"
+        },
+        {
+          "externalId": "106223162",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=106223162",
+          "title": "킹스톤 FURY DDR5 - 5600 CL40 Beast 블랙 병행수입"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "57e439ec-a892-39d2-a9dd-e83e7c781089",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "709f860e-656d-46a6-8adb-950635e1610b",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 32GB (2x16GB)",
+        "partNumber": "KF552C40BBK2-32"
+      },
+      "query": "킹스톤 DDR5-5200 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5200%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5200%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5200%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:01.511Z",
+      "finalUrl": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5200%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "7e9f7bab6cacc0f37475259a169ccb689d58bc1d970eef2cbe68a9ab33444202",
+      "pageTitle": "킹스톤 DDR5-5200 32GB 패키지 : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "589c0aab-0516-307c-9275-3354bf9ab7e0",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "db6432c5-775f-492a-be92-b71bf975c69a",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-6000 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2B6000C36"
+      },
+      "query": "커세어 DDR5-6000 CL36 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-6000%20CL36%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-6000%20CL36%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-6000%20CL36%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:05.747Z",
+      "finalUrl": "https://search.danawa.com/?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-6000%20CL36%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "a0e6f70542c3a39ade110ea2774ee0622044a3c847b093f94a8e23729ad9729e",
+      "pageTitle": "커세어 DDR5-6000 CL36 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "59829371",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829371",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "59829239",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829239",
+          "title": "1,944,600원"
+        },
+        {
+          "externalId": "72471092",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=72471092",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "105969236",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=105969236",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "59829503",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829503",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "59829446",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829446",
+          "title": "1,914,110원"
+        },
+        {
+          "externalId": "17544278",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17544278",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "105969242",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=105969242",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "27666047",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=27666047",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "124377551",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=124377551",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "105969251",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=105969251",
+          "title": "이미지 보기"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "72653a65-82aa-3066-a6ea-9c10a517d625",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "0925a015-2110-474d-ae9b-c7a88681227e",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-6000 CL40 64GB (2x32GB)",
+        "partNumber": "CMK64GX5M2B6000C40"
+      },
+      "query": "커세어 DDR5-6000 CL40 64GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-6000%20CL40%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:09.750Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-6000%20CL40%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "8c9e1d7de76e36e15bcbd53213ea36f1b90b8b9e3705391be27c091bc3861a44",
+      "pageTitle": "커세어 DDR5-6000 CL40 64GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "124377550",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=124377550",
+          "title": "CORSAIR DDR5 - 6000 CL40 VENGEANCE 패키지"
+        },
+        {
+          "externalId": "99288431",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=99288431",
+          "title": "CORSAIR DDR5 - 6000 CL40 VENGEANCE BLACK 패키지"
+        },
+        {
+          "externalId": "18733562",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18733562",
+          "title": "단종"
+        },
+        {
+          "externalId": "99288473",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=99288473",
+          "title": "CORSAIR DDR5 - 6000 CL40 VENGEANCE RGB BLACK 패키지"
+        },
+        {
+          "externalId": "99290126",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=99290126",
+          "title": "CORSAIR DDR5 - 6000 CL40-40-40-77 VENGEANCE BLACK 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "731e72a5-8c39-3918-a0e1-f4373d95e789",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "41d30e5c-1396-40c7-969e-a010525aceb0",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-4800 16GB (1x16GB)",
+        "partNumber": "KVR48U40BS8-16"
+      },
+      "query": "킹스톤 DDR5-4800 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-4800%2016GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:13.880Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-4800%2016GB",
+      "responseSha256": "480f8b6ba8f7598ed279bd2ea843d7174eeb2bb4363d929895e5cbd6ad8b06e6",
+      "pageTitle": "킹스톤 DDR5-4800 16GB : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "78bddca0-91c5-304a-b138-86ba9d14ec0f",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3076418d-7cc2-4537-8a82-c5c5252cd957",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5600 CL40 64GB (2x32GB)",
+        "partNumber": "CMK64GX5M2B5600C40"
+      },
+      "query": "커세어 DDR5-5600 CL40 64GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5600%20CL40%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:18.095Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5600%20CL40%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "dacde1c4cbd2ea988a66538a57fe678069923a0c57e1737090ec41ea5488b104",
+      "pageTitle": "커세어 DDR5-5600 CL40 64GB 패키지 : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "78d6e046-9b50-3b9e-8565-727df0146737",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1693ade8-baa6-4635-86ec-ef3af308cbe4",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 16GB (2x8GB)",
+        "partNumber": "KF432C16BBK2/16"
+      },
+      "query": "킹스톤 DDR4-3200 CL16 16GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%20CL16%2016GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:21.946Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%20CL16%2016GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "66374a963a33560a90b518fdbfdaaee5aaacc32168316ecdcd50d9cbe6d85b2e",
+      "pageTitle": "킹스톤 DDR4-3200 CL16 16GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "5312022",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5312022",
+          "title": "킹스톤 DDR4 - 3200 CL16 PREDATOR RGB 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1555eede-7e03-4038-824d-91d8fb21a6e2",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "F5-6000J3636F16GX2-RS5K"
+      },
+      "query": "지스킬 DDR5-6000 CL36 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR5-6000%20CL36%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:26.597Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR5-6000%20CL36%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "ee0417d9762ab7ebcea3270f1c2b4fe38d2939a1ea2caf9484e315b01e5f17e1",
+      "pageTitle": "지스킬 DDR5-6000 CL36 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "17931893",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17931893",
+          "title": "G.SKILL DDR5 - 6000 CL36 TRIDENT Z5 NEO RGB J 패키지"
+        },
+        {
+          "externalId": "72913664",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=72913664",
+          "title": "1,759,990 원"
+        },
+        {
+          "externalId": "75656726",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=75656726",
+          "title": "G.SKILL DDR5 - 6000 CL28 FLARE X5 J 화이트 패키지"
+        },
+        {
+          "externalId": "72913478",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=72913478",
+          "title": "856,790 원"
+        },
+        {
+          "externalId": "72913568",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=72913568",
+          "title": "G.SKILL DDR5 - 6000 CL36 FLARE X5 J 화이트 패키지"
+        },
+        {
+          "externalId": "122727540",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=122727540",
+          "title": "G.SKILL DDR5 - 6000 CL26 TRIDENT Z5 NeoX RGB for AMD ULL 매트화이트 패키지"
+        },
+        {
+          "externalId": "122727539",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=122727539",
+          "title": "G.SKILL DDR5 - 6000 CL26 TRIDENT Z5 NeoX RGB for AMD ULL 매트블랙 패키지"
+        },
+        {
+          "externalId": "16193474",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16193474",
+          "title": "G.SKILL DDR5 - 6000 CL36 TRIDENT Z5 RGB J 패키지"
+        },
+        {
+          "externalId": "21639443",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=21639443",
+          "title": "G.SKILL DDR5 - 6000 CL36 TRIDENT Z5 RGB 화이트 패키지"
+        },
+        {
+          "externalId": "17931533",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17931533",
+          "title": "G.SKILL DDR5 - 6000 CL36 FLARE X5 J 패키지"
+        },
+        {
+          "externalId": "16193702",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16193702",
+          "title": "G.SKILL DDR5 - 6000 CL36 TRIDENT Z5 RGB J 실버 패키지"
+        },
+        {
+          "externalId": "72913613",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=72913613",
+          "title": "G.SKILL DDR5 - 6000 CL36 RIPJAWS M5 NEO RGB 화이트 패키지"
+        },
+        {
+          "externalId": "78983882",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=78983882",
+          "title": "859,000 원"
+        },
+        {
+          "externalId": "72913682",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=72913682",
+          "title": "G.SKILL DDR5 - 6000 CL36 TRIDENT Z5 NEO RGB J 화이트 패키지"
+        },
+        {
+          "externalId": "93385616",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=93385616",
+          "title": "868,980 원"
+        },
+        {
+          "externalId": "40579721",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=40579721",
+          "title": "G.SKILL DDR5 - 6000 CL30 TRIDENT Z5 NEO RGB J 화이트 패키지"
+        },
+        {
+          "externalId": "40578827",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=40578827",
+          "title": "2,133,880 원"
+        },
+        {
+          "externalId": "16192424",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16192424",
+          "title": "G.SKILL DDR5 - 6000 CL36 TRIDENT Z5 J 패키지"
+        },
+        {
+          "externalId": "72913436",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=72913436",
+          "title": "G.SKILL DDR5 - 6000 CL28 FLARE X5 J 패키지"
+        },
+        {
+          "externalId": "75656702",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=75656702",
+          "title": "1,660,000 원"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "7dfea635-ed5a-3004-8c13-eae0efa5b8f8",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d12eb4ec-cd21-4a4f-9eb1-e56e149fbf97",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3600 64GB (2x32GB)",
+        "partNumber": "KF436C18BBK2/64"
+      },
+      "query": "킹스톤 DDR4-3600 64GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3600%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:31.066Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3600%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "e4827fef8a7df2baf669858525b4106737640c6e2c475ee27bc9a1cf7bc59ee1",
+      "pageTitle": "킹스톤 DDR4-3600 64GB 패키지 : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "843d1585-2ee6-3642-8165-9bde7e79c9cc",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d6e5644e-d03d-4797-90f4-52009a7a1264",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-3200 32GB (1x32GB)",
+        "partNumber": "KVR32N22D8/32"
+      },
+      "query": "킹스톤 DDR4-3200 32GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%2032GB",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%2032GB",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%2032GB"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:35.523Z",
+      "finalUrl": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%2032GB",
+      "responseSha256": "94977160ce6bdaf3b0fe198522457b9c2de12f527a2e3f713c159fa2e657f676",
+      "pageTitle": "킹스톤 DDR4-3200 32GB : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "8a0bba77-e2ec-3ec4-9066-9aaf397e863d",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e67e9f94-ff0e-4bb6-9e6f-cdf03446cc6e",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 64GB (2x32GB)",
+        "partNumber": "KF560C36BBEK2-64"
+      },
+      "query": "킹스톤 DDR5-6000 CL36 64GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL36%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:39.412Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL36%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "2a180fc9d4534fedccd3955ca88459ee49deffd0434e7642821b35afac158474",
+      "pageTitle": "킹스톤 DDR5-6000 CL36 64GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "96773312",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773312",
+          "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 화이트 패키지 코잇"
+        },
+        {
+          "externalId": "96773297",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773297",
+          "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 블랙 패키지 코잇"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "8a43d605-c6cb-341f-ba7c-0f660c4ae109",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ddd4049d-1015-4953-84a6-e71e81d0a575",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3200 64GB (2x32GB)",
+        "partNumber": "CMK64GX4M2E3200C16"
+      },
+      "query": "커세어 DDR4-3200 64GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR4-3200%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:43.711Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR4-3200%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "1cb35fda98307c150d089c3752146c10581ccafce9c6280cb41c4f6fe71a3e71",
+      "pageTitle": "커세어 DDR4-3200 64GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "13406096",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13406096",
+          "title": "CORSAIR DDR4 - 3200 CL16-20-20 VENGEANCE LPX BLACK 패키지"
+        },
+        {
+          "externalId": "13406036",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13406036",
+          "title": "단종"
+        },
+        {
+          "externalId": "11531588",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11531588",
+          "title": "CORSAIR DDR4 - 3200 CL16 Dominator Platinum RGB WHITE 패키지"
+        },
+        {
+          "externalId": "7332427",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=7332427",
+          "title": "CORSAIR DDR4 - 3200 CL16 Dominator Platinum RGB 패키지"
+        },
+        {
+          "externalId": "6475150",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=6475150",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE PRO RGB BLACK 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "8ab2136e-4369-37bc-a66f-9dc961fff141",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "2081be35-4e30-4885-afd8-8c31a9b8f39c",
+        "manufacturer": "SK Hynix",
+        "modelName": "HMA81GU6MFR8N-UH DDR4-2400 8GB (1x8GB)",
+        "partNumber": "HMA81GU6MFR8N-UH"
+      },
+      "query": "SK하이닉스 DDR4-2400 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4%20DDR4-2400%208GB",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4%20DDR4-2400%208GB",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4%20DDR4-2400%208GB"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:47.932Z",
+      "finalUrl": "https://search.danawa.com/?query=SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4%20DDR4-2400%208GB",
+      "responseSha256": "c528a91266845b5f58a2db458c5f3cba3457f3dad9246b12a98505695cadfa32",
+      "pageTitle": "SK하이닉스 DDR4-2400 8GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "16946459",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16946459",
+          "title": "이미지 보기"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "8b3655de-1bf6-3ddc-9669-2065b56e952c",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4003dd50-671a-494e-a9da-13b30f75e88e",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2E6000C36"
+      },
+      "query": "커세어 DDR5-6000 CL36 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-6000%20CL36%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:05.747Z",
+      "responseSha256": "a0e6f70542c3a39ade110ea2774ee0622044a3c847b093f94a8e23729ad9729e",
+      "pageTitle": "커세어 DDR5-6000 CL36 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "59829371",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829371",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "59829239",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829239",
+          "title": "1,944,600원"
+        },
+        {
+          "externalId": "72471092",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=72471092",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "105969236",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=105969236",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "59829503",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829503",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "59829446",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829446",
+          "title": "1,914,110원"
+        },
+        {
+          "externalId": "17544278",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17544278",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "105969242",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=105969242",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "27666047",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=27666047",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "124377551",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=124377551",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "105969251",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=105969251",
+          "title": "이미지 보기"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW",
+      "reusedQueryCanonicalId": "589c0aab-0516-307c-9275-3354bf9ab7e0"
+    },
+    {
+      "canonicalId": "8d2d09ca-9d1b-31a0-9c51-ee4204dff0f5",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3ec88fb7-7041-40bf-82ac-3c4b21c7d1c2",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3600 CL18 16GB (2x8GB)",
+        "partNumber": "CMK16GX4M2B3600C18"
+      },
+      "query": "커세어 DDR4-3600 CL18 16GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR4-3600%20CL18%2016GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:52.095Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR4-3600%20CL18%2016GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "d9684d34dca4b3e91ff3f2ae1726dacb4fe60b624f78716c99cb9a1a160678c6",
+      "pageTitle": "커세어 DDR4-3600 CL18 16GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "15097256",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15097256",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE RGB RT WHITE 패키지"
+        },
+        {
+          "externalId": "15097202",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15097202",
+          "title": "단종"
+        },
+        {
+          "externalId": "15096947",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15096947",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE RGB RT BLACK 패키지"
+        },
+        {
+          "externalId": "15096821",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15096821",
+          "title": "단종"
+        },
+        {
+          "externalId": "13406465",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13406465",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE LPX BLACK 패키지"
+        },
+        {
+          "externalId": "13408889",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13408889",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE LPX BLACK AMD 패키지"
+        },
+        {
+          "externalId": "13379360",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13379360",
+          "title": "CORSAIR DDR4 - 3600 CL18-22-22 VENGEANCE PRO RGB BLACK 패키지"
+        },
+        {
+          "externalId": "7331227",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=7331227",
+          "title": "CORSAIR DDR4 - 3600 CL16 Dominator Platinum RGB 패키지"
+        },
+        {
+          "externalId": "4063259",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4063259",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE LPX 레드 패키지"
+        },
+        {
+          "externalId": "3540370",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3540370",
+          "title": "CORSAIR DDR4 - 3600 CL18 Dominator Platinum 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "9656da7c-c390-3deb-b84b-6c59ab118579",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "06b29918-1847-4754-88d2-547e35368da4",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5600 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2B5600C36"
+      },
+      "query": "커세어 DDR5-5600 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5600%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5600%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5600%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:24:56.268Z",
+      "finalUrl": "https://search.danawa.com/?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5600%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "ba402fc67a1a4423c2fe9acb0caefc34e7d1721209ccaf2f6ddd645b37467b45",
+      "pageTitle": "커세어 DDR5-5600 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "27788273",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=27788273",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "17935550",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17935550",
+          "title": "이미지 보기"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "98163a70-96e7-3e4c-a5c5-c8c334637867",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c10975d5-ae7e-488f-95e7-f9270a5beb68",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 32GB (2x16GB)",
+        "partNumber": "F4-3200C16D-32GVK"
+      },
+      "query": "지스킬 DDR4-3200 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR4-3200%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:00.632Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR4-3200%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "dab50fd3aeb74083a168dec0913fd28ea90f29b1aafbaa19f5b406e3fd1b20c3",
+      "pageTitle": "지스킬 DDR4-3200 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "3717286",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3717286",
+          "title": "G.SKILL DDR4 - 3200 CL16 TRIDENT Z 패키지"
+        },
+        {
+          "externalId": "7350949",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=7350949",
+          "title": "G.SKILL DDR4 -3000 CL14 TRIDENT Z ROYAL 실버 패키지"
+        },
+        {
+          "externalId": "4709678",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4709678",
+          "title": "G.SKILL DDR4 - 3200 RIPJAWS V Black 패키지 해외구매"
+        },
+        {
+          "externalId": "4589272",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4589272",
+          "title": "G.SKILL DDR4 - 3200 CL16 TRIDENT ZKO 패키지"
+        },
+        {
+          "externalId": "4589402",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4589402",
+          "title": "G.SKILL DDR4 - 3200 CL16 TRIDENT ZKY 패키지"
+        },
+        {
+          "externalId": "3904413",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3904413",
+          "title": "G.SKILL DDR4 - 3200 CL15 TRIDENT Z 패키지 병행수입"
+        },
+        {
+          "externalId": "3500759",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3500759",
+          "title": "G.SKILL DDR4 - 3200 RIPJAWS VK 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "99347182-e833-3958-8b25-76243995c988",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "15b65b34-f647-4ffc-8b61-a0a9f5a0006c",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3600 32GB (2x16GB)",
+        "partNumber": "F4-3600C18D-32GVK"
+      },
+      "query": "지스킬 DDR4-3600 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR4-3600%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:04.959Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR4-3600%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "b5bf59edb1333ef51bb61c535eb99d9d0059970111c21a9f9778026d71b86dc3",
+      "pageTitle": "지스킬 DDR4-3600 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "11431083",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11431083",
+          "title": "G.SKILL DDR4 - 3600 CL18 TRIDENT Z RGB 패키지"
+        },
+        {
+          "externalId": "9596049",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=9596049",
+          "title": "G.SKILL DDR4 - 3600 CL16 TRIDENT Z ROYAL C 골드 패키지"
+        },
+        {
+          "externalId": "5931859",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5931859",
+          "title": "G.SKILL DDR4 - 3600 CL19 SNIPER X SXF 패키지"
+        },
+        {
+          "externalId": "5934016",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5934016",
+          "title": "G.SKILL DDR4 - 3600 CL19 SNIPER X SXK 패키지"
+        },
+        {
+          "externalId": "5935167",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5935167",
+          "title": "G.SKILL DDR4 - 3600 CL19 SNIPER X SXW 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "9ba50ffb-4690-3c0f-a775-1751d4d9bcf9",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7019a3a6-2b1a-4d34-a98a-d7a9e0bea5e4",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 CL16 64GB (2x32GB)",
+        "partNumber": "F4-3200C16D-64GVK"
+      },
+      "query": "지스킬 DDR4-3200 CL16 64GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR4-3200%20CL16%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:09.013Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR4-3200%20CL16%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "d95733fef669a8471f14fb179f5f8597b83711f70bd59417244abf5715589124",
+      "pageTitle": "지스킬 DDR4-3200 CL16 64GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "10019382",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=10019382",
+          "title": "G.SKILL DDR4 - 3200 CL16 RIPJAWS V VK 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "9bce545f-45a4-36d3-a52d-81ff58558075",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "291c62b6-2ac1-4f79-876a-0d6d1df2ee27",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-4800 8GB (1x8GB)",
+        "partNumber": "KVR48U40BS6-8"
+      },
+      "query": "킹스톤 DDR5-4800 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-4800%208GB",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-4800%208GB",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-4800%208GB"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:13.006Z",
+      "finalUrl": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-4800%208GB",
+      "responseSha256": "a4b370fb8b256a5c4ac74dadda93b815932a9fc4b63e1ffde11eb188a78bae11",
+      "pageTitle": "킹스톤 DDR5-4800 8GB : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "9bd11c8c-e7c4-3622-b608-17595f19147b",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d1646419-63d9-487c-9641-1619ece92eb6",
+        "manufacturer": "Samsung",
+        "modelName": "M378A2K43CB1-CTD DDR4-2666 16GB (1x16GB)",
+        "partNumber": "M378A2K43CB1-CTD"
+      },
+      "query": "삼성 DDR4-2666 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2666%2016GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:17.309Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2666%2016GB",
+      "responseSha256": "1d5aed4c0f091490e947c15a15fab5ca5f5c08224767ed8b88920bfbfa08adbd",
+      "pageTitle": "삼성 DDR4-2666 16GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "5941995",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5941995",
+          "title": "삼성 전자 DDR4 - 2666"
+        },
+        {
+          "externalId": "6393068",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=6393068",
+          "title": "삼성 전자 노트북 DDR4 - 2666"
+        },
+        {
+          "externalId": "6393108",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=6393108",
+          "title": "삼성 전자 DDR4 - 2666 ECC/REG"
+        },
+        {
+          "externalId": "11633126",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11633126",
+          "title": "삼성 전자 DDR4 - 2666 ECC/Unbuffered"
+        },
+        {
+          "externalId": "8165329",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8165329",
+          "title": "삼성 전자 DDR4 - 2666 중고"
+        },
+        {
+          "externalId": "16834745",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16834745",
+          "title": "삼성 전자 노트북 DDR4 - 2666 중고"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "9d8f4fce-537b-3c22-8560-297d7219030c",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e2301f2b-d70c-424a-861f-5bf0f960c81f",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5600 CL40 48GB (2x24GB)",
+        "partNumber": "CMK48GX5M2B5600C40"
+      },
+      "query": "커세어 DDR5-5600 CL40 48GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5600%20CL40%2048GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5600%20CL40%2048GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5600%20CL40%2048GB%20%ED%8C%A8%ED%82%A4%EC%A7%80"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:22.105Z",
+      "finalUrl": "https://search.danawa.com/?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-5600%20CL40%2048GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "6cac2520ad73c813eb96d5840d84c436b77c52c141ba3cdff2246b43d7abc7d0",
+      "pageTitle": "커세어 DDR5-5600 CL40 48GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "27788273",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=27788273",
+          "title": "이미지 보기"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "9e5533d6-54da-3be8-a8ae-107c4ca49bc8",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "43f6b6ce-175d-4122-a383-e7004a0cf8f6",
+        "manufacturer": "Samsung",
+        "modelName": "M378A1K43CB2-CTD DDR4-2666 8GB",
+        "partNumber": "M378A1K43CB2-CTD"
+      },
+      "query": "삼성 DDR4-2666 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2666%208GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:26.543Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2666%208GB",
+      "responseSha256": "49fe8fb8bfdbdcb9ecdbbce9509f2df8741e36719c81f6f32af193a3f729456b",
+      "pageTitle": "삼성 DDR4-2666 8GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "5937666",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5937666",
+          "title": "삼성 전자 DDR4 - 2666"
+        },
+        {
+          "externalId": "6274195",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=6274195",
+          "title": "삼성 전자 노트북 DDR4 - 2666"
+        },
+        {
+          "externalId": "11631620",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11631620",
+          "title": "삼성 전자 DDR4 - 2666 ECC/REG"
+        },
+        {
+          "externalId": "11631995",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11631995",
+          "title": "삼성 전자 DDR4 - 2666 ECC/Unbuffered"
+        },
+        {
+          "externalId": "8158972",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8158972",
+          "title": "삼성 전자 DDR4 - 2666 중고"
+        },
+        {
+          "externalId": "16316135",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16316135",
+          "title": "삼성 전자 노트북 DDR4 - 2666 중고"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "a50af220-41d0-3a22-a332-553686b489de",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e7ce157e-ff50-417b-9dde-4c7eb7e25ec5",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5600 CL36 32GB (2x16GB)",
+        "partNumber": "KF556C36BBEK2-32"
+      },
+      "query": "킹스톤 DDR5-5600 CL36 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%20CL36%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:30.525Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%20CL36%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "76fee565bb98009f61beba9aa9096e8f7b162e315bd0cc502822e79603a4f16d",
+      "pageTitle": "킹스톤 DDR5-5600 CL36 32GB 패키지 : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "ac894347-9a31-3ab0-888b-583f2cf57d03",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ae4d587f-532f-486e-8faa-5e76a6ace1f1",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-3200 8GB (1x8GB)",
+        "partNumber": "KVR32N22S8/8"
+      },
+      "query": "킹스톤 DDR4-3200 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%208GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:35.096Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%208GB",
+      "responseSha256": "8a6a2b892939c5858700d526c4a79cc7e1a78ff559903bcc1676fee77945d274",
+      "pageTitle": "킹스톤 DDR4-3200 8GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "106776428",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=106776428",
+          "title": "가격비교"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "b4ed407a-4fe3-3407-a0bd-2d7042a57f3b",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "38b0687e-02a1-4863-b1b3-af0eab884a05",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 32GB (2x16GB)",
+        "partNumber": "KF432C16BBK2/32"
+      },
+      "query": "킹스톤 DDR4-3200 CL16 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%20CL16%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%20CL16%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%20CL16%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:38.853Z",
+      "finalUrl": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%20CL16%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "a9f4fd42f848d86ba4fea100a0f705ac7cdfd48773f4b8bd6306d5087ae2d02b",
+      "pageTitle": "킹스톤 DDR4-3200 CL16 32GB 패키지 : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "b5f8f8f6-2d64-33b4-8384-bddd301d3399",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "199dd44f-2862-465c-91c4-e61d76ea3685",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6400 CL32 32GB (2x16GB)",
+        "partNumber": "KF564C32BBK2-32"
+      },
+      "query": "킹스톤 DDR5-6400 CL32 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6400%20CL32%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6400%20CL32%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6400%20CL32%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:43.386Z",
+      "finalUrl": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6400%20CL32%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "67886b01c1c91adb7358caff940a60872104d1b589c21b17587d4dec8ac5482e",
+      "pageTitle": "킹스톤 DDR5-6400 CL32 32GB 패키지 : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "b6839df5-5ed3-3edf-b504-007ef3344d05",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "fbcba504-1ad4-49bc-86c4-9ad3143d0e46",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "KF560C36BBEK2-32"
+      },
+      "query": "킹스톤 DDR5-6000 CL36 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL36%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:47.379Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL36%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "d44366e89ba1f3c327559fb457d43b47b73340cd2ef758e2b54b62c3215c1ad1",
+      "pageTitle": "킹스톤 DDR5-6000 CL36 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "96773279",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+          "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 블랙 패키지 코잇"
+        },
+        {
+          "externalId": "96773297",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773297",
+          "title": "2,010,090 원"
+        },
+        {
+          "externalId": "96773315",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773315",
+          "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 화이트 패키지 코잇"
+        },
+        {
+          "externalId": "96773312",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773312",
+          "title": "1,999,990 원"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "b89d9a8a-4dea-397c-84b3-486ca747d3d7",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e8766fc7-6bff-4d30-b63b-6b31c6208d39",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 16GB (1x16GB)",
+        "partNumber": "KF560C36BBE-16"
+      },
+      "query": "킹스톤 DDR5-6000 CL36 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL36%2016GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:51.628Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL36%2016GB",
+      "responseSha256": "a94c5d323b5bce5070befa1c1ad01004f6568770441d4ca22ea96bd2a521fef9",
+      "pageTitle": "킹스톤 DDR5-6000 CL36 16GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "96773279",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+          "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 블랙 패키지 코잇"
+        },
+        {
+          "externalId": "96773315",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773315",
+          "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast RGB 화이트 패키지 코잇"
+        },
+        {
+          "externalId": "103753163",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=103753163",
+          "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast 블랙 코잇"
+        },
+        {
+          "externalId": "103753172",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=103753172",
+          "title": "킹스톤 FURY DDR5 - 6000 CL30 Beast 화이트 코잇"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "bbe05dd4-e93c-39d0-8c4c-30c4cba28eb8",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "9280491b-84f8-4a2a-803e-c8a07d6feec3",
+        "manufacturer": "Samsung",
+        "modelName": "M378A1G43DB0-CPB DDR4-2133 8GB",
+        "partNumber": "M378A1G43DB0-CPB"
+      },
+      "query": "삼성 DDR4-2133 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2133%208GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:25:56.254Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2133%208GB",
+      "responseSha256": "7f1247bd357cfd8dc4c79d883bc322c6ece81cf9252ddd2022fac7fc17810be5",
+      "pageTitle": "삼성 DDR4-2133 8GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "3493083",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3493083",
+          "title": "삼성 전자 노트북 DDR4 - 2133"
+        },
+        {
+          "externalId": "116898273",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=116898273",
+          "title": "삼성 전자 DDR4 - 2133"
+        },
+        {
+          "externalId": "3201319",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3201319",
+          "title": "삼성 전자 DDR4 - 2133 ECC/REG"
+        },
+        {
+          "externalId": "5676841",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5676841",
+          "title": "삼성 전자 DDR4 - 2133 중고"
+        },
+        {
+          "externalId": "12970748",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12970748",
+          "title": "삼성 전자 노트북 DDR4 - 2133 중고"
+        },
+        {
+          "externalId": "3984766",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3984766",
+          "title": "삼성 전자 DDR4 - 2133 ECC/Unbuffered"
+        },
+        {
+          "externalId": "3493084",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3493084",
+          "title": "삼성 전자 노트북 DDR4 - 2133 병행수입"
+        },
+        {
+          "externalId": "3500656",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3500656",
+          "title": "삼성 전자 DDR4 - 2133 ECC/REG 병행수입"
+        },
+        {
+          "externalId": "2879268",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=2879268",
+          "title": "삼성 전자 DDR4 - 2133"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "c4ffa9b3-013f-3937-b5ee-fa5df43dd433",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c7c35e8b-849f-447e-accf-381c7d5575a1",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 CL40 16GB (1x16GB)",
+        "partNumber": "KF552C40BB-16"
+      },
+      "query": "킹스톤 DDR5-5200 CL40 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5200%20CL40%2016GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:00.549Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5200%20CL40%2016GB",
+      "responseSha256": "4112239731a3e52cbd48ed339c163c60eb0d3a4d500115bebaaa265acde0c061",
+      "pageTitle": "킹스톤 DDR5-5200 CL40 16GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "16761047",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=16761047",
+          "title": "킹스톤 FURY DDR5 - 5200 CL40 Beast"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "d0c830c3-c66e-3985-86e4-ebc67d1e1a33",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "fa910565-8e5d-40f4-b9ae-b185f70d2192",
+        "manufacturer": "Samsung",
+        "modelName": "M378A1K43CB2-CRC DDR4-2400 8GB (1x8GB)",
+        "partNumber": "M378A1K43CB2-CRC"
+      },
+      "query": "삼성 DDR4-2400 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2400%208GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:04.890Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2400%208GB",
+      "responseSha256": "d7e21113fd8004c36f22fbbddddaa0ddaf6f979e225a160859db0db61a66639e",
+      "pageTitle": "삼성 DDR4-2400 8GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "4343051",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4343051",
+          "title": "삼성 전자 DDR4 - 2400"
+        },
+        {
+          "externalId": "5202059",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5202059",
+          "title": "삼성 전자 노트북 DDR4 - 2400"
+        },
+        {
+          "externalId": "5721454",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5721454",
+          "title": "삼성 전자 DDR4 - 2400 ECC/REG"
+        },
+        {
+          "externalId": "11236449",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11236449",
+          "title": "삼성 전자 DDR4 - 2400 중고"
+        },
+        {
+          "externalId": "15481538",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15481538",
+          "title": "삼성 전자 노트북 DDR4 - 2400 중고"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "d29d2df4-5b70-3a83-b5ed-f7aa41903418",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3509ef82-cf54-4b72-8cb3-fd3702b5f346",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 64GB (2x32GB)",
+        "partNumber": "KF432C16BBK2/64"
+      },
+      "query": "킹스톤 DDR4-3200 64GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:09.386Z",
+      "finalUrl": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "1c4ff0e0c0bd3a3dee1afa085ae404c7dec55fcacc2e5d561078378f6fa214af",
+      "pageTitle": "킹스톤 DDR4-3200 64GB 패키지 : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "d36faa9f-7724-336e-b57e-24ea5e5cdb84",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3ae2dd82-9e72-49e0-9a36-8d86a70cc72a",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3600 CL16 32GB (2x16GB)",
+        "partNumber": "F4-3600C16D-32GVKC"
+      },
+      "query": "지스킬 DDR4-3600 CL16 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR4-3600%20CL16%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:13.772Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR4-3600%20CL16%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "4ecf89b0cae3c25e855324767e846f6b34d6a7283673eb7fe11e4239f0f192ac",
+      "pageTitle": "지스킬 DDR4-3600 CL16 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "11431083",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11431083",
+          "title": "G.SKILL DDR4 - 3600 CL18 TRIDENT Z RGB 패키지"
+        },
+        {
+          "externalId": "9596049",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=9596049",
+          "title": "G.SKILL DDR4 - 3600 CL16 TRIDENT Z ROYAL C 골드 패키지"
+        },
+        {
+          "externalId": "5931859",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5931859",
+          "title": "G.SKILL DDR4 - 3600 CL19 SNIPER X SXF 패키지"
+        },
+        {
+          "externalId": "5934016",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5934016",
+          "title": "G.SKILL DDR4 - 3600 CL19 SNIPER X SXK 패키지"
+        },
+        {
+          "externalId": "5935167",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5935167",
+          "title": "G.SKILL DDR4 - 3600 CL19 SNIPER X SXW 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "dc9ab5d2-79a4-3bbc-876f-30bc31809dd4",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8fc33ad6-0dfc-43ab-9261-02b866190abf",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 16GB (2x8GB)",
+        "partNumber": "F4-3200C16D-16GVKB"
+      },
+      "query": "지스킬 DDR4-3200 16GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR4-3200%2016GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:18.892Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20DDR4-3200%2016GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "e4aa92b2ceecb7188fbd77b1c24182f3bbe4c03159c52223f9bc07cd070e936b",
+      "pageTitle": "지스킬 DDR4-3200 16GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "3717286",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3717286",
+          "title": "G.SKILL DDR4 - 3200 CL16 TRIDENT Z 패키지"
+        },
+        {
+          "externalId": "3439724",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3439724",
+          "title": "214,970 원"
+        },
+        {
+          "externalId": "4589107",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4589107",
+          "title": "G.SKILL DDR4 - 3200 CL16 TRIDENT ZKW 패키지"
+        },
+        {
+          "externalId": "4905070",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4905070",
+          "title": "G.SKILL DDR4 - 3200 CL16 TRIDENT Z RGB 패키지"
+        },
+        {
+          "externalId": "4905041",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4905041",
+          "title": "G.SKILL DDR4 - 3200 CL14 TRIDENT Z RGB 패키지"
+        },
+        {
+          "externalId": "7350949",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=7350949",
+          "title": "G.SKILL DDR4 -3000 CL14 TRIDENT Z ROYAL 실버 패키지"
+        },
+        {
+          "externalId": "4589272",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4589272",
+          "title": "G.SKILL DDR4 - 3200 CL16 TRIDENT ZKO 패키지"
+        },
+        {
+          "externalId": "4589402",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4589402",
+          "title": "G.SKILL DDR4 - 3200 CL16 TRIDENT ZKY 패키지"
+        },
+        {
+          "externalId": "4589139",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=4589139",
+          "title": "단종"
+        },
+        {
+          "externalId": "3904376",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3904376",
+          "title": "G.SKILL DDR4 - 3200 CL15 TRIDENT Z 패키지 병행수입"
+        },
+        {
+          "externalId": "3500759",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3500759",
+          "title": "G.SKILL DDR4 - 3200 RIPJAWS VK 패키지"
+        },
+        {
+          "externalId": "3444778",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3444778",
+          "title": "G.SKILL DDR4 - 3200 RIPJAWS VKB 패키지"
+        },
+        {
+          "externalId": "3340852",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3340852",
+          "title": "G.SKILL DDR4 - 3200 CL16 RIPJAWS VK 패키지"
+        },
+        {
+          "externalId": "3272215",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3272215",
+          "title": "G.SKILL DDR4 - 3200 CL16 RIPJAWS4 RK 패키지"
+        },
+        {
+          "externalId": "2919704",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=2919704",
+          "title": "G.SKILL DDR4 - 3200 CL16 RIPJAWS4 RKD 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "dd6201bd-2727-3670-9ea2-27f08eda91de",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8035fe0e-4132-48bd-941b-019cd58120a1",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 CL40 64GB (2x32GB)",
+        "partNumber": "KF552C40BBK2-64"
+      },
+      "query": "킹스톤 DDR5-5200 CL40 64GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5200%20CL40%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:23.091Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5200%20CL40%2064GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "b4ef5a90f3b9dcaa83817534ff4372881b72355093b7c9e1feabfcd4153db481",
+      "pageTitle": "킹스톤 DDR5-5200 CL40 64GB 패키지 : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "deccbc7d-466c-38bb-ad1a-8b274069c372",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "79dc68c9-3eff-49a1-aa3c-3ff6e7ab61d8",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-3200 16GB (1x16GB)",
+        "partNumber": "KVR32N22S8/16"
+      },
+      "query": "킹스톤 DDR4-3200 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%2016GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:28.099Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3200%2016GB",
+      "responseSha256": "f7f9af92a043938374dc33a26e9d35a7ba044b5ff8e996d764234ec913ef8673",
+      "pageTitle": "킹스톤 DDR4-3200 16GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "5312022",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=5312022",
+          "title": "킹스톤 DDR4 - 3200 CL16 PREDATOR RGB 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "e28b63e2-4269-3c75-b005-b21005344254",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ba63a6a9-75e1-4206-ba7d-f28c2ad601d8",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3600 32GB (2x16GB)",
+        "partNumber": "CMK32GX4M2D3600C18"
+      },
+      "query": "커세어 DDR4-3600 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR4-3600%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:32.362Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR4-3600%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "a71a84ef28f1838c0deef77cb15ea5543139fc39fb4e6a0500e5d57de377cbfa",
+      "pageTitle": "커세어 DDR4-3600 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "15096869",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15096869",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE RGB RT BLACK 패키지"
+        },
+        {
+          "externalId": "15096821",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15096821",
+          "title": "단종"
+        },
+        {
+          "externalId": "15097286",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15097286",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE RGB RT WHITE 패키지"
+        },
+        {
+          "externalId": "15097256",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15097256",
+          "title": "단종"
+        },
+        {
+          "externalId": "15098444",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15098444",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE RGB RS 패키지"
+        },
+        {
+          "externalId": "15098492",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15098492",
+          "title": "단종"
+        },
+        {
+          "externalId": "15096764",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15096764",
+          "title": "CORSAIR DDR4 - 3600 CL16 VENGEANCE RGB RT BLACK 패키지"
+        },
+        {
+          "externalId": "13408889",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13408889",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE LPX BLACK AMD 패키지"
+        },
+        {
+          "externalId": "13379360",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13379360",
+          "title": "CORSAIR DDR4 - 3600 CL18-22-22 VENGEANCE PRO RGB BLACK 패키지"
+        },
+        {
+          "externalId": "13406396",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13406396",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE LPX BLACK 패키지"
+        },
+        {
+          "externalId": "7332100",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=7332100",
+          "title": "CORSAIR DDR4 - 3600 CL16 Dominator Platinum RGB 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "eda1782f-d9ff-381d-abb1-165238b5d40a",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "52a8fdd1-5c4a-48ff-a0e1-e5ea3a6accc6",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE RGB DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "CMH32GX5M2B6000C30"
+      },
+      "query": "커세어 DDR5-6000 CL30 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-6000%20CL30%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:36.598Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20DDR5-6000%20CL30%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "116372daf228709e62ff22498f46cd18a45e890a350b4aa03151783e7ee46213",
+      "pageTitle": "커세어 DDR5-6000 CL30 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "59829371",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829371",
+          "title": "CORSAIR DDR5 - 6000 CL30 VENGEANCE RGB 패키지"
+        },
+        {
+          "externalId": "59829239",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829239",
+          "title": "1,944,600 원"
+        },
+        {
+          "externalId": "72471092",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=72471092",
+          "title": "CORSAIR DDR5 - 6000 CL30 VENGEANCE RGB DP WHITE 패키지"
+        },
+        {
+          "externalId": "59829503",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829503",
+          "title": "CORSAIR DDR5 - 6000 CL30 VENGEANCE 패키지"
+        },
+        {
+          "externalId": "59829446",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829446",
+          "title": "1,914,110 원"
+        },
+        {
+          "externalId": "27666047",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=27666047",
+          "title": "CORSAIR DDR5 - 6000 CL30 VENGEANCE RGB WHITE 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "ee9d30fe-0cf4-3f45-a1e0-1168101c6d6c",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "912ddf9f-66c0-4e8a-88ac-4a978479bddf",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "KF560C30BBEK2-32"
+      },
+      "query": "킹스톤 DDR5-6000 CL30 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL30%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL30%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL30%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:40.988Z",
+      "finalUrl": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-6000%20CL30%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "6364d94d52aa8a048b5ccc4a7b81054840784544b276e4e404ef0653c2d159d2",
+      "pageTitle": "킹스톤 DDR5-6000 CL30 32GB 패키지 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "96773279",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "96773297",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773297",
+          "title": "2,010,090원"
+        },
+        {
+          "externalId": "96773315",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773315",
+          "title": "이미지 보기"
+        },
+        {
+          "externalId": "96773312",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773312",
+          "title": "1,999,990원"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "f461b575-e411-3072-ae64-c0a9fe4f36e1",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "846aa6ea-2550-460a-9fc3-2684e4f3231c",
+        "manufacturer": "Samsung",
+        "modelName": "M323R1GB4PB0-CWM DDR5-5600 8GB (1x8GB)",
+        "partNumber": "M323R1GB4PB0-CWM"
+      },
+      "query": "삼성 DDR5-5600 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR5-5600%208GB",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:45.416Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR5-5600%208GB",
+      "responseSha256": "2ea4e1c6fcd02136fcf71640429aee1c6332fe8dbe2ec7235ecdd0d17597fe49",
+      "pageTitle": "삼성 DDR5-5600 8GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "18911771",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18911771",
+          "title": "삼성 전자 DDR5 - 5600"
+        },
+        {
+          "externalId": "19953029",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19953029",
+          "title": "삼성 전자 노트북 DDR5 - 5600"
+        },
+        {
+          "externalId": "28609379",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=28609379",
+          "title": "삼성 전자 노트북 DDR5 - 5600 중고"
+        },
+        {
+          "externalId": "122623097",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=122623097",
+          "title": "삼성 전자 DDR5 - 5600 중고"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "fbc5dfa7-0b31-363d-ba9e-a38941249a15",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "33ea75ed-50a5-41bc-b548-95ae5ac54528",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3600 CL18 32GB (2x16GB)",
+        "partNumber": "KF436C18BBK2/32"
+      },
+      "query": "킹스톤 DDR4-3600 CL18 32GB 패키지",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3600%20CL18%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "saleIdentityVerified": false,
+      "redirects": [],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:49.571Z",
+      "finalUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR4-3600%20CL18%2032GB%20%ED%8C%A8%ED%82%A4%EC%A7%80",
+      "responseSha256": "cab8133acffb58467b42d2865e1496b869a59e13f1e41de117c2e5f9f8038d3e",
+      "pageTitle": "킹스톤 DDR4-3600 CL18 32GB 패키지 : 다나와 통합검색",
+      "candidates": [],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "fbc76590-3f8f-3f14-a3f6-65e296b52481",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "85b219b0-6660-4649-9e5f-d10b12a53415",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-5600 CL46 8GB (1x8GB)",
+        "partNumber": "KVR56U46BS6-8"
+      },
+      "query": "킹스톤 DDR5-5600 CL46 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%20CL46%208GB",
+      "saleIdentityVerified": false,
+      "redirects": [
+        {
+          "from": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%20CL46%208GB",
+          "status": 307,
+          "to": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%20CL46%208GB"
+        }
+      ],
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:26:53.970Z",
+      "finalUrl": "https://search.danawa.com/?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20DDR5-5600%20CL46%208GB",
+      "responseSha256": "641df12433a4aac1268cdffbb8308ec0d71f7365e23e6236593e17baa181a941",
+      "pageTitle": "킹스톤 DDR5-5600 CL46 8GB : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "101628701",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=101628701",
+          "title": "이미지 보기"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    }
+  ],
+  "databaseWrites": 0,
+  "deployments": 0,
+  "publicationApproved": false,
+  "previousFailureFile": "data/catalog-review/held146-ram-discovery-2026-10-10.json",
+  "recovery": "Previous search failures were unexpected HTTP307 same-host search redirects, not an access barrier or evidence of no product. This retry observes normal redirects and removes overly specific family words.",
+  "updatedAt": "2026-10-10T11:26:53.982Z",
+  "completed": 58
+}

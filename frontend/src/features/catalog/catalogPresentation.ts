@@ -1,9 +1,5 @@
 import type { PartType } from '../pc-scan/types.ts'
-import type { CatalogProduct, CatalogSpecification, CurrentPrice } from './catalogTypes.ts'
-
-export const VERIFICATION_LABEL: Record<CatalogProduct['verificationStatus'], string> = {
-  UNVERIFIED: '미검증', PARTIAL: '일부 제원 확인', CORE_VERIFIED: '핵심 제원 확인',
-}
+import type { CatalogProduct, CatalogSpecification, PowerConnector, PsuPowerConnector } from './catalogTypes.ts'
 
 export function formatCatalogPrice(price: CatalogProduct['referencePrice']): string {
   if (price.status === 'INSUFFICIENT_HISTORY') return '가격 자료 부족'
@@ -11,17 +7,34 @@ export function formatCatalogPrice(price: CatalogProduct['referencePrice']): str
   return `${price.amountKrw.toLocaleString('ko-KR', { maximumFractionDigits: 2 })}원`
 }
 
-export function formatCurrentPrice(price: CurrentPrice | null): string {
-  return price ? `${price.amountKrw.toLocaleString('ko-KR')}원` : '현재 상품가 미확인'
+export function formatProjectPrice(product: CatalogProduct): string {
+  const price = product.currentPrice ?? product.referenceEstimate
+  return price ? `${price.amountKrw.toLocaleString('ko-KR')}원` : '가격 미확인'
 }
 
-export function formatPriceObservedAt(observedAt: string): string {
-  const date = new Date(observedAt)
-  if (!Number.isFinite(date.getTime())) return '확인 시각 미확인'
-  return `${new Intl.DateTimeFormat('ko-KR', {
-    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
-    hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
-  }).format(date)} (한국 시간)`
+// 참고 합계는 확인된 과거 관측도 사용한다. 현재 구매가 합계의 만료·장애 규칙과 별도로 계산한다.
+export function hasObservedReferencePrice(product: CatalogProduct): boolean {
+  const price = product.currentPrice
+  if (!price || !Number.isSafeInteger(price.amountKrw) || price.amountKrw <= 0 || price.amountKrw > 999_999_999_999) return false
+  const status = product.priceStatus
+  return !status || status.origin === 'LOCAL' && status.lookupStatus === 'NOT_IN_SCOPE'
+    || status.origin === 'SHARED' && Boolean(status.catalogVersion) && Boolean(status.lastSuccessAt)
+    && ['OK', 'UNAVAILABLE'].includes(status.lookupStatus) && ['FRESH', 'STALE', 'EXPIRED'].includes(String(status.freshness))
+}
+
+// 중앙 서버가 전달한 신선도·합계 정책을 따른다. 브라우저 시계로 관측 나이를 다시 판정하지 않는다.
+export function isCurrentPriceIncluded(product: CatalogProduct): boolean {
+  const price = product.currentPrice
+  if (!price || !Number.isSafeInteger(price.amountKrw) || price.amountKrw <= 0) return false
+  const status = product.priceStatus
+  if (!status) return true
+  if (!status.includedInTotal) return false
+  if (status.origin === 'LOCAL') return status.lookupStatus === 'NOT_IN_SCOPE' && status.freshness === null &&
+    status.catalogVersion === null && status.checkedAt === null && status.lastSuccessAt === null
+  return status.origin === 'SHARED' && status.lookupStatus === 'OK' &&
+    (status.freshness === 'FRESH' || status.freshness === 'STALE') &&
+    typeof status.catalogVersion === 'string' && status.catalogVersion.trim().length > 0 &&
+    typeof status.checkedAt === 'string' && typeof status.lastSuccessAt === 'string'
 }
 
 type Field = [key: string, label: string, unit?: string]
@@ -60,6 +73,26 @@ const FIELDS: Partial<Record<PartType, Field[]>> = {
     ['nativeOcRefreshHz', '오버클록 최대 주사율', 'Hz'], ['activePowerW', '사용 중 전력', 'W'],
     ['activePowerConditions', '전력 측정 조건'],
   ],
+  STORAGE: [
+    ['storageKind', '장치 종류'], ['advertisedCapacityGb', '제조사 표시 용량', 'GB'],
+    ['capacityBytes', '명목 용량', 'bytes'], ['capacityBasis', '용량 표기 기준'],
+    ['formFactor', '형태'], ['m2LengthCode', 'M.2 길이 규격'], ['connectorKey', 'M.2 키'],
+    ['busInterface', '연결 버스'], ['interfaceProtocol', '프로토콜'],
+    ['pcieVersion', 'PCIe 세대'], ['pcieLanes', 'PCIe 레인', '레인'],
+    ['nvmeVersion', 'NVMe 버전'], ['sataVersion', 'SATA 버전'],
+    ['lengthMm', '길이', 'mm'], ['widthMm', '너비', 'mm'], ['heightMm', '높이', 'mm'],
+    ['dimensionsBasis', '치수 기준'], ['heatsinkIncluded', '방열판 포함'],
+  ],
+  PSU: [
+    ['ratedPowerW', '정격 출력', 'W'], ['formFactor', '장착 규격'], ['atxVersion', 'ATX 전원 규격'],
+    ['lengthMm', '깊이', 'mm'], ['widthMm', '너비', 'mm'], ['heightMm', '높이', 'mm'],
+  ],
+  CASE: [
+    ['maxPsuLengthMm', '파워 최대 깊이', 'mm'], ['maxGpuLengthMm', '그래픽카드 최대 길이', 'mm'],
+    ['maxGpuHeightMm', '그래픽카드 최대 높이', 'mm'], ['maxGpuThicknessMm', '그래픽카드 최대 두께', 'mm'],
+    ['expansionSlotCount', '확장 슬롯', '개'], ['gpuClearanceConditions', '그래픽카드 공간 조건'],
+    ['psuClearanceConditions', '파워 공간 조건'],
+  ],
 }
 
 function formatValue(value: CatalogSpecification[string] | undefined, unit?: string): string {
@@ -69,7 +102,12 @@ function formatValue(value: CatalogSpecification[string] | undefined, unit?: str
     const number = unit === 'GiB' ? value / 1024 ** 3 : value
     return `${number.toLocaleString('ko-KR', { maximumFractionDigits: 3 })}${unit ? ` ${unit}` : ''}`
   }
-  return typeof value === 'string' ? value : '미확인'
+  const labels: Record<string, string> = {
+    MICRO_ATX: 'Micro-ATX', MINI_ITX: 'Mini-ITX', MINI_DTX: 'Mini-DTX', E_ATX: 'E-ATX', SFX_L: 'SFX-L',
+    UNBUFFERED: '비버퍼', REGISTERED: '레지스터', LOAD_REDUCED: '부하 감소형',
+    ATX_3_1: 'ATX 3.1', ATX_3_0: 'ATX 3.0',
+  }
+  return typeof value === 'string' ? labels[value] ?? value : '미확인'
 }
 
 export function ramKitLabel(specs: CatalogSpecification): string {
@@ -87,25 +125,55 @@ export function specificationRows(type: PartType, specs: CatalogSpecification): 
     const absentCoreClock = type === 'CPU' && key.endsWith('ClockMhz') && (
       key.startsWith('performanceCore') && specs.performanceCoreCount === 0
       || key.startsWith('efficientCore') && specs.efficientCoreCount === 0)
-    return [label, absentCoreClock ? '해당 없음' : formatValue(specs[key], unit)]
+    const notApplicable = type === 'STORAGE' && (
+      specs.busInterface === 'SATA' && ['pcieVersion', 'pcieLanes', 'nvmeVersion'].includes(key) ||
+      specs.busInterface === 'PCIE' && key === 'sataVersion' ||
+      ['TWO_POINT_FIVE_INCH', 'THREE_POINT_FIVE_INCH'].includes(String(specs.formFactor)) && ['connectorKey', 'm2LengthCode'].includes(key))
+    const storageLabels: Record<string, string> = {
+      TWO_POINT_FIVE_INCH: '2.5형', THREE_POINT_FIVE_INCH: '3.5형', M2: 'M.2', DECIMAL_GB: '십진 GB (1GB = 1,000,000,000 bytes)',
+      NOMINAL: '명목 규격', MANUFACTURER_MAXIMUM: '제조사 공표 최대치', PUBLISHED: '제조사 공표 치수',
+    }
+    const value = type === 'STORAGE' && key === 'heatsinkIncluded' && typeof specs[key] === 'boolean'
+      ? specs[key] ? '포함' : '미포함'
+      : type === 'STORAGE' && typeof specs[key] === 'string' && storageLabels[String(specs[key])]
+      ? storageLabels[String(specs[key])] : formatValue(specs[key], unit)
+    return [label, absentCoreClock || notApplicable ? '해당 없음' : value]
   })
   if (type === 'MONITOR') {
     rows.splice(1, 0, ['기본 해상도', typeof specs.nativeWidthPx === 'number' && typeof specs.nativeHeightPx === 'number'
       ? `${specs.nativeWidthPx} × ${specs.nativeHeightPx}` : '미확인'])
   }
-  if (type === 'GPU') {
-    const connectors = specs.powerConnectors
+  if (type === 'GPU' || type === 'PSU') {
+    const connectors = Array.isArray(specs.powerConnectors) ? specs.powerConnectors.filter(
+      (item): item is PowerConnector | PsuPowerConnector => typeof item === 'object' && item !== null && 'connectorType' in item) : null
     const names: Record<string, string> = {
       PCIE_6PIN: 'PCIe 6핀', PCIE_8PIN: 'PCIe 8핀', PCIE_16PIN_UNSPECIFIED: '16핀 (세부 규격 미확인)',
       PCIE_12VHPWR: '12VHPWR 16핀', PCIE_12V_2X6: '12V-2x6 16핀',
+      ATX_24PIN: '메인보드 24핀', EPS_4_4PIN: 'CPU 4+4핀', PCIE_6_2PIN: 'PCIe 6+2핀',
     }
-    rows.push(['보조전원 단자', specs.powerConnectorsKnown === true && Array.isArray(connectors)
-      ? connectors.length === 0 ? '없음' : connectors.map(({ connectorType, connectorCount }) =>
-        `${names[connectorType] ?? connectorType} × ${connectorCount}`).join(', ')
+    rows.push([type === 'GPU' ? '보조전원 단자' : '제공 전원 플러그', specs.powerConnectorsKnown === true && connectors !== null
+      ? connectors.length === 0 ? '없음' : connectors.map((connector) => {
+        const cables = type === 'PSU' && 'independentCableCount' in connector
+          ? ` (독립 케이블 ${connector.independentCableCount === null ? '미확인' : `${connector.independentCableCount}개`}${
+            connector.maxPowerW === null ? '' : `, 케이블당 ${connector.maxPowerW} W`})` : ''
+        return `${names[connector.connectorType] ?? connector.connectorType} × ${connector.connectorCount}${cables}`
+      }).join(', ')
       : '미확인'])
+  }
+  if (type === 'GPU') {
     const basis: Record<string, string> = { RECOMMENDED: '권장', MINIMUM: '최소' }
     rows.push(['파워 요구량 기준', typeof specs.psuRequirementBasis === 'string'
       ? basis[specs.psuRequirementBasis] ?? specs.psuRequirementBasis : '미확인'])
+  }
+  if (type === 'CASE') {
+    for (const [key, known, label] of [
+      ['motherboardFormFactors', 'motherboardFormFactorsKnown', '지원 메인보드 규격'],
+      ['psuFormFactors', 'psuFormFactorsKnown', '지원 파워 규격'],
+    ]) {
+      const factors = specs[key]
+      rows.push([label, specs[known] === true && Array.isArray(factors)
+        ? factors.length === 0 ? '없음' : factors.map((factor) => typeof factor === 'string' ? formatValue(factor) : '미확인').join(', ') : '미확인'])
+    }
   }
   return rows
 }

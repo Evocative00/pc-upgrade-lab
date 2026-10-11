@@ -1,0 +1,23 @@
+{
+  "name": "@pc-upgrade-lab/catalog-prices-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24 <25" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/provider.test.mjs",
+    "test:java-client": "node scripts/verify-java-client.mjs",
+    "test:retail-preview": "node scripts/verify-retail-preview.mjs",
+    "test:reference-preview": "node scripts/verify-reference-preview.mjs",
+    "test:wrangler": "node scripts/verify-wrangler-local.mjs",
+    "dev": "node scripts/local-dev.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "miniflare": "5.20261006.1-alpha",
+    "typescript": "6.0.2",
+    "wrangler": "4.149.0"
+  }
+}

@@ -2,6 +2,7 @@ package com.pcupgradelab.pc;
 
 import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pcupgradelab.catalog.identity.CatalogRecognitionLevel;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,6 +19,8 @@ import java.util.Map;
  * @param catalogProductId 제품 카탈로그와 아직 연결하지 못했다면 null
  * @param matchStatus 실제 카탈로그 연결 여부. 이름이 비슷하다는 이유만으로 MATCHED로 바꾸지 않는다.
  * @param specs 부품별 제원. 값은 문자열·숫자·불리언·null이며 중첩 객체와 배열은 허용하지 않는다.
+ * @param catalogModelId 확인한 설치 모델의 로컬 ID. 정확 제품·판매 SKU 확인과 별개다.
+ * @param recognitionLevel 규격 범위/모델/검토된 물리 변형 확인 수준. 기존 자료는 null로 보존한다.
  */
 public record PartInput(
         @NotNull PartType type,
@@ -27,7 +30,15 @@ public record PartInput(
         @NotNull InputSource source,
         @Size(max = 128) String catalogProductId,
         @NotNull MatchStatus matchStatus,
-        @NotNull @Size(max = 40) Map<String, Object> specs) {
+        @NotNull @Size(max = 40) Map<String, Object> specs,
+        @Size(max = 128) String catalogModelId,
+        CatalogRecognitionLevel recognitionLevel) {
+
+    /** 기존 수집기·저장 자료는 모델 확인 수준을 추정하지 않고 null/null로 유지한다. */
+    public PartInput(PartType type, String displayName, String rawName, Integer quantity,
+                     InputSource source, String catalogProductId, MatchStatus matchStatus, Map<String, Object> specs) {
+        this(type, displayName, rawName, quantity, source, catalogProductId, matchStatus, specs, null, null);
+    }
 
     public PartInput {
         // 호출한 쪽이 원본 Map을 바꿔도 이 데이터가 달라지지 않도록 복사한다.
@@ -42,6 +53,16 @@ public record PartInput(
         // 미연결이면 ID가 없어야 하고, 연결 상태라면 비어 있지 않은 ID가 있어야 한다.
         return matchStatus == MatchStatus.UNMATCHED ? catalogProductId == null
                 : matchStatus == MatchStatus.MATCHED && catalogProductId != null && !catalogProductId.isBlank();
+    }
+
+    @JsonIgnore
+    @AssertTrue(message = "catalogModelId and recognitionLevel must agree")
+    public boolean isModelRecognitionValid() {
+        if (catalogModelId != null && (catalogModelId.isBlank() || catalogModelId.length() > 128)) return false;
+        if (recognitionLevel == null) return catalogModelId == null;
+        if (recognitionLevel == CatalogRecognitionLevel.PHYSICAL_VARIANT)
+            return matchStatus == MatchStatus.MATCHED && catalogProductId != null && !catalogProductId.isBlank();
+        return catalogModelId != null;
     }
 
     @JsonIgnore

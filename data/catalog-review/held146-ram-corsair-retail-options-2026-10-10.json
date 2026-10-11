@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-10T11:38:24.220Z",
+  "scope": "Only two supplied cached search HTML files and their already present LPX 16GB options; no broader discovery",
+  "priceImportApproved": false,
+  "databaseWrites": 0,
+  "deployments": 0,
+  "existingReportWrites": 0,
+  "products": [
+    {
+      "canonicalId": "0063e09f-d94a-3656-9531-ccf43fc42885",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "903d7878-c118-4256-b68a-ff9d85901697",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3200 16GB (2x8GB)",
+        "partNumber": "CMK16GX4M2B3200C16"
+      },
+      "saleUnit": "RAM_KIT",
+      "moduleCount": 2,
+      "expectedModuleCapacityGiB": 8,
+      "expectedTotalCapacityGiB": 16,
+      "status": "HELD",
+      "inputHtmlPath": "backend/build/catalog-prices/held146-ram-html/0063e09f-d94a-3656-9531-ccf43fc42885-retry-search.html",
+      "inputHtmlSha256": "ae630bdbbdf0c391ff537424389759fdac0073d0f077a4afad873ed9dca08610",
+      "inputHtmlBytes": 562764,
+      "cachedHtmlIsNotFreshPriceObservation": true,
+      "searchHtmlTitle": "커세어 DDR4-3200 16GB 패키지 : 다나와 통합검색",
+      "defaultWrongCapacityPcode": "13406096",
+      "structuredLpxProducts": [
+        {
+          "title": "CORSAIR DDR4-3200 CL16-20-20 VENGEANCE LPX BLACK 패키지 (64GB(16Gx4))",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13406096"
+        }
+      ],
+      "lpxCards": [
+        {
+          "defaultPcode": "13406096",
+          "title": "CORSAIR DDR4 - 3200 CL16-20-20 VENGEANCE LPX BLACK 패키지",
+          "options": [
+            {
+              "text": "0몰 VS상품비교 단종상품",
+              "pcodes": [
+                "13406096"
+              ]
+            }
+          ],
+          "fullTargetPnPrinted": false
+        },
+        {
+          "defaultPcode": "4982745",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE LPX 레드 1.35V 패키지",
+          "options": [
+            {
+              "text": "0몰 VS상품비교 단종상품",
+              "pcodes": [
+                "4982745"
+              ]
+            }
+          ],
+          "fullTargetPnPrinted": false
+        },
+        {
+          "defaultPcode": "4063210",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE LPX 레드 패키지",
+          "options": [
+            {
+              "text": "0몰 VS상품비교 단종 1위 32GB(16Gx2)",
+              "pcodes": [
+                "4063210"
+              ]
+            },
+            {
+              "text": "0몰 VS상품비교 단종 2위 16GB(8Gx2)",
+              "pcodes": [
+                "3540083"
+              ]
+            },
+            {
+              "text": "0몰 VS상품비교 단종 16GB(4Gx4)",
+              "pcodes": [
+                "4067530"
+              ]
+            }
+          ],
+          "fullTargetPnPrinted": false
+        }
+      ],
+      "black16GbOptionFound": false,
+      "targetSalePnVerified": false,
+      "mapping": null,
+      "price": null,
+      "reusedManufacturerEvidence": [
+        {
+          "sourceFile": "data/catalog-review/remaining232-ram-prices-2026-10-10.json",
+          "sourceUrl": "https://www.corsair.com/us/en/p/memory/cmk16gx4m2b3200c16/vengeancea-lpx-16gb-2-x-8gb-ddr4-dram-3200mhz-c16-memory-kit-black-cmk16gx4m2b3200c16",
+          "originalRetrievedAt": "2026-10-03T10:46:42Z",
+          "verifiedPartNumber": "CMK16GX4M2B3200C16",
+          "selectedFacts": {
+            "Capacity": "16GB (2 x 8GB)",
+            "Tested Speed": "3200 MT/s",
+            "Tested Voltage": "1.35V",
+            "SPD Speed": "2133MHz",
+            "SPD Voltage": "1.2V",
+            "Package Memory Format": "UDIMM",
+            "Package Memory Pin": "288",
+            "Memory Type": "DDR4",
+            "Performance Profile": "XMP 2.0"
+          },
+          "evidenceScope": "Existing exact-PN manufacturer extract reused; not fetched again during this bounded option check",
+          "targetBlackColorBasis": "Exact manufacturer SKU URL and product title state black"
+        }
+      ],
+      "reasonCode": "NO_EXACT_BLACK_16GB_OPTION_IN_SUPPLIED_HTML",
+      "conclusion": "Provided search HTML has only wrong-capacity BLACK default(s). RED family capacity options are separate color variants, have no target full PN, and yielded no eligible ordinary purchase quote.",
+      "nextEvidenceRequired": "Exact BLACK target PN and 8GB×2 domestic sale page; no broader search performed in this five-minute check."
+    },
+    {
+      "canonicalId": "8d2d09ca-9d1b-31a0-9c51-ee4204dff0f5",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3ec88fb7-7041-40bf-82ac-3c4b21c7d1c2",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3600 CL18 16GB (2x8GB)",
+        "partNumber": "CMK16GX4M2B3600C18"
+      },
+      "saleUnit": "RAM_KIT",
+      "moduleCount": 2,
+      "expectedModuleCapacityGiB": 8,
+      "expectedTotalCapacityGiB": 16,
+      "status": "HELD",
+      "inputHtmlPath": "backend/build/catalog-prices/held146-ram-html/8d2d09ca-9d1b-31a0-9c51-ee4204dff0f5-retry-search.html",
+      "inputHtmlSha256": "d9684d34dca4b3e91ff3f2ae1726dacb4fe60b624f78716c99cb9a1a160678c6",
+      "inputHtmlBytes": 222261,
+      "cachedHtmlIsNotFreshPriceObservation": true,
+      "searchHtmlTitle": "커세어 DDR4-3600 CL18 16GB 패키지 : 다나와 통합검색",
+      "defaultWrongCapacityPcode": "13406465",
+      "structuredLpxProducts": [
+        {
+          "title": "CORSAIR DDR4-3600 CL18 VENGEANCE LPX BLACK 패키지 (64GB(16Gx4))",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13406465"
+        },
+        {
+          "title": "CORSAIR DDR4-3600 CL18 VENGEANCE LPX BLACK AMD 패키지 (32GB(16Gx2))",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13408889"
+        }
+      ],
+      "lpxCards": [
+        {
+          "defaultPcode": "13406465",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE LPX BLACK 패키지",
+          "options": [
+            {
+              "text": "0몰 VS상품비교 단종상품",
+              "pcodes": [
+                "13406465"
+              ]
+            }
+          ],
+          "fullTargetPnPrinted": false
+        },
+        {
+          "defaultPcode": "13408889",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE LPX BLACK AMD 패키지",
+          "options": [
+            {
+              "text": "0몰 VS상품비교 단종상품",
+              "pcodes": [
+                "13408889"
+              ]
+            }
+          ],
+          "fullTargetPnPrinted": false
+        },
+        {
+          "defaultPcode": "4063259",
+          "title": "CORSAIR DDR4 - 3600 CL18 VENGEANCE LPX 레드 패키지",
+          "options": [
+            {
+              "text": "0몰 VS상품비교 단종상품",
+              "pcodes": [
+                "4063259"
+              ]
+            }
+          ],
+          "fullTargetPnPrinted": false
+        }
+      ],
+      "black16GbOptionFound": false,
+      "targetSalePnVerified": false,
+      "mapping": null,
+      "price": null,
+      "reusedManufacturerEvidence": [
+        {
+          "sourceFile": "data/catalog-review/remaining232-ram-prices-2026-10-10.json",
+          "sourceUrl": "https://www.corsair.com/us/en/p/memory/cmk16gx4m2b3600c18/vengeancea-lpx-16gb-2-x-8gb-ddr4-dram-3600mhz-c18-memory-kit-black-cmk16gx4m2b3600c18",
+          "originalRetrievedAt": "2026-10-04T07:27:46.215928+00:00",
+          "verifiedPartNumber": "CMK16GX4M2B3600C18",
+          "selectedFacts": {
+            "memoryType": "DDR4",
+            "moduleCapacityGiB": 8,
+            "moduleCount": 2,
+            "totalCapacityGiB": 16,
+            "dataRateMts": 3600,
+            "casLatencyCl": 18,
+            "moduleFormFactor": "DIMM",
+            "bufferType": "UNBUFFERED",
+            "isEcc": null,
+            "voltageV": 1.35,
+            "defaultJedecMts": 2133,
+            "profileSupport": [
+              "XMP"
+            ]
+          },
+          "evidenceScope": "Existing exact-PN manufacturer extract reused; not fetched again during this bounded option check",
+          "targetBlackColorBasis": "Exact manufacturer SKU URL and product title state black"
+        }
+      ],
+      "reasonCode": "NO_EXACT_BLACK_16GB_OPTION_IN_SUPPLIED_HTML",
+      "conclusion": "Provided search HTML has only wrong-capacity BLACK default(s). RED family capacity options are separate color variants, have no target full PN, and yielded no eligible ordinary purchase quote.",
+      "nextEvidenceRequired": "Exact BLACK target PN and 8GB×2 domestic sale page; no broader search performed in this five-minute check."
+    }
+  ],
+  "currentCandidatePageReads": [
+    {
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=3540083",
+      "pcode": "3540083",
+      "requestedAt": "2026-10-10T11:39:20.945Z",
+      "observedAt": "2026-10-10T11:39:21.227Z",
+      "httpStatus": 200,
+      "htmlBytes": 105506,
+      "responseSha256": "a6b8d49c8849a48196491ae2f4827fdbd980c71fa3a125e08d61b5056a0075bf",
+      "productTitle": "CORSAIR DDR4-3200 CL16 VENGEANCE LPX 레드 패키지 (16GB(8Gx2))",
+      "expectedTitleExtraction": "span.title inside h3.prod_tit; comparison button text excluded",
+      "targetPartNumberTextHints": [
+        {
+          "partNumber": "CMK16GX4M2B3200C16",
+          "presentInRawHtml": false
+        },
+        {
+          "partNumber": "CMK16GX4M2B3600C18",
+          "presentInRawHtml": false
+        }
+      ],
+      "eligibleSellerBridgeUrls": [],
+      "eligibleSellerBridgeCount": 0,
+      "unrelatedBridgeUrlsExcluded": [
+        "https://prod.danawa.com/bridge/loadingBridgeDf.html?url=https%3A%2F%2Fdanawafinance.com%2Fcf%2Flanding%2Fcoverage-analysis%3Futm_source%3Ddanawa%26utm_campaign%3Danalysis%26utm_content%3Ddae_pc_list_02_analysis%26screen%3Ddae_pc_list_02"
+      ],
+      "parsedOrdinaryPriceCandidate": null,
+      "priceParseReason": "REGULAR_PRICE_SECTION_MISSING",
+      "priceAccepted": false,
+      "saleIdentityVerified": false,
+      "rejection": "RED_VARIANT_NOT_THE_TARGET_BLACK_PN"
+    },
+    {
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=4063259",
+      "pcode": "4063259",
+      "requestedAt": "2026-10-10T11:39:22.946Z",
+      "observedAt": "2026-10-10T11:39:23.191Z",
+      "httpStatus": 200,
+      "htmlBytes": 105187,
+      "responseSha256": "4f7a5adc586b42dc4ffedca875a28c7f40e6891c4db3c614b45e74cb8381ca8b",
+      "productTitle": "CORSAIR DDR4-3600 CL18 VENGEANCE LPX 레드 패키지 (16GB(8Gx2))",
+      "expectedTitleExtraction": "span.title inside h3.prod_tit; comparison button text excluded",
+      "targetPartNumberTextHints": [
+        {
+          "partNumber": "CMK16GX4M2B3200C16",
+          "presentInRawHtml": false
+        },
+        {
+          "partNumber": "CMK16GX4M2B3600C18",
+          "presentInRawHtml": false
+        }
+      ],
+      "eligibleSellerBridgeUrls": [],
+      "eligibleSellerBridgeCount": 0,
+      "unrelatedBridgeUrlsExcluded": [
+        "https://prod.danawa.com/bridge/loadingBridgeDf.html?url=https%3A%2F%2Fdanawafinance.com%2Fcf%2Flanding%2Fcoverage-analysis%3Futm_source%3Ddanawa%26utm_campaign%3Danalysis%26utm_content%3Ddae_pc_list_02_analysis%26screen%3Ddae_pc_list_02"
+      ],
+      "parsedOrdinaryPriceCandidate": null,
+      "priceParseReason": "REGULAR_PRICE_SECTION_MISSING",
+      "priceAccepted": false,
+      "saleIdentityVerified": false,
+      "rejection": "RED_VARIANT_NOT_THE_TARGET_BLACK_PN"
+    }
+  ],
+  "previewPayload": {
+    "schemaVersion": 1,
+    "items": []
+  },
+  "completedAt": "2026-10-10T11:39:50.518Z",
+  "conclusion": "No BLACK 16GB(8Gx2) option link is present in either supplied LPX BLACK card. Defaults are 64GB(16Gx4), not exact target kits. RED 16GB pages are separate variants and cannot fill BLACK target prices.",
+  "networkScope": "Only two already present LPX RED family/capacity candidates read; no new search or wider discovery.",
+  "summary": {
+    "targetProducts": 2,
+    "exactBlack16GbOptionsFound": 0,
+    "wrongCapacityDefaults": 2,
+    "redFamilyCandidatePagesRead": 2,
+    "importReadyPrices": 0,
+    "previewItems": 0,
+    "totalFreshOriginGets": 4,
+    "finalHttp200": 2,
+    "eligibleSellerBridgeCount": 0,
+    "fullTargetPnOccurrences": 0,
+    "identityCorrections": 0
+  },
+  "initialCandidateReadMetadata": [
+    {
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=3540083",
+      "pcode": "3540083",
+      "requestedAt": "2026-10-10T11:38:24.228Z",
+      "observedAt": "2026-10-10T11:38:24.536Z",
+      "httpStatus": 200,
+      "htmlBytes": 105525,
+      "responseSha256": "f9d5d92b4c8ed1ef88f3d9bbba5507befcf584fff93e4e5e254e55664d452ade",
+      "productTitle": "CORSAIR DDR4-3200 CL16 VENGEANCE LPX 레드 패키지 (16GB(8Gx2)) 상품비교",
+      "reasonForRead": "16GB(8Gx2) option present in 3200 LPX RED card; wrong color, investigate without accepting as target",
+      "visiblePartNumberHints": [],
+      "partNumberOccurrencesAreNotProductMappingApproval": true,
+      "targetPartNumberTextHints": [
+        {
+          "partNumber": "CMK16GX4M2B3200C16",
+          "presentInRawHtml": false
+        },
+        {
+          "partNumber": "CMK16GX4M2B3600C18",
+          "presentInRawHtml": false
+        }
+      ],
+      "sellerBridgeUrls": [],
+      "sellerBridgeProductCodes": [],
+      "parsedOrdinaryPriceCandidate": null,
+      "priceParseReason": "TITLE_MISMATCH",
+      "priceAccepted": false,
+      "saleIdentityVerified": false,
+      "rejection": "RED_VARIANT_NOT_THE_TARGET_BLACK_PN",
+      "unrelatedAdvertisingBridgeWasNotSellerProof": true,
+      "initialPriceParsingLimitation": "Initial h3 text included a comparison button; retained as an invalid parse attempt and superseded by a fresh correctly extracted title read."
+    },
+    {
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=4063259",
+      "pcode": "4063259",
+      "requestedAt": "2026-10-10T11:38:26.235Z",
+      "observedAt": "2026-10-10T11:38:26.501Z",
+      "httpStatus": 200,
+      "htmlBytes": 105206,
+      "responseSha256": "b02986551ad7d81c12161014ce6cfd8bdbe5763ae04dfc14b8cbc8ef47a052f3",
+      "productTitle": "CORSAIR DDR4-3600 CL18 VENGEANCE LPX 레드 패키지 (16GB(8Gx2)) 상품비교",
+      "reasonForRead": "3600 LPX RED card already in supplied HTML and prior review was 16GB(8Gx2); wrong color, investigate without accepting as target",
+      "visiblePartNumberHints": [],
+      "partNumberOccurrencesAreNotProductMappingApproval": true,
+      "targetPartNumberTextHints": [
+        {
+          "partNumber": "CMK16GX4M2B3200C16",
+          "presentInRawHtml": false
+        },
+        {
+          "partNumber": "CMK16GX4M2B3600C18",
+          "presentInRawHtml": false
+        }
+      ],
+      "sellerBridgeUrls": [],
+      "sellerBridgeProductCodes": [],
+      "parsedOrdinaryPriceCandidate": null,
+      "priceParseReason": "TITLE_MISMATCH",
+      "priceAccepted": false,
+      "saleIdentityVerified": false,
+      "rejection": "RED_VARIANT_NOT_THE_TARGET_BLACK_PN",
+      "unrelatedAdvertisingBridgeWasNotSellerProof": true,
+      "initialPriceParsingLimitation": "Initial h3 text included a comparison button; retained as an invalid parse attempt and superseded by a fresh correctly extracted title read."
+    }
+  ],
+  "limitations": [
+    "Only the supplied cached HTML and their RED family product pages were reviewed; this is not a market-wide no-sale conclusion.",
+    "The existing manufacturer evidence identifies the target as BLACK; RED is not replaced or treated as an equivalent PN.",
+    "Search-card discontinued/zero-mall text is page-scoped and does not prove manufacturer or nationwide discontinuation.",
+    "No verifiedAt was generated because no exact target domestic mapping passed review; no quote timestamp was altered."
+  ],
+  "validation": {
+    "checkedAt": "2026-10-10T11:39:50.518Z",
+    "inputHtmlHashesStillMatch": true,
+    "targetPnCount": 2,
+    "previewItems": 0,
+    "allPricesAndMappingsNull": true,
+    "freshReadHttpErrors": 0,
+    "minOriginRequestStartIntervalMs": 2001,
+    "priceObservationTimestampAlterations": 0,
+    "onlyOwnedResearchFileWritten": true,
+    "databaseWrites": 0,
+    "deployments": 0
+  }
+}

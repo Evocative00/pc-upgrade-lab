@@ -59,13 +59,84 @@ function isCurrentPrice(value: unknown): boolean {
     isPriceTimestamp(value.observedAt)
 }
 
+function isUtcPriceTimestamp(value: unknown): value is string {
+  return typeof value === 'string' && value.endsWith('Z') && isPriceTimestamp(value) && Date.parse(value) >= 0
+}
+
+function isReferenceDate(value: unknown): boolean {
+  return value === null || typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
+    && isUtcPriceTimestamp(`${value}T00:00:00Z`)
+}
+
+function isReferenceEstimate(value: unknown, type: unknown): boolean {
+  if (value === undefined || value === null) return true
+  if (!isObject(value) || !Number.isSafeInteger(value.amountKrw) || Number(value.amountKrw) <= 0
+    || Number(value.amountKrw) > 999_999_999_999 || !isReferenceDate(value.sourceDate)
+    || !isUtcPriceTimestamp(value.reviewedAt) || !isText(value.notes, 1000)
+    || !['HISTORICAL_RETAIL', 'MODEL_RETAIL_REFERENCE', 'LAUNCH_PRICE', 'SIMILAR_PART_ESTIMATE'].includes(String(value.basis))
+    || !['EXACT_PRODUCT', 'MODEL', 'SIMILAR_SPEC'].includes(String(value.identityScope))
+    || !['VERIFIED_MODEL', 'ESTIMATED'].includes(String(value.confidence))
+    || !['DIRECT_MODEL_QUOTE', 'OFFICIAL_MODEL_LAUNCH', 'SPEC_NEIGHBOUR_MEDIAN'].includes(String(value.method))) return false
+  if (value.saleUnit === 'RAM_KIT') {
+    if (type !== 'RAM' || !Number.isSafeInteger(value.moduleCount) || Number(value.moduleCount) < 1 || Number(value.moduleCount) > 64) return false
+  } else if (value.saleUnit !== 'PRODUCT' || value.moduleCount !== (type === 'RAM' ? 1 : null)) return false
+  const low = value.rangeLowKrw, high = value.rangeHighKrw
+  if (value.confidence === 'ESTIMATED') {
+    if (value.basis !== 'SIMILAR_PART_ESTIMATE' || value.identityScope !== 'SIMILAR_SPEC' || value.method !== 'SPEC_NEIGHBOUR_MEDIAN'
+      || !Number.isSafeInteger(low) || !Number.isSafeInteger(high) || Number(low) <= 0
+      || Number(low) > Number(value.amountKrw) || Number(high) < Number(value.amountKrw) || Number(high) > 999_999_999_999) return false
+  } else if (value.basis === 'SIMILAR_PART_ESTIMATE' || low !== null || high !== null
+    || value.basis === 'LAUNCH_PRICE' && (value.identityScope !== 'MODEL' || value.method !== 'OFFICIAL_MODEL_LAUNCH')
+    || value.basis === 'MODEL_RETAIL_REFERENCE' && (value.identityScope !== 'MODEL' || value.method !== 'DIRECT_MODEL_QUOTE')
+    || value.basis === 'HISTORICAL_RETAIL' && (value.identityScope !== 'EXACT_PRODUCT' || value.method !== 'DIRECT_MODEL_QUOTE')) return false
+  return Array.isArray(value.sourceQuotes) && value.sourceQuotes.length >= 1 && value.sourceQuotes.length <= 3
+    && value.sourceQuotes.every((q: unknown) => isObject(q) && nullableText(q.canonicalId) && isText(q.modelName, 255)
+      && Number.isSafeInteger(q.amountKrw) && Number(q.amountKrw) > 0 && Number(q.amountKrw) <= 999_999_999_999
+      && isText(q.sourceName, 100) && isWebUrl(q.sourceUrl) && new URL(q.sourceUrl).protocol === 'https:'
+      && isReferenceDate(q.sourceDate)
+      && (q.saleUnit === 'RAM_KIT' ? type === 'RAM' && Number.isSafeInteger(q.moduleCount) && Number(q.moduleCount) >= 1 && Number(q.moduleCount) <= 64
+        : q.saleUnit === 'PRODUCT' && q.moduleCount === (type === 'RAM' ? 1 : null))
+      && (value.confidence === 'ESTIMATED' || q.saleUnit === value.saleUnit && q.moduleCount === value.moduleCount))
+}
+
+function isPriceStatus(value: unknown, currentPrice: unknown): boolean {
+  if (value === undefined || value === null) return true
+  if (!isObject(value) || typeof value.includedInTotal !== 'boolean') return false
+  const hasPrice = currentPrice !== null && currentPrice !== undefined
+  if (value.origin === 'LOCAL') {
+    return value.lookupStatus === 'NOT_IN_SCOPE' && value.freshness === null && value.catalogVersion === null &&
+      value.checkedAt === null && value.lastSuccessAt === null && value.includedInTotal === hasPrice
+  }
+  if (value.origin !== 'SHARED' || !isText(value.catalogVersion, 128) || !isUtcPriceTimestamp(value.checkedAt) ||
+    !(value.lastSuccessAt === null || isUtcPriceTimestamp(value.lastSuccessAt))) return false
+  switch (value.lookupStatus) {
+    case 'OK':
+      return hasPrice && value.lastSuccessAt !== null && ['FRESH', 'STALE', 'EXPIRED'].includes(String(value.freshness)) &&
+        value.includedInTotal === (value.freshness !== 'EXPIRED')
+    case 'NO_PRICE':
+    case 'UNKNOWN_PRODUCT':
+      return !hasPrice && value.freshness === 'NO_PRICE' && value.lastSuccessAt !== null && !value.includedInTotal
+    case 'UNAVAILABLE':
+      if (value.includedInTotal) return false
+      return hasPrice
+        ? value.lastSuccessAt !== null && ['FRESH', 'STALE', 'EXPIRED'].includes(String(value.freshness))
+        : value.lastSuccessAt === null ? value.freshness === null : value.freshness === 'NO_PRICE'
+    default: return false
+  }
+}
+
 function isProduct(value: unknown): value is CatalogProduct {
   if (!isObject(value) || !isObject(value.referencePrice)) return false
   const price = value.referencePrice
   return isText(value.id, 128) && PART_TYPES.some(({ type }) => type === value.type) &&
+    (value.canonicalId === undefined || nullableText(value.canonicalId)) &&
+    (value.modelId === undefined || nullableText(value.modelId)) &&
+    (value.identityKind === undefined || ['LEGACY_UNCLASSIFIED', 'MODEL_REFERENCE', 'PHYSICAL_VARIANT', 'RETAIL_KIT'].includes(String(value.identityKind))) &&
+    (value.role === undefined || ['UNASSIGNED', 'INSTALLED_PC_REFERENCE', 'PURCHASE_CANDIDATE', 'BOTH'].includes(String(value.role))) &&
     isText(value.manufacturer, 100) && isText(value.modelName, 255) && nullableText(value.partNumber) &&
     ['UNVERIFIED', 'PARTIAL', 'CORE_VERIFIED'].includes(String(value.verificationStatus)) &&
-    typeof value.active === 'boolean' && isCurrentPrice(value.currentPrice) &&
+    typeof value.active === 'boolean' && isCurrentPrice(value.currentPrice) && isPriceStatus(value.priceStatus, value.currentPrice) &&
+    isReferenceEstimate(value.referenceEstimate, value.type) &&
     isText(value.createdAt) && isText(value.updatedAt) &&
     isText(price.updatedAt) &&
     ['UNCONFIRMED', 'INSUFFICIENT_HISTORY', 'CONFIRMED'].includes(String(price.status)) &&
@@ -92,19 +163,59 @@ function isPage(value: unknown): value is CatalogPage {
 
 function isDetail(value: unknown): value is CatalogDetail {
   if (!isObject(value) || !isProduct(value.product) || !isObject(value.specification)) return false
-  // 원본 JSON은 받지 않는다. 제원은 스칼라 값과 GPU 보조전원 목록만 허용한다.
+  const type = value.product.type
+  // 배열은 해당 부품의 검증한 전원 단자와 장착 규격 목록만 받는다.
   const validSpecs = Object.keys(value.specification).length > 0 &&
     Object.entries(value.specification).every(([key, item]) =>
       item === null || typeof item === 'string' || typeof item === 'boolean' ||
       (typeof item === 'number' && Number.isFinite(item)) ||
-      (key === 'powerConnectors' && Array.isArray(item) && item.every((connector: unknown) =>
+      (['GPU', 'PSU'].includes(type) && key === 'powerConnectors' && Array.isArray(item) && item.every((connector: unknown) =>
         isObject(connector) && isText(connector.connectorType) &&
-        Number.isSafeInteger(connector.connectorCount) && Number(connector.connectorCount) > 0)))
-  return validSpecs && Array.isArray(value.sources) && value.sources.length > 0 &&
+        Number.isSafeInteger(connector.connectorCount) && Number(connector.connectorCount) > 0)) ||
+      (type === 'CASE' && ['motherboardFormFactors', 'psuFormFactors'].includes(key)
+        && Array.isArray(item) && item.every((factor) => typeof factor === 'string')))
+  return validSpecs && validHardwareSpecification(value.product.type, value.specification) && Array.isArray(value.sources) && value.sources.length > 0 &&
     value.sources.every((source: unknown) => isObject(source) &&
       ['BUILDCORES', 'MANUFACTURER', 'MANUAL'].includes(String(source.sourceName)) &&
       nullableText(source.externalId) && nullableText(source.sourceRevision) &&
       isWebUrl(source.sourceUrl) && isText(source.retrievedAt)) && isAttributions(value.attributions)
+}
+
+function validHardwareSpecification(type: PartType, specs: Record<string, unknown>): boolean {
+  const positive = (value: unknown) => typeof value === 'number' && Number.isFinite(value) && value > 0
+  const integer = (value: unknown) => Number.isSafeInteger(value) && Number(value) > 0
+  const optional = (value: unknown, validator: (value: unknown) => boolean) => value === null || validator(value)
+  const uniqueCodes = (value: unknown, allowed: string[]) => Array.isArray(value)
+    && new Set(value).size === value.length && value.every((code) => typeof code === 'string' && allowed.includes(code))
+  const psuFactors = ['ATX', 'SFX', 'SFX_L']
+  if (type === 'PSU') {
+    const allowed = ['ATX_24PIN', 'EPS_4_4PIN', 'PCIE_6_2PIN', 'PCIE_6PIN', 'PCIE_8PIN',
+      'PCIE_16PIN_UNSPECIFIED', 'PCIE_12VHPWR', 'PCIE_12V_2X6']
+    return optional(specs.ratedPowerW, integer) && optional(specs.formFactor, (value) => psuFactors.includes(String(value)))
+      && ['lengthMm', 'widthMm', 'heightMm'].every((key) => optional(specs[key], positive))
+      && optional(specs.atxVersion, (value) => typeof value === 'string' && /^[1-9][0-9]?\.[0-9]{1,2}$/.test(value))
+      && typeof specs.powerConnectorsKnown === 'boolean' && Array.isArray(specs.powerConnectors)
+      && (specs.powerConnectorsKnown || specs.powerConnectors.length === 0)
+      && new Set(specs.powerConnectors.map((item) => isObject(item) ? item.connectorType : null)).size === specs.powerConnectors.length
+      && specs.powerConnectors.every((item) => isObject(item) && allowed.includes(String(item.connectorType))
+        && integer(item.connectorCount) && optional(item.independentCableCount, integer)
+        && (item.independentCableCount === null || Number(item.independentCableCount) <= Number(item.connectorCount))
+        && optional(item.maxPowerW, integer))
+  }
+  if (type === 'CASE') {
+    return typeof specs.motherboardFormFactorsKnown === 'boolean' && typeof specs.psuFormFactorsKnown === 'boolean'
+      && uniqueCodes(specs.motherboardFormFactors, ['ATX', 'MICRO_ATX', 'MINI_ITX', 'MINI_DTX', 'E_ATX'])
+      && uniqueCodes(specs.psuFormFactors, psuFactors)
+      && (specs.motherboardFormFactorsKnown || (specs.motherboardFormFactors as string[]).length === 0)
+      && (specs.psuFormFactorsKnown || (specs.psuFormFactors as string[]).length === 0)
+      && ['maxPsuLengthMm', 'maxGpuLengthMm', 'maxGpuHeightMm', 'maxGpuThicknessMm'].every((key) => optional(specs[key], positive))
+      && optional(specs.expansionSlotCount, integer)
+      && ['gpuClearanceConditions', 'psuClearanceConditions'].every((key) => optional(specs[key], (value) => typeof value === 'string'))
+      && typeof specs.gpuClearanceUnconditional === 'boolean' && typeof specs.psuClearanceUnconditional === 'boolean'
+      && (!specs.gpuClearanceUnconditional || ['maxGpuLengthMm', 'maxGpuHeightMm', 'maxGpuThicknessMm'].some((key) => positive(specs[key])))
+      && (!specs.psuClearanceUnconditional || positive(specs.maxPsuLengthMm))
+  }
+  return true
 }
 
 // 상대 주소를 사용하므로 Vite의 기존 /api 프록시와 연결된다. 오류 시 예시 데이터로 대체하지 않는다.

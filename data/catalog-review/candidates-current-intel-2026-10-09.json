@@ -1,0 +1,2549 @@
+{
+  "schemaVersion": 1,
+  "researchDate": "2026-10-09",
+  "categoryGroup": "CURRENT_INTEL",
+  "scopeLimitations": [
+    "2026-10-09에 직접 조회한 공식 ARK·데이터시트 범위에서는 일반 교체형 Intel 데스크톱 확장 대상으로 Core Ultra 200S와 200S Plus를 확인했다. 향후 출시·루머를 현재 출시 제품으로 저장하지 않는다.",
+    "기존 Intel12/13/14세대31종은 유지·검토 범위다. 이 파일은 중복 추가하지 않고 새로 빠진 LGA1851 CPU15종과 보드5종만 조사 후보로 기록한다.",
+    "전체 세대 지원과 전 세계 모든 판매 SKU 수집은 다르다. 일반 K/KF/F/non-K 모델은 명시적으로 조사했고,T·Edge A/TA·OEM 중심 모델은 후속 설치 참조 조사로 분리했다.",
+    "Intel Core Ultra Series3 Panther Lake의 현재 공식 발표는 노트북·모바일·엣지 설계 범위다. H/HX/U/V와 이를 데스크톱 교체 CPU에 섞지 않는다.",
+    "국내 설치 수요·판매 순위는 측정하지 않았다. 국내 비교 페이지 직접 확인은 CPU6종·보드5종이며 개별 신품 판매 SKU·실시간 재고·상품가는 미검토다.",
+    "CPU별 최소 BIOS와 보드 메모리 QVL은 미검토다. ARK 최대 메모리 속도와 데이터시트 조건표는 별도 사실로 저장했으며 정확한 구성 검증 완료로 표시하지 않는다.",
+    "데이터베이스·seed·Flyway·가격 관측은 변경하지 않았다. Intel 미국 권장 가격과 출시 가격을 국내 상품가로 사용하지 않았다.",
+    "Intel Newsroom 일부 링크는 웹 본문 조회 시 리디렉션 오류가 났다. 최신 출시 확인은 접근 가능한 개별 ARK의Launched/Q1'26 표기와 공식 출시 PDF로 보강했다."
+  ],
+  "summary": {
+    "candidateCount": 20,
+    "cpuCount": 15,
+    "motherboardCount": 5,
+    "desktopCpu200sCount": 12,
+    "desktopCpu200sPlusCount": 3,
+    "domesticProductPagesChecked": 11,
+    "installedDemandNotMeasuredCount": 20,
+    "purchaseCandidatesApprovedCount": 0,
+    "pricesCollectedCount": 0
+  },
+  "coverage": {
+    "existingCatalogIntelCpuCount": 31,
+    "existingGenerations": [
+      12,
+      13,
+      14
+    ],
+    "existingPlatform": "LGA1700",
+    "researchedDesktopFamilies": [
+      "Core Ultra 200S (Series 2)",
+      "Core Ultra 200S Plus (Series 2)"
+    ],
+    "newPlatform": "LGA1851",
+    "explicitlyResearchedCurrentModels": [
+      "Core Ultra 7 270K Plus",
+      "Core Ultra 5 250K Plus",
+      "Core Ultra 5 250KF Plus",
+      "Core Ultra 9 285K",
+      "Core Ultra 7 265K",
+      "Core Ultra 7 265KF",
+      "Core Ultra 5 245K",
+      "Core Ultra 5 245KF",
+      "Core Ultra 9 285",
+      "Core Ultra 7 265",
+      "Core Ultra 7 265F",
+      "Core Ultra 5 245",
+      "Core Ultra 5 235",
+      "Core Ultra 5 225",
+      "Core Ultra 5 225F"
+    ],
+    "deferredModels": [
+      {
+        "models": [
+          "Core Ultra 5 225T",
+          "Core Ultra 5 235T",
+          "Core Ultra 5 245T",
+          "Core Ultra 7 265T",
+          "Core Ultra 9 285T"
+        ],
+        "reason": "공식 Series2 목록에 있는 저전력 T 모델이다. 실제 설치 식별은 후속 보강 대상으로 유지하며 국내 단품 구매 적재에서는 OEM·냉각·전력 및 유통 구성 근거가 필요하다.",
+        "officialSource": "https://www.intel.com/content/www/us/en/ark/products/series/241071/intel-core-ultra-processors-series-2.html"
+      },
+      {
+        "models": [
+          "Core Ultra 5 235A",
+          "Core Ultra 5 235TA"
+        ],
+        "reason": "공식 Series2 목록에 있는 별도 A/TA 제품이다. 일반 소비자 교체형 데스크톱 구매 범위를 넘는 Edge/OEM 플랫폼·소켓·주문 구성은 개별 조사 전까지 보류한다.",
+        "officialSource": "https://www.intel.com/content/www/us/en/ark/products/series/241071/intel-core-ultra-processors-series-2.html"
+      },
+      {
+        "models": [
+          "Core Ultra 3 205",
+          "Core Ultra 3 205T",
+          "Core Ultra 5 230F"
+        ],
+        "reason": "공식 MDDS에 제품 번호가 있으나 본 조사에서는 개별 ARK Launched 상태와 국내 신품 단품 유통을 확정하지 못했다. MDDS 존재만으로 현재 출시 구매 제품을 생성하지 않는다.",
+        "officialSource": "https://www.intel.com/content/www/us/en/content-details/838629/intel-core-ultra-3-processor-205-205t-ultra-5-processor-225-225f-225t-230f-235-235t-245-245t-96617-mdds.html"
+      }
+    ],
+    "excludedMobileFamilies": [
+      {
+        "family": "Core Ultra Series 3 / Panther Lake",
+        "reason": "공식 CES2026 자료는200개 이상의 노트북 설계 출시를 설명한다. 교체형 일반 데스크톱 CPU·보드 후보에서 제외한다.",
+        "officialSource": "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/postcard-ces-2026-intel-launches-series-3-cpus-with-200-laptop-designs.html"
+      }
+    ]
+  },
+  "schemaRequirements": [
+    "CPU 숫자 generation과 제조사 series/family/launchQuarter를 구분한다. Core Ultra 제품을 Core i15세대로 자동 변환하지 않는다.",
+    "메모리 moduleKind UDIMM/CUDIMM·rank·보드배선DPC·장착DIMM수·JEDEC/OC·QVL/BIOS 조건을 별도 근거로 저장한다.",
+    "보드 모델·PCB 리비전·CPU 지원 최소 BIOS·현재 설치 BIOS·OS/드라이버 조건을 구분한다.",
+    "현재가 SKU는 설치 CPU 모델에서 정품 박스·벌크 주문 번호와 국내 판매 구성·판매 단위·신품 여부를 검토해 별도 연결한다."
+  ],
+  "candidates": [
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U7-270K-PLUS",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 7 270K Plus",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. 2026년 출시 200S Plus 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S Plus (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "270K Plus",
+        "intelArkId": "245692",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q1'26",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 24,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": true,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 7200,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 7200
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽의 출력은 보드 포트와 펌웨어 조건도 확인해야 한다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/245692/intel-core-ultra-7-processor-270k-plus-36m-cache-up-to-5-50-ghz/specifications.html",
+          "title": "Intel Core Ultra 7 270K Plus specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        },
+        {
+          "url": "https://download.intel.com/newsroom/2026/ClientComputing/Intel-core-ultra-200s-plus.pdf",
+          "title": "Intel Core Ultra 200S Plus official launch brief",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "270K Plus·250K Plus의 2026-03-26 판매 개시 안내"
+          ],
+          "notes": "250KF Plus는 별도 ARK Q1'26 Launched 표시로 확인했다. 미국 발표 가격을 국내 상품가로 수집하지 않았다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=108424286",
+          "title": "인텔 코어 울트라7 시리즈2 270K Plus (애로우레이크 리프레시) (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델 비교 페이지와 표기된 판매 구성을 확인했다. 개별 판매점의 신품 상태·정품 유통·실시간 재고·제조사 주문 번호와 상품가는 검토하지 않았다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 250K Plus",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. 2026년 출시 200S Plus 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S Plus (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "250K Plus",
+        "intelArkId": "245694",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q1'26",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 18,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": true,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 7200,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 7200
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽의 출력은 보드 포트와 펌웨어 조건도 확인해야 한다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/245694/intel-core-ultra-5-processor-250k-plus-30m-cache-up-to-5-30-ghz/specifications.html",
+          "title": "Intel Core Ultra 5 250K Plus specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        },
+        {
+          "url": "https://download.intel.com/newsroom/2026/ClientComputing/Intel-core-ultra-200s-plus.pdf",
+          "title": "Intel Core Ultra 200S Plus official launch brief",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "270K Plus·250K Plus의 2026-03-26 판매 개시 안내"
+          ],
+          "notes": "250KF Plus는 별도 ARK Q1'26 Launched 표시로 확인했다. 미국 발표 가격을 국내 상품가로 수집하지 않았다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=108424451",
+          "title": "인텔 코어 울트라5 시리즈2 250K Plus (애로우레이크 리프레시) (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델 비교 페이지와 표기된 판매 구성을 확인했다. 개별 판매점의 신품 상태·정품 유통·실시간 재고·제조사 주문 번호와 상품가는 검토하지 않았다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U5-250KF-PLUS",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 250KF Plus",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. 2026년 출시 200S Plus 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S Plus (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "250KF Plus",
+        "intelArkId": "245689",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q1'26",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 18,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": false,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 7200,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 7200
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽이 없는 F/KF 모델이다. 메인보드 영상 단자가 있다는 이유로 화면 출력 가능으로 처리하지 않는다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/245689/intel-core-ultra-5-processor-250kf-plus-30m-cache-up-to-5-30-ghz/specifications.html",
+          "title": "Intel Core Ultra 5 250KF Plus specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        },
+        {
+          "url": "https://download.intel.com/newsroom/2026/ClientComputing/Intel-core-ultra-200s-plus.pdf",
+          "title": "Intel Core Ultra 200S Plus official launch brief",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "270K Plus·250K Plus의 2026-03-26 판매 개시 안내"
+          ],
+          "notes": "250KF Plus는 별도 ARK Q1'26 Launched 표시로 확인했다. 미국 발표 가격을 국내 상품가로 수집하지 않았다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=108424457",
+          "title": "인텔 코어 울트라5 시리즈2 250KF Plus (애로우레이크 리프레시) (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델 비교 페이지와 표기된 판매 구성을 확인했다. 개별 판매점의 신품 상태·정품 유통·실시간 재고·제조사 주문 번호와 상품가는 검토하지 않았다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U9-285K",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 9 285K",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "285K",
+        "intelArkId": "241060",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q4'24",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 24,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": true,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽의 출력은 보드 포트와 펌웨어 조건도 확인해야 한다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241060/intel-core-ultra-9-processor-285k-36m-cache-up-to-5-70-ghz/specifications.html",
+          "title": "Intel Core Ultra 9 285K specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=69059459",
+          "title": "인텔 코어 울트라9 시리즈2 285K (애로우레이크) (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델 비교 페이지와 표기된 판매 구성을 확인했다. 개별 판매점의 신품 상태·정품 유통·실시간 재고·제조사 주문 번호와 상품가는 검토하지 않았다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U7-265K",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 7 265K",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "265K",
+        "intelArkId": "241063",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q4'24",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 20,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": true,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽의 출력은 보드 포트와 펌웨어 조건도 확인해야 한다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241063/intel-core-ultra-7-processor-265k-30m-cache-up-to-5-50-ghz/specifications.html",
+          "title": "Intel Core Ultra 7 265K specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=69059687",
+          "title": "인텔 코어 울트라7 시리즈2 265K (애로우레이크) (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델 비교 페이지와 표기된 판매 구성을 확인했다. 개별 판매점의 신품 상태·정품 유통·실시간 재고·제조사 주문 번호와 상품가는 검토하지 않았다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U7-265KF",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 7 265KF",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "265KF",
+        "intelArkId": "241062",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q4'24",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 20,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": false,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽이 없는 F/KF 모델이다. 메인보드 영상 단자가 있다는 이유로 화면 출력 가능으로 처리하지 않는다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241062/intel-core-ultra-7-processor-265kf-30m-cache-up-to-5-50-ghz/specifications.html",
+          "title": "Intel Core Ultra 7 265KF specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "이 모델의 국내 단품 비교 페이지·유통 구성은 아직 직접 검토하지 않았다. 국내 구매 추천으로 활성화하기 전에 확인해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U5-245K",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 245K",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "245K",
+        "intelArkId": "241067",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q4'24",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 14,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": true,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽의 출력은 보드 포트와 펌웨어 조건도 확인해야 한다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/specifications.html",
+          "title": "Intel Core Ultra 5 245K specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=69059753",
+          "title": "인텔 코어 울트라5 시리즈2 245K (애로우레이크) (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델 비교 페이지와 표기된 판매 구성을 확인했다. 개별 판매점의 신품 상태·정품 유통·실시간 재고·제조사 주문 번호와 상품가는 검토하지 않았다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U5-245KF",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 245KF",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "245KF",
+        "intelArkId": "241066",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q4'24",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 14,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": false,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽이 없는 F/KF 모델이다. 메인보드 영상 단자가 있다는 이유로 화면 출력 가능으로 처리하지 않는다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241066/intel-core-ultra-5-processor-245kf-24m-cache-up-to-5-20-ghz/specifications.html",
+          "title": "Intel Core Ultra 5 245KF specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "이 모델의 국내 단품 비교 페이지·유통 구성은 아직 직접 검토하지 않았다. 국내 구매 추천으로 활성화하기 전에 확인해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U9-285",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 9 285",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "285",
+        "intelArkId": "241061",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q1'25",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 24,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": true,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽의 출력은 보드 포트와 펌웨어 조건도 확인해야 한다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241061/intel-core-ultra-9-processor-285-36m-cache-up-to-5-60-ghz/specifications.html",
+          "title": "Intel Core Ultra 9 285 specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "이 모델의 국내 단품 비교 페이지·유통 구성은 아직 직접 검토하지 않았다. 국내 구매 추천으로 활성화하기 전에 확인해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U7-265",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 7 265",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "265",
+        "intelArkId": "241068",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q1'25",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 20,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": true,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽의 출력은 보드 포트와 펌웨어 조건도 확인해야 한다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241068/intel-core-ultra-7-processor-265-30m-cache-up-to-5-30-ghz/specifications.html",
+          "title": "Intel Core Ultra 7 265 specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "이 모델의 국내 단품 비교 페이지·유통 구성은 아직 직접 검토하지 않았다. 국내 구매 추천으로 활성화하기 전에 확인해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U7-265F",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 7 265F",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "265F",
+        "intelArkId": "241064",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q1'25",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 20,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": false,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽이 없는 F/KF 모델이다. 메인보드 영상 단자가 있다는 이유로 화면 출력 가능으로 처리하지 않는다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241064/intel-core-ultra-7-processor-265f-30m-cache-up-to-5-30-ghz/specifications.html",
+          "title": "Intel Core Ultra 7 265F specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "이 모델의 국내 단품 비교 페이지·유통 구성은 아직 직접 검토하지 않았다. 국내 구매 추천으로 활성화하기 전에 확인해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U5-245",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 245",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "245",
+        "intelArkId": "241876",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q1'25",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 14,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": true,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽의 출력은 보드 포트와 펌웨어 조건도 확인해야 한다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241876/intel-core-ultra-5-processor-245-24m-cache-up-to-5-10-ghz/specifications.html",
+          "title": "Intel Core Ultra 5 245 specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "이 모델의 국내 단품 비교 페이지·유통 구성은 아직 직접 검토하지 않았다. 국내 구매 추천으로 활성화하기 전에 확인해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U5-235",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 235",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "235",
+        "intelArkId": "241674",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q1'25",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 14,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": true,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽의 출력은 보드 포트와 펌웨어 조건도 확인해야 한다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241674/intel-core-ultra-5-processor-235-24m-cache-up-to-5-00-ghz/specifications.html",
+          "title": "Intel Core Ultra 5 235 specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "이 모델의 국내 단품 비교 페이지·유통 구성은 아직 직접 검토하지 않았다. 국내 구매 추천으로 활성화하기 전에 확인해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U5-225",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 225",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "225",
+        "intelArkId": "241070",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q1'25",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 10,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": true,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽의 출력은 보드 포트와 펌웨어 조건도 확인해야 한다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241070/intel-core-ultra-5-processor-225-20m-cache-up-to-4-90-ghz/specifications.html",
+          "title": "Intel Core Ultra 5 225 specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "이 모델의 국내 단품 비교 페이지·유통 구성은 아직 직접 검토하지 않았다. 국내 구매 추천으로 활성화하기 전에 확인해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-CPU-U5-225F",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core Ultra 5 225F",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 Intel CPU는 12~14세대 LGA1700 31종에 집중돼 있다. Core Ultra 200S 데스크톱 모델과 LGA1851 플랫폼의 설치 식별·향후 신품 구매 검토 범위를 보강한다. 국내 설치 비율 또는 판매 순위로 선정한 제품은 아니다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": null,
+        "generationLabel": "Core Ultra 200S (Series 2)",
+        "processorFamily": "Intel Core Ultra",
+        "processorNumber": "225F",
+        "intelArkId": "241069",
+        "verticalSegment": "DESKTOP",
+        "manufacturerMarketingStatus": "LAUNCHED",
+        "launchQuarter": "Q1'25",
+        "socketCode": "LGA1851",
+        "manufacturerSocketLabel": "FCLGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "coreCount": 10,
+        "threadCount": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "hasIntegratedGraphics": false,
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": null,
+            "advertisedMaxDataRateMts": 6400,
+            "supportedDesktopModuleKinds": [
+              "UDIMM",
+              "CUDIMM"
+            ],
+            "voltageV": null,
+            "nativeConfigurationMatrixReference": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+            "topSkuMatrixExamples": [
+              {
+                "moduleKind": "UDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "CUDIMM",
+                "boardRoutingDpc": 1,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 6400
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 1,
+                "rankCount": null,
+                "maxNativeDataRateMts": 5600
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 1,
+                "maxNativeDataRateMts": 4800
+              },
+              {
+                "moduleKind": "UDIMM_OR_CUDIMM",
+                "boardRoutingDpc": 2,
+                "populatedDimmsPerChannel": 2,
+                "rankCount": 2,
+                "maxNativeDataRateMts": 4400
+              }
+            ],
+            "exactConfigurationVerified": false,
+            "conditions": "데이터시트의 top SKU 예시다. 각 CPU ARK 상한·QDF·보드 배선/DPC·동일 모듈 PN·rank·메모리 QVL·BIOS를 대조하기 전에는 해당 PC의 보장 속도로 적용하지 않는다. 1DPC는 채널당 물리적으로 배선된 슬롯 1개를 뜻한다."
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "LGA1851·800 시리즈 플랫폼이다. 기존 LGA1700 보드 또는 DDR4 RAM을 그대로 호환으로 연결하지 않는다.",
+        "200S Plus의 800 시리즈 유지 발표는 보드별 최소 BIOS 검토를 대신하지 않는다. 정확한 보드 모델·리비전·CPU 지원표·BIOS를 연결해야 한다.",
+        "CPU의 최대 DDR5 수치, 보드의 OC 수치, 실제 설치 모듈의 JEDEC/XMP 프로필을 구분한다. UDIMM/CUDIMM·rank·DPC 조건을 누락한 속도 확정은 하지 않는다.",
+        "내장 그래픽이 없는 F/KF 모델이다. 메인보드 영상 단자가 있다는 이유로 화면 출력 가능으로 처리하지 않는다."
+      ],
+      "identificationNotes": [
+        "Core Ultra Series 2를 Core i 15세대 같은 임의 정수 세대로 변환하지 않는다. K·KF·F·Plus 접미사는 모델 식별에 보존한다.",
+        "데스크톱 S와 노트북 H/HX/U/V, Core Ultra Series 3 Panther Lake를 구분한다.",
+        "설치 CPU 모델과 정품 박스·벌크·벌크+쿨러·병행수입 SKU를 별도 식별한다. partNumber는 판매 주문 번호를 아직 검토하지 않아 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/241069/intel-core-ultra-5-processor-225f-20m-cache-up-to-4-90-ghz/specifications.html",
+          "title": "Intel Core Ultra 5 225F specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 모델·출시 분기·Launched 표기",
+            "LGA1851 소켓",
+            "코어 수·내장 그래픽 존재",
+            "DDR5 최대 표기·최대 메모리 256GB·2채널"
+          ],
+          "notes": "기본 호환 제원만 조사했다. 정확한 CPU-보드 BIOS 쌍 또는 판매 패키지 주문 번호를 승인한 자료가 아니다."
+        },
+        {
+          "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-sku-support-matrix/",
+          "title": "Intel Core Ultra 200S/200S Plus Processor SKU Support Matrix",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "S/S Plus DDR5 UDIMM·CUDIMM 구분",
+            "1DPC/2DPC·rank·동일 PN 조건별 메모리 속도",
+            "1DPC의 보드 배선 정의"
+          ],
+          "notes": "표의 top SKU 조건과 ARK 개별 상한을 함께 읽어야 한다."
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정품 박스 또는 국내 신품 벌크 중 가격 수집 대상을 정하고 제조사 주문 번호·판매 단위를 검토해야 한다.",
+        "이 모델의 국내 단품 비교 페이지·유통 구성은 아직 직접 검토하지 않았다. 국내 구매 추천으로 활성화하기 전에 확인해야 한다.",
+        "승인된 적재 자료로 전환할 때 코어 종류별 수·스레드·PBP/MTP 등 나머지 제원을 원문과 대조해야 한다.",
+        "국내 실제 설치 수요·자동 수집 이름·보드별 최소 BIOS와 RAM 조건은 아직 검증하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-BOARD-MSI-PRO-H810M-B",
+      "category": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "PRO H810M-B",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 LGA1851 최신 데스크톱 플랫폼을 H810·B860·Z890,2/4 DIMM,ATX/mATX로 보강하는 후보이다. 국내 인기 또는 설치 비율 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "LGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "chipsetCode": "H810",
+        "supportedCpuFamilyLabel": "Intel Core Ultra Processors (Series 2)",
+        "memoryTypes": [
+          "DDR5"
+        ],
+        "memorySlotCount": 2,
+        "maxMemoryCapacityGb": 128,
+        "formFactor": "MICRO_ATX",
+        "supportsCudimm": true,
+        "pcbRevision": null,
+        "memoryEccMode": "NON_ECC",
+        "storageSlotCount": 1,
+        "sataPortCount": 4,
+        "storageSlotDetailsStatus": "PARTIAL_SPEC_NOT_FULL_MANUAL_REVIEW",
+        "cpuSupportPairsStatus": "NOT_REVIEWED",
+        "minimumBiosByCpu": null
+      },
+      "compatibilityNotes": [
+        "소켓·칩셋·프로세서 시리즈 일치만으로 호환을 확정하지 않는다. 정확한 CPU 지원 목록과 최소 BIOS가 필요하다.",
+        "LGA1700 또는 DDR4 부품과 호환으로 연결하지 않는다. CPU 교체 시 보드·DDR5·쿨러 장착 조건을 함께 검토한다.",
+        "공식 페이지는 DDR5 JEDEC 7200~4800, 별도 Max overclocking 조건 1DPC 1R 7200/2R 6400을 함께 표기한다. 이 표기만으로 모든 메모리 구성의 7200 동작을 보장하지 않는다.",
+        "M.2_1은 칩셋 연결 PCIe4.0 x4,2260/2280이다. 방열판 간섭은 매뉴얼 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "보드 모델 접미사·WIFI·PLUS·PCB 리비전은 보존한다. 국내 유통사 표기는 판매 구성 근거로 별도 관리한다.",
+        "partNumber는 제조사 주문 번호를 확인하지 않아 null이며 모델명 자체는 공식 문서로 확인했다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.msi.com/Motherboard/PRO-H810M-B/Specification",
+          "title": "MSI PRO H810M-B official specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "LGA1851·칩셋·Core Ultra Series 2 지원 표기",
+            "DDR5·DIMM 슬롯 수·최대 메모리·폼팩터",
+            "M.2·SATA 총수와 일부 슬롯 연결 조건",
+            "CUDIMM 지원 표기"
+          ],
+          "notes": "제품 제원 확인 범위다. CPU별 최소 BIOS·완전한 메모리 QVL·슬롯 공유 및 방열판 조건은 별도 검토가 필요하다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=97121798",
+          "title": "MSI PRO H810M-B",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델 비교 페이지와 표기된 판매 구성을 확인했다. 개별 판매점의 신품 상태·정품 유통·실시간 재고·제조사 주문 번호와 상품가는 검토하지 않았다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "CPU별 최소 BIOS·현재 설치 BIOS·메모리 QVL·슬롯 공유·SSD 방열판 간섭 근거를 추가로 조사해야 한다.",
+        "국내 신품 판매점·유통사·PCB 리비전·제조사 주문 번호를 대조하기 전 가격 수집 대상을 승인하지 않는다.",
+        "국내 설치 수요와 자동 수집 이름의 별칭은 아직 측정하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "category": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "MAG B860M MORTAR WIFI",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 LGA1851 최신 데스크톱 플랫폼을 H810·B860·Z890,2/4 DIMM,ATX/mATX로 보강하는 후보이다. 국내 인기 또는 설치 비율 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "LGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "chipsetCode": "B860",
+        "supportedCpuFamilyLabel": "Intel Core Ultra Processors (Series 2)",
+        "memoryTypes": [
+          "DDR5"
+        ],
+        "memorySlotCount": 4,
+        "maxMemoryCapacityGb": 256,
+        "formFactor": "MICRO_ATX",
+        "supportsCudimm": true,
+        "pcbRevision": null,
+        "memoryEccMode": "NON_ECC",
+        "storageSlotCount": 3,
+        "sataPortCount": 4,
+        "storageSlotDetailsStatus": "PARTIAL_SPEC_NOT_FULL_MANUAL_REVIEW",
+        "cpuSupportPairsStatus": "NOT_REVIEWED",
+        "minimumBiosByCpu": null
+      },
+      "compatibilityNotes": [
+        "소켓·칩셋·프로세서 시리즈 일치만으로 호환을 확정하지 않는다. 정확한 CPU 지원 목록과 최소 BIOS가 필요하다.",
+        "LGA1700 또는 DDR4 부품과 호환으로 연결하지 않는다. CPU 교체 시 보드·DDR5·쿨러 장착 조건을 함께 검토한다.",
+        "1DPC/2DPC·rank별 OC 상한과 JEDEC 속도를 분리해야 한다. 최신 공식 CPU 지원표와 BIOS 버전을 별도 확인한다.",
+        "CPU 연결 M.2_1은 PCIe5.0 x4, 칩셋 연결 M.2_2/3은 PCIe4.0 x4이다. 슬롯마다 허용 길이가 다르다."
+      ],
+      "identificationNotes": [
+        "보드 모델 접미사·WIFI·PLUS·PCB 리비전은 보존한다. 국내 유통사 표기는 판매 구성 근거로 별도 관리한다.",
+        "partNumber는 제조사 주문 번호를 확인하지 않아 null이며 모델명 자체는 공식 문서로 확인했다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.msi.com/Motherboard/MAG-B860M-MORTAR-WIFI/Specification",
+          "title": "MSI MAG B860M MORTAR WIFI official specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "LGA1851·칩셋·Core Ultra Series 2 지원 표기",
+            "DDR5·DIMM 슬롯 수·최대 메모리·폼팩터",
+            "M.2·SATA 총수와 일부 슬롯 연결 조건",
+            "CUDIMM 지원 표기"
+          ],
+          "notes": "제품 제원 확인 범위다. CPU별 최소 BIOS·완전한 메모리 QVL·슬롯 공유 및 방열판 조건은 별도 검토가 필요하다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=74340266",
+          "title": "MSI MAG B860M 박격포 WIFI",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델 비교 페이지와 표기된 판매 구성을 확인했다. 개별 판매점의 신품 상태·정품 유통·실시간 재고·제조사 주문 번호와 상품가는 검토하지 않았다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "CPU별 최소 BIOS·현재 설치 BIOS·메모리 QVL·슬롯 공유·SSD 방열판 간섭 근거를 추가로 조사해야 한다.",
+        "국내 신품 판매점·유통사·PCB 리비전·제조사 주문 번호를 대조하기 전 가격 수집 대상을 승인하지 않는다.",
+        "국내 설치 수요와 자동 수집 이름의 별칭은 아직 측정하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "category": "MOTHERBOARD",
+      "manufacturer": "ASUS",
+      "modelName": "TUF GAMING B860-PLUS WIFI",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 LGA1851 최신 데스크톱 플랫폼을 H810·B860·Z890,2/4 DIMM,ATX/mATX로 보강하는 후보이다. 국내 인기 또는 설치 비율 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "LGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "chipsetCode": "B860",
+        "supportedCpuFamilyLabel": "Intel Core Ultra Processors (Series 2)",
+        "memoryTypes": [
+          "DDR5"
+        ],
+        "memorySlotCount": 4,
+        "maxMemoryCapacityGb": 256,
+        "formFactor": "ATX",
+        "supportsCudimm": true,
+        "pcbRevision": null,
+        "memoryEccMode": "NON_ECC",
+        "storageSlotCount": 3,
+        "sataPortCount": 4,
+        "storageSlotDetailsStatus": "PARTIAL_SPEC_NOT_FULL_MANUAL_REVIEW",
+        "cpuSupportPairsStatus": "NOT_REVIEWED",
+        "minimumBiosByCpu": null
+      },
+      "compatibilityNotes": [
+        "소켓·칩셋·프로세서 시리즈 일치만으로 호환을 확정하지 않는다. 정확한 CPU 지원 목록과 최소 BIOS가 필요하다.",
+        "LGA1700 또는 DDR4 부품과 호환으로 연결하지 않는다. CPU 교체 시 보드·DDR5·쿨러 장착 조건을 함께 검토한다.",
+        "공식 현재 최대 메모리 256GB와 국내 비교 페이지의 192GB 표기가 다르다. 공식 표기를 제원 근거로 두고 정확한 BIOS·메모리 구성 적용 조건을 추가 확인한다.",
+        "공식 페이지는 200S Plus의 완전한 지원에 Windows 11 25H2 이상을 안내한다. CPU-보드 BIOS 지원과 OS/드라이버 지원을 구분한다.",
+        "PCIEX16(G4)와 PCIEX1(G4)은 대역폭을 공유한다. 슬롯별 레인·장치 점유 조건은 별도 근거로 저장해야 한다."
+      ],
+      "identificationNotes": [
+        "보드 모델 접미사·WIFI·PLUS·PCB 리비전은 보존한다. 국내 유통사 표기는 판매 구성 근거로 별도 관리한다.",
+        "partNumber는 제조사 주문 번호를 확인하지 않아 null이며 모델명 자체는 공식 문서로 확인했다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+          "title": "ASUS TUF GAMING B860-PLUS WIFI official specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "LGA1851·칩셋·Core Ultra Series 2 지원 표기",
+            "DDR5·DIMM 슬롯 수·최대 메모리·폼팩터",
+            "M.2·SATA 총수와 일부 슬롯 연결 조건",
+            "CUDIMM 지원 표기"
+          ],
+          "notes": "제품 제원 확인 범위다. CPU별 최소 BIOS·완전한 메모리 QVL·슬롯 공유 및 방열판 조건은 별도 검토가 필요하다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=74255378",
+          "title": "ASUS TUF Gaming B860-PLUS WIFI 인텍앤컴퍼니",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델 비교 페이지와 표기된 판매 구성을 확인했다. 개별 판매점의 신품 상태·정품 유통·실시간 재고·제조사 주문 번호와 상품가는 검토하지 않았다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "CPU별 최소 BIOS·현재 설치 BIOS·메모리 QVL·슬롯 공유·SSD 방열판 간섭 근거를 추가로 조사해야 한다.",
+        "국내 신품 판매점·유통사·PCB 리비전·제조사 주문 번호를 대조하기 전 가격 수집 대상을 승인하지 않는다.",
+        "국내 설치 수요와 자동 수집 이름의 별칭은 아직 측정하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-BOARD-GIGABYTE-B860M-DS3H-REV-1-0",
+      "category": "MOTHERBOARD",
+      "manufacturer": "GIGABYTE",
+      "modelName": "B860M DS3H (rev. 1.0)",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 LGA1851 최신 데스크톱 플랫폼을 H810·B860·Z890,2/4 DIMM,ATX/mATX로 보강하는 후보이다. 국내 인기 또는 설치 비율 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "LGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "chipsetCode": "B860",
+        "supportedCpuFamilyLabel": "Intel Core Ultra Processors (Series 2)",
+        "memoryTypes": [
+          "DDR5"
+        ],
+        "memorySlotCount": 4,
+        "maxMemoryCapacityGb": 256,
+        "formFactor": "MICRO_ATX",
+        "supportsCudimm": null,
+        "pcbRevision": "1.0",
+        "memoryEccMode": "NON_ECC",
+        "storageSlotCount": 2,
+        "sataPortCount": 4,
+        "storageSlotDetailsStatus": "PARTIAL_SPEC_NOT_FULL_MANUAL_REVIEW",
+        "cpuSupportPairsStatus": "NOT_REVIEWED",
+        "minimumBiosByCpu": null
+      },
+      "compatibilityNotes": [
+        "소켓·칩셋·프로세서 시리즈 일치만으로 호환을 확정하지 않는다. 정확한 CPU 지원 목록과 최소 BIOS가 필요하다.",
+        "LGA1700 또는 DDR4 부품과 호환으로 연결하지 않는다. CPU 교체 시 보드·DDR5·쿨러 장착 조건을 함께 검토한다.",
+        "국내 비교 페이지 모델명은 PCB rev.1.0을 확정하지 않는다. 공식 rev.1.0 제원과 판매 SKU 연결은 보류한다.",
+        "DS3H와 DS3H WIFI6E, rev.1.0/2.0/2.2를 합치지 않는다. CUDIMM 지원은 이 제원 본문만으로 확정하지 않아 null이다.",
+        "ECC UDIMM 장착은 non-ECC 모드로 안내된다. CPU의 ECC 지원만으로 ECC 보호가 동작한다고 처리하지 않는다."
+      ],
+      "identificationNotes": [
+        "보드 모델 접미사·WIFI·PLUS·PCB 리비전은 보존한다. 국내 유통사 표기는 판매 구성 근거로 별도 관리한다.",
+        "partNumber는 제조사 주문 번호를 확인하지 않아 null이며 모델명 자체는 공식 문서로 확인했다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.gigabyte.com/kr/Motherboard/B860M-DS3H-rev-10/sp",
+          "title": "GIGABYTE B860M DS3H (rev. 1.0) official specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "LGA1851·칩셋·Core Ultra Series 2 지원 표기",
+            "DDR5·DIMM 슬롯 수·최대 메모리·폼팩터",
+            "M.2·SATA 총수와 일부 슬롯 연결 조건",
+            "PCB 리비전별 공식 제원 페이지"
+          ],
+          "notes": "제품 제원 확인 범위다. CPU별 최소 BIOS·완전한 메모리 QVL·슬롯 공유 및 방열판 조건은 별도 검토가 필요하다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=74251349",
+          "title": "GIGABYTE B860M DS3H 제이씨현",
+          "checkedDate": "2026-10-09",
+          "status": "IDENTITY_UNCONFIRMED",
+          "notes": "국내 비교 페이지는 DS3H 모델과 제이씨현 유통 구성까지 확인했다. PCB rev.1.0·신품 판매점·정확한 제조사 SKU·재고·상품가는 미검토다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "CPU별 최소 BIOS·현재 설치 BIOS·메모리 QVL·슬롯 공유·SSD 방열판 간섭 근거를 추가로 조사해야 한다.",
+        "국내 신품 판매점·유통사·PCB 리비전·제조사 주문 번호를 대조하기 전 가격 수집 대상을 승인하지 않는다.",
+        "국내 설치 수요와 자동 수집 이름의 별칭은 아직 측정하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-INTEL-BOARD-ASROCK-Z890-PRO-RS",
+      "category": "MOTHERBOARD",
+      "manufacturer": "ASRock",
+      "modelName": "Z890 Pro RS",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 LGA1851 최신 데스크톱 플랫폼을 H810·B860·Z890,2/4 DIMM,ATX/mATX로 보강하는 후보이다. 국내 인기 또는 설치 비율 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "LGA1851",
+        "platformGroupCode": "LGA1851_INTEL_800",
+        "chipsetCode": "Z890",
+        "supportedCpuFamilyLabel": "Intel Core Ultra Processors (Series 2)",
+        "memoryTypes": [
+          "DDR5"
+        ],
+        "memorySlotCount": 4,
+        "maxMemoryCapacityGb": 256,
+        "formFactor": "ATX",
+        "supportsCudimm": true,
+        "pcbRevision": null,
+        "memoryEccMode": "NON_ECC",
+        "storageSlotCount": 4,
+        "sataPortCount": 4,
+        "storageSlotDetailsStatus": "PARTIAL_SPEC_NOT_FULL_MANUAL_REVIEW",
+        "cpuSupportPairsStatus": "NOT_REVIEWED",
+        "minimumBiosByCpu": null
+      },
+      "compatibilityNotes": [
+        "소켓·칩셋·프로세서 시리즈 일치만으로 호환을 확정하지 않는다. 정확한 CPU 지원 목록과 최소 BIOS가 필요하다.",
+        "LGA1700 또는 DDR4 부품과 호환으로 연결하지 않는다. CPU 교체 시 보드·DDR5·쿨러 장착 조건을 함께 검토한다.",
+        "Z890 Pro RS, Pro RS WiFi, Pro RS WiFi White를 별도 모델로 유지한다.",
+        "DDR5 non-ECC·unbuffered 및 CUDIMM 표기를 확인했다. 1DPC/2DPC·rank별 native/OC 표는 특정 PC의 QVL 검증을 대체하지 않는다.",
+        "M2_1은 CPU PCIe5.0 x4, M2_2는 CPU PCIe4.0 x4다. 칩셋 슬롯에는 NVMe 전용과 SATA 겸용이 있으므로 슬롯별 조건을 저장해야 한다."
+      ],
+      "identificationNotes": [
+        "보드 모델 접미사·WIFI·PLUS·PCB 리비전은 보존한다. 국내 유통사 표기는 판매 구성 근거로 별도 관리한다.",
+        "partNumber는 제조사 주문 번호를 확인하지 않아 null이며 모델명 자체는 공식 문서로 확인했다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.asrock.com/mb/Intel/Z890%20Pro%20RS/",
+          "title": "ASRock Z890 Pro RS official specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "LGA1851·칩셋·Core Ultra Series 2 지원 표기",
+            "DDR5·DIMM 슬롯 수·최대 메모리·폼팩터",
+            "M.2·SATA 총수와 일부 슬롯 연결 조건",
+            "CUDIMM 지원 표기"
+          ],
+          "notes": "제품 제원 확인 범위다. CPU별 최소 BIOS·완전한 메모리 QVL·슬롯 공유 및 방열판 조건은 별도 검토가 필요하다."
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=68687615",
+          "title": "ASRock Z890 Pro RS 에즈윈",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델 비교 페이지와 표기된 판매 구성을 확인했다. 개별 판매점의 신품 상태·정품 유통·실시간 재고·제조사 주문 번호와 상품가는 검토하지 않았다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "CPU별 최소 BIOS·현재 설치 BIOS·메모리 QVL·슬롯 공유·SSD 방열판 간섭 근거를 추가로 조사해야 한다.",
+        "국내 신품 판매점·유통사·PCB 리비전·제조사 주문 번호를 대조하기 전 가격 수집 대상을 승인하지 않는다.",
+        "국내 설치 수요와 자동 수집 이름의 별칭은 아직 측정하지 않았다."
+      ],
+      "notInExistingCatalog": true
+    }
+  ]
+}

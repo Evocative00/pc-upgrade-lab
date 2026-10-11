@@ -1,0 +1,878 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-10",
+  "status": "DETAILED_EVIDENCE_REVIEW_NOT_APPLIED",
+  "approvalScope": "USER_APPROVED_FIRST14_SELECTION_AND_DETAIL_REVIEW_ONLY",
+  "purpose": "Review exact selected RAM retail kits and GPU card variants while preserving existing catalog specifications and IDs. This is not an import or current-price snapshot.",
+  "sourceFiles": [
+    {
+      "path": "data/catalog-review/catalog-selection-2026-10-09.json",
+      "sha256": "347424269ee9a462ab5d7adc824099673fb89ad53d28d322485ae83eff3cfd90"
+    },
+    {
+      "path": "data/catalog-review/pilot-selection-2026-10-10.json",
+      "sha256": "3dcae49ab6fb336d47b3d1941346587ed7b816a46dd6b99d43046f26e03da439"
+    }
+  ],
+  "summary": {
+    "selectedProducts": 4,
+    "reusedExistingProducts": 4,
+    "newProductRecords": 0,
+    "newPriceObservations": 0,
+    "exactDomesticDanawaKitMappingHeld": 1
+  },
+  "invariants": {
+    "noDatabaseMutation": true,
+    "noCurrentPriceFromWebCache": true,
+    "noHistoricalPriceTimestampPromotion": true,
+    "noIndividualRamModulePnInferredFromKitPn": true,
+    "noRankOrIcInferred": true,
+    "noQvlAbsenceInterpretedAsIncompatible": true,
+    "noFullPcCompatibilityClaim": true
+  },
+  "qvlReviewLimit": {
+    "manufacturerExactKitPagesReviewed": 2,
+    "additionalBoardQvlPagesFetched": 0,
+    "scope": "AMD MSI MAG B650M MORTAR WIFI and Intel MSI MAG B860M MORTAR WIFI only. Manufacturer-kit QVL listings are bounded to model scope; revision/BIOS/selected-CPU and DIMM population remain unknown."
+  },
+  "items": [
+    {
+      "selectionNumber": 9,
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "F5-6000J3038F16GX2-TZ5N"
+      },
+      "catalogPlan": "REUSE_EXISTING_PRODUCT_ID_AFTER_REVIEW",
+      "preservedCatalogSpecification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "dataRateMts": 6000,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": null
+      },
+      "baselineSourceEvidence": {
+        "seedName": "week2-expand300",
+        "manifestPath": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+        "rawSha256": "53fe2dd303d7a2213e6feaddbf4b084f64ebb0e7dc7a7efacbc49a8d5749a1d5",
+        "manufacturerSources": [
+          {
+            "url": "https://www.gskill.com/specification/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-Specification",
+            "retrievedAt": "2026-10-04T07:27:50.452260+00:00",
+            "recordKind": "CURATED_SPEC_EXTRACT",
+            "reviewScope": "Selected exact product identity and manufacturer specification facts, not a full page snapshot, price review or complete PC compatibility certification. Nullable facts remain unknown."
+          }
+        ]
+      },
+      "historicalReviewedMapping": {
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "17932031",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+          "saleSku": "F5-6000J3038F16GX2-TZ5N",
+          "saleUnit": "RAM_KIT",
+          "moduleCount": 2,
+          "verifiedAt": "2026-10-06T12:34:13.387Z"
+        },
+        "identityReview": {
+          "expectedTitle": "G.SKILL DDR5-6000 CL30 TRIDENT Z5 NEO J 패키지 (32GB(16Gx2))",
+          "identityEvidenceUrls": [
+            "https://www.gskill.com/specification/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-Specification"
+          ],
+          "reason": "Exact non-RGB Trident Z5 Neo PN cross-checked against manufacturer page and domestic Compuzone product description; manufacturer capacity matches two-module kit. RGB suffix N/R variants are excluded.",
+          "domesticPnEvidenceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?ProductNo=1124075",
+          "domesticPnReview": "Compuzone product description explicitly identifies F5-6000J3038F16GX2-TZ5N and two modules; title capacity is 32GB (16GB*2).",
+          "timingCheck": "6000 MT/s, CL30-38-38-96, 1.35V"
+        },
+        "status": "HISTORICAL_REVIEW_NOT_A_FRESH_OFFER_OR_PRICE"
+      },
+      "historicalApprovedPriceSnapshot": {
+        "status": "HISTORICAL_APPROVED_SNAPSHOT_NOT_CURRENT_PRICE",
+        "approvedAmountKrw": 963120,
+        "observedAt": "2026-10-06T12:39:26.336Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+        "saleUnit": "RAM_KIT",
+        "wasInStockWhenObserved": true,
+        "unapprovedObservedAmountKrw": null,
+        "reviewReason": null,
+        "observationFile": "data/catalog-current-prices/observations-2026-10-06.json",
+        "priceIncludesShipping": false,
+        "freshnessPolicyApplied": false
+      },
+      "currentPriceObservation": null,
+      "identityReview": {
+        "expectedTitle": "G.SKILL DDR5-6000 CL30 TRIDENT Z5 NEO J 패키지 (32GB(16Gx2))",
+        "identityEvidenceUrls": [
+          "https://www.gskill.com/specification/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-Specification",
+          "https://www.compuzone.co.kr/product/product_detail.htm?ProductNo=1124075",
+          "https://prod.danawa.com/info/?pcode=17932031"
+        ],
+        "checkedDate": "2026-10-10",
+        "result": "EXACT_KIT_PN_AND_DOMESTIC_PRODUCT_MODEL_RECHECKED",
+        "reason": "The current public Compuzone HTML p_spec and meta keywords explicitly show F5-6000J3038F16GX2-TZ5N with 32GB and a two-module bundle. Danawa retains the non-RGB Neo J 32GB(16Gx2) title and CL30-38-38-96/1.35V. RGB suffixes and 64GB kit are excluded.",
+        "domesticPnEvidenceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?ProductNo=1124075",
+        "domesticPnReview": "Exact kit PN was directly read from the public HTML specification text. No module PN or IC/rank is inferred.",
+        "timingCheck": "6000 MT/s (OC), CL30-38-38-96, 1.35V; manufacturer SPD default 4800 MT/s/1.10V",
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2,
+        "quantityOfRetailKits": 1,
+        "newConditionAndCurrentStockVerified": null,
+        "sourceLimitations": [
+          "Web extraction may be cached; this identity review is not a fresh price observation.",
+          "Exact seller stock and physical PCB/profile revision were not inspected."
+        ]
+      },
+      "currentDomesticProductMapping": {
+        "sourceName": "DANAWA",
+        "externalId": "17932031",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+        "saleSku": "F5-6000J3038F16GX2-TZ5N",
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2,
+        "checkedDate": "2026-10-10",
+        "status": "EXACT_KIT_IDENTITY_RECHECKED_PRICE_NOT_COLLECTED",
+        "actualSellerAndStockReviewed": false
+      },
+      "officialEvidence": [
+        {
+          "url": "https://www.gskill.com/specification/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-Specification",
+          "title": "G.SKILL exact non-RGB Trident Z5 Neo kit specification",
+          "checkedDate": "2026-10-10",
+          "method": "WEB_PAGE_TEXT",
+          "supportedFacts": [
+            "Exact kit PN",
+            "DDR5 32GB (16GBx2), unbuffered non-ECC",
+            "OC 6000 MT/s, CL30-38-38-96, 1.35V",
+            "SPD default 4800 MT/s, 1.10V",
+            "Current page publishes XMP 3.0 and AMD EXPO; CPU/board and BIOS conditions apply"
+          ],
+          "scope": "CURATED_FACT_REVIEW_ONLY_NOT_FULL_PAGE_SNAPSHOT_OR_PRICE_OBSERVATION"
+        }
+      ],
+      "unknowns": [
+        "Individual module PN, IC/die, rank, hardware revision and pin count are not confirmed by this exact-kit review.",
+        "Manufacturer current XMP/EXPO statement does not certify every historical stock revision or selected CPU/board combination.",
+        "Exact selected board revision, BIOS, CPU and DIMM-population QVL conditions remain unknown.",
+        "Do not multiply a RAM_KIT price by installed quantity=2; the price is for one matched two-module kit."
+      ],
+      "appliedToDatabase": false,
+      "proposedClassification": {
+        "identityKind": "RETAIL_KIT",
+        "modelKind": "RAM_SPEC_GROUP",
+        "recognitionLevelForModelOnlyLink": "SPEC_GROUP",
+        "role": "PURCHASE_CANDIDATE",
+        "canonicalId": null,
+        "catalogModelId": null,
+        "modulePartNumber": null,
+        "moduleRank": null,
+        "moduleRevision": null
+      },
+      "installedDeviceInterpretation": {
+        "quantity": 2,
+        "capacityBytesPerDevice": 17179869184,
+        "totalCapacityBytes": 34359738368,
+        "saleUnit": "RAM_KIT",
+        "saleUnitCount": 1,
+        "quantityDoesNotMeanRetailKitCount": true,
+        "kitPartNumberCannotIdentifyIndividualModule": true
+      },
+      "reviewedManufacturerFacts": {
+        "memoryType": "DDR5",
+        "kitCapacityGb": 32,
+        "kitModuleCount": 2,
+        "moduleCapacityGb": 16,
+        "moduleCapacityBytes": 17179869184,
+        "bufferType": "UNBUFFERED",
+        "systemEcc": false,
+        "onDieEccIsNotSystemEcc": true,
+        "pinCount": null,
+        "modulePartNumber": null,
+        "moduleRank": null,
+        "testedOcDataRateMts": 6000,
+        "testedOcVoltageV": 1.35,
+        "spdDefaultDataRateMts": 4800,
+        "spdDefaultVoltageV": 1.1,
+        "ocProfilesPublishedOnCurrentManufacturerPage": [
+          "INTEL_XMP_3_0",
+          "AMD_EXPO"
+        ],
+        "ocProfileOnEveryDomesticStockRevisionConfirmed": null,
+        "cpuAndMotherboardSupportRequired": true,
+        "universal6000MtsGuarantee": false,
+        "testedOcTimings": "30-38-38-96",
+        "heightMm": null
+      },
+      "qvlEvidence": [
+        {
+          "url": "https://www.gskill.com/qvl/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-QVL",
+          "checkedDate": "2026-10-10",
+          "publisher": "G.SKILL",
+          "sourceType": "EXACT_RETAIL_KIT_MANUFACTURER_QVL",
+          "motherboardModelName": "MSI MAG B650M MORTAR WIFI",
+          "listedAtBoardModelScope": true,
+          "cpuGroupScope": [
+            "AMD B650 / Ryzen 9000 series CPUs",
+            "AMD B650 / Ryzen 7000 and 8000G series CPUs"
+          ],
+          "motherboardRevision": null,
+          "biosVersion": null,
+          "testedExactCpu": null,
+          "testedDimmCount": null,
+          "moduleRank": null,
+          "fullCompatibilityVerdict": null,
+          "notes": "Exact kit QVL lists this motherboard model. This is bounded board-model evidence; exact revision, BIOS, selected CPU and tested DIMM population are not stated in the reviewed table. It is not a universal 6000 MT/s guarantee."
+        },
+        {
+          "url": "https://www.gskill.com/qvl/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-QVL",
+          "checkedDate": "2026-10-10",
+          "publisher": "G.SKILL",
+          "sourceType": "EXACT_RETAIL_KIT_MANUFACTURER_QVL",
+          "motherboardModelName": "MSI MAG B860M MORTAR WIFI",
+          "listedAtBoardModelScope": null,
+          "cpuGroupScope": null,
+          "motherboardRevision": null,
+          "biosVersion": null,
+          "testedExactCpu": null,
+          "testedDimmCount": null,
+          "moduleRank": null,
+          "fullCompatibilityVerdict": null,
+          "notes": "The reviewed exact-kit page did not list this board model. This records a lookup result, not proof of incompatibility; support remains unknown."
+        }
+      ],
+      "domesticEvidence": [
+        {
+          "url": "https://www.compuzone.co.kr/product/product_detail.htm?ProductNo=1124075",
+          "title": "Compuzone ProductNo 1124075 exact kit specification",
+          "checkedDate": "2026-10-10",
+          "method": "PUBLIC_HTML_TEXT_DIRECT_READ",
+          "supportedFacts": [
+            "Exact PN in p_spec/meta keywords",
+            "32GB and two-module bundle",
+            "Non-RGB Neo J title"
+          ],
+          "scope": "CURATED_FACT_REVIEW_ONLY_NOT_FULL_PAGE_SNAPSHOT_OR_PRICE_OBSERVATION"
+        },
+        {
+          "url": "https://prod.danawa.com/info/?pcode=17932031",
+          "title": "Danawa Neo J 32GB(16Gx2) model page",
+          "checkedDate": "2026-10-10",
+          "method": "WEB_PAGE_TEXT",
+          "supportedFacts": [
+            "Correct 32GB two-module retail unit",
+            "CL30-38-38-96 and 1.35V",
+            "Non-RGB black model"
+          ],
+          "scope": "CURATED_FACT_REVIEW_ONLY_NOT_FULL_PAGE_SNAPSHOT_OR_PRICE_OBSERVATION"
+        }
+      ],
+      "reviewOutcome": "READY_FOR_REVIEWED_MAPPING_AND_PRICE_COLLECTION"
+    },
+    {
+      "selectionNumber": 10,
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1555eede-7e03-4038-824d-91d8fb21a6e2",
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "F5-6000J3636F16GX2-RS5K"
+      },
+      "catalogPlan": "REUSE_EXISTING_PRODUCT_ID_AFTER_REVIEW",
+      "preservedCatalogSpecification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "dataRateMts": 6000,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": null
+      },
+      "baselineSourceEvidence": {
+        "seedName": "week2-expand300",
+        "manifestPath": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+        "rawSha256": "7b8e88206a8748c7e1e5a156e232a2954d1aca5aff309040b72cd278538e7dfb",
+        "manufacturerSources": [
+          {
+            "url": "https://www.gskill.com/specification/165/377/1664845977/F5-6000J3636F16GX2-RS5K-Specification",
+            "retrievedAt": "2026-10-04T07:27:51.009082+00:00",
+            "recordKind": "CURATED_SPEC_EXTRACT",
+            "reviewScope": "Selected exact product identity and manufacturer specification facts, not a full page snapshot, price review or complete PC compatibility certification. Nullable facts remain unknown."
+          }
+        ]
+      },
+      "historicalReviewedMapping": null,
+      "historicalApprovedPriceSnapshot": null,
+      "currentPriceObservation": null,
+      "identityReview": {
+        "expectedTitle": "G.SKILL Ripjaws S5 black F5-6000J3636F16GX2-RS5K 32GB (16GBx2)",
+        "identityEvidenceUrls": [
+          "https://www.gskill.com/specification/165/377/1664845977/F5-6000J3636F16GX2-RS5K-Specification",
+          "https://www.tradek.co.kr/product/gskill-ripjaws-s5-series-32gb-2-x-16gb-288-pin-pc-ram-ddr5-6000-pc5-48/28901/category/249/display/1/",
+          "https://prod.danawa.com/info/?pcode=102553379"
+        ],
+        "checkedDate": "2026-10-10",
+        "result": "OFFICIAL_KIT_VERIFIED_DOMESTIC_DANAWA_MAPPING_HELD",
+        "reason": "The exact 2x16GB kit is verified by G.SKILL. No matching domestic Danawa kit page was found in bounded searches. pcode102553379 is a single 16GB module and must not map to this two-module kit. TradeK explicitly names the exact kit but displays overseas purchasing-agent/overseas-order conditions, so it does not establish a domestic-stock new-product offer.",
+        "timingCheck": "6000 MT/s (OC), CL36-36-36-96, 1.35V; manufacturer SPD default 4800 MT/s/1.10V",
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2,
+        "quantityOfRetailKits": 1,
+        "exactDomesticDanawaPcode": null,
+        "exactDomesticSellerPnConfirmed": null,
+        "newConditionAndCurrentStockVerified": null,
+        "rejectedMappings": [
+          {
+            "sourceName": "DANAWA",
+            "externalId": "102553379",
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=102553379",
+            "reason": "VARIANT_MISMATCH_SINGLE_16GB_MODULE_VS_32GB_2X16GB_RETAIL_KIT",
+            "reviewedSaleUnit": "RAM_MODULE",
+            "reviewedModuleCount": 1,
+            "reviewedTotalCapacityGb": 16,
+            "exactModulePn": null
+          }
+        ],
+        "heldAlternate": {
+          "sourceUrl": "https://www.tradek.co.kr/product/gskill-ripjaws-s5-series-32gb-2-x-16gb-288-pin-pc-ram-ddr5-6000-pc5-48/28901/category/249/display/1/",
+          "exactKitPnInTitle": true,
+          "kitCapacityGb": 32,
+          "moduleCount": 2,
+          "status": "OVERSEAS_PURCHASING_AGENT_NOT_APPROVED_DOMESTIC_STOCK_MAPPING",
+          "priceObservation": null
+        },
+        "lookupBudget": {
+          "exactPnAndKoreanModelSearchRounds": 2,
+          "stoppedAfterBoundedSearch": true,
+          "searchQueries": 4
+        }
+      },
+      "currentDomesticProductMapping": null,
+      "officialEvidence": [
+        {
+          "url": "https://www.gskill.com/specification/165/377/1664845977/F5-6000J3636F16GX2-RS5K-Specification",
+          "title": "G.SKILL exact black Ripjaws S5 kit specification",
+          "checkedDate": "2026-10-10",
+          "method": "WEB_PAGE_TEXT",
+          "supportedFacts": [
+            "Exact kit PN",
+            "DDR5 32GB (16GBx2), unbuffered non-ECC",
+            "OC 6000 MT/s, CL36-36-36-96, 1.35V",
+            "SPD default 4800 MT/s, 1.10V",
+            "Current page publishes XMP 3.0 and AMD EXPO; CPU/board and BIOS conditions apply",
+            "Ripjaws S5 product description states 33mm module height"
+          ],
+          "scope": "CURATED_FACT_REVIEW_ONLY_NOT_FULL_PAGE_SNAPSHOT_OR_PRICE_OBSERVATION"
+        }
+      ],
+      "unknowns": [
+        "Individual module PN, IC/die, rank, hardware revision and pin count are not confirmed by this exact-kit review.",
+        "Manufacturer current XMP/EXPO statement does not certify every historical stock revision or selected CPU/board combination.",
+        "Exact selected board revision, BIOS, CPU and DIMM-population QVL conditions remain unknown.",
+        "Do not multiply a RAM_KIT price by installed quantity=2; the price is for one matched two-module kit.",
+        "Exact domestic Danawa pcode and domestic-stock new-product seller mapping remain null; do not substitute the single-module pcode or multiply its price."
+      ],
+      "appliedToDatabase": false,
+      "proposedClassification": {
+        "identityKind": "RETAIL_KIT",
+        "modelKind": "RAM_SPEC_GROUP",
+        "recognitionLevelForModelOnlyLink": "SPEC_GROUP",
+        "role": "PURCHASE_CANDIDATE",
+        "canonicalId": null,
+        "catalogModelId": null,
+        "modulePartNumber": null,
+        "moduleRank": null,
+        "moduleRevision": null
+      },
+      "installedDeviceInterpretation": {
+        "quantity": 2,
+        "capacityBytesPerDevice": 17179869184,
+        "totalCapacityBytes": 34359738368,
+        "saleUnit": "RAM_KIT",
+        "saleUnitCount": 1,
+        "quantityDoesNotMeanRetailKitCount": true,
+        "kitPartNumberCannotIdentifyIndividualModule": true
+      },
+      "reviewedManufacturerFacts": {
+        "memoryType": "DDR5",
+        "kitCapacityGb": 32,
+        "kitModuleCount": 2,
+        "moduleCapacityGb": 16,
+        "moduleCapacityBytes": 17179869184,
+        "bufferType": "UNBUFFERED",
+        "systemEcc": false,
+        "onDieEccIsNotSystemEcc": true,
+        "pinCount": null,
+        "modulePartNumber": null,
+        "moduleRank": null,
+        "testedOcDataRateMts": 6000,
+        "testedOcVoltageV": 1.35,
+        "spdDefaultDataRateMts": 4800,
+        "spdDefaultVoltageV": 1.1,
+        "ocProfilesPublishedOnCurrentManufacturerPage": [
+          "INTEL_XMP_3_0",
+          "AMD_EXPO"
+        ],
+        "ocProfileOnEveryDomesticStockRevisionConfirmed": null,
+        "cpuAndMotherboardSupportRequired": true,
+        "universal6000MtsGuarantee": false,
+        "testedOcTimings": "36-36-36-96",
+        "heightMm": 33
+      },
+      "qvlEvidence": [
+        {
+          "url": "https://www.gskill.com/qvl/165/377/1664845977/F5-6000J3636F16GX2-RS5K-QVL",
+          "checkedDate": "2026-10-10",
+          "publisher": "G.SKILL",
+          "sourceType": "EXACT_RETAIL_KIT_MANUFACTURER_QVL",
+          "motherboardModelName": "MSI MAG B650M MORTAR WIFI",
+          "listedAtBoardModelScope": true,
+          "cpuGroupScope": [
+            "AMD B650 / Ryzen 9000 series CPUs",
+            "AMD B650 / Ryzen 7000 and 8000G series CPUs"
+          ],
+          "motherboardRevision": null,
+          "biosVersion": null,
+          "testedExactCpu": null,
+          "testedDimmCount": null,
+          "moduleRank": null,
+          "fullCompatibilityVerdict": null,
+          "notes": "Exact kit QVL lists this motherboard model. This is bounded board-model evidence; exact revision, BIOS, selected CPU and tested DIMM population are not stated in the reviewed table. It is not a universal 6000 MT/s guarantee."
+        },
+        {
+          "url": "https://www.gskill.com/qvl/165/377/1664845977/F5-6000J3636F16GX2-RS5K-QVL",
+          "checkedDate": "2026-10-10",
+          "publisher": "G.SKILL",
+          "sourceType": "EXACT_RETAIL_KIT_MANUFACTURER_QVL",
+          "motherboardModelName": "MSI MAG B860M MORTAR WIFI",
+          "listedAtBoardModelScope": true,
+          "cpuGroupScope": [
+            "Intel B860 DDR5"
+          ],
+          "motherboardRevision": null,
+          "biosVersion": null,
+          "testedExactCpu": null,
+          "testedDimmCount": null,
+          "moduleRank": null,
+          "fullCompatibilityVerdict": null,
+          "notes": "Exact kit QVL lists this motherboard model. This is bounded board-model evidence; exact revision, BIOS, selected CPU and tested DIMM population are not stated in the reviewed table. It is not a universal 6000 MT/s guarantee."
+        }
+      ],
+      "domesticEvidence": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=102553379",
+          "title": "Danawa Ripjaws S5 single 16GB module rejected for kit mapping",
+          "checkedDate": "2026-10-10",
+          "method": "WEB_PAGE_TEXT",
+          "supportedFacts": [
+            "Title 16GB",
+            "Module count one",
+            "Retail unit mismatches the selected 32GB two-module kit"
+          ],
+          "scope": "CURATED_FACT_REVIEW_ONLY_NOT_FULL_PAGE_SNAPSHOT_OR_PRICE_OBSERVATION"
+        },
+        {
+          "url": "https://www.tradek.co.kr/product/gskill-ripjaws-s5-series-32gb-2-x-16gb-288-pin-pc-ram-ddr5-6000-pc5-48/28901/category/249/display/1/",
+          "title": "TradeK exact kit title with overseas purchasing conditions",
+          "checkedDate": "2026-10-10",
+          "method": "WEB_PAGE_TEXT",
+          "supportedFacts": [
+            "Exact kit PN and 32GB (2x16GB) title",
+            "Overseas purchase agency notice",
+            "Domestic-stock offer not confirmed"
+          ],
+          "scope": "CURATED_FACT_REVIEW_ONLY_NOT_FULL_PAGE_SNAPSHOT_OR_PRICE_OBSERVATION"
+        }
+      ],
+      "reviewOutcome": "HOLD_DOMESTIC_MAPPING_AND_PRICE_RETAIN_SPECIFICATION_REFERENCE"
+    },
+    {
+      "selectionNumber": 11,
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+        "partNumber": "G5060-8V2C"
+      },
+      "catalogPlan": "REUSE_EXISTING_PRODUCT_ID_AFTER_REVIEW",
+      "preservedCatalogSpecification": {
+        "chipVendor": "NVIDIA",
+        "chipset": "GeForce RTX 5060",
+        "vramBytes": 8589934592,
+        "memoryType": "GDDR7",
+        "pcieVersion": "5.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 8,
+        "lengthMm": 197,
+        "heightMm": 120,
+        "thicknessMm": 41,
+        "slotWidth": null,
+        "cardPowerW": 145,
+        "cardPowerBasis": "MANUFACTURER_PUBLISHED_CARD_POWER",
+        "psuRequirementW": 550,
+        "psuRequirementBasis": "RECOMMENDED",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "baselineSourceEvidence": {
+        "seedName": "week2-expand300",
+        "manifestPath": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+        "rawSha256": "6d3d0d1eeae2d68dc5f06ee5a1fe91a06ccc05acec774a887d56715b25a7288c",
+        "manufacturerSources": [
+          {
+            "url": "https://www.msi.com/Graphics-Card/GeForce-RTX-5060-8G-VENTUS-2X-OC/Specification",
+            "retrievedAt": "2026-10-04T07:33:10.013942Z",
+            "recordKind": "CURATED_SPEC_EXTRACT",
+            "reviewScope": "Selected exact product identity and manufacturer specification facts, not a full page snapshot, price review or complete PC compatibility certification. Nullable facts remain unknown."
+          }
+        ]
+      },
+      "historicalReviewedMapping": {
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "90956033",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+          "saleSku": "G5060-8V2C",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-06T12:34:13.387Z"
+        },
+        "identityReview": {
+          "expectedTitle": "MSI 지포스 RTX 5060 벤투스 2X OC D7 8GB",
+          "identityEvidenceUrls": [
+            "https://www.msi.com/Graphics-Card/GeForce-RTX-5060-8G-VENTUS-2X-OC/Specification"
+          ],
+          "reason": "Exact board manufacturer, GPU, memory capacity and named cooling/OC variant; part number checked against curated manufacturer source."
+        },
+        "status": "HISTORICAL_REVIEW_NOT_A_FRESH_OFFER_OR_PRICE"
+      },
+      "historicalApprovedPriceSnapshot": {
+        "status": "HISTORICAL_APPROVED_SNAPSHOT_NOT_CURRENT_PRICE",
+        "approvedAmountKrw": 675000,
+        "observedAt": "2026-10-06T12:39:10.953Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+        "saleUnit": "PRODUCT",
+        "wasInStockWhenObserved": true,
+        "unapprovedObservedAmountKrw": null,
+        "reviewReason": null,
+        "observationFile": "data/catalog-current-prices/observations-2026-10-06.json",
+        "priceIncludesShipping": false,
+        "freshnessPolicyApplied": false
+      },
+      "currentPriceObservation": null,
+      "identityReview": {
+        "expectedTitle": "MSI 지포스 RTX 5060 벤투스 2X OC D7 8GB",
+        "identityEvidenceUrls": [
+          "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-5060-8G-VENTUS-2X-OC.pdf",
+          "https://prod.danawa.com/info/?pcode=90956033"
+        ],
+        "reason": "Original MSI RTX5060 VENTUS 2X OC 8GB GDDR7 is matched by full named variant, capacity, 2527/2535MHz clocks, 197mm length, 145W and 8-pin. Official data sheet maps this exact marketing name to G5060-8V2C. MAX G5060-8V2CM, WHITE and other cooling variants are excluded. Domestic numeric PN was not directly observed.",
+        "checkedDate": "2026-10-10",
+        "result": "EXACT_NAMED_CARD_VARIANT_RECHECKED_OFFICIAL_PN_CONFIRMED",
+        "saleUnit": "PRODUCT",
+        "quantityOfRetailCards": 1,
+        "domesticPageExplicitNumericPnObserved": null,
+        "newConditionAndCurrentStockVerified": null,
+        "sourceLimitations": [
+          "The Danawa title/specification matches the named card variant; the numeric manufacturer PN was not found in the directly fetched public Danawa HTML.",
+          "This page-model mapping is not proof of the exact physical stock unit, domestic importer, warranty package or seller inventory.",
+          "Web extraction may be cached; no price is collected here."
+        ]
+      },
+      "currentDomesticProductMapping": {
+        "sourceName": "DANAWA",
+        "externalId": "90956033",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+        "saleSku": "G5060-8V2C",
+        "saleUnit": "PRODUCT",
+        "checkedDate": "2026-10-10",
+        "status": "NAMED_PHYSICAL_CARD_VARIANT_RECHECKED_PRICE_NOT_COLLECTED",
+        "domesticPageExplicitNumericPnObserved": null,
+        "actualSellerAndStockReviewed": false
+      },
+      "officialEvidence": [
+        {
+          "url": "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-5060-8G-VENTUS-2X-OC.pdf",
+          "title": "MSI official global G5060-8V2C data sheet",
+          "checkedDate": "2026-10-10",
+          "method": "OFFICIAL_MANUFACTURER_DATASHEET",
+          "supportedFacts": [
+            "Exact Marketing Name and Model Name G5060-8V2C",
+            "8GB GDDR7",
+            "PCIe Gen5 x16 connector using x8",
+            "197 x 120 x 41mm",
+            "145W, 8-pin x1, recommended PSU 550W",
+            "Boost2527MHz / MSI Center extreme2535MHz"
+          ],
+          "scope": "CURATED_FACT_REVIEW_ONLY_NOT_FULL_PAGE_SNAPSHOT_OR_PRICE_OBSERVATION"
+        }
+      ],
+      "unknowns": [
+        "Exact domestic seller stock, importer/warranty package and physical hardware revision are not confirmed.",
+        "Case clearance, actual PSU/cables and motherboard PCIe/UEFI conditions remain required; a recommended/minimum PSU rating is not a complete-PC compatibility verdict.",
+        "A Windows GPU chip name does not identify this physical card or establish PHYSICAL_VARIANT recognition."
+      ],
+      "appliedToDatabase": false,
+      "proposedClassification": {
+        "identityKind": "PHYSICAL_VARIANT",
+        "modelKind": "GPU_CHIP_MODEL",
+        "recognitionLevelForModelOnlyLink": "MODEL",
+        "role": "BOTH",
+        "canonicalId": null,
+        "catalogModelId": null,
+        "chipModelName": "GeForce RTX 5060"
+      },
+      "installedDeviceInterpretation": {
+        "quantity": 1,
+        "saleUnit": "PRODUCT",
+        "saleUnitCount": 1,
+        "windowsChipNameCannotIdentifyPhysicalCard": true
+      },
+      "domesticEvidence": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=90956033",
+          "title": "Danawa exact named physical-card variant",
+          "checkedDate": "2026-10-10",
+          "method": "WEB_PAGE_AND_PUBLIC_HTML_TEXT_DIRECT_READ",
+          "supportedFacts": [
+            "Manufacturer, chipset, VRAM capacity and OC/cooler title match",
+            "Published length, power and connector facts match official card",
+            "Numeric PN is not explicitly present in reviewed public HTML"
+          ],
+          "scope": "CURATED_FACT_REVIEW_ONLY_NOT_FULL_PAGE_SNAPSHOT_OR_PRICE_OBSERVATION"
+        }
+      ],
+      "reviewOutcome": "READY_FOR_NAMED_VARIANT_MAPPING_AND_PRICE_COLLECTION_WITH_SELLER_CONDITIONS_UNKNOWN",
+      "reviewedManufacturerFacts": {
+        "partNumber": "G5060-8V2C",
+        "memoryBytes": 8589934592,
+        "memoryType": "GDDR7",
+        "pcieVersion": "5.0",
+        "pcieConnectorLanes": 16,
+        "pcieActiveLanes": 8,
+        "lengthMm": 197,
+        "heightMm": 120,
+        "thicknessMm": 41,
+        "slotWidth": null,
+        "cardPowerW": 145,
+        "cardPowerBasis": "MANUFACTURER_POWER_CONSUMPTION",
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ],
+        "psuRequirementW": 550,
+        "psuRequirementBasis": "RECOMMENDED",
+        "boostClockMhz": 2527,
+        "extremeClockMhz": 2535
+      }
+    },
+    {
+      "selectionNumber": 12,
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+        "partNumber": "11350-03-20G"
+      },
+      "catalogPlan": "REUSE_EXISTING_PRODUCT_ID_AFTER_REVIEW",
+      "preservedCatalogSpecification": {
+        "chipVendor": "AMD",
+        "chipset": "Radeon RX 9060 XT",
+        "vramBytes": 17179869184,
+        "memoryType": "GDDR6",
+        "pcieVersion": "5.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 16,
+        "lengthMm": 240,
+        "heightMm": 111.25,
+        "thicknessMm": 46.08,
+        "slotWidth": 2.3,
+        "cardPowerW": 170,
+        "cardPowerBasis": "TYPICAL_BOARD_POWER",
+        "psuRequirementW": 450,
+        "psuRequirementBasis": "MINIMUM",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "baselineSourceEvidence": {
+        "seedName": "week2-gpu-expand",
+        "manifestPath": "backend/src/main/resources/catalog/seed/week2-gpu-expand/manifest.json",
+        "rawSha256": "f6b18e67b2efb5356687618483e03a214dc0e5aee835c3de104a56961b7a94b2",
+        "manufacturerSources": [
+          {
+            "url": "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9060-xt-16g-gddr6",
+            "retrievedAt": "2026-10-01T05:52:36.842Z",
+            "recordKind": "CURATED_SPEC_EXTRACT",
+            "reviewScope": "Selected manufacturer facts and documented normalization only; not a page snapshot or a compatibility certification."
+          }
+        ]
+      },
+      "historicalReviewedMapping": {
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "91909571",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+          "saleSku": "11350-03-20G",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-06T12:34:13.387Z"
+        },
+        "identityReview": {
+          "expectedTitle": "SAPPHIRE 라데온 RX 9060 XT PULSE OC D6 16GB",
+          "identityEvidenceUrls": [
+            "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9060-xt-16g-gddr6"
+          ],
+          "reason": "Exact board manufacturer, GPU, memory capacity and named cooling/OC variant; part number checked against curated manufacturer source."
+        },
+        "status": "HISTORICAL_REVIEW_NOT_A_FRESH_OFFER_OR_PRICE"
+      },
+      "historicalApprovedPriceSnapshot": {
+        "status": "HISTORICAL_APPROVED_SNAPSHOT_NOT_CURRENT_PRICE",
+        "approvedAmountKrw": 821000,
+        "observedAt": "2026-10-06T12:39:14.292Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+        "saleUnit": "PRODUCT",
+        "wasInStockWhenObserved": true,
+        "unapprovedObservedAmountKrw": null,
+        "reviewReason": null,
+        "observationFile": "data/catalog-current-prices/observations-2026-10-06.json",
+        "priceIncludesShipping": false,
+        "freshnessPolicyApplied": false
+      },
+      "currentPriceObservation": null,
+      "identityReview": {
+        "expectedTitle": "SAPPHIRE 라데온 RX 9060 XT PULSE OC D6 16GB",
+        "identityEvidenceUrls": [
+          "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9060-xt-16g-gddr6",
+          "https://prod.danawa.com/info/?pcode=91909571"
+        ],
+        "reason": "Sapphire PULSE RX9060XT OC16GB GDDR6 named variant,3290MHz boost,240mm length and170W match the official SKU11350-03-20G.8GB,non-OC,NITRO+ and PURE variants are excluded. Domestic numeric PN was not directly observed.",
+        "checkedDate": "2026-10-10",
+        "result": "EXACT_NAMED_CARD_VARIANT_RECHECKED_OFFICIAL_PN_CONFIRMED",
+        "saleUnit": "PRODUCT",
+        "quantityOfRetailCards": 1,
+        "domesticPageExplicitNumericPnObserved": null,
+        "newConditionAndCurrentStockVerified": null,
+        "sourceLimitations": [
+          "The Danawa title/specification matches the named card variant; the numeric manufacturer PN was not found in the directly fetched public Danawa HTML.",
+          "This page-model mapping is not proof of the exact physical stock unit, domestic importer, warranty package or seller inventory.",
+          "Web extraction may be cached; no price is collected here."
+        ]
+      },
+      "currentDomesticProductMapping": {
+        "sourceName": "DANAWA",
+        "externalId": "91909571",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+        "saleSku": "11350-03-20G",
+        "saleUnit": "PRODUCT",
+        "checkedDate": "2026-10-10",
+        "status": "NAMED_PHYSICAL_CARD_VARIANT_RECHECKED_PRICE_NOT_COLLECTED",
+        "domesticPageExplicitNumericPnObserved": null,
+        "actualSellerAndStockReviewed": false
+      },
+      "officialEvidence": [
+        {
+          "url": "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9060-xt-16g-gddr6",
+          "title": "Sapphire official PULSE RX9060XT OC16GB SKU11350-03-20G",
+          "checkedDate": "2026-10-10",
+          "method": "WEB_PAGE_TEXT",
+          "supportedFacts": [
+            "Exact SKU11350-03-20G, PULSE OC16GB",
+            "16GB GDDR6",
+            "240 x 111.25 x 46.08mm and2.3slots",
+            "170W Typical Board Power",
+            "8-pin x1 and minimum PSU450W",
+            "Boost3290MHz, UEFI",
+            "Published interface PCI-Express5.0 x16"
+          ],
+          "scope": "CURATED_FACT_REVIEW_ONLY_NOT_FULL_PAGE_SNAPSHOT_OR_PRICE_OBSERVATION"
+        }
+      ],
+      "unknowns": [
+        "Exact domestic seller stock, importer/warranty package and physical hardware revision are not confirmed.",
+        "Case clearance, actual PSU/cables and motherboard PCIe/UEFI conditions remain required; a recommended/minimum PSU rating is not a complete-PC compatibility verdict.",
+        "A Windows GPU chip name does not identify this physical card or establish PHYSICAL_VARIANT recognition."
+      ],
+      "appliedToDatabase": false,
+      "proposedClassification": {
+        "identityKind": "PHYSICAL_VARIANT",
+        "modelKind": "GPU_CHIP_MODEL",
+        "recognitionLevelForModelOnlyLink": "MODEL",
+        "role": "BOTH",
+        "canonicalId": null,
+        "catalogModelId": null,
+        "chipModelName": "Radeon RX 9060 XT"
+      },
+      "installedDeviceInterpretation": {
+        "quantity": 1,
+        "saleUnit": "PRODUCT",
+        "saleUnitCount": 1,
+        "windowsChipNameCannotIdentifyPhysicalCard": true
+      },
+      "domesticEvidence": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=91909571",
+          "title": "Danawa exact named physical-card variant",
+          "checkedDate": "2026-10-10",
+          "method": "WEB_PAGE_AND_PUBLIC_HTML_TEXT_DIRECT_READ",
+          "supportedFacts": [
+            "Manufacturer, chipset, VRAM capacity and OC/cooler title match",
+            "Published length, power and connector facts match official card",
+            "Numeric PN is not explicitly present in reviewed public HTML"
+          ],
+          "scope": "CURATED_FACT_REVIEW_ONLY_NOT_FULL_PAGE_SNAPSHOT_OR_PRICE_OBSERVATION"
+        }
+      ],
+      "reviewOutcome": "READY_FOR_NAMED_VARIANT_MAPPING_AND_PRICE_COLLECTION_WITH_SELLER_CONDITIONS_UNKNOWN",
+      "reviewedManufacturerFacts": {
+        "partNumber": "11350-03-20G",
+        "memoryBytes": 17179869184,
+        "memoryType": "GDDR6",
+        "pcieVersion": "5.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 16,
+        "lengthMm": 240,
+        "heightMm": 111.25,
+        "thicknessMm": 46.08,
+        "slotWidth": 2.3,
+        "cardPowerW": 170,
+        "cardPowerBasis": "TYPICAL_BOARD_POWER",
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ],
+        "psuRequirementW": 450,
+        "psuRequirementBasis": "MINIMUM",
+        "boostClockMhz": 3290,
+        "biosSupport": "UEFI",
+        "pcieInterfacePublished": "PCI-Express 5.0 x16"
+      }
+    }
+  ]
+}

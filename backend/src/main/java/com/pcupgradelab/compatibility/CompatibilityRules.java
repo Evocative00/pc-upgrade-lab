@@ -6,6 +6,8 @@ import com.pcupgradelab.catalog.memory.CpuMemoryQueryService;
 import com.pcupgradelab.catalog.support.MotherboardCpuQueryService;
 import com.pcupgradelab.catalog.support.MotherboardCpuSupport;
 import java.math.BigInteger;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -27,7 +29,7 @@ final class CompatibilityRules {
     private final List<CompatibilityDtos.SupportCandidate> candidates = new ArrayList<>();
     private final List<String> notices = new ArrayList<>(List.of(
             "CPU·메인보드·RAM의 공표 규격 검사입니다. GPU·파워·케이스·쿨러·모니터 및 전체 PC 동작은 검사하지 않습니다.",
-            "RAM quantity는 실제 장착할 모듈 수입니다. 카탈로그의 묶음 구성(moduleCount)을 다시 곱하지 않습니다.",
+            "RAM 수량은 실제 장착할 모듈 수입니다. 판매 묶음의 모듈 수를 다시 곱하지 않습니다.",
             "RAM의 표시 속도, XMP/EXPO, 개별 RAM QVL, 모듈 혼용 안정성은 이번 검사에서 보장하지 않습니다."));
 
     CompatibilityRules(CompatibilityDtos.Request request, Map<String, CatalogDtos.Detail> details,
@@ -74,8 +76,8 @@ final class CompatibilityRules {
             boolean ordinaryMemory = ram != null && Boolean.FALSE.equals(ram.isEcc())
                     && "UNBUFFERED".equals(ram.bufferType());
             add("RAM_MODULE_FEATURES_" + i, ordinaryMemory ? COMPATIBLE : NEEDS_CHECK,
-                    ordinaryMemory ? "일반 비 ECC·Unbuffered RAM입니다."
-                            : "ECC·Registered/Load-reduced 여부와 CPU·메인보드의 지원 조건을 별도로 확인해야 합니다.",
+                    ordinaryMemory ? "일반 비 ECC·비버퍼 메모리입니다."
+                            : "ECC·레지스터·부하 감소 메모리 여부와 CPU·메인보드의 지원 조건을 별도로 확인해야 합니다.",
                     List.of(field), ordinaryMemory ? List.of() : List.of(field, "manufacturerMemoryModuleSupport"),
                     sources(detail));
             addSpeedNotice(i, ram);
@@ -154,10 +156,10 @@ final class CompatibilityRules {
     private void checkCapacity(String code, Long maximum, String label, CompatibilityDtos.MemorySummary summary,
                                List<String> unknown, List<String> fields, String missingLimit,
                                List<CatalogDtos.Source> evidence, String conditions) {
-        String suffix = conditions == null ? "" : " 적용 조건: " + conditions;
+        String suffix = conditions == null ? "" : " 제조사 공표 용량의 적용 조건을 함께 확인해 주세요.";
         if (maximum != null && summary.knownCapacityBytes().compareTo(BigInteger.valueOf(maximum)) > 0) {
-            add(code, INCOMPATIBLE, "확인된 RAM 용량 " + summary.knownCapacityBytes()
-                    + " bytes만으로도 " + label + " " + maximum + " bytes를 초과합니다." + suffix,
+            add(code, INCOMPATIBLE, "확인된 RAM 용량 " + gib(summary.knownCapacityBytes())
+                    + "만으로도 " + label + " " + gib(BigInteger.valueOf(maximum)) + "를 초과합니다." + suffix,
                     fields, List.of(), evidence);
         } else if (maximum == null || !summary.capacityComplete()) {
             var required = new ArrayList<>(unknown);
@@ -166,9 +168,14 @@ final class CompatibilityRules {
             add(code, NEEDS_CHECK, "총 RAM 용량 또는 " + label + "을 확인해야 합니다." + suffix,
                     fields, required, evidence);
         } else {
-            add(code, COMPATIBLE, "총 RAM 용량 " + summary.totalCapacityBytes() + " bytes / " + label
-                    + " " + maximum + " bytes 이내입니다." + suffix, fields, List.of(), evidence);
+            add(code, COMPATIBLE, "총 RAM 용량 " + gib(summary.totalCapacityBytes()) + " / " + label
+                    + " " + gib(BigInteger.valueOf(maximum)) + " 이내입니다." + suffix, fields, List.of(), evidence);
         }
+    }
+
+    private static String gib(BigInteger bytes) {
+        return new BigDecimal(bytes).divide(BigDecimal.valueOf(1L << 30), 30, RoundingMode.UNNECESSARY)
+                .stripTrailingZeros().toPlainString() + " GiB";
     }
 
     private void checkManufacturerSupport() {
@@ -230,11 +237,11 @@ final class CompatibilityRules {
                     biosFields, List.of("manufacturerBiosRequirement"), evidence);
         } else if (selected.stream().allMatch(entry -> entry.biosRequirement() == MotherboardCpuSupport.BiosRequirement.ALL
                 || entry.minimumBiosVersion().equals(request.currentBiosVersion()))) {
-            add("CPU_BIOS", COMPATIBLE, "제조사의 ALL 표기 또는 해당 최소 BIOS와 현재 버전의 정확한 일치가 확인되었습니다.",
+            add("CPU_BIOS", COMPATIBLE, "제조사가 모든 BIOS 버전의 지원을 명시했거나 최소 BIOS와 현재 버전이 정확히 일치합니다.",
                     biosFields, List.of(), evidence);
         } else {
             add("CPU_BIOS", NEEDS_CHECK, request.currentBiosVersion() == null
-                            ? "현재 BIOS를 확인해 주세요. 리비전·스테핑별 최소 BIOS는 cpuSupportCandidates에 있습니다."
+                            ? "현재 BIOS를 확인해 주세요. 메인보드 리비전과 CPU 스테핑에 맞는 최소 BIOS를 제조사 지원 자료에서 확인해야 합니다."
                             : "현재 BIOS가 공표된 최소 버전과 다릅니다. 제조사 버전 이력 없이 문자열 크기만으로 더 최신인지 판단하지 않습니다.",
                     biosFields, List.of("currentBiosVersion", "manufacturerBiosVersionHistory"), evidence);
         }
@@ -258,7 +265,7 @@ final class CompatibilityRules {
         if (ram == null || ram.dataRateMts() == null || memory == null || !memory.dataAvailable()) return;
         memory.supportedTypes().stream().filter(type -> type.memoryType().name().equals(ram.memoryType())
                 && type.maxStandardDataRateMts() != null && ram.dataRateMts() > type.maxStandardDataRateMts())
-                .forEach(type -> notices.add("ram[" + index + "]의 표시 속도 " + ram.dataRateMts()
+                .forEach(type -> notices.add("RAM " + (index + 1) + "의 표시 속도 " + ram.dataRateMts()
                         + " MT/s는 CPU 공표 기본 속도 " + type.maxStandardDataRateMts()
                         + " MT/s보다 높습니다. 이것만으로 호환 불가로 판정하지 않으며 실제 동작 속도는 별도 확인합니다. "
                         + type.dataRateConditions()));

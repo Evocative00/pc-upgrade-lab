@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "stage": "IMPLEMENTATION_AND_FOUR_PRODUCT_PREVIEW_APPROVED",
+  "implementationApproved": true,
+  "databaseApplyApproved": false,
+  "pricePublicationApproved": false,
+  "deployments": 0,
+  "databaseWrites": 0,
+  "currentProduction": {
+    "catalogProducts": 307,
+    "approvedPrices": 80,
+    "unconfirmedPrices": 227,
+    "activeApprovedPriceSha256": "7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc"
+  },
+  "problem": "Several domestic retail listings have current ordinary prices, but their existing catalog IDs describe installed model references. Factory part numbers are not always published by domestic motherboard sellers. The current MANUFACTURER price contract requires a non-null part number and accepts only DANAWA and SAMSUNG_CNH price providers. A separate reviewed sale-product path is required; existing model IDs must retain their meaning.",
+  "firstPreviewScope": [
+    {
+      "model": "Core Ultra 5 245K",
+      "existingCanonicalId": "4328778c-84af-324b-bc60-e51891fff949",
+      "advertisedSaleConfiguration": "Domestic authorized boxed single CPU without cooler",
+      "manufacturerBoxCodeCandidate": "BX80768245K",
+      "domesticFactoryOrderCodeVerified": false,
+      "provider": "COMPUZONE",
+      "evidenceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+      "ordinaryPriceCandidateKrw": 330500,
+      "observedAt": "2026-10-10T11:27:18.462Z",
+      "importEligible": false
+    },
+    {
+      "model": "Core Ultra 5 250K Plus",
+      "existingCanonicalId": "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+      "advertisedSaleConfiguration": "Domestic authorized boxed single CPU without cooler",
+      "manufacturerBoxCodeCandidate": "BX80768250K",
+      "domesticFactoryOrderCodeVerified": false,
+      "provider": "ICODA",
+      "evidenceUrl": "https://usr.icoda.co.kr/item/view/1739432",
+      "ordinaryPriceCandidateKrw": 342100,
+      "observedAt": "2026-10-10T11:23:46.432Z",
+      "importEligible": false
+    },
+    {
+      "model": "MSI MAG B860M MORTAR WIFI",
+      "existingCanonicalId": "109952f9-01de-3293-9034-ab93de7f98d0",
+      "advertisedSaleConfiguration": "Domestic new single motherboard; LGA1851/B860/DDR5/micro-ATX/WiFi",
+      "manufacturerPartNumber": null,
+      "provider": "DANAWA",
+      "evidenceUrl": "https://prod.danawa.com/info/?pcode=74340266",
+      "ordinaryPriceCandidateKrw": 260900,
+      "observedAt": "2026-10-10T11:24:02.764Z",
+      "importEligible": false
+    },
+    {
+      "model": "ASUS TUF GAMING B860-PLUS WIFI",
+      "existingCanonicalId": "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+      "advertisedSaleConfiguration": "Domestic new single motherboard distributed by Intek; LGA1851/B860/DDR5/ATX/WiFi",
+      "manufacturerPartNumber": null,
+      "provider": "DANAWA",
+      "evidenceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+      "ordinaryPriceCandidateKrw": 275350,
+      "observedAt": "2026-10-10T11:24:04.997Z",
+      "importEligible": false
+    }
+  ],
+  "implementationScope": [
+    "Prepare separate domestic sale products linked to existing manufacturer models. Preserve all existing IDs, classifications, PC links and 80 approved prices.",
+    "Define explicit reviewed sale-configuration evidence: exact model, package, unit count, domestic distribution, DDR/WiFi/form factor/revision where relevant, primary URLs, verification time and review status. A missing factory PN remains null and is never filled from a shop or Danawa product ID.",
+    "For factory-PN-unpublished motherboard sale products, permit price input only through an explicitly reviewed PHYSICAL_VARIANT/purchase-product path with configuration evidence. Do not relax model-reference, RAM, GPU, region/revision or known-PN matching rules. CPU BOX order codes require their own completed package-mapping review.",
+    "Add narrowly validated Compuzone and Icoda price-source identities and product-only ordinary-price parsing, with fixtures for sold-out/discount/overseas/wrong-package cases. No credentials, checkout or private endpoints.",
+    "Extend the reviewed central catalog/export/Worker validation to permit explicitly approved added sale products while preserving the 307 existing identities, v1 compatibility, catalog version checks and the independent price version.",
+    "Prepare read-only loading previews and tests. Show eligible price rows and unresolved mappings separately; a candidate price never becomes an approved row merely because this implementation is approved."
+  ],
+  "excludedFromThisApproval": [
+    "Actual MySQL changes, product activation, automatic PC matching, production Worker deployment or price publication",
+    "Git commit or push",
+    "Automatic periodic collection or changing the 48-hour warning/7-day exclusion policy",
+    "Automatically using related retail prices in an installed-model total",
+    "RAM family matching, partial factory PN substitution, or overseas/used/bulk/coupon/shipping prices"
+  ],
+  "validationPlan": [
+    "Missing-PN model references remain rejected; only an explicitly reviewed separate purchase product can use the proposed motherboard configuration path.",
+    "Reject wrong manufacturer/model/package/unit count/DDR/WiFi/revision, changed known PN, sold-out or overseas listings and conditional promotional prices.",
+    "Preserve all 307 source/canonical IDs and every field of the existing 80 price rows, including v1 pilot behavior.",
+    "Validate preview/export/backend and Worker locally; run real-DB or production deployment only after a separate concrete approval."
+  ],
+  "heldSeparateCandidate": {
+    "model": "ASRock B850M Pro RS",
+    "ordinaryPriceCandidateKrw": 198460,
+    "reason": "Domestic non-WiFi listing and global manufacturer WiFi text need additional package/radio context verification. This candidate is not part of the initial four-product preview."
+  },
+  "evidenceFiles": [
+    "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+    "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json"
+  ],
+  "configurationImpact": "No backend environment-variable changes or restart are required for this research/proposal. Any later implementation-specific run instructions must be supplied before actual application.",
+  "implementationDecision": "추천 범위 구현·4종 미리보기 승인"
+}

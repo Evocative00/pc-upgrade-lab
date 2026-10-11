@@ -1,0 +1,48 @@
+{
+  "recordedAt": "2026-10-09T23:27:09+09:00",
+  "scope": "Approved local MySQL V13/V14 schema application only",
+  "mysqlVersion": "8.4.11",
+  "migrationBefore": "12",
+  "appliedMigrations": ["13", "14"],
+  "migrationAfter": "14",
+  "pendingMigrationsAfter": 0,
+  "mode": "One-off non-web Spring context, Flyway migration and Hibernate validate",
+  "webServerStarted": false,
+  "oauthAutoConfigurationExcluded": true,
+  "allCatalogSeedAndPriceImportRunnersDisabled": true,
+  "flywayCleanOrRepairUsed": false,
+  "privateBackupExcludedFromGit": true,
+  "existingDataVerification": {
+    "tablesComparedExcludingFlywayHistory": 19,
+    "method": "Compare row counts and sorted SHA-256 row digests using every original column before and after migration",
+    "allOriginalDataUnchanged": true,
+    "catalogProducts": 300,
+    "priceMappings": 72,
+    "priceObservations": 72,
+    "distinctPricedProducts": 72,
+    "pcConfigurations": 1,
+    "pcParts": 14
+  },
+  "newEmptyTables": 11,
+  "newProductsCreated": 0,
+  "newPricesCreated": 0,
+  "existingProductCanonicalIdsOrModelLinksPopulated": false,
+  "existingPcRecognitionLevelsPopulated": false,
+  "researchCandidatesAdopted": 0,
+  "verification": {
+    "flywayValidation": "passed",
+    "hibernateSchemaValidation": "passed",
+    "finalH2FullRegression": {"tests": 325, "failures": 0, "errors": 0, "skipped": 0},
+    "frontend": {"tests": 114, "lint": "passed", "build": "passed"},
+    "sourceHashPreviewCheck": "passed",
+    "actualMysqlConcurrentBindingScenario": "not run",
+    "realWindowsCollectorAndOAuthIntegration": "not run",
+    "centralPriceSynchronizationAndScheduledCollection": "not implemented"
+  },
+  "startupConfiguration": {
+    "newEnvironmentVariablesRequired": false,
+    "existingLocalRunConfigurationChanged": false,
+    "required": ["JDK 21", "SPRING_PROFILES_ACTIVE=local", "DB_PASSWORD", "existing personal datasource and applicable OAuth settings"],
+    "restartWithLatestCode": true
+  }
+}

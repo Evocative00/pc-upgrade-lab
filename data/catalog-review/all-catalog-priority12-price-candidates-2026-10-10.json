@@ -1,0 +1,1292 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-10T08:52:30.436Z",
+  "scope": "12 prioritized unpriced CPU/GPU/RAM records; exact domestic NEW SKU and ordinary product amount only",
+  "priceImportApproved": false,
+  "databaseWrites": 0,
+  "deploymentChanges": 0,
+  "collector": "backend/tools/collect-danawa-prices.mjs parseDanawaPrice",
+  "requestPolicy": {
+    "sequential": true,
+    "minimumIntervalMs": 2000,
+    "stopOnHttpOrConnectionError": true,
+    "parseRejectionMeansNoPrice": true
+  },
+  "sourceAudit": "data/catalog-review/all-catalog-price-acquisition-2026-10-10.json",
+  "sourceIdentityFile": "data/catalog-shared/all-catalog-identities-2026-10-10.json",
+  "products": [
+    {
+      "localProductId": "e3f0c9a5-4511-4468-b94f-adfe324f7463",
+      "canonicalId": "05a1b875-7aa0-34cf-8ff5-b59a31733119",
+      "type": "CPU",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "6b03b443-7b22-491c-b301-7e2a285359df",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 7600",
+        "partNumber": "100-100001015BOX"
+      },
+      "moduleCount": null,
+      "moduleCapacityBytes": null,
+      "manufacturerEvidenceUrls": [
+        "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7600.html"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [
+        {
+          "pcode": "18718481",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718481",
+          "expectedTitle": "AMD 라이젠5-5세대 7600 (라파엘) (정품)",
+          "discoveryMethod": "Primary public Danawa search result; cached price ignored"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718481",
+          "pcode": "18718481",
+          "expectedTitle": "AMD 라이젠5-5세대 7600 (라파엘) (정품)",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:52:30.859Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 121593,
+          "sha256": "6d48ab0ac03404e5e8112c36cbe39005cf7fde6122e4f491c56cf81e51dfcb88",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "exactPnVisibleInHtml": false,
+          "availabilityText": [
+            "가격비교 중지",
+            "가격비교 중지"
+          ],
+          "exactPnVisibleInMainText": false,
+          "collectionStatus": "NO_PRICE",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "priceIsImportable": false
+        }
+      ],
+      "mapping": null,
+      "priceImportApproved": false,
+      "cataloguePriceAmountKrw": null,
+      "blocker": "NO_ACTIVE_PRICE_ON_REVIEWED_BOXED_PRODUCT_PAGE",
+      "reviewNote": "Exact-family Korean genuine boxed page 18718481 has no active regular price section. Search fallback 18718496 is genuine multipack, not evidence for catalogue BOX packaging; 27757619 is 7600X and assembled PCs are excluded.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [
+        {
+          "pcode": "18718496",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18718496",
+          "reason": "MULTIPACK_PACKAGE_NOT_BOX",
+          "priceAdopted": false
+        },
+        {
+          "pcode": "27757619",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=27757619",
+          "reason": "MODEL_7600X_NOT_7600",
+          "priceAdopted": false
+        }
+      ],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "EXACT_SKU_REVIEW_REQUIRED",
+        "candidateCount": 12,
+        "searches": [
+          {
+            "query": "100-100001015BOX",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100001015BOX",
+            "observedAt": "2026-10-10T08:50:13.270Z",
+            "candidateCount": 0
+          },
+          {
+            "query": "AMD Ryzen 5 7600",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=AMD%20Ryzen%205%207600",
+            "observedAt": "2026-10-10T08:50:14.992Z",
+            "candidateCount": 12
+          }
+        ]
+      }
+    },
+    {
+      "localProductId": "56dcacba-cbd1-471a-b31e-b3085d3e9679",
+      "canonicalId": "239bd464-14e0-3068-9bee-8d7c7c6a0d42",
+      "type": "CPU",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "60a8ba0d-d6a5-4e84-89df-a5ca2a8915c9",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 7700X",
+        "partNumber": "100-100000591WOF"
+      },
+      "moduleCount": null,
+      "moduleCapacityBytes": null,
+      "manufacturerEvidenceUrls": [
+        "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7700x.html"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [
+        {
+          "pcode": "17913710",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17913710",
+          "expectedTitle": "AMD 라이젠7-5세대 7700X (라파엘) (정품)",
+          "discoveryMethod": "Primary public Danawa search result; cached price ignored"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17913710",
+          "pcode": "17913710",
+          "expectedTitle": "AMD 라이젠7-5세대 7700X (라파엘) (정품)",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:52:33.258Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 117456,
+          "sha256": "9cbe57839e360ff5bac8edf3492e0db688d3db188ea262176cf533a7e058782b",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "exactPnVisibleInHtml": false,
+          "availabilityText": [
+            "가격비교 중지",
+            "가격비교 중지"
+          ],
+          "exactPnVisibleInMainText": false,
+          "collectionStatus": "NO_PRICE",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "priceIsImportable": false
+        }
+      ],
+      "mapping": null,
+      "priceImportApproved": false,
+      "cataloguePriceAmountKrw": null,
+      "blocker": "NO_ACTIVE_PRICE_ON_REVIEWED_BOXED_PRODUCT_PAGE",
+      "reviewNote": "Reviewed genuine boxed 7700X page 17913710 has no active regular price section. Search candidate 27945140 has a different package requiring review; 123234946 is 7700X3D, a different processor.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [
+        {
+          "pcode": "27945140",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=27945140",
+          "reason": "PACKAGE_NOT_VERIFIED_AS_WOF",
+          "priceAdopted": false
+        },
+        {
+          "pcode": "123234946",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=123234946",
+          "reason": "MODEL_7700X3D_NOT_7700X",
+          "priceAdopted": false
+        }
+      ],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "EXACT_SKU_REVIEW_REQUIRED",
+        "candidateCount": 12,
+        "searches": [
+          {
+            "query": "100-100000591WOF",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000591WOF",
+            "observedAt": "2026-10-10T08:50:41.844Z",
+            "candidateCount": 0
+          },
+          {
+            "query": "AMD Ryzen 7 7700X",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=AMD%20Ryzen%207%207700X",
+            "observedAt": "2026-10-10T08:50:43.967Z",
+            "candidateCount": 12
+          }
+        ]
+      }
+    },
+    {
+      "localProductId": "1c40a545-56ed-4687-b8d2-0194f9455c32",
+      "canonicalId": "9ce7cb18-f9e8-34cc-92e3-1bd8cc5e2b4b",
+      "type": "CPU",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4fb54223-132b-42ac-b668-4be50bb6df71",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7950X3D",
+        "partNumber": "100-100000908WOF"
+      },
+      "moduleCount": null,
+      "moduleCapacityBytes": null,
+      "manufacturerEvidenceUrls": [
+        "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7950x3d.html"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [
+        {
+          "pcode": "19174415",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19174415",
+          "expectedTitle": "AMD 라이젠9-5세대 7950X3D (라파엘) (정품)",
+          "discoveryMethod": "Primary public Danawa search result; cached price ignored"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19174415",
+          "pcode": "19174415",
+          "expectedTitle": "AMD 라이젠9-5세대 7950X3D (라파엘) (정품)",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:52:35.583Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 119813,
+          "sha256": "7edf365121c8a55bb03ac0b3dc452ccd935ab66230682c541561661777f697c9",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "exactPnVisibleInHtml": false,
+          "availabilityText": [
+            "가격비교 중지",
+            "가격비교 중지"
+          ],
+          "exactPnVisibleInMainText": false,
+          "collectionStatus": "NO_PRICE",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "priceIsImportable": false
+        }
+      ],
+      "mapping": null,
+      "priceImportApproved": false,
+      "cataloguePriceAmountKrw": null,
+      "blocker": "NO_ACTIVE_PRICE_ON_REVIEWED_BOXED_PRODUCT_PAGE",
+      "reviewNote": "Reviewed genuine boxed 7950X3D page 19174415 has no active regular price section. Candidate 19627601 is genuine multipack and does not establish WOF boxed SKU equivalence.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [
+        {
+          "pcode": "19627601",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19627601",
+          "reason": "MULTIPACK_PACKAGE_NOT_WOF_BOX",
+          "priceAdopted": false
+        }
+      ],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "EXACT_SKU_REVIEW_REQUIRED",
+        "candidateCount": 12,
+        "searches": [
+          {
+            "query": "100-100000908WOF",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000908WOF",
+            "observedAt": "2026-10-10T08:51:05.337Z",
+            "candidateCount": 0
+          },
+          {
+            "query": "AMD Ryzen 9 7950X3D",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=AMD%20Ryzen%209%207950X3D",
+            "observedAt": "2026-10-10T08:51:06.526Z",
+            "candidateCount": 12
+          }
+        ]
+      },
+      "primaryManufacturerReview": {
+        "sourceUrl": "https://www.amd.com/ko/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7950x3d.html",
+        "accessMethod": "Primary manufacturer page or PDF via web tool",
+        "reviewSummary": "Official page names boxed 100-100000908WOF; does not establish multipack equivalence.",
+        "domesticOfferConfirmed": false
+      }
+    },
+    {
+      "localProductId": "b2453a28-5f43-4d31-b966-d930f7704f67",
+      "canonicalId": "78d99e2c-ba65-3d8a-9306-53f357cb4076",
+      "type": "GPU",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "229d7671-b24a-4317-a23a-fb2e5b6b3343",
+        "manufacturer": "ASRock",
+        "modelName": "Intel Arc B570 Challenger 10GB OC",
+        "partNumber": "B570 CL 10GO"
+      },
+      "moduleCount": null,
+      "moduleCapacityBytes": null,
+      "manufacturerEvidenceUrls": [
+        "https://www.asrock.com/Graphics-Card/Intel/Intel%20Arc%20B570%20Challenger%2010GB%20OC/index.asp"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [],
+      "candidateObservations": [],
+      "mapping": null,
+      "priceImportApproved": false,
+      "cataloguePriceAmountKrw": null,
+      "blocker": "EXACT_DOMESTIC_NEW_PRODUCT_MAPPING_NOT_FOUND",
+      "reviewNote": "Primary ASRock model reference found; no exact domestic new Danawa product mapping found in this review or parent full discovery. Overseas listings are not adopted.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "NO_SEARCH_CANDIDATES_REVIEW_REQUIRED",
+        "candidateCount": 0,
+        "searches": [
+          {
+            "query": "B570 CL 10GO",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=B570%20CL%2010GO",
+            "observedAt": "2026-10-10T08:51:41.934Z",
+            "candidateCount": 0
+          },
+          {
+            "query": "ASRock Intel Arc B570 Challenger 10GB OC",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=ASRock%20Intel%20Arc%20B570%20Challenger%2010GB%20OC",
+            "observedAt": "2026-10-10T08:51:42.806Z",
+            "candidateCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "localProductId": "99465ee2-e62d-4f39-a132-767646f35773",
+      "canonicalId": "8c5b9d44-168a-33ba-a272-0c5e583f956b",
+      "type": "GPU",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4d4b9c98-f7c7-48ac-8496-456593ffb3de",
+        "manufacturer": "ASUS",
+        "modelName": "Dual GeForce RTX 4070 OC Edition 12GB GDDR6X",
+        "partNumber": "DUAL-RTX4070-O12G"
+      },
+      "moduleCount": null,
+      "moduleCapacityBytes": null,
+      "manufacturerEvidenceUrls": [
+        "https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rtx4070-o12g/techspec/"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [
+        {
+          "pcode": "19756598",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19756598",
+          "expectedTitle": "ASUS DUAL 지포스 RTX 4070 O12G OC D6X 12GB 인텍앤컴퍼니",
+          "discoveryMethod": "Primary public Danawa search result; cached price ignored"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19756598",
+          "pcode": "19756598",
+          "expectedTitle": "ASUS DUAL 지포스 RTX 4070 O12G OC D6X 12GB 인텍앤컴퍼니",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:52:37.866Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 114362,
+          "sha256": "9eb7c02462e36088df1821f535fc8d8fe591e7c83c3413a22e7602d7896fb717",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "exactPnVisibleInHtml": false,
+          "availabilityText": [
+            "가격비교 중지",
+            "가격비교 중지"
+          ],
+          "exactPnVisibleInMainText": false,
+          "collectionStatus": "NO_PRICE",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "priceIsImportable": false
+        }
+      ],
+      "mapping": null,
+      "priceImportApproved": false,
+      "cataloguePriceAmountKrw": null,
+      "blocker": "NO_ACTIVE_PRICE_ON_REVIEWED_EXACT_VARIANT_PAGE",
+      "reviewNote": "Reviewed original DUAL O12G OC GDDR6X page 19756598 has no active regular price section. EVO, WHITE and GDDR6 rather than GDDR6X variants remain distinct.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [
+        {
+          "pcode": "49374290",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=49374290",
+          "reason": "EVO_VARIANT",
+          "priceAdopted": false
+        },
+        {
+          "pcode": "63086291",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=63086291",
+          "reason": "EVO_VARIANT",
+          "priceAdopted": false
+        },
+        {
+          "pcode": "21771362",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=21771362",
+          "reason": "WHITE_VARIANT",
+          "priceAdopted": false
+        },
+        {
+          "pcode": "71068121",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=71068121",
+          "reason": "GDDR6_NOT_GDDR6X",
+          "priceAdopted": false
+        }
+      ],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "NO_SEARCH_CANDIDATES_REVIEW_REQUIRED",
+        "candidateCount": 0,
+        "searches": [
+          {
+            "query": "DUAL-RTX4070-O12G",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=DUAL-RTX4070-O12G",
+            "observedAt": "2026-10-10T08:51:49.493Z",
+            "candidateCount": 0
+          },
+          {
+            "query": "ASUS Dual GeForce RTX 4070 OC Edition 12GB GDDR6X",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=ASUS%20Dual%20GeForce%20RTX%204070%20OC%20Edition%2012GB%20GDDR6X",
+            "observedAt": "2026-10-10T08:51:51.023Z",
+            "candidateCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "localProductId": "0930a447-991f-489b-a23e-88781d17e449",
+      "canonicalId": "ca47b242-f9a9-3c8b-9363-42bfdabe6b37",
+      "type": "GPU",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "38c1824d-e0ff-4f55-9fc5-b255ea293f7b",
+        "manufacturer": "ASUS",
+        "modelName": "TUF Gaming GeForce RTX 4080 OC Edition 16GB GDDR6X",
+        "partNumber": "TUF-RTX4080-O16G-GAMING"
+      },
+      "moduleCount": null,
+      "moduleCapacityBytes": null,
+      "manufacturerEvidenceUrls": [
+        "https://www.asus.com/us/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx4080-o16g-gaming/techspec/"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [
+        {
+          "pcode": "18302759",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18302759",
+          "expectedTitle": "ASUS TUF Gaming 지포스 RTX 4080 O16G OC D6X 16GB 인텍앤컴퍼니",
+          "discoveryMethod": "Primary public Danawa search result; cached price ignored"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18302759",
+          "pcode": "18302759",
+          "expectedTitle": "ASUS TUF Gaming 지포스 RTX 4080 O16G OC D6X 16GB 인텍앤컴퍼니",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:52:40.218Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 116930,
+          "sha256": "098c413518c9347e873186aa3b42917eb90f137907a48c567bb014fd110bb18b",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "exactPnVisibleInHtml": false,
+          "availabilityText": [
+            "가격비교 중지",
+            "가격비교 중지"
+          ],
+          "exactPnVisibleInMainText": false,
+          "collectionStatus": "NO_PRICE",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "priceIsImportable": false
+        }
+      ],
+      "mapping": null,
+      "priceImportApproved": false,
+      "cataloguePriceAmountKrw": null,
+      "blocker": "NO_ACTIVE_PRICE_ON_REVIEWED_EXACT_VARIANT_PAGE",
+      "reviewNote": "Reviewed original RTX 4080 O16G OC page 18302759 has no active regular price section. RTX 4080 SUPER is a different model.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "NO_SEARCH_CANDIDATES_REVIEW_REQUIRED",
+        "candidateCount": 0,
+        "searches": [
+          {
+            "query": "TUF-RTX4080-O16G-GAMING",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=TUF-RTX4080-O16G-GAMING",
+            "observedAt": "2026-10-10T08:51:55.061Z",
+            "candidateCount": 0
+          },
+          {
+            "query": "ASUS TUF Gaming GeForce RTX 4080 OC Edition 16GB GDDR6X",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=ASUS%20TUF%20Gaming%20GeForce%20RTX%204080%20OC%20Edition%2016GB%20GDDR6X",
+            "observedAt": "2026-10-10T08:51:56.527Z",
+            "candidateCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "localProductId": "520af72d-8287-40ed-8b1b-aca7c24069f7",
+      "canonicalId": "fc413955-d4fd-38a2-804e-da71489a4769",
+      "type": "GPU",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d0353240-c4df-441f-90d0-2fdd51be3227",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 7900 XT 20GB",
+        "partNumber": "11323-02-20G"
+      },
+      "moduleCount": null,
+      "moduleCapacityBytes": null,
+      "manufacturerEvidenceUrls": [
+        "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-7900-xt-20g-gddr6"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [],
+      "candidateObservations": [],
+      "mapping": null,
+      "priceImportApproved": false,
+      "cataloguePriceAmountKrw": null,
+      "blocker": "EXACT_DOMESTIC_NEW_PRODUCT_MAPPING_NOT_FOUND",
+      "reviewNote": "Sapphire primary Korean page identifies PULSE 7900 XT SKU 11323-02-20G; exact domestic new PULSE mapping was not found. Reference 7900 XT and NITRO+ must not be substituted.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [
+        {
+          "pcode": "18492077",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18492077",
+          "reason": "REFERENCE_NOT_PULSE",
+          "priceAdopted": false
+        },
+        {
+          "pcode": "19975784",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19975784",
+          "reason": "NITRO_PLUS_NOT_PULSE",
+          "priceAdopted": false
+        }
+      ],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "NO_SEARCH_CANDIDATES_REVIEW_REQUIRED",
+        "candidateCount": 0,
+        "searches": [
+          {
+            "query": "11323-02-20G",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=11323-02-20G",
+            "observedAt": "2026-10-10T08:53:10.375Z",
+            "candidateCount": 0
+          },
+          {
+            "query": "Sapphire PULSE Radeon RX 7900 XT 20GB",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=Sapphire%20PULSE%20Radeon%20RX%207900%20XT%2020GB",
+            "observedAt": "2026-10-10T08:53:11.559Z",
+            "candidateCount": 0
+          }
+        ]
+      },
+      "primaryManufacturerReview": {
+        "sourceUrl": "https://www.sapphiretech.com/ko-kr/consumer/pulse-radeon-rx-7900-xt-20g-gddr6",
+        "accessMethod": "Primary manufacturer page or PDF via web tool",
+        "reviewSummary": "Official PULSE model and exact SKU 11323-02-20G.",
+        "domesticOfferConfirmed": false
+      }
+    },
+    {
+      "localProductId": "a3b81710-dd76-497a-8174-7a99963836c8",
+      "canonicalId": "589c0aab-0516-307c-9275-3354bf9ab7e0",
+      "type": "RAM",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "db6432c5-775f-492a-be92-b71bf975c69a",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-6000 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2B6000C36"
+      },
+      "moduleCount": 2,
+      "moduleCapacityBytes": 17179869184,
+      "manufacturerEvidenceUrls": [
+        "https://www.corsair.com/us/en/p/memory/cmk32gx5m2b6000c36/vengeance-32gb-2x16gb-ddr5-dram-6000mhz-c36-memory-kit-black-cmk32gx5m2b6000c36"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [
+        {
+          "pcode": "17941487",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17941487",
+          "expectedTitle": "CORSAIR DDR5-6000 CL36 VENGEANCE BLACK 패키지 (32GB(16Gx2))",
+          "discoveryMethod": "Primary public Danawa search result; cached price ignored"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17941487",
+          "pcode": "17941487",
+          "expectedTitle": "CORSAIR DDR5-6000 CL36 VENGEANCE BLACK 패키지 (32GB(16Gx2))",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:52:42.471Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 105589,
+          "sha256": "79cf910dd32d12ce7f3d0283b9ff9cc3796228d0b79cc52f8a95005817953073",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "exactPnVisibleInHtml": false,
+          "availabilityText": [
+            "가격비교 중지",
+            "가격비교 중지"
+          ],
+          "exactPnVisibleInMainText": false,
+          "collectionStatus": "NO_PRICE",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "priceIsImportable": false
+        }
+      ],
+      "mapping": null,
+      "priceImportApproved": false,
+      "cataloguePriceAmountKrw": null,
+      "blocker": "NO_ACTIVE_PRICE_ON_REVIEWED_MATCHING_FAMILY_PAGE",
+      "reviewNote": "Reviewed black non-RGB CL36 2x16GB page 17941487 has no active regular price section. Full domestic B suffix PN remains unverified. Parent search fallback results contain RGB, CL30 or WHITE variants and cannot be accepted from matching speed alone.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "EXACT_SKU_REVIEW_REQUIRED",
+        "candidateCount": 8,
+        "searches": [
+          {
+            "query": "CMK32GX5M2B6000C36",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=CMK32GX5M2B6000C36",
+            "observedAt": "2026-10-10T08:55:19.175Z",
+            "candidateCount": 0
+          },
+          {
+            "query": "Corsair VENGEANCE DDR5-6000 32GB (2x16GB)",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=Corsair%20VENGEANCE%20DDR5-6000%2032GB%20(2x16GB)",
+            "observedAt": "2026-10-10T08:55:21.058Z",
+            "candidateCount": 8
+          }
+        ]
+      }
+    },
+    {
+      "localProductId": "a55f968d-c92c-4edd-89d8-c6801a2c54d2",
+      "canonicalId": "eda1782f-d9ff-381d-abb1-165238b5d40a",
+      "type": "RAM",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "52a8fdd1-5c4a-48ff-a0e1-e5ea3a6accc6",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE RGB DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "CMH32GX5M2B6000C30"
+      },
+      "moduleCount": 2,
+      "moduleCapacityBytes": 17179869184,
+      "manufacturerEvidenceUrls": [
+        "https://www.corsair.com/ww/en/p/memory/cmh32gx5m2b6000c30/vengeance-rgb-32gb-2x16gb-ddr5-dram-6000mt-s-c30-memory-kit-black-cmh32gx5m2b6000c30"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [
+        {
+          "pcode": "27665987",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=27665987",
+          "expectedTitle": "CORSAIR DDR5-6000 CL30 VENGEANCE RGB BLACK 패키지 (32GB(16Gx2))",
+          "discoveryMethod": "Primary public Danawa search result; cached price ignored"
+        },
+        {
+          "pcode": "59829371",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829371",
+          "expectedTitle": "CORSAIR DDR5-6000 CL30 VENGEANCE RGB 패키지 (32GB(16Gx2))",
+          "discoveryMethod": "Primary public Danawa search result; cached price ignored"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=27665987",
+          "pcode": "27665987",
+          "expectedTitle": "CORSAIR DDR5-6000 CL30 VENGEANCE RGB BLACK 패키지 (32GB(16Gx2))",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:52:44.716Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 110218,
+          "sha256": "545be95235deb0ef75da36387c98a24f5df881d29f810dcdd8328d67d8ef4889",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "exactPnVisibleInHtml": false,
+          "availabilityText": [
+            "단종",
+            "단종"
+          ],
+          "exactPnVisibleInMainText": false,
+          "collectionStatus": "NO_PRICE",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "priceIsImportable": false
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=59829371",
+          "pcode": "59829371",
+          "expectedTitle": "CORSAIR DDR5-6000 CL30 VENGEANCE RGB 패키지 (32GB(16Gx2))",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:52:47.181Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 147946,
+          "sha256": "d68f4ffcecc20fab41feca4741d7bba89ee32a0118e43f9ef7fa4e5e66c3d728",
+          "regularSectionCount": 1,
+          "dataBasePriceCount": 1,
+          "exactPnVisibleInHtml": false,
+          "availabilityText": [],
+          "exactPnVisibleInMainText": false,
+          "price": {
+            "amountKrw": 798590,
+            "observedAt": "2026-10-10T08:52:47.181Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=59829371",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "collectionStatus": "PRICE_PARSED_IDENTITY_PENDING",
+          "evidenceQuote": " <div class=\"sell-price\" data-base-price=\"798590\" data-delivery-price=\"2500\"> <span class=\"text__",
+          "priceIsImportable": false,
+          "shippingExcluded": true,
+          "promotionsExcluded": true,
+          "stockEvidenceExtent": "ACTIVE_DANAWA_ORDINARY_LISTING_ONLY"
+        }
+      ],
+      "mapping": null,
+      "priceImportApproved": false,
+      "additionalIdentityEvidence": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/ajax/getProductDescription.ajax.php",
+          "requestMethod": "POST",
+          "readOnly": true,
+          "productPageUrl": "https://prod.danawa.com/info/?pcode=59829371",
+          "productCode": "59829371",
+          "readAt": "2026-10-10T09:05:05.942Z",
+          "httpStatus": 200,
+          "bodyBytes": 16626,
+          "sha256": "a52ff01e32ad05e029efa3ebac8d2b8135920c01754a1223966e7ba9c7ebe00e",
+          "pnMatches": [],
+          "exactPnVisibleInMainText": false,
+          "pnContext": null,
+          "detailImages": [
+            "https://img.danawa.com/brand/images/goodsImage/18409/59829371.jpg?v=1790732564",
+            "https://img.danuri.io/catalog-content/images/cd0/3549263_86077ebce55447f98858794f36b91331.jpg",
+            "https://img.danuri.io/catalog-content/images/fe6/3549264_07ab341342b44b20bb81106f0290a6ed.jpg",
+            "https://img.danuri.io/catalog-content/images/fe6/3549264_a3bbeb08c0844b4ea9dda1a4d6f4e5d6.jpg",
+            "https://img.danuri.io/catalog-content/images/fe6/3549264_d59603fc4dd749e0a7eb20e1279ae6c3.jpg",
+            "https://img.danuri.io/catalog-content/images/fe6/3549264_4e3ebf64addd46448da2d428f6ccabb6.jpg"
+          ],
+          "imageSkuTextReviewed": false,
+          "reviewSummary": "Official Corsair full PN identifies black RGB 2x16GB 6000 CL30, timing 30-36-36-76, Intel XMP. Domestic active page 59829371 matches core capacity/speed/timing/RGB/color but also advertises EXPO. Full sale PN and any profile or revision equivalence remain unverified in visible HTML and fetched detail text. Original page 27665987 has no active regular price section. No inference from forum PN claims or inaccessible image text."
+        }
+      ],
+      "cataloguePriceAmountKrw": null,
+      "blocker": "EXACT_DOMESTIC_PN_AND_PROFILE_REVIEW_PENDING",
+      "reviewNote": "Official Corsair full PN identifies black RGB 2x16GB 6000 CL30, timing 30-36-36-76, Intel XMP. Domestic active page 59829371 matches core capacity/speed/timing/RGB/color but also advertises EXPO. Full sale PN and any profile or revision equivalence remain unverified in visible HTML and fetched detail text. Original page 27665987 has no active regular price section. No inference from forum PN claims or inaccessible image text.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [
+        {
+          "pcode": "27666047",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=27666047",
+          "reason": "WHITE_VARIANT",
+          "priceAdopted": false
+        },
+        {
+          "pcode": "72471092",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=72471092",
+          "reason": "DP_WHITE_VARIANT",
+          "priceAdopted": false
+        }
+      ],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "EXACT_SKU_REVIEW_REQUIRED",
+        "candidateCount": 1,
+        "searches": [
+          {
+            "query": "CMH32GX5M2B6000C30",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=CMH32GX5M2B6000C30",
+            "observedAt": "2026-10-10T08:55:31.336Z",
+            "candidateCount": 1
+          }
+        ]
+      },
+      "primaryManufacturerReview": {
+        "sourceUrl": "https://www.corsair.com/ww/ko/p/memory/cmh32gx5m2b6000c30/vengeance-rgb-32gb-2x16gb-ddr5-dram-6000mt-s-c30-memory-kit-black-cmh32gx5m2b6000c30",
+        "accessMethod": "Primary manufacturer page or PDF via web tool",
+        "reviewSummary": "Official exact PN and black RGB 2x16GB 6000 CL30, 30-36-36-76, Intel XMP; domestic full PN still pending.",
+        "domesticOfferConfirmed": false,
+        "recheckedAt": "2026-10-10T09:09:17.154Z"
+      }
+    },
+    {
+      "localProductId": "1a379ed2-8a17-4b05-9fa8-194fee7cb71a",
+      "canonicalId": "23933dcc-214a-3c3f-8f31-53399f1e9cfb",
+      "type": "RAM",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "45adbb33-9ace-451b-b8c4-b4a90bd67e22",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 32GB (1x32GB)",
+        "partNumber": "KF560C36BBE-32"
+      },
+      "moduleCount": 1,
+      "moduleCapacityBytes": 34359738368,
+      "manufacturerEvidenceUrls": [
+        "https://www.kingston.com/datasheets/KF560C36BBE-32.pdf",
+        "https://www.kingston.com/en/memory/search?partid=KF560C36BBE-32"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [],
+      "candidateObservations": [],
+      "mapping": null,
+      "priceImportApproved": false,
+      "cataloguePriceAmountKrw": null,
+      "blocker": "EXACT_DOMESTIC_NEW_PRODUCT_MAPPING_NOT_FOUND",
+      "reviewNote": "Official Kingston data sheet identifies one 32GB 6000 CL36 module. Domestic search candidates are CL30 RGB kits or other speeds, so no exact new offer was mapped.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [
+        {
+          "pcode": "96773279",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773279",
+          "reason": "CL30_RGB_KIT_NOT_CL36_SINGLE",
+          "priceAdopted": false
+        },
+        {
+          "pcode": "96773315",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773315",
+          "reason": "CL30_WHITE_RGB_KIT_NOT_CL36_SINGLE",
+          "priceAdopted": false
+        },
+        {
+          "pcode": "104751425",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=104751425",
+          "reason": "SELLING_TITLE_5600_DOES_NOT_ESTABLISH_FULL_6000_PN",
+          "priceAdopted": false
+        },
+        {
+          "pcode": "103753160",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=103753160",
+          "reason": "CL30_NOT_CL36",
+          "priceAdopted": false
+        }
+      ],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "EXACT_SKU_REVIEW_REQUIRED",
+        "candidateCount": 2,
+        "searches": [
+          {
+            "query": "KF560C36BBE-32",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=KF560C36BBE-32",
+            "observedAt": "2026-10-10T08:56:23.099Z",
+            "candidateCount": 0
+          },
+          {
+            "query": "Kingston FURY Beast DDR5-6000 CL36 32GB (1x32GB)",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=Kingston%20FURY%20Beast%20DDR5-6000%20CL36%2032GB%20(1x32GB)",
+            "observedAt": "2026-10-10T08:56:24.756Z",
+            "candidateCount": 2
+          }
+        ]
+      },
+      "primaryManufacturerReview": {
+        "sourceUrl": "https://www.kingston.com/datasheets/KF560C36BBE-32.pdf",
+        "accessMethod": "Primary manufacturer page or PDF via web tool",
+        "reviewSummary": "Official exact PN, single 32GB desktop 6000 CL36.",
+        "domesticOfferConfirmed": false,
+        "recheckedAt": "2026-10-10T09:09:17.154Z"
+      }
+    },
+    {
+      "localProductId": "cf8055ae-efea-4347-9f29-ed874c617112",
+      "canonicalId": "4d56ff31-af55-30a7-acd1-0e932f1c0af9",
+      "type": "RAM",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "437cf126-cbaf-49a8-a106-4119977f9f4f",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-5600 16GB (1x16GB)",
+        "partNumber": "KVR56U46BS8-16"
+      },
+      "moduleCount": 1,
+      "moduleCapacityBytes": 17179869184,
+      "manufacturerEvidenceUrls": [
+        "https://www.kingston.com/en/memory/search/discontinuedmodels?partid=KVR56U46BS8-16"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [
+        {
+          "pcode": "96773492",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773492",
+          "expectedTitle": "킹스톤 DDR5-5600 CL46 코잇 (16GB)",
+          "discoveryMethod": "Primary public Danawa search result; cached price ignored"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773492",
+          "pcode": "96773492",
+          "expectedTitle": "킹스톤 DDR5-5600 CL46 코잇 (16GB)",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:52:49.643Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 155598,
+          "sha256": "ab579b85e23739a25cf68e3a8800365156dcabfd367f4642329d9c1c81da3dc0",
+          "regularSectionCount": 1,
+          "dataBasePriceCount": 1,
+          "exactPnVisibleInHtml": false,
+          "availabilityText": [],
+          "exactPnVisibleInMainText": false,
+          "price": {
+            "amountKrw": 444770,
+            "observedAt": "2026-10-10T08:52:49.643Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=96773492",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "collectionStatus": "PRICE_PARSED_IDENTITY_PENDING",
+          "evidenceQuote": " <div class=\"sell-price\" data-base-price=\"444770\" data-delivery-price=\"4000\"> <span class=\"text__",
+          "priceIsImportable": false,
+          "shippingExcluded": true,
+          "promotionsExcluded": true,
+          "stockEvidenceExtent": "ACTIVE_DANAWA_ORDINARY_LISTING_ONLY"
+        }
+      ],
+      "mapping": null,
+      "priceImportApproved": false,
+      "additionalIdentityEvidence": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/ajax/getProductDescription.ajax.php",
+          "requestMethod": "POST",
+          "readOnly": true,
+          "productPageUrl": "https://prod.danawa.com/info/?pcode=96773492",
+          "productCode": "96773492",
+          "readAt": "2026-10-10T09:05:09.970Z",
+          "httpStatus": 200,
+          "bodyBytes": 13568,
+          "sha256": "99f686c374b75dbcdd71ab917c25d97187a1b45b9ccacacf551d22a8ec7a35dd",
+          "pnMatches": [],
+          "exactPnVisibleInMainText": false,
+          "pnContext": null,
+          "detailImages": [
+            "https://img.danuri.io/catalog-content/images/237/61983_b421b7f6e0d449e983ae5fe343a960ed.jpg",
+            "https://img.danuri.io/catalog-content/images/b36/61984_0d4310aaf2b64b43b4bd08c7960d29a2.jpeg",
+            "https://img.danuri.io/catalog-content/images/b36/61984_0b6f24ab48fe4abfa0ae34ac54edd49a.jpeg",
+            "https://img.danuri.io/catalog-content/images/b36/61984_a2473f9e6e8e48918c1c340c07f93d75.jpeg",
+            "https://img.danuri.io/catalog-content/images/b36/61984_47c0320561da4cc0956c74d72df2764f.jpeg",
+            "https://img.danuri.io/catalog-content/images/b36/61984_3d36deeb9ffc4d2a89c6b715b2125970.jpeg",
+            "https://img.danuri.io/catalog-content/images/b36/61984_68e6c27ee63b4ea09cf0daad4165293f.jpeg"
+          ],
+          "imageSkuTextReviewed": false,
+          "reviewSummary": "Kingston primary data sheet identifies KVR56U46BS8-16, 16GB 1Rx8, DDR5-5600 CL46, timing 46-45-45, 1.1V, 288-pin desktop DIMM. Domestic page 96773492 matches capacity/speed/timing/one-module format, but neither main HTML nor fetched detail text identifies full sale PN. Rank/chip or revision alternatives are not inferred equivalent."
+        }
+      ],
+      "cataloguePriceAmountKrw": null,
+      "blocker": "EXACT_DOMESTIC_PN_REVIEW_PENDING",
+      "reviewNote": "Kingston primary data sheet identifies KVR56U46BS8-16, 16GB 1Rx8, DDR5-5600 CL46, timing 46-45-45, 1.1V, 288-pin desktop DIMM. Domestic page 96773492 matches capacity/speed/timing/one-module format, but neither main HTML nor fetched detail text identifies full sale PN. Rank/chip or revision alternatives are not inferred equivalent.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [
+        {
+          "pcode": "103752911",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=103752911",
+          "reason": "SODIMM_NOTEBOOK_FORMAT",
+          "priceAdopted": false
+        }
+      ],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "NO_SEARCH_CANDIDATES_REVIEW_REQUIRED",
+        "candidateCount": 0,
+        "searches": [
+          {
+            "query": "KVR56U46BS8-16",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=KVR56U46BS8-16",
+            "observedAt": "2026-10-10T08:56:47.524Z",
+            "candidateCount": 0
+          },
+          {
+            "query": "Kingston ValueRAM DDR5-5600 16GB (1x16GB)",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=Kingston%20ValueRAM%20DDR5-5600%2016GB%20(1x16GB)",
+            "observedAt": "2026-10-10T08:56:49.267Z",
+            "candidateCount": 0
+          }
+        ]
+      },
+      "primaryManufacturerReview": {
+        "sourceUrl": "https://www.kingston.com/datasheets/KVR56U46BS8-16.pdf",
+        "accessMethod": "Primary manufacturer page or PDF via web tool",
+        "reviewSummary": "Official exact PN, desktop DIMM, single 16GB, 1Rx8, 5600 CL46 46-45-45 1.1V.",
+        "domesticOfferConfirmed": false,
+        "recheckedAt": "2026-10-10T09:09:17.154Z"
+      }
+    },
+    {
+      "localProductId": "9fcad475-1b8a-4dd2-b8ef-4c745a49b2d6",
+      "canonicalId": "05d41532-669c-324d-901b-c58fb88bc310",
+      "type": "RAM",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3450c943-2555-42ae-b7af-d54f73330635",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-5600 32GB (1x32GB)",
+        "partNumber": "KVR56U46BD8-32"
+      },
+      "moduleCount": 1,
+      "moduleCapacityBytes": 34359738368,
+      "manufacturerEvidenceUrls": [
+        "https://www.kingston.com/en/memory/search/discontinuedmodels?partid=KVR56U46BD8-32"
+      ],
+      "previousAcquisitionState": "NEEDS_DOMESTIC_SKU_MAPPING",
+      "stockStatus": "UNKNOWN",
+      "status": "NO_PRICE",
+      "identityReviewStatus": "DOMESTIC_EXACT_SKU_NOT_CONFIRMED",
+      "searchCandidates": [
+        {
+          "pcode": "96773477",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773477",
+          "expectedTitle": "킹스톤 DDR5-5600 CL46 코잇 (32GB)",
+          "discoveryMethod": "Primary public Danawa search result; cached price ignored"
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=96773477",
+          "pcode": "96773477",
+          "expectedTitle": "킹스톤 DDR5-5600 CL46 코잇 (32GB)",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:52:52.127Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 155612,
+          "sha256": "97b4eadca67c1170a0fcf1414b471dd1ec3e40355379cbafbf55116ca379ff75",
+          "regularSectionCount": 1,
+          "dataBasePriceCount": 1,
+          "exactPnVisibleInHtml": false,
+          "availabilityText": [],
+          "exactPnVisibleInMainText": false,
+          "price": {
+            "amountKrw": 938720,
+            "observedAt": "2026-10-10T08:52:52.127Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=96773477",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "collectionStatus": "PRICE_PARSED_IDENTITY_PENDING",
+          "evidenceQuote": " <div class=\"sell-price\" data-base-price=\"938720\" data-delivery-price=\"4000\"> <span class=\"text__",
+          "priceIsImportable": false,
+          "shippingExcluded": true,
+          "promotionsExcluded": true,
+          "stockEvidenceExtent": "ACTIVE_DANAWA_ORDINARY_LISTING_ONLY"
+        }
+      ],
+      "mapping": null,
+      "priceImportApproved": false,
+      "additionalIdentityEvidence": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/ajax/getProductDescription.ajax.php",
+          "requestMethod": "POST",
+          "readOnly": true,
+          "productPageUrl": "https://prod.danawa.com/info/?pcode=96773477",
+          "productCode": "96773477",
+          "readAt": "2026-10-10T09:05:14.008Z",
+          "httpStatus": 200,
+          "bodyBytes": 13582,
+          "sha256": "68c5aa54dc7ad84a3cbcbff4f074105bf76c54298efe0efb3be40210d4ea6c92",
+          "pnMatches": [],
+          "exactPnVisibleInMainText": false,
+          "pnContext": null,
+          "detailImages": [
+            "https://img.danuri.io/catalog-content/images/d93/5861959_7e011ca5f5d14dc0af56b84c50e8315c.jpg",
+            "https://img.danuri.io/catalog-content/images/026/5861960_b419a9044c7b4bceba3ebb5f8d5e002b.jpeg",
+            "https://img.danuri.io/catalog-content/images/026/5861960_d5b8c0f76e454577b3fa361cf21bf6af.jpeg",
+            "https://img.danuri.io/catalog-content/images/026/5861960_06161fe957934a848791dc010d60bfa4.jpeg",
+            "https://img.danuri.io/catalog-content/images/026/5861960_731f548813d94e3e8195e408ced8a40c.jpeg",
+            "https://img.danuri.io/catalog-content/images/026/5861960_34f01ea5108b471c8a16110a4ff27301.jpeg",
+            "https://img.danuri.io/catalog-content/images/026/5861960_1942b7b3dea24769859a696de5d90644.jpeg"
+          ],
+          "imageSkuTextReviewed": false,
+          "reviewSummary": "Kingston primary data sheet identifies KVR56U46BD8-32, 32GB 2Rx8 DDR5-5600 CL46 desktop DIMM. Domestic page 96773477 matches capacity/speed/timing/one-module format, but neither main HTML nor fetched detail text identifies full sale PN. RS Korea lists the exact PN with supply-shortage status and no usable current price; this is not a nationwide stock conclusion."
+        }
+      ],
+      "cataloguePriceAmountKrw": null,
+      "blocker": "EXACT_DOMESTIC_PN_REVIEW_PENDING",
+      "reviewNote": "Kingston primary data sheet identifies KVR56U46BD8-32, 32GB 2Rx8 DDR5-5600 CL46 desktop DIMM. Domestic page 96773477 matches capacity/speed/timing/one-module format, but neither main HTML nor fetched detail text identifies full sale PN. RS Korea lists the exact PN with supply-shortage status and no usable current price; this is not a nationwide stock conclusion.",
+      "stockEvidenceExtent": "No retailer warehouse stock verification. Any parser inStock=true is only the active ordinary Danawa listing signal.",
+      "lastReviewedAt": "2026-10-10T09:08:21.466Z",
+      "excludedCandidateMappings": [
+        {
+          "pcode": "103752917",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=103752917",
+          "reason": "SODIMM_NOTEBOOK_FORMAT",
+          "priceAdopted": false
+        },
+        {
+          "pcode": "104595902",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=104595902",
+          "reason": "FURY_FAMILY_NOT_VALUERAM",
+          "priceAdopted": false
+        }
+      ],
+      "parentDiscoveryEvidence": {
+        "sourceFile": "data/catalog-review/all-catalog-danawa-discovery-retry-2026-10-10.json",
+        "status": "NO_SEARCH_CANDIDATES_REVIEW_REQUIRED",
+        "candidateCount": 0,
+        "searches": [
+          {
+            "query": "KVR56U46BD8-32",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=KVR56U46BD8-32",
+            "observedAt": "2026-10-10T08:56:49.770Z",
+            "candidateCount": 0
+          },
+          {
+            "query": "Kingston ValueRAM DDR5-5600 32GB (1x32GB)",
+            "sourceUrl": "https://search.danawa.com/dsearch.php?query=Kingston%20ValueRAM%20DDR5-5600%2032GB%20(1x32GB)",
+            "observedAt": "2026-10-10T08:56:51.385Z",
+            "candidateCount": 0
+          }
+        ]
+      },
+      "primaryManufacturerReview": {
+        "sourceUrl": "https://www.kingston.com/datasheets/KVR56U46BD8-32.pdf",
+        "accessMethod": "Primary manufacturer page or PDF via web tool",
+        "reviewSummary": "Official exact PN, desktop DIMM, single 32GB, 2Rx8, 5600 CL46.",
+        "domesticOfferConfirmed": false,
+        "recheckedAt": "2026-10-10T09:09:17.154Z"
+      },
+      "otherRetailerReview": {
+        "sourceUrl": "https://kr.rs-online.com/web/p/ram/0358557",
+        "retailerProductId": "358-557",
+        "partNumber": "KVR56U46BD8-32",
+        "reviewSummary": "Exact PN is displayed; supplier shortage notice and no usable current ordinary price were observed. No price copied.",
+        "priceAdopted": false
+      }
+    }
+  ],
+  "reviewedMappings": {
+    "schemaVersion": 1,
+    "items": []
+  },
+  "previewPayload": {
+    "schemaVersion": 1,
+    "items": []
+  },
+  "notes": [
+    "Existing files preserved. No price approval, DB writes, deployment, purchases, accounts or paid APIs.",
+    "A parse-success amount remains a candidate until domestic full PN, CPU package or RAM kit unit is established. Active Danawa listing is not retailer warehouse inventory proof.",
+    "No price means unconfirmed current price, not numeric zero or a discontinuation claim.",
+    "Offer verifiedAt will be set only after actual identity review; any preview observation is collected afterward without backdating timestamps.",
+    "DDR5 Corsair CMK32GX5M2B6000C36 replaced initially considered M2E variant because a domestic exact-family title was discoverable; B/E remain separate PNs."
+  ],
+  "initialCollectionCompletedAt": "2026-10-10T08:52:52.143Z",
+  "summary": {
+    "selectedProducts": 12,
+    "byCategory": {
+      "CPU": {
+        "selected": 3,
+        "pricePreviewReady": 0,
+        "unconfirmedPriceProducts": 3
+      },
+      "GPU": {
+        "selected": 4,
+        "pricePreviewReady": 0,
+        "unconfirmedPriceProducts": 4
+      },
+      "RAM": {
+        "selected": 5,
+        "pricePreviewReady": 0,
+        "unconfirmedPriceProducts": 5,
+        "candidateProductPricesRead": 3
+      }
+    },
+    "initialDanawaProductPageRequests": 10,
+    "initialDanawaHttpFailures": 0,
+    "initialStrictPriceParseSuccesses": 3,
+    "initialStrictPriceParseRejections": 7,
+    "selectedProductsWithoutActiveRegularPriceOnReviewedPages": 6,
+    "selectedProductsWithUnverifiedDomesticSkuButParsedCandidatePrice": 3,
+    "selectedProductsWithoutExactDomesticMappingFound": 3,
+    "reviewedDomesticExactMappings": 0,
+    "previewItems": 0,
+    "priceImportApproved": false,
+    "databaseWrites": 0,
+    "deployments": 0,
+    "browserVerified": false
+  },
+  "transportFindings": [
+    {
+      "url": "https://itempage3.auction.co.kr/DetailView.aspx?itemno=F634372593",
+      "httpStatus": 403,
+      "action": "Stopped that read-only request batch; no repeated bypass request."
+    },
+    {
+      "url": "https://prod.danawa.com/info/ajax/getProductDescription.ajax.php",
+      "httpStatus": 404,
+      "context": "An initial description request had incorrectly parsed category values. The batch stopped; later a correctly parameterized normal page-description request succeeded with HTTP 200.",
+      "affectsInitialPriceBatch": false
+    },
+    {
+      "context": "Computer-use browser inventory was empty. Domestic description images were not successfully visually reviewed; no SKU conclusion was drawn from them."
+    }
+  ],
+  "completedAt": "2026-10-10T09:09:17.154Z",
+  "followUp": [
+    "Exact domestic full PN and RAM revision/profile proof is still required for the three parsed RAM price candidates. Record offer.verifiedAt only after that review and collect a fresh actual observedAt afterward.",
+    "For stopped BOX/WOF pages, seek an active genuinely boxed exact-PN offer; do not substitute genuine multipack/tray or a complete assembled PC.",
+    "For missing exact GPU and single-module FURY offers, retain NO_PRICE until a primary domestic new offer identifies the full variant/SKU."
+  ]
+}

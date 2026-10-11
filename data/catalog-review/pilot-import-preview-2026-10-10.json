@@ -1,0 +1,3104 @@
+{
+  "schemaVersion": 1,
+  "previewDate": "2026-10-10",
+  "stage": "DB_FREE_DETAILED_REVIEW_PENDING_APPLY_APPROVAL",
+  "approvalScope": {
+    "selectionAndDetailedReviewApproved": true,
+    "databaseApplyApproved": false,
+    "priceApplyApproved": false
+  },
+  "sourceHashes": [
+    {
+      "file": "data/catalog-review/pilot-selection-2026-10-10.json",
+      "normalizedSha256": "3dcae49ab6fb336d47b3d1941346587ed7b816a46dd6b99d43046f26e03da439"
+    },
+    {
+      "file": "data/catalog-review/catalog-selection-2026-10-09.json",
+      "normalizedSha256": "347424269ee9a462ab5d7adc824099673fb89ad53d28d322485ae83eff3cfd90"
+    },
+    {
+      "file": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+      "normalizedSha256": "f1b01983aac80adf0d972f4d8fa65b75cdb996404060f4094245b1f356de6d85"
+    },
+    {
+      "file": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+      "normalizedSha256": "34ae2777b1b99936bb8b69e58dc2bf00954b5b7d2dfd7d2b9fbe2777a284b88a"
+    },
+    {
+      "file": "data/catalog-review/pilot-storage-evidence-2026-10-10.json",
+      "normalizedSha256": "1dde463120a14d93789b0586a5fbb4704f03ecc632befe632bb9d4d50ce8e827"
+    },
+    {
+      "file": "data/catalog-review/pilot-existing-prices-2026-10-10.json",
+      "normalizedSha256": "51789d0348a30cf11ba37bd88d9490bd82fbb8c6114798f8d8108e763451e4f1"
+    },
+    {
+      "file": "data/catalog-review/pilot-existing-prices-2026-10-10.json.report.json",
+      "normalizedSha256": "04a3d30ec5ba2970f3b1f14dc2df389b06a381cfe3292c1432adb026c01daa16"
+    },
+    {
+      "file": "data/catalog-review/pilot-existing-price-assessment-2026-10-10.json",
+      "normalizedSha256": "0b8062b62c8911b566e470e241c09a69faab7e89e5d83de6845464cd1e930ed4"
+    },
+    {
+      "file": "data/catalog-review/pilot-model-price-review-2026-10-10.json",
+      "normalizedSha256": "76f6707030de73cdb73a83a3943a43d3136ae9b77cd979790cd89e77d099b589"
+    },
+    {
+      "file": "data/catalog-review/pilot-storage-price-review-2026-10-10.json",
+      "normalizedSha256": "13e6e4fb071b9419cb0dcc2f7429318c9e9130f915ab02e1b7dab0e0399bd6e4"
+    }
+  ],
+  "summary": {
+    "reviewedParts": 14,
+    "reusedProducts": 7,
+    "proposedNewProducts": 7,
+    "proposedModelRecords": 13,
+    "proposedModelSources": 14,
+    "proposedProductBindings": 14,
+    "proposedStorageProfiles": 4,
+    "proposedStorageSlots": 19,
+    "reobservedExistingPriceCandidates": 6,
+    "exactNewStorageSellerQuotes": 2,
+    "quarantinedModelPriceQuotes": 5,
+    "databaseReads": 0,
+    "databaseWrites": 0,
+    "priceCoverageIncreaseFromReobservations": 0
+  },
+  "executionPolicy": {
+    "applyImplemented": false,
+    "resolveExistingIdsByExactSource": true,
+    "preserveExistingSpecsAndPrices": true,
+    "doNotPromoteVerificationOrActivation": true,
+    "pcRowsChanged": 0,
+    "migrationsRequired": 0,
+    "futureApplyMustRecheckDbStateAndBeIdempotent": true
+  },
+  "models": [
+    {
+      "modelKey": "CPU_MODEL:AMD:Ryzen 5 9600X",
+      "registration": {
+        "canonicalId": "7e546e2a-49ac-3c66-9f02-012961f5b2ba",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 9600X",
+        "kind": "CPU_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "pilot:cc0a0e08-bc25-4539-af92-952cced58623",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9600x.html",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+                "selectionNumber": 1,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "CPU_MODEL:AMD:Ryzen 7 9700X",
+      "registration": {
+        "canonicalId": "57d75271-f7eb-3f18-972e-34cbcbb6df59",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 9700X",
+        "kind": "CPU_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "pilot:09086e21-4979-41ba-a451-3f8bb1c9cc55",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9700x.html",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+                "selectionNumber": 2,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "CPU_MODEL:Intel:Core Ultra 5 245K",
+      "registration": {
+        "canonicalId": "b4e5d61d-e985-3019-8984-6023e4541e49",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 245K",
+        "kind": "CPU_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "intel:ark:241067:model",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/specifications.html",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+                "selectionNumber": 3,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "CPU_MODEL:Intel:Core Ultra 5 250K Plus",
+      "registration": {
+        "canonicalId": "be10243d-98b9-3168-92a1-523602b1ea83",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 250K Plus",
+        "kind": "CPU_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "intel:ark:245694:model",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/245694/intel-core-ultra-5-processor-250k-plus-30m-cache-up-to-5-30-ghz/specifications.html",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+                "selectionNumber": 4,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "BOARD_MODEL:MSI:MAG B650M MORTAR WIFI",
+      "registration": {
+        "canonicalId": "58ede536-a32a-3905-b9ad-2818d6653475",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650M MORTAR WIFI",
+        "kind": "BOARD_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "pilot:b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.msi.com/Motherboard/MAG-B650M-MORTAR-WIFI/Specification",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+                "selectionNumber": 5,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "BOARD_MODEL:ASRock:B850M Pro RS",
+      "registration": {
+        "canonicalId": "11350a6b-d7fc-37b6-8b33-5186eb815dda",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASRock",
+        "modelName": "B850M Pro RS",
+        "kind": "BOARD_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "asrock:B850M Pro RS:model",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS/index.asp",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+                "selectionNumber": 6,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "BOARD_MODEL:MSI:MAG B860M MORTAR WIFI",
+      "registration": {
+        "canonicalId": "c76cadd1-ceb2-3e7d-8d8b-5d9331a2ca32",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG B860M MORTAR WIFI",
+        "kind": "BOARD_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "msi:MAG B860M MORTAR WIFI:model",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.msi.com/Motherboard/MAG-B860M-MORTAR-WIFI/Specification",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+                "selectionNumber": 7,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "BOARD_MODEL:ASUS:TUF GAMING B860-PLUS WIFI",
+      "registration": {
+        "canonicalId": "3650ed66-d0bf-3906-9a1c-a77544ce34cf",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B860-PLUS WIFI",
+        "kind": "BOARD_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "asus:TUF GAMING B860-PLUS WIFI:model",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+                "selectionNumber": 8,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "RAM_SPEC_GROUP:G.SKILL:DDR5 DIMM 16GB non-ECC unbuffered specification group",
+      "registration": {
+        "canonicalId": "103535fb-5b27-31b5-8470-11eae9f0b875",
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "DDR5 DIMM 16GB non-ECC unbuffered specification group",
+        "kind": "RAM_SPEC_GROUP",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "pilot:a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.gskill.com/specification/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-Specification",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+                "selectionNumber": 9,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Only shared DDR5 DIMM 16GB non-ECC unbuffered facts. Kit PN is not module PN; rank, IC and exact module identity remain unknown."
+          },
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "pilot:1555eede-7e03-4038-824d-91d8fb21a6e2",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.gskill.com/specification/165/377/1664845977/F5-6000J3636F16GX2-RS5K-Specification",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+                "selectionNumber": 10,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Only shared DDR5 DIMM 16GB non-ECC unbuffered facts. Kit PN is not module PN; rank, IC and exact module identity remain unknown."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "GPU_CHIP_MODEL:NVIDIA:GeForce RTX 5060",
+      "registration": {
+        "canonicalId": "9ed87948-ace7-352c-a48f-b8382555b162",
+        "type": "GPU",
+        "manufacturer": "NVIDIA",
+        "modelName": "GeForce RTX 5060",
+        "kind": "GPU_CHIP_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "pilot:bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-5060-8G-VENTUS-2X-OC.pdf",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+                "selectionNumber": 11,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "GPU_CHIP_MODEL:AMD:Radeon RX 9060 XT",
+      "registration": {
+        "canonicalId": "5e517627-8840-3cfb-908b-8bf24afa81b6",
+        "type": "GPU",
+        "manufacturer": "AMD",
+        "modelName": "Radeon RX 9060 XT",
+        "kind": "GPU_CHIP_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "pilot:bd3e1d44-97d6-4679-8e43-829730a90f18",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9060-xt-16g-gddr6",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+                "selectionNumber": 12,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "STORAGE_MODEL:Samsung:870 EVO 1TB",
+      "registration": {
+        "canonicalId": "4786f054-b961-307e-806d-dbd563a76f77",
+        "type": "STORAGE",
+        "manufacturer": "Samsung",
+        "modelName": "870 EVO 1TB",
+        "kind": "STORAGE_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "samsung:MZ-77E1T0BW",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.samsung.com/sec/memory-storage/MZ-77E1T0BW-d2c/MZ-77E1T0BW/",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-storage-evidence-2026-10-10.json",
+                "selectionNumber": 13,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    },
+    {
+      "modelKey": "STORAGE_MODEL:Samsung:990 PRO 1TB",
+      "registration": {
+        "canonicalId": "9dd12ee3-2565-3ecf-8f60-4dd693bd5458",
+        "type": "STORAGE",
+        "manufacturer": "Samsung",
+        "modelName": "990 PRO 1TB",
+        "kind": "STORAGE_MODEL",
+        "role": "INSTALLED_PC_REFERENCE",
+        "family": null,
+        "series": null,
+        "sources": [
+          {
+            "source": {
+              "sourceName": "MANUFACTURER",
+              "externalId": "samsung:MZ-V9P1T0BW",
+              "sourceRevision": "pilot-review-2026-10-10",
+              "sourceUrl": "https://www.samsung.com/sec/memory-storage/990-pro-nvme-ssd-d2c2/MZ-V9P1T0BW/",
+              "rawPayload": {
+                "recordKind": "REVIEWED_SPEC_EXTRACT",
+                "evidenceFile": "data/catalog-review/pilot-storage-evidence-2026-10-10.json",
+                "selectionNumber": 14,
+                "pageCheckDate": "2026-10-10",
+                "pageCheckTimePrecision": "DATE_ONLY",
+                "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+              },
+              "retrievedAt": "2026-10-09T16:33:34Z"
+            },
+            "reviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification."
+          }
+        ],
+        "aliases": []
+      }
+    }
+  ],
+  "products": [
+    {
+      "selectionNumber": 1,
+      "operation": "REUSE_EXISTING",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "cc0a0e08-bc25-4539-af92-952cced58623"
+      },
+      "proposedCanonicalId": "0af25373-4f49-3301-851c-2989163fbf91",
+      "localProductId": null,
+      "product": {
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 9600X",
+        "partNumber": "100-100001405WOF"
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "coreCount": 6,
+        "threadCount": 12,
+        "baseClockMhz": 3900,
+        "boostClockMhz": 5400,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "integratedGraphicsModel": "AMD Radeon Graphics",
+        "processorBasePowerW": null,
+        "maximumTurboPowerW": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "performanceCoreBaseClockMhz": null,
+        "efficientCoreBaseClockMhz": null,
+        "performanceCoreBoostClockMhz": null,
+        "efficientCoreBoostClockMhz": null
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "pilot:cc0a0e08-bc25-4539-af92-952cced58623",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9600x.html",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+          "selectionNumber": 1,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "CPU_MODEL:AMD:Ryzen 5 9600X",
+      "identityKind": "PHYSICAL_VARIANT",
+      "role": "BOTH",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "제조사 최대 256GB. CPU·보드·BIOS·DIMM 구성 조건이며 현재 장착 용량의 확인이 아니다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "공식 DDR5 UDIMM 표: 2x1R/2x2R 5600, 4x1R/4x2R 3600 MT/s. rank 미확인 상태에서 5600 달성을 보장하지 않는다. EXPO와 표준 속도를 구분한다."
+          }
+        ]
+      },
+      "storageSupport": null,
+      "priceReview": {
+        "status": "REOBSERVED_PENDING_USER_APPROVAL",
+        "priceImportItem": {
+          "product": {
+            "sourceName": "BUILDCORES",
+            "externalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+            "manufacturer": "AMD",
+            "modelName": "Ryzen 5 9600X",
+            "partNumber": "100-100001405WOF"
+          },
+          "offer": {
+            "sourceName": "DANAWA",
+            "externalId": "62653718",
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+            "saleSku": "100-100001405WOF",
+            "saleUnit": "PRODUCT",
+            "verifiedAt": "2026-10-08T10:25:56.383Z"
+          },
+          "price": {
+            "amountKrw": 399000,
+            "observedAt": "2026-10-09T16:28:00.260Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+            "condition": "NEW",
+            "inStock": true
+          }
+        },
+        "historicalAmountKrw": 399000,
+        "deltaKrw": 0
+      },
+      "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 1,
+      "openChecks": [
+        "실제 판매 SKU와 boxed PN 확인",
+        "장착 RAM의 SPD/rank 및 보드 QVL 확인",
+        "사용자 보드 리비전·설치 BIOS 확인"
+      ]
+    },
+    {
+      "selectionNumber": 2,
+      "operation": "REUSE_EXISTING",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55"
+      },
+      "proposedCanonicalId": "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+      "localProductId": null,
+      "product": {
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 9700X",
+        "partNumber": "100-100001404WOF"
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "coreCount": 8,
+        "threadCount": 16,
+        "baseClockMhz": 3800,
+        "boostClockMhz": 5500,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "integratedGraphicsModel": "AMD Radeon™ Graphics",
+        "processorBasePowerW": null,
+        "maximumTurboPowerW": null,
+        "performanceCoreCount": null,
+        "efficientCoreCount": null,
+        "performanceCoreBaseClockMhz": null,
+        "efficientCoreBaseClockMhz": null,
+        "performanceCoreBoostClockMhz": null,
+        "efficientCoreBoostClockMhz": null
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "pilot:09086e21-4979-41ba-a451-3f8bb1c9cc55",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9700x.html",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+          "selectionNumber": 2,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "CPU_MODEL:AMD:Ryzen 7 9700X",
+      "identityKind": "PHYSICAL_VARIANT",
+      "role": "BOTH",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "제조사 최대 256GB. CPU·보드·BIOS·DIMM 구성 조건이며 현재 장착 용량의 확인이 아니다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 5600,
+            "dataRateConditions": "공식 DDR5 UDIMM 표: 2x1R/2x2R 5600, 4x1R/4x2R 3600 MT/s. rank 미확인 상태에서 5600 달성을 보장하지 않는다. EXPO와 표준 속도를 구분한다."
+          }
+        ]
+      },
+      "storageSupport": null,
+      "priceReview": {
+        "status": "REOBSERVED_PENDING_USER_APPROVAL",
+        "priceImportItem": {
+          "product": {
+            "sourceName": "BUILDCORES",
+            "externalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+            "manufacturer": "AMD",
+            "modelName": "Ryzen 7 9700X",
+            "partNumber": "100-100001404WOF"
+          },
+          "offer": {
+            "sourceName": "DANAWA",
+            "externalId": "62653715",
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+            "saleSku": "100-100001404WOF",
+            "saleUnit": "PRODUCT",
+            "verifiedAt": "2026-10-08T10:25:56.383Z"
+          },
+          "price": {
+            "amountKrw": 686000,
+            "observedAt": "2026-10-09T16:27:59.097Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+            "condition": "NEW",
+            "inStock": true
+          }
+        },
+        "historicalAmountKrw": 686000,
+        "deltaKrw": 0
+      },
+      "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 2,
+      "openChecks": [
+        "실제 판매 SKU와 boxed PN 확인",
+        "장착 RAM의 SPD/rank 및 보드 QVL 확인",
+        "사용자 보드 리비전·설치 BIOS 확인"
+      ]
+    },
+    {
+      "selectionNumber": 3,
+      "operation": "CREATE_PROPOSAL",
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:241067:model"
+      },
+      "proposedCanonicalId": "4328778c-84af-324b-bc60-e51891fff949",
+      "localProductId": null,
+      "product": {
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 245K",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "LGA1851",
+        "coreCount": 14,
+        "threadCount": 14,
+        "baseClockMhz": null,
+        "boostClockMhz": 5200,
+        "tdpW": null,
+        "hasIntegratedGraphics": true,
+        "integratedGraphicsModel": "Intel Graphics",
+        "processorBasePowerW": 125,
+        "maximumTurboPowerW": 159,
+        "performanceCoreCount": 6,
+        "efficientCoreCount": 8,
+        "performanceCoreBaseClockMhz": 4200,
+        "efficientCoreBaseClockMhz": 3600,
+        "performanceCoreBoostClockMhz": 5200,
+        "efficientCoreBoostClockMhz": 4600
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:241067:model",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/specifications.html",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+          "selectionNumber": 3,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "CPU_MODEL:Intel:Core Ultra 5 245K",
+      "identityKind": "MODEL_REFERENCE",
+      "role": "INSTALLED_PC_REFERENCE",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "ARK 최대 256GB/2채널. 공표된 SKU 한계이며 보드·BIOS·DIMM 구성별 실제 용량 검증은 별도다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 6400,
+            "dataRateConditions": "ARK 최고 6400 MT/s와 문서 832586 rev007의 조건을 함께 적용한다. 일반 UDIMM은 1DPC 5600이며, 6400는 CUDIMM/1DPC 조건이다. 1DPC는 채널당 슬롯 하나가 배선된 보드다. 선택 4슬롯 보드에 두 모듈을 꽂아도 1DPC 보드로 승격하지 않는다. 2DPC 채널: 단일 DIMM 1R/2R 5600, 두 DIMM 1R 4800/2R 4400. 혼합 PN 속도 미보장; rank 미확인."
+          }
+        ]
+      },
+      "storageSupport": null,
+      "priceReview": {
+        "status": "HELD_EXACT_PHYSICAL_SALE_VARIANT_UNCONFIRMED",
+        "priceImportItem": null,
+        "modelQuote": {
+          "selectionNumber": 3,
+          "candidateKey": "CURRENT-INTEL-CPU-U5-245K",
+          "pcode": "69059753",
+          "expectedTitle": "인텔 코어 울트라5 시리즈2 245K (애로우레이크) (정품)",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+          "matchScope": "MODEL_AND_ADVERTISED_DISTRIBUTION_NOT_EXACT_PHYSICAL_VARIANT",
+          "priceImportEligible": false,
+          "holdReason": "Global boxed ordering code is retired; exact domestic ordering code and installed-reference role require review.",
+          "responseSha256": "ed46cdf81cf8cbe8d6e6c492ec476308340013ccc8f5cf5561441591fe07713e",
+          "price": {
+            "amountKrw": 315160,
+            "observedAt": "2026-10-09T16:30:42.596Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "status": "OBSERVED_MODEL_PRICE_QUARANTINED"
+        }
+      },
+      "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 3,
+      "openChecks": [
+        "실제 판매 BOX/TRAY PN 확인",
+        "DIMM UDIMM/CUDIMM·rank·SPD·QVL 확인",
+        "보드별 정확 CPU 지원 조건 확인"
+      ]
+    },
+    {
+      "selectionNumber": 4,
+      "operation": "CREATE_PROPOSAL",
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:245694:model"
+      },
+      "proposedCanonicalId": "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+      "localProductId": null,
+      "product": {
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 250K Plus",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "LGA1851",
+        "coreCount": 18,
+        "threadCount": 18,
+        "baseClockMhz": null,
+        "boostClockMhz": 5300,
+        "tdpW": null,
+        "hasIntegratedGraphics": true,
+        "integratedGraphicsModel": "Intel Graphics",
+        "processorBasePowerW": 125,
+        "maximumTurboPowerW": 159,
+        "performanceCoreCount": 6,
+        "efficientCoreCount": 12,
+        "performanceCoreBaseClockMhz": 4200,
+        "efficientCoreBaseClockMhz": 3300,
+        "performanceCoreBoostClockMhz": 5300,
+        "efficientCoreBoostClockMhz": 4600
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:245694:model",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.intel.com/content/www/us/en/products/sku/245694/intel-core-ultra-5-processor-250k-plus-30m-cache-up-to-5-30-ghz/specifications.html",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+          "selectionNumber": 4,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "CPU_MODEL:Intel:Core Ultra 5 250K Plus",
+      "identityKind": "MODEL_REFERENCE",
+      "role": "INSTALLED_PC_REFERENCE",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": {
+        "memoryTypesKnown": true,
+        "maxMemoryBytes": 274877906944,
+        "channelCount": 2,
+        "capacityConditions": "ARK 최대 256GB/2채널. 공표된 SKU 한계이며 보드·BIOS·DIMM 구성별 실제 용량 검증은 별도다.",
+        "supportedTypes": [
+          {
+            "memoryType": "DDR5",
+            "maxStandardDataRateMts": 7200,
+            "dataRateConditions": "ARK 최고 7200 MT/s와 문서 832586 rev007의 조건을 함께 적용한다. 일반 UDIMM은 1DPC 5600이며, 7200는 CUDIMM/1DPC 조건이다. 1DPC는 채널당 슬롯 하나가 배선된 보드다. 선택 4슬롯 보드에 두 모듈을 꽂아도 1DPC 보드로 승격하지 않는다. 2DPC 채널: 단일 DIMM 1R/2R 5600, 두 DIMM 1R 4800/2R 4400. 혼합 PN 속도 미보장; rank 미확인."
+          }
+        ]
+      },
+      "storageSupport": null,
+      "priceReview": {
+        "status": "HELD_EXACT_PHYSICAL_SALE_VARIANT_UNCONFIRMED",
+        "priceImportItem": null,
+        "modelQuote": {
+          "selectionNumber": 4,
+          "candidateKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+          "pcode": "108424451",
+          "expectedTitle": "인텔 코어 울트라5 시리즈2 250K Plus (애로우레이크 리프레시) (정품)",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=108424451",
+          "matchScope": "MODEL_AND_ADVERTISED_DISTRIBUTION_NOT_EXACT_PHYSICAL_VARIANT",
+          "priceImportEligible": false,
+          "holdReason": "Domestic boxed ordering code has not been matched to the manufacturer ordering code.",
+          "responseSha256": "e52ceacdbc129bd8b671f02d918226369648f9bc0141d28afbb81ce1189b88a2",
+          "price": {
+            "amountKrw": 340130,
+            "observedAt": "2026-10-09T16:30:44.511Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=108424451",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "status": "OBSERVED_MODEL_PRICE_QUARANTINED"
+        }
+      },
+      "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 4,
+      "openChecks": [
+        "실제 판매 BOX/TRAY PN 확인",
+        "DIMM UDIMM/CUDIMM·rank·SPD·QVL 확인",
+        "보드별 정확 CPU 지원 조건 확인"
+      ]
+    },
+    {
+      "selectionNumber": 5,
+      "operation": "REUSE_EXISTING",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d"
+      },
+      "proposedCanonicalId": "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+      "localProductId": null,
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650M MORTAR WIFI",
+        "partNumber": "MAG B650M MORTAR WIFI"
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "chipset": "AMD B650",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": null
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "pilot:b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.msi.com/Motherboard/MAG-B650M-MORTAR-WIFI/Specification",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+          "selectionNumber": 5,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "BOARD_MODEL:MSI:MAG B650M MORTAR WIFI",
+      "identityKind": "MODEL_REFERENCE",
+      "role": "INSTALLED_PC_REFERENCE",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": null,
+      "storageSupport": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "completeDataKnown": false,
+        "conditions": "Model-level M.2 excerpt; SATA count known but all individual port labels not reviewed. NVMe boot, M-key and exact revision remain unknown.",
+        "slots": [
+          {
+            "slotKey": "M2_1",
+            "connectorType": "M2",
+            "connectorKey": null,
+            "supportedLengthCodes": [
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [
+              "NVME"
+            ],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_2",
+            "connectorType": "M2",
+            "connectorKey": null,
+            "supportedLengthCodes": [
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [
+              "NVME"
+            ],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": [
+              {
+                "ruleKey": "RYZEN_8500_8300_M2_2_UNAVAILABLE",
+                "cpuCondition": "Ryzen 8500/8300 Series",
+                "biosCondition": null,
+                "effect": "DISABLED",
+                "affectedSlotKey": "M2_2",
+                "rawCondition": "M2_2 is unavailable with Ryzen 8500/8300 Series CPUs."
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.msi.com/Motherboard/MAG-B650M-MORTAR-WIFI/Specification",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Storage / RAID",
+            "supportedFacts": "2 CPU PCIe4 x4 M.2 (2260/2280), NVMe storage; 6 SATA 6G; M2_2 CPU-family restriction."
+          }
+        ]
+      },
+      "priceReview": {
+        "status": "REOBSERVED_PENDING_USER_APPROVAL",
+        "priceImportItem": {
+          "product": {
+            "sourceName": "BUILDCORES",
+            "externalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+            "manufacturer": "MSI",
+            "modelName": "MAG B650M MORTAR WIFI",
+            "partNumber": "MAG B650M MORTAR WIFI"
+          },
+          "offer": {
+            "sourceName": "DANAWA",
+            "externalId": "17971187",
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=17971187",
+            "saleSku": "MAG B650M MORTAR WIFI",
+            "saleUnit": "PRODUCT",
+            "verifiedAt": "2026-10-06T12:34:13.387Z"
+          },
+          "price": {
+            "amountKrw": 202710,
+            "observedAt": "2026-10-09T16:27:57.186Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971187",
+            "condition": "NEW",
+            "inStock": true
+          }
+        },
+        "historicalAmountKrw": 205050,
+        "deltaKrw": -2340
+      },
+      "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 5,
+      "openChecks": [
+        "실제 보드 PCB 리비전·설치 BIOS",
+        "SATA 개별 포트명·M-key·NVMe 부팅 명시 근거",
+        "보드 RAM QVL과 실제 DIMM rank"
+      ]
+    },
+    {
+      "selectionNumber": 6,
+      "operation": "CREATE_PROPOSAL",
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "asrock:B850M Pro RS:model"
+      },
+      "proposedCanonicalId": "656c192f-dfee-3cb1-893f-f0000cc8f53b",
+      "localProductId": null,
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASRock",
+        "modelName": "B850M Pro RS",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "chipset": "AMD B850",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": true
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "asrock:B850M Pro RS:model",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS/index.asp",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+          "selectionNumber": 6,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "BOARD_MODEL:ASRock:B850M Pro RS",
+      "identityKind": "MODEL_REFERENCE",
+      "role": "INSTALLED_PC_REFERENCE",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": null,
+      "storageSupport": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "completeDataKnown": false,
+        "conditions": "Exact non-WiFi model; physical PCB revision unconfirmed. PCIE2 is an expansion slot, preserved as affected key rather than invented storage connector.",
+        "slots": [
+          {
+            "slotKey": "M2_1",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [
+              "NVME"
+            ],
+            "maxPcieVersion": "5.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": true,
+            "notes": null,
+            "rules": [
+              {
+                "ruleKey": "CPU_DEPENDENT_M2_1_LINK",
+                "cpuCondition": "Ryzen 9000/7000 or Phoenix 1/Phoenix 2",
+                "biosCondition": null,
+                "effect": "LANES_REDUCED",
+                "affectedSlotKey": "M2_1",
+                "rawCondition": "Ryzen 9000/7000: PCIe5 x4; Phoenix 1: PCIe4 x4; Phoenix 2: PCIe4 x2."
+              }
+            ]
+          },
+          {
+            "slotKey": "M2_2",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [
+              "NVME"
+            ],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": true,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_3",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [
+              "NVME"
+            ],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": true,
+            "notes": null,
+            "rules": [
+              {
+                "ruleKey": "M2_3_OCCUPIED_DISABLES_PCIE2",
+                "cpuCondition": null,
+                "biosCondition": null,
+                "effect": "DISABLED",
+                "affectedSlotKey": "PCIE2",
+                "rawCondition": "When M2_3 is occupied, PCIE2 is disabled."
+              }
+            ]
+          },
+          {
+            "slotKey": "SATA3_1",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": null,
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA3_2",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": null,
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA3_3",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": null,
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA3_4",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": null,
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          }
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS/index.asp",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Storage",
+            "supportedFacts": "3 M-key 2280 PCIe NVMe slots, boot support, CPU lanes and M2_3/PCIE2 condition."
+          },
+          {
+            "sourceUrl": "https://download.asrock.com/Manual/B850M%20Pro%20RS.pdf",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Printed p.4, p.8, p.40, p.55, p.58",
+            "supportedFacts": "Slot specifications, four exact SATA3 connector labels and 6 Gb/s rate."
+          }
+        ]
+      },
+      "priceReview": {
+        "status": "HELD_EXACT_PHYSICAL_SALE_VARIANT_UNCONFIRMED",
+        "priceImportItem": null,
+        "modelQuote": {
+          "selectionNumber": 6,
+          "candidateKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+          "pcode": "75538394",
+          "expectedTitle": "ASRock B850M Pro RS 대원씨티에스",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=75538394",
+          "matchScope": "MODEL_AND_ADVERTISED_DISTRIBUTION_NOT_EXACT_PHYSICAL_VARIANT",
+          "priceImportEligible": false,
+          "holdReason": "Hardware revision is unknown; model-level page does not establish an exact physical sale variant.",
+          "responseSha256": "215574ca3765d20959858b66746185f7703beaaee34bc50873904957194cd0ed",
+          "price": {
+            "amountKrw": 196980,
+            "observedAt": "2026-10-09T16:30:46.768Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=75538394",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "status": "OBSERVED_MODEL_PRICE_QUARANTINED"
+        }
+      },
+      "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 6,
+      "openChecks": [
+        "보드 판매 PN·PCB 리비전",
+        "RAM QVL/실제 rank",
+        "SSD 자체 방열판 높이·주변 GPU 간섭"
+      ]
+    },
+    {
+      "selectionNumber": 7,
+      "operation": "CREATE_PROPOSAL",
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "msi:MAG B860M MORTAR WIFI:model"
+      },
+      "proposedCanonicalId": "109952f9-01de-3293-9034-ab93de7f98d0",
+      "localProductId": null,
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG B860M MORTAR WIFI",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "LGA1851",
+        "chipset": "Intel B860",
+        "formFactor": "MICRO_ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": false
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "msi:MAG B860M MORTAR WIFI:model",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.msi.com/Motherboard/MAG-B860M-MORTAR-WIFI/Specification",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+          "selectionNumber": 7,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "BOARD_MODEL:MSI:MAG B860M MORTAR WIFI",
+      "identityKind": "MODEL_REFERENCE",
+      "role": "INSTALLED_PC_REFERENCE",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": null,
+      "storageSupport": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "completeDataKnown": false,
+        "conditions": "NVMe protocol/boot are not promoted from PCIe bus alone; empty supportedProtocols denotes no excerpted fact. Exact revision and CPU support rows remain unverified.",
+        "slots": [
+          {
+            "slotKey": "M2_1",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2242",
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "5.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_2",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_3",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "SATA5",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA6",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA7",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          },
+          {
+            "slotKey": "SATA8",
+            "connectorType": "SATA",
+            "connectorKey": null,
+            "supportedLengthCodes": [],
+            "supportedBusInterfaces": [
+              "SATA"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": null,
+            "maxPcieLanes": null,
+            "sataVersion": "3.0",
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": "Manufacturer SATA 6 Gb/s connector; no specific SSD compatibility approval.",
+            "rules": []
+          }
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.msi.com/Motherboard/MAG-B860M-MORTAR-WIFI/Specification",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Storage",
+            "supportedFacts": "M.2 lengths and CPU/chipset PCIe lane origins; four SATA6G."
+          },
+          {
+            "sourceUrl": "https://download.msi.com/archive/mnu_exe/mb/MAGB860MMORTARWIFI_French.pdf",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Printed p.16-17, p.36, p.43",
+            "supportedFacts": "M-key, SATA5..8, own-heatsink restriction; Intel RST requires M.2 PCIe SSD with UEFI ROM."
+          }
+        ]
+      },
+      "priceReview": {
+        "status": "HELD_EXACT_PHYSICAL_SALE_VARIANT_UNCONFIRMED",
+        "priceImportItem": null,
+        "modelQuote": {
+          "selectionNumber": 7,
+          "candidateKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+          "pcode": "74340266",
+          "expectedTitle": "MSI MAG B860M 박격포 WIFI",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=74340266",
+          "matchScope": "MODEL_AND_ADVERTISED_DISTRIBUTION_NOT_EXACT_PHYSICAL_VARIANT",
+          "priceImportEligible": false,
+          "holdReason": "Hardware revision is unknown; model-level page does not establish an exact physical sale variant.",
+          "responseSha256": "c2bf262068fb0aaa9df3d8710fbecacbc2e3ed2c30ab01f8342d0c52bb31d080",
+          "price": {
+            "amountKrw": 260900,
+            "observedAt": "2026-10-09T16:30:48.304Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=74340266",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "status": "OBSERVED_MODEL_PRICE_QUARANTINED"
+        }
+      },
+      "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 7,
+      "openChecks": [
+        "245K·250K Plus 공식 지원표 개별 행·최소 BIOS",
+        "NVMe protocol/boot 명시 근거",
+        "방열판 폭 제한 그림의 슬롯 대응·실제 높이",
+        "DIMM QVL/rank·판매 PN·PCB 리비전"
+      ]
+    },
+    {
+      "selectionNumber": 8,
+      "operation": "CREATE_PROPOSAL",
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "asus:TUF GAMING B860-PLUS WIFI:model"
+      },
+      "proposedCanonicalId": "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+      "localProductId": null,
+      "product": {
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B860-PLUS WIFI",
+        "partNumber": null
+      },
+      "specification": {
+        "socketCode": "LGA1851",
+        "chipset": "Intel B860",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "memoryFormFactor": "DIMM",
+        "memorySlotCount": 4,
+        "maxMemoryBytes": 274877906944,
+        "supportsEcc": false
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "asus:TUF GAMING B860-PLUS WIFI:model",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+          "selectionNumber": 8,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "BOARD_MODEL:ASUS:TUF GAMING B860-PLUS WIFI",
+      "identityKind": "MODEL_REFERENCE",
+      "role": "INSTALLED_PC_REFERENCE",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": null,
+      "storageSupport": {
+        "revisionScope": "MODEL",
+        "hardwareRevision": null,
+        "completeDataKnown": false,
+        "conditions": "SATA count known but exact connector labels not reviewed. NVMe protocol and boot remain unknown in this extract. Model-level profile, not exact PCB revision.",
+        "slots": [
+          {
+            "slotKey": "M2_1",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "5.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CPU",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_2",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2280",
+              "22110"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          },
+          {
+            "slotKey": "M2_3",
+            "connectorType": "M2",
+            "connectorKey": "M",
+            "supportedLengthCodes": [
+              "2242",
+              "2260",
+              "2280"
+            ],
+            "supportedBusInterfaces": [
+              "PCIE"
+            ],
+            "supportedProtocols": [],
+            "maxPcieVersion": "4.0",
+            "maxPcieLanes": 4,
+            "sataVersion": null,
+            "laneSource": "CHIPSET",
+            "nvmeBootSupport": null,
+            "notes": null,
+            "rules": []
+          }
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+            "checkedAt": "2026-10-09T16:30:03Z",
+            "sourceRevision": null,
+            "documentLocation": "Storage",
+            "supportedFacts": "3 M-key M.2 slots with exact lengths and PCIe links; 4 SATA6G."
+          }
+        ]
+      },
+      "priceReview": {
+        "status": "HELD_EXACT_PHYSICAL_SALE_VARIANT_UNCONFIRMED",
+        "priceImportItem": null,
+        "modelQuote": {
+          "selectionNumber": 8,
+          "candidateKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+          "pcode": "74255378",
+          "expectedTitle": "ASUS TUF Gaming B860-PLUS WIFI 인텍앤컴퍼니",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+          "matchScope": "MODEL_AND_ADVERTISED_DISTRIBUTION_NOT_EXACT_PHYSICAL_VARIANT",
+          "priceImportEligible": false,
+          "holdReason": "Hardware revision is unknown; model-level page does not establish an exact physical sale variant.",
+          "responseSha256": "06d62ca7712b3ac70a1c1eed696e89da336be7a60c55440f6351e9022645a789",
+          "price": {
+            "amountKrw": 275350,
+            "observedAt": "2026-10-09T16:30:49.792Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "status": "OBSERVED_MODEL_PRICE_QUARANTINED"
+        }
+      },
+      "evidenceFile": "data/catalog-review/pilot-platform-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 8,
+      "openChecks": [
+        "ALL/all 제조사 라벨을 수치 최소 BIOS나 최신 BIOS로 변환하지 않기",
+        "SATA 개별 포트명·NVMe protocol/boot·SSD 방열판 간섭",
+        "DIMM QVL/rank·판매 PN·PCB 리비전"
+      ]
+    },
+    {
+      "selectionNumber": 9,
+      "operation": "REUSE_EXISTING",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34"
+      },
+      "proposedCanonicalId": "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+      "localProductId": null,
+      "product": {
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "F5-6000J3038F16GX2-TZ5N"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "dataRateMts": 6000,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": null
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "pilot:a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.gskill.com/specification/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-Specification",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+          "selectionNumber": 9,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "RAM_SPEC_GROUP:G.SKILL:DDR5 DIMM 16GB non-ECC unbuffered specification group",
+      "identityKind": "RETAIL_KIT",
+      "role": "PURCHASE_CANDIDATE",
+      "bindingReviewScope": "Only shared DDR5 DIMM 16GB non-ECC unbuffered facts. Kit PN is not module PN; rank, IC and exact module identity remain unknown.",
+      "memorySupport": null,
+      "storageSupport": null,
+      "priceReview": {
+        "status": "REOBSERVED_PENDING_USER_APPROVAL",
+        "priceImportItem": {
+          "product": {
+            "sourceName": "BUILDCORES",
+            "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+            "manufacturer": "G.SKILL",
+            "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+            "partNumber": "F5-6000J3038F16GX2-TZ5N"
+          },
+          "offer": {
+            "sourceName": "DANAWA",
+            "externalId": "17932031",
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+            "saleSku": "F5-6000J3038F16GX2-TZ5N",
+            "saleUnit": "RAM_KIT",
+            "moduleCount": 2,
+            "verifiedAt": "2026-10-06T12:34:13.387Z"
+          },
+          "price": {
+            "amountKrw": 939000,
+            "observedAt": "2026-10-09T16:27:58.112Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+            "condition": "NEW",
+            "inStock": true
+          }
+        },
+        "historicalAmountKrw": 963120,
+        "deltaKrw": -24120
+      },
+      "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 9,
+      "openChecks": [
+        "Individual module PN, IC/die, rank, hardware revision and pin count are not confirmed by this exact-kit review.",
+        "Manufacturer current XMP/EXPO statement does not certify every historical stock revision or selected CPU/board combination.",
+        "Exact selected board revision, BIOS, CPU and DIMM-population QVL conditions remain unknown.",
+        "Do not multiply a RAM_KIT price by installed quantity=2; the price is for one matched two-module kit."
+      ]
+    },
+    {
+      "selectionNumber": 10,
+      "operation": "REUSE_EXISTING",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1555eede-7e03-4038-824d-91d8fb21a6e2"
+      },
+      "proposedCanonicalId": "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c",
+      "localProductId": null,
+      "product": {
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "F5-6000J3636F16GX2-RS5K"
+      },
+      "specification": {
+        "memoryType": "DDR5",
+        "moduleCapacityBytes": 17179869184,
+        "moduleCount": 2,
+        "dataRateMts": 6000,
+        "moduleFormFactor": "DIMM",
+        "pinCount": null,
+        "isEcc": false,
+        "bufferType": "UNBUFFERED",
+        "voltageV": 1.35,
+        "heightMm": null
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "pilot:1555eede-7e03-4038-824d-91d8fb21a6e2",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.gskill.com/specification/165/377/1664845977/F5-6000J3636F16GX2-RS5K-Specification",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+          "selectionNumber": 10,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "RAM_SPEC_GROUP:G.SKILL:DDR5 DIMM 16GB non-ECC unbuffered specification group",
+      "identityKind": "RETAIL_KIT",
+      "role": "PURCHASE_CANDIDATE",
+      "bindingReviewScope": "Only shared DDR5 DIMM 16GB non-ECC unbuffered facts. Kit PN is not module PN; rank, IC and exact module identity remain unknown.",
+      "memorySupport": null,
+      "storageSupport": null,
+      "priceReview": {
+        "status": "HELD_EXACT_DOMESTIC_KIT_MAPPING_MISSING",
+        "priceImportItem": null,
+        "modelQuote": null
+      },
+      "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 10,
+      "openChecks": [
+        "Individual module PN, IC/die, rank, hardware revision and pin count are not confirmed by this exact-kit review.",
+        "Manufacturer current XMP/EXPO statement does not certify every historical stock revision or selected CPU/board combination.",
+        "Exact selected board revision, BIOS, CPU and DIMM-population QVL conditions remain unknown.",
+        "Do not multiply a RAM_KIT price by installed quantity=2; the price is for one matched two-module kit.",
+        "Exact domestic Danawa pcode and domestic-stock new-product seller mapping remain null; do not substitute the single-module pcode or multiply its price."
+      ]
+    },
+    {
+      "selectionNumber": 11,
+      "operation": "REUSE_EXISTING",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9"
+      },
+      "proposedCanonicalId": "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+      "localProductId": null,
+      "product": {
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+        "partNumber": "G5060-8V2C"
+      },
+      "specification": {
+        "chipVendor": "NVIDIA",
+        "chipset": "GeForce RTX 5060",
+        "vramBytes": 8589934592,
+        "memoryType": "GDDR7",
+        "pcieVersion": "5.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 8,
+        "lengthMm": 197,
+        "heightMm": 120,
+        "thicknessMm": 41,
+        "slotWidth": null,
+        "cardPowerW": 145,
+        "cardPowerBasis": "MANUFACTURER_PUBLISHED_CARD_POWER",
+        "psuRequirementW": 550,
+        "psuRequirementBasis": "RECOMMENDED",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "pilot:bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-5060-8G-VENTUS-2X-OC.pdf",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+          "selectionNumber": 11,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "GPU_CHIP_MODEL:NVIDIA:GeForce RTX 5060",
+      "identityKind": "PHYSICAL_VARIANT",
+      "role": "BOTH",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": null,
+      "storageSupport": null,
+      "priceReview": {
+        "status": "REOBSERVED_PENDING_USER_APPROVAL",
+        "priceImportItem": {
+          "product": {
+            "sourceName": "BUILDCORES",
+            "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+            "manufacturer": "MSI",
+            "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+            "partNumber": "G5060-8V2C"
+          },
+          "offer": {
+            "sourceName": "DANAWA",
+            "externalId": "90956033",
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+            "saleSku": "G5060-8V2C",
+            "saleUnit": "PRODUCT",
+            "verifiedAt": "2026-10-06T12:34:13.387Z"
+          },
+          "price": {
+            "amountKrw": 668860,
+            "observedAt": "2026-10-09T16:27:54.952Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+            "condition": "NEW",
+            "inStock": true
+          }
+        },
+        "historicalAmountKrw": 675000,
+        "deltaKrw": -6140
+      },
+      "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 11,
+      "openChecks": [
+        "Exact domestic seller stock, importer/warranty package and physical hardware revision are not confirmed.",
+        "Case clearance, actual PSU/cables and motherboard PCIe/UEFI conditions remain required; a recommended/minimum PSU rating is not a complete-PC compatibility verdict.",
+        "A Windows GPU chip name does not identify this physical card or establish PHYSICAL_VARIANT recognition."
+      ]
+    },
+    {
+      "selectionNumber": 12,
+      "operation": "REUSE_EXISTING",
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18"
+      },
+      "proposedCanonicalId": "74721e70-72ea-3613-8e19-4455485a72e3",
+      "localProductId": null,
+      "product": {
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+        "partNumber": "11350-03-20G"
+      },
+      "specification": {
+        "chipVendor": "AMD",
+        "chipset": "Radeon RX 9060 XT",
+        "vramBytes": 17179869184,
+        "memoryType": "GDDR6",
+        "pcieVersion": "5.0",
+        "pcieConnectorLanes": null,
+        "pcieActiveLanes": 16,
+        "lengthMm": 240,
+        "heightMm": 111.25,
+        "thicknessMm": 46.08,
+        "slotWidth": 2.3,
+        "cardPowerW": 170,
+        "cardPowerBasis": "TYPICAL_BOARD_POWER",
+        "psuRequirementW": 450,
+        "psuRequirementBasis": "MINIMUM",
+        "powerConnectorsKnown": true,
+        "powerConnectors": [
+          {
+            "connectorType": "PCIE_8PIN",
+            "connectorCount": 1
+          }
+        ]
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "pilot:bd3e1d44-97d6-4679-8e43-829730a90f18",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9060-xt-16g-gddr6",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+          "selectionNumber": 12,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "GPU_CHIP_MODEL:AMD:Radeon RX 9060 XT",
+      "identityKind": "PHYSICAL_VARIANT",
+      "role": "BOTH",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": null,
+      "storageSupport": null,
+      "priceReview": {
+        "status": "REOBSERVED_PENDING_USER_APPROVAL",
+        "priceImportItem": {
+          "product": {
+            "sourceName": "BUILDCORES",
+            "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+            "manufacturer": "Sapphire",
+            "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+            "partNumber": "11350-03-20G"
+          },
+          "offer": {
+            "sourceName": "DANAWA",
+            "externalId": "91909571",
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+            "saleSku": "11350-03-20G",
+            "saleUnit": "PRODUCT",
+            "verifiedAt": "2026-10-06T12:34:13.387Z"
+          },
+          "price": {
+            "amountKrw": 822300,
+            "observedAt": "2026-10-09T16:27:55.879Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+            "condition": "NEW",
+            "inStock": true
+          }
+        },
+        "historicalAmountKrw": 821000,
+        "deltaKrw": 1300
+      },
+      "evidenceFile": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 12,
+      "openChecks": [
+        "Exact domestic seller stock, importer/warranty package and physical hardware revision are not confirmed.",
+        "Case clearance, actual PSU/cables and motherboard PCIe/UEFI conditions remain required; a recommended/minimum PSU rating is not a complete-PC compatibility verdict.",
+        "A Windows GPU chip name does not identify this physical card or establish PHYSICAL_VARIANT recognition."
+      ]
+    },
+    {
+      "selectionNumber": 13,
+      "operation": "CREATE_PROPOSAL",
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "samsung:MZ-77E1T0BW"
+      },
+      "proposedCanonicalId": "fa9b25b5-1a11-34ee-8814-134afee45a55",
+      "localProductId": null,
+      "product": {
+        "type": "STORAGE",
+        "manufacturer": "Samsung",
+        "modelName": "870 EVO 1TB",
+        "partNumber": "MZ-77E1T0BW"
+      },
+      "specification": {
+        "storageKind": "SSD",
+        "capacityBytes": 1000000000000,
+        "advertisedCapacityGb": 1000,
+        "capacityBasis": "DECIMAL_GB",
+        "formFactor": "TWO_POINT_FIVE_INCH",
+        "busInterface": "SATA",
+        "interfaceProtocol": null,
+        "pcieVersion": null,
+        "pcieLanes": null,
+        "nvmeVersion": null,
+        "sataVersion": "3.0",
+        "connectorKey": null,
+        "m2LengthCode": null,
+        "lengthMm": 100,
+        "widthMm": 69.85,
+        "heightMm": 6.8,
+        "dimensionsBasis": "PUBLISHED",
+        "heatsinkIncluded": null
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "samsung:MZ-77E1T0BW",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.samsung.com/sec/memory-storage/MZ-77E1T0BW-d2c/MZ-77E1T0BW/",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-storage-evidence-2026-10-10.json",
+          "selectionNumber": 13,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "STORAGE_MODEL:Samsung:870 EVO 1TB",
+      "identityKind": "PHYSICAL_VARIANT",
+      "role": "BOTH",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": null,
+      "storageSupport": null,
+      "priceReview": {
+        "status": "EXACT_SELLER_QUOTE_REVIEWED_PENDING_CONTRACT_AND_USER_APPROVAL",
+        "priceImportItem": null,
+        "modelQuote": null
+      },
+      "evidenceFile": "data/catalog-review/pilot-storage-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 13,
+      "openChecks": [
+        "국내 박스 PN·유통·보증과 공식 MZ-77E1T0BW 대조",
+        "SATA 포트·데이터 케이블·전원·2.5형 장착 공간",
+        "다른 용량과 벌크·병행·추가 구성 구분"
+      ]
+    },
+    {
+      "selectionNumber": 14,
+      "operation": "CREATE_PROPOSAL",
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "samsung:MZ-V9P1T0BW"
+      },
+      "proposedCanonicalId": "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+      "localProductId": null,
+      "product": {
+        "type": "STORAGE",
+        "manufacturer": "Samsung",
+        "modelName": "990 PRO 1TB",
+        "partNumber": "MZ-V9P1T0BW"
+      },
+      "specification": {
+        "storageKind": "SSD",
+        "capacityBytes": 1000000000000,
+        "advertisedCapacityGb": 1000,
+        "capacityBasis": "DECIMAL_GB",
+        "formFactor": "M2",
+        "busInterface": "PCIE",
+        "interfaceProtocol": "NVME",
+        "pcieVersion": "4.0",
+        "pcieLanes": 4,
+        "nvmeVersion": "2.0",
+        "sataVersion": null,
+        "connectorKey": null,
+        "m2LengthCode": "2280",
+        "lengthMm": 80,
+        "widthMm": 22,
+        "heightMm": 2.3,
+        "dimensionsBasis": "MANUFACTURER_MAXIMUM",
+        "heatsinkIncluded": false
+      },
+      "manufacturerEvidence": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "samsung:MZ-V9P1T0BW",
+        "sourceRevision": "pilot-review-2026-10-10",
+        "sourceUrl": "https://www.samsung.com/sec/memory-storage/990-pro-nvme-ssd-d2c2/MZ-V9P1T0BW/",
+        "rawPayload": {
+          "recordKind": "REVIEWED_SPEC_EXTRACT",
+          "evidenceFile": "data/catalog-review/pilot-storage-evidence-2026-10-10.json",
+          "selectionNumber": 14,
+          "pageCheckDate": "2026-10-10",
+          "pageCheckTimePrecision": "DATE_ONLY",
+          "retrievedAtMeaning": "Curated review-extract preparation time, not a precise original page fetch time"
+        },
+        "retrievedAt": "2026-10-09T16:33:34Z"
+      },
+      "modelKey": "STORAGE_MODEL:Samsung:990 PRO 1TB",
+      "identityKind": "PHYSICAL_VARIANT",
+      "role": "BOTH",
+      "bindingReviewScope": "Reviewed manufacturer model identity only; no exact physical variant, full PC compatibility or current-price certification.",
+      "memorySupport": null,
+      "storageSupport": null,
+      "priceReview": {
+        "status": "EXACT_SELLER_QUOTE_REVIEWED_PENDING_CONTRACT_AND_USER_APPROVAL",
+        "priceImportItem": null,
+        "modelQuote": null
+      },
+      "evidenceFile": "data/catalog-review/pilot-storage-evidence-2026-10-10.json",
+      "evidenceSelectionNumber": 14,
+      "openChecks": [
+        "정확 SKU의 connectorKey 추가 근거",
+        "가격 수집 판매점의 국내 정품·신품·동일 단품 구성 및 실시간 관측"
+      ]
+    }
+  ],
+  "cpuSupportPairs": [
+    {
+      "boardReferenceKey": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "boardSelectionNumber": 5,
+      "boardExternalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "boardCandidateKey": null,
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "cpuSelectionNumber": 1,
+      "cpuExternalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "cpuCandidateKey": null,
+      "entry": {
+        "cpuExternalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+        "variantKey": "B0-ecf83e537f27",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ryzen 5 Ryzen 5 9600X",
+        "cpuStepping": "B0",
+        "biosRequirement": "VERSION",
+        "minimumBiosVersion": "7D76vAE",
+        "manufacturerBiosLabel": "7D76vAE.zip",
+        "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B650M-MORTAR-WIFI&type=cpu&limit=2000",
+        "conditions": "제조사 지원표의 정확한 CPU 항목을 발췌했다. BIOS 문자열은 자동 비교하지 않으며 최소 지원 BIOS는 최신 권장 BIOS나 성능·안정성 보증이 아니다."
+      },
+      "evidenceIds": [
+        "MSI_B650_CPU_PRIOR",
+        "MSI_B650_BIOS"
+      ],
+      "evidenceReview": "PRIOR_MANUFACTURER_ROW_REUSED",
+      "checkedDate": "2026-10-10",
+      "originalRetrievedAt": "2026-10-04T07:27:58.469782+00:00",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "boardSelectionNumber": 6,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "cpuSelectionNumber": 1,
+      "cpuExternalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+      "cpuCandidateKey": null,
+      "entry": {
+        "cpuExternalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+        "variantKey": "MODEL-Ryzen_5_9600X",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ryzen 5 9600X",
+        "cpuStepping": null,
+        "biosRequirement": "VERSION",
+        "minimumBiosVersion": "3.12",
+        "manufacturerBiosLabel": "3.12",
+        "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=AM5&u=767",
+        "conditions": "Exact B850M Pro RS row. CPU table does not publish a stepping value; null retained. Minimum BIOS is not a latest-version recommendation."
+      },
+      "evidenceIds": [
+        "ASROCK_B850_CPU_9600X"
+      ],
+      "evidenceReview": "CURRENT_MANUFACTURER_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "boardSelectionNumber": 5,
+      "boardExternalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+      "boardCandidateKey": null,
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+      "cpuSelectionNumber": 2,
+      "cpuExternalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+      "cpuCandidateKey": null,
+      "entry": {
+        "cpuExternalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+        "variantKey": "B0-3a933ea549d3",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ryzen 7 9700X",
+        "cpuStepping": "B0",
+        "biosRequirement": "VERSION",
+        "minimumBiosVersion": "7D76vAE",
+        "manufacturerBiosLabel": "7D76vAE.zip",
+        "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B650M-MORTAR-WIFI&type=cpu&limit=2000",
+        "conditions": "제조사의 해당 CPU 항목을 직접 확인했다. 최소 BIOS는 최신 권장 버전 또는 성능·안정성 보증이 아니다."
+      },
+      "evidenceIds": [
+        "MSI_B650_CPU_PRIOR",
+        "MSI_B650_BIOS"
+      ],
+      "evidenceReview": "PRIOR_MANUFACTURER_ROW_REUSED",
+      "checkedDate": "2026-10-10",
+      "originalRetrievedAt": "2026-10-04T07:27:58.469782+00:00",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "boardSelectionNumber": 6,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+      "cpuSelectionNumber": 2,
+      "cpuExternalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+      "cpuCandidateKey": null,
+      "entry": {
+        "cpuExternalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+        "variantKey": "MODEL-Ryzen_7_9700X",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ryzen 7 9700X",
+        "cpuStepping": null,
+        "biosRequirement": "VERSION",
+        "minimumBiosVersion": "3.12",
+        "manufacturerBiosLabel": "3.12",
+        "sourceUrl": "https://www.asrock.com/support/cpu.asp?s=AM5&u=766",
+        "conditions": "Exact B850M Pro RS row. CPU table does not publish a stepping value; null retained. Minimum BIOS is not a latest-version recommendation."
+      },
+      "evidenceIds": [
+        "ASROCK_B850_CPU_9700X"
+      ],
+      "evidenceReview": "CURRENT_MANUFACTURER_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "boardSelectionNumber": 7,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "CURRENT-INTEL-CPU-U5-245K",
+      "cpuSelectionNumber": 3,
+      "cpuExternalId": null,
+      "cpuCandidateKey": "CURRENT-INTEL-CPU-U5-245K",
+      "entry": {
+        "cpuExternalId": null,
+        "variantKey": "UNVERIFIED",
+        "supportStatus": "UNVERIFIED",
+        "reportedCpuName": "Core Ultra 5 245K",
+        "cpuStepping": null,
+        "biosRequirement": "UNKNOWN",
+        "minimumBiosVersion": null,
+        "manufacturerBiosLabel": null,
+        "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B860M-MORTAR-WIFI&type=cpu&limit=2000",
+        "conditions": "Series 2/LGA1851 and generic future-CPU BIOS notes do not prove this exact CPU. Public API denied access; stop retries and hold support activation."
+      },
+      "evidenceIds": [
+        "MSI_B860_CPU",
+        "MSI_B860_BIOS"
+      ],
+      "evidenceReview": "BLOCKED_EXACT_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "boardSelectionNumber": 8,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "CURRENT-INTEL-CPU-U5-245K",
+      "cpuSelectionNumber": 3,
+      "cpuExternalId": null,
+      "cpuCandidateKey": "CURRENT-INTEL-CPU-U5-245K",
+      "entry": {
+        "cpuExternalId": null,
+        "variantKey": "B0-Core_Ultra_5_245K",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ultra 5-245K",
+        "cpuStepping": "B0",
+        "biosRequirement": "ALL",
+        "minimumBiosVersion": null,
+        "manufacturerBiosLabel": "all",
+        "sourceUrl": "https://www.asus.com/in/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/helpdesk_qvl_cpu/?model2Name=TUF-GAMING-B860-PLUS-WIFI",
+        "conditions": "Manufacturer exact CPU row says ALL/all. Keep that label; do not invent a numeric minimum or infer latest BIOS. Resolve approved CPU UUID before constructing import DTO."
+      },
+      "evidenceIds": [
+        "ASUS_B860_CPU"
+      ],
+      "evidenceReview": "CURRENT_MANUFACTURER_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "boardSelectionNumber": 7,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "cpuSelectionNumber": 4,
+      "cpuExternalId": null,
+      "cpuCandidateKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "entry": {
+        "cpuExternalId": null,
+        "variantKey": "UNVERIFIED",
+        "supportStatus": "UNVERIFIED",
+        "reportedCpuName": "Core Ultra 5 250K Plus",
+        "cpuStepping": null,
+        "biosRequirement": "UNKNOWN",
+        "minimumBiosVersion": null,
+        "manufacturerBiosLabel": null,
+        "sourceUrl": "https://www.msi.com/api/v1/product/support/panel?product=MAG-B860M-MORTAR-WIFI&type=cpu&limit=2000",
+        "conditions": "Series 2/LGA1851 and generic future-CPU BIOS notes do not prove this exact CPU. Public API denied access; stop retries and hold support activation."
+      },
+      "evidenceIds": [
+        "MSI_B860_CPU",
+        "MSI_B860_BIOS"
+      ],
+      "evidenceReview": "BLOCKED_EXACT_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    },
+    {
+      "boardReferenceKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "boardSelectionNumber": 8,
+      "boardExternalId": null,
+      "boardCandidateKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "revisionScope": "MODEL",
+      "hardwareRevision": null,
+      "cpuReferenceKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "cpuSelectionNumber": 4,
+      "cpuExternalId": null,
+      "cpuCandidateKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "entry": {
+        "cpuExternalId": null,
+        "variantKey": "B0-Core_Ultra_5_250K_Plus",
+        "supportStatus": "LISTED",
+        "reportedCpuName": "Ultra 5-250K Plus",
+        "cpuStepping": "B0",
+        "biosRequirement": "ALL",
+        "minimumBiosVersion": null,
+        "manufacturerBiosLabel": "ALL",
+        "sourceUrl": "https://www.asus.com/in/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/helpdesk_qvl_cpu/?model2Name=TUF-GAMING-B860-PLUS-WIFI",
+        "conditions": "Manufacturer exact CPU row says ALL/all. Keep that label; do not invent a numeric minimum or infer latest BIOS. Resolve approved CPU UUID before constructing import DTO."
+      },
+      "evidenceIds": [
+        "ASUS_B860_CPU"
+      ],
+      "evidenceReview": "CURRENT_MANUFACTURER_ROW",
+      "checkedDate": "2026-10-10",
+      "installedBiosKnown": false
+    }
+  ],
+  "ramQvlReviews": [
+    {
+      "selectionNumber": 9,
+      "evidence": [
+        {
+          "url": "https://www.gskill.com/qvl/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-QVL",
+          "checkedDate": "2026-10-10",
+          "publisher": "G.SKILL",
+          "sourceType": "EXACT_RETAIL_KIT_MANUFACTURER_QVL",
+          "motherboardModelName": "MSI MAG B650M MORTAR WIFI",
+          "listedAtBoardModelScope": true,
+          "cpuGroupScope": [
+            "AMD B650 / Ryzen 9000 series CPUs",
+            "AMD B650 / Ryzen 7000 and 8000G series CPUs"
+          ],
+          "motherboardRevision": null,
+          "biosVersion": null,
+          "testedExactCpu": null,
+          "testedDimmCount": null,
+          "moduleRank": null,
+          "fullCompatibilityVerdict": null,
+          "notes": "Exact kit QVL lists this motherboard model. This is bounded board-model evidence; exact revision, BIOS, selected CPU and tested DIMM population are not stated in the reviewed table. It is not a universal 6000 MT/s guarantee."
+        },
+        {
+          "url": "https://www.gskill.com/qvl/165/393/1661410171/F5-6000J3038F16GX2-TZ5N-QVL",
+          "checkedDate": "2026-10-10",
+          "publisher": "G.SKILL",
+          "sourceType": "EXACT_RETAIL_KIT_MANUFACTURER_QVL",
+          "motherboardModelName": "MSI MAG B860M MORTAR WIFI",
+          "listedAtBoardModelScope": null,
+          "cpuGroupScope": null,
+          "motherboardRevision": null,
+          "biosVersion": null,
+          "testedExactCpu": null,
+          "testedDimmCount": null,
+          "moduleRank": null,
+          "fullCompatibilityVerdict": null,
+          "notes": "The reviewed exact-kit page did not list this board model. This records a lookup result, not proof of incompatibility; support remains unknown."
+        }
+      ]
+    },
+    {
+      "selectionNumber": 10,
+      "evidence": [
+        {
+          "url": "https://www.gskill.com/qvl/165/377/1664845977/F5-6000J3636F16GX2-RS5K-QVL",
+          "checkedDate": "2026-10-10",
+          "publisher": "G.SKILL",
+          "sourceType": "EXACT_RETAIL_KIT_MANUFACTURER_QVL",
+          "motherboardModelName": "MSI MAG B650M MORTAR WIFI",
+          "listedAtBoardModelScope": true,
+          "cpuGroupScope": [
+            "AMD B650 / Ryzen 9000 series CPUs",
+            "AMD B650 / Ryzen 7000 and 8000G series CPUs"
+          ],
+          "motherboardRevision": null,
+          "biosVersion": null,
+          "testedExactCpu": null,
+          "testedDimmCount": null,
+          "moduleRank": null,
+          "fullCompatibilityVerdict": null,
+          "notes": "Exact kit QVL lists this motherboard model. This is bounded board-model evidence; exact revision, BIOS, selected CPU and tested DIMM population are not stated in the reviewed table. It is not a universal 6000 MT/s guarantee."
+        },
+        {
+          "url": "https://www.gskill.com/qvl/165/377/1664845977/F5-6000J3636F16GX2-RS5K-QVL",
+          "checkedDate": "2026-10-10",
+          "publisher": "G.SKILL",
+          "sourceType": "EXACT_RETAIL_KIT_MANUFACTURER_QVL",
+          "motherboardModelName": "MSI MAG B860M MORTAR WIFI",
+          "listedAtBoardModelScope": true,
+          "cpuGroupScope": [
+            "Intel B860 DDR5"
+          ],
+          "motherboardRevision": null,
+          "biosVersion": null,
+          "testedExactCpu": null,
+          "testedDimmCount": null,
+          "moduleRank": null,
+          "fullCompatibilityVerdict": null,
+          "notes": "Exact kit QVL lists this motherboard model. This is bounded board-model evidence; exact revision, BIOS, selected CPU and tested DIMM population are not stated in the reviewed table. It is not a universal 6000 MT/s guarantee."
+        }
+      ]
+    }
+  ],
+  "existingPriceAssessment": {
+    "schemaVersion": 1,
+    "reviewDate": "2026-10-10",
+    "timeZone": "Asia/Seoul",
+    "status": "INDEPENDENT_PRICE_EVIDENCE_REVIEW_NOT_APPLIED",
+    "scope": "Selected RAM2andGPU2 only; CPU2andmotherboard1 quotes in the same collector result are outside this assessment.",
+    "sourceFiles": [
+      {
+        "path": "data/catalog-review/pilot-existing-prices-2026-10-10.json",
+        "sha256": "51789d0348a30cf11ba37bd88d9490bd82fbb8c6114798f8d8108e763451e4f1"
+      },
+      {
+        "path": "data/catalog-review/pilot-existing-prices-2026-10-10.json.report.json",
+        "sha256": "04a3d30ec5ba2970f3b1f14dc2df389b06a381cfe3292c1432adb026c01daa16"
+      },
+      {
+        "path": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+        "sha256": "34ae2777b1b99936bb8b69e58dc2bf00954b5b7d2dfd7d2b9fbe2777a284b88a"
+      },
+      {
+        "path": "backend/tools/collect-danawa-prices.mjs",
+        "sha256": "81993cbabc6bb21a6cc43b8ef2695ffef70d54b654a4ddc489bdb7c80d744b74"
+      }
+    ],
+    "collectionReportSummary": {
+      "requested": 6,
+      "succeeded": 6,
+      "rejectedCount": 0,
+      "collectedAt": "2026-10-09T16:28:00.267Z"
+    },
+    "summary": {
+      "selectedProductsAssessed": 4,
+      "freshQuotesAssessed": 3,
+      "validForQuoteReview": 3,
+      "heldNoExactDomesticKitMappingOrFreshQuote": 1,
+      "otherCollectedProductsNotReviewed": 3,
+      "newPriceObservationsCreated": 0,
+      "databaseChanges": 0
+    },
+    "approvalBoundary": "The three source quotes have matching units/identities and fresh collection evidence and can be proposed for user-confirmed import. This file does not approve a write, certify merchant inventory or evaluate popularity, affordability, performance-per-won or fair market value.",
+    "items": [
+      {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+          "manufacturer": "G.SKILL",
+          "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+          "partNumber": "F5-6000J3038F16GX2-TZ5N"
+        },
+        "status": "VALID_SOURCE_QUOTE_FOR_REVIEW_NOT_APPLIED",
+        "freshCollectedObservation": {
+          "product": {
+            "sourceName": "BUILDCORES",
+            "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+            "manufacturer": "G.SKILL",
+            "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+            "partNumber": "F5-6000J3038F16GX2-TZ5N"
+          },
+          "offer": {
+            "sourceName": "DANAWA",
+            "externalId": "17932031",
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+            "saleSku": "F5-6000J3038F16GX2-TZ5N",
+            "saleUnit": "RAM_KIT",
+            "moduleCount": 2,
+            "verifiedAt": "2026-10-06T12:34:13.387Z"
+          },
+          "price": {
+            "amountKrw": 939000,
+            "observedAt": "2026-10-09T16:27:58.112Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+            "condition": "NEW",
+            "inStock": true
+          }
+        },
+        "historicalComparison": {
+          "amountKrw": 963120,
+          "observedAt": "2026-10-06T12:39:26.336Z",
+          "differenceKrw": -24120,
+          "differencePercent": -2.5,
+          "comparisonIsNotApprovalEvidenceByItself": true
+        },
+        "saleUnitInterpretation": {
+          "saleUnit": "RAM_KIT",
+          "retailUnitsPriced": 1,
+          "modulesPerRetailUnit": 2,
+          "capacityPerRamModuleBytes": 17179869184,
+          "shippingIncluded": false,
+          "conditionalDiscountIncluded": false,
+          "cashOnlyPriceIncluded": false,
+          "installedQuantityMustNotMultiplyKitPrice": true
+        },
+        "priceObservationReviewRecommendation": "ACCEPT_AS_DANAWA_ACTIVE_REGULAR_ITEM_QUOTE_SUBJECT_TO_USER_DB_CONFIRMATION",
+        "reasons": [
+          "Exact existing product externalID, reviewed manufacturer PN, Danawa pcode, saleSku and sale unit match the independently reviewed identity evidence.",
+          "Collector succeeded on a new request; observedAt is newer than the historical snapshot and was not copied from historical price metadata.",
+          "Reviewed collector path accepts an active regular mall-price row only with an explicit positive integer data-base-price and a matching pcode purchase bridge. Shipping, cash-only and conditional benefit sections do not determine the amount.",
+          "Additional direct public HTML check found939000 as a base price in the regular mall-price section with the matching pcode17932031 bridge and no checked conditional/unavailable/non-new flags. Exact Neo retail kit PN and two-module package were independently checked in Compuzone HTML."
+        ],
+        "sanityReview": {
+          "absoluteAmountKrw": 939000,
+          "knownUnitMismatch": false,
+          "knownConditionalOrShippingPriceMismatch": false,
+          "knownIdentityMismatch": false,
+          "unusuallyHighAmountFlagForHumanReview": true,
+          "highAmountDisposition": "VALID_REPORTED_KIT_QUOTE_WITH_ECONOMIC_SUITABILITY_UNASSESSED",
+          "marketFairValue": null,
+          "popularity": null,
+          "bestValueClaim": false,
+          "automaticApprovalFromStableHistoricalAmount": false,
+          "notes": "939000KRW is for one complete32GB(16GBx2)kit. The direct source check supports that reported quote; it does not establish a fair/typical market value or justify choosing this kit for a budget. Do not divide it into a per-module sale price, double it for quantity2, or change it based on expectations."
+        },
+        "directPublicPriceRead": {
+          "url": "https://prod.danawa.com/info/?pcode=17932031",
+          "readAt": "2026-10-09T16:29:48.7001026Z",
+          "method": "DIRECT_PUBLIC_HTML_READ_ONE_PAGE_INDEPENDENT_BASE_PRICE_AND_BRIDGE_CHECK",
+          "matchingBasePriceKrw": 939000,
+          "matchingPurchaseBridge": true,
+          "checkedConditionalOrUnavailableOrNonNewFlags": [],
+          "newPriceObservationCreated": false
+        },
+        "metadataLimits": {
+          "originalOfferVerifiedAtPreserved": "2026-10-06T12:34:13.387Z",
+          "currentIdentityEvidenceReviewDate": "2026-10-10",
+          "offerVerifiedAtWasNotSilentlyPromoted": true,
+          "source": "DANAWA_PRODUCT_MODEL_PAGE",
+          "actualMerchantInventoryIndependentlyVerified": false,
+          "actualMerchantFinalCheckoutPriceVerified": false,
+          "domesticImporterAndWarrantyPackageConfirmed": null,
+          "physicalProductRevisionConfirmed": null,
+          "inStockMeaning": "Active regular price row and matching purchase bridge on fetched product page, not independent warehouse-stock confirmation.",
+          "sourceTraceabilityNote": "Collector report records success/rejection counts but not saved HTML or per-row seller identity. Original payload and report remain unchanged; this assessment binds their exact SHA256 values."
+        },
+        "economicPurchaseRecommendation": "NOT_ASSESSED_PRICE_OBSERVATION_APPROVAL_IS_SEPARATE_FROM_PRODUCT_RECOMMENDATION",
+        "requiredBeforeDatabaseWrite": [
+          "User confirmation for concrete final catalog and price import scope."
+        ],
+        "databaseApplied": false
+      },
+      {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "1555eede-7e03-4038-824d-91d8fb21a6e2",
+          "type": "RAM",
+          "manufacturer": "G.SKILL",
+          "modelName": "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+          "partNumber": "F5-6000J3636F16GX2-RS5K"
+        },
+        "status": "HOLD_NO_FRESH_APPROVED_DOMESTIC_OFFER",
+        "currentPriceObservation": null,
+        "priceObservationReviewRecommendation": "HOLD",
+        "reason": "Selected Ripjaws S5 exact32GB2x16GBkit has no approved domestic Danawa mapping and is absent from the six-item collector result. Do not use pcode102553379 (single16GBmodule), multiply its price, or reuse an overseas-purchasing-agent listing as a domestic-stock quote.",
+        "economicPurchaseRecommendation": "NOT_ASSESSED",
+        "databaseApplied": false
+      },
+      {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+          "manufacturer": "MSI",
+          "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+          "partNumber": "G5060-8V2C"
+        },
+        "status": "VALID_SOURCE_QUOTE_FOR_REVIEW_NOT_APPLIED",
+        "freshCollectedObservation": {
+          "product": {
+            "sourceName": "BUILDCORES",
+            "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+            "manufacturer": "MSI",
+            "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+            "partNumber": "G5060-8V2C"
+          },
+          "offer": {
+            "sourceName": "DANAWA",
+            "externalId": "90956033",
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+            "saleSku": "G5060-8V2C",
+            "saleUnit": "PRODUCT",
+            "verifiedAt": "2026-10-06T12:34:13.387Z"
+          },
+          "price": {
+            "amountKrw": 668860,
+            "observedAt": "2026-10-09T16:27:54.952Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+            "condition": "NEW",
+            "inStock": true
+          }
+        },
+        "historicalComparison": {
+          "amountKrw": 675000,
+          "observedAt": "2026-10-06T12:39:10.953Z",
+          "differenceKrw": -6140,
+          "differencePercent": -0.91,
+          "comparisonIsNotApprovalEvidenceByItself": true
+        },
+        "saleUnitInterpretation": {
+          "saleUnit": "PRODUCT",
+          "retailUnitsPriced": 1,
+          "modulesPerRetailUnit": null,
+          "capacityPerRamModuleBytes": null,
+          "shippingIncluded": false,
+          "conditionalDiscountIncluded": false,
+          "cashOnlyPriceIncluded": false,
+          "installedQuantityMustNotMultiplyKitPrice": true
+        },
+        "priceObservationReviewRecommendation": "ACCEPT_AS_DANAWA_ACTIVE_REGULAR_ITEM_QUOTE_SUBJECT_TO_USER_DB_CONFIRMATION",
+        "reasons": [
+          "Exact existing product externalID, reviewed manufacturer PN, Danawa pcode, saleSku and sale unit match the independently reviewed identity evidence.",
+          "Collector succeeded on a new request; observedAt is newer than the historical snapshot and was not copied from historical price metadata.",
+          "Reviewed collector path accepts an active regular mall-price row only with an explicit positive integer data-base-price and a matching pcode purchase bridge. Shipping, cash-only and conditional benefit sections do not determine the amount.",
+          "Exact card manufacturer, chipset, VRAM capacity and named OC/cooler variant were independently rechecked against manufacturer and domestic product-model sources; approval does not derive from small historical change."
+        ],
+        "sanityReview": {
+          "absoluteAmountKrw": 668860,
+          "knownUnitMismatch": false,
+          "knownConditionalOrShippingPriceMismatch": false,
+          "knownIdentityMismatch": false,
+          "unusuallyHighAmountFlagForHumanReview": false,
+          "highAmountDisposition": "NO_EXTRA_ABSOLUTE_AMOUNT_CLAIM",
+          "marketFairValue": null,
+          "popularity": null,
+          "bestValueClaim": false,
+          "automaticApprovalFromStableHistoricalAmount": false,
+          "notes": "No broad market-price or performance-per-won comparison was performed."
+        },
+        "directPublicPriceRead": null,
+        "metadataLimits": {
+          "originalOfferVerifiedAtPreserved": "2026-10-06T12:34:13.387Z",
+          "currentIdentityEvidenceReviewDate": "2026-10-10",
+          "offerVerifiedAtWasNotSilentlyPromoted": true,
+          "source": "DANAWA_PRODUCT_MODEL_PAGE",
+          "actualMerchantInventoryIndependentlyVerified": false,
+          "actualMerchantFinalCheckoutPriceVerified": false,
+          "domesticImporterAndWarrantyPackageConfirmed": null,
+          "physicalProductRevisionConfirmed": null,
+          "inStockMeaning": "Active regular price row and matching purchase bridge on fetched product page, not independent warehouse-stock confirmation.",
+          "sourceTraceabilityNote": "Collector report records success/rejection counts but not saved HTML or per-row seller identity. Original payload and report remain unchanged; this assessment binds their exact SHA256 values."
+        },
+        "economicPurchaseRecommendation": "NOT_ASSESSED_PRICE_OBSERVATION_APPROVAL_IS_SEPARATE_FROM_PRODUCT_RECOMMENDATION",
+        "requiredBeforeDatabaseWrite": [
+          "User confirmation for concrete final catalog and price import scope."
+        ],
+        "databaseApplied": false
+      },
+      {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+          "manufacturer": "Sapphire",
+          "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+          "partNumber": "11350-03-20G"
+        },
+        "status": "VALID_SOURCE_QUOTE_FOR_REVIEW_NOT_APPLIED",
+        "freshCollectedObservation": {
+          "product": {
+            "sourceName": "BUILDCORES",
+            "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+            "manufacturer": "Sapphire",
+            "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+            "partNumber": "11350-03-20G"
+          },
+          "offer": {
+            "sourceName": "DANAWA",
+            "externalId": "91909571",
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+            "saleSku": "11350-03-20G",
+            "saleUnit": "PRODUCT",
+            "verifiedAt": "2026-10-06T12:34:13.387Z"
+          },
+          "price": {
+            "amountKrw": 822300,
+            "observedAt": "2026-10-09T16:27:55.879Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+            "condition": "NEW",
+            "inStock": true
+          }
+        },
+        "historicalComparison": {
+          "amountKrw": 821000,
+          "observedAt": "2026-10-06T12:39:14.292Z",
+          "differenceKrw": 1300,
+          "differencePercent": 0.16,
+          "comparisonIsNotApprovalEvidenceByItself": true
+        },
+        "saleUnitInterpretation": {
+          "saleUnit": "PRODUCT",
+          "retailUnitsPriced": 1,
+          "modulesPerRetailUnit": null,
+          "capacityPerRamModuleBytes": null,
+          "shippingIncluded": false,
+          "conditionalDiscountIncluded": false,
+          "cashOnlyPriceIncluded": false,
+          "installedQuantityMustNotMultiplyKitPrice": true
+        },
+        "priceObservationReviewRecommendation": "ACCEPT_AS_DANAWA_ACTIVE_REGULAR_ITEM_QUOTE_SUBJECT_TO_USER_DB_CONFIRMATION",
+        "reasons": [
+          "Exact existing product externalID, reviewed manufacturer PN, Danawa pcode, saleSku and sale unit match the independently reviewed identity evidence.",
+          "Collector succeeded on a new request; observedAt is newer than the historical snapshot and was not copied from historical price metadata.",
+          "Reviewed collector path accepts an active regular mall-price row only with an explicit positive integer data-base-price and a matching pcode purchase bridge. Shipping, cash-only and conditional benefit sections do not determine the amount.",
+          "Exact card manufacturer, chipset, VRAM capacity and named OC/cooler variant were independently rechecked against manufacturer and domestic product-model sources; approval does not derive from small historical change."
+        ],
+        "sanityReview": {
+          "absoluteAmountKrw": 822300,
+          "knownUnitMismatch": false,
+          "knownConditionalOrShippingPriceMismatch": false,
+          "knownIdentityMismatch": false,
+          "unusuallyHighAmountFlagForHumanReview": false,
+          "highAmountDisposition": "NO_EXTRA_ABSOLUTE_AMOUNT_CLAIM",
+          "marketFairValue": null,
+          "popularity": null,
+          "bestValueClaim": false,
+          "automaticApprovalFromStableHistoricalAmount": false,
+          "notes": "No broad market-price or performance-per-won comparison was performed."
+        },
+        "directPublicPriceRead": null,
+        "metadataLimits": {
+          "originalOfferVerifiedAtPreserved": "2026-10-06T12:34:13.387Z",
+          "currentIdentityEvidenceReviewDate": "2026-10-10",
+          "offerVerifiedAtWasNotSilentlyPromoted": true,
+          "source": "DANAWA_PRODUCT_MODEL_PAGE",
+          "actualMerchantInventoryIndependentlyVerified": false,
+          "actualMerchantFinalCheckoutPriceVerified": false,
+          "domesticImporterAndWarrantyPackageConfirmed": null,
+          "physicalProductRevisionConfirmed": null,
+          "inStockMeaning": "Active regular price row and matching purchase bridge on fetched product page, not independent warehouse-stock confirmation.",
+          "sourceTraceabilityNote": "Collector report records success/rejection counts but not saved HTML or per-row seller identity. Original payload and report remain unchanged; this assessment binds their exact SHA256 values."
+        },
+        "economicPurchaseRecommendation": "NOT_ASSESSED_PRICE_OBSERVATION_APPROVAL_IS_SEPARATE_FROM_PRODUCT_RECOMMENDATION",
+        "requiredBeforeDatabaseWrite": [
+          "User confirmation for concrete final catalog and price import scope."
+        ],
+        "databaseApplied": false
+      }
+    ]
+  },
+  "exactStorageSellerQuoteReview": {
+    "schemaVersion": 1,
+    "reviewDate": "2026-10-10",
+    "reviewTimezone": "Asia/Seoul",
+    "purpose": "승인된 SSD 2종의 정확한 국내 판매 PN·단품 일반 상품가·판매 페이지 상태를 읽기 전용으로 검토한 자료",
+    "scope": {
+      "source": "삼성씨앤에이치 공개 상품 페이지",
+      "networkMethod": "DIRECT_PUBLIC_GET",
+      "requestCacheControl": "no-store",
+      "requestPragma": "no-cache",
+      "loginUsed": false,
+      "cartOrOrderSubmitted": false,
+      "databaseAccessed": false,
+      "databaseChanged": false,
+      "applicationCodeChanged": false,
+      "catalogAdoptionApproved": false,
+      "newPriceApplyApproved": false
+    },
+    "identityEvidencePath": "data/catalog-review/pilot-storage-evidence-2026-10-10.json",
+    "collectionSummary": {
+      "selectedProducts": 2,
+      "directPageResponses": 2,
+      "reviewablePriceObservations": 2,
+      "blockedPriceObservations": 0,
+      "pricesAppliedToDatabase": 0,
+      "accessAttemptsPerProduct": 2,
+      "initialAccessResult": "sandbox network EACCES; no HTTP response",
+      "secondAccessResult": "approved read-only direct GET, HTTP 200"
+    },
+    "limits": [
+      "단일 국내 판매점의 관측 상품가다. 국내 최저가·대표 시장가격·확정 견적이라고 해석하지 않는다.",
+      "일반 공개 판매가만 기록한다. 배송료·쿠폰·적립·카드·회원 조건가·정가·추가상품 가격은 관측 금액에 포함하지 않는다.",
+      "구매 버튼 활성과 품절 표시 부재는 판매 페이지의 주문 활성 근거다. 실제 창고 재고 수량·주문 접수·배송 가능·진품 판정은 확인하지 않았다.",
+      "페이지는 setStockFl=n 및 setStockCnt=∞를 반환한다. 재고 추적을 사용하지 않는 표시이므로 무한 재고나 수량 0의 품절로 변환하지 않는다.",
+      "set_goods_total_price=0 및 옵션행 가격 0은 초기 화면·옵션 계산값이다. 단품 상품가 0원으로 해석하지 않는다.",
+      "응답 Date 헤더는 관측 도구의 UTC보다 약 9시간 앞선다. 원문 헤더는 기록하되 서버 시각을 관측시각·최신성 판단으로 사용하지 않는다. 도구 clock UTC와 클라이언트 한국 날짜를 기준으로 기록한다.",
+      "다나와 모델 집계 가격은 이번 정확 BW SKU 가격 관측에 사용하지 않았다."
+    ],
+    "observations": [
+      {
+        "selectionNumber": 13,
+        "candidateKey": "ssd-samsung-870-evo-1tb",
+        "manufacturer": "Samsung",
+        "modelName": "870 EVO 1TB",
+        "partNumber": "MZ-77E1T0BW",
+        "sellerName": "삼성씨앤에이치",
+        "sellerProductCode": "1000000066",
+        "evidenceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+        "observedAt": "2026-10-09T16:29:31.420Z",
+        "observedAtKst": "2026-10-10T01:29:31.420+09:00",
+        "amountKrw": 459000,
+        "currency": "KRW",
+        "saleUnit": "PRODUCT",
+        "devicesPerSaleUnit": 1,
+        "saleQuantity": 1,
+        "priceType": "PUBLIC_UNCONDITIONAL_ITEM_SALE_PRICE",
+        "priceObservationProposal": {
+          "provider": "SAMSUNG_CNH",
+          "providerSupportStatus": "PROPOSED_NOT_IMPLEMENTED_IN_IMPORTER",
+          "amountKrw": 459000,
+          "saleUnit": "PRODUCT",
+          "inStock": true,
+          "inStockEvidenceScope": "공개 판매 페이지 주문 활성 플래그를 가격 계약에 제안한 값; 실물 재고 수량·배송 보장 아님",
+          "shippingIncluded": false,
+          "conditionalDiscountApplied": false
+        },
+        "status": "OBSERVED_REVIEW_REQUIRED_NOT_APPLIED",
+        "saleStatus": "PUBLIC_PAGE_ORDER_ENABLED",
+        "physicalStockStatus": "UNKNOWN_NOT_TRACKED_BY_PAGE",
+        "sourceResponse": {
+          "httpStatus": 200,
+          "finalUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+          "contentType": "text/html; charset=UTF-8",
+          "responseCacheControl": "no-store, no-cache, must-revalidate, max-age=0",
+          "responseAge": null,
+          "rawDateHeader": "Sat, 10 Oct 2026 01:29:31 GMT",
+          "rawResponseSha256": "74ac300ac469de96b8847466748061673afa1c08f7dcf54948b327dfbfa17b2b",
+          "rawResponseBytes": 116529,
+          "hashScope": "complete public HTTP response body bytes decoded from transport; no headers or cookies included"
+        },
+        "evidenceChecks": {
+          "declaredModelDtDd": "MZ-77E1T0BW",
+          "visibleProductTitle": "내장 SSD 870 EVO SATA 1TB",
+          "visiblePriceLabel": "판매가",
+          "visibleItemPriceKrw": 459000,
+          "hiddenSetGoodsPriceKrw": 459000,
+          "controllerSetGoodsPriceKrw": 459000,
+          "goodsDiscountFl": "n",
+          "goodsDiscountValue": 0,
+          "setCouponDcPriceEqualsItemPrice": true,
+          "couponApplyNumber": "",
+          "optionFl": "n",
+          "optionSno": "166",
+          "selectedOptionPriceKrw": 0,
+          "defaultQuantity": 1,
+          "setSalesUnit": 1,
+          "setMinOrderCnt": 1,
+          "setMaxOrderCnt": 2,
+          "setStockFl": "n",
+          "setStockCnt": "∞",
+          "orderButtonEnabled": true,
+          "showsOrderable": true,
+          "orderButtonText": "바로 구매",
+          "cartButtonEnabled": true,
+          "naverPayEnableFlag": "Y",
+          "visibleSoldOutOrSalesStoppedLabelFound": false,
+          "addGoodsDefaultValue": "",
+          "selectedAddonCount": 0,
+          "setAddGoodsPriceKrw": 0
+        },
+        "evidenceLocations": [
+          "#frmView .item_detail_list > dl.item_price: dt=판매가와 dd 금액",
+          "#frmView .item_detail_list: dt=모델명과 dd의 정확 BW PN",
+          "#frmView input[name=set_goods_price] 및 gd_goods_view 초기화 parameters.setGoodsPrice",
+          "#frmView input[name=goodsDiscountFl] 및 기본 쿠폰 적용 번호",
+          "#option_display_item_0 단품 goodsNo·optionSno·goodsCnt·옵션 차액",
+          "추가상품 select[name=addGoodsInput0]의 첫 옵션 value가 빈 문자열: SATA 케이블 미선택",
+          "gd_goods_view 초기화 setStockFl=n/setStockCnt=∞와 비활성 속성 없는 바로 구매 버튼"
+        ],
+        "reviewNotes": [
+          "정확 PN·판매가·단품 수량/판매 단위·추가상품 미선택을 하나의 새 공개 응답에서 확인했다.",
+          "숨은 가격 필드만 가져오지 않고 표시 판매가와 초기화 가격을 대조했다. 할인 플래그는 꺼져 있고 쿠폰 적용 전 가격과 동일하다.",
+          "상품 페이지는 주문을 활성화한다. 재고 추적을 끈 표시이므로 실물 재고가 있다고 단정하지 않는다.",
+          "정품·공식 파트너 표시는 별도 identity evidence의 범위이며 실물·유통 보증 검사 결과로 확장하지 않는다."
+        ],
+        "applyBlockers": [
+          "새 제품 채택·가격 반영에 대한 사용자 컨펌",
+          "적재 미리보기에서 신규 상품의 정확한 PN·공통 ID 연결 확인"
+        ]
+      },
+      {
+        "selectionNumber": 14,
+        "candidateKey": "ssd-samsung-990-pro-1tb",
+        "manufacturer": "Samsung",
+        "modelName": "990 PRO 1TB",
+        "partNumber": "MZ-V9P1T0BW",
+        "sellerName": "삼성씨앤에이치",
+        "sellerProductCode": "1000000113",
+        "evidenceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+        "observedAt": "2026-10-09T16:29:31.430Z",
+        "observedAtKst": "2026-10-10T01:29:31.430+09:00",
+        "amountKrw": 399000,
+        "currency": "KRW",
+        "saleUnit": "PRODUCT",
+        "devicesPerSaleUnit": 1,
+        "saleQuantity": 1,
+        "priceType": "PUBLIC_UNCONDITIONAL_ITEM_SALE_PRICE",
+        "priceObservationProposal": {
+          "provider": "SAMSUNG_CNH",
+          "providerSupportStatus": "PROPOSED_NOT_IMPLEMENTED_IN_IMPORTER",
+          "amountKrw": 399000,
+          "saleUnit": "PRODUCT",
+          "inStock": true,
+          "inStockEvidenceScope": "공개 판매 페이지 주문 활성 플래그를 가격 계약에 제안한 값; 실물 재고 수량·배송 보장 아님",
+          "shippingIncluded": false,
+          "conditionalDiscountApplied": false
+        },
+        "status": "OBSERVED_REVIEW_REQUIRED_NOT_APPLIED",
+        "saleStatus": "PUBLIC_PAGE_ORDER_ENABLED",
+        "physicalStockStatus": "UNKNOWN_NOT_TRACKED_BY_PAGE",
+        "sourceResponse": {
+          "httpStatus": 200,
+          "finalUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+          "contentType": "text/html; charset=UTF-8",
+          "responseCacheControl": "no-store, no-cache, must-revalidate, max-age=0",
+          "responseAge": null,
+          "rawDateHeader": "Sat, 10 Oct 2026 01:29:31 GMT",
+          "rawResponseSha256": "d02d39469d8dcb7974d099c78e81ecb4aebcebcdc9c71f97d8a9c7133a80dd7a",
+          "rawResponseBytes": 118920,
+          "hashScope": "complete public HTTP response body bytes decoded from transport; no headers or cookies included"
+        },
+        "evidenceChecks": {
+          "declaredModelDtDd": "MZ-V9P1T0BW",
+          "visibleProductTitle": "내장 SSD 990 PRO NVMe 1TB",
+          "visiblePriceLabel": "판매가",
+          "visibleItemPriceKrw": 399000,
+          "hiddenSetGoodsPriceKrw": 399000,
+          "controllerSetGoodsPriceKrw": 399000,
+          "goodsDiscountFl": "n",
+          "goodsDiscountValue": 0,
+          "setCouponDcPriceEqualsItemPrice": true,
+          "couponApplyNumber": "",
+          "optionFl": "n",
+          "optionSno": "239",
+          "selectedOptionPriceKrw": 0,
+          "defaultQuantity": 1,
+          "setSalesUnit": 1,
+          "setMinOrderCnt": 1,
+          "setMaxOrderCnt": 2,
+          "setStockFl": "n",
+          "setStockCnt": "∞",
+          "orderButtonEnabled": true,
+          "showsOrderable": true,
+          "orderButtonText": "바로 구매",
+          "cartButtonEnabled": true,
+          "naverPayEnableFlag": "Y",
+          "visibleSoldOutOrSalesStoppedLabelFound": false,
+          "addGoodsDefaultValue": "",
+          "selectedAddonCount": 0,
+          "setAddGoodsPriceKrw": 0
+        },
+        "evidenceLocations": [
+          "#frmView .item_detail_list > dl.item_price: dt=판매가와 dd 금액",
+          "#frmView .item_detail_list: dt=모델명과 dd의 정확 BW PN",
+          "#frmView input[name=set_goods_price] 및 gd_goods_view 초기화 parameters.setGoodsPrice",
+          "#frmView input[name=goodsDiscountFl] 및 기본 쿠폰 적용 번호",
+          "#option_display_item_0 단품 goodsNo·optionSno·goodsCnt·옵션 차액",
+          "추가상품 select[name=addGoodsInput0]의 첫 옵션 value가 빈 문자열: M.2 나사 미선택",
+          "gd_goods_view 초기화 setStockFl=n/setStockCnt=∞와 비활성 속성 없는 바로 구매 버튼"
+        ],
+        "reviewNotes": [
+          "정확 PN·판매가·단품 수량/판매 단위·추가상품 미선택을 하나의 새 공개 응답에서 확인했다.",
+          "일반 BW PN이며 CW/GW 방열판 포함 모델의 상품가를 섞지 않았다.",
+          "숨은 가격 필드만 가져오지 않고 표시 판매가와 초기화 가격을 대조했다. 할인 플래그는 꺼져 있고 쿠폰 적용 전 가격과 동일하다.",
+          "상품 페이지는 주문을 활성화한다. 재고 추적을 끈 표시이므로 실물 재고가 있다고 단정하지 않는다.",
+          "정품·공식 파트너 표시는 별도 identity evidence의 범위이며 실물·유통 보증 검사 결과로 확장하지 않는다."
+        ],
+        "applyBlockers": [
+          "새 제품 채택·가격 반영에 대한 사용자 컨펌",
+          "적재 미리보기에서 신규 상품의 정확한 PN·공통 ID 연결 확인"
+        ]
+      }
+    ]
+  },
+  "requiredBeforeApply": [
+    "User approval of the concrete catalog and price scope",
+    "DB-aware exact source/local ID and existing identity conflict preview before any writes",
+    "Transactional idempotent apply implementation; no auto-seed on boot or pull",
+    "MANUFACTURER product-source support in the price importer before new SSD quotes can be imported",
+    "Recheck stock/identity/freshness of price quotes at apply time; preserve held quotes as review only"
+  ]
+}

@@ -50,6 +50,15 @@ export function isPcRequest(value: unknown): value is PcRequest {
     (part.source === 'AUTO' || part.source === 'MANUAL') &&
     (part.matchStatus === 'MATCHED' || part.matchStatus === 'UNMATCHED') &&
     (part.catalogProductId === null || typeof part.catalogProductId === 'string') &&
+    (part.catalogModelId === undefined || part.catalogModelId === null ||
+      typeof part.catalogModelId === 'string' && part.catalogModelId.trim().length > 0 && part.catalogModelId.length <= 128) &&
+    (part.recognitionLevel === undefined || part.recognitionLevel === null ||
+      ['SPEC_GROUP', 'MODEL', 'PHYSICAL_VARIANT'].includes(String(part.recognitionLevel))) &&
+    ((part.catalogModelId === undefined || part.catalogModelId === null)
+      ? part.recognitionLevel === undefined || part.recognitionLevel === null ||
+        part.recognitionLevel === 'PHYSICAL_VARIANT' && part.matchStatus === 'MATCHED' && !!part.catalogProductId
+      : part.recognitionLevel !== undefined && part.recognitionLevel !== null &&
+        (part.recognitionLevel !== 'PHYSICAL_VARIANT' || part.matchStatus === 'MATCHED' && !!part.catalogProductId)) &&
     isObject(part.specs))
 }
 

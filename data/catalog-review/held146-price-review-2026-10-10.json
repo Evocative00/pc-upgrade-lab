@@ -1,0 +1,3974 @@
+{
+  "schemaVersion": 1,
+  "stage": "HELD146_RESEARCH_COMPLETE_AWAITING_NEXT_IMPLEMENTATION_CONFIRMATION",
+  "reviewedAt": "2026-10-10T11:42:26.557Z",
+  "requestedScope": {
+    "remainingUnconfirmed": 227,
+    "exactConfigurationHeldFirst": 146,
+    "otherPreviouslyNoCurrentQuoteNotResearchedThisRound": 81
+  },
+  "summary": {
+    "reviewed": 146,
+    "byType": {
+      "CPU": 10,
+      "GPU": 28,
+      "MOTHERBOARD": 40,
+      "MONITOR": 10,
+      "RAM": 58
+    },
+    "READY": 0,
+    "HELD": 138,
+    "NO_CURRENT_QUOTE": 8,
+    "newImportEligiblePrices": 0,
+    "currentCatalogProducts": 307,
+    "currentApprovedPrices": 80,
+    "currentUnconfirmedPrices": 227,
+    "exactDomesticRamSkuResolvedButOutOfStock": 1,
+    "separateRetailProductPriceCandidates": 5,
+    "firstProposedImplementationPreviewProducts": 4
+  },
+  "currentProduction": {
+    "activePricesFile": "data/catalog-shared/active-approved-prices.json",
+    "activePricesSha256": "7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc",
+    "identityFile": "data/catalog-shared/all-catalog-identities-2026-10-10.json",
+    "identitySha256": "8ad681a1cd634eb4c990ec20714fe332d6972dd1e22aff3feef54c6261466792",
+    "homepageReadAt": "2026-10-10T11:42:26.557Z",
+    "homepageRows": 307,
+    "homepageCounts": {
+      "origins": {
+        "SHARED": 307
+      },
+      "lookups": {
+        "NO_PRICE": 227,
+        "OK": 80
+      }
+    }
+  },
+  "safety": {
+    "databaseWrites": 0,
+    "specificationChanges": 0,
+    "productCreates": 0,
+    "pricePublications": 0,
+    "deployments": 0,
+    "backendRestarts": 0,
+    "environmentVariableChanges": 0,
+    "gitCommits": 0,
+    "gitPushes": 0
+  },
+  "validation": {
+    "completeExpectedHeld146": true,
+    "noDuplicateIds": true,
+    "noApproved80Overlap": true,
+    "sourceAndCanonicalIdsPreserved": true,
+    "active80ByteHashPreserved": true,
+    "runningHomepage307Shared80Ok227NoPrice": true,
+    "emptyPricePreviewIsNotAnImportBatch": true
+  },
+  "products": [
+    {
+      "canonicalId": "10039536-d228-3f0c-a740-ea75a2df6b05",
+      "status": "HELD",
+      "type": "CPU",
+      "sourceFile": "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "DOMESTIC_EXACT_BOX_SELLER_UNVERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ac833b07-53eb-4d59-8be5-bcd20ad26e79"
+      },
+      "identity": {
+        "canonicalId": "10039536-d228-3f0c-a740-ea75a2df6b05",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 8600G",
+        "partNumber": "100-100001237BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "13a50823-a1b5-3741-998d-362ccfbab984",
+      "status": "HELD",
+      "type": "CPU",
+      "sourceFile": "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "DOMESTIC_MULTIPACK_DOES_NOT_MATCH_BOX"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ea28e46f-dc70-4547-9701-eca335890462"
+      },
+      "identity": {
+        "canonicalId": "13a50823-a1b5-3741-998d-362ccfbab984",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 7500F",
+        "partNumber": "100-100000597BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "1aaff72f-29fa-38c4-888a-c654a54c81a9",
+      "status": "HELD",
+      "type": "CPU",
+      "sourceFile": "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_PURCHASABLE_INDEPENDENT_BOX_SELLER"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "70bae351-5e16-46d2-ac14-821d393b6244"
+      },
+      "identity": {
+        "canonicalId": "1aaff72f-29fa-38c4-888a-c654a54c81a9",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 3900X",
+        "partNumber": "100-100000023BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "4328778c-84af-324b-bc60-e51891fff949",
+      "status": "HELD",
+      "type": "CPU",
+      "sourceFile": "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "SEPARATE_RETAIL_SKU_PROPOSAL_REQUIRED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:241067:model"
+      },
+      "identity": {
+        "canonicalId": "4328778c-84af-324b-bc60-e51891fff949",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 245K",
+        "partNumber": null,
+        "identityKind": "MODEL_REFERENCE",
+        "role": "INSTALLED_PC_REFERENCE",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "9a23895c-b762-3076-b92f-430fa22bd53a",
+      "status": "HELD",
+      "type": "CPU",
+      "sourceFile": "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "DOMESTIC_MULTIPACK_DOES_NOT_MATCH_WOF"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b"
+      },
+      "identity": {
+        "canonicalId": "9a23895c-b762-3076-b92f-430fa22bd53a",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5700X",
+        "partNumber": "100-100000926WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "9b064051-a89c-3219-bee9-acaaeb98bb94",
+      "status": "HELD",
+      "type": "CPU",
+      "sourceFile": "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_PURCHASABLE_INDEPENDENT_BOX_SELLER"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "045802be-240a-4bce-9e67-2722f885e671"
+      },
+      "identity": {
+        "canonicalId": "9b064051-a89c-3219-bee9-acaaeb98bb94",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core i9-13900K",
+        "partNumber": "BX8071513900K",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "d42f53fd-ef2b-391d-938e-3bfe2214578d",
+      "status": "HELD",
+      "type": "CPU",
+      "sourceFile": "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "DOMESTIC_MULTIPACK_DOES_NOT_MATCH_BOX"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1380a6eb-8357-4ce2-be1c-190fa045a108"
+      },
+      "identity": {
+        "canonicalId": "d42f53fd-ef2b-391d-938e-3bfe2214578d",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 4600G",
+        "partNumber": "100-100000147BOX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "dda7f599-9514-39db-bc64-03d1c288a1d3",
+      "status": "HELD",
+      "type": "CPU",
+      "sourceFile": "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "DOMESTIC_MULTIPACK_OR_OVERSEAS_NOT_EXACT_WOF"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e11970e8-4f2c-426d-872c-92c0f4160ec4"
+      },
+      "identity": {
+        "canonicalId": "dda7f599-9514-39db-bc64-03d1c288a1d3",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5700X3D",
+        "partNumber": "100-100001503WOF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "ef545658-d152-34d2-8fc6-dcd29c1a843f",
+      "status": "HELD",
+      "type": "CPU",
+      "sourceFile": "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "CURRENT_BOX_ORDER_CODES_AND_COOLER_VARIANT_UNRESOLVED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "2ab00ac9-d91e-4250-9297-2bdd6f617d41"
+      },
+      "identity": {
+        "canonicalId": "ef545658-d152-34d2-8fc6-dcd29c1a843f",
+        "type": "CPU",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7900",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+      "status": "HELD",
+      "type": "CPU",
+      "sourceFile": "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "SEPARATE_RETAIL_SKU_PROPOSAL_REQUIRED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "intel:ark:245694:model"
+      },
+      "identity": {
+        "canonicalId": "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+        "type": "CPU",
+        "manufacturer": "Intel",
+        "modelName": "Core Ultra 5 250K Plus",
+        "partNumber": null,
+        "identityKind": "MODEL_REFERENCE",
+        "role": "INSTALLED_PC_REFERENCE",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "02cfa9ff-9f6d-333a-92ed-b59cac56c96f",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "SELLER_PHYSICAL_CONFIGURATION_AND_PRICE_BASIS_UNRESOLVED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "0fe5b7d9-8a5b-4834-994f-a9cb440a80c5"
+      },
+      "identity": {
+        "canonicalId": "02cfa9ff-9f6d-333a-92ed-b59cac56c96f",
+        "type": "GPU",
+        "manufacturer": "ASRock",
+        "modelName": "Intel Arc A380 Challenger ITX 6GB OC",
+        "partNumber": "A380 CLI 6GO",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "075551b2-65a6-315a-8f6e-b2e8fc616ad8",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "DOMESTIC_EXACT_PLUS_10GB_LHR_MAPPING_NOT_ESTABLISHED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "178c4176-e8aa-460c-b31e-5b0523c39045"
+      },
+      "identity": {
+        "canonicalId": "075551b2-65a6-315a-8f6e-b2e8fc616ad8",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 3080 VENTUS 3X PLUS 10G OC LHR",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "0af96b52-7b1c-3135-8f91-1a9f5bf4f38c",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "COOLING_VARIANT_XS_VS_S_UNRESOLVED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "5358adb7-1f28-46b0-9e92-ca9515b28794"
+      },
+      "identity": {
+        "canonicalId": "0af96b52-7b1c-3135-8f91-1a9f5bf4f38c",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce GTX 1650 SUPER VENTUS XS OC",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "2d3b4395-adbc-359f-b848-8b467847051c",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "COOLING_VARIANT_XS_VS_S_OCV1_UNRESOLVED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8ba7cdbd-84bc-48f6-8d0c-25118d30d9d4"
+      },
+      "identity": {
+        "canonicalId": "2d3b4395-adbc-359f-b848-8b467847051c",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce GTX 1650 D6 VENTUS XS OCV1",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "2f68c7b4-52fd-3dfb-bff2-3bd9b25937af",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "COOLING_VARIANT_XS_VS_S_UNRESOLVED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "be37d4b6-118e-45d4-aa5f-3295d094e0c5"
+      },
+      "identity": {
+        "canonicalId": "2f68c7b4-52fd-3dfb-bff2-3bd9b25937af",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 2080 SUPER VENTUS XS OC",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "3493c365-a3cd-318c-97fa-0e8fd2b586cb",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "CORE_VARIANT_NARROWED_EXACT_DOMESTIC_PN_NOT_VERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "975bdbf3-95c3-4402-a24b-f66e451c8d85"
+      },
+      "identity": {
+        "canonicalId": "3493c365-a3cd-318c-97fa-0e8fd2b586cb",
+        "type": "GPU",
+        "manufacturer": "XFX",
+        "modelName": "Speedster MERC 319 Radeon RX 6800 XT CORE 16GB",
+        "partNumber": "RX-68XTALFD9",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "3668c7fb-058a-3b6d-91de-ba789660a74e",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "DOMESTIC_EXACT_ASROCK_16GB_MAPPING_NOT_ESTABLISHED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "24f63be3-aad0-4b5d-bcdc-0fe73e9c78d7"
+      },
+      "identity": {
+        "canonicalId": "3668c7fb-058a-3b6d-91de-ba789660a74e",
+        "type": "GPU",
+        "manufacturer": "ASRock",
+        "modelName": "Intel Arc A770 Phantom Gaming 16GB OC",
+        "partNumber": "A770 PG 16GO",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "387dd3fc-46e7-3843-8c92-7176ddf22da5",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "CORRECT_MARKETED_OCV1_LHR_MODEL_FOUND_QUOTE_AND_PHYSICAL_SPEC_PENDING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e9ce8d1e-f3d4-45d1-a94b-4f2a2b0774f1"
+      },
+      "identity": {
+        "canonicalId": "387dd3fc-46e7-3843-8c92-7176ddf22da5",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 3060 Ti VENTUS 2X 8G OCV1 LHR",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "39530f38-3f56-3efa-91de-408a44a95004",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "KOREAN_OFFICIAL_325MM_DOMESTIC_323MM_CONFLICT_NOT_REGIONAL_RESOLUTION"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c4be19f3-f5a5-4fc7-be68-d8db5b996360"
+      },
+      "identity": {
+        "canonicalId": "39530f38-3f56-3efa-91de-408a44a95004",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5090 32G VENTUS 3X OC",
+        "partNumber": "G5090-32V3C",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "3a36fd25-b2b9-36c1-894d-f35cc9070d2d",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "ORIGINAL_4070TI_MODEL_NARROWED_QUOTE_AND_PHYSICAL_SPEC_PENDING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "cea6bd89-e4be-4ae4-9da0-7448a9cf4b35"
+      },
+      "identity": {
+        "canonicalId": "3a36fd25-b2b9-36c1-894d-f35cc9070d2d",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 4070 Ti VENTUS 3X 12G OC",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "41716480-b206-3334-b2cf-3beeaf658c24",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "DOMESTIC_ORIGINAL_4090_OC_REVISION_NOT_ESTABLISHED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "650d9d9e-376c-4872-9667-d3e5dfdd513c"
+      },
+      "identity": {
+        "canonicalId": "41716480-b206-3334-b2cf-3beeaf658c24",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 4090 VENTUS 3X 24G OC",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "4213982f-d6df-37e8-8854-3773db974b30",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "COOLING_VARIANT_XS_VS_S_XS_C_UNRESOLVED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "9d8059a4-9758-428f-b573-ffdb4b526f94"
+      },
+      "identity": {
+        "canonicalId": "4213982f-d6df-37e8-8854-3773db974b30",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce GTX 1660 SUPER VENTUS XS OC",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "554a644d-a688-3354-83a6-3da061aa7fcc",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_ASROCK_ITX_PN_DOMESTIC_SALE_NOT_VERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "875be446-3259-43f3-9a19-d9a959821a4a"
+      },
+      "identity": {
+        "canonicalId": "554a644d-a688-3354-83a6-3da061aa7fcc",
+        "type": "GPU",
+        "manufacturer": "ASRock",
+        "modelName": "Radeon RX 6500 XT Challenger ITX 4GB",
+        "partNumber": "RX6500XT CLI 4G",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "583dac20-fd9d-3cca-841b-13179996f494",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_ASROCK_CLD_NOT_SE_OR_INTEL_REFERENCE"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d9b0932b-2cc1-4fba-893e-96bd88264924"
+      },
+      "identity": {
+        "canonicalId": "583dac20-fd9d-3cca-841b-13179996f494",
+        "type": "GPU",
+        "manufacturer": "ASRock",
+        "modelName": "Intel Arc A750 Challenger D 8GB OC",
+        "partNumber": "A750 CLD 8GO",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "59e6c128-012e-3407-8259-6149b0cbfbbb",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "MANUFACTURER_MULTIPLE_PNS_SAME_ADVERTISED_SPECS_REQUIRE_LABEL"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "2f2f133b-17f9-4189-adcf-b996fcc4e557"
+      },
+      "identity": {
+        "canonicalId": "59e6c128-012e-3407-8259-6149b0cbfbbb",
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 6650 XT 8GB",
+        "partNumber": "11319-03-20G",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "5dd1bc9e-00c1-3967-907f-2d513f35b9c7",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "STANDARD_RED_DEVIL_FOUND_EXACT_DOMESTIC_PN_AND_QUOTE_PENDING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "6ce832dc-6b38-4165-b426-9c0e31c969d1"
+      },
+      "identity": {
+        "canonicalId": "5dd1bc9e-00c1-3967-907f-2d513f35b9c7",
+        "type": "GPU",
+        "manufacturer": "PowerColor",
+        "modelName": "Red Devil Radeon RX 6900 XT 16GB",
+        "partNumber": "AXRX 6900XT 16GBD6-3DHE/OC",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "635555ba-5a75-32e9-a8af-9ca5dab78d87",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_ASROCK_A580_SALE_NOT_ESTABLISHED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1e8d84aa-e7df-4ba2-9e20-282839cb1c53"
+      },
+      "identity": {
+        "canonicalId": "635555ba-5a75-32e9-a8af-9ca5dab78d87",
+        "type": "GPU",
+        "manufacturer": "ASRock",
+        "modelName": "Intel Arc A580 Challenger 8GB OC",
+        "partNumber": "A580 CL 8GO",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "69fcef0f-2651-3828-85d4-808dc590192e",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXPLICIT_MEMORY_AND_D_VARIANT_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "06364d8d-4380-415e-b8f5-478ba7179db4"
+      },
+      "identity": {
+        "canonicalId": "69fcef0f-2651-3828-85d4-808dc590192e",
+        "type": "GPU",
+        "manufacturer": "ASRock",
+        "modelName": "Radeon RX 6500 XT Phantom Gaming 8GB OC",
+        "partNumber": "RX6500XT PG 8GO",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "6eb144f3-c888-3176-bb2a-1355abc9a970",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "INDEPENDENT_DOMESTIC_FAMILY_FOUND_SALE_ENDED_EXACT_PN_PENDING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4024eb10-bbf6-4915-b495-604c934ecaa3"
+      },
+      "identity": {
+        "canonicalId": "6eb144f3-c888-3176-bb2a-1355abc9a970",
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 6600 XT 8GB",
+        "partNumber": "11309-03-20G",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "735abfc6-d1c9-381c-9ae1-384d2f1980ba",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "ASROCK_A770_PGD_8GB_DOMESTIC_FAMILY_FOUND_PN_AND_QUOTE_PENDING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4c5b974f-0b3c-49de-8319-1d13efdfe5ae"
+      },
+      "identity": {
+        "canonicalId": "735abfc6-d1c9-381c-9ae1-384d2f1980ba",
+        "type": "GPU",
+        "manufacturer": "ASRock",
+        "modelName": "Intel Arc A770 Phantom Gaming D 8GB OC",
+        "partNumber": "A770 PGD 8GO",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "78d99e2c-ba65-3d8a-9306-53f357cb4076",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_ASROCK_B570_DOMESTIC_SALE_NOT_ESTABLISHED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "229d7671-b24a-4317-a23a-fb2e5b6b3343"
+      },
+      "identity": {
+        "canonicalId": "78d99e2c-ba65-3d8a-9306-53f357cb4076",
+        "type": "GPU",
+        "manufacturer": "ASRock",
+        "modelName": "Intel Arc B570 Challenger 10GB OC",
+        "partNumber": "B570 CL 10GO",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "8058771f-34d2-397f-8411-bd3912bc405f",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "COOLING_VARIANT_XS_VS_S_UNRESOLVED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f349e815-0b9f-4069-a6fc-58a595012319"
+      },
+      "identity": {
+        "canonicalId": "8058771f-34d2-397f-8411-bd3912bc405f",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce GTX 1660 Ti VENTUS XS 6G OC",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "83b139a5-1b56-364b-8dfd-682b964a6f57",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "DOMESTIC_PULSE_FAMILY_FOUND_EXACT_PN_AND_QUOTE_PENDING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "17412e4b-48ea-4648-9210-b0edbff29846"
+      },
+      "identity": {
+        "canonicalId": "83b139a5-1b56-364b-8dfd-682b964a6f57",
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 5700 XT 8GB",
+        "partNumber": "11293-01-20G",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "c133e8de-5e07-36e5-8b99-87924d7bc2c2",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "RED_DEVIL_6950XT_FAMILY_FOUND_EXACT_PN_AND_QUOTE_PENDING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "9abf593b-9c3f-444c-8530-11729705b63e"
+      },
+      "identity": {
+        "canonicalId": "c133e8de-5e07-36e5-8b99-87924d7bc2c2",
+        "type": "GPU",
+        "manufacturer": "PowerColor",
+        "modelName": "Red Devil Radeon RX 6950 XT 16GB",
+        "partNumber": "AXRX 6950XT 16GBD6-3DHE/OC",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "c89fdf39-8f7d-3f98-8e8a-591bd4482980",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXPLICIT_OC_VS_NON_OC_CLOCK_AND_POWER_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f4d460ae-4a63-447e-a5ed-38b13c23f6ef"
+      },
+      "identity": {
+        "canonicalId": "c89fdf39-8f7d-3f98-8e8a-591bd4482980",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 2080 Ti VENTUS 11G OC",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "efc601b5-a186-32e7-9a0a-a201f0ad1bb5",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXPLICIT_NON_OC_11350_05_VS_OC_11350_04_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d0f6e0e6-3ade-418b-b23c-a925654cdae7"
+      },
+      "identity": {
+        "canonicalId": "efc601b5-a186-32e7-9a0a-a201f0ad1bb5",
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9060 XT 8GB",
+        "partNumber": "11350-05-20G",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "fc413955-d4fd-38a2-804e-da71489a4769",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PULSE_PN_NOT_ESTABLISHED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d0353240-c4df-441f-90d0-2fdd51be3227"
+      },
+      "identity": {
+        "canonicalId": "fc413955-d4fd-38a2-804e-da71489a4769",
+        "type": "GPU",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 7900 XT 20GB",
+        "partNumber": "11323-02-20G",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "ffb58e45-2d30-356c-a6f5-debae51c7f2f",
+      "status": "HELD",
+      "type": "GPU",
+      "sourceFile": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "reasonCodes": [
+        "RARE_HIGH_ASKING_PRICE_INDEPENDENT_ACTIVE_SELLER_UNCORROBORATED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1b48c3ec-6fc0-416e-83e4-cc6f671084f5"
+      },
+      "identity": {
+        "canonicalId": "ffb58e45-2d30-356c-a6f5-debae51c7f2f",
+        "type": "GPU",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 4060 VENTUS 2X BLACK 8G OC",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "0502638f-ed18-36b8-93b4-760d60279e0f",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NEW_DOMESTIC_SEARCH_FOUND_ONLY_UNVERIFIED_OR_DIFFERENT_VARIANTS"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "98e76daa-11d1-4c9d-a1fd-a736fec06957"
+      },
+      "identity": {
+        "canonicalId": "0502638f-ed18-36b8-93b4-760d60279e0f",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO B660M-A WIFI DDR4",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "08d72053-543b-3e4a-84a0-7c01b2cea664",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "01d08127-7794-462c-96ef-697f5d13b15a"
+      },
+      "identity": {
+        "canonicalId": "08d72053-543b-3e4a-84a0-7c01b2cea664",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "B450-A PRO MAX",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "0df42d99-6df9-3fa4-a679-5fa9c8b1e678",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "87e131f2-3697-4925-bd2a-52f2ad277bab"
+      },
+      "identity": {
+        "canonicalId": "0df42d99-6df9-3fa4-a679-5fa9c8b1e678",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO B650-P WIFI",
+        "partNumber": "PRO B650-P WIFI",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "0e4516bc-8b97-304b-aca3-f7d7a76ee777",
+      "status": "NO_CURRENT_QUOTE",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_ORIGINAL_MARKETED_MODEL_PAGE_CHECKED",
+        "REGULAR_PRICE_SECTION_MISSING",
+        "NO_GLOBAL_UNAVAILABILITY_CONCLUSION"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "eb69638a-40e5-4e10-b550-e6780e11ec32"
+      },
+      "identity": {
+        "canonicalId": "0e4516bc-8b97-304b-aca3-f7d7a76ee777",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASRock",
+        "modelName": "B550M Pro4",
+        "partNumber": "B550M Pro4",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "109952f9-01de-3293-9034-ab93de7f98d0",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXISTING_INSTALLED_MODEL_REFERENCE",
+        "MANUFACTURER_NULL_RETAIL_PART_NUMBER",
+        "SEPARATE_RETAIL_PRODUCT_IDENTITY_APPROVAL_REQUIRED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "msi:MAG B860M MORTAR WIFI:model"
+      },
+      "identity": {
+        "canonicalId": "109952f9-01de-3293-9034-ab93de7f98d0",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG B860M MORTAR WIFI",
+        "partNumber": null,
+        "identityKind": "MODEL_REFERENCE",
+        "role": "INSTALLED_PC_REFERENCE",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "1669e910-74a1-3030-a8d5-957d82b92231",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NEW_DOMESTIC_SEARCH_FOUND_ONLY_UNVERIFIED_OR_DIFFERENT_VARIANTS"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ab4903d3-7351-4e31-af81-3c8571c3ff5f"
+      },
+      "identity": {
+        "canonicalId": "1669e910-74a1-3030-a8d5-957d82b92231",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "B450 TOMAHAWK MAX II",
+        "partNumber": "B450 TOMAHAWK MAX II",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "3a595f1b-8e29-367d-a332-28b2809fb091",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "SOURCE_HARDWARE_REVISION_RETAINED",
+        "DOMESTIC_SALE_REVISION_UNVERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d86e45c3-7e70-4f99-bcbf-5e5769b92fbd"
+      },
+      "identity": {
+        "canonicalId": "3a595f1b-8e29-367d-a332-28b2809fb091",
+        "type": "MOTHERBOARD",
+        "manufacturer": "Gigabyte",
+        "modelName": "B650 GAMING X AX",
+        "partNumber": "B650 GAMING X AX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "478f9193-16e8-3c09-850f-9580a726142f",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "SOURCE_HARDWARE_REVISION_RETAINED",
+        "DOMESTIC_SALE_REVISION_UNVERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "30ab66a2-aaa6-4842-8d52-aa099adb90e0"
+      },
+      "identity": {
+        "canonicalId": "478f9193-16e8-3c09-850f-9580a726142f",
+        "type": "MOTHERBOARD",
+        "manufacturer": "Gigabyte",
+        "modelName": "B550M DS3H",
+        "partNumber": "B550M DS3H",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "4ae272af-a190-3a24-994e-89e4c0f9d9dd",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "198724ee-bbf9-478f-ad19-3f80695e2bbe"
+      },
+      "identity": {
+        "canonicalId": "4ae272af-a190-3a24-994e-89e4c0f9d9dd",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "B650M GAMING PLUS WIFI",
+        "partNumber": "B650M GAMING PLUS WIFI",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "4bdf883f-427f-3e12-9f0c-c3c2989b4d9d",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NEW_DOMESTIC_SEARCH_FOUND_ONLY_UNVERIFIED_OR_DIFFERENT_VARIANTS"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "0833d6bd-e7be-45bc-bcb6-79240c67b0d3"
+      },
+      "identity": {
+        "canonicalId": "4bdf883f-427f-3e12-9f0c-c3c2989b4d9d",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO Z690-A WIFI DDR4",
+        "partNumber": "PRO Z690-A WIFI DDR4",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "59220b78-b225-3f40-aa11-b03bd867e471",
+      "status": "NO_CURRENT_QUOTE",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_ORIGINAL_MARKETED_MODEL_PAGE_CHECKED",
+        "REGULAR_PRICE_SECTION_MISSING",
+        "NO_GLOBAL_UNAVAILABILITY_CONCLUSION"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c3519b71-262e-4f97-b2da-82d7eef99661"
+      },
+      "identity": {
+        "canonicalId": "59220b78-b225-3f40-aa11-b03bd867e471",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO B660M-A DDR4",
+        "partNumber": "PRO B660M-A DDR4",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "656c192f-dfee-3cb1-893f-f0000cc8f53b",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXISTING_INSTALLED_MODEL_REFERENCE",
+        "MANUFACTURER_NULL_RETAIL_PART_NUMBER",
+        "SEPARATE_RETAIL_PRODUCT_IDENTITY_APPROVAL_REQUIRED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "asrock:B850M Pro RS:model"
+      },
+      "identity": {
+        "canonicalId": "656c192f-dfee-3cb1-893f-f0000cc8f53b",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASRock",
+        "modelName": "B850M Pro RS",
+        "partNumber": null,
+        "identityKind": "MODEL_REFERENCE",
+        "role": "INSTALLED_PC_REFERENCE",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXISTING_INSTALLED_MODEL_REFERENCE",
+        "MANUFACTURER_NULL_RETAIL_PART_NUMBER",
+        "SEPARATE_RETAIL_PRODUCT_IDENTITY_APPROVAL_REQUIRED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "asus:TUF GAMING B860-PLUS WIFI:model"
+      },
+      "identity": {
+        "canonicalId": "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B860-PLUS WIFI",
+        "partNumber": null,
+        "identityKind": "MODEL_REFERENCE",
+        "role": "INSTALLED_PC_REFERENCE",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "6ea2ab99-c01d-382a-a946-740d982ce782",
+      "status": "HELD",
+      "type": "MONITOR",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "OFFICIAL_DOMESTIC_REGION_SKU_DIFFERS",
+        "NO_EXPLICIT_MANUFACTURER_SUPPLY_SKU_EQUIVALENCE",
+        "PRICE_REQUIRES_EXACT_CATALOGUE_PN"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ab1efb0d-5979-4a90-9f6b-cac2f46456f2"
+      },
+      "identity": {
+        "canonicalId": "6ea2ab99-c01d-382a-a946-740d982ce782",
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "32GN650-B",
+        "partNumber": "32GN650-B",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "6f4d7633-3226-3ab7-a5c8-d6a31a4f68a7",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "SOURCE_HARDWARE_REVISION_RETAINED",
+        "DOMESTIC_SALE_REVISION_UNVERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c6d47f12-d515-4796-badc-a484788032fe"
+      },
+      "identity": {
+        "canonicalId": "6f4d7633-3226-3ab7-a5c8-d6a31a4f68a7",
+        "type": "MOTHERBOARD",
+        "manufacturer": "Gigabyte",
+        "modelName": "B650 EAGLE AX",
+        "partNumber": "B650 EAGLE AX",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "758d968e-6bc5-3f5c-9e2e-8bf929fb808e",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NEW_DOMESTIC_SEARCH_FOUND_ONLY_UNVERIFIED_OR_DIFFERENT_VARIANTS"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "70416efd-5c04-4c7c-9588-bc46b4fa22ae"
+      },
+      "identity": {
+        "canonicalId": "758d968e-6bc5-3f5c-9e2e-8bf929fb808e",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B450M-PRO II",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "7855995e-8825-330f-a176-5e1ef16da9f8",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NEW_DOMESTIC_SEARCH_FOUND_ONLY_UNVERIFIED_OR_DIFFERENT_VARIANTS"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "034a0f7a-a5a5-4ea6-8f2a-cb49cce48c98"
+      },
+      "identity": {
+        "canonicalId": "7855995e-8825-330f-a176-5e1ef16da9f8",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "B650 GAMING PLUS WIFI",
+        "partNumber": "B650 GAMING PLUS WIFI",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "7af9203c-5b39-3c8d-a319-49c884b57f0d",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NEW_DOMESTIC_SEARCH_FOUND_ONLY_UNVERIFIED_OR_DIFFERENT_VARIANTS"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "62cc75e5-493a-4577-8c0f-1b11c919c96c"
+      },
+      "identity": {
+        "canonicalId": "7af9203c-5b39-3c8d-a319-49c884b57f0d",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG X670E TOMAHAWK WIFI",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "7c2015d0-9bae-3bf1-a2cc-9e1dd09e2dd9",
+      "status": "NO_CURRENT_QUOTE",
+      "type": "MONITOR",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_ORIGINAL_MARKETED_MODEL_PAGE_CHECKED",
+        "REGULAR_PRICE_SECTION_MISSING",
+        "NO_GLOBAL_UNAVAILABILITY_CONCLUSION"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "6cb81aa4-9281-461f-bb0b-7138dda43bdd"
+      },
+      "identity": {
+        "canonicalId": "7c2015d0-9bae-3bf1-a2cc-9e1dd09e2dd9",
+        "type": "MONITOR",
+        "manufacturer": "ASUS",
+        "modelName": "VG249Q",
+        "partNumber": "VG249Q",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "7d92063c-f3e3-3254-ae6b-a4aa7c368187",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NEW_DOMESTIC_SEARCH_FOUND_ONLY_UNVERIFIED_OR_DIFFERENT_VARIANTS"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "95b1e5e5-1aeb-48dd-8eb7-9efc4ad00512"
+      },
+      "identity": {
+        "canonicalId": "7d92063c-f3e3-3254-ae6b-a4aa7c368187",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "B550M PRO-VDH WIFI",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "8673d4e7-b745-300f-a6d6-58429af51ab8",
+      "status": "HELD",
+      "type": "MONITOR",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "OFFICIAL_DOMESTIC_REGION_SKU_DIFFERS",
+        "NO_EXPLICIT_MANUFACTURER_SUPPLY_SKU_EQUIVALENCE",
+        "PRICE_REQUIRES_EXACT_CATALOGUE_PN"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "cbd74f6a-e121-4088-b8b5-31cb76428ccf"
+      },
+      "identity": {
+        "canonicalId": "8673d4e7-b745-300f-a6d6-58429af51ab8",
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "27GL850-B",
+        "partNumber": "27GL850-B",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "873befd3-bf97-300c-b746-1e801d8ebec6",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "84814989-7947-4037-b8b9-9d7bd8a4ffb5"
+      },
+      "identity": {
+        "canonicalId": "873befd3-bf97-300c-b746-1e801d8ebec6",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO X670-P WIFI",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "875caef7-f5fd-331a-9e2b-587ffda06112",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d14182a6-f887-484e-bc30-bc989b6556a6"
+      },
+      "identity": {
+        "canonicalId": "875caef7-f5fd-331a-9e2b-587ffda06112",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING X670E-PLUS WIFI",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "8cc00d16-148e-3498-be86-8f14a50ae91f",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "SOURCE_HARDWARE_REVISION_RETAINED",
+        "DOMESTIC_SALE_REVISION_UNVERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7a610909-c79d-4e93-a093-32ed6a29e89b"
+      },
+      "identity": {
+        "canonicalId": "8cc00d16-148e-3498-be86-8f14a50ae91f",
+        "type": "MOTHERBOARD",
+        "manufacturer": "Gigabyte",
+        "modelName": "B760M GAMING X DDR4",
+        "partNumber": "B760M GAMING X DDR4",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "8e784cef-040b-3fc6-bf8e-0e8ee2ce30fe",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NEW_DOMESTIC_SEARCH_FOUND_ONLY_UNVERIFIED_OR_DIFFERENT_VARIANTS"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4b3e292e-4a0d-4261-85d4-5fb64e0af75e"
+      },
+      "identity": {
+        "canonicalId": "8e784cef-040b-3fc6-bf8e-0e8ee2ce30fe",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "B550-A PRO",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "8f47d1e3-522a-34e6-b8b8-3d38ed4e5db9",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3790cdf2-1095-4ac5-a547-8471ab1374db"
+      },
+      "identity": {
+        "canonicalId": "8f47d1e3-522a-34e6-b8b8-3d38ed4e5db9",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG B660M MORTAR WIFI DDR4",
+        "partNumber": "MAG B660M MORTAR WIFI DDR4",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "8fa373ea-50e1-320d-a74b-cb02947eacc8",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c54cfa78-00e9-412e-a62e-3f7d711bbff5"
+      },
+      "identity": {
+        "canonicalId": "8fa373ea-50e1-320d-a74b-cb02947eacc8",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG Z790 TOMAHAWK WIFI",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "90f8ad8a-007a-318f-98ce-26e850529478",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "22e7a371-599d-4c0a-a17e-e9f04a94a2e9"
+      },
+      "identity": {
+        "canonicalId": "90f8ad8a-007a-318f-98ce-26e850529478",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG B760M MORTAR WIFI",
+        "partNumber": "MAG B760M MORTAR WIFI",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "91d36e56-ac21-3b75-93e1-15b7988ced7a",
+      "status": "NO_CURRENT_QUOTE",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_ORIGINAL_MARKETED_MODEL_PAGE_CHECKED",
+        "REGULAR_PRICE_SECTION_MISSING",
+        "NO_GLOBAL_UNAVAILABILITY_CONCLUSION"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "79930bfb-d0ed-4633-934a-75876d3bd388"
+      },
+      "identity": {
+        "canonicalId": "91d36e56-ac21-3b75-93e1-15b7988ced7a",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO Z790-A WIFI",
+        "partNumber": "PRO Z790-A WIFI",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "96ba5762-d62d-3898-aef0-b8618d4c34f3",
+      "status": "HELD",
+      "type": "MONITOR",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "OFFICIAL_DOMESTIC_REGION_SKU_DIFFERS",
+        "NO_EXPLICIT_MANUFACTURER_SUPPLY_SKU_EQUIVALENCE",
+        "PRICE_REQUIRES_EXACT_CATALOGUE_PN"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "04725907-eba1-4a1b-80e7-fb0bf1b48e98"
+      },
+      "identity": {
+        "canonicalId": "96ba5762-d62d-3898-aef0-b8618d4c34f3",
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "27GP950-B",
+        "partNumber": "27GP950-B",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "9800fdd2-7fcc-3f87-b716-49594cb51779",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NEW_DOMESTIC_SEARCH_FOUND_ONLY_UNVERIFIED_OR_DIFFERENT_VARIANTS"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ef5261d3-509d-4ad7-af98-ad4afecbc86c"
+      },
+      "identity": {
+        "canonicalId": "9800fdd2-7fcc-3f87-b716-49594cb51779",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "ROG STRIX B550-F GAMING (WI-FI)",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "ab58e2eb-3646-38f2-b5de-0e925dbf9f0d",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NEW_DOMESTIC_SEARCH_FOUND_ONLY_UNVERIFIED_OR_DIFFERENT_VARIANTS"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f023d38e-eda9-45aa-8d65-e240ff41933e"
+      },
+      "identity": {
+        "canonicalId": "ab58e2eb-3646-38f2-b5de-0e925dbf9f0d",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG X570 TOMAHAWK WIFI",
+        "partNumber": "MAG X570 TOMAHAWK WIFI",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "b6b9e357-c3b1-3c19-891d-39b82571542e",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "39794990-979b-4e9d-a5f4-151df5834be9"
+      },
+      "identity": {
+        "canonicalId": "b6b9e357-c3b1-3c19-891d-39b82571542e",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B760M-PLUS WIFI D4",
+        "partNumber": "TUF GAMING B760M-PLUS WIFI D4",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "ba89c062-727d-356d-b3aa-8067e7c80ca9",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "SOURCE_HARDWARE_REVISION_RETAINED",
+        "DOMESTIC_SALE_REVISION_UNVERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "63798832-19d3-43e3-9c10-61806081b716"
+      },
+      "identity": {
+        "canonicalId": "ba89c062-727d-356d-b3aa-8067e7c80ca9",
+        "type": "MOTHERBOARD",
+        "manufacturer": "Gigabyte",
+        "modelName": "B760M DS3H DDR4",
+        "partNumber": "B760M DS3H DDR4",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "bd23d65e-49b2-3d98-8fa6-6f0ee272fc41",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "SOURCE_HARDWARE_REVISION_RETAINED",
+        "DOMESTIC_SALE_REVISION_UNVERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7d51c1fe-d7c3-4967-8c23-56f43a68085b"
+      },
+      "identity": {
+        "canonicalId": "bd23d65e-49b2-3d98-8fa6-6f0ee272fc41",
+        "type": "MOTHERBOARD",
+        "manufacturer": "Gigabyte",
+        "modelName": "B650M DS3H (rev. 1.0)",
+        "partNumber": "B650M DS3H (rev. 1.0)",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "bfd0eaeb-4793-3695-b703-54de0938d1e8",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "87653f27-5c93-4c34-b79d-517c778a2b78"
+      },
+      "identity": {
+        "canonicalId": "bfd0eaeb-4793-3695-b703-54de0938d1e8",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B650M-A WIFI II",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "c02a40fe-8e46-351b-aaa2-5b87698852de",
+      "status": "HELD",
+      "type": "MONITOR",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "OFFICIAL_DOMESTIC_REGION_SKU_DIFFERS",
+        "NO_EXPLICIT_MANUFACTURER_SUPPLY_SKU_EQUIVALENCE",
+        "PRICE_REQUIRES_EXACT_CATALOGUE_PN"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "14e27680-a5f9-481e-b9c7-7942d4a427fa"
+      },
+      "identity": {
+        "canonicalId": "c02a40fe-8e46-351b-aaa2-5b87698852de",
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "24GN650-B",
+        "partNumber": "24GN650-B",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "c104c6b4-906c-334e-9649-7539449536bb",
+      "status": "NO_CURRENT_QUOTE",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_ORIGINAL_MARKETED_MODEL_PAGE_CHECKED",
+        "REGULAR_PRICE_SECTION_MISSING",
+        "NO_GLOBAL_UNAVAILABILITY_CONCLUSION"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "eee3482d-6e69-4a23-a085-57105696c606"
+      },
+      "identity": {
+        "canonicalId": "c104c6b4-906c-334e-9649-7539449536bb",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG B550M MORTAR",
+        "partNumber": "MAG B550M MORTAR",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "c21f7e98-6405-3bf1-92dc-be2ef4e89f2d",
+      "status": "HELD",
+      "type": "MONITOR",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "OFFICIAL_DOMESTIC_REGION_SKU_DIFFERS",
+        "NO_EXPLICIT_MANUFACTURER_SUPPLY_SKU_EQUIVALENCE",
+        "PRICE_REQUIRES_EXACT_CATALOGUE_PN"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "90b91f58-583f-4803-acb7-12752edffe6a"
+      },
+      "identity": {
+        "canonicalId": "c21f7e98-6405-3bf1-92dc-be2ef4e89f2d",
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "27GR75Q-B",
+        "partNumber": "27GR75Q-B",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "c7a759e2-dcf8-3595-ada6-bc3f8111e21a",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a03ae0c0-7920-447c-855d-16b40d52270c"
+      },
+      "identity": {
+        "canonicalId": "c7a759e2-dcf8-3595-ada6-bc3f8111e21a",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO B650-S WIFI",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "cc91c866-c4ef-363e-b107-0ee143387c3c",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NEW_DOMESTIC_SEARCH_FOUND_ONLY_UNVERIFIED_OR_DIFFERENT_VARIANTS"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "572183dd-fccd-40b0-b9c5-141414ae8f7b"
+      },
+      "identity": {
+        "canonicalId": "cc91c866-c4ef-363e-b107-0ee143387c3c",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG B760 TOMAHAWK WIFI DDR4",
+        "partNumber": "MAG B760 TOMAHAWK WIFI DDR4",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "ce0ee4ca-5e24-3d8f-a604-f12b568d1f10",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "69a676e3-f33d-4262-9ad2-e05a537dab56"
+      },
+      "identity": {
+        "canonicalId": "ce0ee4ca-5e24-3d8f-a604-f12b568d1f10",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "PRO B760-P WIFI DDR4",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "d0d4a7c1-3372-3d3a-8e44-756430fa0ce1",
+      "status": "HELD",
+      "type": "MONITOR",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "OFFICIAL_DOMESTIC_REGION_SKU_DIFFERS",
+        "NO_EXPLICIT_MANUFACTURER_SUPPLY_SKU_EQUIVALENCE",
+        "PRICE_REQUIRES_EXACT_CATALOGUE_PN"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "23f9bbc9-05c9-45a5-830f-60b4056baa15"
+      },
+      "identity": {
+        "canonicalId": "d0d4a7c1-3372-3d3a-8e44-756430fa0ce1",
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "27GP850-B",
+        "partNumber": "27GP850-B",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "d3549f23-3592-3405-8bfe-ed9ed433a6a5",
+      "status": "HELD",
+      "type": "MONITOR",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "OFFICIAL_DOMESTIC_REGION_SKU_DIFFERS",
+        "NO_EXPLICIT_MANUFACTURER_SUPPLY_SKU_EQUIVALENCE",
+        "PRICE_REQUIRES_EXACT_CATALOGUE_PN"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ab179a44-5f32-43ef-826e-f882822130ea"
+      },
+      "identity": {
+        "canonicalId": "d3549f23-3592-3405-8bfe-ed9ed433a6a5",
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "24GN60R-B",
+        "partNumber": "24GN60R-B",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "e8773768-b314-3ee8-b7d5-8a3cd4542e89",
+      "status": "HELD",
+      "type": "MONITOR",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "OFFICIAL_DOMESTIC_REGION_SKU_DIFFERS",
+        "NO_EXPLICIT_MANUFACTURER_SUPPLY_SKU_EQUIVALENCE",
+        "PRICE_REQUIRES_EXACT_CATALOGUE_PN"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f889503f-4e09-4ad1-8eec-2e094b9d1584"
+      },
+      "identity": {
+        "canonicalId": "e8773768-b314-3ee8-b7d5-8a3cd4542e89",
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "32GQ950-B",
+        "partNumber": "32GQ950-B",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "ecb075f1-427f-3729-ab83-8633c54e4116",
+      "status": "HELD",
+      "type": "MONITOR",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "OFFICIAL_DOMESTIC_REGION_SKU_DIFFERS",
+        "NO_EXPLICIT_MANUFACTURER_SUPPLY_SKU_EQUIVALENCE",
+        "PRICE_REQUIRES_EXACT_CATALOGUE_PN"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "76c380ec-5f68-4ed7-a9d2-cb94a83908fb"
+      },
+      "identity": {
+        "canonicalId": "ecb075f1-427f-3729-ab83-8633c54e4116",
+        "type": "MONITOR",
+        "manufacturer": "LG",
+        "modelName": "27UL500-W",
+        "partNumber": "27UL500-W",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "ed68f819-73eb-3cac-b2d2-b90ca6865d61",
+      "status": "NO_CURRENT_QUOTE",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_ORIGINAL_MARKETED_MODEL_PAGE_CHECKED",
+        "REGULAR_PRICE_SECTION_MISSING",
+        "NO_GLOBAL_UNAVAILABILITY_CONCLUSION"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ae88902f-f52c-4c12-b333-c352e9539b62"
+      },
+      "identity": {
+        "canonicalId": "ed68f819-73eb-3cac-b2d2-b90ca6865d61",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MPG B650I EDGE WIFI",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "f4167103-bb12-3faa-b736-be73dc60ee0a",
+      "status": "NO_CURRENT_QUOTE",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_ORIGINAL_MARKETED_MODEL_PAGE_CHECKED",
+        "REGULAR_PRICE_SECTION_MISSING",
+        "NO_GLOBAL_UNAVAILABILITY_CONCLUSION"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ac6ac4f8-f2e0-4615-8ad7-13d5763e5f34"
+      },
+      "identity": {
+        "canonicalId": "f4167103-bb12-3faa-b736-be73dc60ee0a",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B550-PLUS",
+        "partNumber": "TUF GAMING B550-PLUS",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "fa690657-ecd3-3b23-9c55-a711a19669d4",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e4435963-5c2b-4fc3-9a8e-75e4bb738858"
+      },
+      "identity": {
+        "canonicalId": "fa690657-ecd3-3b23-9c55-a711a19669d4",
+        "type": "MOTHERBOARD",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B660M-A WIFI D4",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "fa82ce7c-27b9-346f-8135-f2da7c776b2a",
+      "status": "HELD",
+      "type": "MOTHERBOARD",
+      "sourceFile": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_CANDIDATE_IN_NEW_BOUNDED_SEARCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d48ce3af-61a3-4517-bfe7-10569c14f4ee"
+      },
+      "identity": {
+        "canonicalId": "fa82ce7c-27b9-346f-8135-f2da7c776b2a",
+        "type": "MOTHERBOARD",
+        "manufacturer": "MSI",
+        "modelName": "MAG B660 TOMAHAWK WIFI DDR4",
+        "partNumber": null,
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": null
+      }
+    },
+    {
+      "canonicalId": "0063e09f-d94a-3656-9531-ccf43fc42885",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "MODULE_CAPACITY_MISMATCH",
+        "COLOR_VARIANT_NOT_VERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "903d7878-c118-4256-b68a-ff9d85901697"
+      },
+      "identity": {
+        "canonicalId": "0063e09f-d94a-3656-9531-ccf43fc42885",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3200 16GB (2x8GB)",
+        "partNumber": "CMK16GX4M2B3200C16",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "03e46f65-c7ba-350f-ae9e-aa65ec43517c",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8ffa5eba-f6f1-4c8b-8a2b-1f97d1d0b965"
+      },
+      "identity": {
+        "canonicalId": "03e46f65-c7ba-350f-ae9e-aa65ec43517c",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5200 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2B5200C40",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "05d41532-669c-324d-901b-c58fb88bc310",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PN_MISSING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3450c943-2555-42ae-b7af-d54f73330635"
+      },
+      "identity": {
+        "canonicalId": "05d41532-669c-324d-901b-c58fb88bc310",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-5600 32GB (1x32GB)",
+        "partNumber": "KVR56U46BD8-32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "08a889dc-596d-38c3-bb28-06f453163189",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "RGB_VARIANT_NOT_VERIFIED",
+        "EXACT_DOMESTIC_PN_MISSING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "84427fd2-d30e-4ade-8bd2-d5b1094bf09e"
+      },
+      "identity": {
+        "canonicalId": "08a889dc-596d-38c3-bb28-06f453163189",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 32GB (2x16GB)",
+        "partNumber": "KF560C30BBK2-32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "0bc3003f-779d-3f47-9d26-01445b4eb07d",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "43c90305-680b-4091-9c29-757745742f16"
+      },
+      "identity": {
+        "canonicalId": "0bc3003f-779d-3f47-9d26-01445b4eb07d",
+        "type": "RAM",
+        "manufacturer": "SK Hynix",
+        "modelName": "HMA451U6AFR8N-TF DDR4-2133 4GB",
+        "partNumber": "HMA451U6AFR8N-TF",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "23933dcc-214a-3c3f-8f31-53399f1e9cfb",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "MODULE_COUNT_AND_CAPACITY_MISMATCH",
+        "CAS_LATENCY_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "45adbb33-9ace-451b-b8c4-b4a90bd67e22"
+      },
+      "identity": {
+        "canonicalId": "23933dcc-214a-3c3f-8f31-53399f1e9cfb",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 32GB (1x32GB)",
+        "partNumber": "KF560C36BBE-32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "2486c84a-abea-3d71-ab40-a13635c3a987",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "50c8eed8-7551-477a-b320-516de7dab52e"
+      },
+      "identity": {
+        "canonicalId": "2486c84a-abea-3d71-ab40-a13635c3a987",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-2666 CL19 16GB (1x16GB)",
+        "partNumber": "KVR26N19D8/16",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "28403447-88f6-31a4-a2f5-31cbbc0e2948",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PN_MISSING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "2cd7d094-07ba-4416-bbf6-8731ee3efc96"
+      },
+      "identity": {
+        "canonicalId": "28403447-88f6-31a4-a2f5-31cbbc0e2948",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-2666 CL19 8GB (1x8GB)",
+        "partNumber": "KVR26N19S8/8",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "3153bd5e-e8b7-3ee8-be7f-68d1e3a6e7d7",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "MANUFACTURER_AND_DDR_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "384c3029-1406-4f9c-8473-5268ab1feb8e"
+      },
+      "identity": {
+        "canonicalId": "3153bd5e-e8b7-3ee8-be7f-68d1e3a6e7d7",
+        "type": "RAM",
+        "manufacturer": "SK Hynix",
+        "modelName": "HMAA2GU6CJR8N-XN DDR4-3200 16GB (1x16GB)",
+        "partNumber": "HMAA2GU6CJR8N-XN",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "319bbcaa-a729-3bd5-937b-7188a7d0be10",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "08a64465-db81-48e6-85c6-014997efb242"
+      },
+      "identity": {
+        "canonicalId": "319bbcaa-a729-3bd5-937b-7188a7d0be10",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 8GB (1x8GB)",
+        "partNumber": "KF552C40BB-8",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "3c8cbbcc-7118-316b-959e-e2619de27e27",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "MODULE_CAPACITY_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7f126456-6214-4e58-b807-b678edbbe15a"
+      },
+      "identity": {
+        "canonicalId": "3c8cbbcc-7118-316b-959e-e2619de27e27",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 16GB (1x16GB)",
+        "partNumber": "KF432C16BB/16",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "3e29332e-77e7-307d-ac55-b080146811b3",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PN_MISSING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4067c61b-7153-41a5-ade0-8097c961e9a3"
+      },
+      "identity": {
+        "canonicalId": "3e29332e-77e7-307d-ac55-b080146811b3",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 8GB (1x8GB)",
+        "partNumber": "KF432C16BB/8",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "40d6c20f-74bd-37d6-9670-2fa8e072e64e",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4a7373b7-b021-4eca-90b3-ff9894cbeea2"
+      },
+      "identity": {
+        "canonicalId": "40d6c20f-74bd-37d6-9670-2fa8e072e64e",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5600 CL40 32GB (1x32GB)",
+        "partNumber": "KF556C40BB-32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "48ae3fc4-3d9e-3bb0-9a5d-26b5150d5c67",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "81793251-0d7e-48c2-a0f5-38e1bdd191e1"
+      },
+      "identity": {
+        "canonicalId": "48ae3fc4-3d9e-3bb0-9a5d-26b5150d5c67",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3600 CL18 16GB (1x16GB)",
+        "partNumber": "KF436C18BB/16",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "4a004c7f-7275-3faf-90e5-a6ce249686d9",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "59ceb0dc-0b8b-4aa8-868f-e8d60ae8466d"
+      },
+      "identity": {
+        "canonicalId": "4a004c7f-7275-3faf-90e5-a6ce249686d9",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5600 32GB (2x16GB)",
+        "partNumber": "KF556C40BBK2-32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "4d56ff31-af55-30a7-acd1-0e932f1c0af9",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PN_MISSING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "437cf126-cbaf-49a8-a106-4119977f9f4f"
+      },
+      "identity": {
+        "canonicalId": "4d56ff31-af55-30a7-acd1-0e932f1c0af9",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-5600 16GB (1x16GB)",
+        "partNumber": "KVR56U46BS8-16",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "57e439ec-a892-39d2-a9dd-e83e7c781089",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "709f860e-656d-46a6-8adb-950635e1610b"
+      },
+      "identity": {
+        "canonicalId": "57e439ec-a892-39d2-a9dd-e83e7c781089",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 32GB (2x16GB)",
+        "partNumber": "KF552C40BBK2-32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "589c0aab-0516-307c-9275-3354bf9ab7e0",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "CAS_AND_RGB_MISMATCH",
+        "EXACT_DOMESTIC_PN_MISSING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "db6432c5-775f-492a-be92-b71bf975c69a"
+      },
+      "identity": {
+        "canonicalId": "589c0aab-0516-307c-9275-3354bf9ab7e0",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-6000 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2B6000C36",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "72653a65-82aa-3066-a6ea-9c10a517d625",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PN_MISSING",
+        "REVIEWED_FAMILY_PAGE_NO_ORDINARY_QUOTE"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "0925a015-2110-474d-ae9b-c7a88681227e"
+      },
+      "identity": {
+        "canonicalId": "72653a65-82aa-3066-a6ea-9c10a517d625",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-6000 CL40 64GB (2x32GB)",
+        "partNumber": "CMK64GX5M2B6000C40",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "731e72a5-8c39-3918-a0e1-f4373d95e789",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "41d30e5c-1396-40c7-969e-a010525aceb0"
+      },
+      "identity": {
+        "canonicalId": "731e72a5-8c39-3918-a0e1-f4373d95e789",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-4800 16GB (1x16GB)",
+        "partNumber": "KVR48U40BS8-16",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "78bddca0-91c5-304a-b138-86ba9d14ec0f",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3076418d-7cc2-4537-8a82-c5c5252cd957"
+      },
+      "identity": {
+        "canonicalId": "78bddca0-91c5-304a-b138-86ba9d14ec0f",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5600 CL40 64GB (2x32GB)",
+        "partNumber": "CMK64GX5M2B5600C40",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "78d6e046-9b50-3b9e-8565-727df0146737",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1693ade8-baa6-4635-86ec-ef3af308cbe4"
+      },
+      "identity": {
+        "canonicalId": "78d6e046-9b50-3b9e-8565-727df0146737",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 16GB (2x8GB)",
+        "partNumber": "KF432C16BBK2/16",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "CANDIDATE_FAMILY_MISMATCH",
+        "EXACT_OTHER_LISTING_IS_OVERSEAS_PURCHASE"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1555eede-7e03-4038-824d-91d8fb21a6e2"
+      },
+      "identity": {
+        "canonicalId": "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c",
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "F5-6000J3636F16GX2-RS5K",
+        "identityKind": "RETAIL_KIT",
+        "role": "PURCHASE_CANDIDATE",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "7dfea635-ed5a-3004-8c13-eae0efa5b8f8",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d12eb4ec-cd21-4a4f-9eb1-e56e149fbf97"
+      },
+      "identity": {
+        "canonicalId": "7dfea635-ed5a-3004-8c13-eae0efa5b8f8",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3600 64GB (2x32GB)",
+        "partNumber": "KF436C18BBK2/64",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "843d1585-2ee6-3642-8165-9bde7e79c9cc",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d6e5644e-d03d-4797-90f4-52009a7a1264"
+      },
+      "identity": {
+        "canonicalId": "843d1585-2ee6-3642-8165-9bde7e79c9cc",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-3200 32GB (1x32GB)",
+        "partNumber": "KVR32N22D8/32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "8a0bba77-e2ec-3ec4-9066-9aaf397e863d",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "CAS_AND_COLOR_VARIANT_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e67e9f94-ff0e-4bb6-9e6f-cdf03446cc6e"
+      },
+      "identity": {
+        "canonicalId": "8a0bba77-e2ec-3ec4-9066-9aaf397e863d",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 64GB (2x32GB)",
+        "partNumber": "KF560C36BBEK2-64",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "8a43d605-c6cb-341f-ba7c-0f660c4ae109",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PN_MISSING",
+        "REVIEWED_FAMILY_PAGE_NO_ORDINARY_QUOTE"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ddd4049d-1015-4953-84a6-e71e81d0a575"
+      },
+      "identity": {
+        "canonicalId": "8a43d605-c6cb-341f-ba7c-0f660c4ae109",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3200 64GB (2x32GB)",
+        "partNumber": "CMK64GX4M2E3200C16",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "8ab2136e-4369-37bc-a66f-9dc961fff141",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "MANUFACTURER_DDR_AND_CAPACITY_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "2081be35-4e30-4885-afd8-8c31a9b8f39c"
+      },
+      "identity": {
+        "canonicalId": "8ab2136e-4369-37bc-a66f-9dc961fff141",
+        "type": "RAM",
+        "manufacturer": "SK Hynix",
+        "modelName": "HMA81GU6MFR8N-UH DDR4-2400 8GB (1x8GB)",
+        "partNumber": "HMA81GU6MFR8N-UH",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "8b3655de-1bf6-3ddc-9669-2065b56e952c",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "CAS_AND_RGB_MISMATCH",
+        "EXACT_DOMESTIC_PN_MISSING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4003dd50-671a-494e-a9da-13b30f75e88e"
+      },
+      "identity": {
+        "canonicalId": "8b3655de-1bf6-3ddc-9669-2065b56e952c",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2E6000C36",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "8d2d09ca-9d1b-31a0-9c51-ee4204dff0f5",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "COLOR_VARIANT_NOT_VERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3ec88fb7-7041-40bf-82ac-3c4b21c7d1c2"
+      },
+      "identity": {
+        "canonicalId": "8d2d09ca-9d1b-31a0-9c51-ee4204dff0f5",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3600 CL18 16GB (2x8GB)",
+        "partNumber": "CMK16GX4M2B3600C18",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "9656da7c-c390-3deb-b84b-6c59ab118579",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "06b29918-1847-4754-88d2-547e35368da4"
+      },
+      "identity": {
+        "canonicalId": "9656da7c-c390-3deb-b84b-6c59ab118579",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5600 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2B5600C36",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "98163a70-96e7-3e4c-a5c5-c8c334637867",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PN_UNVERIFIED",
+        "REVIEWED_DANAWA_PAGE_NO_CURRENT_REGULAR_QUOTE"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c10975d5-ae7e-488f-95e7-f9270a5beb68"
+      },
+      "identity": {
+        "canonicalId": "98163a70-96e7-3e4c-a5c5-c8c334637867",
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 32GB (2x16GB)",
+        "partNumber": "F4-3200C16D-32GVK",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "99347182-e833-3958-8b25-76243995c988",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_PN_EVIDENCE"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "15b65b34-f647-4ffc-8b61-a0a9f5a0006c"
+      },
+      "identity": {
+        "canonicalId": "99347182-e833-3958-8b25-76243995c988",
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3600 32GB (2x16GB)",
+        "partNumber": "F4-3600C18D-32GVK",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "9ba50ffb-4690-3c0f-a775-1751d4d9bcf9",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PN_UNVERIFIED",
+        "DANAWA_MINISHOP_LINK_NOT_SUPPORTED_BY_COLLECTOR"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7019a3a6-2b1a-4d34-a98a-d7a9e0bea5e4"
+      },
+      "identity": {
+        "canonicalId": "9ba50ffb-4690-3c0f-a775-1751d4d9bcf9",
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 CL16 64GB (2x32GB)",
+        "partNumber": "F4-3200C16D-64GVK",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "9bce545f-45a4-36d3-a52d-81ff58558075",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "291c62b6-2ac1-4f79-876a-0d6d1df2ee27"
+      },
+      "identity": {
+        "canonicalId": "9bce545f-45a4-36d3-a52d-81ff58558075",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-4800 8GB (1x8GB)",
+        "partNumber": "KVR48U40BS6-8",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "9bd11c8c-e7c4-3622-b608-17595f19147b",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d1646419-63d9-487c-9641-1619ece92eb6"
+      },
+      "identity": {
+        "canonicalId": "9bd11c8c-e7c4-3622-b608-17595f19147b",
+        "type": "RAM",
+        "manufacturer": "Samsung",
+        "modelName": "M378A2K43CB1-CTD DDR4-2666 16GB (1x16GB)",
+        "partNumber": "M378A2K43CB1-CTD",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "9d8f4fce-537b-3c22-8560-297d7219030c",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "MODULE_COUNT_AND_CAPACITY_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e2301f2b-d70c-424a-861f-5bf0f960c81f"
+      },
+      "identity": {
+        "canonicalId": "9d8f4fce-537b-3c22-8560-297d7219030c",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5600 CL40 48GB (2x24GB)",
+        "partNumber": "CMK48GX5M2B5600C40",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "9e5533d6-54da-3be8-a8ae-107c4ca49bc8",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "43f6b6ce-175d-4122-a383-e7004a0cf8f6"
+      },
+      "identity": {
+        "canonicalId": "9e5533d6-54da-3be8-a8ae-107c4ca49bc8",
+        "type": "RAM",
+        "manufacturer": "Samsung",
+        "modelName": "M378A1K43CB2-CTD DDR4-2666 8GB",
+        "partNumber": "M378A1K43CB2-CTD",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "a50af220-41d0-3a22-a332-553686b489de",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "MODULE_COUNT_AND_CAPACITY_MISMATCH",
+        "COLOR_VARIANT_NOT_VERIFIED"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e7ce157e-ff50-417b-9dde-4c7eb7e25ec5"
+      },
+      "identity": {
+        "canonicalId": "a50af220-41d0-3a22-a332-553686b489de",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5600 CL36 32GB (2x16GB)",
+        "partNumber": "KF556C36BBEK2-32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "ac894347-9a31-3ab0-888b-583f2cf57d03",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ae4d587f-532f-486e-8faa-5e76a6ace1f1"
+      },
+      "identity": {
+        "canonicalId": "ac894347-9a31-3ab0-888b-583f2cf57d03",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-3200 8GB (1x8GB)",
+        "partNumber": "KVR32N22S8/8",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "b4ed407a-4fe3-3407-a0bd-2d7042a57f3b",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "38b0687e-02a1-4863-b1b3-af0eab884a05"
+      },
+      "identity": {
+        "canonicalId": "b4ed407a-4fe3-3407-a0bd-2d7042a57f3b",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 32GB (2x16GB)",
+        "partNumber": "KF432C16BBK2/32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "b5f8f8f6-2d64-33b4-8384-bddd301d3399",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "199dd44f-2862-465c-91c4-e61d76ea3685"
+      },
+      "identity": {
+        "canonicalId": "b5f8f8f6-2d64-33b4-8384-bddd301d3399",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6400 CL32 32GB (2x16GB)",
+        "partNumber": "KF564C32BBK2-32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "b6839df5-5ed3-3edf-b504-007ef3344d05",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "CAS_AND_RGB_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "fbcba504-1ad4-49bc-86c4-9ad3143d0e46"
+      },
+      "identity": {
+        "canonicalId": "b6839df5-5ed3-3edf-b504-007ef3344d05",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "KF560C36BBEK2-32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "b89d9a8a-4dea-397c-84b3-486ca747d3d7",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "CAS_AND_MODULE_COUNT_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e8766fc7-6bff-4d30-b63b-6b31c6208d39"
+      },
+      "identity": {
+        "canonicalId": "b89d9a8a-4dea-397c-84b3-486ca747d3d7",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 16GB (1x16GB)",
+        "partNumber": "KF560C36BBE-16",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "bbe05dd4-e93c-39d0-8c4c-30c4cba28eb8",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "9280491b-84f8-4a2a-803e-c8a07d6feec3"
+      },
+      "identity": {
+        "canonicalId": "bbe05dd4-e93c-39d0-8c4c-30c4cba28eb8",
+        "type": "RAM",
+        "manufacturer": "Samsung",
+        "modelName": "M378A1G43DB0-CPB DDR4-2133 8GB",
+        "partNumber": "M378A1G43DB0-CPB",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "c4ffa9b3-013f-3937-b5ee-fa5df43dd433",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_PN_MISSING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c7c35e8b-849f-447e-accf-381c7d5575a1"
+      },
+      "identity": {
+        "canonicalId": "c4ffa9b3-013f-3937-b5ee-fa5df43dd433",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 CL40 16GB (1x16GB)",
+        "partNumber": "KF552C40BB-16",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "d0c830c3-c66e-3985-86e4-ebc67d1e1a33",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "fa910565-8e5d-40f4-b9ae-b185f70d2192"
+      },
+      "identity": {
+        "canonicalId": "d0c830c3-c66e-3985-86e4-ebc67d1e1a33",
+        "type": "RAM",
+        "manufacturer": "Samsung",
+        "modelName": "M378A1K43CB2-CRC DDR4-2400 8GB (1x8GB)",
+        "partNumber": "M378A1K43CB2-CRC",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "d29d2df4-5b70-3a83-b5ed-f7aa41903418",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3509ef82-cf54-4b72-8cb3-fd3702b5f346"
+      },
+      "identity": {
+        "canonicalId": "d29d2df4-5b70-3a83-b5ed-f7aa41903418",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 64GB (2x32GB)",
+        "partNumber": "KF432C16BBK2/64",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "d36faa9f-7724-336e-b57e-24ea5e5cdb84",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SALE_PN_EVIDENCE",
+        "CL17_FAMILY_NOT_CL16_SKU"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3ae2dd82-9e72-49e0-9a36-8d86a70cc72a"
+      },
+      "identity": {
+        "canonicalId": "d36faa9f-7724-336e-b57e-24ea5e5cdb84",
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3600 CL16 32GB (2x16GB)",
+        "partNumber": "F4-3600C16D-32GVKC",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "dc9ab5d2-79a4-3bbc-876f-30bc31809dd4",
+      "status": "NO_CURRENT_QUOTE",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "EXACT_DOMESTIC_SALE_PN_VERIFIED",
+        "SELLERS_CURRENTLY_OUT_OF_STOCK",
+        "DANAWA_REGULAR_PRICE_SECTION_MISSING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8fc33ad6-0dfc-43ab-9261-02b866190abf"
+      },
+      "identity": {
+        "canonicalId": "dc9ab5d2-79a4-3bbc-876f-30bc31809dd4",
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 16GB (2x8GB)",
+        "partNumber": "F4-3200C16D-16GVKB",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "dd6201bd-2727-3670-9ea2-27f08eda91de",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8035fe0e-4132-48bd-941b-019cd58120a1"
+      },
+      "identity": {
+        "canonicalId": "dd6201bd-2727-3670-9ea2-27f08eda91de",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 CL40 64GB (2x32GB)",
+        "partNumber": "KF552C40BBK2-64",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "deccbc7d-466c-38bb-ad1a-8b274069c372",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "79dc68c9-3eff-49a1-aa3c-3ff6e7ab61d8"
+      },
+      "identity": {
+        "canonicalId": "deccbc7d-466c-38bb-ad1a-8b274069c372",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-3200 16GB (1x16GB)",
+        "partNumber": "KVR32N22S8/16",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "e28b63e2-4269-3c75-b005-b21005344254",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "MODULE_CAPACITY_MISMATCH"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ba63a6a9-75e1-4206-ba7d-f28c2ad601d8"
+      },
+      "identity": {
+        "canonicalId": "e28b63e2-4269-3c75-b005-b21005344254",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3600 32GB (2x16GB)",
+        "partNumber": "CMK32GX4M2D3600C18",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "eda1782f-d9ff-381d-abb1-165238b5d40a",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "COLOR_VARIANT_MISMATCH",
+        "PROFILE_VARIANT_NOT_VERIFIED",
+        "EXACT_DOMESTIC_PN_MISSING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "52a8fdd1-5c4a-48ff-a0e1-e5ea3a6accc6"
+      },
+      "identity": {
+        "canonicalId": "eda1782f-d9ff-381d-abb1-165238b5d40a",
+        "type": "RAM",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE RGB DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "CMH32GX5M2B6000C30",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "ee9d30fe-0cf4-3f45-a1e0-1168101c6d6c",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "RGB_VARIANT_NOT_VERIFIED",
+        "EXACT_DOMESTIC_PN_MISSING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "912ddf9f-66c0-4e8a-88ac-4a978479bddf"
+      },
+      "identity": {
+        "canonicalId": "ee9d30fe-0cf4-3f45-a1e0-1168101c6d6c",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "KF560C30BBEK2-32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "f461b575-e411-3072-ae64-c0a9fe4f36e1",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING",
+        "ONLY_PC_OEM_SOURCE_COMPONENT_MANUFACTURER_DATASHEET_PENDING",
+        "ONLY_PC_OEM_SOURCE_COMPONENT_MANUFACTURER_DATASHEET_PENDING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "846aa6ea-2550-460a-9fc3-2684e4f3231c"
+      },
+      "identity": {
+        "canonicalId": "f461b575-e411-3072-ae64-c0a9fe4f36e1",
+        "type": "RAM",
+        "manufacturer": "Samsung",
+        "modelName": "M323R1GB4PB0-CWM DDR5-5600 8GB (1x8GB)",
+        "partNumber": "M323R1GB4PB0-CWM",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    },
+    {
+      "canonicalId": "fbc5dfa7-0b31-363d-ba9e-a38941249a15",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "33ea75ed-50a5-41bc-b548-95ae5ac54528"
+      },
+      "identity": {
+        "canonicalId": "fbc5dfa7-0b31-363d-ba9e-a38941249a15",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3600 CL18 32GB (2x16GB)",
+        "partNumber": "KF436C18BBK2/32",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2
+      }
+    },
+    {
+      "canonicalId": "fbc76590-3f8f-3f14-a3f6-65e296b52481",
+      "status": "HELD",
+      "type": "RAM",
+      "sourceFile": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "reasonCodes": [
+        "NO_EXACT_DOMESTIC_SKU_MAPPING"
+      ],
+      "sourceIdentity": {
+        "sourceName": "BUILDCORES",
+        "externalId": "85b219b0-6660-4649-9e5f-d10b12a53415"
+      },
+      "identity": {
+        "canonicalId": "fbc76590-3f8f-3f14-a3f6-65e296b52481",
+        "type": "RAM",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-5600 CL46 8GB (1x8GB)",
+        "partNumber": "KVR56U46BS6-8",
+        "identityKind": "LEGACY_UNCLASSIFIED",
+        "role": "UNASSIGNED",
+        "verificationStatus": "UNVERIFIED",
+        "active": false,
+        "saleUnit": "PRODUCT",
+        "moduleCount": 1
+      }
+    }
+  ],
+  "pricePreviewRows": [],
+  "sourceFiles": [
+    {
+      "path": "data/catalog-review/remaining232-price-review-2026-10-10.json",
+      "sha256": "6e67f3edc118253b76d25ccdffe2ad2c4f45d7a70484bf2ecff8315efc7b82a3"
+    },
+    {
+      "path": "data/catalog-review/held146-cpu-followup-2026-10-10.json",
+      "sha256": "860733ec4ca360a9caba9e9c6b7819340e31d888de16bc2e5282963a3251d9f7"
+    },
+    {
+      "path": "data/catalog-review/held146-gpu-followup-2026-10-10.json",
+      "sha256": "5825b20dba503e9db0672fbd88339875d4ea284ca4bc2102c3671b0841a8268b"
+    },
+    {
+      "path": "data/catalog-review/held146-boards-monitors-followup-2026-10-10.json",
+      "sha256": "b80a0f22cda2f6ed127c3077b1e0494ec924b7b4be3f40cbdd7c0070ce30eead"
+    },
+    {
+      "path": "data/catalog-review/held146-ram-followup-2026-10-10.json",
+      "sha256": "6ec691db4b2c22a8c2315831d28a56444d9c2b37e4dffdeb802f4a0bfce2339a"
+    },
+    {
+      "path": "data/catalog-review/held146-ram-gskill-followup-2026-10-10.json",
+      "sha256": "5fd6485d4a1340a13353a4c664f970096932d9611aac5b44936626ff2ed86405"
+    },
+    {
+      "path": "data/catalog-review/held146-ram-corsair-retail-options-2026-10-10.json",
+      "sha256": "bc1239317469c1c39f8447a83e7dcab1b1cbb85e11f70016b372e73d580f82af"
+    }
+  ],
+  "dataQualityCorrection": "data/catalog-review/held146-ram-voltage-correction-2026-10-10.json",
+  "nextImplementationProposal": "data/catalog-review/held146-next-implementation-proposal-2026-10-10.json",
+  "findings": [
+    "Exact domestic full SKU and module configuration resolved for G.SKILL F4-3200C16D-16GVKB at two primary sellers, but both currently sold out; their displayed prices were not adopted.",
+    "Five model-reference retail price candidates are separated from existing identities. Four are proposed for implementation previews; ASRock B850M Pro RS remains outside that initial scope pending radio/package context.",
+    "Unsupported price providers and Danawa mini-shop link layouts are collection-path limitations, not evidence of market stock absence.",
+    "A live DB voltage conflict previously claimed for CMK32GX5M2E6000C36 was a report classification error: original upstream payload is 1.4V but running DB and official selected SKU both show1.35V.",
+    "Missing RAM PN, monitor region suffixes, GPU board/revision/package differences and conflicting seller stock data were not filled from similar product prices."
+  ],
+  "limitations": [
+    "Public source research was bounded and did not exhaust all domestic sellers. A NO_CURRENT_QUOTE decision describes reviewed pages, not national unavailability or manufacturer discontinuation.",
+    "Computer Use ended because current browser URL on Windows could not be determined confidently. Image-only seller PN evidence remains unverified; no bypass or media-download workaround was attempted.",
+    "All observed candidate prices remain unapproved. This report contains zero price rows to publish; price availability did not increase merely from collecting family-price candidates.",
+    "No new backend run configuration is needed for the completed research. Actual catalog application and central price publication require separate approval."
+  ]
+}

@@ -3,6 +3,10 @@ package com.pcupgradelab.pc;
 import com.pcupgradelab.auth.CurrentUser;
 import com.pcupgradelab.catalog.CatalogProduct;
 import com.pcupgradelab.catalog.CatalogProductRepository;
+import com.pcupgradelab.catalog.identity.CatalogIdentityKind;
+import com.pcupgradelab.catalog.identity.CatalogModel;
+import com.pcupgradelab.catalog.identity.CatalogModelRepository;
+import com.pcupgradelab.catalog.identity.CatalogRecognitionLevel;
 import com.pcupgradelab.common.ApiException;
 import java.util.List;
 import java.util.Locale;
@@ -30,12 +34,14 @@ public class PcService {
     private final PcConfigurationRepository repository;
     private final CatalogProductRepository catalogProducts;
     private final CurrentUser currentUser;
+    private final CatalogModelRepository catalogModels;
 
     public PcService(PcConfigurationRepository repository, CatalogProductRepository catalogProducts,
-                     CurrentUser currentUser) {
+                     CurrentUser currentUser, CatalogModelRepository catalogModels) {
         this.repository = repository;
         this.catalogProducts = catalogProducts;
         this.currentUser = currentUser;
+        this.catalogModels = catalogModels;
     }
 
     /**
@@ -148,25 +154,42 @@ public class PcService {
         if (parts == null) throw new IllegalArgumentException("PC parts are required");
         var ids = parts.stream().map(PartInput::catalogProductId)
                 .filter(Objects::nonNull).distinct().toList();
-        if (ids.isEmpty()) return;
+        var modelIds = parts.stream().map(PartInput::catalogModelId)
+                .filter(Objects::nonNull).distinct().toList();
+        if (ids.isEmpty() && modelIds.isEmpty()) return;
 
         // 같은 제품에 연결한 RAM 여러 개도 한 번에 조회한다.
         // 현재 로컬 검토 단계에서는 비활성·미검증 제품도 연결할 수 있다.
         // 카탈로그 상태·가격이나 장치의 원문·수량·제원은 이 검사로 변경하지 않는다.
-        var typesById = catalogProducts.findAllById(ids).stream()
-                .collect(Collectors.toMap(CatalogProduct::getId, CatalogProduct::getType));
+        var productsById = catalogProducts.findAllById(ids).stream()
+                .collect(Collectors.toMap(CatalogProduct::getId, java.util.function.Function.identity()));
+        var modelsById = catalogModels.findAllById(modelIds).stream()
+                .collect(Collectors.toMap(CatalogModel::getId, java.util.function.Function.identity()));
         for (int i = 0; i < parts.size(); i++) {
             var part = parts.get(i);
-            if (part.catalogProductId() == null) continue;
-            var catalogType = typesById.get(part.catalogProductId());
-            if (catalogType == null) {
+            var product = part.catalogProductId() == null ? null : productsById.get(part.catalogProductId());
+            if (part.catalogProductId() != null && product == null) {
                 throw new ApiException(HttpStatus.BAD_REQUEST, "INVALID_PART_ID",
                         (i + 1) + "번째 부품의 연결 제품이 없습니다. 부품을 다시 검색하거나 연결을 해제해 주세요.");
             }
-            if (catalogType != part.type()) {
+            if (product != null && product.getType() != part.type()) {
                 throw new ApiException(HttpStatus.BAD_REQUEST, "PART_CATEGORY_MISMATCH",
                         (i + 1) + "번째 부품과 연결 제품의 종류가 다릅니다. 같은 종류의 부품을 선택해 주세요.");
             }
+            var model = part.catalogModelId() == null ? null : modelsById.get(part.catalogModelId());
+            if (part.catalogModelId() != null && model == null)
+                throw new ApiException(HttpStatus.BAD_REQUEST, "INVALID_MODEL_ID", (i + 1) + "번째 부품의 식별 모델이 없습니다.");
+            if (model != null && model.getType() != part.type())
+                throw new ApiException(HttpStatus.BAD_REQUEST, "PART_CATEGORY_MISMATCH", (i + 1) + "번째 부품과 식별 모델의 종류가 다릅니다.");
+            if (product != null && model != null && !Objects.equals(product.getModelId(), model.getId()))
+                throw new ApiException(HttpStatus.BAD_REQUEST, "MODEL_PRODUCT_MISMATCH", (i + 1) + "번째 부품의 제품과 식별 모델 연결이 일치하지 않습니다.");
+            if (model != null && ((part.recognitionLevel() == CatalogRecognitionLevel.SPEC_GROUP && !model.getKind().isSpecGroup())
+                    || (part.recognitionLevel() == CatalogRecognitionLevel.MODEL && model.getKind().isSpecGroup())))
+                throw new ApiException(HttpStatus.BAD_REQUEST, "MODEL_RECOGNITION_MISMATCH", "규격 범위와 모델 확인 수준을 구분해 주세요.");
+            if (part.recognitionLevel() == CatalogRecognitionLevel.PHYSICAL_VARIANT
+                    && (product == null || product.getIdentityKind() != CatalogIdentityKind.PHYSICAL_VARIANT
+                        && product.getIdentityKind() != CatalogIdentityKind.RETAIL_KIT))
+                throw new ApiException(HttpStatus.BAD_REQUEST, "PHYSICAL_VARIANT_UNVERIFIED", "정확한 물리 변형 확인 근거가 있는 제품만 선택할 수 있습니다.");
         }
     }
 }

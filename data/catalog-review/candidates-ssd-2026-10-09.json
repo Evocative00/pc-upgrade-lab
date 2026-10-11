@@ -1,0 +1,813 @@
+{
+  "schemaVersion": 1,
+  "researchDate": "2026-10-09",
+  "categoryGroup": "SSD",
+  "scopeLimitations": [
+    "승인된 기존 300종에 STORAGE 제품이 없다는 자료 검토 결과를 바탕으로 한 신규 카테고리 후보 연구이며 실제 DB·스키마·seed는 변경하지 않는다.",
+    "선정은 SATA/M.2, PCIe 3/4/5, 제조사 제원과 용량 변형을 구분하는 coverage 목적이다. 실제 설치 비율과 국내 판매 비중은 측정하지 않았다.",
+    "국내 다나와 페이지는 모델·용량·방열판 표기의 존재 근거다. 실제 판매점의 재고·신품·정품 유통 여부까지 확인한 자료가 아니다.",
+    "가격은 수집·승인·반영하지 않았으며 배송료·프로모션·할인 조건도 연구 대상에 넣지 않았다.",
+    "공식 제조사 PN이 있더라도 국내 판매점의 박스 접미사·유통·추가 패키지가 일치했는지는 별도 검토한다. 이번 결과에 exact 판매 SKU 승인 또는 구매 추천 완료 제품은 없다.",
+    "STORAGE 제원 DTO·저장 구조 및 보드의 슬롯별 SSD 호환 근거가 없는 상태이므로 아래 제원은 다음 설계 단계의 요구사항이다.",
+    "capacityBytes는 광고된 장치 한 개의 decimal 명목 용량 정규화 값이다. 스캔된 물리 장치 bytes·파일시스템 사용 가능 용량·RAM GiB 환산과 혼동하지 않는다."
+  ],
+  "schemaRequirements": [
+    {
+      "field": "storageKind",
+      "meaning": "SSD/HDD/NVMe 등을 혼합하지 않도록 저장장치 종류는 SSD/HDD, NVMe는 protocol로 구분",
+      "reason": "SSD의 종류와 연결 규격은 서로 다른 축이다."
+    },
+    {
+      "field": "capacityBytes / advertisedCapacityGb / capacityBasis",
+      "meaning": "광고 명목 용량 한 장치 bytes와 raw GB/TB 표기·DECIMAL_GB basis를 함께 보존",
+      "reason": "SSD 1TB는 1,000,000,000,000 bytes이며 RAM 1GiB 방식으로 변환하면 다른 값이 된다."
+    },
+    {
+      "field": "formFactor / lengthMm / widthMm / heightMm / dimensionsBasis",
+      "meaning": "2.5형 또는 M.2 2280과 치수의 nominal/maximum/허용오차 구분",
+      "reason": "M.2 물리 크기와 실제 높이·방열판 공간을 모델 이름만으로 확정할 수 없다."
+    },
+    {
+      "field": "interfaceProtocol / nvmeVersion",
+      "meaning": "NVMe 또는 검증된 ATA 명령 집합과 version. 미확인 및 비해당은 null과 별도 설명",
+      "reason": "M.2는 형태이며 SATA/NVMe 연결 프로토콜과 독립적으로 검토해야 한다."
+    },
+    {
+      "field": "busInterface / pcieVersion / pcieLanes / sataVersion",
+      "meaning": "PCIe 버스 세대·레인 또는 SATA 연결 세대. 조건부 null을 허용",
+      "reason": "SATA SSD에 PCIe 레인을 채우거나 슬롯 이름만으로 성능을 확정하지 않는다."
+    },
+    {
+      "field": "heatsinkIncluded / partNumber / saleVariant",
+      "meaning": "방열판 구성, 제조사 PN, 국내 박스·유통·용량을 독립적으로 연결",
+      "reason": "같은 모델명 아래 방열판/벌크/병행/지역 SKU의 가격과 치수가 섞일 수 있다."
+    },
+    {
+      "field": "motherboard.storageSlots",
+      "meaning": "보드별 M.2 슬롯의 길이·키·지원 버스/프로토콜·레인 경로·SATA 공유·NVMe 부팅 근거",
+      "reason": "보드에 M.2 슬롯이 있다는 사실만으로 NVMe SSD 호환을 보장할 수 없다."
+    },
+    {
+      "field": "scannedCapacityBytes / interfaceReported / deviceModel",
+      "meaning": "실제 수집한 용량·보고 인터페이스·모델 문자열을 카탈로그 명목 제원과 별도 보존",
+      "reason": "Windows가 SCSI라고 보고해도 물리 연결이 SATA인지 NVMe인지 즉시 확정할 수 없다."
+    }
+  ],
+  "candidates": [
+    {
+      "candidateKey": "ssd-samsung-870-evo-500gb",
+      "category": "STORAGE",
+      "manufacturer": "Samsung",
+      "modelName": "870 EVO 500GB",
+      "partNumber": "MZ-77E500BW",
+      "role": "BOTH",
+      "reasonForSelection": "M.2 슬롯이 없거나 SATA 장치 교체가 필요한 데스크톱의 2.5형 500GB 범위를 조사한다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MISSING_CATALOG_CATEGORY"
+      },
+      "specification": {
+        "storageKind": "SSD",
+        "capacityBytes": 500000000000,
+        "capacityBasis": "DECIMAL_GB",
+        "advertisedCapacityGb": 500,
+        "advertisedCapacityLabel": "500GB",
+        "formFactor": "2.5_INCH",
+        "interfaceProtocol": null,
+        "busInterface": "SATA",
+        "pcieVersion": null,
+        "pcieLanes": null,
+        "nvmeVersion": null,
+        "sataVersion": "3.0",
+        "lengthMm": 100,
+        "widthMm": 69.85,
+        "heightMm": 6.8,
+        "dimensionsBasis": "MANUFACTURER_PUBLISHED",
+        "heatsinkIncluded": null
+      },
+      "compatibilityNotes": [
+        "2.5형 장착 공간, SATA 데이터 포트와 케이블, PSU의 SATA 전원 연결을 확인해야 한다.",
+        "SATA SSD는 M.2 NVMe 슬롯에 직접 장착하지 않는다. SATA 포트 비활성화·공유 조건은 보드 매뉴얼로 확인한다."
+      ],
+      "identificationNotes": [
+        "제조사 공식 PN은 BW 지역 박스 SKU 기준으로 확인했다. 국내 다나와 모델 페이지와 모델·용량은 일치하지만 판매점별 박스 접미사와 정품/병행/벌크 여부는 아직 대조하지 않았다.",
+        "히트싱크·사은품·고정나사 패키지가 다르면 별도 판매 구성으로 검토한다.",
+        "SATA 버스는 공식 자료로 확인했다. ATA 명령 집합의 정확한 버전은 조사하지 않아 interfaceProtocol은 null로 둔다.",
+        "명목 용량은 500GB이며 스캔의 실제 장치 용량과 구분한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.samsung.com/tr/memory-storage/sata-ssd/mz-77e500bw/",
+          "title": "Samsung 870 EVO SATA III 2.5형 500GB 공식 제품 페이지",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "PN MZ-77E500BW",
+            "500GB decimal 용량",
+            "2.5형",
+            "SATA III 6Gb/s",
+            "100 × 69.85 × 6.8mm"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=13190519",
+          "title": "삼성전자 870 EVO (500GB)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델·용량 페이지를 확인했다. 유통 접미사와 실제 판매점 재고는 미확인."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 판매점의 실제 박스 PN·유통 형태·보증 주체를 공식 제품 PN과 대조한다.",
+        "국내 신품 판매 구성 및 재고를 판매점 원문에서 다시 확인한 뒤 상품가 수집 대상으로 승인한다.",
+        "구매 추천에 필요한 보드 슬롯·공유 포트·부팅·방열 조건을 구성별로 검증한다.",
+        "SATA 항목의 interfaceProtocol 명칭과 명령 버전 저장 규칙을 다음 스키마 단계에서 정한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ssd-samsung-870-evo-1tb",
+      "category": "STORAGE",
+      "manufacturer": "Samsung",
+      "modelName": "870 EVO 1TB",
+      "partNumber": "MZ-77E1T0BW",
+      "role": "BOTH",
+      "reasonForSelection": "같은 SATA 모델의 1TB 용량을 500GB와 별도 SKU로 다루는지를 검증한다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MISSING_CATALOG_CATEGORY"
+      },
+      "specification": {
+        "storageKind": "SSD",
+        "capacityBytes": 1000000000000,
+        "capacityBasis": "DECIMAL_GB",
+        "advertisedCapacityGb": 1000,
+        "advertisedCapacityLabel": "1TB",
+        "formFactor": "2.5_INCH",
+        "interfaceProtocol": null,
+        "busInterface": "SATA",
+        "pcieVersion": null,
+        "pcieLanes": null,
+        "nvmeVersion": null,
+        "sataVersion": "3.0",
+        "lengthMm": 100,
+        "widthMm": 69.85,
+        "heightMm": 6.8,
+        "dimensionsBasis": "MANUFACTURER_PUBLISHED",
+        "heatsinkIncluded": null
+      },
+      "compatibilityNotes": [
+        "2.5형 장착 공간, SATA 데이터 포트와 케이블, PSU의 SATA 전원 연결을 확인해야 한다.",
+        "SATA SSD는 M.2 NVMe 슬롯에 직접 장착하지 않는다. SATA 포트 비활성화·공유 조건은 보드 매뉴얼로 확인한다."
+      ],
+      "identificationNotes": [
+        "제조사 공식 PN은 BW 지역 박스 SKU 기준으로 확인했다. 국내 다나와 모델 페이지와 모델·용량은 일치하지만 판매점별 박스 접미사와 정품/병행/벌크 여부는 아직 대조하지 않았다.",
+        "히트싱크·사은품·고정나사 패키지가 다르면 별도 판매 구성으로 검토한다.",
+        "500GB 모델과 용량·PN이 다르므로 동일 판매 SKU로 합치지 않는다.",
+        "SATA 버스는 확인했지만 ATA 명령 버전은 미조사로 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.samsung.com/sg/memory-storage/sata-ssd/870-evo-1tb-sata-3-2-5-ssd-mz-77e1t0bw/",
+          "title": "Samsung 870 EVO SATA 2.5형 1TB 공식 제품 페이지",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "PN MZ-77E1T0BW",
+            "1,000GB decimal 용량",
+            "2.5형",
+            "SATA 6Gb/s",
+            "100 × 69.85 × 6.8mm"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=13190573",
+          "title": "삼성전자 870 EVO (1TB)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델·용량 페이지를 확인했다. 500GB와 별도 pcode이며 실제 박스 PN·판매점 재고는 미확인."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 판매점의 실제 박스 PN·유통 형태·보증 주체를 공식 제품 PN과 대조한다.",
+        "국내 신품 판매 구성 및 재고를 판매점 원문에서 다시 확인한 뒤 상품가 수집 대상으로 승인한다.",
+        "구매 추천에 필요한 보드 슬롯·공유 포트·부팅·방열 조건을 구성별로 검증한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ssd-samsung-970-evo-plus-1tb",
+      "category": "STORAGE",
+      "manufacturer": "Samsung",
+      "modelName": "970 EVO Plus 1TB",
+      "partNumber": "MZ-V7S1T0BW",
+      "role": "BOTH",
+      "reasonForSelection": "구형 PC의 PCIe 3.0 NVMe 식별과 교체 비교 범위를 확보한다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MISSING_CATALOG_CATEGORY"
+      },
+      "specification": {
+        "storageKind": "SSD",
+        "capacityBytes": 1000000000000,
+        "capacityBasis": "DECIMAL_GB",
+        "advertisedCapacityGb": 1000,
+        "advertisedCapacityLabel": "1TB",
+        "formFactor": "M.2_2280",
+        "interfaceProtocol": "NVME",
+        "busInterface": "PCIE",
+        "pcieVersion": "3.0",
+        "pcieLanes": 4,
+        "nvmeVersion": "1.3",
+        "sataVersion": null,
+        "lengthMm": 80.15,
+        "widthMm": 22.15,
+        "heightMm": 2.38,
+        "dimensionsBasis": "MANUFACTURER_MAXIMUM",
+        "heatsinkIncluded": false
+      },
+      "compatibilityNotes": [
+        "보드의 M.2 슬롯별 NVMe/PCIe 지원, 2280 길이, 사용 가능한 레인과 포트 공유를 별도 확인해야 한다.",
+        "부팅용 교체는 보드 BIOS의 NVMe 부팅 지원과 OS 이전 계획까지 확인해야 한다. M.2 모양만으로 호환을 확정하지 않는다.",
+        "PCIe 세대가 달라도 최종 동작 속도는 보드·CPU·슬롯 경로와 구성에 따라 달라진다."
+      ],
+      "identificationNotes": [
+        "제조사 공식 PN은 BW 지역 박스 SKU 기준으로 확인했다. 국내 다나와 모델 페이지와 모델·용량은 일치하지만 판매점별 박스 접미사와 정품/병행/벌크 여부는 아직 대조하지 않았다.",
+        "히트싱크·사은품·고정나사 패키지가 다르면 별도 판매 구성으로 검토한다.",
+        "스캔에서는 MZ-V7S1T0 같은 장치 모델이 나올 수 있지만 해당 문자열만으로 BW/AM/벌크 유통 PN을 확정하지 않는다.",
+        "내부 컨트롤러·NAND 리비전을 제품명으로 고정하지 않는다. 공식 Rev.3.0은 컨트롤러 세부 이름을 삭제했다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://download.semiconductor.samsung.com/resources/data-sheet/Samsung_NVMe_SSD_970_EVO_Plus_Data_Sheet_Rev.3.0_10129514071343.pdf",
+          "title": "Samsung 970 EVO Plus 공식 데이터시트 Rev.3.0",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "1TB PN MZ-V7S1T0BW",
+            "M.2 2280",
+            "PCIe 3.0 x4",
+            "NVMe 1.3",
+            "명목 decimal 용량",
+            "최대 80.15 × 22.15 × 2.38mm",
+            "박스 구성은 SSD와 보증서"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=7136788",
+          "title": "삼성전자 970 EVO Plus M.2 NVMe (1TB)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델·1TB 페이지 확인. 판매점 유통·재고와 제품 내부 리비전은 미확인."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 판매점의 실제 박스 PN·유통 형태·보증 주체를 공식 제품 PN과 대조한다.",
+        "국내 신품 판매 구성 및 재고를 판매점 원문에서 다시 확인한 뒤 상품가 수집 대상으로 승인한다.",
+        "구매 추천에 필요한 보드 슬롯·공유 포트·부팅·방열 조건을 구성별로 검증한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ssd-samsung-990-pro-1tb",
+      "category": "STORAGE",
+      "manufacturer": "Samsung",
+      "modelName": "990 PRO 1TB",
+      "partNumber": "MZ-V9P1T0BW",
+      "role": "PURCHASE_CANDIDATE",
+      "reasonForSelection": "PCIe 4.0 NVMe의 제조사 제원과 별도 히트싱크 SKU 구분을 조사한다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MISSING_CATALOG_CATEGORY"
+      },
+      "specification": {
+        "storageKind": "SSD",
+        "capacityBytes": 1000000000000,
+        "capacityBasis": "DECIMAL_GB",
+        "advertisedCapacityGb": 1000,
+        "advertisedCapacityLabel": "1TB",
+        "formFactor": "M.2_2280",
+        "interfaceProtocol": "NVME",
+        "busInterface": "PCIE",
+        "pcieVersion": "4.0",
+        "pcieLanes": 4,
+        "nvmeVersion": "2.0",
+        "sataVersion": null,
+        "lengthMm": 80,
+        "widthMm": 22,
+        "heightMm": 2.3,
+        "dimensionsBasis": "MANUFACTURER_PUBLISHED",
+        "heatsinkIncluded": false
+      },
+      "compatibilityNotes": [
+        "보드의 M.2 슬롯별 NVMe/PCIe 지원, 2280 길이, 사용 가능한 레인과 포트 공유를 별도 확인해야 한다.",
+        "부팅용 교체는 보드 BIOS의 NVMe 부팅 지원과 OS 이전 계획까지 확인해야 한다. M.2 모양만으로 호환을 확정하지 않는다.",
+        "PCIe 세대가 달라도 최종 동작 속도는 보드·CPU·슬롯 경로와 구성에 따라 달라진다."
+      ],
+      "identificationNotes": [
+        "제조사 공식 PN은 BW 지역 박스 SKU 기준으로 확인했다. 국내 다나와 모델 페이지와 모델·용량은 일치하지만 판매점별 박스 접미사와 정품/병행/벌크 여부는 아직 대조하지 않았다.",
+        "히트싱크·사은품·고정나사 패키지가 다르면 별도 판매 구성으로 검토한다.",
+        "CW/GW 히트싱크 모델의 치수·판매 가격을 BW 모델에 섞지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.samsung.com/es/memory-storage/nvme-ssd/990-pro-1tb-nvme-pcie-gen-4-mz-v9p1t0bw/",
+          "title": "Samsung 990 PRO 1TB 공식 제품 페이지",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "PN MZ-V9P1T0BW",
+            "1000GB decimal 용량",
+            "M.2 2280",
+            "PCIe 4.0 x4",
+            "NVMe 2.0",
+            "80 × 22 × 2.3mm"
+          ]
+        },
+        {
+          "url": "https://semiconductor.samsung.com/consumer-storage/magician/",
+          "title": "Samsung Magician 공식 지원 모델 목록",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "990 PRO BW와 히트싱크 CW/GW 모델 구분",
+            "9100 PRO BW와 히트싱크 CW 모델 구분"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=18297002",
+          "title": "삼성전자 990 PRO M.2 NVMe (1TB)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 해당 용량·방열판 미포함 모델 페이지 확인. 판매점의 박스 접미사·유통 형태·재고는 미확인."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 판매점의 실제 박스 PN·유통 형태·보증 주체를 공식 제품 PN과 대조한다.",
+        "국내 신품 판매 구성 및 재고를 판매점 원문에서 다시 확인한 뒤 상품가 수집 대상으로 승인한다.",
+        "구매 추천에 필요한 보드 슬롯·공유 포트·부팅·방열 조건을 구성별로 검증한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ssd-samsung-990-pro-2tb",
+      "category": "STORAGE",
+      "manufacturer": "Samsung",
+      "modelName": "990 PRO 2TB",
+      "partNumber": "MZ-V9P2T0BW",
+      "role": "PURCHASE_CANDIDATE",
+      "reasonForSelection": "1TB와 2TB를 별도 판매 SKU·장치 용량으로 유지하는 범위를 조사한다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MISSING_CATALOG_CATEGORY"
+      },
+      "specification": {
+        "storageKind": "SSD",
+        "capacityBytes": 2000000000000,
+        "capacityBasis": "DECIMAL_GB",
+        "advertisedCapacityGb": 2000,
+        "advertisedCapacityLabel": "2TB",
+        "formFactor": "M.2_2280",
+        "interfaceProtocol": "NVME",
+        "busInterface": "PCIE",
+        "pcieVersion": "4.0",
+        "pcieLanes": 4,
+        "nvmeVersion": "2.0",
+        "sataVersion": null,
+        "lengthMm": 80,
+        "widthMm": 22,
+        "heightMm": 2.3,
+        "dimensionsBasis": "MANUFACTURER_PUBLISHED",
+        "heatsinkIncluded": false
+      },
+      "compatibilityNotes": [
+        "보드의 M.2 슬롯별 NVMe/PCIe 지원, 2280 길이, 사용 가능한 레인과 포트 공유를 별도 확인해야 한다.",
+        "부팅용 교체는 보드 BIOS의 NVMe 부팅 지원과 OS 이전 계획까지 확인해야 한다. M.2 모양만으로 호환을 확정하지 않는다.",
+        "PCIe 세대가 달라도 최종 동작 속도는 보드·CPU·슬롯 경로와 구성에 따라 달라진다."
+      ],
+      "identificationNotes": [
+        "제조사 공식 PN은 BW 지역 박스 SKU 기준으로 확인했다. 국내 다나와 모델 페이지와 모델·용량은 일치하지만 판매점별 박스 접미사와 정품/병행/벌크 여부는 아직 대조하지 않았다.",
+        "히트싱크·사은품·고정나사 패키지가 다르면 별도 판매 구성으로 검토한다.",
+        "CW/GW 히트싱크 모델의 치수·판매 가격을 BW 모델에 섞지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.samsung.com/es/memory-storage/nvme-ssd/990-pro-2tb-nvme-pcie-gen-4-mz-v9p2t0bw/",
+          "title": "Samsung 990 PRO 2TB 공식 제품 페이지",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "PN MZ-V9P2T0BW",
+            "2000GB decimal 용량",
+            "M.2 2280",
+            "PCIe 4.0 x4",
+            "NVMe 2.0",
+            "80 × 22 × 2.3mm"
+          ]
+        },
+        {
+          "url": "https://semiconductor.samsung.com/consumer-storage/magician/",
+          "title": "Samsung Magician 공식 지원 모델 목록",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "990 PRO BW와 히트싱크 CW/GW 모델 구분",
+            "9100 PRO BW와 히트싱크 CW 모델 구분"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=18297722",
+          "title": "삼성전자 990 PRO M.2 NVMe (2TB)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 해당 용량·방열판 미포함 모델 페이지 확인. 판매점의 박스 접미사·유통 형태·재고는 미확인."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 판매점의 실제 박스 PN·유통 형태·보증 주체를 공식 제품 PN과 대조한다.",
+        "국내 신품 판매 구성 및 재고를 판매점 원문에서 다시 확인한 뒤 상품가 수집 대상으로 승인한다.",
+        "구매 추천에 필요한 보드 슬롯·공유 포트·부팅·방열 조건을 구성별로 검증한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ssd-samsung-9100-pro-1tb",
+      "category": "STORAGE",
+      "manufacturer": "Samsung",
+      "modelName": "9100 PRO 1TB",
+      "partNumber": "MZ-VAP1T0BW",
+      "role": "PURCHASE_CANDIDATE",
+      "reasonForSelection": "PCIe 5.0 NVMe를 수용할 수 있는 보드·방열 조건을 저장할 제원 범위를 조사한다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MISSING_CATALOG_CATEGORY"
+      },
+      "specification": {
+        "storageKind": "SSD",
+        "capacityBytes": 1000000000000,
+        "capacityBasis": "DECIMAL_GB",
+        "advertisedCapacityGb": 1000,
+        "advertisedCapacityLabel": "1TB",
+        "formFactor": "M.2_2280",
+        "interfaceProtocol": "NVME",
+        "busInterface": "PCIE",
+        "pcieVersion": "5.0",
+        "pcieLanes": 4,
+        "nvmeVersion": "2.0",
+        "sataVersion": null,
+        "lengthMm": 80.15,
+        "widthMm": 22.15,
+        "heightMm": 2.38,
+        "dimensionsBasis": "MANUFACTURER_MAXIMUM",
+        "heatsinkIncluded": false
+      },
+      "compatibilityNotes": [
+        "보드의 M.2 슬롯별 NVMe/PCIe 지원, 2280 길이, 사용 가능한 레인과 포트 공유를 별도 확인해야 한다.",
+        "부팅용 교체는 보드 BIOS의 NVMe 부팅 지원과 OS 이전 계획까지 확인해야 한다. M.2 모양만으로 호환을 확정하지 않는다.",
+        "PCIe 세대가 달라도 최종 동작 속도는 보드·CPU·슬롯 경로와 구성에 따라 달라진다.",
+        "PCIe 5.0 x4 경로와 실제 냉각 공간을 확인하기 전 최고 속도·발열 조건을 충족한다고 표시하지 않는다."
+      ],
+      "identificationNotes": [
+        "제조사 공식 PN은 BW 지역 박스 SKU 기준으로 확인했다. 국내 다나와 모델 페이지와 모델·용량은 일치하지만 판매점별 박스 접미사와 정품/병행/벌크 여부는 아직 대조하지 않았다.",
+        "히트싱크·사은품·고정나사 패키지가 다르면 별도 판매 구성으로 검토한다.",
+        "CW 히트싱크 SKU는 별도 제품 구성이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.samsung.com/uk/memory-storage/nvme-ssd/9100-pro-1tb-nvme-pcie-gen-5-mz-vap1t0bw/",
+          "title": "Samsung 9100 PRO 1TB 공식 제품 페이지",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "PN MZ-VAP1T0BW",
+            "1,000GB decimal 용량",
+            "M.2 2280",
+            "PCIe 5.0 x4",
+            "NVMe 2.0",
+            "최대 80.15 × 22.15 × 2.38mm"
+          ]
+        },
+        {
+          "url": "https://semiconductor.samsung.com/consumer-storage/magician/",
+          "title": "Samsung Magician 공식 지원 모델 목록",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "990 PRO BW와 히트싱크 CW/GW 모델 구분",
+            "9100 PRO BW와 히트싱크 CW 모델 구분"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?cate=11349049&pcode=78716702",
+          "title": "삼성전자 9100 PRO M.2 NVMe (1TB)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 1TB·방열판 미포함 모델 페이지 확인. 본 조사에서는 실제 판매점 재고를 확정하지 않았다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 판매점의 실제 박스 PN·유통 형태·보증 주체를 공식 제품 PN과 대조한다.",
+        "국내 신품 판매 구성 및 재고를 판매점 원문에서 다시 확인한 뒤 상품가 수집 대상으로 승인한다.",
+        "구매 추천에 필요한 보드 슬롯·공유 포트·부팅·방열 조건을 구성별로 검증한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ssd-sk-hynix-gold-p31-1tb",
+      "category": "STORAGE",
+      "manufacturer": "SK hynix",
+      "modelName": "Gold P31 1TB",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "삼성 제품만으로 구형 PCIe 3.0 NVMe 장치 식별 범위를 구성하지 않도록 제조사 자료가 있는 대안 모델을 조사한다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MISSING_CATALOG_CATEGORY"
+      },
+      "specification": {
+        "storageKind": "SSD",
+        "capacityBytes": 1000000000000,
+        "capacityBasis": "DECIMAL_GB",
+        "advertisedCapacityGb": 1000,
+        "advertisedCapacityLabel": "1TB",
+        "formFactor": "M.2_2280",
+        "interfaceProtocol": "NVME",
+        "busInterface": "PCIE",
+        "pcieVersion": "3.0",
+        "pcieLanes": 4,
+        "nvmeVersion": null,
+        "sataVersion": null,
+        "lengthMm": 80,
+        "widthMm": 22,
+        "heightMm": 2.23,
+        "dimensionsBasis": "LENGTH_WIDTH_NOMINAL_PLUS_MINUS_0.15_HEIGHT_MAXIMUM",
+        "heatsinkIncluded": null
+      },
+      "compatibilityNotes": [
+        "보드의 M.2 슬롯별 NVMe/PCIe 지원, 2280 길이, 사용 가능한 레인과 포트 공유를 별도 확인해야 한다.",
+        "부팅용 교체는 보드 BIOS의 NVMe 부팅 지원과 OS 이전 계획까지 확인해야 한다. M.2 모양만으로 호환을 확정하지 않는다.",
+        "PCIe 세대가 달라도 최종 동작 속도는 보드·CPU·슬롯 경로와 구성에 따라 달라진다."
+      ],
+      "identificationNotes": [
+        "공식 페이지에서 정확한 제품 PN과 NVMe 버전 번호를 확인하지 못하여 null로 유지했다.",
+        "명목 1TB를 decimal 1,000GB로 정규화했다. 제조사 공개 페이지의 실제 장치 sector bytes는 미조사.",
+        "공식 높이는 최대 2.23mm이고 국내 페이지는 2.3mm로 표기한다. 제조사 값을 우선하며 반올림 여부는 미확인.",
+        "국내 페이지는 방열판 미포함으로 표시하지만 제조사 박스 구성까지 연결하지 않아 heatsinkIncluded는 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://ssd.skhynix.com/kr/gold_p31/",
+          "title": "SK hynix Gold P31 한국 공식 제품 페이지",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "1TB 용량 옵션",
+            "M.2 2280 단면",
+            "PCIe 3.0 최대 4레인",
+            "NVMe",
+            "22.00±0.15 × 80.00±0.15 × 최대 2.23mm"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=13161338",
+          "title": "SK하이닉스 Gold P31 M.2 NVMe (1TB)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "모델·1TB·PCIe 3.0·방열판 미포함으로 등록된 국내 페이지를 확인했다. 제조사 PN·유통 구성은 미확인."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 판매점의 실제 박스 PN·유통 형태·보증 주체를 공식 제품 PN과 대조한다.",
+        "국내 신품 판매 구성 및 재고를 판매점 원문에서 다시 확인한 뒤 상품가 수집 대상으로 승인한다.",
+        "구매 추천에 필요한 보드 슬롯·공유 포트·부팅·방열 조건을 구성별로 검증한다.",
+        "공식 제품 PN·NVMe 버전과 국내 박스 구성 확인.",
+        "높이 표기 차이(공식 최대 2.23mm / 다나와 2.3mm)가 반올림인지 검토."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ssd-sk-hynix-platinum-p41-1tb",
+      "category": "STORAGE",
+      "manufacturer": "SK hynix",
+      "modelName": "Platinum P41 1TB",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "SK하이닉스의 PCIe 4.0 장치 식별과 신품 구매 검토 범위를 확보한다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MISSING_CATALOG_CATEGORY"
+      },
+      "specification": {
+        "storageKind": "SSD",
+        "capacityBytes": 1000000000000,
+        "capacityBasis": "DECIMAL_GB",
+        "advertisedCapacityGb": 1000,
+        "advertisedCapacityLabel": "1TB",
+        "formFactor": "M.2_2280",
+        "interfaceProtocol": "NVME",
+        "busInterface": "PCIE",
+        "pcieVersion": "4.0",
+        "pcieLanes": 4,
+        "nvmeVersion": null,
+        "sataVersion": null,
+        "lengthMm": 80,
+        "widthMm": 22,
+        "heightMm": 2.38,
+        "dimensionsBasis": "LENGTH_WIDTH_NOMINAL_PLUS_MINUS_0.15_HEIGHT_MAXIMUM",
+        "heatsinkIncluded": null
+      },
+      "compatibilityNotes": [
+        "보드의 M.2 슬롯별 NVMe/PCIe 지원, 2280 길이, 사용 가능한 레인과 포트 공유를 별도 확인해야 한다.",
+        "부팅용 교체는 보드 BIOS의 NVMe 부팅 지원과 OS 이전 계획까지 확인해야 한다. M.2 모양만으로 호환을 확정하지 않는다.",
+        "PCIe 세대가 달라도 최종 동작 속도는 보드·CPU·슬롯 경로와 구성에 따라 달라진다."
+      ],
+      "identificationNotes": [
+        "정확한 PN·NVMe 버전·제조사 박스의 방열판 포함 여부는 공개 공식 페이지에서 확인하지 못하여 null로 유지했다.",
+        "명목 1TB를 decimal 1,000GB로 정규화했다. 실제 장치 sector bytes와 구분한다.",
+        "Platinum P41을 Solidigm P41 Plus 또는 P44 Pro와 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://ssd.skhynix.com/kr/platinum_p41/",
+          "title": "SK hynix Platinum P41 한국 공식 제품 페이지",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "1TB 용량 옵션",
+            "M.2 2280 단면",
+            "PCIe 4.0 최대 4레인",
+            "NVMe",
+            "22.00±0.15 × 80.00±0.15 × 최대 2.38mm"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=17001050",
+          "title": "SK하이닉스 Platinum P41 M.2 NVMe (1TB)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "모델·1TB·PCIe 4.0·방열판 미포함으로 등록된 국내 페이지를 확인했다. 공식 PN·국내 박스 구성은 미확인."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 판매점의 실제 박스 PN·유통 형태·보증 주체를 공식 제품 PN과 대조한다.",
+        "국내 신품 판매 구성 및 재고를 판매점 원문에서 다시 확인한 뒤 상품가 수집 대상으로 승인한다.",
+        "구매 추천에 필요한 보드 슬롯·공유 포트·부팅·방열 조건을 구성별로 검증한다.",
+        "공식 PN·NVMe 버전·국내 박스 구성 확인."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "ssd-kioxia-exceria-plus-g3-1tb",
+      "category": "STORAGE",
+      "manufacturer": "KIOXIA",
+      "modelName": "EXCERIA PLUS G3 1TB",
+      "partNumber": "LSD10Z001TG8",
+      "role": "PURCHASE_CANDIDATE",
+      "reasonForSelection": "제조사가 mainstream로 분류하고 HMB를 명시한 PCIe 4.0 모델을 추가로 조사하여 고급 PRO 계열에만 연구가 몰리는 것을 줄인다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MISSING_CATALOG_CATEGORY"
+      },
+      "specification": {
+        "storageKind": "SSD",
+        "capacityBytes": 1000000000000,
+        "capacityBasis": "DECIMAL_GB",
+        "advertisedCapacityGb": 1000,
+        "advertisedCapacityLabel": "1TB",
+        "formFactor": "M.2_2280",
+        "interfaceProtocol": "NVME",
+        "busInterface": "PCIE",
+        "pcieVersion": "4.0",
+        "pcieLanes": 4,
+        "nvmeVersion": "1.4",
+        "sataVersion": null,
+        "lengthMm": 80.15,
+        "widthMm": 22.15,
+        "heightMm": 2.63,
+        "dimensionsBasis": "MANUFACTURER_MAXIMUM",
+        "heatsinkIncluded": null
+      },
+      "compatibilityNotes": [
+        "보드의 M.2 슬롯별 NVMe/PCIe 지원, 2280 길이, 사용 가능한 레인과 포트 공유를 별도 확인해야 한다.",
+        "부팅용 교체는 보드 BIOS의 NVMe 부팅 지원과 OS 이전 계획까지 확인해야 한다. M.2 모양만으로 호환을 확정하지 않는다.",
+        "PCIe 세대가 달라도 최종 동작 속도는 보드·CPU·슬롯 경로와 구성에 따라 달라진다."
+      ],
+      "identificationNotes": [
+        "한국 제조사 페이지의 PN은 LSD10Z001TG8로 확인했다. 국내 판매점 실제 PN과 대조하기 전 동일 판매 구성으로 확정하지 않는다.",
+        "공식 페이지는 기능 영역에 NVMe 1.4c, 상세 제원에 1.4를 표기한다. 본 자료는 공통 확인값 1.4만 저장하고 세부 리비전 확정은 보류한다.",
+        "다나와는 방열판 미포함으로 표기하지만 실제 제조사 박스 연결은 미검토이므로 heatsinkIncluded는 null이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://kr.kioxia.com/ko-kr/personal/ssd/exceria-plus-g3-nvme-ssd.html",
+          "title": "KIOXIA EXCERIA PLUS G3 한국 공식 제품 페이지",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "1TB PN LSD10Z001TG8",
+            "M.2 2280-S4-M 단면",
+            "PCIe 4.0 x4",
+            "NVMe 1.4",
+            "최대 80.15 × 22.15 × 2.63mm",
+            "M.2 M key",
+            "HMB",
+            "mainstream 계열",
+            "decimal GB/TB 용량 정의"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=30271115",
+          "title": "키오시아 EXCERIA PLUS G3 M.2 NVMe (1TB)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 모델·1TB·방열판 미포함 페이지를 확인했다. 판매점별 PN·유통·재고를 확인하지 않아 exact variant 승인은 보류."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 판매점의 실제 박스 PN·유통 형태·보증 주체를 공식 제품 PN과 대조한다.",
+        "국내 신품 판매 구성 및 재고를 판매점 원문에서 다시 확인한 뒤 상품가 수집 대상으로 승인한다.",
+        "구매 추천에 필요한 보드 슬롯·공유 포트·부팅·방열 조건을 구성별로 검증한다.",
+        "NVMe 세부 리비전과 제조사 박스의 방열판 포함 여부를 원문 데이터시트로 대조한다."
+      ],
+      "notInExistingCatalog": true
+    }
+  ],
+  "excludedPurchaseCandidates": [
+    {
+      "candidateKey": "ssd-wd-blue-sn580-1tb",
+      "manufacturer": "Western Digital",
+      "modelName": "WD Blue SN580 1TB",
+      "partNumber": "WDS100T3B0E",
+      "decision": "HOLD_CURRENT_NEW_PURCHASE_CANDIDATE",
+      "reason": "국내 다나와 해당 모델 페이지는 단종 및 가격비교 0건을 표시했다. 이번 신품 구매 후보에는 넣지 않고 기존 PC 식별 후보로 향후 별도 검토할 수 있다.",
+      "officialSources": [
+        {
+          "url": "https://documents.sandisk.com/content/dam/asset-library/en_us/assets/public/western-digital/product/internal-drives/wd-blue-ssd/product-brief-wd-blue-sn580-nvme-ssd.pdf",
+          "title": "WD Blue SN580 공식 Product Brief",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "1TB PN WDS100T3B0E",
+            "PCIe Gen4",
+            "NVMe 1.4b",
+            "M.2 2280",
+            "decimal TB 용량 정의"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=21691031",
+          "title": "Western Digital WD Blue SN580 M.2 NVMe (1TB)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "2026-10-09 읽은 해당 모델 페이지는 단종 및 가격비교 0건 표기. 제조사 전체 단종·모든 국내 재고 소진·다른 유통 변형의 부재를 증명하지 않는다."
+        }
+      ],
+      "priceStatus": "NOT_COLLECTED",
+      "installedDemand": "NOT_MEASURED",
+      "domesticDemand": "NOT_MEASURED"
+    }
+  ]
+}

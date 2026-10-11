@@ -1,0 +1,892 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-10T11:16:21.827Z",
+  "requested": 58,
+  "queries": [
+    {
+      "canonicalId": "0063e09f-d94a-3656-9531-ccf43fc42885",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "903d7878-c118-4256-b68a-ff9d85901697",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3200 16GB (2x8GB)",
+        "partNumber": "CMK16GX4M2B3200C16"
+      },
+      "query": "커세어 VENGEANCE LPX DDR4-3200 16GB 8Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20LPX%20DDR4-3200%2016GB%208Gx2",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:16:22.841Z",
+      "responseSha256": "8f97103dc486e85eb434f637ca8595f65b031d13e49da0356f89ce2cdd706f36",
+      "pageTitle": "커세어 VENGEANCE LPX DDR4-3200 16GB 8Gx2 : 다나와 통합검색",
+      "candidates": [
+        {
+          "externalId": "3540083",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=3540083",
+          "title": "CORSAIR DDR4 - 3200 CL16 VENGEANCE LPX 레드 패키지"
+        }
+      ],
+      "status": "FAMILY_SEARCH_REQUIRES_EXACT_PN_REVIEW"
+    },
+    {
+      "canonicalId": "03e46f65-c7ba-350f-ae9e-aa65ec43517c",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8ffa5eba-f6f1-4c8b-8a2b-1f97d1d0b965",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5200 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2B5200C40"
+      },
+      "query": "커세어 VENGEANCE DDR5-5200 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20DDR5-5200%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "05d41532-669c-324d-901b-c58fb88bc310",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3450c943-2555-42ae-b7af-d54f73330635",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-5600 32GB (1x32GB)",
+        "partNumber": "KVR56U46BD8-32"
+      },
+      "query": "킹스톤 ValueRAM DDR5-5600 32GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20ValueRAM%20DDR5-5600%2032GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "08a889dc-596d-38c3-bb28-06f453163189",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "84427fd2-d30e-4ade-8bd2-d5b1094bf09e",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 32GB (2x16GB)",
+        "partNumber": "KF560C30BBK2-32"
+      },
+      "query": "킹스톤 FURY Beast DDR5-6000 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-6000%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "0bc3003f-779d-3f47-9d26-01445b4eb07d",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "43c90305-680b-4091-9c29-757745742f16",
+        "manufacturer": "SK Hynix",
+        "modelName": "HMA451U6AFR8N-TF DDR4-2133 4GB",
+        "partNumber": "HMA451U6AFR8N-TF"
+      },
+      "query": "SK Hynix DDR4-2133 4GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=SK%20Hynix%20DDR4-2133%204GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "23933dcc-214a-3c3f-8f31-53399f1e9cfb",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "45adbb33-9ace-451b-b8c4-b4a90bd67e22",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 32GB (1x32GB)",
+        "partNumber": "KF560C36BBE-32"
+      },
+      "query": "킹스톤 FURY Beast DDR5-6000 CL36 32GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-6000%20CL36%2032GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "2486c84a-abea-3d71-ab40-a13635c3a987",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "50c8eed8-7551-477a-b320-516de7dab52e",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-2666 CL19 16GB (1x16GB)",
+        "partNumber": "KVR26N19D8/16"
+      },
+      "query": "킹스톤 ValueRAM DDR4-2666 CL19 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20ValueRAM%20DDR4-2666%20CL19%2016GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "28403447-88f6-31a4-a2f5-31cbbc0e2948",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "2cd7d094-07ba-4416-bbf6-8731ee3efc96",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-2666 CL19 8GB (1x8GB)",
+        "partNumber": "KVR26N19S8/8"
+      },
+      "query": "킹스톤 ValueRAM DDR4-2666 CL19 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20ValueRAM%20DDR4-2666%20CL19%208GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "3153bd5e-e8b7-3ee8-be7f-68d1e3a6e7d7",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "384c3029-1406-4f9c-8473-5268ab1feb8e",
+        "manufacturer": "SK Hynix",
+        "modelName": "HMAA2GU6CJR8N-XN DDR4-3200 16GB (1x16GB)",
+        "partNumber": "HMAA2GU6CJR8N-XN"
+      },
+      "query": "SK Hynix DDR4-3200 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=SK%20Hynix%20DDR4-3200%2016GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "319bbcaa-a729-3bd5-937b-7188a7d0be10",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "08a64465-db81-48e6-85c6-014997efb242",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 8GB (1x8GB)",
+        "partNumber": "KF552C40BB-8"
+      },
+      "query": "킹스톤 FURY Beast DDR5-5200 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-5200%208GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "3c8cbbcc-7118-316b-959e-e2619de27e27",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7f126456-6214-4e58-b807-b678edbbe15a",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 16GB (1x16GB)",
+        "partNumber": "KF432C16BB/16"
+      },
+      "query": "킹스톤 FURY Beast DDR4-3200 CL16 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR4-3200%20CL16%2016GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "3e29332e-77e7-307d-ac55-b080146811b3",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4067c61b-7153-41a5-ade0-8097c961e9a3",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 8GB (1x8GB)",
+        "partNumber": "KF432C16BB/8"
+      },
+      "query": "킹스톤 FURY Beast DDR4-3200 CL16 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR4-3200%20CL16%208GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "40d6c20f-74bd-37d6-9670-2fa8e072e64e",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4a7373b7-b021-4eca-90b3-ff9894cbeea2",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5600 CL40 32GB (1x32GB)",
+        "partNumber": "KF556C40BB-32"
+      },
+      "query": "킹스톤 FURY Beast DDR5-5600 CL40 32GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-5600%20CL40%2032GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "48ae3fc4-3d9e-3bb0-9a5d-26b5150d5c67",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "81793251-0d7e-48c2-a0f5-38e1bdd191e1",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3600 CL18 16GB (1x16GB)",
+        "partNumber": "KF436C18BB/16"
+      },
+      "query": "킹스톤 FURY Beast DDR4-3600 CL18 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR4-3600%20CL18%2016GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "4a004c7f-7275-3faf-90e5-a6ce249686d9",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "59ceb0dc-0b8b-4aa8-868f-e8d60ae8466d",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5600 32GB (2x16GB)",
+        "partNumber": "KF556C40BBK2-32"
+      },
+      "query": "킹스톤 FURY Beast DDR5-5600 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-5600%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "4d56ff31-af55-30a7-acd1-0e932f1c0af9",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "437cf126-cbaf-49a8-a106-4119977f9f4f",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-5600 16GB (1x16GB)",
+        "partNumber": "KVR56U46BS8-16"
+      },
+      "query": "킹스톤 ValueRAM DDR5-5600 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20ValueRAM%20DDR5-5600%2016GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "57e439ec-a892-39d2-a9dd-e83e7c781089",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "709f860e-656d-46a6-8adb-950635e1610b",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 32GB (2x16GB)",
+        "partNumber": "KF552C40BBK2-32"
+      },
+      "query": "킹스톤 FURY Beast DDR5-5200 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-5200%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "589c0aab-0516-307c-9275-3354bf9ab7e0",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "db6432c5-775f-492a-be92-b71bf975c69a",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-6000 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2B6000C36"
+      },
+      "query": "커세어 VENGEANCE DDR5-6000 CL36 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20DDR5-6000%20CL36%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "72653a65-82aa-3066-a6ea-9c10a517d625",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "0925a015-2110-474d-ae9b-c7a88681227e",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-6000 CL40 64GB (2x32GB)",
+        "partNumber": "CMK64GX5M2B6000C40"
+      },
+      "query": "커세어 VENGEANCE DDR5-6000 CL40 64GB 32Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20DDR5-6000%20CL40%2064GB%2032Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "731e72a5-8c39-3918-a0e1-f4373d95e789",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "41d30e5c-1396-40c7-969e-a010525aceb0",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-4800 16GB (1x16GB)",
+        "partNumber": "KVR48U40BS8-16"
+      },
+      "query": "킹스톤 ValueRAM DDR5-4800 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20ValueRAM%20DDR5-4800%2016GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "78bddca0-91c5-304a-b138-86ba9d14ec0f",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3076418d-7cc2-4537-8a82-c5c5252cd957",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5600 CL40 64GB (2x32GB)",
+        "partNumber": "CMK64GX5M2B5600C40"
+      },
+      "query": "커세어 VENGEANCE DDR5-5600 CL40 64GB 32Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20DDR5-5600%20CL40%2064GB%2032Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "78d6e046-9b50-3b9e-8565-727df0146737",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1693ade8-baa6-4635-86ec-ef3af308cbe4",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 16GB (2x8GB)",
+        "partNumber": "KF432C16BBK2/16"
+      },
+      "query": "킹스톤 FURY Beast DDR4-3200 CL16 16GB 8Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR4-3200%20CL16%2016GB%208Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1555eede-7e03-4038-824d-91d8fb21a6e2",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "F5-6000J3636F16GX2-RS5K"
+      },
+      "query": "지스킬 립죠스 S5 DDR5-6000 CL36 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20%EB%A6%BD%EC%A3%A0%EC%8A%A4%20S5%20DDR5-6000%20CL36%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "7dfea635-ed5a-3004-8c13-eae0efa5b8f8",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d12eb4ec-cd21-4a4f-9eb1-e56e149fbf97",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3600 64GB (2x32GB)",
+        "partNumber": "KF436C18BBK2/64"
+      },
+      "query": "킹스톤 FURY Beast DDR4-3600 64GB 32Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR4-3600%2064GB%2032Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "843d1585-2ee6-3642-8165-9bde7e79c9cc",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d6e5644e-d03d-4797-90f4-52009a7a1264",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-3200 32GB (1x32GB)",
+        "partNumber": "KVR32N22D8/32"
+      },
+      "query": "킹스톤 ValueRAM DDR4-3200 32GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20ValueRAM%20DDR4-3200%2032GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "8a0bba77-e2ec-3ec4-9066-9aaf397e863d",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e67e9f94-ff0e-4bb6-9e6f-cdf03446cc6e",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 64GB (2x32GB)",
+        "partNumber": "KF560C36BBEK2-64"
+      },
+      "query": "킹스톤 FURY Beast DDR5-6000 CL36 64GB 32Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-6000%20CL36%2064GB%2032Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "8a43d605-c6cb-341f-ba7c-0f660c4ae109",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ddd4049d-1015-4953-84a6-e71e81d0a575",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3200 64GB (2x32GB)",
+        "partNumber": "CMK64GX4M2E3200C16"
+      },
+      "query": "커세어 VENGEANCE LPX DDR4-3200 64GB 32Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20LPX%20DDR4-3200%2064GB%2032Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "8ab2136e-4369-37bc-a66f-9dc961fff141",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "2081be35-4e30-4885-afd8-8c31a9b8f39c",
+        "manufacturer": "SK Hynix",
+        "modelName": "HMA81GU6MFR8N-UH DDR4-2400 8GB (1x8GB)",
+        "partNumber": "HMA81GU6MFR8N-UH"
+      },
+      "query": "SK Hynix DDR4-2400 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=SK%20Hynix%20DDR4-2400%208GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "8b3655de-1bf6-3ddc-9669-2065b56e952c",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4003dd50-671a-494e-a9da-13b30f75e88e",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2E6000C36"
+      },
+      "query": "커세어 VENGEANCE DDR5-6000 CL36 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20DDR5-6000%20CL36%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "8d2d09ca-9d1b-31a0-9c51-ee4204dff0f5",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3ec88fb7-7041-40bf-82ac-3c4b21c7d1c2",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3600 CL18 16GB (2x8GB)",
+        "partNumber": "CMK16GX4M2B3600C18"
+      },
+      "query": "커세어 VENGEANCE LPX DDR4-3600 CL18 16GB 8Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20LPX%20DDR4-3600%20CL18%2016GB%208Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "9656da7c-c390-3deb-b84b-6c59ab118579",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "06b29918-1847-4754-88d2-547e35368da4",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5600 32GB (2x16GB)",
+        "partNumber": "CMK32GX5M2B5600C36"
+      },
+      "query": "커세어 VENGEANCE DDR5-5600 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20DDR5-5600%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "98163a70-96e7-3e4c-a5c5-c8c334637867",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c10975d5-ae7e-488f-95e7-f9270a5beb68",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 32GB (2x16GB)",
+        "partNumber": "F4-3200C16D-32GVK"
+      },
+      "query": "지스킬 립죠스 V DDR4-3200 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20%EB%A6%BD%EC%A3%A0%EC%8A%A4%20V%20DDR4-3200%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "99347182-e833-3958-8b25-76243995c988",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "15b65b34-f647-4ffc-8b61-a0a9f5a0006c",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3600 32GB (2x16GB)",
+        "partNumber": "F4-3600C18D-32GVK"
+      },
+      "query": "지스킬 립죠스 V DDR4-3600 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20%EB%A6%BD%EC%A3%A0%EC%8A%A4%20V%20DDR4-3600%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "9ba50ffb-4690-3c0f-a775-1751d4d9bcf9",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7019a3a6-2b1a-4d34-a98a-d7a9e0bea5e4",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 CL16 64GB (2x32GB)",
+        "partNumber": "F4-3200C16D-64GVK"
+      },
+      "query": "지스킬 립죠스 V DDR4-3200 CL16 64GB 32Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20%EB%A6%BD%EC%A3%A0%EC%8A%A4%20V%20DDR4-3200%20CL16%2064GB%2032Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "9bce545f-45a4-36d3-a52d-81ff58558075",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "291c62b6-2ac1-4f79-876a-0d6d1df2ee27",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-4800 8GB (1x8GB)",
+        "partNumber": "KVR48U40BS6-8"
+      },
+      "query": "킹스톤 ValueRAM DDR5-4800 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20ValueRAM%20DDR5-4800%208GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "9bd11c8c-e7c4-3622-b608-17595f19147b",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d1646419-63d9-487c-9641-1619ece92eb6",
+        "manufacturer": "Samsung",
+        "modelName": "M378A2K43CB1-CTD DDR4-2666 16GB (1x16GB)",
+        "partNumber": "M378A2K43CB1-CTD"
+      },
+      "query": "삼성 DDR4-2666 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2666%2016GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "9d8f4fce-537b-3c22-8560-297d7219030c",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e2301f2b-d70c-424a-861f-5bf0f960c81f",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE DDR5-5600 CL40 48GB (2x24GB)",
+        "partNumber": "CMK48GX5M2B5600C40"
+      },
+      "query": "커세어 VENGEANCE DDR5-5600 CL40 48GB 24Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20DDR5-5600%20CL40%2048GB%2024Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "9e5533d6-54da-3be8-a8ae-107c4ca49bc8",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "43f6b6ce-175d-4122-a383-e7004a0cf8f6",
+        "manufacturer": "Samsung",
+        "modelName": "M378A1K43CB2-CTD DDR4-2666 8GB",
+        "partNumber": "M378A1K43CB2-CTD"
+      },
+      "query": "삼성 DDR4-2666 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2666%208GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "a50af220-41d0-3a22-a332-553686b489de",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e7ce157e-ff50-417b-9dde-4c7eb7e25ec5",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5600 CL36 32GB (2x16GB)",
+        "partNumber": "KF556C36BBEK2-32"
+      },
+      "query": "킹스톤 FURY Beast DDR5-5600 CL36 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-5600%20CL36%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "ac894347-9a31-3ab0-888b-583f2cf57d03",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ae4d587f-532f-486e-8faa-5e76a6ace1f1",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-3200 8GB (1x8GB)",
+        "partNumber": "KVR32N22S8/8"
+      },
+      "query": "킹스톤 ValueRAM DDR4-3200 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20ValueRAM%20DDR4-3200%208GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "b4ed407a-4fe3-3407-a0bd-2d7042a57f3b",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "38b0687e-02a1-4863-b1b3-af0eab884a05",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 CL16 32GB (2x16GB)",
+        "partNumber": "KF432C16BBK2/32"
+      },
+      "query": "킹스톤 FURY Beast DDR4-3200 CL16 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR4-3200%20CL16%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "b5f8f8f6-2d64-33b4-8384-bddd301d3399",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "199dd44f-2862-465c-91c4-e61d76ea3685",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6400 CL32 32GB (2x16GB)",
+        "partNumber": "KF564C32BBK2-32"
+      },
+      "query": "킹스톤 FURY Beast DDR5-6400 CL32 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-6400%20CL32%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "b6839df5-5ed3-3edf-b504-007ef3344d05",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "fbcba504-1ad4-49bc-86c4-9ad3143d0e46",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "KF560C36BBEK2-32"
+      },
+      "query": "킹스톤 FURY Beast DDR5-6000 CL36 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-6000%20CL36%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "b89d9a8a-4dea-397c-84b3-486ca747d3d7",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e8766fc7-6bff-4d30-b63b-6b31c6208d39",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL36 16GB (1x16GB)",
+        "partNumber": "KF560C36BBE-16"
+      },
+      "query": "킹스톤 FURY Beast DDR5-6000 CL36 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-6000%20CL36%2016GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "bbe05dd4-e93c-39d0-8c4c-30c4cba28eb8",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "9280491b-84f8-4a2a-803e-c8a07d6feec3",
+        "manufacturer": "Samsung",
+        "modelName": "M378A1G43DB0-CPB DDR4-2133 8GB",
+        "partNumber": "M378A1G43DB0-CPB"
+      },
+      "query": "삼성 DDR4-2133 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2133%208GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "c4ffa9b3-013f-3937-b5ee-fa5df43dd433",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c7c35e8b-849f-447e-accf-381c7d5575a1",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 CL40 16GB (1x16GB)",
+        "partNumber": "KF552C40BB-16"
+      },
+      "query": "킹스톤 FURY Beast DDR5-5200 CL40 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-5200%20CL40%2016GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "d0c830c3-c66e-3985-86e4-ebc67d1e1a33",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "fa910565-8e5d-40f4-b9ae-b185f70d2192",
+        "manufacturer": "Samsung",
+        "modelName": "M378A1K43CB2-CRC DDR4-2400 8GB (1x8GB)",
+        "partNumber": "M378A1K43CB2-CRC"
+      },
+      "query": "삼성 DDR4-2400 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR4-2400%208GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "d29d2df4-5b70-3a83-b5ed-f7aa41903418",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3509ef82-cf54-4b72-8cb3-fd3702b5f346",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3200 64GB (2x32GB)",
+        "partNumber": "KF432C16BBK2/64"
+      },
+      "query": "킹스톤 FURY Beast DDR4-3200 64GB 32Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR4-3200%2064GB%2032Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "d36faa9f-7724-336e-b57e-24ea5e5cdb84",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3ae2dd82-9e72-49e0-9a36-8d86a70cc72a",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3600 CL16 32GB (2x16GB)",
+        "partNumber": "F4-3600C16D-32GVKC"
+      },
+      "query": "지스킬 립죠스 V DDR4-3600 CL16 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20%EB%A6%BD%EC%A3%A0%EC%8A%A4%20V%20DDR4-3600%20CL16%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "dc9ab5d2-79a4-3bbc-876f-30bc31809dd4",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8fc33ad6-0dfc-43ab-9261-02b866190abf",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws V DDR4-3200 16GB (2x8GB)",
+        "partNumber": "F4-3200C16D-16GVKB"
+      },
+      "query": "지스킬 립죠스 V DDR4-3200 16GB 8Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%A7%80%EC%8A%A4%ED%82%AC%20%EB%A6%BD%EC%A3%A0%EC%8A%A4%20V%20DDR4-3200%2016GB%208Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "dd6201bd-2727-3670-9ea2-27f08eda91de",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "8035fe0e-4132-48bd-941b-019cd58120a1",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-5200 CL40 64GB (2x32GB)",
+        "partNumber": "KF552C40BBK2-64"
+      },
+      "query": "킹스톤 FURY Beast DDR5-5200 CL40 64GB 32Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-5200%20CL40%2064GB%2032Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "deccbc7d-466c-38bb-ad1a-8b274069c372",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "79dc68c9-3eff-49a1-aa3c-3ff6e7ab61d8",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR4-3200 16GB (1x16GB)",
+        "partNumber": "KVR32N22S8/16"
+      },
+      "query": "킹스톤 ValueRAM DDR4-3200 16GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20ValueRAM%20DDR4-3200%2016GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "e28b63e2-4269-3c75-b005-b21005344254",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ba63a6a9-75e1-4206-ba7d-f28c2ad601d8",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE LPX DDR4-3600 32GB (2x16GB)",
+        "partNumber": "CMK32GX4M2D3600C18"
+      },
+      "query": "커세어 VENGEANCE LPX DDR4-3600 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20LPX%20DDR4-3600%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "eda1782f-d9ff-381d-abb1-165238b5d40a",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "52a8fdd1-5c4a-48ff-a0e1-e5ea3a6accc6",
+        "manufacturer": "Corsair",
+        "modelName": "VENGEANCE RGB DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "CMH32GX5M2B6000C30"
+      },
+      "query": "커세어 VENGEANCE RGB DDR5-6000 CL30 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%BB%A4%EC%84%B8%EC%96%B4%20VENGEANCE%20RGB%20DDR5-6000%20CL30%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "ee9d30fe-0cf4-3f45-a1e0-1168101c6d6c",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "912ddf9f-66c0-4e8a-88ac-4a978479bddf",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "KF560C30BBEK2-32"
+      },
+      "query": "킹스톤 FURY Beast DDR5-6000 CL30 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR5-6000%20CL30%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "f461b575-e411-3072-ae64-c0a9fe4f36e1",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "846aa6ea-2550-460a-9fc3-2684e4f3231c",
+        "manufacturer": "Samsung",
+        "modelName": "M323R1GB4PB0-CWM DDR5-5600 8GB (1x8GB)",
+        "partNumber": "M323R1GB4PB0-CWM"
+      },
+      "query": "삼성 DDR5-5600 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%EC%82%BC%EC%84%B1%20DDR5-5600%208GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "fbc5dfa7-0b31-363d-ba9e-a38941249a15",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "33ea75ed-50a5-41bc-b548-95ae5ac54528",
+        "manufacturer": "Kingston",
+        "modelName": "FURY Beast DDR4-3600 CL18 32GB (2x16GB)",
+        "partNumber": "KF436C18BBK2/32"
+      },
+      "query": "킹스톤 FURY Beast DDR4-3600 CL18 32GB 16Gx2",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20FURY%20Beast%20DDR4-3600%20CL18%2032GB%2016Gx2",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    },
+    {
+      "canonicalId": "fbc76590-3f8f-3f14-a3f6-65e296b52481",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "85b219b0-6660-4649-9e5f-d10b12a53415",
+        "manufacturer": "Kingston",
+        "modelName": "ValueRAM DDR5-5600 CL46 8GB (1x8GB)",
+        "partNumber": "KVR56U46BS6-8"
+      },
+      "query": "킹스톤 ValueRAM DDR5-5600 CL46 8GB",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=%ED%82%B9%EC%8A%A4%ED%86%A4%20ValueRAM%20DDR5-5600%20CL46%208GB",
+      "saleIdentityVerified": false,
+      "status": "REQUEST_FAILED",
+      "error": "fetch failed"
+    }
+  ],
+  "databaseWrites": 0,
+  "deployments": 0,
+  "publicationApproved": false,
+  "updatedAt": "2026-10-10T11:20:11.966Z",
+  "completed": 58
+}

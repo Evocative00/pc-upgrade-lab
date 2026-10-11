@@ -1,0 +1,627 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-10-10",
+  "auditedAt": "2026-10-09T17:36:18.709865400Z",
+  "status": "PASS",
+  "mysqlVersion": "8.4.11",
+  "migrationVersion": "14",
+  "snapshotTransaction": "REPEATABLE_READ_WITH_CONSISTENT_SNAPSHOT_READ_ONLY",
+  "databaseWritesByAudit": 0,
+  "baselinePath": "data/catalog-review/pilot-db-before-2026-10-10.json",
+  "approvedPreviewNormalizedSha256": "28cc2bacb534dcc284292359f61748de6a9bf0642318a3771f80937d7cbf0b21",
+  "approvedPricesNormalizedSha256": "3028116ce4cae9adc1917ae3b42e4404b821eac83d589c0c1082dfe8051318c0",
+  "preservation": {
+    "originalRows": 4056,
+    "originalRowsEntirelyUnchanged": 4049,
+    "originalProductRowsWithOnlyApprovedIdentityChanges": 7,
+    "approvedExistingSelectionNumbers": [
+      1,
+      2,
+      5,
+      9,
+      10,
+      11,
+      12
+    ],
+    "allowedExistingProductColumns": [
+      "canonical_id",
+      "identity_evidence_source_id",
+      "identity_kind",
+      "identity_review_scope",
+      "identity_reviewed_at",
+      "model_id",
+      "role",
+      "updated_at"
+    ],
+    "appendedRows": 161,
+    "allOtherOriginalValuesPreserved": true
+  },
+  "tables": {
+    "catalog_model": {
+      "beforeRows": 0,
+      "afterRows": 13,
+      "expectedAfterRows": 13,
+      "appendedRows": 13,
+      "originalRowsUnchanged": 0,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterAllColumnsDigest": "a8cf41209949f98b4b2aeb4becdb2e391b2c55bed6a62bee7af8553def58b633",
+      "status": "PASS"
+    },
+    "catalog_model_alias": {
+      "beforeRows": 0,
+      "afterRows": 0,
+      "expectedAfterRows": 0,
+      "appendedRows": 0,
+      "originalRowsUnchanged": 0,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PASS"
+    },
+    "catalog_model_source": {
+      "beforeRows": 0,
+      "afterRows": 14,
+      "expectedAfterRows": 14,
+      "appendedRows": 14,
+      "originalRowsUnchanged": 0,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterAllColumnsDigest": "996f1bf9c26a55d92655588a70a2efec61759d3a9af2d3b7dc9ddee113961dfc",
+      "status": "PASS"
+    },
+    "catalog_price_mapping": {
+      "beforeRows": 72,
+      "afterRows": 74,
+      "expectedAfterRows": 74,
+      "appendedRows": 2,
+      "originalRowsUnchanged": 72,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "20cf4d9da657a13fa6a84712cb671acc4892a34f6834d5165f4d6f4c0e4477fe",
+      "afterAllColumnsDigest": "82395acad990dce8d7d5f82d6fe4556031f9d1f43b764d5a53d9f7bcd37c8333",
+      "status": "PASS"
+    },
+    "catalog_price_observation": {
+      "beforeRows": 72,
+      "afterRows": 80,
+      "expectedAfterRows": 80,
+      "appendedRows": 8,
+      "originalRowsUnchanged": 72,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "55ae305050ffcd7e33093418f0bfaa49f13bb7aba35c4f2b75864ddb2db5bf47",
+      "afterAllColumnsDigest": "053b87946ba5ec491054d6b59b5a3e1f984c9bb60b0e1cf9ef60dc5e5f18ec25",
+      "status": "PASS"
+    },
+    "catalog_product": {
+      "beforeRows": 300,
+      "afterRows": 307,
+      "expectedAfterRows": 307,
+      "appendedRows": 7,
+      "originalRowsUnchanged": 293,
+      "originalRowsWithApprovedIdentityChanges": 7,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "33c373e802118b237acb43e9826509dcba9ad97399d7c37fd3063cf42ddbff5f",
+      "afterAllColumnsDigest": "05ba1c7d6c6a1af0130237718e46c2a3c18e40c3b01281749d63d7d0c567e9aa",
+      "status": "PASS"
+    },
+    "catalog_product_source": {
+      "beforeRows": 839,
+      "afterRows": 853,
+      "expectedAfterRows": 853,
+      "appendedRows": 14,
+      "originalRowsUnchanged": 839,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "cbbaaf89ad64bb088e0995e64eb1df8d44d4c855aa203d7033c7b67c1a36c299",
+      "afterAllColumnsDigest": "be1b570c5befb92e48d9f9696474399d2b51907966bc7bd222b0877e649dd5b0",
+      "status": "PASS"
+    },
+    "catalog_reference_price": {
+      "beforeRows": 300,
+      "afterRows": 307,
+      "expectedAfterRows": 307,
+      "appendedRows": 7,
+      "originalRowsUnchanged": 300,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "7dc6cfc95ddbe2136e270ffc537e9c80eec94d2022be1ec6e66f01d292185e47",
+      "afterAllColumnsDigest": "6802eff3e83bb165faa77c6e79852e9ddce2c1a540a942e7585fed904e93407e",
+      "status": "PASS"
+    },
+    "cpu_memory_support": {
+      "beforeRows": 70,
+      "afterRows": 72,
+      "expectedAfterRows": 72,
+      "appendedRows": 2,
+      "originalRowsUnchanged": 70,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "553e654870b63313f66299496bf60ffc1bba47af3502ec6eac47ab42cf6b04c6",
+      "afterAllColumnsDigest": "401d63303328e461b38ea18ffebe5ec3db1c5f4e0d3393f75f654c3ffc716a3b",
+      "status": "PASS"
+    },
+    "cpu_memory_type_support": {
+      "beforeRows": 101,
+      "afterRows": 103,
+      "expectedAfterRows": 103,
+      "appendedRows": 2,
+      "originalRowsUnchanged": 101,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "7c79a12ce5d77aeb7dc547899ba6fcaf285dc76e130937dcfa06e48a0d766545",
+      "afterAllColumnsDigest": "6174debec28650de07fcdbc4b5b7fd7bc0d96b4b8d67e5c479f694aea9da72c0",
+      "status": "PASS"
+    },
+    "cpu_spec": {
+      "beforeRows": 70,
+      "afterRows": 72,
+      "expectedAfterRows": 72,
+      "appendedRows": 2,
+      "originalRowsUnchanged": 70,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "27ed9fc9cb10a75d31f12d86c32d3865e3d1c912e01277fde423c9b6d5652c01",
+      "afterAllColumnsDigest": "53363b0cc73614eda9868914d76b36d36aba6d42697ffb52058f0af87fe23d1f",
+      "status": "PASS"
+    },
+    "flyway_schema_history": {
+      "beforeRows": 14,
+      "afterRows": 14,
+      "expectedAfterRows": 14,
+      "appendedRows": 0,
+      "originalRowsUnchanged": 14,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "b2d3b6689f87dc79a265d217971831a62a414f83814b3b6ff9a14144e935bd2d",
+      "afterAllColumnsDigest": "b2d3b6689f87dc79a265d217971831a62a414f83814b3b6ff9a14144e935bd2d",
+      "status": "PASS"
+    },
+    "gpu_power_connector": {
+      "beforeRows": 90,
+      "afterRows": 90,
+      "expectedAfterRows": 90,
+      "appendedRows": 0,
+      "originalRowsUnchanged": 90,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "611cc8d1a6d1af769f3113c0532db7b0ab2b61b7c21f03f47cc62152bfb8cae4",
+      "afterAllColumnsDigest": "611cc8d1a6d1af769f3113c0532db7b0ab2b61b7c21f03f47cc62152bfb8cae4",
+      "status": "PASS"
+    },
+    "gpu_spec": {
+      "beforeRows": 80,
+      "afterRows": 80,
+      "expectedAfterRows": 80,
+      "appendedRows": 0,
+      "originalRowsUnchanged": 80,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "45b5fb3306e2bb427328903aa7dc7907376144912064018578eda34f3940cd25",
+      "afterAllColumnsDigest": "45b5fb3306e2bb427328903aa7dc7907376144912064018578eda34f3940cd25",
+      "status": "PASS"
+    },
+    "monitor_spec": {
+      "beforeRows": 20,
+      "afterRows": 20,
+      "expectedAfterRows": 20,
+      "appendedRows": 0,
+      "originalRowsUnchanged": 20,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "bf5b26b0ba1994b8bda950b11b2e3d3a0260b3d07fe7ebb040f5f9ccc961d438",
+      "afterAllColumnsDigest": "bf5b26b0ba1994b8bda950b11b2e3d3a0260b3d07fe7ebb040f5f9ccc961d438",
+      "status": "PASS"
+    },
+    "motherboard_cpu_support": {
+      "beforeRows": 1807,
+      "afterRows": 1813,
+      "expectedAfterRows": 1813,
+      "appendedRows": 6,
+      "originalRowsUnchanged": 1807,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "9a242d2b37f1202fa819bedf62bf0489a2a6a6e6993714baf7bfb8125002c1a3",
+      "afterAllColumnsDigest": "df1ecd8aa408e6c643a2e36ca32ac493649737bc86ad67a427153fc4fbe9e6b9",
+      "status": "PASS"
+    },
+    "motherboard_cpu_support_profile": {
+      "beforeRows": 70,
+      "afterRows": 73,
+      "expectedAfterRows": 73,
+      "appendedRows": 3,
+      "originalRowsUnchanged": 70,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "523fc95b20de6f6971198dc6b88fba81c338967b503725386db64d0239db8bc8",
+      "afterAllColumnsDigest": "67f8857b4f26738dbb0407874632117e138e66db9c7c0e46f30b22e3ea0bde91",
+      "status": "PASS"
+    },
+    "motherboard_spec": {
+      "beforeRows": 70,
+      "afterRows": 73,
+      "expectedAfterRows": 73,
+      "appendedRows": 3,
+      "originalRowsUnchanged": 70,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "40b3a8924946c18d8c92645a298ae3022aa23d51bd21214ab327a84e86dbbb97",
+      "afterAllColumnsDigest": "6d69d82f575a640ff5b30e0af1851bd7495c6e5bde57a7efd80054d7e0782933",
+      "status": "PASS"
+    },
+    "motherboard_storage_profile": {
+      "beforeRows": 0,
+      "afterRows": 4,
+      "expectedAfterRows": 4,
+      "appendedRows": 4,
+      "originalRowsUnchanged": 0,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterAllColumnsDigest": "e92387531a81f630455859d2e6518aed4778a5d290390d7052111aa49e8078fc",
+      "status": "PASS"
+    },
+    "motherboard_storage_rule": {
+      "beforeRows": 0,
+      "afterRows": 3,
+      "expectedAfterRows": 3,
+      "appendedRows": 3,
+      "originalRowsUnchanged": 0,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterAllColumnsDigest": "c6b23571cb4d54d151fa3c76c08452f1d8524d1cea3a90836dd6b20330027144",
+      "status": "PASS"
+    },
+    "motherboard_storage_slot": {
+      "beforeRows": 0,
+      "afterRows": 19,
+      "expectedAfterRows": 19,
+      "appendedRows": 19,
+      "originalRowsUnchanged": 0,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterAllColumnsDigest": "cea46c0e59bf814351e1c1f047485d00dc1b04bd3ce72d7f0ceaff91275aed50",
+      "status": "PASS"
+    },
+    "motherboard_storage_slot_bus": {
+      "beforeRows": 0,
+      "afterRows": 19,
+      "expectedAfterRows": 19,
+      "appendedRows": 19,
+      "originalRowsUnchanged": 0,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterAllColumnsDigest": "ffb5d3ec365e9a836e02558d1f8e2d0e229885d2e2d3aa65e0649256e3db9843",
+      "status": "PASS"
+    },
+    "motherboard_storage_slot_length": {
+      "beforeRows": 0,
+      "afterRows": 20,
+      "expectedAfterRows": 20,
+      "appendedRows": 20,
+      "originalRowsUnchanged": 0,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterAllColumnsDigest": "8b71f7c8fca8f687a368a4aeb898e96cb0beb7e23dca209d8e93f6fe537e885a",
+      "status": "PASS"
+    },
+    "motherboard_storage_slot_protocol": {
+      "beforeRows": 0,
+      "afterRows": 5,
+      "expectedAfterRows": 5,
+      "appendedRows": 5,
+      "originalRowsUnchanged": 0,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterAllColumnsDigest": "204d0817c70f3fde064ab15ea294c9d001c518a3df816ffe911ec4c842a0bedf",
+      "status": "PASS"
+    },
+    "motherboard_storage_source": {
+      "beforeRows": 0,
+      "afterRows": 6,
+      "expectedAfterRows": 6,
+      "appendedRows": 6,
+      "originalRowsUnchanged": 0,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterAllColumnsDigest": "bc54d2086df0d44be83b78b3bd293172c0a068d0d58c8eb588c9b813ac575614",
+      "status": "PASS"
+    },
+    "pc_configuration": {
+      "beforeRows": 1,
+      "afterRows": 1,
+      "expectedAfterRows": 1,
+      "appendedRows": 0,
+      "originalRowsUnchanged": 1,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "f455116af9b8cd0387a28defa12ef8d20bb32959bdfac3b46633a69de786f9ea",
+      "afterAllColumnsDigest": "f455116af9b8cd0387a28defa12ef8d20bb32959bdfac3b46633a69de786f9ea",
+      "status": "PASS"
+    },
+    "pc_part": {
+      "beforeRows": 14,
+      "afterRows": 14,
+      "expectedAfterRows": 14,
+      "appendedRows": 0,
+      "originalRowsUnchanged": 14,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "7c5d7e159f9401b9066b86f1a950cd0f290994b38d209f832c83568ff701c039",
+      "afterAllColumnsDigest": "7c5d7e159f9401b9066b86f1a950cd0f290994b38d209f832c83568ff701c039",
+      "status": "PASS"
+    },
+    "ram_spec": {
+      "beforeRows": 60,
+      "afterRows": 60,
+      "expectedAfterRows": 60,
+      "appendedRows": 0,
+      "originalRowsUnchanged": 60,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "f3e40158ef5153aec643ad5f4d8625e7d691c249312afd9c854f1327a295153e",
+      "afterAllColumnsDigest": "f3e40158ef5153aec643ad5f4d8625e7d691c249312afd9c854f1327a295153e",
+      "status": "PASS"
+    },
+    "social_accounts": {
+      "beforeRows": 3,
+      "afterRows": 3,
+      "expectedAfterRows": 3,
+      "appendedRows": 0,
+      "originalRowsUnchanged": 3,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "c7105a41b6af3d333a3f26c82433136fc5216c316bccd2b7d322d64367c26e05",
+      "afterAllColumnsDigest": "c7105a41b6af3d333a3f26c82433136fc5216c316bccd2b7d322d64367c26e05",
+      "status": "PASS"
+    },
+    "storage_spec": {
+      "beforeRows": 0,
+      "afterRows": 2,
+      "expectedAfterRows": 2,
+      "appendedRows": 2,
+      "originalRowsUnchanged": 0,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterAllColumnsDigest": "ecd37c1c8c40b685e8cbe3ac299f9eaa0d8fb0ec39f4f366fa646af5caebdbc8",
+      "status": "PASS"
+    },
+    "users": {
+      "beforeRows": 3,
+      "afterRows": 3,
+      "expectedAfterRows": 3,
+      "appendedRows": 0,
+      "originalRowsUnchanged": 3,
+      "originalRowsWithApprovedIdentityChanges": 0,
+      "originalRowsMissing": 0,
+      "originalRowsUnexpectedlyChanged": 0,
+      "beforeAllColumnsDigest": "19d86010ef14cbf6a2f92acc4e509d47cb32700e9960299b59d8d049f7b34b31",
+      "afterAllColumnsDigest": "19d86010ef14cbf6a2f92acc4e509d47cb32700e9960299b59d8d049f7b34b31",
+      "status": "PASS"
+    }
+  },
+  "productBindingReview": [
+    {
+      "selectionNumber": 1,
+      "status": "PASS",
+      "operation": "REUSE_EXISTING",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 2,
+      "status": "PASS",
+      "operation": "REUSE_EXISTING",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 3,
+      "status": "PASS",
+      "operation": "CREATE_PROPOSAL",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 4,
+      "status": "PASS",
+      "operation": "CREATE_PROPOSAL",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 5,
+      "status": "PASS",
+      "operation": "REUSE_EXISTING",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 6,
+      "status": "PASS",
+      "operation": "CREATE_PROPOSAL",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 7,
+      "status": "PASS",
+      "operation": "CREATE_PROPOSAL",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 8,
+      "status": "PASS",
+      "operation": "CREATE_PROPOSAL",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 9,
+      "status": "PASS",
+      "operation": "REUSE_EXISTING",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 10,
+      "status": "PASS",
+      "operation": "REUSE_EXISTING",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 11,
+      "status": "PASS",
+      "operation": "REUSE_EXISTING",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 12,
+      "status": "PASS",
+      "operation": "REUSE_EXISTING",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 13,
+      "status": "PASS",
+      "operation": "CREATE_PROPOSAL",
+      "autoActivated": false
+    },
+    {
+      "selectionNumber": 14,
+      "status": "PASS",
+      "operation": "CREATE_PROPOSAL",
+      "autoActivated": false
+    }
+  ],
+  "pricedProducts": 74,
+  "productsWithCanonicalId": 14,
+  "productsWithModelId": 14,
+  "pcPartsWithModelId": 0,
+  "catalogStates": [
+    {
+      "identity_kind": "LEGACY_UNCLASSIFIED",
+      "role": "UNASSIGNED",
+      "verification_status": "UNVERIFIED",
+      "products": 293
+    },
+    {
+      "identity_kind": "MODEL_REFERENCE",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "products": 6
+    },
+    {
+      "identity_kind": "PHYSICAL_VARIANT",
+      "role": "BOTH",
+      "verification_status": "UNVERIFIED",
+      "products": 6
+    },
+    {
+      "identity_kind": "RETAIL_KIT",
+      "role": "PURCHASE_CANDIDATE",
+      "verification_status": "UNVERIFIED",
+      "products": 2
+    }
+  ],
+  "modelStates": [
+    {
+      "type": "CPU",
+      "kind": "CPU_MODEL",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "models": 4
+    },
+    {
+      "type": "GPU",
+      "kind": "GPU_CHIP_MODEL",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "models": 2
+    },
+    {
+      "type": "MOTHERBOARD",
+      "kind": "BOARD_MODEL",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "models": 4
+    },
+    {
+      "type": "RAM",
+      "kind": "RAM_SPEC_GROUP",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "models": 1
+    },
+    {
+      "type": "STORAGE",
+      "kind": "STORAGE_MODEL",
+      "role": "INSTALLED_PC_REFERENCE",
+      "verification_status": "UNVERIFIED",
+      "models": 2
+    }
+  ],
+  "privatePostBaseline": {
+    "plaintextSha256": "f462099d22e8a8ba4262b681c8b0aba10f98b408477f67e142d08353bbc64ea6",
+    "plaintextBytes": 7673266,
+    "privateValuesExcludedFromPublicFile": true,
+    "protectionRequired": "WINDOWS_DPAPI_CURRENT_USER_BY_WRAPPER",
+    "protection": "WINDOWS_DPAPI_CURRENT_USER",
+    "encryptionRoundTripVerified": true,
+    "plaintextRemoved": true
+  },
+  "failures": [],
+  "limits": [
+    "Read-only DB preservation and approved scope audit; no backup restore was executed.",
+    "Price observations preserve the reviewed public source quote time and page-orderable scope, not a physical stock or delivery guarantee.",
+    "Catalog/price data remain local DB records; Git pull does not apply them, and this audit does not activate products."
+  ],
+  "activeProducts": 0,
+  "automaticActivationOccurred": false,
+  "postImportPreflight": {
+    "status": "PASS",
+    "dryRun": true,
+    "allNewCountsZero": true,
+    "checkedAt": "2026-10-09T17:36:17Z"
+  },
+  "backendH2Tests": {
+    "tests": 345,
+    "suites": 72,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

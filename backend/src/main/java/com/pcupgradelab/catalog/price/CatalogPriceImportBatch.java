@@ -1,5 +1,6 @@
 package com.pcupgradelab.catalog.price;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.pcupgradelab.catalog.CatalogSourceName;
 import java.net.URI;
 import java.time.Instant;
@@ -26,15 +27,29 @@ public record CatalogPriceImportBatch(Integer schemaVersion, List<Item> items) {
     }
 
     public record Product(CatalogSourceName sourceName, String externalId,
-                          String manufacturer, String modelName, String partNumber) {
+                          String manufacturer, String modelName, String partNumber,
+                          @JsonInclude(JsonInclude.Include.NON_NULL)
+                          ReviewedMotherboardSaleConfiguration reviewedSaleConfiguration) {
+        public Product(CatalogSourceName sourceName, String externalId, String manufacturer,
+                       String modelName, String partNumber) {
+            this(sourceName, externalId, manufacturer, modelName, partNumber, null);
+        }
+
         public Product {
-            if (sourceName != CatalogSourceName.BUILDCORES) {
-                throw new IllegalArgumentException("Product identity must use BUILDCORES sourceName");
+            if (sourceName != CatalogSourceName.BUILDCORES && sourceName != CatalogSourceName.MANUFACTURER) {
+                throw new IllegalArgumentException("Product identity must use BUILDCORES or MANUFACTURER sourceName");
             }
             externalId = text(externalId, "product.externalId", 128);
             manufacturer = text(manufacturer, "product.manufacturer", 100);
             modelName = text(modelName, "product.modelName", 255);
             if (partNumber != null) partNumber = text(partNumber, "product.partNumber", 128);
+            if (reviewedSaleConfiguration != null && (sourceName != CatalogSourceName.MANUFACTURER
+                    || partNumber != null || !modelName.equals(reviewedSaleConfiguration.manufacturerModelName()))) {
+                throw new IllegalArgumentException("Reviewed motherboard sales configuration requires MANUFACTURER, no published PN and the exact manufacturer model");
+            }
+            if (sourceName == CatalogSourceName.MANUFACTURER && partNumber == null && reviewedSaleConfiguration == null) {
+                throw new IllegalArgumentException("MANUFACTURER price identity requires an exact product.partNumber");
+            }
         }
     }
 

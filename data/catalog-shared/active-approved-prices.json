@@ -1,0 +1,1929 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "395770a4-6600-4987-ae26-8fad86f5b553",
+        "manufacturer": "MSI",
+        "modelName": "PRO B760M-P DDR4",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18652889",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18652889",
+        "saleSku": "PRO B760M-P DDR4",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 125090,
+        "observedAt": "2026-10-10T08:06:47.360Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18652889",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "fe2cf1aa-c66e-43ec-a55b-997584228dd1",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 7600X",
+        "partNumber": "100-100000593WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17913311",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17913311",
+        "saleSku": "100-100000593WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 357000,
+        "observedAt": "2026-10-10T08:10:25.580Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17913311",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b82ba049-00cb-46d4-b0cd-05bab26d83ed",
+        "manufacturer": "Gigabyte",
+        "modelName": "GeForce RTX 5070 Ti WINDFORCE OC SFF 16G",
+        "partNumber": "GV-N507TWF3OC-16GD"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "76551065",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=76551065",
+        "saleSku": "GV-N507TWF3OC-16GD",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:17:44.670Z"
+      },
+      "price": {
+        "amountKrw": 1895490,
+        "observedAt": "2026-10-10T08:10:49.249Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=76551065",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 9600X",
+        "partNumber": "100-100001405WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "62653718",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+        "saleSku": "100-100001405WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 399000,
+        "observedAt": "2026-10-10T08:10:24.509Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "01110bc3-78da-4304-8bb6-ec8f0e56fb0e",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 7600 8GB",
+        "partNumber": "11324-01-20G"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "20315144",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=20315144",
+        "saleSku": "11324-01-20G",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 493440,
+        "observedAt": "2026-10-10T08:06:38.460Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=20315144",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f5cb6fa2-042a-48ce-a09d-eaf41290a607",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-13500",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18640319",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18640319",
+        "saleSku": "Core i5-13500 / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 434000,
+        "observedAt": "2026-10-10T08:10:22.321Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18640319",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e8a66e2e-c53b-49d3-a31c-49a9ee8fe389",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650 TOMAHAWK WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17971181",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971181",
+        "saleSku": "MAG B650 TOMAHAWK WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "price": {
+        "amountKrw": 249050,
+        "observedAt": "2026-10-10T08:10:34.489Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971181",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "835f4a47-295d-4ad3-b15a-6fb8ea53de1f",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B650-PLUS WIFI",
+        "partNumber": "TUF GAMING B650-PLUS WIFI"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18044558",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18044558",
+        "saleSku": "TUF GAMING B650-PLUS WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 358710,
+        "observedAt": "2026-10-10T08:06:42.879Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18044558",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a0535313-5457-4b3a-8ff3-a7550e458406",
+        "manufacturer": "Intel",
+        "modelName": "Core i9-12900K",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "15594887",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15594887",
+        "saleSku": "Core i9-12900K / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 821990,
+        "observedAt": "2026-10-10T08:10:31.210Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=15594887",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "samsung:MZ-V9P1T0BW",
+        "manufacturer": "Samsung",
+        "modelName": "990 PRO 1TB",
+        "partNumber": "MZ-V9P1T0BW"
+      },
+      "offer": {
+        "sourceName": "SAMSUNG_CNH",
+        "externalId": "1000000113",
+        "sourceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+        "saleSku": "MZ-V9P1T0BW",
+        "saleUnit": "PRODUCT",
+        "moduleCount": null,
+        "verifiedAt": "2026-10-09T16:29:31.430Z"
+      },
+      "price": {
+        "amountKrw": 399000,
+        "observedAt": "2026-10-09T16:29:31.430Z",
+        "evidenceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ee2ac384-a2d9-4324-88af-d4765e604bcf",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 9950X",
+        "partNumber": "100-100001277WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "63139115",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=63139115",
+        "saleSku": "100-100001277WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:27:08.221Z"
+      },
+      "price": {
+        "amountKrw": 878980,
+        "observedAt": "2026-10-10T08:10:27.938Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=63139115",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ad2dd5e9-8853-49cb-857e-f1d80e3a5d13",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5070 12G VENTUS 2X OC",
+        "partNumber": "G5070-12V2C"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "77379452",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=77379452",
+        "saleSku": "G5070-12V2C",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 1257990,
+        "observedAt": "2026-10-10T08:06:35.182Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=77379452",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f24caa89-27bd-4797-899c-2bb76b608971",
+        "manufacturer": "MSI",
+        "modelName": "PRO B650M-A WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17971184",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971184",
+        "saleSku": "PRO B650M-A WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "price": {
+        "amountKrw": 163910,
+        "observedAt": "2026-10-10T08:10:35.785Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971184",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1a2236a4-508d-43cb-a19b-015339816362",
+        "manufacturer": "ASUS",
+        "modelName": "ROG STRIX B650E-F GAMING WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18265715",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18265715",
+        "saleSku": "ROG STRIX B650E-F GAMING WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:09.570Z"
+      },
+      "price": {
+        "amountKrw": 593000,
+        "observedAt": "2026-10-10T08:10:45.540Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18265715",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e584f5cb-0312-4681-a2fe-97c4d2241cf0",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME A620M-A",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19924310",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19924310",
+        "saleSku": "PRIME A620M-A",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:17.104Z"
+      },
+      "price": {
+        "amountKrw": 280000,
+        "observedAt": "2026-10-10T08:10:39.928Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=19924310",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "689f5aea-b1fc-4d0c-9162-568f6e9aeb73",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9070 XT 16GB",
+        "partNumber": "11348-03-20G"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "77378039",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=77378039",
+        "saleSku": "11348-03-20G",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 1452500,
+        "observedAt": "2026-10-10T08:06:36.103Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=77378039",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d60171cb-1cef-4614-a4f7-e7f145f07e30",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B760M-A D4",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18652898",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18652898",
+        "saleSku": "PRIME B760M-A D4",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 128900,
+        "observedAt": "2026-10-10T08:06:45.109Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18652898",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c4c44fc0-9231-4578-b947-0ccd887d97e1",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 3060 VENTUS 2X 12G OC",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "13512254",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=13512254",
+        "saleSku": "GeForce RTX 3060 VENTUS 2X 12G OC",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:01.377Z"
+      },
+      "price": {
+        "amountKrw": 528200,
+        "observedAt": "2026-10-10T08:10:53.888Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=13512254",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60",
+        "manufacturer": "Intel",
+        "modelName": "Core i3-12100F",
+        "partNumber": "BX8071512100F"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16101179",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16101179",
+        "saleSku": "BX8071512100F",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 189990,
+        "observedAt": "2026-10-10T08:06:31.836Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16101179",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "af402682-92b0-4c17-9228-19b9b5c6dcdd",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-14400",
+        "partNumber": "BX8071514400"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "32038580",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=32038580",
+        "saleSku": "BX8071514400",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 277650,
+        "observedAt": "2026-10-10T08:10:17.956Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=32038580",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a01cd62d-86e3-42d0-bd28-5b1f6abb486c",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9070 16GB",
+        "partNumber": "11349-03-20G"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "77378426",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=77378426",
+        "saleSku": "11349-03-20G",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:17:44.670Z"
+      },
+      "price": {
+        "amountKrw": 1099000,
+        "observedAt": "2026-10-10T08:10:51.461Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=77378426",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "402c2508-a75c-4f4d-9d09-778349ae72bb",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-14700KF",
+        "partNumber": "BX8071514700KF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28799498",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28799498",
+        "saleSku": "BX8071514700KF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:27:08.221Z"
+      },
+      "price": {
+        "amountKrw": 539970,
+        "observedAt": "2026-10-10T08:10:29.059Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=28799498",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "41a8238b-049f-46db-a304-0c8ece1a8d73",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-12700K",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "15594638",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15594638",
+        "saleSku": "Core i7-12700K / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 466970,
+        "observedAt": "2026-10-10T08:10:20.153Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=15594638",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b20e3cca-2a76-407d-9a2b-a8d191215899",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-13400",
+        "partNumber": "BX8071513400"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18640286",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18640286",
+        "saleSku": "BX8071513400",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 352590,
+        "observedAt": "2026-10-10T08:10:21.280Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18640286",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "dc95c90b-60d3-4bec-a73c-ef5eb799ae46",
+        "manufacturer": "MSI",
+        "modelName": "PRO B760M-A WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19241759",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19241759",
+        "saleSku": "PRO B760M-A WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 154210,
+        "observedAt": "2026-10-10T08:06:46.345Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=19241759",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "54157058-0ff5-4208-9466-5ce1e985ca7a",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-14600KF",
+        "partNumber": "BX8071514600KF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28799732",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28799732",
+        "saleSku": "BX8071514600KF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 348680,
+        "observedAt": "2026-10-10T08:10:19.182Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=28799732",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c2900762-11b6-49bc-a728-566b56db3638",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-14700F",
+        "partNumber": "BX8071514700F"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "32156936",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=32156936",
+        "saleSku": "BX8071514700F",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 524390,
+        "observedAt": "2026-10-10T08:10:16.884Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=32156936",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "04984638-674b-4384-8866-a7b20d55f8b4",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 5600",
+        "partNumber": "100-100000927BOX"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17157083",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17157083",
+        "saleSku": "100-100000927BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 155360,
+        "observedAt": "2026-10-10T08:06:27.400Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17157083",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7564da71-725e-4a56-9d79-d80377b7a92f",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 5600G",
+        "partNumber": "100-100000252BOX"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "14927615",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14927615",
+        "saleSku": "100-100000252BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 222390,
+        "observedAt": "2026-10-10T08:10:13.556Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=14927615",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "79e31e8a-27c5-4be8-a845-494b51319ec7",
+        "manufacturer": "MSI",
+        "modelName": "MPG B650 EDGE WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18172115",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18172115",
+        "saleSku": "MPG B650 EDGE WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "price": {
+        "amountKrw": 401490,
+        "observedAt": "2026-10-10T08:10:36.659Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18172115",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+        "partNumber": "11350-03-20G"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "91909571",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+        "saleSku": "11350-03-20G",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 822300,
+        "observedAt": "2026-10-10T08:06:37.384Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "622e7110-ebf4-4040-93f6-5b37e82ff02e",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-14700K",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28799435",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28799435",
+        "saleSku": "Core i7-14700K / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 780000,
+        "observedAt": "2026-10-10T08:10:08.033Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=28799435",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "be8b15f6-7bb1-40f5-9852-4d3a8dd2a0bd",
+        "manufacturer": "Dell",
+        "modelName": "S2722QC",
+        "partNumber": "S2722QC"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16137869",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16137869",
+        "saleSku": "S2722QC",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:03.448Z"
+      },
+      "price": {
+        "amountKrw": 489000,
+        "observedAt": "2026-10-10T08:10:57.062Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16137869",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "7ab840c3-8c52-4ced-a65c-7b0922ca479e",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 9800X3D",
+        "partNumber": "100-100001084WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "70679912",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=70679912",
+        "saleSku": "100-100001084WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 729000,
+        "observedAt": "2026-10-10T08:06:28.460Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=70679912",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "135b5ebe-0105-4515-abd4-97f0a4f15276",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME B760M-A",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19704527",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19704527",
+        "saleSku": "PRIME B760M-A",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 141000,
+        "observedAt": "2026-10-10T08:06:48.557Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=19704527",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "011e1664-de3e-4923-9e24-1ba2dbb138e6",
+        "manufacturer": "MSI",
+        "modelName": "PRO B650M-P",
+        "partNumber": "PRO B650M-P"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "20108249",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=20108249",
+        "saleSku": "PRO B650M-P",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 124890,
+        "observedAt": "2026-10-10T08:06:39.689Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=20108249",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "61524df0-3c26-49c3-b7db-b056ad3d3028",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-14600K",
+        "partNumber": "BX8071514600K"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28799654",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28799654",
+        "saleSku": "BX8071514600K",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 441350,
+        "observedAt": "2026-10-10T08:06:30.799Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=28799654",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "63e78ef0-3723-44e2-b64d-ae7ef297cc46",
+        "manufacturer": "Intel",
+        "modelName": "Core i3-12100",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16101083",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16101083",
+        "saleSku": "Core i3-12100 / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 159000,
+        "observedAt": "2026-10-10T08:10:10.175Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16101083",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e53fd77d-8083-4243-8739-a8ec2311b25a",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-14500",
+        "partNumber": "BX8071514500"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "32038256",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=32038256",
+        "saleSku": "BX8071514500",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 363440,
+        "observedAt": "2026-10-10T08:10:05.817Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=32038256",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "07bb0503-35f1-48b7-abb5-829d1ff5d30f",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 7700 XT 12GB",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28057922",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28057922",
+        "saleSku": "PULSE Radeon RX 7700 XT 12GB",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:01.377Z"
+      },
+      "price": {
+        "amountKrw": 726440,
+        "observedAt": "2026-10-10T08:10:52.513Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=28057922",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "320488a7-b309-490d-80da-235d999eff79",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B550M-PLUS",
+        "partNumber": "TUF GAMING B550M-PLUS"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "11571368",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=11571368",
+        "saleSku": "TUF GAMING B550M-PLUS",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:17.104Z"
+      },
+      "price": {
+        "amountKrw": 154930,
+        "observedAt": "2026-10-10T08:10:44.554Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=11571368",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b6f5b046-0856-4ef3-9689-5d75ddc92608",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 9900X",
+        "partNumber": "100-100000662WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "63139097",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=63139097",
+        "saleSku": "100-100000662WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:27:08.221Z"
+      },
+      "price": {
+        "amountKrw": 686000,
+        "observedAt": "2026-10-10T08:10:26.702Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=63139097",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c9899cf7-92e8-4dda-9e4f-df63aa235095",
+        "manufacturer": "MSI",
+        "modelName": "MAG B760 TOMAHAWK WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18652865",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18652865",
+        "saleSku": "MAG B760 TOMAHAWK WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:17.104Z"
+      },
+      "price": {
+        "amountKrw": 227630,
+        "observedAt": "2026-10-10T08:10:43.423Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18652865",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "48b63b34-ce2f-479d-b46c-b74c572e99bf",
+        "manufacturer": "ASUS",
+        "modelName": "TUF GAMING B650M-PLUS WIFI",
+        "partNumber": "TUF GAMING B650M-PLUS WIFI"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18044522",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18044522",
+        "saleSku": "TUF GAMING B650M-PLUS WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 248550,
+        "observedAt": "2026-10-10T08:06:41.727Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18044522",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ebb0e539-2265-4e3f-bb05-960429116b4b",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-13700F",
+        "partNumber": "BX8071513700F"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18640379",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18640379",
+        "saleSku": "BX8071513700F",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 525000,
+        "observedAt": "2026-10-10T08:10:15.751Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18640379",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 9700X",
+        "partNumber": "100-100001404WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "62653715",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+        "saleSku": "100-100001404WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 686000,
+        "observedAt": "2026-10-10T08:10:23.328Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "331fe74d-bc9b-494d-87e3-6e454045447d",
+        "manufacturer": "Dell",
+        "modelName": "G2724D",
+        "partNumber": "G2724D"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "26423741",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=26423741",
+        "saleSku": "G2724D",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:03.448Z"
+      },
+      "price": {
+        "amountKrw": 379000,
+        "observedAt": "2026-10-10T08:10:54.802Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=26423741",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "0240f7db-68e5-4aac-9438-41d2f12ec15a",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-14400F",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "32038667",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=32038667",
+        "saleSku": "Core i5-14400F / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 230230,
+        "observedAt": "2026-10-10T08:10:04.685Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=32038667",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "276f17ec-f8a5-4ca5-9b4a-1f31a661ba32",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 Ti 16G VENTUS 2X OC PLUS",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "81990338",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=81990338",
+        "saleSku": "GeForce RTX 5060 Ti 16G VENTUS 2X OC PLUS",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:17:44.670Z"
+      },
+      "price": {
+        "amountKrw": 1139000,
+        "observedAt": "2026-10-10T08:10:46.636Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=81990338",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "eda463d1-d4b6-4f1a-96dd-0416efe84381",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7900X",
+        "partNumber": "100-100000589WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17913863",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17913863",
+        "saleSku": "100-100000589WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 506200,
+        "observedAt": "2026-10-10T08:10:14.466Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17913863",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "72a60451-31a8-4ec9-9777-0483d0e3d8f2",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 Ti 8G VENTUS 2X OC PLUS",
+        "partNumber": "G506T-8V2CP"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "86814989",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=86814989",
+        "saleSku": "G506T-8V2CP",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:17:44.670Z"
+      },
+      "price": {
+        "amountKrw": 753000,
+        "observedAt": "2026-10-10T08:10:47.813Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=86814989",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ac9187af-fd3b-47e0-95b1-f02402e345c8",
+        "manufacturer": "G.SKILL",
+        "modelName": "Trident Z5 Neo DDR5-6000 CL30 64GB (2x32GB)",
+        "partNumber": "F5-6000J3040G32GX2-TZ5N"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "40559801",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=40559801",
+        "saleSku": "F5-6000J3040G32GX2-TZ5N",
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2,
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 2100000,
+        "observedAt": "2026-10-10T08:06:50.575Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=40559801",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "fe1b7202-6bf0-4c91-8ef3-0c9823f28c5c",
+        "manufacturer": "Dell",
+        "modelName": "S2722DGM",
+        "partNumber": "S2722DGM"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "14797718",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14797718",
+        "saleSku": "S2722DGM",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:03.448Z"
+      },
+      "price": {
+        "amountKrw": 399000,
+        "observedAt": "2026-10-10T08:10:55.948Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=14797718",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "82e101d8-9816-4a6e-9d5a-7090e6933eea",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-12700F",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16101464",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16101464",
+        "saleSku": "Core i7-12700F / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 409460,
+        "observedAt": "2026-10-10T08:10:12.403Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16101464",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4dcfffec-423b-4052-8aca-db6c0f84bb43",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 7800X3D",
+        "partNumber": "100-100000910WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19627808",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19627808",
+        "saleSku": "100-100000910WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 690180,
+        "observedAt": "2026-10-10T08:10:03.537Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=19627808",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ff4b4766-4f58-4c17-915e-9881c50ed032",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-12400",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16101326",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16101326",
+        "saleSku": "Core i5-12400 / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 267360,
+        "observedAt": "2026-10-10T08:10:11.247Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16101326",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+        "partNumber": "G5060-8V2C"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "90956033",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+        "saleSku": "G5060-8V2C",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 668760,
+        "observedAt": "2026-10-10T08:06:34.154Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f5b7becd-f2da-4c14-a74a-d34e3bf51d26",
+        "manufacturer": "ASRock",
+        "modelName": "B760M Pro RS",
+        "partNumber": "B760M Pro RS"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19536062",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19536062",
+        "saleSku": "B760M Pro RS",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 146870,
+        "observedAt": "2026-10-10T08:06:44.186Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=19536062",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650M MORTAR WIFI",
+        "partNumber": "MAG B650M MORTAR WIFI"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17971187",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971187",
+        "saleSku": "MAG B650M MORTAR WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 202710,
+        "observedAt": "2026-10-10T08:06:40.843Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971187",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "9f7d0407-954b-492f-86cf-20f0c0150aed",
+        "manufacturer": "Intel",
+        "modelName": "Core i3-14100F",
+        "partNumber": "BX8071514100F"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "32038895",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=32038895",
+        "saleSku": "BX8071514100F",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 151550,
+        "observedAt": "2026-10-10T08:06:33.133Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=32038895",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "aab6da00-a3f4-48e5-bebf-ebc3181ac91f",
+        "manufacturer": "MSI",
+        "modelName": "A520M-A PRO",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "12067598",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12067598",
+        "saleSku": "A520M-A PRO",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:17.104Z"
+      },
+      "price": {
+        "amountKrw": 68850,
+        "observedAt": "2026-10-10T08:10:41.261Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=12067598",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1487a153-0138-4cf8-9017-cb7f1c8fa66a",
+        "manufacturer": "Gigabyte",
+        "modelName": "GeForce RTX 5080 WINDFORCE OC SFF 16G",
+        "partNumber": "GV-N5080WF3OC-16GD"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "75184271",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=75184271",
+        "saleSku": "GV-N5080WF3OC-16GD",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:17:44.670Z"
+      },
+      "price": {
+        "amountKrw": 2458980,
+        "observedAt": "2026-10-10T08:10:51.059Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=75184271",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "303429d5-887f-4cf2-84a6-fd6c96e40d0c",
+        "manufacturer": "MSI",
+        "modelName": "PRO A620M-E",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "19705316",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19705316",
+        "saleSku": "PRO A620M-E",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "price": {
+        "amountKrw": 109000,
+        "observedAt": "2026-10-10T08:10:33.340Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=19705316",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "e80823a0-6dd5-47d0-b69b-852e92acf964",
+        "manufacturer": "Intel",
+        "modelName": "Core i9-14900K",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28798964",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28798964",
+        "saleSku": "Core i9-14900K / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 768000,
+        "observedAt": "2026-10-10T08:10:06.946Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=28798964",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "22546c6c-9af1-4646-a9af-0ede3444c6b7",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-13400F",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18640280",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18640280",
+        "saleSku": "Core i5-13400F / domestic retail BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:11.736Z"
+      },
+      "price": {
+        "amountKrw": 389000,
+        "observedAt": "2026-10-10T08:10:08.991Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18640280",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+        "manufacturer": "G.SKILL",
+        "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "F5-6000J3038F16GX2-TZ5N"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17932031",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+        "saleSku": "F5-6000J3038F16GX2-TZ5N",
+        "saleUnit": "RAM_KIT",
+        "moduleCount": 2,
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 939000,
+        "observedAt": "2026-10-10T08:06:49.558Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "3190abcf-4bf4-4ae4-b06d-0c29dd1d8120",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME A520M-K",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "12060293",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12060293",
+        "saleSku": "PRIME A520M-K",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "price": {
+        "amountKrw": 64280,
+        "observedAt": "2026-10-10T08:10:37.909Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=12060293",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "19fbd8f2-a226-4b83-9e5d-683db638d337",
+        "manufacturer": "Intel",
+        "modelName": "Core i5-12400F",
+        "partNumber": "BX8071512400F"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16101353",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16101353",
+        "saleSku": "BX8071512400F",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-06T12:34:13.387Z"
+      },
+      "price": {
+        "amountKrw": 215760,
+        "observedAt": "2026-10-10T08:06:29.708Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16101353",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "samsung:MZ-77E1T0BW",
+        "manufacturer": "Samsung",
+        "modelName": "870 EVO 1TB",
+        "partNumber": "MZ-77E1T0BW"
+      },
+      "offer": {
+        "sourceName": "SAMSUNG_CNH",
+        "externalId": "1000000066",
+        "sourceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+        "saleSku": "MZ-77E1T0BW",
+        "saleUnit": "PRODUCT",
+        "moduleCount": null,
+        "verifiedAt": "2026-10-09T16:29:31.420Z"
+      },
+      "price": {
+        "amountKrw": 459000,
+        "observedAt": "2026-10-09T16:29:31.420Z",
+        "evidenceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "198e62d6-cbe2-4897-9a44-23e9c8b882e8",
+        "manufacturer": "MSI",
+        "modelName": "PRO H610M-G DDR4",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16314863",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16314863",
+        "saleSku": "PRO H610M-G DDR4",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:21:17.104Z"
+      },
+      "price": {
+        "amountKrw": 122000,
+        "observedAt": "2026-10-10T08:10:42.276Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16314863",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "536e31d4-f1a4-4936-897a-8866bcfb01e6",
+        "manufacturer": "Intel",
+        "modelName": "Core i9-14900KF",
+        "partNumber": "BX8071514900KF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "28799180",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=28799180",
+        "saleSku": "BX8071514900KF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:27:08.221Z"
+      },
+      "price": {
+        "amountKrw": 739000,
+        "observedAt": "2026-10-10T08:10:30.065Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=28799180",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "877eb2a2-a8d4-48d9-8036-245c0381fb5b",
+        "manufacturer": "ASUS",
+        "modelName": "PRIME H610M-K D4",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18523409",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18523409",
+        "saleSku": "PRIME H610M-K D4",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:19:04.137Z"
+      },
+      "price": {
+        "amountKrw": 77400,
+        "observedAt": "2026-10-10T08:10:38.862Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18523409",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "5cf272bb-5d0b-4f1e-b819-3f350d8213ee",
+        "manufacturer": "MSI",
+        "modelName": "G241",
+        "partNumber": "G241"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "10996191",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=10996191",
+        "saleSku": "G241",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:22:03.448Z"
+      },
+      "price": {
+        "amountKrw": 350000,
+        "observedAt": "2026-10-10T08:10:58.059Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=10996191",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ef051311-c91d-425d-a91c-585ea31b63fd",
+        "manufacturer": "Intel",
+        "modelName": "Core i7-12700KF",
+        "partNumber": "BX8071512700KF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "15594701",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15594701",
+        "saleSku": "BX8071512700KF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-08T10:25:56.383Z"
+      },
+      "price": {
+        "amountKrw": 494000,
+        "observedAt": "2026-10-10T08:10:32.249Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=15594701",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d7385868-3658-4984-a5dd-0f8eebebd4e8",
+        "manufacturer": "Dell",
+        "modelName": "S2721DGF",
+        "partNumber": "S2721DGF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "12612587",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+        "saleSku": "S2721DGF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-10T08:31:55.176Z"
+      },
+      "price": {
+        "amountKrw": 976500,
+        "observedAt": "2026-10-10T08:41:21.151Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "43597450-8c66-4f59-9ef5-c347c0a45fd4",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 3800X",
+        "partNumber": "100-100000025BOX"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "8459781",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+        "saleSku": "100-100000025BOX",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-10T10:19:34.196Z"
+      },
+      "price": {
+        "amountKrw": 560760,
+        "observedAt": "2026-10-10T10:26:34.472Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=8459781",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "6c0ac2b9-20b2-40f8-b206-06877dc8f047",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 5800X3D",
+        "partNumber": "100-100000651POF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "16872089",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+        "saleSku": "100-100000651POF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-10T10:19:34.196Z"
+      },
+      "price": {
+        "amountKrw": 582330,
+        "observedAt": "2026-10-10T10:26:36.295Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=16872089",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "63f23f26-d52c-4e3c-be6e-0d25163cff59",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 9 7950X",
+        "partNumber": "100-100000514WOF"
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17913980",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+        "saleSku": "100-100000514WOF",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-10T10:19:34.196Z"
+      },
+      "price": {
+        "amountKrw": 1840490,
+        "observedAt": "2026-10-10T10:26:37.901Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17913980",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "375208cd-5585-427a-97b9-9cc3eaf5eb6a",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 3060 VENTUS 2X 8G OC",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "18279782",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=18279782",
+        "saleSku": "GeForce RTX 3060 VENTUS 2X 8G OC",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-10T10:07:18.276Z"
+      },
+      "price": {
+        "amountKrw": 472590,
+        "observedAt": "2026-10-10T10:07:55.671Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=18279782",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "c479ed77-62fa-48fa-84e5-923b087843c1",
+        "manufacturer": "MSI",
+        "modelName": "MPG B650 CARBON WIFI",
+        "partNumber": null
+      },
+      "offer": {
+        "sourceName": "DANAWA",
+        "externalId": "17971178",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+        "saleSku": "MPG B650 CARBON WIFI",
+        "saleUnit": "PRODUCT",
+        "verifiedAt": "2026-10-10T09:36:26.792Z"
+      },
+      "price": {
+        "amountKrw": 915000,
+        "observedAt": "2026-10-10T10:17:15.897Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971178",
+        "condition": "NEW",
+        "inStock": true
+      }
+    }
+  ]
+}

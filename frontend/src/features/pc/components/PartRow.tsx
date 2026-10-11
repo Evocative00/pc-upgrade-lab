@@ -7,6 +7,7 @@ import {
   getPartStatus,
   isKnownCapacityValid,
   linkCatalog,
+  linkCatalogModel,
   renameDraft,
   setCapacityInput,
   unlinkCatalog,
@@ -116,7 +117,7 @@ export function PartRow({ draft, index, count, onChange, onRemove, onSearch, war
         >
           부품 검색
         </button>
-        {draft.matchStatus === 'MATCHED' && (
+        {(draft.matchStatus === 'MATCHED' || draft.catalogModelId) && (
           <button
             type="button"
             className="button button--ghost"
@@ -158,6 +159,10 @@ export function PartRow({ draft, index, count, onChange, onRemove, onSearch, war
           onClose={() => setPickerOpen(false)}
           onSelect={(product) => {
             onChange(linkCatalog(draft, product))
+            setPickerOpen(false)
+          }}
+          onSelectModel={(model) => {
+            onChange(linkCatalogModel(draft, model))
             setPickerOpen(false)
           }}
         />

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-10",
+  "collectedAt": "2026-10-09T16:30:50.903Z",
+  "purpose": "Quarantined live model-level item prices for the approved first-14 review; not an import payload",
+  "pricePolicy": {
+    "shippingIncluded": false,
+    "conditionalDiscountsIncluded": false,
+    "cachePricesUsed": false
+  },
+  "databaseAccessed": false,
+  "databaseWrites": 0,
+  "items": [
+    {
+      "selectionNumber": 3,
+      "candidateKey": "CURRENT-INTEL-CPU-U5-245K",
+      "pcode": "69059753",
+      "expectedTitle": "인텔 코어 울트라5 시리즈2 245K (애로우레이크) (정품)",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+      "matchScope": "MODEL_AND_ADVERTISED_DISTRIBUTION_NOT_EXACT_PHYSICAL_VARIANT",
+      "priceImportEligible": false,
+      "holdReason": "Global boxed ordering code is retired; exact domestic ordering code and installed-reference role require review.",
+      "responseSha256": "ed46cdf81cf8cbe8d6e6c492ec476308340013ccc8f5cf5561441591fe07713e",
+      "price": {
+        "amountKrw": 315160,
+        "observedAt": "2026-10-09T16:30:42.596Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=69059753",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "status": "OBSERVED_MODEL_PRICE_QUARANTINED"
+    },
+    {
+      "selectionNumber": 4,
+      "candidateKey": "CURRENT-INTEL-CPU-U5-250K-PLUS",
+      "pcode": "108424451",
+      "expectedTitle": "인텔 코어 울트라5 시리즈2 250K Plus (애로우레이크 리프레시) (정품)",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=108424451",
+      "matchScope": "MODEL_AND_ADVERTISED_DISTRIBUTION_NOT_EXACT_PHYSICAL_VARIANT",
+      "priceImportEligible": false,
+      "holdReason": "Domestic boxed ordering code has not been matched to the manufacturer ordering code.",
+      "responseSha256": "e52ceacdbc129bd8b671f02d918226369648f9bc0141d28afbb81ce1189b88a2",
+      "price": {
+        "amountKrw": 340130,
+        "observedAt": "2026-10-09T16:30:44.511Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=108424451",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "status": "OBSERVED_MODEL_PRICE_QUARANTINED"
+    },
+    {
+      "selectionNumber": 6,
+      "candidateKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "pcode": "75538394",
+      "expectedTitle": "ASRock B850M Pro RS 대원씨티에스",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=75538394",
+      "matchScope": "MODEL_AND_ADVERTISED_DISTRIBUTION_NOT_EXACT_PHYSICAL_VARIANT",
+      "priceImportEligible": false,
+      "holdReason": "Hardware revision is unknown; model-level page does not establish an exact physical sale variant.",
+      "responseSha256": "215574ca3765d20959858b66746185f7703beaaee34bc50873904957194cd0ed",
+      "price": {
+        "amountKrw": 196980,
+        "observedAt": "2026-10-09T16:30:46.768Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=75538394",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "status": "OBSERVED_MODEL_PRICE_QUARANTINED"
+    },
+    {
+      "selectionNumber": 7,
+      "candidateKey": "CURRENT-INTEL-BOARD-MSI-MAG-B860M-MORTAR-WIFI",
+      "pcode": "74340266",
+      "expectedTitle": "MSI MAG B860M 박격포 WIFI",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=74340266",
+      "matchScope": "MODEL_AND_ADVERTISED_DISTRIBUTION_NOT_EXACT_PHYSICAL_VARIANT",
+      "priceImportEligible": false,
+      "holdReason": "Hardware revision is unknown; model-level page does not establish an exact physical sale variant.",
+      "responseSha256": "c2bf262068fb0aaa9df3d8710fbecacbc2e3ed2c30ab01f8342d0c52bb31d080",
+      "price": {
+        "amountKrw": 260900,
+        "observedAt": "2026-10-09T16:30:48.304Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=74340266",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "status": "OBSERVED_MODEL_PRICE_QUARANTINED"
+    },
+    {
+      "selectionNumber": 8,
+      "candidateKey": "CURRENT-INTEL-BOARD-ASUS-TUF-GAMING-B860-PLUS-WIFI",
+      "pcode": "74255378",
+      "expectedTitle": "ASUS TUF Gaming B860-PLUS WIFI 인텍앤컴퍼니",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+      "matchScope": "MODEL_AND_ADVERTISED_DISTRIBUTION_NOT_EXACT_PHYSICAL_VARIANT",
+      "priceImportEligible": false,
+      "holdReason": "Hardware revision is unknown; model-level page does not establish an exact physical sale variant.",
+      "responseSha256": "06d62ca7712b3ac70a1c1eed696e89da336be7a60c55440f6351e9022645a789",
+      "price": {
+        "amountKrw": 275350,
+        "observedAt": "2026-10-09T16:30:49.792Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "status": "OBSERVED_MODEL_PRICE_QUARANTINED"
+    }
+  ]
+}

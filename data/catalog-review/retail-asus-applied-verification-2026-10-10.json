@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "approvedProductCanonicalId": "f5d69333-0ab1-382d-bc72-9434811daccf",
+  "approvedAmountKrw": 275350,
+  "approvalFile": "data/catalog-review/retail-asus-apply-approval-2026-10-10.json",
+  "status": "APPLIED_DEPLOYED_RESTARTED_VERIFIED",
+  "tests": {
+    "backendRelated": 106,
+    "backendResult": "PASSED",
+    "worker": 572,
+    "workerResult": "PASSED",
+    "javaHttpFixtures": 1532,
+    "fixtureResult": "PASSED",
+    "javaClientScopes": [
+      "14/8",
+      "307/80",
+      "308/81"
+    ],
+    "typecheck": "PASSED",
+    "build": "PASSED",
+    "fullBackendSuite": "NOT_RERUN_THIS_STEP",
+    "backendExecutions": [
+      {
+        "tests": 101,
+        "result": "PASSED"
+      },
+      {
+        "tests": 5,
+        "result": "PASSED"
+      }
+    ],
+    "deployedJavaClient": "308/81, authentication401, maxBatch100 PASSED"
+  },
+  "legacyPreservation": {
+    "identitySha256": "8ad681a1cd634eb4c990ec20714fe332d6972dd1e22aff3feef54c6261466792",
+    "price80Sha256": "7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc",
+    "worker307Sha256": "3413168324238fe6d6e73b7cd72d64abe0c999cac7000c123e6c38f3c8020090",
+    "workerPilotSha256": "0faef9871c6d45ce2d0c22ebe1dd79d004d7b8f55ba3be9475a99bb12fff9451"
+  },
+  "backup": {
+    "publicManifest": "data/catalog-review/retail-db-before-2026-10-10.json",
+    "tables": 31,
+    "protection": "WINDOWS_DPAPI_CURRENT_USER",
+    "plaintextRemoved": true
+  },
+  "workerDeployments": 1,
+  "backendRestarts": 1,
+  "environmentChanges": 0,
+  "gitPushes": 0,
+  "worker": {
+    "result": "PASSED",
+    "verifiedAt": "2026-10-10T13:11:53.847Z",
+    "baseUrl": "https://pc-upgrade-shared-prices.joony1024.workers.dev",
+    "withoutHeader": {
+      "OK": 80,
+      "NO_PRICE": 227,
+      "FRESH": 80
+    },
+    "legacyHeader": {
+      "OK": 80,
+      "NO_PRICE": 227,
+      "FRESH": 80
+    },
+    "activeHeader": {
+      "OK": 81,
+      "NO_PRICE": 227,
+      "FRESH": 81
+    },
+    "v1Products": 14,
+    "v1Prices": 8,
+    "unauthorizedStatus": 401,
+    "unknownVersionStatus": 409,
+    "catalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+    "priceVersion": "prices-v1-f6b697e031ad6262d2f079b3b3dbc51ffa1bf09722947646ff839bded67f53ab"
+  },
+  "homepage": {
+    "result": "PASSED",
+    "verifiedAt": "2026-10-10T13:12:56.023Z",
+    "counts": {
+      "SHARED": 308,
+      "LOCAL": 0,
+      "OK": 81,
+      "NO_PRICE": 227,
+      "UNAVAILABLE": 0,
+      "FRESH": 81,
+      "includedInTotal": 81
+    },
+    "pages": 7,
+    "asus": {
+      "canonicalId": "f5d69333-0ab1-382d-bc72-9434811daccf",
+      "productId": "4eb255ec-c74c-4a42-8132-8956e2f1f4b4",
+      "modelId": "5e0a081c-ad26-49eb-a3f0-b0a69056ec65",
+      "currentPrice": {
+        "amountKrw": 275350,
+        "sourceName": "DANAWA",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+        "observedAt": "2026-10-10T11:57:37.758Z"
+      },
+      "priceStatus": {
+        "origin": "SHARED",
+        "lookupStatus": "OK",
+        "freshness": "FRESH",
+        "catalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+        "checkedAt": "2026-10-10T13:12:55.592237Z",
+        "lastSuccessAt": "2026-10-10T13:12:55.655697700Z",
+        "includedInTotal": true
+      }
+    },
+    "browserUiVerified": false
+  },
+  "completedAt": "2026-10-10T13:15:24.678Z",
+  "database": {
+    "applied": true,
+    "writeTransactions": 1,
+    "insertedRows": 6,
+    "createdProducts": 1,
+    "createdPriceObservations": 1,
+    "existingRowsChanged": 0,
+    "modelWrites": 0,
+    "autoActivation": false,
+    "pcRowsBefore": 14,
+    "pcRowsAfter": 14,
+    "auditedTables": 31,
+    "rowDeltas": {
+      "catalog_model": 0,
+      "catalog_model_alias": 0,
+      "catalog_model_source": 0,
+      "catalog_price_mapping": 1,
+      "catalog_price_observation": 1,
+      "catalog_product": 1,
+      "catalog_product_source": 1,
+      "catalog_reference_price": 1,
+      "cpu_memory_support": 0,
+      "cpu_memory_type_support": 0,
+      "cpu_spec": 0,
+      "flyway_schema_history": 0,
+      "gpu_power_connector": 0,
+      "gpu_spec": 0,
+      "monitor_spec": 0,
+      "motherboard_cpu_support": 0,
+      "motherboard_cpu_support_profile": 0,
+      "motherboard_spec": 1,
+      "motherboard_storage_profile": 0,
+      "motherboard_storage_rule": 0,
+      "motherboard_storage_slot": 0,
+      "motherboard_storage_slot_bus": 0,
+      "motherboard_storage_slot_length": 0,
+      "motherboard_storage_slot_protocol": 0,
+      "motherboard_storage_source": 0,
+      "pc_configuration": 0,
+      "pc_part": 0,
+      "ram_spec": 0,
+      "social_accounts": 0,
+      "storage_spec": 0,
+      "users": 0
+    },
+    "applyReport": "data/catalog-review/retail-db-apply-2026-10-10.json",
+    "replayReport": "data/catalog-review/retail-db-replay-2026-10-10.json",
+    "replayWrites": 0
+  },
+  "workerDeployment": {
+    "workerName": "pc-upgrade-shared-prices",
+    "versionId": "4c5dd8e7-a7d9-4a2d-882e-5688a1b4f23c",
+    "plan": "WORKERS_FREE",
+    "addedPaidResources": 0,
+    "teamSecretChanged": false
+  },
+  "backend": {
+    "pid": 36188,
+    "execSessionId": 96815,
+    "profile": "local",
+    "javaVersion": "21.0.12.1",
+    "health": "UP",
+    "flywayVersion": 14,
+    "newMigrationsApplied": 0
+  },
+  "search": {
+    "result": "PASSED",
+    "products": 2,
+    "sharedExistingModelId": "5e0a081c-ad26-49eb-a3f0-b0a69056ec65",
+    "retailCanonicalId": "f5d69333-0ab1-382d-bc72-9434811daccf",
+    "installedReferenceCanonicalId": "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+    "installedReferencePriceStatus": "NO_PRICE",
+    "retailAmountKrw": 275350
+  },
+  "configurationChangesRequired": false
+}

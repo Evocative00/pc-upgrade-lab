@@ -1,13 +1,12 @@
 import type { ReactNode } from 'react'
 import { CatalogPickerDialog } from './CatalogPickerDialog.tsx'
-import { formatCurrentPrice } from '../catalog/catalogPresentation.ts'
-import { CurrentPriceSource } from '../catalog/CurrentPriceSource.tsx'
-import type { CatalogProduct } from '../catalog/catalogTypes.ts'
+import { formatProjectPrice } from '../catalog/catalogPresentation.ts'
+import type { CatalogModel, CatalogProduct } from '../catalog/catalogTypes.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { getPartStatus, withEmptyRows } from '../pc/partDraft.ts'
 import type { PartDraft } from '../pc/types.ts'
 import {
-  applyCatalogSelection, assignSlots, priceTotal, ramModuleViews, slotInfo, type PickTarget, type SlotId,
+  applyCatalogSelection, applyCatalogModelSelection, assignSlots, priceTotal, referencePriceTotal, ramModuleViews, slotInfo, type PickTarget, type SlotId,
 } from './buildSlots.ts'
 import { CaseView, type SlotView } from './CaseView.tsx'
 import type { CompatibilityStatus } from './compatibility.ts'
@@ -52,7 +51,7 @@ function CompatibilityPanel({ state }: { state: CompatibilityState }) {
         ))}
       </ol>
       {state.status === 'idle' && (
-        <p className="muted" role="status">미검사 · CPU·메인보드·RAM을 카탈로그에서 고르면 검사합니다.</p>
+        <p className="muted" role="status">미검사 · 구성할 부품을 카탈로그에서 고르면 규격을 검사합니다.</p>
       )}
       {state.status === 'loading' && <p className="muted" role="status">호환성 검사 중…</p>}
       {state.status === 'error' && <p className="error" role="alert">{state.message}</p>}
@@ -66,7 +65,8 @@ function CompatibilityPanel({ state }: { state: CompatibilityState }) {
           ))}
         </ul>
       )}
-      <p className="muted">CPU·메인보드·RAM 공표 규격만 검사합니다. 그래픽카드·파워·케이스·쿨러는 미검사입니다.</p>
+      <p className="muted">CPU·메인보드·RAM 규격과 그래픽카드·파워·케이스의 장착 및 전원 조건을 검사합니다.
+        저장장치·쿨러, 보드의 그래픽 슬롯·전원 연결과 전체 PC 동작은 별도 확인이 필요합니다.</p>
     </section>
   )
 }
@@ -98,12 +98,19 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
     onTarget(null)
   }
 
+  function chooseModel(model: CatalogModel) {
+    if (!activeTarget) return
+    updateDrafts((current) => applyCatalogModelSelection(current, activeTarget, model))
+    onTarget(null)
+  }
+
   function remove(key: string) {
     updateDrafts((current) => withEmptyRows(current.filter((draft) => draft.key !== key)))
     if (target?.draftKey === key) onTarget(null)
   }
 
   const total = priceTotal(named.map((draft) => ({ draft, detail: productOf(draft) })))
+  const referenceTotal = referencePriceTotal(named.map((draft) => ({ draft, detail: productOf(draft) })))
   const pickSlot = (slot: SlotId) => onTarget(target?.slot === slot && target.draftKey === null ? null : { slot, draftKey: null })
   const activeLabel = activeTarget && (activeTarget.draftKey
     ? getPartTypeInfo(slotInfo(activeTarget.slot).type).label : slotInfo(activeTarget.slot).label)
@@ -137,12 +144,8 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
                       <span key={message} className="error">⚠ {message}</span>
                     ))}
                     {!draft.catalogProductId
-                      ? <span className="muted">카탈로그 미연결 · 현재 상품가 없음</span>
-                      : detail ? <>
-                        <span className="muted">{formatCurrentPrice(detail.product.currentPrice)}
-                          {detail.product.currentPrice && (draft.type === 'RAM' ? ' / 판매 묶음' : ' / 1개')}</span>
-                        <CurrentPriceSource price={detail.product.currentPrice} />
-                      </>
+                      ? <span className="muted">{draft.catalogModelId ? '모델 확인 · 상품 미연결' : '카탈로그 미연결'} · 현재 상품가 없음</span>
+                      : detail ? <span className="muted">{formatProjectPrice(detail.product)}</span>
                         : entry?.status === 'error'
                           ? <>
                             <span className="error">가격·제원 조회 실패: {entry.message}</span>
@@ -160,10 +163,16 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
           {named.length === 0 && <p className="muted">아직 고른 부품이 없습니다.</p>}
 
           <div className="builder__total">
+            <span>참고가격 합계</span>
+            <strong>{referenceTotal.pricedItems > 0 ? `${referenceTotal.referenceKrw.toLocaleString('ko-KR')}원` : '산정 가능한 가격 없음'}</strong>
+            <span className="muted">확인한 판매가를 우선하며 과거가·출시가·추정가를 포함합니다. 실제 구매 금액과 다를 수 있습니다.</span>
+            {(referenceTotal.unpriced > 0 || referenceTotal.quantityNeedsCheck > 0) && <span className="muted">
+              가격·연결 미확인 {referenceTotal.unpriced}개, 수량·RAM 판매 단위 확인 필요 {referenceTotal.quantityNeedsCheck}건은 참고 합계에서 뺐습니다.
+            </span>}
             <span>현재 상품가 합계</span>
             <strong>{total.pricedItems > 0 ? `${total.currentKrw.toLocaleString('ko-KR')}원` : '산정 가능한 가격 없음'}</strong>
             {total.unpriced > 0 && (
-              <span className="muted">현재 상품가 미확인·미연결 {total.unpriced}개 항목은 합계에서 뺐습니다.</span>
+              <span className="muted">가격 미확인·미연결·만료·연결 실패 등으로 {total.unpriced}개 항목은 합계에서 뺐습니다. 각 부품의 가격 상태를 확인해 주세요.</span>
             )}
             {total.quantityNeedsCheck > 0 && (
               <span className="muted">수량·RAM 판매 묶음 확인이 필요한 {total.quantityNeedsCheck}건은 합계에서 뺐습니다.</span>
@@ -182,7 +191,7 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
         <CatalogPickerDialog key={`${activeTarget.slot}-${activeTarget.draftKey}`} label={activeLabel!}
           type={slotInfo(activeTarget.slot).type}
           initialQuery={drafts.find((draft) => draft.key === activeTarget.draftKey)?.displayName ?? ''}
-          onClose={() => onTarget(null)} onSelect={choose} />
+          onClose={() => onTarget(null)} onSelect={choose} onSelectModel={chooseModel} />
       )}
     </section>
   )

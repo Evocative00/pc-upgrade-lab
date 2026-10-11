@@ -5,11 +5,14 @@ import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
 
 /** 이미 단위가 정리된 제원 입력·조회 값. 각 레코드가 부품 종류와 입력 검증을 함께 책임진다. */
 public sealed interface CatalogSpecification permits CatalogSpecification.Cpu,
         CatalogSpecification.Motherboard, CatalogSpecification.Ram, CatalogSpecification.Gpu,
-        CatalogSpecification.Monitor {
+        CatalogSpecification.Monitor, CatalogSpecification.Storage, CatalogSpecification.Psu,
+        CatalogSpecification.Case {
     PartType type();
 
     /**
@@ -237,6 +240,190 @@ public sealed interface CatalogSpecification permits CatalogSpecification.Cpu,
 
         @Override
         public PartType type() { return PartType.MONITOR; }
+    }
+
+    /** 저장장치 한 개의 제조사 명목 제원. 스캔한 실제 장치/파일시스템 용량과 구분한다. */
+    record Storage(String storageKind, Long capacityBytes, BigDecimal advertisedCapacityGb,
+                   String capacityBasis, String formFactor, String busInterface,
+                   String interfaceProtocol, String pcieVersion, Integer pcieLanes,
+                   String nvmeVersion, String sataVersion, String connectorKey,
+                   String m2LengthCode, BigDecimal lengthMm, BigDecimal widthMm,
+                   BigDecimal heightMm, String dimensionsBasis, Boolean heatsinkIncluded)
+            implements CatalogSpecification {
+        public Storage {
+            storageKind = allowed(storageKind, "storageKind", Set.of("SSD", "HDD"));
+            capacityBytes = CatalogSpecificationValues.positiveLong(capacityBytes, "capacityBytes");
+            advertisedCapacityGb = CatalogSpecificationValues.positiveDecimal(advertisedCapacityGb,
+                    "advertisedCapacityGb", 12, 3);
+            capacityBasis = allowed(capacityBasis, "capacityBasis", Set.of("DECIMAL_GB"));
+            if ((capacityBytes != null || advertisedCapacityGb != null) != (capacityBasis != null)) {
+                throw new IllegalArgumentException("A known nominal capacity requires capacityBasis; unknown capacity has no basis");
+            }
+            if (capacityBytes != null && advertisedCapacityGb != null
+                    && advertisedCapacityGb.multiply(new BigDecimal("1000000000"))
+                    .compareTo(BigDecimal.valueOf(capacityBytes)) != 0) {
+                throw new IllegalArgumentException("capacityBytes must match decimal advertisedCapacityGb");
+            }
+            formFactor = allowed(formFactor, "formFactor",
+                    Set.of("TWO_POINT_FIVE_INCH", "THREE_POINT_FIVE_INCH", "M2"));
+            busInterface = allowed(busInterface, "busInterface", Set.of("SATA", "PCIE"));
+            interfaceProtocol = allowed(interfaceProtocol, "interfaceProtocol", Set.of("ATA", "NVME"));
+            pcieVersion = CatalogSpecificationValues.pcieVersion(pcieVersion);
+            pcieLanes = CatalogSpecificationValues.pcieLanes(pcieLanes, "pcieLanes");
+            nvmeVersion = version(nvmeVersion, "nvmeVersion");
+            sataVersion = version(sataVersion, "sataVersion");
+            connectorKey = allowed(connectorKey, "connectorKey", Set.of("B", "M", "B_M"));
+            m2LengthCode = allowed(m2LengthCode, "m2LengthCode",
+                    Set.of("2230", "2242", "2260", "2280", "22110"));
+            if ("SATA".equals(busInterface)
+                    && (pcieVersion != null || pcieLanes != null || "NVME".equals(interfaceProtocol) || nvmeVersion != null)) {
+                throw new IllegalArgumentException("SATA storage cannot have PCIe/NVMe specification values");
+            }
+            if ("PCIE".equals(busInterface) && (sataVersion != null || "ATA".equals(interfaceProtocol))) {
+                throw new IllegalArgumentException("PCIe storage cannot have SATA/ATA specification values");
+            }
+            if ((pcieVersion != null || pcieLanes != null) && !"PCIE".equals(busInterface)) {
+                throw new IllegalArgumentException("PCIe values require a confirmed PCIe bus");
+            }
+            if ("NVME".equals(interfaceProtocol) && !"PCIE".equals(busInterface)) {
+                throw new IllegalArgumentException("NVMe requires a confirmed PCIe bus");
+            }
+            if (nvmeVersion != null && !"NVME".equals(interfaceProtocol)) {
+                throw new IllegalArgumentException("nvmeVersion requires a confirmed NVMe protocol");
+            }
+            if (sataVersion != null && !"SATA".equals(busInterface)) {
+                throw new IllegalArgumentException("sataVersion requires a confirmed SATA bus");
+            }
+            if ((connectorKey != null || m2LengthCode != null) && !"M2".equals(formFactor)) {
+                throw new IllegalArgumentException("M.2 key/length code require a confirmed M2 form factor");
+            }
+            lengthMm = CatalogSpecificationValues.positiveDecimal(lengthMm, "lengthMm", 8, 2);
+            widthMm = CatalogSpecificationValues.positiveDecimal(widthMm, "widthMm", 8, 2);
+            heightMm = CatalogSpecificationValues.positiveDecimal(heightMm, "heightMm", 8, 2);
+            dimensionsBasis = allowed(dimensionsBasis, "dimensionsBasis",
+                    Set.of("NOMINAL", "MANUFACTURER_MAXIMUM", "PUBLISHED"));
+            if ((lengthMm != null || widthMm != null || heightMm != null) != (dimensionsBasis != null)) {
+                throw new IllegalArgumentException("Known dimensions require dimensionsBasis; unknown dimensions have no basis");
+            }
+            // M.2 2280 is a nominal form code, not an upper bound on published casing dimensions.
+        }
+
+        private static String allowed(String value, String field, Set<String> values) {
+            String normalized = CatalogSpecificationValues.code(value, field, 32);
+            if (normalized != null && !values.contains(normalized)) {
+                throw new IllegalArgumentException(field + " has an unsupported value: " + normalized);
+            }
+            return normalized;
+        }
+
+        private static String version(String value, String field) {
+            String normalized = CatalogSpecificationValues.text(value, field, 16);
+            if (normalized != null && !normalized.matches("[1-9][0-9]?\\.[0-9]{1,2}[a-z]?")) {
+                throw new IllegalArgumentException(field + " must be a published version such as 1.4b or 3.0");
+            }
+            return normalized;
+        }
+
+        @Override
+        public PartType type() { return PartType.STORAGE; }
+    }
+
+    /** 정격 연속 출력과 제공 케이블의 부품 쪽 플러그를 기록한다. 피크 출력·PSU 쪽 포트는 별도다. */
+    record Psu(Integer ratedPowerW, String formFactor, BigDecimal lengthMm, BigDecimal widthMm,
+               BigDecimal heightMm, String atxVersion, boolean powerConnectorsKnown,
+               List<PsuPowerConnector> powerConnectors) implements CatalogSpecification {
+        public Psu {
+            ratedPowerW = CatalogSpecificationValues.positiveInt(ratedPowerW, "ratedPowerW");
+            formFactor = CatalogSpecificationValues.psuFormFactor(formFactor);
+            lengthMm = CatalogSpecificationValues.positiveDecimal(lengthMm, "lengthMm", 8, 2);
+            widthMm = CatalogSpecificationValues.positiveDecimal(widthMm, "widthMm", 8, 2);
+            heightMm = CatalogSpecificationValues.positiveDecimal(heightMm, "heightMm", 8, 2);
+            atxVersion = CatalogSpecificationValues.atxVersion(atxVersion);
+            if (powerConnectors == null || powerConnectors.stream().anyMatch(value -> value == null)) {
+                throw new IllegalArgumentException("powerConnectors must be a non-null list without null items");
+            }
+            if (!powerConnectorsKnown && !powerConnectors.isEmpty()) {
+                throw new IllegalArgumentException("Unknown power connectors must have an empty list");
+            }
+            var types = new HashSet<String>();
+            for (PsuPowerConnector connector : powerConnectors) {
+                if (!types.add(connector.connectorType())) {
+                    throw new IllegalArgumentException("A power connector type occurs more than once");
+                }
+            }
+            powerConnectors = powerConnectors.stream()
+                    .sorted(Comparator.comparing(PsuPowerConnector::connectorType)).toList();
+        }
+
+        @Override
+        public PartType type() { return PartType.PSU; }
+    }
+
+    /**
+     * 케이스의 제조사 공표 장착 한도. known=false인 지원 목록은 미확인이다.
+     * 팬·라디에이터·케이지에 따른 한도는 조건을 보존하며 사용자 구성에 자동 적용하지 않는다.
+     */
+    record Case(boolean motherboardFormFactorsKnown, List<String> motherboardFormFactors,
+                boolean psuFormFactorsKnown, List<String> psuFormFactors,
+                BigDecimal maxPsuLengthMm, BigDecimal maxGpuLengthMm, BigDecimal maxGpuHeightMm,
+                BigDecimal maxGpuThicknessMm, Integer expansionSlotCount,
+                String gpuClearanceConditions, String psuClearanceConditions,
+                boolean gpuClearanceUnconditional, boolean psuClearanceUnconditional)
+            implements CatalogSpecification {
+        public Case {
+            motherboardFormFactors = supportedFormFactors(motherboardFormFactorsKnown, motherboardFormFactors,
+                    "motherboardFormFactors", CatalogSpecificationValues::caseMotherboardFormFactor);
+            psuFormFactors = supportedFormFactors(psuFormFactorsKnown, psuFormFactors,
+                    "psuFormFactors", CatalogSpecificationValues::psuFormFactor);
+            maxPsuLengthMm = CatalogSpecificationValues.positiveDecimal(maxPsuLengthMm, "maxPsuLengthMm", 8, 2);
+            maxGpuLengthMm = CatalogSpecificationValues.positiveDecimal(maxGpuLengthMm, "maxGpuLengthMm", 8, 2);
+            maxGpuHeightMm = CatalogSpecificationValues.positiveDecimal(maxGpuHeightMm, "maxGpuHeightMm", 8, 2);
+            maxGpuThicknessMm = CatalogSpecificationValues.positiveDecimal(maxGpuThicknessMm, "maxGpuThicknessMm", 8, 2);
+            expansionSlotCount = CatalogSpecificationValues.positiveSmallInt(expansionSlotCount, "expansionSlotCount");
+            gpuClearanceConditions = CatalogSpecificationValues.text(gpuClearanceConditions, "gpuClearanceConditions", 2000);
+            psuClearanceConditions = CatalogSpecificationValues.text(psuClearanceConditions, "psuClearanceConditions", 2000);
+            if (gpuClearanceUnconditional && maxGpuLengthMm == null && maxGpuHeightMm == null && maxGpuThicknessMm == null) {
+                throw new IllegalArgumentException("Unconditional GPU clearance requires a published maximum dimension");
+            }
+            if (psuClearanceUnconditional && maxPsuLengthMm == null) {
+                throw new IllegalArgumentException("Unconditional PSU clearance requires maxPsuLengthMm");
+            }
+        }
+
+        @Override
+        public PartType type() { return PartType.CASE; }
+    }
+
+    /**
+     * 포함 케이블의 부품 쪽 플러그 수와 독립 케이블 수. null은 미확인이다.
+     * maxPowerW는 케이블 한 개에 제조사가 공표한 전달 한도이며 PSU 총출력이 아니다.
+     * 한 케이블의 여러 플러그를 독립 케이블 여러 개로 세지 않는다.
+     */
+    record PsuPowerConnector(String connectorType, Integer connectorCount,
+                             Integer independentCableCount, Integer maxPowerW) {
+        public PsuPowerConnector {
+            connectorType = CatalogSpecificationValues.psuConnectorType(connectorType);
+            connectorCount = CatalogSpecificationValues.positiveSmallInt(connectorCount, "connectorCount");
+            if (connectorCount == null) throw new IllegalArgumentException("connectorCount is required");
+            independentCableCount = CatalogSpecificationValues.positiveSmallInt(independentCableCount, "independentCableCount");
+            if (independentCableCount != null && independentCableCount > connectorCount) {
+                throw new IllegalArgumentException("independentCableCount must not exceed connectorCount");
+            }
+            maxPowerW = CatalogSpecificationValues.positiveInt(maxPowerW, "maxPowerW");
+        }
+    }
+
+    private static List<String> supportedFormFactors(boolean known, List<String> values, String field,
+                                                      Function<String, String> normalize) {
+        if (values == null || values.stream().anyMatch(value -> value == null)) {
+            throw new IllegalArgumentException(field + " must be a non-null list without null items");
+        }
+        if (!known && !values.isEmpty()) throw new IllegalArgumentException("Unknown " + field + " must have an empty list");
+        var normalized = values.stream().map(normalize).toList();
+        if (normalized.stream().anyMatch(value -> value == null) || new HashSet<>(normalized).size() != normalized.size()) {
+            throw new IllegalArgumentException(field + " cannot contain blank or duplicate form factors");
+        }
+        return normalized.stream().sorted().toList();
     }
 
     /** 카드 본체의 보조전원. 변환 어댑터 쪽 입력 단자 개수는 여기에 섞지 않는다. */

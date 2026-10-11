@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "stage": "VERIFIED_REFERENCE_PREVIEW_AWAITING_PUBLICATION_APPROVAL",
+  "verifiedAt": "2026-10-10T14:37:48.559Z",
+  "branch": "dev",
+  "catalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+  "referenceVersion": "references-v1-0a60f7fa4c600e99ea6c4c4c74b3398f1c6ebd168ff13ef3af73f9c2ebcc0dfd",
+  "publicationApproved": false,
+  "coverage": {
+    "catalogProducts": 308,
+    "currentPriceObservationsPreserved": 81,
+    "referenceProducts": 227,
+    "referenceByBasis": {
+      "MODEL_RETAIL_REFERENCE": 5,
+      "LAUNCH_PRICE": 3,
+      "SIMILAR_PART_ESTIMATE": 219
+    },
+    "referenceByCategory": {
+      "CPU": 36,
+      "MOTHERBOARD": 51,
+      "RAM": 58,
+      "GPU": 67,
+      "MONITOR": 15
+    },
+    "allProductsHaveActualOrReferencePriceInPreview": true
+  },
+  "checks": {
+    "backend": {
+      "passed": 63,
+      "failed": 0,
+      "scope": "Related catalog and reference-price tests; H2 or mock HTTP, not the full backend suite"
+    },
+    "worker": {
+      "passed": 634,
+      "failed": 0,
+      "typecheck": "PASS",
+      "buildBytes": 480184,
+      "legacyJavaHttpFixturesMatched": 1532
+    },
+    "frontend": {
+      "passed": 141,
+      "failed": 0,
+      "lint": "PASS",
+      "build": "PASS",
+      "reactReferenceSourceRendering": "PASS"
+    },
+    "referenceGenerator": {
+      "passed": 12,
+      "failed": 0,
+      "deterministicCheck": "PASS",
+      "lineEndingIndependentInputHashing": true
+    },
+    "javaToLocalWorker": {
+      "catalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+      "referenceVersion": "references-v1-0a60f7fa4c600e99ea6c4c4c74b3398f1c6ebd168ff13ef3af73f9c2ebcc0dfd",
+      "products": 308,
+      "currentPricesPreserved": 81,
+      "referencesVerified": 227,
+      "basis": {
+        "MODEL_RETAIL_REFERENCE": 5,
+        "LAUNCH_PRICE": 3,
+        "SIMILAR_PART_ESTIMATE": 219,
+        "HISTORICAL_RETAIL": 0
+      },
+      "databaseChanges": 0,
+      "deployments": 0,
+      "serverRestarts": 0,
+      "publicationApproved": false
+    },
+    "javaResponseToFrontend": {
+      "productsAccepted": 308,
+      "allShared": true,
+      "currentPrices": 81,
+      "references": 227,
+      "pricedReferenceItems": 308,
+      "unitMismatches": 0,
+      "publicationApproved": false
+    },
+    "independentContractReview": "PASS"
+  },
+  "preservedPublicArtifacts": [
+    {
+      "path": "data/catalog-shared/active-approved-prices.json",
+      "sha256": "7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc"
+    },
+    {
+      "path": "data/catalog-shared/all-catalog-identities-2026-10-10.json",
+      "sha256": "8ad681a1cd634eb4c990ec20714fe332d6972dd1e22aff3feef54c6261466792"
+    },
+    {
+      "path": "data/catalog-shared/approved-retail-extension-2026-10-10.json",
+      "sha256": "f86ef373ad2da72af3b5ae75a755eef56891106ddd86c6ad0c26b924622065df"
+    },
+    {
+      "path": "workers/catalog-prices/generated/catalog.json",
+      "sha256": "0faef9871c6d45ce2d0c22ebe1dd79d004d7b8f55ba3be9475a99bb12fff9451"
+    },
+    {
+      "path": "workers/catalog-prices/generated/catalog-v2.json",
+      "sha256": "3413168324238fe6d6e73b7cd72d64abe0c999cac7000c123e6c38f3c8020090"
+    },
+    {
+      "path": "workers/catalog-prices/generated/catalog-retail-approved.json",
+      "sha256": "157ce439b55296f5f767d9cdd68f1feab1f9a1cf3e4cf155b99e1cf93a449786"
+    }
+  ],
+  "interpretation": {
+    "estimatedMarketAccuracyVerified": false,
+    "referenceRangesAreStatisticalConfidenceIntervals": false,
+    "currentQuotesCreated": 0,
+    "shippingOrDiscountIncluded": false,
+    "referenceSevenDayExpiry": false,
+    "current48HourWarningAndSevenDayExclusionPreserved": true,
+    "originalSourceDatesPreserved": true,
+    "exactSkuEquivalenceNotInferred": true
+  },
+  "actualMutations": {
+    "mysqlChanges": 0,
+    "workerDeployments": 0,
+    "backendRestarts": 0,
+    "commits": 0,
+    "pushes": 0
+  },
+  "notPerformed": [
+    "Live browser manual review",
+    "MySQL or Windows collector integration for this change",
+    "Cloudflare publication of reference prices"
+  ],
+  "remainingApproval": {
+    "scope": "Publish reviewed 227 references to the same free Worker and restart existing backend",
+    "databaseChangesRequired": false,
+    "environmentVariablesChanged": false,
+    "teamTokenChanged": false,
+    "githubUploadIncluded": false
+  }
+}

@@ -1,0 +1,2901 @@
+{
+  "schemaVersion" : 1,
+  "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+  "fixtures" : [ {
+    "name" : "all-approved-fresh",
+    "now" : "2026-10-09T17:29:31.430Z",
+    "canonicalIds" : [ "0af25373-4f49-3301-851c-2989163fbf91", "109952f9-01de-3293-9034-ab93de7f98d0", "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234", "4328778c-84af-324b-bc60-e51891fff949", "656c192f-dfee-3cb1-893f-f0000cc8f53b", "688c711d-70d2-39f5-9642-d1c2a87d4bb7", "74721e70-72ea-3613-8e19-4455485a72e3", "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c", "ac896892-a9c3-35cd-a368-6f0bb78daffa", "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef", "cd5cb06e-c2c0-389d-97c2-94c7c53f0020", "f0a98fa1-b311-3001-ad31-cd5ad368ae44", "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520", "fa9b25b5-1a11-34ee-8814-134afee45a55" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-09T17:29:31.430Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+        "product" : {
+          "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 5 9600X",
+          "partNumber" : "100-100001405WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653718",
+          "observedAt" : "2026-10-09T16:28:00.260Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      }, {
+        "canonicalId" : "109952f9-01de-3293-9034-ab93de7f98d0",
+        "product" : {
+          "canonicalId" : "109952f9-01de-3293-9034-ab93de7f98d0",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "MSI",
+          "modelName" : "MAG B860M MORTAR WIFI",
+          "partNumber" : null,
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+        "product" : {
+          "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "990 PRO 1TB",
+          "partNumber" : "MZ-V9P1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+          "observedAt" : "2026-10-09T16:29:31.430Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      }, {
+        "canonicalId" : "4328778c-84af-324b-bc60-e51891fff949",
+        "product" : {
+          "canonicalId" : "4328778c-84af-324b-bc60-e51891fff949",
+          "type" : "CPU",
+          "manufacturer" : "Intel",
+          "modelName" : "Core Ultra 5 245K",
+          "partNumber" : null,
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "656c192f-dfee-3cb1-893f-f0000cc8f53b",
+        "product" : {
+          "canonicalId" : "656c192f-dfee-3cb1-893f-f0000cc8f53b",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "ASRock",
+          "modelName" : "B850M Pro RS",
+          "partNumber" : null,
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+        "product" : {
+          "canonicalId" : "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "ASUS",
+          "modelName" : "TUF GAMING B860-PLUS WIFI",
+          "partNumber" : null,
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+        "product" : {
+          "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+          "type" : "GPU",
+          "manufacturer" : "Sapphire",
+          "modelName" : "PULSE Radeon RX 9060 XT OC 16GB",
+          "partNumber" : "11350-03-20G",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 822300,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=91909571",
+          "observedAt" : "2026-10-09T16:27:55.879Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      }, {
+        "canonicalId" : "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c",
+        "product" : {
+          "canonicalId" : "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c",
+          "type" : "RAM",
+          "manufacturer" : "G.SKILL",
+          "modelName" : "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+          "partNumber" : "F5-6000J3636F16GX2-RS5K",
+          "identityKind" : "RETAIL_KIT",
+          "role" : "PURCHASE_CANDIDATE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "RAM_KIT",
+          "moduleCount" : 2
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+        "product" : {
+          "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 7 9700X",
+          "partNumber" : "100-100001404WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 686000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653715",
+          "observedAt" : "2026-10-09T16:27:59.097Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      }, {
+        "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+        "product" : {
+          "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+          "type" : "GPU",
+          "manufacturer" : "MSI",
+          "modelName" : "GeForce RTX 5060 8G VENTUS 2X OC",
+          "partNumber" : "G5060-8V2C",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 668860,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=90956033",
+          "observedAt" : "2026-10-09T16:27:54.952Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      }, {
+        "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+        "product" : {
+          "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "MSI",
+          "modelName" : "MAG B650M MORTAR WIFI",
+          "partNumber" : "MAG B650M MORTAR WIFI",
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 202710,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17971187",
+          "observedAt" : "2026-10-09T16:27:57.186Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      }, {
+        "canonicalId" : "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+        "product" : {
+          "canonicalId" : "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+          "type" : "CPU",
+          "manufacturer" : "Intel",
+          "modelName" : "Core Ultra 5 250K Plus",
+          "partNumber" : null,
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+        "product" : {
+          "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+          "type" : "RAM",
+          "manufacturer" : "G.SKILL",
+          "modelName" : "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+          "partNumber" : "F5-6000J3038F16GX2-TZ5N",
+          "identityKind" : "RETAIL_KIT",
+          "role" : "PURCHASE_CANDIDATE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "RAM_KIT",
+          "moduleCount" : 2
+        },
+        "price" : {
+          "amountKrw" : 939000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17932031",
+          "observedAt" : "2026-10-09T16:27:58.112Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      }, {
+        "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+        "product" : {
+          "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "870 EVO 1TB",
+          "partNumber" : "MZ-77E1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 459000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+          "observedAt" : "2026-10-09T16:29:31.420Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "unpriced-products",
+    "now" : "2026-10-09T17:29:31.430Z",
+    "canonicalIds" : [ "109952f9-01de-3293-9034-ab93de7f98d0", "4328778c-84af-324b-bc60-e51891fff949", "656c192f-dfee-3cb1-893f-f0000cc8f53b", "688c711d-70d2-39f5-9642-d1c2a87d4bb7", "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c", "f0a98fa1-b311-3001-ad31-cd5ad368ae44" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-09T17:29:31.430Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "109952f9-01de-3293-9034-ab93de7f98d0",
+        "product" : {
+          "canonicalId" : "109952f9-01de-3293-9034-ab93de7f98d0",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "MSI",
+          "modelName" : "MAG B860M MORTAR WIFI",
+          "partNumber" : null,
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "4328778c-84af-324b-bc60-e51891fff949",
+        "product" : {
+          "canonicalId" : "4328778c-84af-324b-bc60-e51891fff949",
+          "type" : "CPU",
+          "manufacturer" : "Intel",
+          "modelName" : "Core Ultra 5 245K",
+          "partNumber" : null,
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "656c192f-dfee-3cb1-893f-f0000cc8f53b",
+        "product" : {
+          "canonicalId" : "656c192f-dfee-3cb1-893f-f0000cc8f53b",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "ASRock",
+          "modelName" : "B850M Pro RS",
+          "partNumber" : null,
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+        "product" : {
+          "canonicalId" : "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "ASUS",
+          "modelName" : "TUF GAMING B860-PLUS WIFI",
+          "partNumber" : null,
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c",
+        "product" : {
+          "canonicalId" : "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c",
+          "type" : "RAM",
+          "manufacturer" : "G.SKILL",
+          "modelName" : "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+          "partNumber" : "F5-6000J3636F16GX2-RS5K",
+          "identityKind" : "RETAIL_KIT",
+          "role" : "PURCHASE_CANDIDATE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "RAM_KIT",
+          "moduleCount" : 2
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+        "product" : {
+          "canonicalId" : "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+          "type" : "CPU",
+          "manufacturer" : "Intel",
+          "modelName" : "Core Ultra 5 250K Plus",
+          "partNumber" : null,
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : null,
+        "status" : "NO_PRICE",
+        "freshness" : "NO_PRICE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "unknown-product",
+    "now" : "2026-10-09T17:29:31.430Z",
+    "canonicalIds" : [ "00000000-0000-0000-0000-000000000001" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-09T17:29:31.430Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "00000000-0000-0000-0000-000000000001",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "maximum-100-ids",
+    "now" : "2026-10-09T17:29:31.430Z",
+    "canonicalIds" : [ "00000000-0000-0000-0000-000000000001", "00000000-0000-0000-0000-000000000002", "00000000-0000-0000-0000-000000000003", "00000000-0000-0000-0000-000000000004", "00000000-0000-0000-0000-000000000005", "00000000-0000-0000-0000-000000000006", "00000000-0000-0000-0000-000000000007", "00000000-0000-0000-0000-000000000008", "00000000-0000-0000-0000-000000000009", "00000000-0000-0000-0000-00000000000a", "00000000-0000-0000-0000-00000000000b", "00000000-0000-0000-0000-00000000000c", "00000000-0000-0000-0000-00000000000d", "00000000-0000-0000-0000-00000000000e", "00000000-0000-0000-0000-00000000000f", "00000000-0000-0000-0000-000000000010", "00000000-0000-0000-0000-000000000011", "00000000-0000-0000-0000-000000000012", "00000000-0000-0000-0000-000000000013", "00000000-0000-0000-0000-000000000014", "00000000-0000-0000-0000-000000000015", "00000000-0000-0000-0000-000000000016", "00000000-0000-0000-0000-000000000017", "00000000-0000-0000-0000-000000000018", "00000000-0000-0000-0000-000000000019", "00000000-0000-0000-0000-00000000001a", "00000000-0000-0000-0000-00000000001b", "00000000-0000-0000-0000-00000000001c", "00000000-0000-0000-0000-00000000001d", "00000000-0000-0000-0000-00000000001e", "00000000-0000-0000-0000-00000000001f", "00000000-0000-0000-0000-000000000020", "00000000-0000-0000-0000-000000000021", "00000000-0000-0000-0000-000000000022", "00000000-0000-0000-0000-000000000023", "00000000-0000-0000-0000-000000000024", "00000000-0000-0000-0000-000000000025", "00000000-0000-0000-0000-000000000026", "00000000-0000-0000-0000-000000000027", "00000000-0000-0000-0000-000000000028", "00000000-0000-0000-0000-000000000029", "00000000-0000-0000-0000-00000000002a", "00000000-0000-0000-0000-00000000002b", "00000000-0000-0000-0000-00000000002c", "00000000-0000-0000-0000-00000000002d", "00000000-0000-0000-0000-00000000002e", "00000000-0000-0000-0000-00000000002f", "00000000-0000-0000-0000-000000000030", "00000000-0000-0000-0000-000000000031", "00000000-0000-0000-0000-000000000032", "00000000-0000-0000-0000-000000000033", "00000000-0000-0000-0000-000000000034", "00000000-0000-0000-0000-000000000035", "00000000-0000-0000-0000-000000000036", "00000000-0000-0000-0000-000000000037", "00000000-0000-0000-0000-000000000038", "00000000-0000-0000-0000-000000000039", "00000000-0000-0000-0000-00000000003a", "00000000-0000-0000-0000-00000000003b", "00000000-0000-0000-0000-00000000003c", "00000000-0000-0000-0000-00000000003d", "00000000-0000-0000-0000-00000000003e", "00000000-0000-0000-0000-00000000003f", "00000000-0000-0000-0000-000000000040", "00000000-0000-0000-0000-000000000041", "00000000-0000-0000-0000-000000000042", "00000000-0000-0000-0000-000000000043", "00000000-0000-0000-0000-000000000044", "00000000-0000-0000-0000-000000000045", "00000000-0000-0000-0000-000000000046", "00000000-0000-0000-0000-000000000047", "00000000-0000-0000-0000-000000000048", "00000000-0000-0000-0000-000000000049", "00000000-0000-0000-0000-00000000004a", "00000000-0000-0000-0000-00000000004b", "00000000-0000-0000-0000-00000000004c", "00000000-0000-0000-0000-00000000004d", "00000000-0000-0000-0000-00000000004e", "00000000-0000-0000-0000-00000000004f", "00000000-0000-0000-0000-000000000050", "00000000-0000-0000-0000-000000000051", "00000000-0000-0000-0000-000000000052", "00000000-0000-0000-0000-000000000053", "00000000-0000-0000-0000-000000000054", "00000000-0000-0000-0000-000000000055", "00000000-0000-0000-0000-000000000056", "00000000-0000-0000-0000-000000000057", "00000000-0000-0000-0000-000000000058", "00000000-0000-0000-0000-000000000059", "00000000-0000-0000-0000-00000000005a", "00000000-0000-0000-0000-00000000005b", "00000000-0000-0000-0000-00000000005c", "00000000-0000-0000-0000-00000000005d", "00000000-0000-0000-0000-00000000005e", "00000000-0000-0000-0000-00000000005f", "00000000-0000-0000-0000-000000000060", "00000000-0000-0000-0000-000000000061", "00000000-0000-0000-0000-000000000062", "00000000-0000-0000-0000-000000000063", "00000000-0000-0000-0000-000000000064" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-09T17:29:31.430Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "00000000-0000-0000-0000-000000000001",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000002",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000003",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000004",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000005",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000006",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000007",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000008",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000009",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000000a",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000000b",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000000c",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000000d",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000000e",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000000f",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000010",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000011",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000012",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000013",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000014",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000015",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000016",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000017",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000018",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000019",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000001a",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000001b",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000001c",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000001d",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000001e",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000001f",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000020",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000021",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000022",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000023",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000024",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000025",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000026",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000027",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000028",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000029",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000002a",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000002b",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000002c",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000002d",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000002e",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000002f",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000030",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000031",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000032",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000033",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000034",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000035",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000036",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000037",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000038",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000039",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000003a",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000003b",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000003c",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000003d",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000003e",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000003f",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000040",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000041",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000042",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000043",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000044",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000045",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000046",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000047",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000048",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000049",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000004a",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000004b",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000004c",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000004d",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000004e",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000004f",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000050",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000051",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000052",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000053",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000054",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000055",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000056",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000057",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000058",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000059",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000005a",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000005b",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000005c",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000005d",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000005e",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-00000000005f",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000060",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000061",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000062",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000063",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      }, {
+        "canonicalId" : "00000000-0000-0000-0000-000000000064",
+        "product" : null,
+        "price" : null,
+        "status" : "UNKNOWN_PRODUCT",
+        "freshness" : "NO_PRICE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "reject-101-ids",
+    "now" : "2026-10-09T17:29:31.430Z",
+    "canonicalIds" : [ "00000000-0000-0000-0000-000000000001", "00000000-0000-0000-0000-000000000002", "00000000-0000-0000-0000-000000000003", "00000000-0000-0000-0000-000000000004", "00000000-0000-0000-0000-000000000005", "00000000-0000-0000-0000-000000000006", "00000000-0000-0000-0000-000000000007", "00000000-0000-0000-0000-000000000008", "00000000-0000-0000-0000-000000000009", "00000000-0000-0000-0000-00000000000a", "00000000-0000-0000-0000-00000000000b", "00000000-0000-0000-0000-00000000000c", "00000000-0000-0000-0000-00000000000d", "00000000-0000-0000-0000-00000000000e", "00000000-0000-0000-0000-00000000000f", "00000000-0000-0000-0000-000000000010", "00000000-0000-0000-0000-000000000011", "00000000-0000-0000-0000-000000000012", "00000000-0000-0000-0000-000000000013", "00000000-0000-0000-0000-000000000014", "00000000-0000-0000-0000-000000000015", "00000000-0000-0000-0000-000000000016", "00000000-0000-0000-0000-000000000017", "00000000-0000-0000-0000-000000000018", "00000000-0000-0000-0000-000000000019", "00000000-0000-0000-0000-00000000001a", "00000000-0000-0000-0000-00000000001b", "00000000-0000-0000-0000-00000000001c", "00000000-0000-0000-0000-00000000001d", "00000000-0000-0000-0000-00000000001e", "00000000-0000-0000-0000-00000000001f", "00000000-0000-0000-0000-000000000020", "00000000-0000-0000-0000-000000000021", "00000000-0000-0000-0000-000000000022", "00000000-0000-0000-0000-000000000023", "00000000-0000-0000-0000-000000000024", "00000000-0000-0000-0000-000000000025", "00000000-0000-0000-0000-000000000026", "00000000-0000-0000-0000-000000000027", "00000000-0000-0000-0000-000000000028", "00000000-0000-0000-0000-000000000029", "00000000-0000-0000-0000-00000000002a", "00000000-0000-0000-0000-00000000002b", "00000000-0000-0000-0000-00000000002c", "00000000-0000-0000-0000-00000000002d", "00000000-0000-0000-0000-00000000002e", "00000000-0000-0000-0000-00000000002f", "00000000-0000-0000-0000-000000000030", "00000000-0000-0000-0000-000000000031", "00000000-0000-0000-0000-000000000032", "00000000-0000-0000-0000-000000000033", "00000000-0000-0000-0000-000000000034", "00000000-0000-0000-0000-000000000035", "00000000-0000-0000-0000-000000000036", "00000000-0000-0000-0000-000000000037", "00000000-0000-0000-0000-000000000038", "00000000-0000-0000-0000-000000000039", "00000000-0000-0000-0000-00000000003a", "00000000-0000-0000-0000-00000000003b", "00000000-0000-0000-0000-00000000003c", "00000000-0000-0000-0000-00000000003d", "00000000-0000-0000-0000-00000000003e", "00000000-0000-0000-0000-00000000003f", "00000000-0000-0000-0000-000000000040", "00000000-0000-0000-0000-000000000041", "00000000-0000-0000-0000-000000000042", "00000000-0000-0000-0000-000000000043", "00000000-0000-0000-0000-000000000044", "00000000-0000-0000-0000-000000000045", "00000000-0000-0000-0000-000000000046", "00000000-0000-0000-0000-000000000047", "00000000-0000-0000-0000-000000000048", "00000000-0000-0000-0000-000000000049", "00000000-0000-0000-0000-00000000004a", "00000000-0000-0000-0000-00000000004b", "00000000-0000-0000-0000-00000000004c", "00000000-0000-0000-0000-00000000004d", "00000000-0000-0000-0000-00000000004e", "00000000-0000-0000-0000-00000000004f", "00000000-0000-0000-0000-000000000050", "00000000-0000-0000-0000-000000000051", "00000000-0000-0000-0000-000000000052", "00000000-0000-0000-0000-000000000053", "00000000-0000-0000-0000-000000000054", "00000000-0000-0000-0000-000000000055", "00000000-0000-0000-0000-000000000056", "00000000-0000-0000-0000-000000000057", "00000000-0000-0000-0000-000000000058", "00000000-0000-0000-0000-000000000059", "00000000-0000-0000-0000-00000000005a", "00000000-0000-0000-0000-00000000005b", "00000000-0000-0000-0000-00000000005c", "00000000-0000-0000-0000-00000000005d", "00000000-0000-0000-0000-00000000005e", "00000000-0000-0000-0000-00000000005f", "00000000-0000-0000-0000-000000000060", "00000000-0000-0000-0000-000000000061", "00000000-0000-0000-0000-000000000062", "00000000-0000-0000-0000-000000000063", "00000000-0000-0000-0000-000000000064", "00000000-0000-0000-0000-000000000065" ],
+    "expected" : null,
+    "errorStatus" : 400
+  }, {
+    "name" : "0af25373-4f49-3301-851c-2989163fbf91-stale--1",
+    "now" : "2026-10-11T16:28:00.259Z",
+    "canonicalIds" : [ "0af25373-4f49-3301-851c-2989163fbf91" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:28:00.259Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+        "product" : {
+          "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 5 9600X",
+          "partNumber" : "100-100001405WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653718",
+          "observedAt" : "2026-10-09T16:28:00.260Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "0af25373-4f49-3301-851c-2989163fbf91-stale-0",
+    "now" : "2026-10-11T16:28:00.260Z",
+    "canonicalIds" : [ "0af25373-4f49-3301-851c-2989163fbf91" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:28:00.260Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+        "product" : {
+          "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 5 9600X",
+          "partNumber" : "100-100001405WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653718",
+          "observedAt" : "2026-10-09T16:28:00.260Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "0af25373-4f49-3301-851c-2989163fbf91-stale-1",
+    "now" : "2026-10-11T16:28:00.261Z",
+    "canonicalIds" : [ "0af25373-4f49-3301-851c-2989163fbf91" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:28:00.261Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+        "product" : {
+          "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 5 9600X",
+          "partNumber" : "100-100001405WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653718",
+          "observedAt" : "2026-10-09T16:28:00.260Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "0af25373-4f49-3301-851c-2989163fbf91-expired--1",
+    "now" : "2026-10-16T16:28:00.259Z",
+    "canonicalIds" : [ "0af25373-4f49-3301-851c-2989163fbf91" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:28:00.259Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+        "product" : {
+          "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 5 9600X",
+          "partNumber" : "100-100001405WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653718",
+          "observedAt" : "2026-10-09T16:28:00.260Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "0af25373-4f49-3301-851c-2989163fbf91-expired-0",
+    "now" : "2026-10-16T16:28:00.260Z",
+    "canonicalIds" : [ "0af25373-4f49-3301-851c-2989163fbf91" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:28:00.260Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+        "product" : {
+          "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 5 9600X",
+          "partNumber" : "100-100001405WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653718",
+          "observedAt" : "2026-10-09T16:28:00.260Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "0af25373-4f49-3301-851c-2989163fbf91-expired-1",
+    "now" : "2026-10-16T16:28:00.261Z",
+    "canonicalIds" : [ "0af25373-4f49-3301-851c-2989163fbf91" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:28:00.261Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+        "product" : {
+          "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 5 9600X",
+          "partNumber" : "100-100001405WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653718",
+          "observedAt" : "2026-10-09T16:28:00.260Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234-stale--1",
+    "now" : "2026-10-11T16:29:31.429Z",
+    "canonicalIds" : [ "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:29:31.429Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+        "product" : {
+          "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "990 PRO 1TB",
+          "partNumber" : "MZ-V9P1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+          "observedAt" : "2026-10-09T16:29:31.430Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234-stale-0",
+    "now" : "2026-10-11T16:29:31.430Z",
+    "canonicalIds" : [ "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:29:31.430Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+        "product" : {
+          "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "990 PRO 1TB",
+          "partNumber" : "MZ-V9P1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+          "observedAt" : "2026-10-09T16:29:31.430Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234-stale-1",
+    "now" : "2026-10-11T16:29:31.431Z",
+    "canonicalIds" : [ "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:29:31.431Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+        "product" : {
+          "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "990 PRO 1TB",
+          "partNumber" : "MZ-V9P1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+          "observedAt" : "2026-10-09T16:29:31.430Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234-expired--1",
+    "now" : "2026-10-16T16:29:31.429Z",
+    "canonicalIds" : [ "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:29:31.429Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+        "product" : {
+          "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "990 PRO 1TB",
+          "partNumber" : "MZ-V9P1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+          "observedAt" : "2026-10-09T16:29:31.430Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234-expired-0",
+    "now" : "2026-10-16T16:29:31.430Z",
+    "canonicalIds" : [ "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:29:31.430Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+        "product" : {
+          "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "990 PRO 1TB",
+          "partNumber" : "MZ-V9P1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+          "observedAt" : "2026-10-09T16:29:31.430Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234-expired-1",
+    "now" : "2026-10-16T16:29:31.431Z",
+    "canonicalIds" : [ "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:29:31.431Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+        "product" : {
+          "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "990 PRO 1TB",
+          "partNumber" : "MZ-V9P1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 399000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+          "observedAt" : "2026-10-09T16:29:31.430Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "74721e70-72ea-3613-8e19-4455485a72e3-stale--1",
+    "now" : "2026-10-11T16:27:55.878Z",
+    "canonicalIds" : [ "74721e70-72ea-3613-8e19-4455485a72e3" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:55.878Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+        "product" : {
+          "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+          "type" : "GPU",
+          "manufacturer" : "Sapphire",
+          "modelName" : "PULSE Radeon RX 9060 XT OC 16GB",
+          "partNumber" : "11350-03-20G",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 822300,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=91909571",
+          "observedAt" : "2026-10-09T16:27:55.879Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "74721e70-72ea-3613-8e19-4455485a72e3-stale-0",
+    "now" : "2026-10-11T16:27:55.879Z",
+    "canonicalIds" : [ "74721e70-72ea-3613-8e19-4455485a72e3" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:55.879Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+        "product" : {
+          "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+          "type" : "GPU",
+          "manufacturer" : "Sapphire",
+          "modelName" : "PULSE Radeon RX 9060 XT OC 16GB",
+          "partNumber" : "11350-03-20G",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 822300,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=91909571",
+          "observedAt" : "2026-10-09T16:27:55.879Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "74721e70-72ea-3613-8e19-4455485a72e3-stale-1",
+    "now" : "2026-10-11T16:27:55.880Z",
+    "canonicalIds" : [ "74721e70-72ea-3613-8e19-4455485a72e3" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:55.880Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+        "product" : {
+          "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+          "type" : "GPU",
+          "manufacturer" : "Sapphire",
+          "modelName" : "PULSE Radeon RX 9060 XT OC 16GB",
+          "partNumber" : "11350-03-20G",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 822300,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=91909571",
+          "observedAt" : "2026-10-09T16:27:55.879Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "74721e70-72ea-3613-8e19-4455485a72e3-expired--1",
+    "now" : "2026-10-16T16:27:55.878Z",
+    "canonicalIds" : [ "74721e70-72ea-3613-8e19-4455485a72e3" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:55.878Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+        "product" : {
+          "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+          "type" : "GPU",
+          "manufacturer" : "Sapphire",
+          "modelName" : "PULSE Radeon RX 9060 XT OC 16GB",
+          "partNumber" : "11350-03-20G",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 822300,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=91909571",
+          "observedAt" : "2026-10-09T16:27:55.879Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "74721e70-72ea-3613-8e19-4455485a72e3-expired-0",
+    "now" : "2026-10-16T16:27:55.879Z",
+    "canonicalIds" : [ "74721e70-72ea-3613-8e19-4455485a72e3" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:55.879Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+        "product" : {
+          "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+          "type" : "GPU",
+          "manufacturer" : "Sapphire",
+          "modelName" : "PULSE Radeon RX 9060 XT OC 16GB",
+          "partNumber" : "11350-03-20G",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 822300,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=91909571",
+          "observedAt" : "2026-10-09T16:27:55.879Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "74721e70-72ea-3613-8e19-4455485a72e3-expired-1",
+    "now" : "2026-10-16T16:27:55.880Z",
+    "canonicalIds" : [ "74721e70-72ea-3613-8e19-4455485a72e3" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:55.880Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+        "product" : {
+          "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+          "type" : "GPU",
+          "manufacturer" : "Sapphire",
+          "modelName" : "PULSE Radeon RX 9060 XT OC 16GB",
+          "partNumber" : "11350-03-20G",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 822300,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=91909571",
+          "observedAt" : "2026-10-09T16:27:55.879Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "ac896892-a9c3-35cd-a368-6f0bb78daffa-stale--1",
+    "now" : "2026-10-11T16:27:59.096Z",
+    "canonicalIds" : [ "ac896892-a9c3-35cd-a368-6f0bb78daffa" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:59.096Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+        "product" : {
+          "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 7 9700X",
+          "partNumber" : "100-100001404WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 686000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653715",
+          "observedAt" : "2026-10-09T16:27:59.097Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "ac896892-a9c3-35cd-a368-6f0bb78daffa-stale-0",
+    "now" : "2026-10-11T16:27:59.097Z",
+    "canonicalIds" : [ "ac896892-a9c3-35cd-a368-6f0bb78daffa" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:59.097Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+        "product" : {
+          "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 7 9700X",
+          "partNumber" : "100-100001404WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 686000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653715",
+          "observedAt" : "2026-10-09T16:27:59.097Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "ac896892-a9c3-35cd-a368-6f0bb78daffa-stale-1",
+    "now" : "2026-10-11T16:27:59.098Z",
+    "canonicalIds" : [ "ac896892-a9c3-35cd-a368-6f0bb78daffa" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:59.098Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+        "product" : {
+          "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 7 9700X",
+          "partNumber" : "100-100001404WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 686000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653715",
+          "observedAt" : "2026-10-09T16:27:59.097Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "ac896892-a9c3-35cd-a368-6f0bb78daffa-expired--1",
+    "now" : "2026-10-16T16:27:59.096Z",
+    "canonicalIds" : [ "ac896892-a9c3-35cd-a368-6f0bb78daffa" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:59.096Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+        "product" : {
+          "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 7 9700X",
+          "partNumber" : "100-100001404WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 686000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653715",
+          "observedAt" : "2026-10-09T16:27:59.097Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "ac896892-a9c3-35cd-a368-6f0bb78daffa-expired-0",
+    "now" : "2026-10-16T16:27:59.097Z",
+    "canonicalIds" : [ "ac896892-a9c3-35cd-a368-6f0bb78daffa" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:59.097Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+        "product" : {
+          "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 7 9700X",
+          "partNumber" : "100-100001404WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 686000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653715",
+          "observedAt" : "2026-10-09T16:27:59.097Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "ac896892-a9c3-35cd-a368-6f0bb78daffa-expired-1",
+    "now" : "2026-10-16T16:27:59.098Z",
+    "canonicalIds" : [ "ac896892-a9c3-35cd-a368-6f0bb78daffa" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:59.098Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+        "product" : {
+          "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+          "type" : "CPU",
+          "manufacturer" : "AMD",
+          "modelName" : "Ryzen 7 9700X",
+          "partNumber" : "100-100001404WOF",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 686000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653715",
+          "observedAt" : "2026-10-09T16:27:59.097Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef-stale--1",
+    "now" : "2026-10-11T16:27:54.951Z",
+    "canonicalIds" : [ "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:54.951Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+        "product" : {
+          "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+          "type" : "GPU",
+          "manufacturer" : "MSI",
+          "modelName" : "GeForce RTX 5060 8G VENTUS 2X OC",
+          "partNumber" : "G5060-8V2C",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 668860,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=90956033",
+          "observedAt" : "2026-10-09T16:27:54.952Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef-stale-0",
+    "now" : "2026-10-11T16:27:54.952Z",
+    "canonicalIds" : [ "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:54.952Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+        "product" : {
+          "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+          "type" : "GPU",
+          "manufacturer" : "MSI",
+          "modelName" : "GeForce RTX 5060 8G VENTUS 2X OC",
+          "partNumber" : "G5060-8V2C",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 668860,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=90956033",
+          "observedAt" : "2026-10-09T16:27:54.952Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef-stale-1",
+    "now" : "2026-10-11T16:27:54.953Z",
+    "canonicalIds" : [ "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:54.953Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+        "product" : {
+          "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+          "type" : "GPU",
+          "manufacturer" : "MSI",
+          "modelName" : "GeForce RTX 5060 8G VENTUS 2X OC",
+          "partNumber" : "G5060-8V2C",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 668860,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=90956033",
+          "observedAt" : "2026-10-09T16:27:54.952Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef-expired--1",
+    "now" : "2026-10-16T16:27:54.951Z",
+    "canonicalIds" : [ "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:54.951Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+        "product" : {
+          "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+          "type" : "GPU",
+          "manufacturer" : "MSI",
+          "modelName" : "GeForce RTX 5060 8G VENTUS 2X OC",
+          "partNumber" : "G5060-8V2C",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 668860,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=90956033",
+          "observedAt" : "2026-10-09T16:27:54.952Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef-expired-0",
+    "now" : "2026-10-16T16:27:54.952Z",
+    "canonicalIds" : [ "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:54.952Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+        "product" : {
+          "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+          "type" : "GPU",
+          "manufacturer" : "MSI",
+          "modelName" : "GeForce RTX 5060 8G VENTUS 2X OC",
+          "partNumber" : "G5060-8V2C",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 668860,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=90956033",
+          "observedAt" : "2026-10-09T16:27:54.952Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef-expired-1",
+    "now" : "2026-10-16T16:27:54.953Z",
+    "canonicalIds" : [ "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:54.953Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+        "product" : {
+          "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+          "type" : "GPU",
+          "manufacturer" : "MSI",
+          "modelName" : "GeForce RTX 5060 8G VENTUS 2X OC",
+          "partNumber" : "G5060-8V2C",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 668860,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=90956033",
+          "observedAt" : "2026-10-09T16:27:54.952Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020-stale--1",
+    "now" : "2026-10-11T16:27:57.185Z",
+    "canonicalIds" : [ "cd5cb06e-c2c0-389d-97c2-94c7c53f0020" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:57.185Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+        "product" : {
+          "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "MSI",
+          "modelName" : "MAG B650M MORTAR WIFI",
+          "partNumber" : "MAG B650M MORTAR WIFI",
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 202710,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17971187",
+          "observedAt" : "2026-10-09T16:27:57.186Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020-stale-0",
+    "now" : "2026-10-11T16:27:57.186Z",
+    "canonicalIds" : [ "cd5cb06e-c2c0-389d-97c2-94c7c53f0020" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:57.186Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+        "product" : {
+          "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "MSI",
+          "modelName" : "MAG B650M MORTAR WIFI",
+          "partNumber" : "MAG B650M MORTAR WIFI",
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 202710,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17971187",
+          "observedAt" : "2026-10-09T16:27:57.186Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020-stale-1",
+    "now" : "2026-10-11T16:27:57.187Z",
+    "canonicalIds" : [ "cd5cb06e-c2c0-389d-97c2-94c7c53f0020" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:57.187Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+        "product" : {
+          "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "MSI",
+          "modelName" : "MAG B650M MORTAR WIFI",
+          "partNumber" : "MAG B650M MORTAR WIFI",
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 202710,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17971187",
+          "observedAt" : "2026-10-09T16:27:57.186Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020-expired--1",
+    "now" : "2026-10-16T16:27:57.185Z",
+    "canonicalIds" : [ "cd5cb06e-c2c0-389d-97c2-94c7c53f0020" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:57.185Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+        "product" : {
+          "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "MSI",
+          "modelName" : "MAG B650M MORTAR WIFI",
+          "partNumber" : "MAG B650M MORTAR WIFI",
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 202710,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17971187",
+          "observedAt" : "2026-10-09T16:27:57.186Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020-expired-0",
+    "now" : "2026-10-16T16:27:57.186Z",
+    "canonicalIds" : [ "cd5cb06e-c2c0-389d-97c2-94c7c53f0020" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:57.186Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+        "product" : {
+          "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "MSI",
+          "modelName" : "MAG B650M MORTAR WIFI",
+          "partNumber" : "MAG B650M MORTAR WIFI",
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 202710,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17971187",
+          "observedAt" : "2026-10-09T16:27:57.186Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020-expired-1",
+    "now" : "2026-10-16T16:27:57.187Z",
+    "canonicalIds" : [ "cd5cb06e-c2c0-389d-97c2-94c7c53f0020" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:57.187Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+        "product" : {
+          "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+          "type" : "MOTHERBOARD",
+          "manufacturer" : "MSI",
+          "modelName" : "MAG B650M MORTAR WIFI",
+          "partNumber" : "MAG B650M MORTAR WIFI",
+          "identityKind" : "MODEL_REFERENCE",
+          "role" : "INSTALLED_PC_REFERENCE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 202710,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17971187",
+          "observedAt" : "2026-10-09T16:27:57.186Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520-stale--1",
+    "now" : "2026-10-11T16:27:58.111Z",
+    "canonicalIds" : [ "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:58.111Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+        "product" : {
+          "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+          "type" : "RAM",
+          "manufacturer" : "G.SKILL",
+          "modelName" : "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+          "partNumber" : "F5-6000J3038F16GX2-TZ5N",
+          "identityKind" : "RETAIL_KIT",
+          "role" : "PURCHASE_CANDIDATE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "RAM_KIT",
+          "moduleCount" : 2
+        },
+        "price" : {
+          "amountKrw" : 939000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17932031",
+          "observedAt" : "2026-10-09T16:27:58.112Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520-stale-0",
+    "now" : "2026-10-11T16:27:58.112Z",
+    "canonicalIds" : [ "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:58.112Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+        "product" : {
+          "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+          "type" : "RAM",
+          "manufacturer" : "G.SKILL",
+          "modelName" : "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+          "partNumber" : "F5-6000J3038F16GX2-TZ5N",
+          "identityKind" : "RETAIL_KIT",
+          "role" : "PURCHASE_CANDIDATE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "RAM_KIT",
+          "moduleCount" : 2
+        },
+        "price" : {
+          "amountKrw" : 939000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17932031",
+          "observedAt" : "2026-10-09T16:27:58.112Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520-stale-1",
+    "now" : "2026-10-11T16:27:58.113Z",
+    "canonicalIds" : [ "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:27:58.113Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+        "product" : {
+          "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+          "type" : "RAM",
+          "manufacturer" : "G.SKILL",
+          "modelName" : "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+          "partNumber" : "F5-6000J3038F16GX2-TZ5N",
+          "identityKind" : "RETAIL_KIT",
+          "role" : "PURCHASE_CANDIDATE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "RAM_KIT",
+          "moduleCount" : 2
+        },
+        "price" : {
+          "amountKrw" : 939000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17932031",
+          "observedAt" : "2026-10-09T16:27:58.112Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520-expired--1",
+    "now" : "2026-10-16T16:27:58.111Z",
+    "canonicalIds" : [ "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:58.111Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+        "product" : {
+          "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+          "type" : "RAM",
+          "manufacturer" : "G.SKILL",
+          "modelName" : "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+          "partNumber" : "F5-6000J3038F16GX2-TZ5N",
+          "identityKind" : "RETAIL_KIT",
+          "role" : "PURCHASE_CANDIDATE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "RAM_KIT",
+          "moduleCount" : 2
+        },
+        "price" : {
+          "amountKrw" : 939000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17932031",
+          "observedAt" : "2026-10-09T16:27:58.112Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520-expired-0",
+    "now" : "2026-10-16T16:27:58.112Z",
+    "canonicalIds" : [ "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:58.112Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+        "product" : {
+          "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+          "type" : "RAM",
+          "manufacturer" : "G.SKILL",
+          "modelName" : "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+          "partNumber" : "F5-6000J3038F16GX2-TZ5N",
+          "identityKind" : "RETAIL_KIT",
+          "role" : "PURCHASE_CANDIDATE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "RAM_KIT",
+          "moduleCount" : 2
+        },
+        "price" : {
+          "amountKrw" : 939000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17932031",
+          "observedAt" : "2026-10-09T16:27:58.112Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520-expired-1",
+    "now" : "2026-10-16T16:27:58.113Z",
+    "canonicalIds" : [ "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:27:58.113Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+        "product" : {
+          "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+          "type" : "RAM",
+          "manufacturer" : "G.SKILL",
+          "modelName" : "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+          "partNumber" : "F5-6000J3038F16GX2-TZ5N",
+          "identityKind" : "RETAIL_KIT",
+          "role" : "PURCHASE_CANDIDATE",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "RAM_KIT",
+          "moduleCount" : 2
+        },
+        "price" : {
+          "amountKrw" : 939000,
+          "sourceName" : "DANAWA",
+          "sourceUrl" : "https://prod.danawa.com/info/?pcode=17932031",
+          "observedAt" : "2026-10-09T16:27:58.112Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "fa9b25b5-1a11-34ee-8814-134afee45a55-stale--1",
+    "now" : "2026-10-11T16:29:31.419Z",
+    "canonicalIds" : [ "fa9b25b5-1a11-34ee-8814-134afee45a55" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:29:31.419Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+        "product" : {
+          "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "870 EVO 1TB",
+          "partNumber" : "MZ-77E1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 459000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+          "observedAt" : "2026-10-09T16:29:31.420Z"
+        },
+        "status" : "OK",
+        "freshness" : "FRESH"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "fa9b25b5-1a11-34ee-8814-134afee45a55-stale-0",
+    "now" : "2026-10-11T16:29:31.420Z",
+    "canonicalIds" : [ "fa9b25b5-1a11-34ee-8814-134afee45a55" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:29:31.420Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+        "product" : {
+          "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "870 EVO 1TB",
+          "partNumber" : "MZ-77E1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 459000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+          "observedAt" : "2026-10-09T16:29:31.420Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "fa9b25b5-1a11-34ee-8814-134afee45a55-stale-1",
+    "now" : "2026-10-11T16:29:31.421Z",
+    "canonicalIds" : [ "fa9b25b5-1a11-34ee-8814-134afee45a55" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-11T16:29:31.421Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+        "product" : {
+          "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "870 EVO 1TB",
+          "partNumber" : "MZ-77E1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 459000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+          "observedAt" : "2026-10-09T16:29:31.420Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "fa9b25b5-1a11-34ee-8814-134afee45a55-expired--1",
+    "now" : "2026-10-16T16:29:31.419Z",
+    "canonicalIds" : [ "fa9b25b5-1a11-34ee-8814-134afee45a55" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:29:31.419Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+        "product" : {
+          "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "870 EVO 1TB",
+          "partNumber" : "MZ-77E1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 459000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+          "observedAt" : "2026-10-09T16:29:31.420Z"
+        },
+        "status" : "OK",
+        "freshness" : "STALE"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "fa9b25b5-1a11-34ee-8814-134afee45a55-expired-0",
+    "now" : "2026-10-16T16:29:31.420Z",
+    "canonicalIds" : [ "fa9b25b5-1a11-34ee-8814-134afee45a55" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:29:31.420Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+        "product" : {
+          "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "870 EVO 1TB",
+          "partNumber" : "MZ-77E1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 459000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+          "observedAt" : "2026-10-09T16:29:31.420Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  }, {
+    "name" : "fa9b25b5-1a11-34ee-8814-134afee45a55-expired-1",
+    "now" : "2026-10-16T16:29:31.421Z",
+    "canonicalIds" : [ "fa9b25b5-1a11-34ee-8814-134afee45a55" ],
+    "expected" : {
+      "schemaVersion" : 1,
+      "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+      "servedAt" : "2026-10-16T16:29:31.421Z",
+      "policy" : {
+        "staleAfterSeconds" : 172800,
+        "expireAfterSeconds" : 604800
+      },
+      "items" : [ {
+        "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+        "product" : {
+          "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+          "type" : "STORAGE",
+          "manufacturer" : "Samsung",
+          "modelName" : "870 EVO 1TB",
+          "partNumber" : "MZ-77E1T0BW",
+          "identityKind" : "PHYSICAL_VARIANT",
+          "role" : "BOTH",
+          "verificationStatus" : "UNVERIFIED",
+          "active" : false,
+          "saleUnit" : "PRODUCT",
+          "moduleCount" : null
+        },
+        "price" : {
+          "amountKrw" : 459000,
+          "sourceName" : "SAMSUNG_CNH",
+          "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+          "observedAt" : "2026-10-09T16:29:31.420Z"
+        },
+        "status" : "OK",
+        "freshness" : "EXPIRED"
+      } ]
+    },
+    "errorStatus" : null
+  } ]
+}

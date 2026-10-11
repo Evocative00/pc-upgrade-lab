@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "stage": "APPROVED_AND_APPLIED",
+  "verifiedAt": "2026-10-10T09:40:08.420Z",
+  "approval": {
+    "source": "Explicit user confirmation",
+    "scope": "307 central lookups, 75 reviewed prices, 293 existing MySQL canonical bindings, free Worker redeploy, backend restart"
+  },
+  "worker": {
+    "origin": "https://pc-upgrade-shared-prices.joony1024.workers.dev",
+    "deployedAt": "2026-10-10T09:25:45.216455Z",
+    "deploymentId": "2065fb60-1bf7-408b-b310-22b01dd0ea1b",
+    "versionId": "71504364-1cef-40ec-9bff-96a584991895",
+    "trafficPercent": 100,
+    "catalogVersion": "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+    "priceVersion": "prices-v1-cdb8e354e2932f2d53045f76fe7f284dd8529527e43952a385304defd58984d4",
+    "actualJavaHttpsVerification": {
+      "products": 307,
+      "priced": 75,
+      "unpriced": 232,
+      "unauthenticatedStatus": 401,
+      "requestLimit": 100,
+      "noStore": true,
+      "noSniff": true,
+      "passed": true
+    },
+    "compatibilityV1": {
+      "products": 14,
+      "prices": 8
+    },
+    "newPaidServices": 0,
+    "scheduledCollectors": 0
+  },
+  "mysql": {
+    "newCanonicalBindings": 293,
+    "preservedPilotBindings": 14,
+    "pricesWritten": 0,
+    "productsCreated": 0,
+    "modelsCreated": 0,
+    "transactionSucceeded": true,
+    "preservation": {
+      "comparedTables": 29,
+      "stableProductFields": "UNCHANGED",
+      "specifications": "UNCHANGED",
+      "prices": "UNCHANGED",
+      "pcLinks": "UNCHANGED",
+      "pilot14": "UNCHANGED"
+    },
+    "flyway": {
+      "version": 14,
+      "appliedNewMigrations": 0
+    }
+  },
+  "backend": {
+    "restarted": true,
+    "profile": "local",
+    "listeningPort": 8080,
+    "existingThreeSharedPriceEnvironmentVariablesPreserved": true
+  },
+  "homepageApi": {
+    "origin": "http://127.0.0.1:5173",
+    "products": 307,
+    "canonicalIdPresent": 307,
+    "origins": {
+      "SHARED": 307
+    },
+    "lookupStatuses": {
+      "NO_PRICE": 232,
+      "OK": 75
+    },
+    "freshness": {
+      "NO_PRICE": 232,
+      "FRESH": 75
+    },
+    "pricedProducts": 75,
+    "includedInTotal": 75,
+    "preservedIdsAndCommonFields": true,
+    "detailPriceVerified": {
+      "manufacturer": "Dell",
+      "modelName": "S2721DGF",
+      "amountKrw": 976500,
+      "observedAt": "2026-10-10T08:41:21.151Z"
+    }
+  },
+  "approvedPriceBundle": "data/catalog-shared/active-approved-prices.json",
+  "approvedPriceBundleSha256": "cdb8e354e2932f2d53045f76fe7f284dd8529527e43952a385304defd58984d4",
+  "remainingPrices": 232,
+  "excludedShippingAndPromotions": true,
+  "gitCommitOrPushPerformed": false
+}

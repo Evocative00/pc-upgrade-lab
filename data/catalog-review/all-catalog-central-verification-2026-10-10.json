@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "stage": "ALL_CATALOG_APPLY_AND_DEPLOY_CONFIRMATION_PENDING",
+  "observedAt": "2026-10-10T09:07:52.873Z",
+  "databaseWrites": 0,
+  "deployments": 0,
+  "mysqlReadOnlyPreflight": {
+    "status": "PASSED",
+    "databaseVersion": "8.4.11",
+    "checkedProducts": 307,
+    "newCanonicalBindings": 293,
+    "unchangedCanonicalBindings": 0,
+    "preservedPilotBindings": 14,
+    "priceWrites": 0,
+    "productCreates": 0,
+    "modelCreates": 0
+  },
+  "tests": {
+    "fullBackendBeforeFinalClockAndEvidenceReadChanges": 388,
+    "finalRelatedBackendAfterThoseChanges": 42,
+    "workerWithProposedPriceBundle": 524,
+    "failures": 0,
+    "workerTypecheck": "PASSED",
+    "workerBuild": "PASSED",
+    "realWranglerLocal": "PASSED",
+    "realJavaClientToLocalWorker": "PASSED"
+  },
+  "localWorker": {
+    "v1": { "products": 14, "prices": 8, "noPrice": 6 },
+    "v2": { "products": 307, "prices": 75, "noPrice": 232 }
+  },
+  "research": {
+    "initialUnpricedProductsSearched": 233,
+    "productsWithSearchCandidates": 150,
+    "searchRequestFailures": 0,
+    "candidatePagesInspected": 150,
+    "unverifiedRegularPriceCandidates": 74,
+    "candidatePricesImported": 0,
+    "additionalPriorityProductsReviewed": 12,
+    "additionalPriorityExactMappings": 0
+  },
+  "proposedPricesFile": "data/catalog-review/all-catalog-price-proposal-2026-10-10.json",
+  "backendEnvironmentChangesRequired": false,
+  "backendRestartRequiredAfterApprovedRollout": true,
+  "notes": [
+    "Seed evidence and pilot evidence are compared exactly using their original MySQL timestamp insertion contracts. Existing database timestamps are not modified and no offset tolerance is allowed.",
+    "Research candidate price values are not exact catalog prices and are excluded from the 75-product deployment proposal.",
+    "Current production remains v1 with 14 products and 8 prices until separately approved deployment."
+  ]
+}

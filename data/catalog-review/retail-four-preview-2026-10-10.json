@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "implementationApproved": true,
+  "databaseApplyApproved": false,
+  "pricePublicationApproved": false,
+  "candidates": [
+    {
+      "existingCanonicalId": "4328778c-84af-324b-bc60-e51891fff949",
+      "modelName": "Core Ultra 5 245K",
+      "status": "HELD",
+      "reason": "Actual domestic shipped BOX factory PN is not verified. No sale product or import row is prepared.",
+      "observation": {
+        "sourceName": "COMPUZONE",
+        "externalId": "1183680",
+        "price": {
+          "amountKrw": 330500,
+          "observedAt": "2026-10-10T11:54:09.804Z",
+          "evidenceUrl": "https://www.compuzone.co.kr/product/product_detail.htm?DivNo=0&MediumDivNo=1012&ProductNo=1183680",
+          "condition": "NEW",
+          "inStock": true
+        }
+      },
+      "proposedSaleProduct": null
+    },
+    {
+      "existingCanonicalId": "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+      "modelName": "Core Ultra 5 250K Plus",
+      "status": "HELD",
+      "reason": "Actual domestic shipped BOX factory PN is not verified. No sale product or import row is prepared.",
+      "observation": {
+        "sourceName": "ICODA",
+        "externalId": "1739432",
+        "price": {
+          "amountKrw": 342100,
+          "observedAt": "2026-10-10T11:54:11.251Z",
+          "evidenceUrl": "https://usr.icoda.co.kr/item/view/1739432",
+          "condition": "NEW",
+          "inStock": true
+        }
+      },
+      "proposedSaleProduct": null
+    },
+    {
+      "existingCanonicalId": "109952f9-01de-3293-9034-ab93de7f98d0",
+      "modelName": "MAG B860M MORTAR WIFI",
+      "status": "HELD",
+      "reason": "Domestic distributor is not identified in the reviewed MSI listing. No sale product or import row is prepared.",
+      "observation": {
+        "sourceName": "DANAWA",
+        "externalId": "74340266",
+        "price": {
+          "amountKrw": 260900,
+          "observedAt": "2026-10-10T11:55:20.872Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=74340266",
+          "condition": "NEW",
+          "inStock": true
+        }
+      },
+      "proposedSaleProduct": null
+    },
+    {
+      "existingCanonicalId": "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+      "modelName": "TUF GAMING B860-PLUS WIFI",
+      "status": "READY_FOR_APPROVAL",
+      "reason": "Exact ASUS motherboard model and Intek domestic single-board listing are reviewed. Manufacturer PN stays null; existing installed model and PC links are preserved.",
+      "observation": {
+        "sourceName": "DANAWA",
+        "externalId": "74255378",
+        "price": {
+          "amountKrw": 275350,
+          "observedAt": "2026-10-10T11:57:37.758Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+          "condition": "NEW",
+          "inStock": true
+        }
+      },
+      "proposedSaleProduct": {
+        "modelCanonicalId": "3650ed66-d0bf-3906-9a1c-a77544ce34cf",
+        "product": {
+          "type": "MOTHERBOARD",
+          "manufacturer": "ASUS",
+          "modelName": "TUF GAMING B860-PLUS WIFI",
+          "partNumber": null
+        },
+        "specification": {
+          "socketCode": "LGA1851",
+          "chipset": "Intel B860",
+          "formFactor": "ATX",
+          "memoryType": "DDR5",
+          "memoryFormFactor": "DIMM",
+          "memorySlotCount": 4,
+          "maxMemoryBytes": 274877906944,
+          "supportsEcc": false
+        },
+        "source": {
+          "sourceName": "MANUFACTURER",
+          "externalId": "asus:TUF GAMING B860-PLUS WIFI:retail:intek:2026-10-10",
+          "sourceRevision": "retail-preview-2026-10-10",
+          "sourceUrl": "https://www.asus.com/kr/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+          "rawPayload": {
+            "reviewedSaleConfiguration": {
+              "reviewId": "retail-board-asus-intek-2026-10-10",
+              "partType": "MOTHERBOARD",
+              "identityKind": "PHYSICAL_VARIANT",
+              "role": "PURCHASE_CANDIDATE",
+              "manufacturerModelName": "TUF GAMING B860-PLUS WIFI",
+              "domesticDistributor": "인텍앤컴퍼니",
+              "packageKind": "DOMESTIC_RETAIL_SINGLE_BOARD",
+              "unitCount": 1,
+              "socketCode": "LGA1851",
+              "memoryType": "DDR5",
+              "formFactor": "ATX",
+              "wifiIncluded": true,
+              "revisionScope": "Domestic named model/distributor listing does not declare a PCB revision; equivalence to any specific PCB revision is not asserted.",
+              "evidenceUrls": [
+                "https://www.asus.com/kr/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+                "https://prod.danawa.com/info/?pcode=74255378"
+              ],
+              "verifiedAt": "2026-10-10T11:57:37.400Z"
+            },
+            "officialFactsScope": "Exact named motherboard, socket, DDR, ATX form factor and WiFi inclusion. Existing approved model specification is reused; no activation, BIOS or revision equivalence is inferred."
+          },
+          "retrievedAt": "2026-10-10T11:57:37.758Z"
+        },
+        "identity": {
+          "sourceIdentity": {
+            "sourceName": "MANUFACTURER",
+            "externalId": "asus:TUF GAMING B860-PLUS WIFI:retail:intek:2026-10-10"
+          },
+          "identity": {
+            "canonicalId": "f5d69333-0ab1-382d-bc72-9434811daccf",
+            "type": "MOTHERBOARD",
+            "manufacturer": "ASUS",
+            "modelName": "TUF GAMING B860-PLUS WIFI",
+            "partNumber": null,
+            "identityKind": "PHYSICAL_VARIANT",
+            "role": "PURCHASE_CANDIDATE",
+            "verificationStatus": "UNVERIFIED",
+            "active": false,
+            "saleUnit": "PRODUCT",
+            "moduleCount": null
+          },
+          "reviewedSaleConfiguration": {
+            "reviewId": "retail-board-asus-intek-2026-10-10",
+            "partType": "MOTHERBOARD",
+            "identityKind": "PHYSICAL_VARIANT",
+            "role": "PURCHASE_CANDIDATE",
+            "manufacturerModelName": "TUF GAMING B860-PLUS WIFI",
+            "domesticDistributor": "인텍앤컴퍼니",
+            "packageKind": "DOMESTIC_RETAIL_SINGLE_BOARD",
+            "unitCount": 1,
+            "socketCode": "LGA1851",
+            "memoryType": "DDR5",
+            "formFactor": "ATX",
+            "wifiIncluded": true,
+            "revisionScope": "Domestic named model/distributor listing does not declare a PCB revision; equivalence to any specific PCB revision is not asserted.",
+            "evidenceUrls": [
+              "https://www.asus.com/kr/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+              "https://prod.danawa.com/info/?pcode=74255378"
+            ],
+            "verifiedAt": "2026-10-10T11:57:37.400Z"
+          }
+        },
+        "price": {
+          "product": {
+            "sourceName": "MANUFACTURER",
+            "externalId": "asus:TUF GAMING B860-PLUS WIFI:retail:intek:2026-10-10",
+            "manufacturer": "ASUS",
+            "modelName": "TUF GAMING B860-PLUS WIFI",
+            "partNumber": null,
+            "reviewedSaleConfiguration": {
+              "reviewId": "retail-board-asus-intek-2026-10-10",
+              "partType": "MOTHERBOARD",
+              "identityKind": "PHYSICAL_VARIANT",
+              "role": "PURCHASE_CANDIDATE",
+              "manufacturerModelName": "TUF GAMING B860-PLUS WIFI",
+              "domesticDistributor": "인텍앤컴퍼니",
+              "packageKind": "DOMESTIC_RETAIL_SINGLE_BOARD",
+              "unitCount": 1,
+              "socketCode": "LGA1851",
+              "memoryType": "DDR5",
+              "formFactor": "ATX",
+              "wifiIncluded": true,
+              "revisionScope": "Domestic named model/distributor listing does not declare a PCB revision; equivalence to any specific PCB revision is not asserted.",
+              "evidenceUrls": [
+                "https://www.asus.com/kr/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860-plus-wifi/techspec/",
+                "https://prod.danawa.com/info/?pcode=74255378"
+              ],
+              "verifiedAt": "2026-10-10T11:57:37.400Z"
+            }
+          },
+          "offer": {
+            "sourceName": "DANAWA",
+            "externalId": "74255378",
+            "sourceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+            "saleSku": "TUF GAMING B860-PLUS WIFI / 인텍앤컴퍼니 / DOMESTIC_RETAIL_SINGLE_BOARD",
+            "saleUnit": "PRODUCT",
+            "moduleCount": null,
+            "verifiedAt": "2026-10-10T11:57:37.400Z"
+          },
+          "price": {
+            "amountKrw": 275350,
+            "observedAt": "2026-10-10T11:57:37.758Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=74255378",
+            "condition": "NEW",
+            "inStock": true
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2511 @@
+{
+  "schemaVersion": 1,
+  "researchDate": "2026-10-09",
+  "categoryGroup": "CURRENT_AMD",
+  "scopeLimitations": [
+    "국내 Windows 데스크톱 업그레이드를 위한 최신 세대와 모델 누락 조사다. 실제 설치 수요·국내 인기 순위·추천 우선순위를 측정하지 않았다.",
+    "CPU 16종·AM5 800 계열 보드 4종은 조사 후보이며 실제 DB·seed·가격 파일에 반영하지 않았다. 국내 신품 구매 후보 승인 수는 0이다.",
+    "2026년 공식 모델까지 확인했다. 최신 Ryzen 9000 모델 12종은 기존 5종과 누락 후보 7종으로 구분한다. 모든 과거/OEM/PRO/지역 한정 SKU를 전수 조사했다는 뜻은 아니다.",
+    "국내 단품 제품 비교 페이지는 후보 16종에서 직접 확인했다. 도구의 본문이 캐시일 수 있어 확인 날짜가 실시간 재고·신품 상태·가격을 보장하지 않는다.",
+    "상품가·배송료·할인·프로모션은 수집하지 않았다. 0원·0몰·완제품 가격·해외 판매 가격을 국내 단품 신품 가격으로 사용하지 않는다.",
+    "AMD의 시리즈 번호와 마이크로아키텍처를 보존한다. 국내 판매 사이트의 5세대/6세대 등 표기를 검증 없이 CPU generation 숫자로 변환하지 않았다.",
+    "Ryzen AI 400 G/GE는 공식 AM5 소켓을 확인했지만 국내 소매·정확한 보드 BIOS 미확인으로 후보 수에서 제외하여 별도 보류했다.",
+    "제조사 세대 지원 설명·기본 TDP·M.2 개수만으로 CPU 호환·냉각·전력·NVMe/SATA 동작을 확정하지 않는다. 실제 SKU·보드 리비전·CPU 지원표가 필요하다.",
+    "기존 300종 비교는 저장소 검토표 기준이며 실제 로컬 MySQL 재점검을 포함하지 않는다."
+  ],
+  "summary": {
+    "candidateCount": 20,
+    "cpuCount": 16,
+    "motherboardCount": 4,
+    "domesticProductPagesChecked": 16,
+    "installedDemandNotMeasuredCount": 20,
+    "purchaseCandidatesApprovedCount": 0,
+    "heldProductCount": 6
+  },
+  "coverage": {
+    "existingCatalogReference": "data/catalog-review/catalog-selection-2026-10-09.json",
+    "existingAmdCpuCount": 39,
+    "existingAm4CpuCount": 21,
+    "existingAm5CpuCount": 18,
+    "existingAm5MotherboardCount": 24,
+    "latestOfficiallyReviewedMainstreamSeries": "Ryzen 9000 Series",
+    "ryzen9000": {
+      "reviewStatus": "OFFICIAL_MODEL_PAGES_REVIEWED",
+      "existingModels": [
+        "Ryzen 5 9600X",
+        "Ryzen 7 9700X",
+        "Ryzen 7 9800X3D",
+        "Ryzen 9 9900X",
+        "Ryzen 9 9950X"
+      ],
+      "missingCandidateModels": [
+        "Ryzen 9 9950X3D2 Dual Edition",
+        "Ryzen 9 9950X3D",
+        "Ryzen 9 9900X3D",
+        "Ryzen 7 9850X3D",
+        "Ryzen 7 9700F",
+        "Ryzen 5 9600",
+        "Ryzen 5 9500F"
+      ],
+      "reviewedModelCount": 12
+    },
+    "otherReviewedGenerations": [
+      "AM4 Ryzen 5000의 2024년 XT 갱신",
+      "AM5 Ryzen 7000의 F/X3D 추가 모델 및 2026년 7700X3D",
+      "AM5 Ryzen 8000의 G/F 추가 모델",
+      "AM5 Ryzen AI 400 G/GE 2026년 발표·공식 소켓 확인 후 소매/BIOS 보류"
+    ],
+    "motherboardChipsetsReviewed": [
+      "B840",
+      "B850",
+      "X870",
+      "X870E"
+    ],
+    "allHistoricalAndRegionalSkusExhaustivelyReviewed": false,
+    "knownRemainingCoverageGaps": [
+      "AM4의 GT·T·추가 XT/X3D 등 모든 저가·지역 한정 SKU 전수 조사",
+      "Ryzen 8300G·GE·PRO 등 OEM/기업용 CPU를 실제 설치 데이터와 연결하는 별도 조사",
+      "개별 판매 SKU·국내 유통·재고·실제 수요·보드 CPU 지원표"
+    ],
+    "officialSources": [
+      {
+        "url": "https://www.amd.com/en/products/processors/desktops/ryzen.html",
+        "title": "AMD Ryzen desktop processor families",
+        "checkedDate": "2026-10-09",
+        "supportedFacts": [
+          "현재 공식 Ryzen 데스크톱 제품군 및 9950X3D2 Dual Edition 소개"
+        ]
+      },
+      {
+        "url": "https://www.amd.com/en/products/processors/chipsets/am5.html",
+        "title": "AMD Socket AM5 chipsets",
+        "checkedDate": "2026-10-09",
+        "supportedFacts": [
+          "AM5의 Ryzen 7000/8000/9000 플랫폼과 800 계열 칩셋 구분",
+          "X870E/X870의 USB4 표준·B850/B840의 선택 기능 차이",
+          "B840의 CPU 오버클럭 비지원과 DDR5 메모리 오버클럭 지원"
+        ]
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R9-9950X3D2-DUAL-EDITION",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 9950X3D2 Dual Edition",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 9000 모델 구간을 보강한다. 2026년 공식 출시 모델까지 포함한 최신 범위 조사다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 9000 Series",
+        "architecture": "Zen 5",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 16,
+        "threadCount": 32,
+        "tdpW": 200,
+        "baseClockGhz": 4.3,
+        "maxBoostClockGhz": 5.6,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5600
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "5.0",
+        "launchDate": "2026-04-22",
+        "manufacturerLaunchDateRaw": "2026-04-22",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x3d2-dual-edition.html",
+          "title": "AMD Ryzen 9 9950X3D2 Dual Edition specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        },
+        {
+          "url": "https://newsroom.amd.com/news/amd-launches-ryzen-9-9950x3d2-dual-edition-processor/",
+          "title": "AMD launches Ryzen 9 9950X3D2 Dual Edition",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "2026년 4월 공식 출시 및 Dual Edition 구분"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=122634011",
+          "title": "AMD Ryzen 9 9950X3D2 Dual Edition (멀티팩)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 CPU 모델과 표시된 판매 구성을 확인했다. 개별 판매자의 현재 신품 상태·재고·보증·상품가는 검토하지 않았다. 확인 날짜는 실시간 판매 가능성을 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R9-9950X3D",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 9950X3D",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 9000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 9000 Series",
+        "architecture": "Zen 5",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 16,
+        "threadCount": 32,
+        "tdpW": 170,
+        "baseClockGhz": 4.3,
+        "maxBoostClockGhz": 5.7,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5600
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "5.0",
+        "launchDate": "2025-03-12",
+        "manufacturerLaunchDateRaw": "2025-03-12",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x3d.html",
+          "title": "AMD Ryzen 9 9950X3D specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?cate=11354486&pcode=77790914",
+          "title": "AMD Ryzen 9 9950X3D (멀티팩)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 CPU 모델과 표시된 판매 구성을 확인했다. 개별 판매자의 현재 신품 상태·재고·보증·상품가는 검토하지 않았다. 확인 날짜는 실시간 판매 가능성을 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R9-9900X3D",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 9900X3D",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 9000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 9000 Series",
+        "architecture": "Zen 5",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 12,
+        "threadCount": 24,
+        "tdpW": 120,
+        "baseClockGhz": 4.4,
+        "maxBoostClockGhz": 5.5,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5600
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "5.0",
+        "launchDate": "2025-03-12",
+        "manufacturerLaunchDateRaw": "2025-03-12",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9900x3d.html",
+          "title": "AMD Ryzen 9 9900X3D specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=77790890",
+          "title": "AMD Ryzen 9 9900X3D (멀티팩)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 CPU 모델과 표시된 판매 구성을 확인했다. 개별 판매자의 현재 신품 상태·재고·보증·상품가는 검토하지 않았다. 확인 날짜는 실시간 판매 가능성을 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R7-9850X3D",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 9850X3D",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 9000 모델 구간을 보강한다. 2026년 공식 출시 모델까지 포함한 최신 범위 조사다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 9000 Series",
+        "architecture": "Zen 5",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 8,
+        "threadCount": 16,
+        "tdpW": 120,
+        "baseClockGhz": 4.7,
+        "maxBoostClockGhz": 5.6,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5600
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "5.0",
+        "launchDate": "2026-01-29",
+        "manufacturerLaunchDateRaw": "2026-01-29",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9850x3d.html",
+          "title": "AMD Ryzen 7 9850X3D specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        },
+        {
+          "url": "https://newsroom.amd.com/news/amd-expands-ai-leadership-across-client-graphics/",
+          "title": "AMD CES 2026 desktop processor announcements",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "Ryzen 7 9850X3D의 2026년 공식 발표"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?cate=113990&pcode=104627927",
+          "title": "AMD Ryzen 7 9850X3D (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 CPU 모델과 표시된 판매 구성을 확인했다. 개별 판매자의 현재 신품 상태·재고·보증·상품가는 검토하지 않았다. 확인 날짜는 실시간 판매 가능성을 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R7-9700F",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 9700F",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 9000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 9000 Series",
+        "architecture": "Zen 5",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 8,
+        "threadCount": 16,
+        "tdpW": 65,
+        "baseClockGhz": 3.8,
+        "maxBoostClockGhz": 5.5,
+        "hasIntegratedGraphics": false,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5600
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "5.0",
+        "launchDate": "2025-09-16",
+        "manufacturerLaunchDateRaw": "2025-09-16",
+        "regionalAvailability": "NA"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다.",
+        "AMD 공식 지역 표시는 NA다. Intel Core i7-9700F와 이름 일부가 같아 검색·자동 매칭에서 제조사를 반드시 포함한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9700f.html",
+          "title": "AMD Ryzen 7 9700F specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 CPU 단품 신품 페이지를 확인하지 못했다. 해외 출시 또는 완제품 포함 판매를 국내 단품 소매 구매 가능으로 취급하지 않는다.",
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R5-9600",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 9600",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 9000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 9000 Series",
+        "architecture": "Zen 5",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 6,
+        "threadCount": 12,
+        "tdpW": 65,
+        "baseClockGhz": 3.8,
+        "maxBoostClockGhz": 5.2,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5600
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "5.0",
+        "launchDate": "2025-02-19",
+        "manufacturerLaunchDateRaw": "2025-02-19",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9600.html",
+          "title": "AMD Ryzen 5 9600 specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=77624045",
+          "title": "AMD Ryzen 5 9600 (벌크)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 CPU 모델과 표시된 판매 구성을 확인했다. 개별 판매자의 현재 신품 상태·재고·보증·상품가는 검토하지 않았다. 확인 날짜는 실시간 판매 가능성을 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R5-9500F",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 9500F",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 9000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 9000 Series",
+        "architecture": "Zen 5",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 6,
+        "threadCount": 12,
+        "tdpW": 65,
+        "baseClockGhz": 3.8,
+        "maxBoostClockGhz": 5,
+        "hasIntegratedGraphics": false,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5600
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5600
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "5.0",
+        "launchDate": "2025-09-08",
+        "manufacturerLaunchDateRaw": "2025-09-08",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9500f.html",
+          "title": "AMD Ryzen 5 9500F specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=97704881",
+          "title": "AMD Ryzen 5 9500F (멀티팩)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 CPU 모델과 표시된 판매 구성을 확인했다. 개별 판매자의 현재 신품 상태·재고·보증·상품가는 검토하지 않았다. 확인 날짜는 실시간 판매 가능성을 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R7-7700X3D",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 7700X3D",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 7000 모델 구간을 보강한다. 2026년 공식 출시 모델까지 포함한 최신 범위 조사다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 7000 Series",
+        "architecture": "Zen 4",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 8,
+        "threadCount": 16,
+        "tdpW": 120,
+        "baseClockGhz": 4,
+        "maxBoostClockGhz": 4.5,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5200
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 128,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "5.0",
+        "launchDate": "2026-07-16",
+        "manufacturerLaunchDateRaw": "2026-07-16",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다.",
+        "AMD 본문 제품명·제원·출시일로 모델을 확인했다. 페이지 이미지의 7800X3D 대체 텍스트를 동일 모델 근거로 사용하지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7700x3d.html",
+          "title": "AMD Ryzen 7 7700X3D specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 CPU 단품 신품 페이지를 확인하지 못했다. 해외 출시 또는 완제품 포함 판매를 국내 단품 소매 구매 가능으로 취급하지 않는다.",
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R5-7600X3D",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 7600X3D",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 7000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 7000 Series",
+        "architecture": "Zen 4",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 6,
+        "threadCount": 12,
+        "tdpW": 65,
+        "baseClockGhz": 4.1,
+        "maxBoostClockGhz": 4.7,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5200
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 128,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "5.0",
+        "launchDate": "2024-09-05",
+        "manufacturerLaunchDateRaw": "2024-09-05",
+        "regionalAvailability": "China, NA, EMEA"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7600x3d.html",
+          "title": "AMD Ryzen 5 7600X3D specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "국내 CPU 단품 신품 페이지를 확인하지 못했다. 해외 출시 또는 완제품 포함 판매를 국내 단품 소매 구매 가능으로 취급하지 않는다.",
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R5-7500X3D",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 7500X3D",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 7000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 7000 Series",
+        "architecture": "Zen 4",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 6,
+        "threadCount": 12,
+        "tdpW": 65,
+        "baseClockGhz": 4,
+        "maxBoostClockGhz": 4.5,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5200
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 128,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "5.0",
+        "launchDate": "2025-11-12",
+        "manufacturerLaunchDateRaw": "2025-11-12",
+        "regionalAvailability": "NA, EMEA, APJ"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다.",
+        "국내 비교 페이지 등록 시점과 AMD 제조사 출시일을 구분한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7500x3d.html",
+          "title": "AMD Ryzen 5 7500X3D specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://www.enuri.com/detail.jsp?modelno=141920991",
+          "title": "AMD Ryzen 5 7500X3D (멀티팩)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 CPU 모델과 표시된 판매 구성을 확인했다. 개별 판매자의 현재 신품 상태·재고·보증·상품가는 검토하지 않았다. 확인 날짜는 실시간 판매 가능성을 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R5-7400F",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 7400F",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 7000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 7000 Series",
+        "architecture": "Zen 4",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 6,
+        "threadCount": 12,
+        "tdpW": 65,
+        "baseClockGhz": 3.7,
+        "maxBoostClockGhz": 4.7,
+        "hasIntegratedGraphics": false,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5200
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 128,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "5.0",
+        "launchDate": "2025-01-09",
+        "manufacturerLaunchDateRaw": "2025-01-09",
+        "regionalAvailability": "China, APJ"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7400f.html",
+          "title": "AMD Ryzen 5 7400F specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=97705328",
+          "title": "AMD Ryzen 5 7400F (멀티팩)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 CPU 모델과 표시된 판매 구성을 확인했다. 개별 판매자의 현재 신품 상태·재고·보증·상품가는 검토하지 않았다. 확인 날짜는 실시간 판매 가능성을 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R5-8500G",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 8500G",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 8000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 8000 Series",
+        "architecture": "2x Zen 4 + 4x Zen 4c",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 6,
+        "threadCount": 12,
+        "tdpW": 65,
+        "baseClockGhz": 3.5,
+        "maxBoostClockGhz": 5,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5200
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 96,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "4.0",
+        "launchDate": null,
+        "manufacturerLaunchDateRaw": "Q1 2024",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다.",
+        "Zen 4 2코어·Zen 4c 4코어 구성이다. 공식 페이지의 LPDDR5 정보는 이 AM5 데스크톱 카탈로그의 교체용 UDIMM으로 채택하지 않는다. PCIe 레인 구성과 보드 슬롯 제한을 따로 확인한다.",
+        "Ryzen 8000 사용 시 보드의 그래픽 슬롯 폭·M.2 활성화 조건이 Ryzen 7000/9000과 다를 수 있다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/8000-series/amd-ryzen-5-8500g.html",
+          "title": "AMD Ryzen 5 8500G specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시 범위 Q1 2024"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=60170150",
+          "title": "AMD Ryzen 5 8500G (멀티팩)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 CPU 모델과 표시된 판매 구성을 확인했다. 개별 판매자의 현재 신품 상태·재고·보증·상품가는 검토하지 않았다. 확인 날짜는 실시간 판매 가능성을 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R5-8400F",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 5 8400F",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 8000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 8000 Series",
+        "architecture": "Zen 4",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 6,
+        "threadCount": 12,
+        "tdpW": 65,
+        "baseClockGhz": 4.2,
+        "maxBoostClockGhz": 4.7,
+        "hasIntegratedGraphics": false,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5200
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "4.0",
+        "launchDate": "2024-04-01",
+        "manufacturerLaunchDateRaw": "2024-04-01",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다.",
+        "Ryzen 8000 사용 시 보드의 그래픽 슬롯 폭·M.2 활성화 조건이 Ryzen 7000/9000과 다를 수 있다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/8000-series/amd-ryzen-5-8400f.html",
+          "title": "AMD Ryzen 5 8400F specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=53626130",
+          "title": "AMD Ryzen 5 8400F (멀티팩)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 CPU 모델과 표시된 판매 구성을 확인했다. 개별 판매자의 현재 신품 상태·재고·보증·상품가는 검토하지 않았다. 확인 날짜는 실시간 판매 가능성을 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R7-8700F",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 8700F",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 8000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 8000 Series",
+        "architecture": "Zen 4",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "coreCount": 8,
+        "threadCount": 16,
+        "tdpW": 65,
+        "baseClockGhz": 4.1,
+        "maxBoostClockGhz": 5,
+        "hasIntegratedGraphics": false,
+        "memorySupport": [
+          {
+            "memoryType": "DDR5",
+            "standardDataRatesMts": [
+              3600,
+              5200
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 5200
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 3600
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 3600
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 256,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "4.0",
+        "launchDate": "2024-04-01",
+        "manufacturerLaunchDateRaw": "2024-04-01",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM5 CPU다. 소켓과 칩셋 계열은 플랫폼 조건이며 정확한 보드 CPU 지원표·리비전·최소 BIOS를 확인한 뒤 호환 근거를 승인한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다.",
+        "Ryzen 8000 사용 시 보드의 그래픽 슬롯 폭·M.2 활성화 조건이 Ryzen 7000/9000과 다를 수 있다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/8000-series/amd-ryzen-7-8700f.html",
+          "title": "AMD Ryzen 7 8700F specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=53626127",
+          "title": "AMD Ryzen 7 8700F (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 CPU 모델과 표시된 판매 구성을 확인했다. 개별 판매자의 현재 신품 상태·재고·보증·상품가는 검토하지 않았다. 확인 날짜는 실시간 판매 가능성을 보장하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R7-5800XT",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 7 5800XT",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 5000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 5000 Series",
+        "architecture": "Zen 3",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM4",
+        "manufacturerSocketLabel": "AM4",
+        "platformGroupCode": "AM4",
+        "coreCount": 8,
+        "threadCount": 16,
+        "tdpW": 105,
+        "baseClockGhz": 3.8,
+        "maxBoostClockGhz": 4.8,
+        "hasIntegratedGraphics": false,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              2667,
+              2933,
+              3200
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 3200
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 3200
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 2933
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 2667
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 128,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "4.0",
+        "launchDate": "2024-07-31",
+        "manufacturerLaunchDateRaw": "2024-07-31",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM4 CPU다. AM5 보드와 연결하지 않으며 기존 보드의 정확한 모델·리비전·CPU 지원표·최소 BIOS를 확인해야 한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-7-5800xt.html",
+          "title": "AMD Ryzen 7 5800XT specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=62164991",
+          "title": "AMD Ryzen 7 5800XT (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 비교 페이지의 해당 모델·정품 판매 구성은 확인했다. 희소 판매점 또는 0원 표시는 구매 가능한 상품가로 사용하지 않는다. 개별 판매자 신품 상태·재고·보증·상품가는 미검토다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?",
+        "국내 비교 페이지의 희소 판매점·0원 표시는 상품가 근거로 쓰지 않는다. 실제 신품 거래 가능성이 확인되면 구매 후보로 검토한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-CPU-R9-5900XT",
+      "category": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 9 5900XT",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 300종에 없는 Ryzen 5000 모델 구간을 보강한다. 세대 내 X3D·F/G 또는 AM4 갱신 모델 누락을 검토한다. 인기 순위 또는 국내 신품 구매 추천 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "MODEL_AND_CAPACITY_COVERAGE_GAP"
+      },
+      "specification": {
+        "processorSeries": "Ryzen 5000 Series",
+        "architecture": "Zen 3",
+        "verticalSegment": "DESKTOP",
+        "socketCode": "AM4",
+        "manufacturerSocketLabel": "AM4",
+        "platformGroupCode": "AM4",
+        "coreCount": 16,
+        "threadCount": 32,
+        "tdpW": 105,
+        "baseClockGhz": 3.3,
+        "maxBoostClockGhz": 4.8,
+        "hasIntegratedGraphics": false,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              2667,
+              2933,
+              3200
+            ],
+            "configurationLimits": [
+              {
+                "configuration": "2x1R",
+                "dataRateMts": 3200
+              },
+              {
+                "configuration": "2x2R",
+                "dataRateMts": 3200
+              },
+              {
+                "configuration": "4x1R",
+                "dataRateMts": 2933
+              },
+              {
+                "configuration": "4x2R",
+                "dataRateMts": 2667
+              }
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryGb": 128,
+        "memoryChannelCount": 2,
+        "pciExpressVersion": "4.0",
+        "launchDate": "2024-07-31",
+        "manufacturerLaunchDateRaw": "2024-07-31",
+        "regionalAvailability": "Global"
+      },
+      "compatibilityNotes": [
+        "AM4 CPU다. AM5 보드와 연결하지 않으며 기존 보드의 정확한 모델·리비전·CPU 지원표·최소 BIOS를 확인해야 한다.",
+        "메모리 표준 속도는 DIMM 개수와 랭크 구성별 상한이다. EXPO/XMP 오버클럭 속도나 모든 보드·메모리 조합의 동작 보장을 뜻하지 않는다.",
+        "제조사 기본 TDP와 실제 최대 시스템 소비전력은 별개다. 쿨러·전원·케이스 요구 조건은 별도 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "설치 CPU 모델과 국내 정품 박스·멀티팩·벌크·중고 판매 SKU를 분리한다. 조사 단계의 partNumber=null은 미확인 판매 SKU를 뜻한다.",
+        "F·G·X·XT·X3D·X3D2 및 Dual Edition 등 접미사를 제거하여 다른 제품과 합치지 않는다.",
+        "5900XT는 16코어·32스레드이며 12코어·24스레드인 기존 5900X와 다른 모델이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-9-5900xt.html",
+          "title": "AMD Ryzen 9 5900XT specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "공식 모델·시리즈·아키텍처·데스크톱 구분",
+            "코어·스레드·기본 TDP·베이스/최대 부스트 클럭",
+            "소켓·지원 메모리 및 DIMM/랭크별 표준 속도·채널·최대 용량",
+            "PCIe 버전·내장 그래픽 존재·지역 표기",
+            "제조사 출시일"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=62165036",
+          "title": "AMD Ryzen 9 5900XT (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 비교 페이지의 해당 모델·정품 판매 구성은 확인했다. 희소 판매점 또는 0원 표시는 구매 가능한 상품가로 사용하지 않는다. 개별 판매자 신품 상태·재고·보증·상품가는 미검토다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 국내 신품 판매 SKU·유통사·보증·구성품을 어느 것으로 승인할 것인가?",
+        "실제 설치 또는 조회 수요와 구매 후보 적합성을 어떤 자료로 확인할 것인가?",
+        "연결할 정확한 보드의 CPU 지원표와 최소 BIOS·냉각 조건이 확인되었는가?",
+        "국내 비교 페이지의 희소 판매점·0원 표시는 상품가 근거로 쓰지 않는다. 실제 신품 거래 가능성이 확인되면 구매 후보로 검토한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-MB-ASROCK-B840M-HVS",
+      "category": "MOTHERBOARD",
+      "manufacturer": "ASRock",
+      "modelName": "B840M-HVS",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 AM5 보드 24종에는 없는 B840 계열을 보강하는 대표 모델 후보다. 국내 인기 순위 또는 CPU별 호환·신품 구매 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "chipset": "B840",
+        "formFactor": "MICRO_ATX",
+        "dimensionsMm": [
+          244,
+          229
+        ],
+        "boardRevision": null,
+        "supportedProcessorSeries": [
+          "Ryzen 9000",
+          "Ryzen 8000",
+          "Ryzen 7000"
+        ],
+        "memoryType": "DDR5",
+        "dimmSlotCount": 2,
+        "maxMemoryGb": 128,
+        "sataPortCount": 2,
+        "m2SlotCount": 2,
+        "m2Slots": [
+          {
+            "slotCode": "M2_1",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2280"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CPU",
+            "maximumLink": "PCIe 4.0 x4"
+          },
+          {
+            "slotCode": "M2_2",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2260",
+              "2280"
+            ],
+            "protocols": [
+              "NVME",
+              "SATA"
+            ],
+            "source": "CHIPSET",
+            "maximumLink": "PCIe 3.0 x4 / SATA 6Gb/s"
+          }
+        ]
+      },
+      "lifeCycleStatus": "MANUFACTURER_EOL",
+      "lifeCycleDateRaw": "2026/May",
+      "compatibilityNotes": [
+        "제품의 세대 지원 소개는 개별 CPU·보드 리비전·최소 BIOS를 확인한 호환 근거와 다르다. 특히 2026년 추가 CPU는 정확한 지원표가 필요하다.",
+        "그래픽 슬롯은 Ryzen 9000/7000에서 PCIe 4.0 x16, Phoenix 1에서 x8, Phoenix 2에서 x4다.",
+        "M2_2는 NVMe와 SATA를 모두 지원한다. M.2 폼팩터만으로 프로토콜을 확정하지 않는다.",
+        "제조사가 2026년 5월 생산 종료를 명시했다. 설치 PC 식별용 후보다. 국내 신품 구매 후보로 승인하지 않는다."
+      ],
+      "identificationNotes": [
+        "B840M-HVS와 다른 B840·B850 모델을 합치지 않는다.",
+        "공식 페이지는 지역에 따라 판매되지 않을 수 있음을 명시한다. 국내 유통사·PCB 리비전은 미확인이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.asrock.com/mb/AMD/B840M-HVS/index.asp",
+          "title": "ASRock B840M-HVS specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "AM5·B840 및 Ryzen 9000/8000/7000 지원 계열",
+            "Micro ATX·DIMM 2개·DDR5 최대 128GB·SATA 2개·M.2 2개",
+            "M.2 프로토콜 및 CPU별 그래픽 슬롯 폭",
+            "2026년 5월 제조사 생산 종료 표기"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "NEEDS_IDENTITY_REVIEW",
+      "openQuestions": [
+        "정확한 PCB 리비전·판매 SKU·국내 유통사·보증이 확인되었는가?",
+        "연결할 CPU 모델별 지원 여부와 최소 BIOS·메모리 QVL이 확인되었는가?",
+        "M.2 공유·비활성화·CPU별 슬롯 제한을 DB의 구조화 호환 근거로 어떻게 저장할 것인가?",
+        "국내 신품 단품 유통을 확인하지 못했다. 제조사 생산 종료 상태를 유지한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-MB-ASROCK-B850M-PRO-RS",
+      "category": "MOTHERBOARD",
+      "manufacturer": "ASRock",
+      "modelName": "B850M Pro RS",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 AM5 보드 24종에는 없는 B850 계열을 보강하는 대표 모델 후보다. 국내 인기 순위 또는 CPU별 호환·신품 구매 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "chipset": "B850",
+        "formFactor": "MICRO_ATX",
+        "dimensionsMm": [
+          244,
+          244
+        ],
+        "boardRevision": null,
+        "supportedProcessorSeries": [
+          "Ryzen 9000",
+          "Ryzen 8000",
+          "Ryzen 7000"
+        ],
+        "memoryType": "DDR5",
+        "dimmSlotCount": 4,
+        "maxMemoryGb": 256,
+        "sataPortCount": 4,
+        "m2SlotCount": 3,
+        "m2Slots": [
+          {
+            "slotCode": "M2_1",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2280"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CPU",
+            "maximumLink": "PCIe 5.0 x4",
+            "conditions": [
+              "Ryzen 7000/9000: 5.0 x4; Phoenix 1: 4.0 x4; Phoenix 2: 4.0 x2"
+            ]
+          },
+          {
+            "slotCode": "M2_2",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2280"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CHIPSET",
+            "maximumLink": "PCIe 4.0 x4"
+          },
+          {
+            "slotCode": "M2_3",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2280"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CPU",
+            "maximumLink": "PCIe 4.0 x4",
+            "conditions": [
+              "사용 시 PCIE2 비활성화"
+            ]
+          }
+        ]
+      },
+      "lifeCycleStatus": "MANUFACTURER_IN_PRODUCTION",
+      "lifeCycleDateRaw": null,
+      "compatibilityNotes": [
+        "제품의 세대 지원 소개는 개별 CPU·보드 리비전·최소 BIOS를 확인한 호환 근거와 다르다. 특히 2026년 추가 CPU는 정확한 지원표가 필요하다.",
+        "M2_3에 장치를 연결하면 PCIE2가 비활성화된다.",
+        "M2_1은 CPU에 따라 PCIe 5.0 x4, 4.0 x4 또는 4.0 x2다. 주요 그래픽 슬롯 폭도 Phoenix 1/2 사용 시 감소한다.",
+        "보드 공식 표준과 EXPO/XMP 오버클럭 속도를 구분하고 DIMM별 메모리 QVL을 확인한다."
+      ],
+      "identificationNotes": [
+        "Pro RS와 Pro RS WiFi·다른 접미사 제품을 합치지 않는다.",
+        "국내 비교 페이지의 대원씨티에스 유통 모델과 제조사 기본 모델을 연결하기 위한 후보다. 실제 SKU·PCB 리비전은 미확인이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS/index.asp",
+          "title": "ASRock B850M Pro RS specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "AM5·B850 및 Ryzen 9000/8000/7000 지원 계열",
+            "Micro ATX·DIMM 4개·DDR5 최대 256GB·SATA 4개·M.2 3개",
+            "CPU별 M2_1 링크 및 M2_3/PCIE2 공유 조건",
+            "제조사 생산 중 표기"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=75538394",
+          "title": "ASRock B850M Pro RS 대원씨티에스",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 모델과 표시된 유통사 또는 판매 구성을 확인했다. 현재 개별 판매자 신품 상태·재고·보증·SKU·상품가는 미검토다. 제조사 제원과 비교 페이지 제원이 다르면 제조사 조건 및 실제 BIOS를 재검토한다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 PCB 리비전·판매 SKU·국내 유통사·보증이 확인되었는가?",
+        "연결할 CPU 모델별 지원 여부와 최소 BIOS·메모리 QVL이 확인되었는가?",
+        "M.2 공유·비활성화·CPU별 슬롯 제한을 DB의 구조화 호환 근거로 어떻게 저장할 것인가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-MB-ASUS-TUF-GAMING-X870-PLUS-WIFI",
+      "category": "MOTHERBOARD",
+      "manufacturer": "ASUS",
+      "modelName": "TUF GAMING X870-PLUS WIFI",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 AM5 보드 24종에는 없는 X870 계열을 보강하는 대표 모델 후보다. 국내 인기 순위 또는 CPU별 호환·신품 구매 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "chipset": "X870",
+        "formFactor": "ATX",
+        "dimensionsMm": [
+          305,
+          244
+        ],
+        "boardRevision": null,
+        "supportedProcessorSeries": [
+          "Ryzen 9000",
+          "Ryzen 8000",
+          "Ryzen 7000"
+        ],
+        "memoryType": "DDR5",
+        "dimmSlotCount": 4,
+        "maxMemoryGb": 256,
+        "sataPortCount": 2,
+        "m2SlotCount": 4,
+        "m2Slots": [
+          {
+            "slotCode": "M2_1",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2280"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CPU",
+            "maximumLink": "PCIe 5.0 x4",
+            "conditions": [
+              "Ryzen 9000/7000: 5.0 x4; Ryzen 8000: 4.0 x4"
+            ]
+          },
+          {
+            "slotCode": "M2_2",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2280"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CPU",
+            "maximumLink": "PCIe 5.0 x4",
+            "conditions": [
+              "Ryzen 8000: 비활성화; 사용 시 주요 PCIEX16(G5) x8"
+            ]
+          },
+          {
+            "slotCode": "M2_3",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2280"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CHIPSET",
+            "maximumLink": "PCIe 4.0 x4"
+          },
+          {
+            "slotCode": "M2_4",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2242",
+              "2260",
+              "2280",
+              "22110"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CHIPSET",
+            "maximumLink": "PCIe 4.0 x4",
+            "conditions": [
+              "사용 시 PCIEX16(G4) 비활성화"
+            ]
+          }
+        ]
+      },
+      "lifeCycleStatus": "NOT_REVIEWED",
+      "lifeCycleDateRaw": null,
+      "compatibilityNotes": [
+        "제품의 세대 지원 소개는 개별 CPU·보드 리비전·최소 BIOS를 확인한 호환 근거와 다르다. 특히 2026년 추가 CPU는 정확한 지원표가 필요하다.",
+        "Ryzen 8000에서는 M2_2를 사용할 수 없다.",
+        "M2_2 사용 시 주요 GPU 슬롯은 x8, M2_4 사용 시 하단 PCIEX16(G4)는 비활성화된다.",
+        "제조사 현재 메모리 최대 용량은 256GB이며 국내 비교 페이지의 192GB 표기와 다르다. 실제 BIOS·메모리 QVL로 재확인한 뒤 제원을 승인한다."
+      ],
+      "identificationNotes": [
+        "X870-PLUS WIFI와 B650/X670E의 유사한 TUF 이름을 합치지 않는다.",
+        "국내 유통사가 STCOM·인텍앤컴퍼니·대원씨티에스 등으로 달라질 수 있다. 이번에 직접 확인한 페이지는 STCOM이다. 판매 SKU·PCB 리비전은 미확인이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.asus.com/kr/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/techspec/",
+          "title": "ASUS TUF GAMING X870-PLUS WIFI specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "AM5·X870 및 Ryzen 9000/8000/7000 지원 계열",
+            "ATX·DIMM 4개·DDR5 최대 256GB·SATA 2개·M.2 4개",
+            "CPU별 M.2 활성화·GPU 링크 감소·하단 슬롯 비활성화 조건"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=67695563",
+          "title": "ASUS TUF Gaming X870-PLUS WIFI STCOM",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 모델과 표시된 유통사 또는 판매 구성을 확인했다. 현재 개별 판매자 신품 상태·재고·보증·SKU·상품가는 미검토다. 제조사 제원과 비교 페이지 제원이 다르면 제조사 조건 및 실제 BIOS를 재검토한다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 PCB 리비전·판매 SKU·국내 유통사·보증이 확인되었는가?",
+        "연결할 CPU 모델별 지원 여부와 최소 BIOS·메모리 QVL이 확인되었는가?",
+        "M.2 공유·비활성화·CPU별 슬롯 제한을 DB의 구조화 호환 근거로 어떻게 저장할 것인가?"
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "CURRENT-AMD-MB-MSI-MAG-X870E-TOMAHAWK-WIFI",
+      "category": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "MAG X870E TOMAHAWK WIFI",
+      "partNumber": null,
+      "role": "BOTH",
+      "reasonForSelection": "기존 AM5 보드 24종에는 없는 X870E 계열을 보강하는 대표 모델 후보다. 국내 인기 순위 또는 CPU별 호환·신품 구매 승인을 뜻하지 않는다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "AM5",
+        "manufacturerSocketLabel": "AM5",
+        "platformGroupCode": "AM5",
+        "chipset": "X870E",
+        "formFactor": "ATX",
+        "dimensionsMm": [
+          304.8,
+          243.84
+        ],
+        "boardRevision": null,
+        "supportedProcessorSeries": [
+          "Ryzen 9000",
+          "Ryzen 8000",
+          "Ryzen 7000"
+        ],
+        "memoryType": "DDR5",
+        "dimmSlotCount": 4,
+        "maxMemoryGb": 256,
+        "sataPortCount": 4,
+        "m2SlotCount": 4,
+        "m2Slots": [
+          {
+            "slotCode": "M2_1",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2280",
+              "22110"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CPU",
+            "maximumLink": "PCIe 5.0 x4",
+            "conditions": [
+              "Ryzen 9000/7000: 5.0 x4; Ryzen 8000: 4.0 x4"
+            ]
+          },
+          {
+            "slotCode": "M2_2",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2260",
+              "2280"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CPU",
+            "maximumLink": "PCIe 5.0 x4",
+            "conditions": [
+              "Ryzen 9000/7000: 5.0 x4; 8700/8600/8400: 4.0 x4; 8500/8300: 비활성화",
+              "후면 USB4와 레인 공유; 동시 사용 시 각각 x2; BIOS에서 M2_2 x4 설정 시 후면 USB4 비활성화"
+            ]
+          },
+          {
+            "slotCode": "M2_3",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2260",
+              "2280"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CHIPSET",
+            "maximumLink": "PCIe 4.0 x4"
+          },
+          {
+            "slotCode": "M2_4",
+            "keyCode": "M",
+            "formFactorCodes": [
+              "2260",
+              "2280"
+            ],
+            "protocols": [
+              "NVME"
+            ],
+            "source": "CHIPSET",
+            "maximumLink": "PCIe 4.0 x4"
+          }
+        ]
+      },
+      "lifeCycleStatus": "NOT_REVIEWED",
+      "lifeCycleDateRaw": null,
+      "compatibilityNotes": [
+        "제품의 세대 지원 소개는 개별 CPU·보드 리비전·최소 BIOS를 확인한 호환 근거와 다르다. 특히 2026년 추가 CPU는 정확한 지원표가 필요하다.",
+        "GPU 슬롯은 Ryzen 9000/7000에서 PCIe 5.0 x16, 8700/8600/8400에서 PCIe 4.0 x8, 8500/8300에서 PCIe 4.0 x4다.",
+        "M2_2와 후면 USB4 공유·CPU별 M2_2 비활성화 조건을 확인한다.",
+        "CUDIMM은 클럭 드라이버 우회 모드만 지원하며 BIOS·CPU별 부팅 가능성이 달라질 수 있다. UDIMM과 동일하게 무조건 호환 처리하지 않는다."
+      ],
+      "identificationNotes": [
+        "MAG X870E TOMAHAWK WIFI와 MAX·PZ 등 다른 접미사 모델을 합치지 않는다.",
+        "공식 표기의 보드 치수는 304.8×243.84mm다. 실제 판매 SKU·PCB 리비전은 미확인이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.msi.com/Motherboard/MAG-X870E-TOMAHAWK-WIFI/Specification",
+          "title": "MSI MAG X870E TOMAHAWK WIFI specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "AM5·X870E 및 Ryzen 9000/8000/7000 지원 계열",
+            "ATX 치수·DIMM 4개·DDR5 최대 256GB·SATA 4개·M.2 4개",
+            "CPU별 그래픽/M.2 링크·M2_2/USB4 레인 공유 및 비활성화 조건",
+            "CUDIMM 우회 모드 조건"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=75857021",
+          "title": "MSI MAG X870E 토마호크 WIFI",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "국내 제품 비교 페이지에서 정확한 모델과 표시된 유통사 또는 판매 구성을 확인했다. 현재 개별 판매자 신품 상태·재고·보증·SKU·상품가는 미검토다. 제조사 제원과 비교 페이지 제원이 다르면 제조사 조건 및 실제 BIOS를 재검토한다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "정확한 PCB 리비전·판매 SKU·국내 유통사·보증이 확인되었는가?",
+        "연결할 CPU 모델별 지원 여부와 최소 BIOS·메모리 QVL이 확인되었는가?",
+        "M.2 공유·비활성화·CPU별 슬롯 제한을 DB의 구조화 호환 근거로 어떻게 저장할 것인가?"
+      ],
+      "notInExistingCatalog": true
+    }
+  ],
+  "heldProducts": [
+    {
+      "modelName": "Ryzen AI 7 450G",
+      "manufacturer": "AMD",
+      "category": "CPU",
+      "processorSeries": "Ryzen AI 400 Series",
+      "socketCode": "AM5",
+      "coreCount": 8,
+      "threadCount": 16,
+      "tdpW": 65,
+      "status": "HOLD_RETAIL_AND_BIOS_NOT_VERIFIED",
+      "proposedRole": "INSTALLED_PC_REFERENCE",
+      "includedInCandidateCount": false,
+      "priceStatus": "NOT_COLLECTED",
+      "reasonForHold": "공식 AM5 데스크톱 제품은 확인했다. 2026년 3월 발표는 HP·Lenovo OEM 시스템의 2분기 공급 예정 근거이며 현재 국내 박스 단품·실제 신품 소매·정확한 보드 CPU 지원표 확인을 대신하지 않는다.",
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/ai-400-series/amd-ryzen-ai-7-450g.html",
+          "title": "AMD Ryzen AI 7 450G desktop specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "Ryzen AI 400 데스크톱 제품명·AM5 소켓·코어/스레드·기본 TDP"
+          ]
+        },
+        {
+          "url": "https://ir.amd.com/news-events/press-releases/detail/1281/amd-gives-consumers-and-businesses-more-ai-pc-options-with-expanded-ryzen-ai-400-series-portfolio",
+          "title": "AMD Ryzen AI 400 desktop announcement",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "2026년 3월 2일 발표·G/GE 모델 구분·AM5 OEM 시스템의 2분기 공급 예정"
+          ]
+        }
+      ],
+      "openQuestions": [
+        "현재 국내 CPU 단품 소매 SKU·신품 판매 근거가 있는가?",
+        "해당 정확한 AM5 보드의 CPU 지원표·최소 BIOS·OEM 제한이 확인되었는가?"
+      ]
+    },
+    {
+      "modelName": "Ryzen AI 5 440G",
+      "manufacturer": "AMD",
+      "category": "CPU",
+      "processorSeries": "Ryzen AI 400 Series",
+      "socketCode": "AM5",
+      "coreCount": 6,
+      "threadCount": 12,
+      "tdpW": 65,
+      "status": "HOLD_RETAIL_AND_BIOS_NOT_VERIFIED",
+      "proposedRole": "INSTALLED_PC_REFERENCE",
+      "includedInCandidateCount": false,
+      "priceStatus": "NOT_COLLECTED",
+      "reasonForHold": "공식 AM5 데스크톱 제품은 확인했다. 2026년 3월 발표는 HP·Lenovo OEM 시스템의 2분기 공급 예정 근거이며 현재 국내 박스 단품·실제 신품 소매·정확한 보드 CPU 지원표 확인을 대신하지 않는다.",
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/ai-400-series/amd-ryzen-ai-5-440g.html",
+          "title": "AMD Ryzen AI 5 440G desktop specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "Ryzen AI 400 데스크톱 제품명·AM5 소켓·코어/스레드·기본 TDP"
+          ]
+        },
+        {
+          "url": "https://ir.amd.com/news-events/press-releases/detail/1281/amd-gives-consumers-and-businesses-more-ai-pc-options-with-expanded-ryzen-ai-400-series-portfolio",
+          "title": "AMD Ryzen AI 400 desktop announcement",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "2026년 3월 2일 발표·G/GE 모델 구분·AM5 OEM 시스템의 2분기 공급 예정"
+          ]
+        }
+      ],
+      "openQuestions": [
+        "현재 국내 CPU 단품 소매 SKU·신품 판매 근거가 있는가?",
+        "해당 정확한 AM5 보드의 CPU 지원표·최소 BIOS·OEM 제한이 확인되었는가?"
+      ]
+    },
+    {
+      "modelName": "Ryzen AI 5 435G",
+      "manufacturer": "AMD",
+      "category": "CPU",
+      "processorSeries": "Ryzen AI 400 Series",
+      "socketCode": "AM5",
+      "coreCount": 6,
+      "threadCount": 12,
+      "tdpW": 65,
+      "status": "HOLD_RETAIL_AND_BIOS_NOT_VERIFIED",
+      "proposedRole": "INSTALLED_PC_REFERENCE",
+      "includedInCandidateCount": false,
+      "priceStatus": "NOT_COLLECTED",
+      "reasonForHold": "공식 AM5 데스크톱 제품은 확인했다. 2026년 3월 발표는 HP·Lenovo OEM 시스템의 2분기 공급 예정 근거이며 현재 국내 박스 단품·실제 신품 소매·정확한 보드 CPU 지원표 확인을 대신하지 않는다.",
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/ai-400-series/amd-ryzen-ai-5-435g.html",
+          "title": "AMD Ryzen AI 5 435G desktop specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "Ryzen AI 400 데스크톱 제품명·AM5 소켓·코어/스레드·기본 TDP"
+          ]
+        },
+        {
+          "url": "https://ir.amd.com/news-events/press-releases/detail/1281/amd-gives-consumers-and-businesses-more-ai-pc-options-with-expanded-ryzen-ai-400-series-portfolio",
+          "title": "AMD Ryzen AI 400 desktop announcement",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "2026년 3월 2일 발표·G/GE 모델 구분·AM5 OEM 시스템의 2분기 공급 예정"
+          ]
+        }
+      ],
+      "openQuestions": [
+        "현재 국내 CPU 단품 소매 SKU·신품 판매 근거가 있는가?",
+        "해당 정확한 AM5 보드의 CPU 지원표·최소 BIOS·OEM 제한이 확인되었는가?"
+      ]
+    },
+    {
+      "modelName": "Ryzen AI 7 450GE",
+      "manufacturer": "AMD",
+      "category": "CPU",
+      "processorSeries": "Ryzen AI 400 Series",
+      "socketCode": "AM5",
+      "coreCount": 8,
+      "threadCount": 16,
+      "tdpW": 35,
+      "status": "HOLD_RETAIL_AND_BIOS_NOT_VERIFIED",
+      "proposedRole": "INSTALLED_PC_REFERENCE",
+      "includedInCandidateCount": false,
+      "priceStatus": "NOT_COLLECTED",
+      "reasonForHold": "공식 AM5 데스크톱 제품은 확인했다. 2026년 3월 발표는 HP·Lenovo OEM 시스템의 2분기 공급 예정 근거이며 현재 국내 박스 단품·실제 신품 소매·정확한 보드 CPU 지원표 확인을 대신하지 않는다.",
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/ai-400-series/amd-ryzen-ai-7-450ge.html",
+          "title": "AMD Ryzen AI 7 450GE desktop specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "Ryzen AI 400 데스크톱 제품명·AM5 소켓·코어/스레드·기본 TDP"
+          ]
+        },
+        {
+          "url": "https://ir.amd.com/news-events/press-releases/detail/1281/amd-gives-consumers-and-businesses-more-ai-pc-options-with-expanded-ryzen-ai-400-series-portfolio",
+          "title": "AMD Ryzen AI 400 desktop announcement",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "2026년 3월 2일 발표·G/GE 모델 구분·AM5 OEM 시스템의 2분기 공급 예정"
+          ]
+        }
+      ],
+      "openQuestions": [
+        "현재 국내 CPU 단품 소매 SKU·신품 판매 근거가 있는가?",
+        "해당 정확한 AM5 보드의 CPU 지원표·최소 BIOS·OEM 제한이 확인되었는가?"
+      ]
+    },
+    {
+      "modelName": "Ryzen AI 5 440GE",
+      "manufacturer": "AMD",
+      "category": "CPU",
+      "processorSeries": "Ryzen AI 400 Series",
+      "socketCode": "AM5",
+      "coreCount": 6,
+      "threadCount": 12,
+      "tdpW": 35,
+      "status": "HOLD_RETAIL_AND_BIOS_NOT_VERIFIED",
+      "proposedRole": "INSTALLED_PC_REFERENCE",
+      "includedInCandidateCount": false,
+      "priceStatus": "NOT_COLLECTED",
+      "reasonForHold": "공식 AM5 데스크톱 제품은 확인했다. 2026년 3월 발표는 HP·Lenovo OEM 시스템의 2분기 공급 예정 근거이며 현재 국내 박스 단품·실제 신품 소매·정확한 보드 CPU 지원표 확인을 대신하지 않는다.",
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/ai-400-series/amd-ryzen-ai-5-440ge.html",
+          "title": "AMD Ryzen AI 5 440GE desktop specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "Ryzen AI 400 데스크톱 제품명·AM5 소켓·코어/스레드·기본 TDP"
+          ]
+        },
+        {
+          "url": "https://ir.amd.com/news-events/press-releases/detail/1281/amd-gives-consumers-and-businesses-more-ai-pc-options-with-expanded-ryzen-ai-400-series-portfolio",
+          "title": "AMD Ryzen AI 400 desktop announcement",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "2026년 3월 2일 발표·G/GE 모델 구분·AM5 OEM 시스템의 2분기 공급 예정"
+          ]
+        }
+      ],
+      "openQuestions": [
+        "현재 국내 CPU 단품 소매 SKU·신품 판매 근거가 있는가?",
+        "해당 정확한 AM5 보드의 CPU 지원표·최소 BIOS·OEM 제한이 확인되었는가?"
+      ]
+    },
+    {
+      "modelName": "Ryzen AI 5 435GE",
+      "manufacturer": "AMD",
+      "category": "CPU",
+      "processorSeries": "Ryzen AI 400 Series",
+      "socketCode": "AM5",
+      "coreCount": 6,
+      "threadCount": 12,
+      "tdpW": 35,
+      "status": "HOLD_RETAIL_AND_BIOS_NOT_VERIFIED",
+      "proposedRole": "INSTALLED_PC_REFERENCE",
+      "includedInCandidateCount": false,
+      "priceStatus": "NOT_COLLECTED",
+      "reasonForHold": "공식 AM5 데스크톱 제품은 확인했다. 2026년 3월 발표는 HP·Lenovo OEM 시스템의 2분기 공급 예정 근거이며 현재 국내 박스 단품·실제 신품 소매·정확한 보드 CPU 지원표 확인을 대신하지 않는다.",
+      "officialSources": [
+        {
+          "url": "https://www.amd.com/en/products/processors/desktops/ryzen/ai-400-series/amd-ryzen-ai-5-435ge.html",
+          "title": "AMD Ryzen AI 5 435GE desktop specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "Ryzen AI 400 데스크톱 제품명·AM5 소켓·코어/스레드·기본 TDP"
+          ]
+        },
+        {
+          "url": "https://ir.amd.com/news-events/press-releases/detail/1281/amd-gives-consumers-and-businesses-more-ai-pc-options-with-expanded-ryzen-ai-400-series-portfolio",
+          "title": "AMD Ryzen AI 400 desktop announcement",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "2026년 3월 2일 발표·G/GE 모델 구분·AM5 OEM 시스템의 2분기 공급 예정"
+          ]
+        }
+      ],
+      "openQuestions": [
+        "현재 국내 CPU 단품 소매 SKU·신품 판매 근거가 있는가?",
+        "해당 정확한 AM5 보드의 CPU 지원표·최소 BIOS·OEM 제한이 확인되었는가?"
+      ]
+    }
+  ],
+  "excludedScope": [
+    {
+      "group": "RYZEN_AI_PRO_400_DESKTOP",
+      "reason": "AM5 G/GE 기업용 6모델은 별도 PRO 지원·OEM 식별과 국내 소매 검토가 필요하여 일반 개인 업그레이드 구매 후보에서 제외한다.",
+      "models": [
+        "Ryzen AI 7 PRO 450G",
+        "Ryzen AI 5 PRO 440G",
+        "Ryzen AI 5 PRO 435G",
+        "Ryzen AI 7 PRO 450GE",
+        "Ryzen AI 5 PRO 440GE",
+        "Ryzen AI 5 PRO 435GE"
+      ],
+      "officialSources": [
+        {
+          "url": "https://ir.amd.com/news-events/press-releases/detail/1281/amd-gives-consumers-and-businesses-more-ai-pc-options-with-expanded-ryzen-ai-400-series-portfolio",
+          "title": "AMD Ryzen AI PRO 400 desktop announcement",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "PRO 데스크톱 G/GE 모델 구분"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "THREADRIPPER_WORKSTATION",
+      "reason": "Threadripper/Threadripper PRO·워크스테이션 소켓은 초기 국내 일반 데스크톱 업그레이드 범위 밖이다. 최신 출시 부재를 뜻하지 않는다."
+    },
+    {
+      "group": "MOBILE_SOLDERED_EMBEDDED_AND_OEM_BOARD_VARIANTS",
+      "reason": "노트북·BGA/납땜·임베디드·OEM 독자 보드 및 AI Max 완제품을 교체용 AM5 부품으로 추론하지 않는다."
+    },
+    {
+      "group": "FUTURE_OR_UNCONFIRMED_MAINSTREAM_RELEASES",
+      "reason": "Ryzen 10000·9600X3D 등 이 조사에서 공식 출시·제품 페이지를 확인하지 못한 모델은 소문 또는 예정 모델로 적재하지 않는다. 공식 확인 미완료를 절대적인 미출시 판정으로 사용하지 않는다."
+    }
+  ]
+}

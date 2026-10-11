@@ -2,17 +2,25 @@ import { csrfHeaders } from '../../lib/csrf.ts'
 import { getPartStatus } from '../pc/partDraft.ts'
 import type { PartDraft } from '../pc/types.ts'
 
-// 백엔드 POST /api/compatibility/check 계약 (CompatibilityDtos). CPU·메인보드·RAM만 검사한다.
+// 백엔드 POST /api/compatibility/check 계약. 새 부품 존재 여부는 미연결과 빈 자리를 구분한다.
 export type CompatibilityStatus = 'COMPATIBLE' | 'NEEDS_CHECK' | 'INCOMPATIBLE'
 export type CompatibilityCheck = { code: string; status: CompatibilityStatus; message: string; affectedFields: string[] }
-export type CompatibilityResult = { status: CompatibilityStatus; checks: CompatibilityCheck[] }
+export type CompatibilityResult = { status: CompatibilityStatus; checks: CompatibilityCheck[]; scope?: string; fullPcCompatibilityChecked?: boolean }
 export type CompatibilityRequest = {
   cpuProductId: string | null
   motherboardProductId: string | null
   ram: { catalogProductId: string | null; quantity: number }[]
+  gpuProductId?: string | null
+  psuProductId?: string | null
+  caseProductId?: string | null
+  presentComponents?: ('GPU' | 'PSU' | 'CASE')[]
 }
 
 const STATUSES: readonly string[] = ['COMPATIBLE', 'NEEDS_CHECK', 'INCOMPATIBLE']
+const SINGLE_COMPONENTS = [
+  ['CPU', 'CPU', 'cpuProductId'], ['MOTHERBOARD', '메인보드', 'motherboardProductId'],
+  ['GPU', '그래픽카드', 'gpuProductId'], ['PSU', '파워', 'psuProductId'], ['CASE', '케이스', 'caseProductId'],
+] as const
 
 const filled = (drafts: PartDraft[], type: PartDraft['type']) =>
   drafts.filter((draft) => draft.type === type && getPartStatus(draft) !== 'empty')
@@ -22,22 +30,31 @@ export function ramDraftsForCheck(drafts: PartDraft[]): PartDraft[] {
   return filled(drafts, 'RAM').filter((draft) => Number.isInteger(draft.quantity) && draft.quantity >= 1 && draft.quantity <= 64)
 }
 
-// 단일 CPU·보드 계약에 여러 행을 임의로 하나만 골라 보내지 않는다.
-function singleProductId(drafts: PartDraft[], type: 'CPU' | 'MOTHERBOARD'): string | null {
+// 여러 행이나 복수 수량을 단일 부품처럼 검사하지 않는다.
+function singleProductId(drafts: PartDraft[], type: typeof SINGLE_COMPONENTS[number][0]): string | null {
   const rows = filled(drafts, type)
-  return rows.length === 1 ? rows[0].catalogProductId ?? null : null
+  return rows.length === 1 && rows[0].quantity === 1 ? rows[0].catalogProductId ?? null : null
 }
 
 // API에서 표현하지 못하거나 검증을 통과할 수 없는 입력을 검사 결과에서 빠뜨리지 않는다.
 export function localCompatibilityChecks(drafts: PartDraft[]): CompatibilityCheck[] {
   const checks: CompatibilityCheck[] = []
-  for (const [type, label, field] of [
-    ['CPU', 'CPU', 'cpuProductId'], ['MOTHERBOARD', '메인보드', 'motherboardProductId'],
-  ] as const) {
+  const hardwareSelected = (['GPU', 'PSU', 'CASE'] as const).some((type) => filled(drafts, type).length > 0)
+  for (const [type, label, field] of SINGLE_COMPONENTS) {
     const rows = filled(drafts, type)
     if (rows.length > 1) checks.push({
       code: `${type}_SELECTION`, status: 'NEEDS_CHECK',
       message: `${label} 항목이 ${rows.length}개입니다. 검사할 ${label} 1개를 정해 주세요.`, affectedFields: [field],
+    })
+    if (rows.length === 1 && rows[0].quantity !== 1) checks.push({
+      code: `${type}_QUANTITY`, status: 'NEEDS_CHECK',
+      message: `${label} 수량은 1개인 구성을 검사합니다. 실제 수량과 구성을 확인해 주세요.`, affectedFields: [field],
+    })
+    // 하드웨어만 선택한 요청과 미연결 CPU·보드가 있는 초안은 서버에서 같은 null ID다.
+    if (hardwareSelected && ['CPU', 'MOTHERBOARD'].includes(type) && rows.length === 1
+      && rows[0].quantity === 1 && !rows[0].catalogProductId) checks.push({
+      code: `${type}_CATALOG_LINK`, status: 'NEEDS_CHECK',
+      message: `입력한 ${label}를 카탈로그 상품에 연결해야 해당 규격을 검사할 수 있습니다.`, affectedFields: [field],
     })
   }
   for (const draft of filled(drafts, 'RAM')) {
@@ -54,7 +71,7 @@ export function localCompatibilityChecks(drafts: PartDraft[]): CompatibilityChec
   return checks
 }
 
-// 카탈로그에 연결된 CPU·메인보드·RAM이 하나도 없으면 검사하지 않는다(null).
+// 새 부품이 있으면 미연결 상태도 서버에 알린다. 기존 요청 모양은 계속 지원한다.
 export function buildCompatibilityRequest(drafts: PartDraft[]): CompatibilityRequest | null {
   const rams = ramDraftsForCheck(drafts)
   const request: CompatibilityRequest = {
@@ -62,8 +79,13 @@ export function buildCompatibilityRequest(drafts: PartDraft[]): CompatibilityReq
     motherboardProductId: singleProductId(drafts, 'MOTHERBOARD'),
     ram: rams.length > 64 ? [] : rams.map((draft) => ({ catalogProductId: draft.catalogProductId ?? null, quantity: draft.quantity })),
   }
+  const presentComponents = (['GPU', 'PSU', 'CASE'] as const).filter((type) => filled(drafts, type).length > 0)
+  if (presentComponents.length > 0) Object.assign(request, {
+    gpuProductId: singleProductId(drafts, 'GPU'), psuProductId: singleProductId(drafts, 'PSU'),
+    caseProductId: singleProductId(drafts, 'CASE'), presentComponents,
+  })
   const linked = request.cpuProductId || request.motherboardProductId || request.ram.some((item) => item.catalogProductId)
-  return linked ? request : null
+  return linked || presentComponents.length > 0 ? request : null
 }
 
 function overallStatus(statuses: CompatibilityStatus[]): CompatibilityStatus {
@@ -78,10 +100,10 @@ export function mergeCompatibilityChecks(result: CompatibilityResult, localCheck
 
 // 불가(INCOMPATIBLE) 판정을 받은 부품 행 key → 경고 문구. affectedFields의 이름은 요청 필드명이다.
 export function incompatibleByDraft(drafts: PartDraft[], result: CompatibilityResult): Map<string, string[]> {
-  const cpuRows = filled(drafts, 'CPU')
-  const boardRows = filled(drafts, 'MOTHERBOARD')
-  const cpu = cpuRows.length === 1 ? cpuRows[0] : undefined
-  const board = boardRows.length === 1 ? boardRows[0] : undefined
+  const singles = new Map<string, PartDraft | undefined>(SINGLE_COMPONENTS.map(([type, , field]) => {
+    const rows = filled(drafts, type)
+    return [field, rows.length === 1 && rows[0].quantity === 1 ? rows[0] : undefined]
+  }))
   const ramRows = ramDraftsForCheck(drafts)
   const rams = ramRows.length > 64 ? [] : ramRows
   const warnings = new Map<string, string[]>()
@@ -89,7 +111,7 @@ export function incompatibleByDraft(drafts: PartDraft[], result: CompatibilityRe
     if (check.status !== 'INCOMPATIBLE') continue
     for (const field of check.affectedFields) {
       const index = /^ram\[(\d+)\]/.exec(field)?.[1]
-      const targets = field === 'cpuProductId' ? [cpu] : field === 'motherboardProductId' ? [board]
+      const targets = singles.has(field) ? [singles.get(field)]
         : field === 'ram' ? rams : index !== undefined ? [rams[Number(index)]] : []
       for (const draft of targets) {
         if (!draft) continue
@@ -133,5 +155,9 @@ export async function checkCompatibility(request: CompatibilityRequest, signal: 
   if (response.status === 404) throw new Error('호환성 검사 API를 사용할 수 없습니다. 백엔드가 local 프로필로 실행 중인지 확인해 주세요.')
   if (!response.ok) throw new Error(`호환성 검사에 실패했습니다 (HTTP ${response.status}).`)
   if (!isResult(body)) throw new Error('호환성 검사 응답 형식이 올바르지 않습니다.')
+  if (request.presentComponents?.length && (body.scope !== 'CPU_MOTHERBOARD_RAM_GPU_PSU_CASE_V2'
+    || body.fullPcCompatibilityChecked !== false)) {
+    throw new Error('그래픽카드·파워·케이스 검사에 필요한 백엔드 버전을 확인해 주세요.')
+  }
   return body
 }

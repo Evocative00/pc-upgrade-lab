@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-10",
+  "timeZone": "Asia/Seoul",
+  "status": "INDEPENDENT_PRICE_EVIDENCE_REVIEW_NOT_APPLIED",
+  "scope": "Selected RAM2andGPU2 only; CPU2andmotherboard1 quotes in the same collector result are outside this assessment.",
+  "sourceFiles": [
+    {
+      "path": "data/catalog-review/pilot-existing-prices-2026-10-10.json",
+      "sha256": "51789d0348a30cf11ba37bd88d9490bd82fbb8c6114798f8d8108e763451e4f1"
+    },
+    {
+      "path": "data/catalog-review/pilot-existing-prices-2026-10-10.json.report.json",
+      "sha256": "04a3d30ec5ba2970f3b1f14dc2df389b06a381cfe3292c1432adb026c01daa16"
+    },
+    {
+      "path": "data/catalog-review/pilot-ram-gpu-evidence-2026-10-10.json",
+      "sha256": "34ae2777b1b99936bb8b69e58dc2bf00954b5b7d2dfd7d2b9fbe2777a284b88a"
+    },
+    {
+      "path": "backend/tools/collect-danawa-prices.mjs",
+      "sha256": "81993cbabc6bb21a6cc43b8ef2695ffef70d54b654a4ddc489bdb7c80d744b74"
+    }
+  ],
+  "collectionReportSummary": {
+    "requested": 6,
+    "succeeded": 6,
+    "rejectedCount": 0,
+    "collectedAt": "2026-10-09T16:28:00.267Z"
+  },
+  "summary": {
+    "selectedProductsAssessed": 4,
+    "freshQuotesAssessed": 3,
+    "validForQuoteReview": 3,
+    "heldNoExactDomesticKitMappingOrFreshQuote": 1,
+    "otherCollectedProductsNotReviewed": 3,
+    "newPriceObservationsCreated": 0,
+    "databaseChanges": 0
+  },
+  "approvalBoundary": "The three source quotes have matching units/identities and fresh collection evidence and can be proposed for user-confirmed import. This file does not approve a write, certify merchant inventory or evaluate popularity, affordability, performance-per-won or fair market value.",
+  "items": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+        "manufacturer": "G.SKILL",
+        "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "F5-6000J3038F16GX2-TZ5N"
+      },
+      "status": "VALID_SOURCE_QUOTE_FOR_REVIEW_NOT_APPLIED",
+      "freshCollectedObservation": {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+          "manufacturer": "G.SKILL",
+          "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+          "partNumber": "F5-6000J3038F16GX2-TZ5N"
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "17932031",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+          "saleSku": "F5-6000J3038F16GX2-TZ5N",
+          "saleUnit": "RAM_KIT",
+          "moduleCount": 2,
+          "verifiedAt": "2026-10-06T12:34:13.387Z"
+        },
+        "price": {
+          "amountKrw": 939000,
+          "observedAt": "2026-10-09T16:27:58.112Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+          "condition": "NEW",
+          "inStock": true
+        }
+      },
+      "historicalComparison": {
+        "amountKrw": 963120,
+        "observedAt": "2026-10-06T12:39:26.336Z",
+        "differenceKrw": -24120,
+        "differencePercent": -2.5,
+        "comparisonIsNotApprovalEvidenceByItself": true
+      },
+      "saleUnitInterpretation": {
+        "saleUnit": "RAM_KIT",
+        "retailUnitsPriced": 1,
+        "modulesPerRetailUnit": 2,
+        "capacityPerRamModuleBytes": 17179869184,
+        "shippingIncluded": false,
+        "conditionalDiscountIncluded": false,
+        "cashOnlyPriceIncluded": false,
+        "installedQuantityMustNotMultiplyKitPrice": true
+      },
+      "priceObservationReviewRecommendation": "ACCEPT_AS_DANAWA_ACTIVE_REGULAR_ITEM_QUOTE_SUBJECT_TO_USER_DB_CONFIRMATION",
+      "reasons": [
+        "Exact existing product externalID, reviewed manufacturer PN, Danawa pcode, saleSku and sale unit match the independently reviewed identity evidence.",
+        "Collector succeeded on a new request; observedAt is newer than the historical snapshot and was not copied from historical price metadata.",
+        "Reviewed collector path accepts an active regular mall-price row only with an explicit positive integer data-base-price and a matching pcode purchase bridge. Shipping, cash-only and conditional benefit sections do not determine the amount.",
+        "Additional direct public HTML check found939000 as a base price in the regular mall-price section with the matching pcode17932031 bridge and no checked conditional/unavailable/non-new flags. Exact Neo retail kit PN and two-module package were independently checked in Compuzone HTML."
+      ],
+      "sanityReview": {
+        "absoluteAmountKrw": 939000,
+        "knownUnitMismatch": false,
+        "knownConditionalOrShippingPriceMismatch": false,
+        "knownIdentityMismatch": false,
+        "unusuallyHighAmountFlagForHumanReview": true,
+        "highAmountDisposition": "VALID_REPORTED_KIT_QUOTE_WITH_ECONOMIC_SUITABILITY_UNASSESSED",
+        "marketFairValue": null,
+        "popularity": null,
+        "bestValueClaim": false,
+        "automaticApprovalFromStableHistoricalAmount": false,
+        "notes": "939000KRW is for one complete32GB(16GBx2)kit. The direct source check supports that reported quote; it does not establish a fair/typical market value or justify choosing this kit for a budget. Do not divide it into a per-module sale price, double it for quantity2, or change it based on expectations."
+      },
+      "directPublicPriceRead": {
+        "url": "https://prod.danawa.com/info/?pcode=17932031",
+        "readAt": "2026-10-09T16:29:48.7001026Z",
+        "method": "DIRECT_PUBLIC_HTML_READ_ONE_PAGE_INDEPENDENT_BASE_PRICE_AND_BRIDGE_CHECK",
+        "matchingBasePriceKrw": 939000,
+        "matchingPurchaseBridge": true,
+        "checkedConditionalOrUnavailableOrNonNewFlags": [],
+        "newPriceObservationCreated": false
+      },
+      "metadataLimits": {
+        "originalOfferVerifiedAtPreserved": "2026-10-06T12:34:13.387Z",
+        "currentIdentityEvidenceReviewDate": "2026-10-10",
+        "offerVerifiedAtWasNotSilentlyPromoted": true,
+        "source": "DANAWA_PRODUCT_MODEL_PAGE",
+        "actualMerchantInventoryIndependentlyVerified": false,
+        "actualMerchantFinalCheckoutPriceVerified": false,
+        "domesticImporterAndWarrantyPackageConfirmed": null,
+        "physicalProductRevisionConfirmed": null,
+        "inStockMeaning": "Active regular price row and matching purchase bridge on fetched product page, not independent warehouse-stock confirmation.",
+        "sourceTraceabilityNote": "Collector report records success/rejection counts but not saved HTML or per-row seller identity. Original payload and report remain unchanged; this assessment binds their exact SHA256 values."
+      },
+      "economicPurchaseRecommendation": "NOT_ASSESSED_PRICE_OBSERVATION_APPROVAL_IS_SEPARATE_FROM_PRODUCT_RECOMMENDATION",
+      "requiredBeforeDatabaseWrite": [
+        "User confirmation for concrete final catalog and price import scope."
+      ],
+      "databaseApplied": false
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1555eede-7e03-4038-824d-91d8fb21a6e2",
+        "type": "RAM",
+        "manufacturer": "G.SKILL",
+        "modelName": "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+        "partNumber": "F5-6000J3636F16GX2-RS5K"
+      },
+      "status": "HOLD_NO_FRESH_APPROVED_DOMESTIC_OFFER",
+      "currentPriceObservation": null,
+      "priceObservationReviewRecommendation": "HOLD",
+      "reason": "Selected Ripjaws S5 exact32GB2x16GBkit has no approved domestic Danawa mapping and is absent from the six-item collector result. Do not use pcode102553379 (single16GBmodule), multiply its price, or reuse an overseas-purchasing-agent listing as a domestic-stock quote.",
+      "economicPurchaseRecommendation": "NOT_ASSESSED",
+      "databaseApplied": false
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+        "partNumber": "G5060-8V2C"
+      },
+      "status": "VALID_SOURCE_QUOTE_FOR_REVIEW_NOT_APPLIED",
+      "freshCollectedObservation": {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+          "manufacturer": "MSI",
+          "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+          "partNumber": "G5060-8V2C"
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "90956033",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+          "saleSku": "G5060-8V2C",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-06T12:34:13.387Z"
+        },
+        "price": {
+          "amountKrw": 668860,
+          "observedAt": "2026-10-09T16:27:54.952Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+          "condition": "NEW",
+          "inStock": true
+        }
+      },
+      "historicalComparison": {
+        "amountKrw": 675000,
+        "observedAt": "2026-10-06T12:39:10.953Z",
+        "differenceKrw": -6140,
+        "differencePercent": -0.91,
+        "comparisonIsNotApprovalEvidenceByItself": true
+      },
+      "saleUnitInterpretation": {
+        "saleUnit": "PRODUCT",
+        "retailUnitsPriced": 1,
+        "modulesPerRetailUnit": null,
+        "capacityPerRamModuleBytes": null,
+        "shippingIncluded": false,
+        "conditionalDiscountIncluded": false,
+        "cashOnlyPriceIncluded": false,
+        "installedQuantityMustNotMultiplyKitPrice": true
+      },
+      "priceObservationReviewRecommendation": "ACCEPT_AS_DANAWA_ACTIVE_REGULAR_ITEM_QUOTE_SUBJECT_TO_USER_DB_CONFIRMATION",
+      "reasons": [
+        "Exact existing product externalID, reviewed manufacturer PN, Danawa pcode, saleSku and sale unit match the independently reviewed identity evidence.",
+        "Collector succeeded on a new request; observedAt is newer than the historical snapshot and was not copied from historical price metadata.",
+        "Reviewed collector path accepts an active regular mall-price row only with an explicit positive integer data-base-price and a matching pcode purchase bridge. Shipping, cash-only and conditional benefit sections do not determine the amount.",
+        "Exact card manufacturer, chipset, VRAM capacity and named OC/cooler variant were independently rechecked against manufacturer and domestic product-model sources; approval does not derive from small historical change."
+      ],
+      "sanityReview": {
+        "absoluteAmountKrw": 668860,
+        "knownUnitMismatch": false,
+        "knownConditionalOrShippingPriceMismatch": false,
+        "knownIdentityMismatch": false,
+        "unusuallyHighAmountFlagForHumanReview": false,
+        "highAmountDisposition": "NO_EXTRA_ABSOLUTE_AMOUNT_CLAIM",
+        "marketFairValue": null,
+        "popularity": null,
+        "bestValueClaim": false,
+        "automaticApprovalFromStableHistoricalAmount": false,
+        "notes": "No broad market-price or performance-per-won comparison was performed."
+      },
+      "directPublicPriceRead": null,
+      "metadataLimits": {
+        "originalOfferVerifiedAtPreserved": "2026-10-06T12:34:13.387Z",
+        "currentIdentityEvidenceReviewDate": "2026-10-10",
+        "offerVerifiedAtWasNotSilentlyPromoted": true,
+        "source": "DANAWA_PRODUCT_MODEL_PAGE",
+        "actualMerchantInventoryIndependentlyVerified": false,
+        "actualMerchantFinalCheckoutPriceVerified": false,
+        "domesticImporterAndWarrantyPackageConfirmed": null,
+        "physicalProductRevisionConfirmed": null,
+        "inStockMeaning": "Active regular price row and matching purchase bridge on fetched product page, not independent warehouse-stock confirmation.",
+        "sourceTraceabilityNote": "Collector report records success/rejection counts but not saved HTML or per-row seller identity. Original payload and report remain unchanged; this assessment binds their exact SHA256 values."
+      },
+      "economicPurchaseRecommendation": "NOT_ASSESSED_PRICE_OBSERVATION_APPROVAL_IS_SEPARATE_FROM_PRODUCT_RECOMMENDATION",
+      "requiredBeforeDatabaseWrite": [
+        "User confirmation for concrete final catalog and price import scope."
+      ],
+      "databaseApplied": false
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+        "partNumber": "11350-03-20G"
+      },
+      "status": "VALID_SOURCE_QUOTE_FOR_REVIEW_NOT_APPLIED",
+      "freshCollectedObservation": {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+          "manufacturer": "Sapphire",
+          "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+          "partNumber": "11350-03-20G"
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "91909571",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+          "saleSku": "11350-03-20G",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-06T12:34:13.387Z"
+        },
+        "price": {
+          "amountKrw": 822300,
+          "observedAt": "2026-10-09T16:27:55.879Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+          "condition": "NEW",
+          "inStock": true
+        }
+      },
+      "historicalComparison": {
+        "amountKrw": 821000,
+        "observedAt": "2026-10-06T12:39:14.292Z",
+        "differenceKrw": 1300,
+        "differencePercent": 0.16,
+        "comparisonIsNotApprovalEvidenceByItself": true
+      },
+      "saleUnitInterpretation": {
+        "saleUnit": "PRODUCT",
+        "retailUnitsPriced": 1,
+        "modulesPerRetailUnit": null,
+        "capacityPerRamModuleBytes": null,
+        "shippingIncluded": false,
+        "conditionalDiscountIncluded": false,
+        "cashOnlyPriceIncluded": false,
+        "installedQuantityMustNotMultiplyKitPrice": true
+      },
+      "priceObservationReviewRecommendation": "ACCEPT_AS_DANAWA_ACTIVE_REGULAR_ITEM_QUOTE_SUBJECT_TO_USER_DB_CONFIRMATION",
+      "reasons": [
+        "Exact existing product externalID, reviewed manufacturer PN, Danawa pcode, saleSku and sale unit match the independently reviewed identity evidence.",
+        "Collector succeeded on a new request; observedAt is newer than the historical snapshot and was not copied from historical price metadata.",
+        "Reviewed collector path accepts an active regular mall-price row only with an explicit positive integer data-base-price and a matching pcode purchase bridge. Shipping, cash-only and conditional benefit sections do not determine the amount.",
+        "Exact card manufacturer, chipset, VRAM capacity and named OC/cooler variant were independently rechecked against manufacturer and domestic product-model sources; approval does not derive from small historical change."
+      ],
+      "sanityReview": {
+        "absoluteAmountKrw": 822300,
+        "knownUnitMismatch": false,
+        "knownConditionalOrShippingPriceMismatch": false,
+        "knownIdentityMismatch": false,
+        "unusuallyHighAmountFlagForHumanReview": false,
+        "highAmountDisposition": "NO_EXTRA_ABSOLUTE_AMOUNT_CLAIM",
+        "marketFairValue": null,
+        "popularity": null,
+        "bestValueClaim": false,
+        "automaticApprovalFromStableHistoricalAmount": false,
+        "notes": "No broad market-price or performance-per-won comparison was performed."
+      },
+      "directPublicPriceRead": null,
+      "metadataLimits": {
+        "originalOfferVerifiedAtPreserved": "2026-10-06T12:34:13.387Z",
+        "currentIdentityEvidenceReviewDate": "2026-10-10",
+        "offerVerifiedAtWasNotSilentlyPromoted": true,
+        "source": "DANAWA_PRODUCT_MODEL_PAGE",
+        "actualMerchantInventoryIndependentlyVerified": false,
+        "actualMerchantFinalCheckoutPriceVerified": false,
+        "domesticImporterAndWarrantyPackageConfirmed": null,
+        "physicalProductRevisionConfirmed": null,
+        "inStockMeaning": "Active regular price row and matching purchase bridge on fetched product page, not independent warehouse-stock confirmation.",
+        "sourceTraceabilityNote": "Collector report records success/rejection counts but not saved HTML or per-row seller identity. Original payload and report remain unchanged; this assessment binds their exact SHA256 values."
+      },
+      "economicPurchaseRecommendation": "NOT_ASSESSED_PRICE_OBSERVATION_APPROVAL_IS_SEPARATE_FROM_PRODUCT_RECOMMENDATION",
+      "requiredBeforeDatabaseWrite": [
+        "User confirmation for concrete final catalog and price import scope."
+      ],
+      "databaseApplied": false
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "stage": "PUBLISHED_RESTARTED_VERIFIED",
+  "approvedAt": "2026-10-10T14:50:26.036Z",
+  "approval": "User explicitly approved publishing 227 references and restarting the existing backend.",
+  "catalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+  "referenceVersion": "references-v1-0a60f7fa4c600e99ea6c4c4c74b3398f1c6ebd168ff13ef3af73f9c2ebcc0dfd",
+  "approvedCounts": {
+    "products": 308,
+    "actualPricesPreserved": 81,
+    "modelReferences": 5,
+    "launchReferences": 3,
+    "estimates": 219
+  },
+  "beforeRestart": {
+    "checkedAt": "2026-10-10T14:50:26.814Z",
+    "products": 308,
+    "actualPrices": 81,
+    "referencePrices": 0
+  },
+  "preservedPublicArtifacts": [
+    {
+      "path": "data/catalog-shared/active-approved-prices.json",
+      "sha256": "7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc",
+      "unchanged": true
+    },
+    {
+      "path": "data/catalog-shared/all-catalog-identities-2026-10-10.json",
+      "sha256": "8ad681a1cd634eb4c990ec20714fe332d6972dd1e22aff3feef54c6261466792",
+      "unchanged": true
+    },
+    {
+      "path": "data/catalog-shared/approved-retail-extension-2026-10-10.json",
+      "sha256": "f86ef373ad2da72af3b5ae75a755eef56891106ddd86c6ad0c26b924622065df",
+      "unchanged": true
+    },
+    {
+      "path": "workers/catalog-prices/generated/catalog.json",
+      "sha256": "0faef9871c6d45ce2d0c22ebe1dd79d004d7b8f55ba3be9475a99bb12fff9451",
+      "unchanged": true
+    },
+    {
+      "path": "workers/catalog-prices/generated/catalog-v2.json",
+      "sha256": "3413168324238fe6d6e73b7cd72d64abe0c999cac7000c123e6c38f3c8020090",
+      "unchanged": true
+    },
+    {
+      "path": "workers/catalog-prices/generated/catalog-retail-approved.json",
+      "sha256": "157ce439b55296f5f767d9cdd68f1feab1f9a1cf3e4cf155b99e1cf93a449786",
+      "unchanged": true
+    }
+  ],
+  "workerReferences": {
+    "result": "PASSED",
+    "verifiedAt": "2026-10-10T14:52:02.013Z",
+    "OK": 227,
+    "NO_REFERENCE": 81,
+    "missingAndWrongAuthentication": 401,
+    "metadataMatchesApprovedSource": true
+  },
+  "homepage": {
+    "result": "PASSED",
+    "verifiedAt": "2026-10-10T14:53:10.597Z",
+    "counts": {
+      "products": 308,
+      "SHARED": 308,
+      "LOCAL": 0,
+      "actualPrices": 81,
+      "references": 227,
+      "noPriceAtAll": 0,
+      "unavailable": 0
+    },
+    "productIdsModelsAndCatalogDataPreserved": true,
+    "detailedTypesChecked": 6,
+    "browserUiVerified": false
+  },
+  "completedAt": "2026-10-10T14:56:53.231Z",
+  "publicationApproved": true,
+  "worker": {
+    "url": "https://pc-upgrade-shared-prices.joony1024.workers.dev",
+    "versionId": "b95ed106-8dda-452f-9633-25e52f29ccdf",
+    "existingProviderReused": true,
+    "newPaidResources": 0,
+    "teamSecretChanged": false
+  },
+  "backend": {
+    "previousPid": 36188,
+    "currentPid": 4636,
+    "port": 8080,
+    "profile": "local",
+    "flywayValidatedMigrations": 14,
+    "schemaVersion": 14,
+    "migrationsApplied": 0,
+    "configurationChanged": false
+  },
+  "validation": {
+    "relatedBackendTests": {
+      "passed": 66,
+      "failed": 0
+    },
+    "workerTests": {
+      "passed": 637,
+      "failed": 0
+    },
+    "frontendTestsPreviouslyPassed": 141,
+    "referenceGeneratorTestsPreviouslyPassed": 12,
+    "referenceGeneratorAfterPublicationCheck": "PASS",
+    "javaHttps": {
+      "verifiedAt": "2026-10-10T14:53:17.471131600Z",
+      "origin": "https://pc-upgrade-shared-prices.joony1024.workers.dev",
+      "catalogVersion": "all-catalog-v1-9959c8d91ceb9baf9089d9ec85b90ddb07a9c35e0c9ef53e92eadf4ccd870637",
+      "referenceVersion": "references-v1-0a60f7fa4c600e99ea6c4c4c74b3398f1c6ebd168ff13ef3af73f9c2ebcc0dfd",
+      "products": 308,
+      "referencesVerified": 227,
+      "currentPricesPreserved": 81,
+      "previous307CurrentPricesPreserved": 80,
+      "currentProductsWithNoReference": 81,
+      "basis": {
+        "MODEL_RETAIL_REFERENCE": 5,
+        "LAUNCH_PRICE": 3,
+        "SIMILAR_PART_ESTIMATE": 219,
+        "HISTORICAL_RETAIL": 0
+      },
+      "missingAndIncorrectAuthentication": 401,
+      "publicationApproved": true,
+      "databaseChanges": 0,
+      "deployments": 0,
+      "serverRestarts": 0
+    },
+    "frontendActualApi": {
+      "productsAccepted": 308,
+      "shared": 308,
+      "actualPrices": 81,
+      "references": 227,
+      "pricedReferenceItems": 308,
+      "unitMismatches": 0,
+      "publicationApproved": true
+    },
+    "unitMismatch": 0
+  },
+  "actualMutations": {
+    "referencePublication": 1,
+    "workerDeployments": 1,
+    "backendRestarts": 1,
+    "mysqlDataWrites": 0,
+    "mysqlMigrationsApplied": 0,
+    "environmentVariableChanges": 0,
+    "teamSecretChanges": 0,
+    "commits": 0,
+    "pushes": 0
+  },
+  "limitations": [
+    "Browser manual review not performed",
+    "OAuth sign-in and PC save were not exercised for this price publication",
+    "Estimates are reference values, not verified current purchase prices",
+    "No automatic collection or refresh schedule"
+  ]
+}

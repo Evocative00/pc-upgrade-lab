@@ -2,6 +2,7 @@ package com.pcupgradelab.scan;
 
 import com.pcupgradelab.common.ApiException;
 import com.pcupgradelab.pc.*;
+import com.pcupgradelab.catalog.identity.CatalogRecognitionLevel;
 import org.junit.jupiter.api.Test;
 import java.time.*;
 import java.util.List;
@@ -64,6 +65,19 @@ class ScanServiceTests {
         var forged = new PartInput(PartType.CPU, "CPU", "CPU", 1, InputSource.MANUAL, "123", MatchStatus.MATCHED, Map.of());
         assertThatThrownBy(() -> service.complete(scan.sessionId(), write(scan), result(List.of(forged))))
                 .isInstanceOf(ApiException.class);
+    }
+
+    @Test
+    void collectorCannotClaimAnIdentificationModelOrRecognitionLevel() {
+        var scan = service.create();
+        service.start(scan.sessionId(), write(scan));
+        var forged = new PartInput(PartType.CPU, "CPU", "raw CPU", 1, InputSource.AUTO, null,
+                MatchStatus.UNMATCHED, Map.of(), "invented-model", CatalogRecognitionLevel.MODEL);
+        assertThatThrownBy(() -> service.complete(scan.sessionId(), write(scan), result(List.of(forged))))
+                .isInstanceOf(ApiException.class);
+        assertThat(service.read(scan.sessionId(), scan.readToken()).status()).isEqualTo(ScanStatus.RUNNING);
+        service.complete(scan.sessionId(), write(scan), result(List.of(part(PartType.CPU))));
+        assertThat(service.read(scan.sessionId(), scan.readToken()).result().parts().getFirst().catalogModelId()).isNull();
     }
 
     private Result result(List<PartInput> parts) { return new Result(1, "0.1.0", clock.instant(), parts, List.of()); }

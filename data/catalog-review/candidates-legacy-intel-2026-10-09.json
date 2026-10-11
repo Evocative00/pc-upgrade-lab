@@ -1,0 +1,1391 @@
+{
+  "schemaVersion": 1,
+  "researchDate": "2026-10-09",
+  "categoryGroup": "LEGACY_INTEL",
+  "scopeLimitations": [
+    "기존 300종에 없는 플랫폼 구간을 보강하는 조사 후보다. 국내 인기 부품 또는 실제 설치 수요가 높은 제품이라는 결론이 아니다.",
+    "CPU 10종·보드 6종 모두 설치 PC 참조 후보다. 국내 신품 구매 추천 목록으로 승인하지 않았다.",
+    "제조사 원문의 핵심 제원과 일부 BIOS 사례만 확인했으며 완전한 호환성 검증 또는 새 DB 적재를 수행하지 않았다.",
+    "국내 제품 페이지 5개를 직접 열어 모델 또는 페이지 상태를 확인했다. 웹 도구가 제공하는 본문은 캐시일 수 있어 체크 날짜가 실시간 재고를 보장하지 않는다.",
+    "상품가·배송료·할인·프로모션을 수집하거나 DB에 반영하지 않았다. 0원·0몰 표시는 상품가 관측으로 사용하지 않는다.",
+    "CPU의 실제 설치 모델과 정품 박스·벌크·중고 판매 SKU, 보드 모델과 리비전·국내 유통사를 별도로 확인해야 한다.",
+    "기존 300종과 비교한 제품 모델 중복 검사는 저장소 검토표 기준이며 실제 로컬 MySQL 재점검을 포함하지 않는다."
+  ],
+  "summary": {
+    "candidateCount": 16,
+    "cpuCount": 10,
+    "motherboardCount": 6,
+    "domesticProductPagesChecked": 5,
+    "installedDemandNotMeasuredCount": 16,
+    "purchaseCandidatesApprovedCount": 0
+  },
+  "candidates": [
+    {
+      "candidateKey": "LEGACY-CPU-I5-6500",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-6500",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 Intel CPU 31종은 모두 LGA1700이다. 6세대 설치 데스크톱의 CPU 모델·메모리·보드 플랫폼을 식별하기 위한 범위 보강 후보이며 사용 빈도 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": 6,
+        "verticalSegment": "DESKTOP",
+        "socketCode": "LGA1151",
+        "manufacturerSocketLabel": "FCLGA1151",
+        "platformGroupCode": "LGA1151_INTEL_100_200",
+        "coreCount": 4,
+        "threadCount": 4,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              1866,
+              2133
+            ],
+            "voltageV": null
+          },
+          {
+            "memoryType": "DDR3L",
+            "standardDataRatesMts": [
+              1333,
+              1600
+            ],
+            "voltageV": 1.35
+          }
+        ],
+        "maxMemoryBytes": 68719476736,
+        "memoryChannelCount": 2
+      },
+      "compatibilityNotes": [
+        "LGA1151 6·7세대는 Intel 100·200 계열 플랫폼으로 구분한다. 소켓 이름이 같아도 8·9세대용 300 계열 보드와 연결하지 않는다.",
+        "DDR3L 사용 시 CPU 공식 지원은 1.35V다. 보드의 DDR3 표기만으로 1.5V DDR3를 호환 확정하지 않는다.",
+        "7세대 CPU를 100 계열 보드에 사용할 때는 정확한 보드 CPU 지원표와 BIOS 조건을 확인한다."
+      ],
+      "identificationNotes": [
+        "설치 PC의 CPU 모델을 식별하는 후보다. 정품 박스·벌크·벌크+쿨러·중고 판매 구성을 모델 이름으로 확정하지 않는다.",
+        "K·KF·F·T 및 노트북 H/HQ/U 등 접미사가 다른 CPU와 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/88184/intel-core-i56500-processor-6m-cache-up-to-3-60-ghz/specifications.html",
+          "title": "Intel Core i5-6500 processor specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 번호와 세대",
+            "코어·스레드 수 및 TDP 65W",
+            "소켓 표기",
+            "지원 메모리 종류·표준 속도·최대 용량·채널 수",
+            "내장 그래픽 존재"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006047/processors.html",
+          "title": "Intel Core i5 desktop processor platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "해당 세대의 소켓·칩셋 계열 구분"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=3412420",
+          "title": "인텔 코어i5-6세대 6500 (스카이레이크) (벌크 + 쿨러)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "제품 비교 페이지의 모델명과 벌크+쿨러 판매 구성을 확인했다. 중고·해외구매는 다른 구성으로 표시된다. 페이지에 판매점이 표시되어도 개별 판매점의 신품 상태·정품 유통·상품가는 미검토다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 실제 테스트 PC에서의 설치 빈도와 자동 수집 이름을 수집해야 한다.",
+        "보드별 지원 CPU·최소 BIOS·메모리 구성 조건을 다음 단계에서 연결해야 한다.",
+        "신품 구매 후보로도 사용할 경우 판매 패키지·국내 유통·신품 여부를 따로 검토해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-CPU-I7-6700",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-6700",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 Intel CPU 31종은 모두 LGA1700이다. 6세대 설치 데스크톱의 CPU 모델·메모리·보드 플랫폼을 식별하기 위한 범위 보강 후보이며 사용 빈도 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": 6,
+        "verticalSegment": "DESKTOP",
+        "socketCode": "LGA1151",
+        "manufacturerSocketLabel": "FCLGA1151",
+        "platformGroupCode": "LGA1151_INTEL_100_200",
+        "coreCount": 4,
+        "threadCount": 8,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              1866,
+              2133
+            ],
+            "voltageV": null
+          },
+          {
+            "memoryType": "DDR3L",
+            "standardDataRatesMts": [
+              1333,
+              1600
+            ],
+            "voltageV": 1.35
+          }
+        ],
+        "maxMemoryBytes": 68719476736,
+        "memoryChannelCount": 2
+      },
+      "compatibilityNotes": [
+        "LGA1151 6·7세대는 Intel 100·200 계열 플랫폼으로 구분한다. 소켓 이름이 같아도 8·9세대용 300 계열 보드와 연결하지 않는다.",
+        "DDR3L 사용 시 CPU 공식 지원은 1.35V다. 보드의 DDR3 표기만으로 1.5V DDR3를 호환 확정하지 않는다.",
+        "7세대 CPU를 100 계열 보드에 사용할 때는 정확한 보드 CPU 지원표와 BIOS 조건을 확인한다."
+      ],
+      "identificationNotes": [
+        "설치 PC의 CPU 모델을 식별하는 후보다. 정품 박스·벌크·벌크+쿨러·중고 판매 구성을 모델 이름으로 확정하지 않는다.",
+        "K·KF·F·T 및 노트북 H/HQ/U 등 접미사가 다른 CPU와 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/88196/intel-core-i76700-processor-8m-cache-up-to-4-00-ghz/specifications.html",
+          "title": "Intel Core i7-6700 processor specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 번호와 세대",
+            "코어·스레드 수 및 TDP 65W",
+            "소켓 표기",
+            "지원 메모리 종류·표준 속도·최대 용량·채널 수",
+            "내장 그래픽 존재"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006778/processors.html",
+          "title": "Intel Core i7 desktop processor platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "해당 세대의 소켓·칩셋 계열 구분"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 실제 테스트 PC에서의 설치 빈도와 자동 수집 이름을 수집해야 한다.",
+        "보드별 지원 CPU·최소 BIOS·메모리 구성 조건을 다음 단계에서 연결해야 한다.",
+        "신품 구매 후보로도 사용할 경우 판매 패키지·국내 유통·신품 여부를 따로 검토해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-CPU-I5-7500",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-7500",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 Intel CPU 31종은 모두 LGA1700이다. 7세대 설치 데스크톱의 CPU 모델·메모리·보드 플랫폼을 식별하기 위한 범위 보강 후보이며 사용 빈도 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": 7,
+        "verticalSegment": "DESKTOP",
+        "socketCode": "LGA1151",
+        "manufacturerSocketLabel": "FCLGA1151",
+        "platformGroupCode": "LGA1151_INTEL_100_200",
+        "coreCount": 4,
+        "threadCount": 4,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              2133,
+              2400
+            ],
+            "voltageV": null
+          },
+          {
+            "memoryType": "DDR3L",
+            "standardDataRatesMts": [
+              1333,
+              1600
+            ],
+            "voltageV": 1.35
+          }
+        ],
+        "maxMemoryBytes": 68719476736,
+        "memoryChannelCount": 2
+      },
+      "compatibilityNotes": [
+        "LGA1151 6·7세대는 Intel 100·200 계열 플랫폼으로 구분한다. 소켓 이름이 같아도 8·9세대용 300 계열 보드와 연결하지 않는다.",
+        "DDR3L 사용 시 CPU 공식 지원은 1.35V다. 보드의 DDR3 표기만으로 1.5V DDR3를 호환 확정하지 않는다.",
+        "7세대 CPU를 100 계열 보드에 사용할 때는 정확한 보드 CPU 지원표와 BIOS 조건을 확인한다."
+      ],
+      "identificationNotes": [
+        "설치 PC의 CPU 모델을 식별하는 후보다. 정품 박스·벌크·벌크+쿨러·중고 판매 구성을 모델 이름으로 확정하지 않는다.",
+        "K·KF·F·T 및 노트북 H/HQ/U 등 접미사가 다른 CPU와 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/97123/intel-core-i57500-processor-6m-cache-up-to-3-80-ghz/specifications.html",
+          "title": "Intel Core i5-7500 processor specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 번호와 세대",
+            "코어·스레드 수 및 TDP 65W",
+            "소켓 표기",
+            "지원 메모리 종류·표준 속도·최대 용량·채널 수",
+            "내장 그래픽 존재"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006047/processors.html",
+          "title": "Intel Core i5 desktop processor platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "해당 세대의 소켓·칩셋 계열 구분"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 실제 테스트 PC에서의 설치 빈도와 자동 수집 이름을 수집해야 한다.",
+        "보드별 지원 CPU·최소 BIOS·메모리 구성 조건을 다음 단계에서 연결해야 한다.",
+        "신품 구매 후보로도 사용할 경우 판매 패키지·국내 유통·신품 여부를 따로 검토해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-CPU-I7-7700",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-7700",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 Intel CPU 31종은 모두 LGA1700이다. 7세대 설치 데스크톱의 CPU 모델·메모리·보드 플랫폼을 식별하기 위한 범위 보강 후보이며 사용 빈도 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": 7,
+        "verticalSegment": "DESKTOP",
+        "socketCode": "LGA1151",
+        "manufacturerSocketLabel": "FCLGA1151",
+        "platformGroupCode": "LGA1151_INTEL_100_200",
+        "coreCount": 4,
+        "threadCount": 8,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              2133,
+              2400
+            ],
+            "voltageV": null
+          },
+          {
+            "memoryType": "DDR3L",
+            "standardDataRatesMts": [
+              1333,
+              1600
+            ],
+            "voltageV": 1.35
+          }
+        ],
+        "maxMemoryBytes": 68719476736,
+        "memoryChannelCount": 2
+      },
+      "compatibilityNotes": [
+        "LGA1151 6·7세대는 Intel 100·200 계열 플랫폼으로 구분한다. 소켓 이름이 같아도 8·9세대용 300 계열 보드와 연결하지 않는다.",
+        "DDR3L 사용 시 CPU 공식 지원은 1.35V다. 보드의 DDR3 표기만으로 1.5V DDR3를 호환 확정하지 않는다.",
+        "7세대 CPU를 100 계열 보드에 사용할 때는 정확한 보드 CPU 지원표와 BIOS 조건을 확인한다."
+      ],
+      "identificationNotes": [
+        "설치 PC의 CPU 모델을 식별하는 후보다. 정품 박스·벌크·벌크+쿨러·중고 판매 구성을 모델 이름으로 확정하지 않는다.",
+        "K·KF·F·T 및 노트북 H/HQ/U 등 접미사가 다른 CPU와 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/97128/intel-core-i77700-processor-8m-cache-up-to-4-20-ghz/specifications.html",
+          "title": "Intel Core i7-7700 processor specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 번호와 세대",
+            "코어·스레드 수 및 TDP 65W",
+            "소켓 표기",
+            "지원 메모리 종류·표준 속도·최대 용량·채널 수",
+            "내장 그래픽 존재"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006778/processors.html",
+          "title": "Intel Core i7 desktop processor platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "해당 세대의 소켓·칩셋 계열 구분"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 실제 테스트 PC에서의 설치 빈도와 자동 수집 이름을 수집해야 한다.",
+        "보드별 지원 CPU·최소 BIOS·메모리 구성 조건을 다음 단계에서 연결해야 한다.",
+        "신품 구매 후보로도 사용할 경우 판매 패키지·국내 유통·신품 여부를 따로 검토해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-CPU-I5-8400",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-8400",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 Intel CPU 31종은 모두 LGA1700이다. 8세대 설치 데스크톱의 CPU 모델·메모리·보드 플랫폼을 식별하기 위한 범위 보강 후보이며 사용 빈도 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": 8,
+        "verticalSegment": "DESKTOP",
+        "socketCode": "LGA1151",
+        "manufacturerSocketLabel": "FCLGA1151",
+        "platformGroupCode": "LGA1151_INTEL_300",
+        "coreCount": 6,
+        "threadCount": 6,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              2666
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryBytes": 137438953472,
+        "memoryChannelCount": 2
+      },
+      "compatibilityNotes": [
+        "LGA1151 8·9세대는 Intel 300 계열 플랫폼이다. 6·7세대용 100·200 계열 보드와 호환으로 처리하지 않는다.",
+        "9세대 CPU는 정확한 보드 CPU 지원표와 BIOS 버전을 확인한다."
+      ],
+      "identificationNotes": [
+        "설치 PC의 CPU 모델을 식별하는 후보다. 정품 박스·벌크·벌크+쿨러·중고 판매 구성을 모델 이름으로 확정하지 않는다.",
+        "K·KF·F·T 및 노트북 H/HQ/U 등 접미사가 다른 CPU와 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/126687/intel-core-i58400-processor-9m-cache-up-to-4-00-ghz/specifications.html",
+          "title": "Intel Core i5-8400 processor specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 번호와 세대",
+            "코어·스레드 수 및 TDP 65W",
+            "소켓 표기",
+            "지원 메모리 종류·표준 속도·최대 용량·채널 수",
+            "내장 그래픽 존재"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006047/processors.html",
+          "title": "Intel Core i5 desktop processor platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "해당 세대의 소켓·칩셋 계열 구분"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=5530356",
+          "title": "인텔 코어i5-8세대 8400 (커피레이크) (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "직접 연 페이지 본문은 가격비교 중지 상태이며 하단에 0원·0몰이 표시된다. 검색 요약에는 이전 가격이 남아 있어 현행 판매 근거로 쓰지 않는다. 다른 벌크 구성의 판매 여부를 이 정품 SKU의 재고로 합치지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 실제 테스트 PC에서의 설치 빈도와 자동 수집 이름을 수집해야 한다.",
+        "보드별 지원 CPU·최소 BIOS·메모리 구성 조건을 다음 단계에서 연결해야 한다.",
+        "신품 구매 후보로도 사용할 경우 판매 패키지·국내 유통·신품 여부를 따로 검토해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-CPU-I7-8700",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-8700",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 Intel CPU 31종은 모두 LGA1700이다. 8세대 설치 데스크톱의 CPU 모델·메모리·보드 플랫폼을 식별하기 위한 범위 보강 후보이며 사용 빈도 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": 8,
+        "verticalSegment": "DESKTOP",
+        "socketCode": "LGA1151",
+        "manufacturerSocketLabel": "FCLGA1151",
+        "platformGroupCode": "LGA1151_INTEL_300",
+        "coreCount": 6,
+        "threadCount": 12,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              2666
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryBytes": 137438953472,
+        "memoryChannelCount": 2
+      },
+      "compatibilityNotes": [
+        "LGA1151 8·9세대는 Intel 300 계열 플랫폼이다. 6·7세대용 100·200 계열 보드와 호환으로 처리하지 않는다.",
+        "9세대 CPU는 정확한 보드 CPU 지원표와 BIOS 버전을 확인한다."
+      ],
+      "identificationNotes": [
+        "설치 PC의 CPU 모델을 식별하는 후보다. 정품 박스·벌크·벌크+쿨러·중고 판매 구성을 모델 이름으로 확정하지 않는다.",
+        "K·KF·F·T 및 노트북 H/HQ/U 등 접미사가 다른 CPU와 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/126686/intel-core-i78700-processor-12m-cache-up-to-4-60-ghz/specifications.html",
+          "title": "Intel Core i7-8700 processor specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 번호와 세대",
+            "코어·스레드 수 및 TDP 65W",
+            "소켓 표기",
+            "지원 메모리 종류·표준 속도·최대 용량·채널 수",
+            "내장 그래픽 존재"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006778/processors.html",
+          "title": "Intel Core i7 desktop processor platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "해당 세대의 소켓·칩셋 계열 구분"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 실제 테스트 PC에서의 설치 빈도와 자동 수집 이름을 수집해야 한다.",
+        "보드별 지원 CPU·최소 BIOS·메모리 구성 조건을 다음 단계에서 연결해야 한다.",
+        "신품 구매 후보로도 사용할 경우 판매 패키지·국내 유통·신품 여부를 따로 검토해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-CPU-I5-9400F",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-9400F",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 Intel CPU 31종은 모두 LGA1700이다. 9세대 설치 데스크톱의 CPU 모델·메모리·보드 플랫폼을 식별하기 위한 범위 보강 후보이며 사용 빈도 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": 9,
+        "verticalSegment": "DESKTOP",
+        "socketCode": "LGA1151",
+        "manufacturerSocketLabel": "FCLGA1151",
+        "platformGroupCode": "LGA1151_INTEL_300",
+        "coreCount": 6,
+        "threadCount": 6,
+        "tdpW": 65,
+        "hasIntegratedGraphics": false,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              2666
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryBytes": 137438953472,
+        "memoryChannelCount": 2
+      },
+      "compatibilityNotes": [
+        "LGA1151 8·9세대는 Intel 300 계열 플랫폼이다. 6·7세대용 100·200 계열 보드와 호환으로 처리하지 않는다.",
+        "9세대 CPU는 정확한 보드 CPU 지원표와 BIOS 버전을 확인한다."
+      ],
+      "identificationNotes": [
+        "설치 PC의 CPU 모델을 식별하는 후보다. 정품 박스·벌크·벌크+쿨러·중고 판매 구성을 모델 이름으로 확정하지 않는다.",
+        "K·KF·F·T 및 노트북 H/HQ/U 등 접미사가 다른 CPU와 합치지 않는다.",
+        "F 모델은 별도 그래픽 장치가 필요하다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/190883/intel-core-i59400F-processor-9m-cache-up-to-4-10-ghz/specifications.html",
+          "title": "Intel Core i5-9400F processor specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 번호와 세대",
+            "코어·스레드 수 및 TDP 65W",
+            "소켓 표기",
+            "지원 메모리 종류·표준 속도·최대 용량·채널 수"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006047/processors.html",
+          "title": "Intel Core i5 desktop processor platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "해당 세대의 소켓·칩셋 계열 구분"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/dam/support/us/en/documents/processors/core/Intel-Core-Desktop-Boxed-Processors-HD-GFX-List.pdf",
+          "title": "Intel desktop boxed processor graphics list",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "i5-9400F 내장 그래픽 없음"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 실제 테스트 PC에서의 설치 빈도와 자동 수집 이름을 수집해야 한다.",
+        "보드별 지원 CPU·최소 BIOS·메모리 구성 조건을 다음 단계에서 연결해야 한다.",
+        "신품 구매 후보로도 사용할 경우 판매 패키지·국내 유통·신품 여부를 따로 검토해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-CPU-I7-9700",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i7-9700",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 Intel CPU 31종은 모두 LGA1700이다. 9세대 설치 데스크톱의 CPU 모델·메모리·보드 플랫폼을 식별하기 위한 범위 보강 후보이며 사용 빈도 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": 9,
+        "verticalSegment": "DESKTOP",
+        "socketCode": "LGA1151",
+        "manufacturerSocketLabel": "FCLGA1151",
+        "platformGroupCode": "LGA1151_INTEL_300",
+        "coreCount": 8,
+        "threadCount": 8,
+        "tdpW": 65,
+        "hasIntegratedGraphics": true,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              2666
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryBytes": 137438953472,
+        "memoryChannelCount": 2
+      },
+      "compatibilityNotes": [
+        "LGA1151 8·9세대는 Intel 300 계열 플랫폼이다. 6·7세대용 100·200 계열 보드와 호환으로 처리하지 않는다.",
+        "9세대 CPU는 정확한 보드 CPU 지원표와 BIOS 버전을 확인한다."
+      ],
+      "identificationNotes": [
+        "설치 PC의 CPU 모델을 식별하는 후보다. 정품 박스·벌크·벌크+쿨러·중고 판매 구성을 모델 이름으로 확정하지 않는다.",
+        "K·KF·F·T 및 노트북 H/HQ/U 등 접미사가 다른 CPU와 합치지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/191792/intel-core-i79700-processor-12m-cache-up-to-4-70-ghz/specifications.html",
+          "title": "Intel Core i7-9700 processor specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 번호와 세대",
+            "코어·스레드 수 및 TDP 65W",
+            "소켓 표기",
+            "지원 메모리 종류·표준 속도·최대 용량·채널 수",
+            "내장 그래픽 존재"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006778/processors.html",
+          "title": "Intel Core i7 desktop processor platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "해당 세대의 소켓·칩셋 계열 구분"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 실제 테스트 PC에서의 설치 빈도와 자동 수집 이름을 수집해야 한다.",
+        "보드별 지원 CPU·최소 BIOS·메모리 구성 조건을 다음 단계에서 연결해야 한다.",
+        "신품 구매 후보로도 사용할 경우 판매 패키지·국내 유통·신품 여부를 따로 검토해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-CPU-I5-10400F",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-10400F",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 Intel CPU 31종은 모두 LGA1700이다. 10세대 설치 데스크톱의 CPU 모델·메모리·보드 플랫폼을 식별하기 위한 범위 보강 후보이며 사용 빈도 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": 10,
+        "verticalSegment": "DESKTOP",
+        "socketCode": "LGA1200",
+        "manufacturerSocketLabel": "FCLGA1200",
+        "platformGroupCode": "LGA1200_INTEL_400_500",
+        "coreCount": 6,
+        "threadCount": 12,
+        "tdpW": 65,
+        "hasIntegratedGraphics": false,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              2666
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryBytes": 137438953472,
+        "memoryChannelCount": 2
+      },
+      "compatibilityNotes": [
+        "LGA1200 10·11세대는 보드별 CPU 지원과 BIOS 조건을 확인한다."
+      ],
+      "identificationNotes": [
+        "설치 PC의 CPU 모델을 식별하는 후보다. 정품 박스·벌크·벌크+쿨러·중고 판매 구성을 모델 이름으로 확정하지 않는다.",
+        "K·KF·F·T 및 노트북 H/HQ/U 등 접미사가 다른 CPU와 합치지 않는다.",
+        "F 모델은 별도 그래픽 장치가 필요하다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/199278/intel-core-i510400F-processor-12m-cache-up-to-4-30-ghz/specifications.html",
+          "title": "Intel Core i5-10400F processor specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 번호와 세대",
+            "코어·스레드 수 및 TDP 65W",
+            "소켓 표기",
+            "지원 메모리 종류·표준 속도·최대 용량·채널 수"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000056574/processors.html",
+          "title": "Intel 10th/11th generation desktop processor compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "해당 세대의 소켓·칩셋 계열 구분"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/dam/support/us/en/documents/processors/core/Intel-Core-Desktop-Boxed-Processors-HD-GFX-List.pdf",
+          "title": "Intel desktop boxed processor graphics list",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "i5-10400F 내장 그래픽 없음"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=11489973",
+          "title": "인텔 코어i5-10세대 10400F (코멧레이크S) (정품)",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "정품 판매 구성의 제품 비교 페이지와 CPU 모델을 확인했다. 개별 판매점의 신품·국내 정품 유통 상태 및 현재 상품가는 검토하지 않았으며 설치 CPU 이름만으로 이 정품 패키지를 확정하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 실제 테스트 PC에서의 설치 빈도와 자동 수집 이름을 수집해야 한다.",
+        "보드별 지원 CPU·최소 BIOS·메모리 구성 조건을 다음 단계에서 연결해야 한다.",
+        "신품 구매 후보로도 사용할 경우 판매 패키지·국내 유통·신품 여부를 따로 검토해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-CPU-I5-11400F",
+      "category": "CPU",
+      "manufacturer": "Intel",
+      "modelName": "Core i5-11400F",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 Intel CPU 31종은 모두 LGA1700이다. 11세대 설치 데스크톱의 CPU 모델·메모리·보드 플랫폼을 식별하기 위한 범위 보강 후보이며 사용 빈도 순위로 선정하지 않았다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "generation": 11,
+        "verticalSegment": "DESKTOP",
+        "socketCode": "LGA1200",
+        "manufacturerSocketLabel": "FCLGA1200",
+        "platformGroupCode": "LGA1200_INTEL_400_500",
+        "coreCount": 6,
+        "threadCount": 12,
+        "tdpW": 65,
+        "hasIntegratedGraphics": false,
+        "memorySupport": [
+          {
+            "memoryType": "DDR4",
+            "standardDataRatesMts": [
+              3200
+            ],
+            "voltageV": null
+          }
+        ],
+        "maxMemoryBytes": 137438953472,
+        "memoryChannelCount": 2
+      },
+      "compatibilityNotes": [
+        "LGA1200 10·11세대는 보드별 CPU 지원과 BIOS 조건을 확인한다.",
+        "B460·H410 칩셋은 11세대 CPU를 지원하지 않는다. LGA1200 소켓 일치만으로 업그레이드 가능 판정을 하지 않는다."
+      ],
+      "identificationNotes": [
+        "설치 PC의 CPU 모델을 식별하는 후보다. 정품 박스·벌크·벌크+쿨러·중고 판매 구성을 모델 이름으로 확정하지 않는다.",
+        "K·KF·F·T 및 노트북 H/HQ/U 등 접미사가 다른 CPU와 합치지 않는다.",
+        "F 모델은 별도 그래픽 장치가 필요하다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.intel.com/content/www/us/en/products/sku/212271/intel-core-i511400F-processor-12m-cache-up-to-4-40-ghz/specifications.html",
+          "title": "Intel Core i5-11400F processor specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "데스크톱 제품 번호와 세대",
+            "코어·스레드 수 및 TDP 65W",
+            "소켓 표기",
+            "지원 메모리 종류·표준 속도·최대 용량·채널 수"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000056574/processors.html",
+          "title": "Intel 10th/11th generation desktop processor compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "해당 세대의 소켓·칩셋 계열 구분",
+            "B460/H410과 11세대 CPU 비호환"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/dam/support/us/en/documents/processors/core/Intel-Core-Desktop-Boxed-Processors-HD-GFX-List.pdf",
+          "title": "Intel desktop boxed processor graphics list",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "i5-11400F 내장 그래픽 없음"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 실제 테스트 PC에서의 설치 빈도와 자동 수집 이름을 수집해야 한다.",
+        "보드별 지원 CPU·최소 BIOS·메모리 구성 조건을 다음 단계에서 연결해야 한다.",
+        "신품 구매 후보로도 사용할 경우 판매 패키지·국내 유통·신품 여부를 따로 검토해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-BOARD-GIGABYTE-H110M-DS2-DDR3-R10",
+      "category": "MOTHERBOARD",
+      "manufacturer": "GIGABYTE",
+      "modelName": "GA-H110M-DS2 DDR3 (rev. 1.0)",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 보드에는 LGA1151 플랫폼이 없다. H110·DDR3/DDR3L 설치 PC의 플랫폼 구분과 업그레이드 제약을 식별하기 위한 후보이며 실제 사용 빈도는 미측정이다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "LGA1151",
+        "platformGroupCode": "LGA1151_INTEL_100_200",
+        "chipset": "H110",
+        "supportedCoreGenerations": [
+          6,
+          7
+        ],
+        "revision": "1.0",
+        "memoryTypes": [
+          "DDR3",
+          "DDR3L"
+        ],
+        "standardDataRatesMts": [
+          1333,
+          1600
+        ],
+        "ramSlotCount": 2,
+        "maxMemoryBytes": 34359738368,
+        "formFactor": "MICRO_ATX",
+        "cpuSupportExamples": null
+      },
+      "compatibilityNotes": [
+        "7세대 CPU는 제조사가 BIOS 갱신을 요구한다. CPU별 최소 BIOS는 지원표에서 별도로 검토한다.",
+        "CPU의 DDR3L 1.35V 제한과 메모리 QVL을 함께 확인한다. DDR3·DDR3L 이름만으로 전압 호환을 확정하지 않는다."
+      ],
+      "identificationNotes": [
+        "DDR3 모델은 DDR4를 사용하는 GA-H110M-DS2와 분리한다.",
+        "rev. 1.0 근거를 다른 PCB 리비전에 확장하지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.gigabyte.com/Motherboard/GA-H110M-DS2-DDR3-rev-10/sp",
+          "title": "GIGABYTE GA-H110M-DS2 DDR3 (rev. 1.0) manufacturer specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "정확한 보드 모델과 칩셋",
+            "CPU 세대·소켓 범위",
+            "메모리 종류·슬롯 수·최대 용량·속도 조건",
+            "Micro ATX 폼팩터"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006047/processors.html",
+          "title": "Intel desktop platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "칩셋 계열과 CPU 세대 조건"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 테스트 PC에서 실제 설치 빈도·BIOS 버전·자동 수집 모델 문자열을 확인해야 한다.",
+        "모델·PCB 리비전별 CPU 지원표와 메모리 QVL을 추가 연결해야 한다.",
+        "국내 신품 구매 후보로 사용하려면 판매점 신품 상태·판매 리비전·유통 구성을 따로 승인해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-BOARD-ASUS-H110M-K",
+      "category": "MOTHERBOARD",
+      "manufacturer": "ASUS",
+      "modelName": "H110M-K",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 보드에는 LGA1151 플랫폼이 없다. H110·DDR4 설치 PC의 플랫폼 구분과 업그레이드 제약을 식별하기 위한 후보이며 실제 사용 빈도는 미측정이다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "LGA1151",
+        "platformGroupCode": "LGA1151_INTEL_100_200",
+        "chipset": "H110",
+        "supportedCoreGenerations": [
+          6,
+          7
+        ],
+        "revision": null,
+        "memoryTypes": [
+          "DDR4"
+        ],
+        "standardDataRatesMts": [
+          2133
+        ],
+        "ramSlotCount": 2,
+        "maxMemoryBytes": 34359738368,
+        "formFactor": "MICRO_ATX",
+        "cpuSupportExamples": [
+          {
+            "processorModel": "Core i5-6500",
+            "minimumBios": "0302",
+            "validatedPcb": "ALL"
+          },
+          {
+            "processorModel": "Core i7-6700",
+            "minimumBios": "0302",
+            "validatedPcb": "ALL"
+          },
+          {
+            "processorModel": "Core i5-7500",
+            "minimumBios": "3016",
+            "validatedPcb": "ALL"
+          },
+          {
+            "processorModel": "Core i7-7700",
+            "minimumBios": "3016",
+            "validatedPcb": "ALL"
+          }
+        ]
+      },
+      "compatibilityNotes": [
+        "공식 CPU 지원표에서 이 조사 CPU 4종의 BIOS 조건을 확인했다. 사용 중 BIOS 버전은 미확인이다.",
+        "표준 DDR4 속도는 확인한 사양 페이지의 2133MT/s를 기록한다. 국가별 페이지에서 7세대·2400 표기가 달라 실제 조합별 속도는 CPU 지원표·BIOS·최종 매뉴얼 검토가 필요하다."
+      ],
+      "identificationNotes": [
+        "H110M-K D3·H110M-K X 등의 접미사를 같은 제품으로 합치지 않는다.",
+        "국내 판매 페이지의 STCOM·아이보라 유통 구성은 보드 모델과 따로 기록한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.asus.com/uk/motherboards-components/motherboards/prime/h110m-k/techspec/",
+          "title": "ASUS H110M-K manufacturer specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "정확한 보드 모델과 칩셋",
+            "CPU 세대·소켓 범위",
+            "메모리 종류·슬롯 수·최대 용량·속도 조건",
+            "Micro ATX 폼팩터"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006047/processors.html",
+          "title": "Intel desktop platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "칩셋 계열과 CPU 세대 조건"
+          ]
+        },
+        {
+          "url": "https://www.asus.com/motherboards-components/motherboards/prime/h110m-k/helpdesk_cpu?model2Name=H110M-K",
+          "title": "ASUS H110M-K CPU support table",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "Core i5-6500·i7-6700는 BIOS 0302부터",
+            "Core i5-7500·i7-7700는 BIOS 3016부터",
+            "위 CPU는 PCB ALL 표기"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=3548546",
+          "title": "ASUS H110M-K STCOM",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "H110·DDR4 모델의 국내 제품 비교 페이지를 확인했다. 판매점 목록 표시만으로 개별 판매점의 신품 상태나 국내 유통 보증을 확정하지 않는다. 다나와의 보드 크기 표기는 제조사 문서와 다시 대조해야 한다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 테스트 PC에서 실제 설치 빈도·BIOS 버전·자동 수집 모델 문자열을 확인해야 한다.",
+        "모델·PCB 리비전별 CPU 지원표와 메모리 QVL을 추가 연결해야 한다.",
+        "국내 신품 구매 후보로 사용하려면 판매점 신품 상태·판매 리비전·유통 구성을 따로 승인해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-BOARD-GIGABYTE-B360M-DS3H-R10",
+      "category": "MOTHERBOARD",
+      "manufacturer": "GIGABYTE",
+      "modelName": "B360M DS3H (rev. 1.0)",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 보드에는 LGA1151 플랫폼이 없다. B360·DDR4 설치 PC의 플랫폼 구분과 업그레이드 제약을 식별하기 위한 후보이며 실제 사용 빈도는 미측정이다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "LGA1151",
+        "platformGroupCode": "LGA1151_INTEL_300",
+        "chipset": "B360",
+        "supportedCoreGenerations": [
+          8,
+          9
+        ],
+        "revision": "1.0",
+        "memoryTypes": [
+          "DDR4"
+        ],
+        "standardDataRatesMts": [
+          2133,
+          2400,
+          2666
+        ],
+        "ramSlotCount": 4,
+        "maxMemoryBytes": 68719476736,
+        "formFactor": "MICRO_ATX",
+        "cpuSupportExamples": null
+      },
+      "compatibilityNotes": [
+        "8·9세대 CPU용 300 계열 보드다. 같은 LGA1151인 6·7세대와 호환으로 연결하지 않는다.",
+        "9세대 CPU의 최소 BIOS는 정확한 CPU 지원표에서 추가 확인해야 한다.",
+        "메모리 속도는 설치 CPU와 QVL 조건에 따라 낮아질 수 있다. CPU 최대 128GB가 보드 최대 64GB를 대체하지 않는다."
+      ],
+      "identificationNotes": [
+        "B360M DS3H·B360M DS3H 2.0·B360M DS3H WIFI를 분리한다.",
+        "rev. 1.0 근거만 확보했으며 국내 판매 리비전은 미확인이다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.gigabyte.com/Motherboard/B360M-DS3H-rev-10/sp",
+          "title": "GIGABYTE B360M DS3H (rev. 1.0) manufacturer specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "정확한 보드 모델과 칩셋",
+            "CPU 세대·소켓 범위",
+            "메모리 종류·슬롯 수·최대 용량·속도 조건",
+            "Micro ATX 폼팩터"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006047/processors.html",
+          "title": "Intel desktop platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "칩셋 계열과 CPU 세대 조건"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 테스트 PC에서 실제 설치 빈도·BIOS 버전·자동 수집 모델 문자열을 확인해야 한다.",
+        "모델·PCB 리비전별 CPU 지원표와 메모리 QVL을 추가 연결해야 한다.",
+        "국내 신품 구매 후보로 사용하려면 판매점 신품 상태·판매 리비전·유통 구성을 따로 승인해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-BOARD-MSI-B365M-PRO-VDH",
+      "category": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "B365M PRO-VDH",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 보드에는 LGA1151 플랫폼이 없다. B365·DDR4 설치 PC의 플랫폼 구분과 업그레이드 제약을 식별하기 위한 후보이며 실제 사용 빈도는 미측정이다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "LGA1151",
+        "platformGroupCode": "LGA1151_INTEL_300",
+        "chipset": "B365",
+        "supportedCoreGenerations": [
+          8,
+          9
+        ],
+        "revision": null,
+        "memoryTypes": [
+          "DDR4"
+        ],
+        "standardDataRatesMts": [
+          2133,
+          2400,
+          2666
+        ],
+        "ramSlotCount": 4,
+        "maxMemoryBytes": 68719476736,
+        "formFactor": "MICRO_ATX",
+        "cpuSupportExamples": null
+      },
+      "compatibilityNotes": [
+        "8·9세대 CPU용 보드다. 6·7세대용 LGA1151 플랫폼과 구분한다.",
+        "M.2 SATA 장착 시 SATA1 포트가 비활성화되는 공유 조건을 SSD 호환 정보에 연결해야 한다.",
+        "CPU별 BIOS·메모리 QVL을 추가 검토한다."
+      ],
+      "identificationNotes": [
+        "B365M PRO-VD·PRO-VH·PRO-VDH·PLUS 모델명을 분리한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.msi.com/Motherboard/B365M-PRO-VDH/Specification",
+          "title": "MSI B365M PRO-VDH manufacturer specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "정확한 보드 모델과 칩셋",
+            "CPU 세대·소켓 범위",
+            "메모리 종류·슬롯 수·최대 용량·속도 조건",
+            "Micro ATX 폼팩터"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000006047/processors.html",
+          "title": "Intel desktop platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "칩셋 계열과 CPU 세대 조건"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 테스트 PC에서 실제 설치 빈도·BIOS 버전·자동 수집 모델 문자열을 확인해야 한다.",
+        "모델·PCB 리비전별 CPU 지원표와 메모리 QVL을 추가 연결해야 한다.",
+        "국내 신품 구매 후보로 사용하려면 판매점 신품 상태·판매 리비전·유통 구성을 따로 승인해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-BOARD-ASUS-PRIME-B460M-A",
+      "category": "MOTHERBOARD",
+      "manufacturer": "ASUS",
+      "modelName": "PRIME B460M-A",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 보드에는 LGA1200 플랫폼이 없다. B460·DDR4 설치 PC의 플랫폼 구분과 업그레이드 제약을 식별하기 위한 후보이며 실제 사용 빈도는 미측정이다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "LGA1200",
+        "platformGroupCode": "LGA1200_INTEL_400_500",
+        "chipset": "B460",
+        "supportedCoreGenerations": [
+          10
+        ],
+        "revision": null,
+        "memoryTypes": [
+          "DDR4"
+        ],
+        "standardDataRatesMts": [
+          2133,
+          2400,
+          2666,
+          2800,
+          2933
+        ],
+        "ramSlotCount": 4,
+        "maxMemoryBytes": 137438953472,
+        "formFactor": "MICRO_ATX",
+        "cpuSupportExamples": null
+      },
+      "compatibilityNotes": [
+        "원본 PRIME B460M-A는 B460 칩셋의 10세대용 보드다. 11세대 CPU를 지원한다고 처리하지 않는다.",
+        "PRIME B460M-A R2.0은 H470 칩셋이므로 같은 제품으로 합치지 않는다.",
+        "M.2_1 SATA 모드 사용 시 SATA6G_1 포트가 비활성화되는 조건을 SSD 호환에 연결해야 한다.",
+        "2933MT/s는 제조사 표기상 10세대 i7/i9 조건이 있다. CPU의 표준 메모리 속도를 함께 확인한다."
+      ],
+      "identificationNotes": [
+        "R2.0·AC·다른 PRIME B460M 접미사를 반드시 구분한다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b460m-a/techspec/",
+          "title": "ASUS PRIME B460M-A manufacturer specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "정확한 보드 모델과 칩셋",
+            "CPU 세대·소켓 범위",
+            "메모리 종류·슬롯 수·최대 용량·속도 조건",
+            "Micro ATX 폼팩터"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000056574/processors.html",
+          "title": "Intel desktop platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "칩셋 계열과 CPU 세대 조건"
+          ]
+        },
+        {
+          "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-b460m-a-r2-0/techspec/",
+          "title": "ASUS PRIME B460M-A R2.0 specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "R2.0 모델은 H470 칩셋을 사용",
+            "R2.0은 10·11세대 지원으로 원본 B460 모델과 다름"
+          ]
+        }
+      ],
+      "domesticSources": [],
+      "saleIdentityStatus": "NOT_REVIEWED",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 테스트 PC에서 실제 설치 빈도·BIOS 버전·자동 수집 모델 문자열을 확인해야 한다.",
+        "모델·PCB 리비전별 CPU 지원표와 메모리 QVL을 추가 연결해야 한다.",
+        "국내 신품 구매 후보로 사용하려면 판매점 신품 상태·판매 리비전·유통 구성을 따로 승인해야 한다."
+      ],
+      "notInExistingCatalog": true
+    },
+    {
+      "candidateKey": "LEGACY-BOARD-MSI-B560M-PRO-VDH",
+      "category": "MOTHERBOARD",
+      "manufacturer": "MSI",
+      "modelName": "B560M PRO-VDH",
+      "partNumber": null,
+      "role": "INSTALLED_PC_REFERENCE",
+      "reasonForSelection": "기존 보드에는 LGA1200 플랫폼이 없다. B560·DDR4 설치 PC의 플랫폼 구분과 업그레이드 제약을 식별하기 위한 후보이며 실제 사용 빈도는 미측정이다.",
+      "selectionEvidence": {
+        "installedDemand": "NOT_MEASURED",
+        "domesticDemand": "NOT_MEASURED",
+        "basis": "PLATFORM_COVERAGE_GAP"
+      },
+      "specification": {
+        "socketCode": "LGA1200",
+        "platformGroupCode": "LGA1200_INTEL_400_500",
+        "chipset": "B560",
+        "supportedCoreGenerations": [
+          10,
+          11
+        ],
+        "revision": null,
+        "memoryTypes": [
+          "DDR4"
+        ],
+        "standardDataRatesMts": [
+          2133,
+          2666,
+          2933,
+          3200
+        ],
+        "ramSlotCount": 4,
+        "maxMemoryBytes": 137438953472,
+        "formFactor": "MICRO_ATX",
+        "cpuSupportExamples": null
+      },
+      "compatibilityNotes": [
+        "10·11세대 CPU용 보드다. PCIe 세대와 M.2 연결 방식은 CPU 세대에 따라 달라진다.",
+        "3200MT/s의 표준 속도는 11세대 1R 조건이며 10세대와 동일하게 적용하지 않는다. XMP·OC 최대 속도는 기본 속도와 구분한다.",
+        "CPU별 BIOS 및 M.2 포트 공유 조건을 추가 검토한다."
+      ],
+      "identificationNotes": [
+        "WIFI 모델과 구분한다. 공통 매뉴얼을 읽더라도 WIFI 기능을 이 모델에 복사하지 않는다."
+      ],
+      "officialSources": [
+        {
+          "url": "https://kr.msi.com/Motherboard/B560M-PRO-VDH/Specification",
+          "title": "MSI B560M PRO-VDH manufacturer specifications",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "정확한 보드 모델과 칩셋",
+            "CPU 세대·소켓 범위",
+            "메모리 종류·슬롯 수·최대 용량·속도 조건",
+            "Micro ATX 폼팩터"
+          ]
+        },
+        {
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000056574/processors.html",
+          "title": "Intel desktop platform compatibility",
+          "checkedDate": "2026-10-09",
+          "supportedFacts": [
+            "칩셋 계열과 CPU 세대 조건"
+          ]
+        }
+      ],
+      "domesticSources": [
+        {
+          "url": "https://prod.danawa.com/info/?pcode=15223523",
+          "title": "MSI B560M PRO-VDH",
+          "checkedDate": "2026-10-09",
+          "status": "PRODUCT_PAGE_FOUND",
+          "notes": "직접 연 페이지 본문은 단종된 상품이라고 표시하고 하단 0원·0몰을 보여 준다. 이 페이지 표시를 전체 국내 재고 조사 결과나 무료 상품가로 해석하지 않는다."
+        }
+      ],
+      "saleIdentityStatus": "PRODUCT_MODEL_PAGE_FOUND",
+      "priceStatus": "NOT_COLLECTED",
+      "readiness": "RESEARCH_CANDIDATE",
+      "openQuestions": [
+        "국내 테스트 PC에서 실제 설치 빈도·BIOS 버전·자동 수집 모델 문자열을 확인해야 한다.",
+        "모델·PCB 리비전별 CPU 지원표와 메모리 QVL을 추가 연결해야 한다.",
+        "국내 신품 구매 후보로 사용하려면 판매점 신품 상태·판매 리비전·유통 구성을 따로 승인해야 한다."
+      ],
+      "notInExistingCatalog": true
+    }
+  ],
+  "validation": {
+    "existingCatalogPath": "data/catalog-review/catalog-selection-2026-10-09.json",
+    "existingCatalogProductCount": 300,
+    "comparison": "Case-insensitive manufacturer + exact model name; legacy board revision names also require manual review before catalog import",
+    "candidateCount": 16,
+    "uniqueCandidateKeyCount": 16,
+    "duplicateExistingModelCount": 0,
+    "priceObservationsCreated": 0,
+    "actualDatabaseChecked": false,
+    "actualDatabaseChanged": false
+  }
+}

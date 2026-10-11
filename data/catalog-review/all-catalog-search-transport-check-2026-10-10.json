@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "stage": "SEARCH_CANDIDATES_ONLY",
+  "databaseWrites": 0,
+  "deployments": 0,
+  "priceImportApproved": false,
+  "sourceInventory": "all-catalog-live-inventory-2026-10-10.json",
+  "rules": "Search results are leads only. Review exact manufacturer PN, revision, RAM count, domestic NEW sale configuration and the live regular product price before price import. A search miss does not prove unavailability.",
+  "requested": 1,
+  "searchedAt": "2026-10-10T08:49:12.448Z",
+  "items": [
+    {
+      "localProductId": "1f759563-68ef-4949-ae51-325976997891",
+      "canonicalId": null,
+      "type": "CPU",
+      "manufacturer": "AMD",
+      "modelName": "Ryzen 3 3100",
+      "partNumber": "100-100000284BOX",
+      "identityKind": "LEGACY_UNCLASSIFIED",
+      "query": "100-100000284BOX",
+      "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000284BOX",
+      "observedAt": "2026-10-10T08:49:13.175Z",
+      "candidates": [
+        {
+          "externalId": "12200864",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12200864",
+          "title": "AMD 라이젠 3 -3세대 3100 (마티스)"
+        },
+        {
+          "externalId": "14573993",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=14573993",
+          "title": "샵다나와 SHOP-R33R311"
+        },
+        {
+          "externalId": "12767606",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12767606",
+          "title": "나미에스엔티 NMPC-00032011"
+        },
+        {
+          "externalId": "12767450",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12767450",
+          "title": "나미에스엔티 NMPC-01012011"
+        },
+        {
+          "externalId": "12185861",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12185861",
+          "title": "나미에스엔티 NMPC-01012008"
+        },
+        {
+          "externalId": "12374057",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12374057",
+          "title": "나미에스엔티 NMPC-01012009"
+        },
+        {
+          "externalId": "12374102",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12374102",
+          "title": "나미에스엔티 NMPC-01022009"
+        },
+        {
+          "externalId": "12176006",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12176006",
+          "title": "다나와표준PC 온라인강의용 200906"
+        },
+        {
+          "externalId": "11247378",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11247378",
+          "title": "한성컴퓨터 TFG MX3107"
+        },
+        {
+          "externalId": "11247414",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11247414",
+          "title": "한성컴퓨터 TFG MX3166"
+        },
+        {
+          "externalId": "11247384",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11247384",
+          "title": "한성컴퓨터 TFG MX3107W"
+        },
+        {
+          "externalId": "11247393",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11247393",
+          "title": "한성컴퓨터 TFG MX3165"
+        }
+      ],
+      "responseSha256": "8d48db1f0e3cf9ac379ff46057ce40f2db12575505c4ba3e0c8a3dcb846ec8fe",
+      "pageTitle": "100-100000284BOX : 다나와 통합검색",
+      "searches": [
+        {
+          "query": "100-100000284BOX",
+          "sourceUrl": "https://search.danawa.com/dsearch.php?query=100-100000284BOX",
+          "observedAt": "2026-10-10T08:49:13.175Z",
+          "responseSha256": "8d48db1f0e3cf9ac379ff46057ce40f2db12575505c4ba3e0c8a3dcb846ec8fe",
+          "pageTitle": "100-100000284BOX : 다나와 통합검색",
+          "candidates": []
+        },
+        {
+          "query": "AMD Ryzen 3 3100",
+          "sourceUrl": "https://search.danawa.com/dsearch.php?query=AMD%20Ryzen%203%203100",
+          "observedAt": "2026-10-10T08:49:14.462Z",
+          "responseSha256": "a3a8ab04ae63a355125f3753887d9010f6cfe3815e9861c1a2b84f05edc8d511",
+          "pageTitle": "AMD Ryzen 3 3100 : 다나와 통합검색",
+          "candidates": [
+            {
+              "externalId": "12200864",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=12200864",
+              "title": "AMD 라이젠 3 -3세대 3100 (마티스)"
+            },
+            {
+              "externalId": "14573993",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=14573993",
+              "title": "샵다나와 SHOP-R33R311"
+            },
+            {
+              "externalId": "12767606",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=12767606",
+              "title": "나미에스엔티 NMPC-00032011"
+            },
+            {
+              "externalId": "12767450",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=12767450",
+              "title": "나미에스엔티 NMPC-01012011"
+            },
+            {
+              "externalId": "12185861",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=12185861",
+              "title": "나미에스엔티 NMPC-01012008"
+            },
+            {
+              "externalId": "12374057",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=12374057",
+              "title": "나미에스엔티 NMPC-01012009"
+            },
+            {
+              "externalId": "12374102",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=12374102",
+              "title": "나미에스엔티 NMPC-01022009"
+            },
+            {
+              "externalId": "12176006",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=12176006",
+              "title": "다나와표준PC 온라인강의용 200906"
+            },
+            {
+              "externalId": "11247378",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=11247378",
+              "title": "한성컴퓨터 TFG MX3107"
+            },
+            {
+              "externalId": "11247414",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=11247414",
+              "title": "한성컴퓨터 TFG MX3166"
+            },
+            {
+              "externalId": "11247384",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=11247384",
+              "title": "한성컴퓨터 TFG MX3107W"
+            },
+            {
+              "externalId": "11247393",
+              "sourceUrl": "https://prod.danawa.com/info/?pcode=11247393",
+              "title": "한성컴퓨터 TFG MX3165"
+            }
+          ]
+        }
+      ],
+      "status": "EXACT_SKU_REVIEW_REQUIRED"
+    }
+  ],
+  "completed": 1,
+  "withCandidates": 1
+}

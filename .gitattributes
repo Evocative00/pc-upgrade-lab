@@ -1,0 +1,2 @@
+# Preserve the exact bytes covered by the separate retail DB approval hash.
+/data/catalog-review/retail-four-preview-2026-10-10.json text eol=lf

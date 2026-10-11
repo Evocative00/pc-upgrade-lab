@@ -1,0 +1,1855 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-10T08:31:55.176Z",
+  "scope": "16 unpriced MONITOR records in public 307 product snapshot; domestic NEW product amount only; read-only web acquisition",
+  "priceImportApproved": false,
+  "databaseWrites": 0,
+  "deploymentChanges": 0,
+  "collector": "backend/tools/collect-danawa-prices.mjs parseDanawaPrice",
+  "globalIntervalMs": 1100,
+  "basis": {
+    "identityAudit": "data/catalog-review/all-catalog-identity-audit-2026-10-10.json",
+    "liveInventory": "data/catalog-review/all-catalog-live-inventory-2026-10-10.json"
+  },
+  "products": [
+    {
+      "localProductId": "18471642-f8af-4b5d-b1d8-4133555f5999",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "6cb81aa4-9281-461f-bb0b-7138dda43bdd",
+        "manufacturer": "ASUS",
+        "modelName": "VG249Q",
+        "partNumber": "VG249Q"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "specification": {
+        "screenSizeInches": 23.8,
+        "nativeWidthPx": 1920,
+        "nativeHeightPx": 1080,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 144,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.asus.com/displays-desktops/monitors/tuf-gaming/tuf-gaming-vg249q/techspec/",
+          "retrievedAt": "2026-10-04T07:28:04.367748+00:00",
+          "notes": [
+            "주사율은 해당 해상도에서 제조사가 제시한 모드. 입력 단자·GPU 출력·케이블 조건은 향후 별도 호환성 판단 대상으로 유지."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=10784301",
+          "pcode": "10784301",
+          "expectedTitle": "ASUS TUF Gaming VG249Q",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:05.016Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 96536,
+          "sha256": "656880a6e0ea9c3bace163c2d8834f326041d4e0fdb68140e9af7b0190c602b3",
+          "titleMatch": "ASUS TUF Gaming VG249Q 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "60.5cm(24인치) / FHD(1920 x 1080) / 144Hz / IPS / 와이드(16:9) / 평면 / 1ms(MPRT) / 250nits / 1,000:1 / 스피커 내장 / 피벗(회전) / 틸트(상하) / 스위블(좌우) / 엘리베이션(높낮이) / 6.5kg / [게임특화] 인풋랙 제어 / 조준선 표시 / 블랙 이퀄라이저 / FreeSync / Adaptive Sync / G-Sync 호환 / [단자정보] HDMI / DP / D-SUB",
+          "comparisonStoppedLiteralMatch": false
+        }
+      ],
+      "identityReviewStatus": "EXACT_MODEL_TITLE_TO_REVIEW",
+      "mapping": null,
+      "status": "REGULAR_PRICE_SECTION_MISSING_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    },
+    {
+      "localProductId": "c412421e-48dc-4a03-9cc4-711a1ac8018a",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "4f38070a-0017-4114-a5d2-9223c4e922b3",
+        "manufacturer": "ASUS",
+        "modelName": "VG259QM",
+        "partNumber": "VG259QM"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "specification": {
+        "screenSizeInches": 24.5,
+        "nativeWidthPx": 1920,
+        "nativeHeightPx": 1080,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 240,
+        "hasRefreshOverclock": true,
+        "nativeOcRefreshHz": 280,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.asus.com/displays-desktops/monitors/tuf-gaming/tuf-gaming-vg259qm/",
+          "retrievedAt": "2026-10-04T07:28:07.552862+00:00",
+          "notes": [
+            "주사율은 해당 해상도에서 제조사가 제시한 모드. 입력 단자·GPU 출력·케이블 조건은 향후 별도 호환성 판단 대상으로 유지. BuildCores refresh_rate=280 Hz는 기본 주사율로 그대로 사용하지 않음. 제조사 근거에 따라 기본 240 Hz / OC 280 Hz로 분리. OC 최대 주사율은 기본 주사율과 별도 저장."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=11286561",
+          "pcode": "11286561",
+          "expectedTitle": "ASUS TUF Gaming VG259QM",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:06.389Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 98255,
+          "sha256": "3b21ef0e06a5a69c9d03cf65b58ea0347e7ca8a708b1f7fb0d7de90963bd123d",
+          "titleMatch": "ASUS TUF Gaming VG259QM 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "모니터 / 62.23cm(25인치) / FHD(1920 x 1080) / 280Hz / IPS / 와이드(16:9) / 평면 / 1ms(GTG) / 400nits / 1,000:1 / HDR10 / VESA HDR 400 / 스피커 내장 / 헤드폰 아웃 / 틸트(상하) / 스위블(좌우) / 피벗(회전) / 엘리베이션(높낮이) / 5.1kg / [게임특화] 블랙 이퀄라이저 / 조준선 표시 / 인풋랙 제어 / Adaptive Sync / FreeSync / G-Sync 호환(NVIDIA인증) / FreeSync 프리미엄 / G-Sync 호환 / [단자정보] DP / HDMI 2.0",
+          "comparisonStoppedLiteralMatch": false
+        }
+      ],
+      "identityReviewStatus": "EXACT_MODEL_TITLE_TO_REVIEW",
+      "mapping": null,
+      "status": "REGULAR_PRICE_SECTION_MISSING_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    },
+    {
+      "localProductId": "0653233f-559d-4cd3-87fc-eaa26ac92ea5",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1f541617-7eb7-452e-82dc-c3ce08af8001",
+        "manufacturer": "ASUS",
+        "modelName": "VG27AQ",
+        "partNumber": "VG27AQ"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "specification": {
+        "screenSizeInches": 27,
+        "nativeWidthPx": 2560,
+        "nativeHeightPx": 1440,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 144,
+        "hasRefreshOverclock": true,
+        "nativeOcRefreshHz": 165,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.asus.com/displays-desktops/monitors/tuf-gaming/tuf-gaming-vg27aq/techspec/",
+          "retrievedAt": "2026-10-03T10:46:42Z",
+          "notes": [
+            "144 Hz standard and up to 165 Hz through the monitor overclock setting are separate. The product specification page only gives the maximum; the manufacturer manual documents the overclock setting and timing table."
+          ]
+        },
+        {
+          "url": "https://dlcdnets.asus.com/pub/ASUS/LCD%20Monitors/VG27AQ/VG27xQ_VG27AQZ_English.pdf",
+          "retrievedAt": "2026-10-03T10:46:42Z",
+          "notes": [
+            "144 Hz standard and up to 165 Hz through the monitor overclock setting are separate. The product specification page only gives the maximum; the manufacturer manual documents the overclock setting and timing table."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=10296165",
+          "pcode": "10296165",
+          "expectedTitle": "ASUS TUF Gaming VG27AQ",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:07.755Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 96842,
+          "sha256": "edfb7a57fff201ec6ec40af7f7b916e5820afaacb771b0cec3d329164f9ef3e4",
+          "titleMatch": "ASUS TUF Gaming VG27AQ 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "68.47cm(27인치) / QHD(2560 x 1440) / 165Hz / IPS / 와이드(16:9) / 평면 / 1ms(MPRT) / 350nits / 1,000:1 / HDR10 / 스피커 내장 / 피벗(회전) / 엘리베이션(높낮이) / 스위블(좌우) / 틸트(상하) / 5.8kg / [게임특화] 조준선 표시 / 인풋랙 제어 / 블랙 이퀄라이저 / Adaptive Sync / G-Sync 호환 / G-Sync 호환(NVIDIA인증) / FreeSync / [단자정보] HDMI 2.0 / DP",
+          "comparisonStoppedLiteralMatch": false
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=119514505",
+          "pcode": "119514505",
+          "expectedTitle": "ASUS TUF Gaming VG27AQ",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:26:47.135Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 89117,
+          "sha256": "7637ad6cc725569051f1c43d087f24da357d62dd87c5426db266000ba2c55a9e",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "availabilityText": [
+            "2020.01. ㅣ 제조사: ASUS ㅣ 이미지출처: 가격비교 중지 상품입니다. 최저가 추이 툴팁 보기 현재 보고 있는 상품의 최저가 추이를 1개월부터 24개월까지 기간별로 확인해보세요. 기간을 조정하고, 알림 받기를 선택해서 지정가 알림을 받아",
+            "매자에게 문의하세요. --> 가격비교 다나와 입점안내 가격비교 중지 상품입니다. 상품 상세정보 구글 이미지 검색 결과 보기 의견/리뷰 소모품/액세서리 소모품 다나와 바로가기 연관상품 ASUS TUF Gaming VG27AQ 최저가 0 원 자세히보"
+          ],
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          }
+        }
+      ],
+      "identityReviewStatus": "EXACT_MODEL_TITLE_TO_REVIEW",
+      "mapping": null,
+      "status": "REGULAR_PRICE_SECTION_MISSING_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    },
+    {
+      "localProductId": "d010c938-8219-4654-9e33-735142add03e",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "1f30b958-7491-427c-9e74-347ef40ac9d0",
+        "manufacturer": "BenQ",
+        "modelName": "XL2411K",
+        "partNumber": "XL2411K"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "specification": {
+        "screenSizeInches": 24,
+        "nativeWidthPx": 1920,
+        "nativeHeightPx": 1080,
+        "panelType": "TN",
+        "nativeStandardRefreshHz": 144,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://zowie.benq.com/en-sg/monitor/xl2411k.html",
+          "retrievedAt": "2026-10-04T07:27:59.031603+00:00",
+          "notes": [
+            "제조사 지역 페이지에서 단종 표시. 기존 사용자 모니터 인식을 위해 후보로 유지하며 판매 가능성을 의미하지 않음. 주사율은 해당 해상도에서 제조사가 제시한 모드. 입력 단자·GPU 출력·케이블 조건은 향후 별도 호환성 판단 대상으로 유지."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12303575",
+          "pcode": "12303575",
+          "expectedTitle": "BenQ ZOWIE XL2411K 게이밍 무결점",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:09.070Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 98079,
+          "sha256": "78e89928a9e204ee88ad1cc42196179dc0a6e5f8648319f3ab4e521ec0b05e7e",
+          "titleMatch": "BenQ ZOWIE XL2411K 게이밍 무결점 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "61cm(24인치) / FHD(1920 x 1080) / 144Hz / TN / 와이드(16:9) / 평면 / 1ms(GTG) / 320nits / 1,000:1 / 헤드폰 아웃 / 스위블(좌우) / 피벗(회전) / 틸트(상하) / 엘리베이션(높낮이) / 5.9kg / [게임특화] 블랙 이퀄라이저 / 인풋랙 제어 / [단자정보] DP / HDMI 2.0",
+          "comparisonStoppedLiteralMatch": false
+        }
+      ],
+      "identityReviewStatus": "EXACT_MODEL_TITLE_TO_REVIEW",
+      "mapping": null,
+      "status": "REGULAR_PRICE_SECTION_MISSING_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    },
+    {
+      "localProductId": "a3080a92-a63a-4896-9a4d-956cca219ca5",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d7385868-3658-4984-a5dd-0f8eebebd4e8",
+        "manufacturer": "Dell",
+        "modelName": "S2721DGF",
+        "partNumber": "S2721DGF"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "specification": {
+        "screenSizeInches": 27,
+        "nativeWidthPx": 2560,
+        "nativeHeightPx": 1440,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 165,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.dell.com/en-us/shop/dell-27-gaming-monitor-s2721dgf/apd/210-axeh/monitors-monitor-accessories",
+          "retrievedAt": "2026-10-04T07:33:10.013942Z",
+          "notes": [
+            "DisplayPort 기준 165Hz, HDMI 기준 144Hz. 주사율은 해당 해상도에서 제조사가 제시한 모드. 입력 단자·GPU 출력·케이블 조건은 향후 별도 호환성 판단 대상으로 유지."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+          "pcode": "12612587",
+          "expectedTitle": "DELL S2721DGF",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:26:45.780Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 122091,
+          "sha256": "63a698f0099b95fe49a1cbeeff019f861e28dbab2321abb376563fd5eea6e5b9",
+          "regularSectionCount": 1,
+          "dataBasePriceCount": 1,
+          "availabilityText": [],
+          "price": {
+            "amountKrw": 976500,
+            "observedAt": "2026-10-10T08:26:45.780Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "collectionStatus": "PRICE_PARSED"
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+          "pcode": "12612587",
+          "expectedTitle": "DELL S2721DGF",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "collectionStatus": "PRICE_PARSED",
+          "observedAt": "2026-10-10T08:29:59.229Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 122110,
+          "sha256": "bb03fa5e4ce9fce81b81f9d08ce43dc491fc4e547482a62c3cbdfe8f30096ec3",
+          "regularSectionCount": 1,
+          "dataBasePriceCount": 1,
+          "price": {
+            "amountKrw": 976500,
+            "observedAt": "2026-10-10T08:29:59.229Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "evidenceQuote": " <span class=\"badge__lowest\">최저가</span> <div class=\"sell-price\" data-base-price=\"976500\" data-delivery-price=\"0\"> <span class=\"text__num\">976,500</span> <span class=\"text__unit\">원</span> ",
+          "pricePartQuote": "(976,500+무료배송)",
+          "activeBridgeUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=860&cate2=13735&cate3=14883&cate4=58972&pcode=12612587&cmpnyc=TX7F3&safe_trade=4&fee_type=N&link_pcode=12775159846&package=0&setpc=0&r=17916209996302&deliveryCheckType=addDeliveryTopProd",
+          "retailerWarehouseInventoryVerified": false,
+          "stockEvidenceExtent": "Strict collector accepted an active ordinary domestic-new purchase row for exact pcode; no retailer warehouse stock, checkout, order, login or purchase was checked."
+        }
+      ],
+      "identityReviewStatus": "EXACT_MANUFACTURER_MODEL_AND_PART_NUMBER",
+      "mapping": {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "d7385868-3658-4984-a5dd-0f8eebebd4e8",
+          "manufacturer": "Dell",
+          "modelName": "S2721DGF",
+          "partNumber": "S2721DGF"
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "12612587",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+          "saleSku": "S2721DGF",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-10T08:31:55.176Z"
+        },
+        "review": {
+          "expectedTitle": "DELL S2721DGF",
+          "identityEvidenceUrls": [
+            "https://prod.danawa.com/info/?pcode=12612587",
+            "https://www.dell.com/support/product-details/ko-kr/product/dell-s2721dgf-monitor/resources/manuals",
+            "https://www.dell.com/en-us/shop/dell-27-gaming-monitor-s2721dgf/apd/210-axeh/monitors-monitor-accessories"
+          ],
+          "reason": "Exact Dell S2721DGF manufacturer model and part number in seed, Korean manufacturer support page and domestic Danawa title. Official 27-inch QHD IPS, native DP 165 Hz/HDMI 144 Hz basis retained; no S2721DGFA or successor substituted. Price is ordinary active product data-base-price, conditional sections excluded. Retailer warehouse inventory was not independently checked."
+        }
+      },
+      "status": "EXACT_PN_PRICE_PREVIEW_READY_IMPORT_NOT_APPROVED",
+      "selectedObservation": {
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+        "pcode": "12612587",
+        "expectedTitle": "DELL S2721DGF",
+        "requestMethod": "GET",
+        "readOnly": true,
+        "collectionStatus": "PRICE_PARSED",
+        "observedAt": "2026-10-10T08:29:59.229Z",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "bodyBytes": 122110,
+        "sha256": "bb03fa5e4ce9fce81b81f9d08ce43dc491fc4e547482a62c3cbdfe8f30096ec3",
+        "regularSectionCount": 1,
+        "dataBasePriceCount": 1,
+        "price": {
+          "amountKrw": 976500,
+          "observedAt": "2026-10-10T08:29:59.229Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "evidenceQuote": " <span class=\"badge__lowest\">최저가</span> <div class=\"sell-price\" data-base-price=\"976500\" data-delivery-price=\"0\"> <span class=\"text__num\">976,500</span> <span class=\"text__unit\">원</span> ",
+        "pricePartQuote": "(976,500+무료배송)",
+        "activeBridgeUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=860&cate2=13735&cate3=14883&cate4=58972&pcode=12612587&cmpnyc=TX7F3&safe_trade=4&fee_type=N&link_pcode=12775159846&package=0&setpc=0&r=17916209996302&deliveryCheckType=addDeliveryTopProd",
+        "retailerWarehouseInventoryVerified": false,
+        "stockEvidenceExtent": "Strict collector accepted an active ordinary domestic-new purchase row for exact pcode; no retailer warehouse stock, checkout, order, login or purchase was checked."
+      },
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": true,
+        "retailerWarehouseInventoryVerified": false,
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=12612587"
+      }
+    },
+    {
+      "localProductId": "eb3c77c9-a487-4c12-8ccb-365de25a6536",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "58b77fe3-6887-4e2a-b0a5-a8c8cb1cb7a6",
+        "manufacturer": "Gigabyte",
+        "modelName": "M28U",
+        "partNumber": "M28U"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "specification": {
+        "screenSizeInches": 28,
+        "nativeWidthPx": 3840,
+        "nativeHeightPx": 2160,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 144,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.gigabyte.com/Monitor/M28U/sp",
+          "retrievedAt": "2026-10-04T07:27:59.599805+00:00",
+          "notes": [
+            "주사율은 해당 해상도에서 제조사가 제시한 모드. 입력 단자·GPU 출력·케이블 조건은 향후 별도 호환성 판단 대상으로 유지."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15928166",
+          "pcode": "15928166",
+          "expectedTitle": "GIGABYTE M28U UHD 4K 게이밍 144",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:10.415Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 97008,
+          "sha256": "bf1144c894d541a46eacf92aa5f526fcad9d3c4a84661a217fb7e273050095b5",
+          "titleMatch": "GIGABYTE M28U UHD 4K 게이밍 144 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": true,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "모니터 / 71cm(28인치) / 4K UHD(3840 x 2160) / 144Hz / IPS / 와이드(16:9) / 평면 / 1ms(GTG) / 300nits / 1,000:1 / VESA HDR 400 / 스피커 내장 / 헤드폰 아웃 / 엘리베이션(높낮이) / 틸트(상하) / 6.93kg / [게임특화] 블랙 이퀄라이저 / 인풋랙 제어 / 조준선 표시 / FreeSync / FreeSync 프리미엄 / FreeSync 프리미엄 프로 / [단자정보] HDMI 2.1 / USB C타입 / DP",
+          "comparisonStoppedLiteralMatch": false
+        }
+      ],
+      "identityReviewStatus": "EXACT_MODEL_TITLE_TO_REVIEW",
+      "mapping": null,
+      "status": "DANAWA_TEMPORARY_OUT_OF_STOCK_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    },
+    {
+      "localProductId": "655069e2-47dc-489a-a77a-336511e975c9",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d63a3c27-ec99-4e58-a2a9-a204c244d76f",
+        "manufacturer": "Gigabyte",
+        "modelName": "M32U",
+        "partNumber": "M32U"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "specification": {
+        "screenSizeInches": 31.5,
+        "nativeWidthPx": 3840,
+        "nativeHeightPx": 2160,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 144,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.gigabyte.com/Monitor/M32U/sp",
+          "retrievedAt": "2026-10-04T07:27:59.526645+00:00",
+          "notes": [
+            "원본 aliases에 M32U-AE(Arm Edition)가 포함되지만 이 후보는 M32U 기본 모델만 선택. Arm Edition과 동일 SKU로 자동 통합하지 않음. 주사율은 해당 해상도에서 제조사가 제시한 모드. 입력 단자·GPU 출력·케이블 조건은 향후 별도 호환성 판단 대상으로 유지."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=14964413",
+          "pcode": "14964413",
+          "expectedTitle": "GIGABYTE M32U UHD 4K 게이밍 144 피씨디렉트",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:11.830Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 96194,
+          "sha256": "659aebe1f4d25239705f3282c68a712f0beb72c0cbbe23f397ce88dcc6609c08",
+          "titleMatch": "GIGABYTE M32U UHD 4K 게이밍 144 피씨디렉트 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": true,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "모니터 / 80.1cm(32인치) / 4K UHD(3840 x 2160) / 144Hz / IPS / 와이드(16:9) / 평면 / 1ms(MPRT) / 350nits / 1,000:1 / VESA HDR 400 / 스피커 내장 / 헤드폰 아웃 / 스위블(좌우) / 틸트(상하) / 엘리베이션(높낮이) / 10.35kg / [게임특화] 조준선 표시 / 블랙 이퀄라이저 / [단자정보] DP 1.4 / HDMI 2.1 / USB C타입",
+          "comparisonStoppedLiteralMatch": false
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=15311747",
+          "pcode": "15311747",
+          "expectedTitle": "GIGABYTE 게이밍 M32U 144 HDR KVM 4K 제이씨현",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:26.189Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 99233,
+          "sha256": "2476addd17259e9f44ff9624e51cd48be8c3d05a7652790f40adc9fe19fa5648",
+          "titleMatch": "GIGABYTE 게이밍 M32U 144 HDR KVM 4K 제이씨현 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "80cm(32인치) / 4K UHD(3840 x 2160) / 144Hz / IPS / 와이드(16:9) / 평면 / 1ms(MPRT) / 350nits / 1,000:1 / VESA HDR 400 / 스피커 내장 / 엘리베이션(높낮이) / 틸트(상하) / 스위블(좌우) / 10.35kg / [게임특화] 조준선 표시 / 블랙 이퀄라이저 / FreeSync / [단자정보] USB C타입 / DP 1.4 / HDMI 2.1",
+          "comparisonStoppedLiteralMatch": false
+        }
+      ],
+      "identityReviewStatus": "EXACT_MODEL_TITLE_TO_REVIEW",
+      "mapping": null,
+      "status": "DANAWA_TEMPORARY_OUT_OF_STOCK_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    },
+    {
+      "localProductId": "dceef8a9-d644-44cf-86c4-482da2bf2936",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ab179a44-5f32-43ef-826e-f882822130ea",
+        "manufacturer": "LG",
+        "modelName": "24GN60R-B",
+        "partNumber": "24GN60R-B"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "specification": {
+        "screenSizeInches": 23.8,
+        "nativeWidthPx": 1920,
+        "nativeHeightPx": 1080,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 144,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.lg.com/uk/monitors/gaming/24gn60r-b/",
+          "retrievedAt": "2026-10-03T10:46:42Z",
+          "notes": [
+            "LG manufacturer display size, panel and native timing facts are used. Unverified overclock and operating power values remain null."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=18644135",
+          "pcode": "18644135",
+          "expectedTitle": "LG전자 울트라기어 24GN60R",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:13.261Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 95637,
+          "sha256": "6e22ef1617fb389dbe395760f89c543a87ae5c8cfcece0ae314ba3796a963f4a",
+          "titleMatch": "LG전자 울트라기어 24GN60R 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "60.4cm(24인치) / FHD(1920 x 1080) / 144Hz / IPS / 와이드(16:9) / 평면 / 1ms(GTG) / 300nits / 1,000:1 / HDR10 / 헤드폰 아웃 / 틸트(상하) / 3.94kg / [게임특화] 인풋랙 제어 / 조준선 표시 / 블랙 이퀄라이저 / FreeSync / FreeSync 프리미엄 / [단자정보] HDMI 2.0 / DP 1.4 / 출시가: 229,000원",
+          "comparisonStoppedLiteralMatch": false
+        }
+      ],
+      "identityReviewStatus": "DOMESTIC_SUFFIX_EQUIVALENCE_REQUIRED",
+      "mapping": null,
+      "status": "REGULAR_PRICE_SECTION_MISSING_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    },
+    {
+      "localProductId": "c15be9f9-bcd4-488e-932f-88523b639b88",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "14e27680-a5f9-481e-b9c7-7942d4a427fa",
+        "manufacturer": "LG",
+        "modelName": "24GN650-B",
+        "partNumber": "24GN650-B"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-monitor/manifest.json",
+      "specification": {
+        "screenSizeInches": 23.8,
+        "nativeWidthPx": 1920,
+        "nativeHeightPx": 1080,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 144,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.lg.com/ca_en/monitors/gaming/24gn650-b/",
+          "retrievedAt": "2026-09-29T11:55:32Z",
+          "notes": [
+            "Manufacturer diagonal is 23.8 inches; BuildCores rounds it to 24. The original record remains unchanged.",
+            "No separate overclock specification was confirmed; support and OC frequency remain null, not false.",
+            "Only the exact base model is selected; regional suffixes in the original record are not automatically treated as aliases.",
+            "Power values retain their source region and published meanings. Detailed measurement conditions were not confirmed, so all three normalized active-power fields remain null.",
+            "Published refresh capabilities do not establish the current Windows setting, expected game FPS or support through every GPU, port and cable combination."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=14758208",
+          "pcode": "14758208",
+          "expectedTitle": "LG전자 울트라기어 24GN650",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:14.627Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 95848,
+          "sha256": "9466bb1c5965ad15ca4bce781430908c14c22f145ebe0c33773fb11f2d0e9555",
+          "titleMatch": "LG전자 울트라기어 24GN650 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "60.4cm(24인치) / FHD(1920 x 1080) / 144Hz / IPS / 와이드(16:9) / 평면 / 1ms(GTG) / 300nits / 1,000:1 / HDR10 / 헤드폰 아웃 / 틸트(상하) / 피벗(회전) / 엘리베이션(높낮이) / 5.6kg / [게임특화] 인풋랙 제어 / 블랙 이퀄라이저 / 조준선 표시 / FreeSync / [단자정보] DP / HDMI",
+          "comparisonStoppedLiteralMatch": false
+        }
+      ],
+      "identityReviewStatus": "DOMESTIC_SUFFIX_EQUIVALENCE_REQUIRED",
+      "mapping": null,
+      "status": "REGULAR_PRICE_SECTION_MISSING_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    },
+    {
+      "localProductId": "712e0b33-e9c3-4ccf-9033-96b3aed4a8b5",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "cbd74f6a-e121-4088-b8b5-31cb76428ccf",
+        "manufacturer": "LG",
+        "modelName": "27GL850-B",
+        "partNumber": "27GL850-B"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "specification": {
+        "screenSizeInches": 27,
+        "nativeWidthPx": 2560,
+        "nativeHeightPx": 1440,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 144,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.lg.com/us/monitors/lg-27gl850-b-gaming-monitor",
+          "retrievedAt": "2026-10-04T07:28:03.672688+00:00",
+          "notes": [
+            "주사율은 해당 해상도에서 제조사가 제시한 모드. 입력 단자·GPU 출력·케이블 조건은 향후 별도 호환성 판단 대상으로 유지."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=8982368",
+          "pcode": "8982368",
+          "expectedTitle": "LG전자 울트라기어 27GL850",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:15.986Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 98890,
+          "sha256": "d7e66daca207223b38c8617a909c9f54097eeb023745942e52fec2cdc98e73b0",
+          "titleMatch": "LG전자 울트라기어 27GL850 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "68.47cm(27인치) / QHD(2560 x 1440) / 144Hz / Nano-IPS / 와이드(16:9) / 평면 / 1ms(GTG) / 350nits / 1,000:1 / HDR10 / 헤드폰 아웃 / 엘리베이션(높낮이) / 틸트(상하) / 피벗(회전) / 6.1kg / [게임특화] 조준선 표시 / 블랙 이퀄라이저 / 인풋랙 제어 / G-Sync 호환 / FreeSync 프리미엄 / G-Sync 호환(NVIDIA인증) / FreeSync / [단자정보] DP / HDMI",
+          "comparisonStoppedLiteralMatch": false
+        }
+      ],
+      "identityReviewStatus": "DOMESTIC_SUFFIX_EQUIVALENCE_REQUIRED",
+      "mapping": null,
+      "status": "REGULAR_PRICE_SECTION_MISSING_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    },
+    {
+      "localProductId": "c13dc352-5d97-4a21-87d6-4cf7226232fc",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "23f9bbc9-05c9-45a5-830f-60b4056baa15",
+        "manufacturer": "LG",
+        "modelName": "27GP850-B",
+        "partNumber": "27GP850-B"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-monitor/manifest.json",
+      "specification": {
+        "screenSizeInches": 27,
+        "nativeWidthPx": 2560,
+        "nativeHeightPx": 1440,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 165,
+        "hasRefreshOverclock": true,
+        "nativeOcRefreshHz": 180,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.lg.com/hk_en/monitors/gaming/27gp850-b/",
+          "retrievedAt": "2026-09-29T11:55:32Z",
+          "notes": [
+            "The manufacturer separates 165 Hz from 180 Hz overclock; the two frequencies are stored separately.",
+            "27GP850P-B.BEU also appears in the original part-number array. That different P model is not adopted or registered as an alias.",
+            "Nano IPS is retained as an additional technology; the normalized base panel type is IPS.",
+            "Power values retain their source region and published meanings. Detailed measurement conditions were not confirmed, so all three normalized active-power fields remain null.",
+            "Published refresh capabilities do not establish the current Windows setting, expected game FPS or support through every GPU, port and cable combination."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=14948531",
+          "pcode": "14948531",
+          "expectedTitle": "LG전자 울트라기어 27GP850",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:17.587Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 128848,
+          "sha256": "7fa12e80aa6d6b42c12f0eb7ada8e4eb561fb2a9337ab6464828b09a78d1f7e9",
+          "titleMatch": "LG전자 울트라기어 27GP850 상품비교",
+          "regularSectionCount": 1,
+          "dataBasePriceCount": 1,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "price": {
+            "amountKrw": 450250,
+            "observedAt": "2026-10-10T08:24:17.587Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=14948531",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "collectionStatus": "PRICE_PARSED",
+          "danawaSpecSummary": "모니터 / 68.5cm(27인치) / QHD(2560 x 1440) / 165Hz / Nano-IPS / 와이드(16:9) / 평면 / 1ms(GTG) / 400nits / 1,000:1 / HDR10 / VESA HDR 400 / 헤드폰 아웃 / 피벗(회전) / 엘리베이션(높낮이) / 틸트(상하) / 6.3kg / [게임특화] 조준선 표시 / 인풋랙 제어 / 블랙 이퀄라이저 / Adaptive Sync / G-Sync 호환 / G-Sync 호환(NVIDIA인증) / FreeSync / FreeSync 프리미엄 / [단자정보] HDMI 2.0 / DP / 출시가: 604,000원",
+          "comparisonStoppedLiteralMatch": false
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=14948531",
+          "pcode": "14948531",
+          "expectedTitle": "LG전자 울트라기어 27GP850",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "collectionStatus": "PRICE_PARSED",
+          "observedAt": "2026-10-10T08:30:42.295Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 128867,
+          "sha256": "62baece0aa7dde039fca48942beabf89c36d19495364c15e383aea39e64caace",
+          "regularSectionCount": 1,
+          "dataBasePriceCount": 1,
+          "price": {
+            "amountKrw": 450250,
+            "observedAt": "2026-10-10T08:30:42.295Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=14948531",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "evidenceQuote": " <div class=\"sell-price\" data-base-price=\"450250\" data-delivery-price=\"0\"> <span class=\"text__num\">450,250</span> <span class=\"text__unit\">원</span> ",
+          "activeBridgeUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=860&cate2=13735&cate3=14883&cate4=58972&pcode=14948531&cmpnyc=TH201&safe_trade=4&fee_type=T&link_pcode=3721027916&package=0&setpc=0&r=17916210421248&deliveryCheckType=addDeliveryTopProd",
+          "retailerWarehouseInventoryVerified": false,
+          "stockEvidenceExtent": "Strict collector accepted an active ordinary domestic-new purchase row for this pcode; retailer warehouse stock was not independently verified. Regional PN differs from catalog and this observation is not import-ready."
+        }
+      ],
+      "identityReviewStatus": "REGIONAL_EQUIVALENCE_REVIEW_PENDING",
+      "mapping": null,
+      "status": "REGIONAL_EQUIVALENCE_REVIEW_PENDING",
+      "domesticManufacturerEvidence": [
+        {
+          "url": "https://www.lge.co.kr/monitors/27gp850",
+          "observedAt": "2026-10-10T08:27:29.839Z",
+          "kind": "MANUFACTURER_DOMESTIC_IDENTITY_PAGE",
+          "readOnly": true,
+          "httpStatus": 200,
+          "finalUrl": "https://www.lge.co.kr/product/monitors/27gp850?modelId=MD09004832&pdpType=PURCHASE",
+          "bodyBytes": 1294559,
+          "sha256": "b26d959f11a5277b8f972da05fc0d88dbd6f014f4689fb5d62b85cbe011e1fdd",
+          "title": "LG 울트라기어 게이밍모니터 | 27GP850 | 모니터 | PC/모니터 | 제품/소모품 | LG전자",
+          "modelTokens": [
+            "27GP850",
+            "27gp850",
+            "27GP850.BKR",
+            "27GP850-BB",
+            "27GP850-BB.BKROMKN",
+            "27gp850.bkr"
+          ],
+          "manufacturerModelContext": [
+            " LG 울트라기어 게이밍모니터 | 27GP850 | 모니터 | PC/모니터 | 제품/소모품 | LG전자 본문 ",
+            " 블로그 홈 제품/소모품 PC/모니터 모니터 27GP850 LG 울트라기어 게이밍모니터 제품 상세 스펙 리뷰 (307) ",
+            "정보 품명 및 모델명 LED Monitor (27GP850) KC 인증 필 유무 R-R-LGE-27GP850 (전자파 적",
+            " 울트라기어 게이밍모니터 공유하기 내용 열기 27GP850 제품코드 복사하기 평점 5점 만점 중 4.9 총 리뷰 수 ( "
+          ],
+          "downloadUrls": []
+        },
+        {
+          "url": "https://www.lge.co.kr/support/product-27GP850-BB",
+          "observedAt": "2026-10-10T08:27:34.590Z",
+          "kind": "MANUFACTURER_DOMESTIC_IDENTITY_PAGE",
+          "readOnly": true,
+          "httpStatus": 200,
+          "finalUrl": "https://www.lge.co.kr/support/product-27GP850-BB",
+          "bodyBytes": 346129,
+          "sha256": "5e1d2e2d05bb4361e90f3f0fd82e3dff18523c7c158fce2edbcde0108813572c",
+          "title": "27GP850-BB | 고객지원 | LG전자",
+          "modelTokens": [
+            "27GP850-BB",
+            "27GP850-BB.BKROMKN",
+            "27GP850",
+            "27gp850"
+          ],
+          "manufacturerModelContext": [
+            " 27GP850-BB | 고객지원 | LG전자 전환 API(CAPI)로 변경] St",
+            " 보유제품 등록 LG 울트라기어 게이밍모니터 27GP850-BB 제품 정보 노트북/모니터 > PC 모니터 출장 서비스 예약 센",
+            " 85MB 다운로드 [Windows 8.1] 27GP850 Driver PC 모니터 2021.08.12 2MB 다운로드 ",
+            "[Windows 10] 27GP850 Driver PC 모니터 2021.08.12 2MB 다운로드 ",
+            "[Windows 7] 27GP850 Driver PC 모니터 2021.08.12 2MB 다운로드 ",
+            "[Windows 8] 27GP850 Driver PC 모니터 2021.08.12 2MB 다운로드 "
+          ],
+          "downloadUrls": [
+            "https://gscs-b2c.lge.com/open/downloadFile?fileId=w0N0R2fxMNQH0L8D2FZZdQ",
+            "https://gscs-b2c.lge.com/open/downloadFile?fileId=7zlTLzpm08G93sLWChpg"
+          ]
+        }
+      ],
+      "additionalManufacturerEvidence": [
+        {
+          "url": "https://www.lg.com/hk_en/monitors/gaming/27gp850-b/",
+          "observedAt": "2026-10-10T08:29:11.440Z",
+          "kind": "MANUFACTURER_GLOBAL_IDENTITY_PAGE",
+          "readOnly": true,
+          "httpStatus": 200,
+          "finalUrl": "https://www.lg.com/hk_en/monitors/gaming/27gp850-b/",
+          "bodyBytes": 1673320,
+          "sha256": "9033b28eec71e319fe9236fa857e6b568f41909c00c71b2de55d2011d7435fbd",
+          "title": "27&quot; UltraGear™ QHD Nano IPS 1ms (GtG) Gaming Monitor with 165Hz / 180Hz (Overclock) - 27GP850-B | LG Hong Kong",
+          "modelTokens": [
+            "27GP850-B",
+            "27gp850-b",
+            "27GP850-B.AHK",
+            "27gp850-b.html"
+          ],
+          "manufacturerModelContext": [
+            " (Overclock) - 27GP850-B | LG Hong Kong JavaScrip",
+            " All UltraGear 27GP850-B 27\" UltraGear™ QHD Nano ",
+            "Hz (Overclock) 27GP850-B Copy model name ( ) open"
+          ],
+          "downloadUrls": []
+        }
+      ],
+      "selectedObservation": {
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=14948531",
+        "pcode": "14948531",
+        "expectedTitle": "LG전자 울트라기어 27GP850",
+        "requestMethod": "GET",
+        "readOnly": true,
+        "collectionStatus": "PRICE_PARSED",
+        "observedAt": "2026-10-10T08:30:42.295Z",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "bodyBytes": 128867,
+        "sha256": "62baece0aa7dde039fca48942beabf89c36d19495364c15e383aea39e64caace",
+        "regularSectionCount": 1,
+        "dataBasePriceCount": 1,
+        "price": {
+          "amountKrw": 450250,
+          "observedAt": "2026-10-10T08:30:42.295Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=14948531",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "evidenceQuote": " <div class=\"sell-price\" data-base-price=\"450250\" data-delivery-price=\"0\"> <span class=\"text__num\">450,250</span> <span class=\"text__unit\">원</span> ",
+        "activeBridgeUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=860&cate2=13735&cate3=14883&cate4=58972&pcode=14948531&cmpnyc=TH201&safe_trade=4&fee_type=T&link_pcode=3721027916&package=0&setpc=0&r=17916210421248&deliveryCheckType=addDeliveryTopProd",
+        "retailerWarehouseInventoryVerified": false,
+        "stockEvidenceExtent": "Strict collector accepted an active ordinary domestic-new purchase row for this pcode; retailer warehouse stock was not independently verified. Regional PN differs from catalog and this observation is not import-ready."
+      },
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "regionalEquivalenceCandidate": {
+        "domesticModelNumber": "27GP850-BB",
+        "manufacturerFullPartNumbers": [
+          "27GP850-BB.BKROMKN"
+        ],
+        "globalFullPartNumbers": [
+          "27GP850-B.AHK"
+        ],
+        "commonModel": "27GP850",
+        "specificationCrosscheck": "27-inch 2560x1440 Nano IPS; native 165 Hz and OC 180 Hz match. Korean manual p25/p27 preserves native/OC distinction. No 27GP850P substitute accepted.",
+        "manualUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=w0N0R2fxMNQH0L8D2FZZdQ",
+        "status": "REGIONAL_EQUIVALENCE_REVIEW_PENDING",
+        "importReady": false,
+        "reason": "Catalog PN differs from primary manufacturer domestic SKU. Full loader requires exact product PN = saleSku; manufacturer common-model/spec matches are evidence for a future explicit equivalence review, not authorization to normalize suffixes.",
+        "reviewedAt": "2026-10-10T08:31:55.176Z"
+      }
+    },
+    {
+      "localProductId": "032e499f-0917-4f4a-8c53-f0a20eea5a79",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "04725907-eba1-4a1b-80e7-fb0bf1b48e98",
+        "manufacturer": "LG",
+        "modelName": "27GP950-B",
+        "partNumber": "27GP950-B"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "specification": {
+        "screenSizeInches": 27,
+        "nativeWidthPx": 3840,
+        "nativeHeightPx": 2160,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 144,
+        "hasRefreshOverclock": true,
+        "nativeOcRefreshHz": 160,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.lg.com/us/monitors/lg-27gp950-b-gaming-monitor",
+          "retrievedAt": "2026-10-04T07:28:04.829961+00:00",
+          "notes": [
+            "LG Singapore 페이지의 상단 Key Features에는 OC165 오기가 있으나 동일 페이지 본문·상세 조건과 US 페이지는 144Hz/OC160Hz로 제시함. 원본 160Hz를 기본값으로 저장하지 않음. 주사율은 해당 해상도에서 제조사가 제시한 모드. 입력 단자·GPU 출력·케이블 조건은 향후 별도 호환성 판단 대상으로 유지. BuildCores refresh_rate=160 Hz는 기본 주사율로 그대로 사용하지 않음. 제조사 근거에 따라 기본 144 Hz / OC 160 Hz로 분리. OC 최대 주사율은 기본 주사율과 별도 저장."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=14034179",
+          "pcode": "14034179",
+          "expectedTitle": "LG전자 울트라기어 27GP950",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:18.985Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 98643,
+          "sha256": "c01a9a202ed9f64dd0b4e5d742d3074489b3dafed819e4dfffa2933a68ad50b6",
+          "titleMatch": "LG전자 울트라기어 27GP950 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "68.47cm(27인치) / 4K UHD(3840 x 2160) / 160Hz / Nano-IPS / 와이드(16:9) / 평면 / 1ms(GTG) / 400nits / 1,000:1 / HDR10 / VESA HDR 600 / LED 조명 / 헤드폰 아웃 / 피벗(회전) / 엘리베이션(높낮이) / 틸트(상하) / 7.9kg / [게임특화] 블랙 이퀄라이저 / 조준선 표시 / 인풋랙 제어 / G-Sync 호환 / FreeSync 프리미엄 프로 / FreeSync 프리미엄 / Adaptive Sync / FreeSync / [단자정보] HDMI 2.1 / DP",
+          "comparisonStoppedLiteralMatch": false
+        }
+      ],
+      "identityReviewStatus": "DOMESTIC_SUFFIX_EQUIVALENCE_REQUIRED",
+      "mapping": null,
+      "status": "REGULAR_PRICE_SECTION_MISSING_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    },
+    {
+      "localProductId": "181e50d3-c2e6-4c75-83b5-edd16545c7f3",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "90b91f58-583f-4803-acb7-12752edffe6a",
+        "manufacturer": "LG",
+        "modelName": "27GR75Q-B",
+        "partNumber": "27GR75Q-B"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "specification": {
+        "screenSizeInches": 27,
+        "nativeWidthPx": 2560,
+        "nativeHeightPx": 1440,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 165,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.lg.com/us/monitors/lg-27gr75q-b-gaming-monitor",
+          "retrievedAt": "2026-10-03T10:46:42Z",
+          "notes": [
+            "LG manufacturer display size, panel and native timing facts are used. Unverified overclock and operating power values remain null."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19745933",
+          "pcode": "19745933",
+          "expectedTitle": "LG전자 울트라기어 27GR75Q",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:20.510Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 139038,
+          "sha256": "a87372373d7796a8696aebc2b32abc8e958f630e84b281881c8fc5416af04d46",
+          "titleMatch": "LG전자 울트라기어 27GR75Q 상품비교",
+          "regularSectionCount": 1,
+          "dataBasePriceCount": 1,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "price": {
+            "amountKrw": 408010,
+            "observedAt": "2026-10-10T08:24:20.510Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=19745933",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "collectionStatus": "PRICE_PARSED",
+          "danawaSpecSummary": "모니터 / 68.5cm(27인치) / QHD(2560 x 1440) / 165Hz / IPS / 와이드(16:9) / 평면 / 1ms(GTG) / 300nits / 1,000:1 / HDR10 / 헤드폰 아웃 / 엘리베이션(높낮이) / 피벗(회전) / 틸트(상하) / 6.19kg / [게임특화] 인풋랙 제어 / 블랙 이퀄라이저 / 조준선 표시 / FreeSync 프리미엄 / G-Sync 호환(NVIDIA인증) / FreeSync / Adaptive Sync / G-Sync 호환 / [단자정보] DP 1.4 / HDMI 2.0 / 출시가: 499,000원",
+          "comparisonStoppedLiteralMatch": false
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=19745933",
+          "pcode": "19745933",
+          "expectedTitle": "LG전자 울트라기어 27GR75Q",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "collectionStatus": "PRICE_PARSED",
+          "observedAt": "2026-10-10T08:30:43.853Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 139038,
+          "sha256": "e74e9a1db4642ec9fbdcaf3e283e8e858665dfd54c8dab237a86029a29cfa08c",
+          "regularSectionCount": 1,
+          "dataBasePriceCount": 1,
+          "price": {
+            "amountKrw": 408010,
+            "observedAt": "2026-10-10T08:30:43.853Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=19745933",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "evidenceQuote": " <div class=\"sell-price\" data-base-price=\"408010\" data-delivery-price=\"0\"> <span class=\"text__num\">408,010</span> <span class=\"text__unit\">원</span> ",
+          "activeBridgeUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=860&cate2=13735&cate3=14883&cate4=58972&pcode=19745933&cmpnyc=EE128&safe_trade=4&fee_type=T&link_pcode=3053068114&package=0&setpc=0&r=17916210437054&deliveryCheckType=addDeliveryTopProd",
+          "retailerWarehouseInventoryVerified": false,
+          "stockEvidenceExtent": "Strict collector accepted an active ordinary domestic-new purchase row for this pcode; retailer warehouse stock was not independently verified. Regional PN differs from catalog and this observation is not import-ready."
+        }
+      ],
+      "identityReviewStatus": "REGIONAL_EQUIVALENCE_REVIEW_PENDING",
+      "mapping": null,
+      "status": "REGIONAL_EQUIVALENCE_REVIEW_PENDING",
+      "domesticManufacturerEvidence": [
+        {
+          "url": "https://www.lge.co.kr/monitors/27gr75q",
+          "observedAt": "2026-10-10T08:27:31.567Z",
+          "kind": "MANUFACTURER_DOMESTIC_IDENTITY_PAGE",
+          "readOnly": true,
+          "httpStatus": 200,
+          "finalUrl": "https://www.lge.co.kr/product/monitors/27gr75q?modelId=MD09979828&pdpType=PURCHASE",
+          "bodyBytes": 907036,
+          "sha256": "cb8f0df25ce21a36d3af4f7e8aecc5245f50c8c227efc5c9671622b6f33c2c07",
+          "title": "LG 울트라기어 게이밍모니터 | 27GR75Q | 모니터 | PC/모니터 | 제품/소모품 | LG전자",
+          "modelTokens": [
+            "27GR75Q",
+            "27gr75q",
+            "27GR75Q.BKR",
+            "27GR75Q-BB",
+            "27GR75Q-BB.BKRLMKN"
+          ],
+          "manufacturerModelContext": [
+            " LG 울트라기어 게이밍모니터 | 27GR75Q | 모니터 | PC/모니터 | 제품/소모품 | LG전자 본문 ",
+            " 블로그 홈 제품/소모품 PC/모니터 모니터 27GR75Q LG 울트라기어 게이밍모니터 제품 상세 스펙 리뷰 (43) Q",
+            "정보 품명 및 모델명 LED Monitor (27GR75Q) KC 인증 필 유무 R-R-LGE-27GR75Q (전자파 적",
+            " 울트라기어 게이밍모니터 공유하기 내용 열기 27GR75Q 제품코드 복사하기 평점 5점 만점 중 4.9 총 리뷰 수 ( "
+          ],
+          "downloadUrls": []
+        },
+        {
+          "url": "https://www.lge.co.kr/support/product-27GR75Q-BB",
+          "observedAt": "2026-10-10T08:27:36.393Z",
+          "kind": "MANUFACTURER_DOMESTIC_IDENTITY_PAGE",
+          "readOnly": true,
+          "httpStatus": 200,
+          "finalUrl": "https://www.lge.co.kr/support/product-27GR75Q-BB",
+          "bodyBytes": 343032,
+          "sha256": "b733513051e6fd570fb1260b3c2cfd4c7d7e88a8946403545fe996e81e66b6ef",
+          "title": "27GR75Q-BB | 고객지원 | LG전자",
+          "modelTokens": [
+            "27GR75Q-BB",
+            "27GR75Q-BB.AKRLMKN",
+            "27GR75Q"
+          ],
+          "manufacturerModelContext": [
+            " 27GR75Q-BB | 고객지원 | LG전자 전환 API(CAPI)로 변경] St",
+            " 보유제품 등록 LG 울트라기어 게이밍모니터 27GR75Q-BB 노트북/모니터 > PC 모니터 출장 서비스 예약 센터 방문 신",
+            " 27GN60R_27GN60K_27GN65R_27GR75Q Driver PC 모니터 2022.12.21 2MB 다운로드 "
+          ],
+          "downloadUrls": [
+            "https://gscs-b2c.lge.com/open/downloadFile?fileId=lDfRrMk4Ay2R88QlrVYhA"
+          ]
+        }
+      ],
+      "additionalManufacturerEvidence": [
+        {
+          "url": "https://www.lg.com/us/monitors/lg-27gr75q-b-gaming-monitor",
+          "observedAt": "2026-10-10T08:29:01.475Z",
+          "kind": "MANUFACTURER_GLOBAL_IDENTITY_PAGE",
+          "readOnly": true,
+          "httpStatus": 200,
+          "finalUrl": "https://www.lg.com/us/monitors/lg-27gr75q-b-gaming-monitor",
+          "bodyBytes": 1036046,
+          "sha256": "8d92c898072144c4ac19ade2157938cc44a28fe07c460bb459e4e95697cd42cd",
+          "title": "27-inch UltraGear™ QHD Monitor - 27GR75Q-B | LG USA\n",
+          "modelTokens": [
+            "27GR75Q-B",
+            "27gr75q-b",
+            "27GR75Q.html",
+            "27GR75Q",
+            "27GR75Q-B.AUS",
+            "27gr75q"
+          ],
+          "manufacturerModelContext": [
+            " QHD Monitor - 27GR75Q-B | LG USA 27 Inch UltraGe",
+            "ing Monitors / 27GR75Q-B 27 Inch UltraGear™ QHD 1",
+            "NC® Compatible 27GR75Q-B 27 Inch UltraGear™ QHD 1"
+          ],
+          "downloadUrls": []
+        },
+        {
+          "url": "https://www.lg.com/uk/monitors/gaming/27gr75q-b/",
+          "observedAt": "2026-10-10T08:29:07.901Z",
+          "kind": "MANUFACTURER_GLOBAL_IDENTITY_PAGE",
+          "readOnly": true,
+          "httpStatus": 200,
+          "finalUrl": "https://www.lg.com/uk/monitors/gaming/27gr75q-b/",
+          "bodyBytes": 1723003,
+          "sha256": "7997e32e3025dc4c89778937ce4d79df565716fe225e44d8b2a62ffb9495e4f8",
+          "title": "27” UltraGear™ QHD Gaming Monitor with 165Hz Refresh Rate - 27GR75Q-B | LG UK",
+          "modelTokens": [
+            "27GR75Q-B",
+            "27gr75q-b",
+            "27GR75Q-B.AEK",
+            "27GR75Q",
+            "27GR75Q.pdf",
+            "27gr75q-b.360view",
+            "27gr75q-01",
+            "27gr75q-02",
+            "27gr75q-03",
+            "27gr75q-04",
+            "27gr75q-05",
+            "27gr75q-06",
+            "27gr75q-07"
+          ],
+          "manufacturerModelContext": [
+            "Refresh Rate - 27GR75Q-B | LG UK JavaScript appea",
+            "tors UltraGear 27GR75Q-B 27” UltraGear™ QHD Gamin",
+            "z Refresh Rate 27GR75Q-B Copy model name ( ) open"
+          ],
+          "downloadUrls": [
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20230412190665&amp;ORIGINAL_NAME_b1_a1=27GR75Q_UK+new+Erp+label%5B20230412050725182%5D.pdf&amp;FILE_NAME=27GR75Q_UK+new+Erp+label.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=N",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20230118184881&amp;ORIGINAL_NAME_b1_a1=27GR75Q_EU+new+Erp+label%7F%5B20230118041017602%5D.pdf&amp;FILE_NAME=27GR75Q_EU+new+Erp+label%7F.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=N",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20241128232315&amp;ORIGINAL_NAME_b1_a1=27GR75Q_PIS--%5B20241128030704143%5D.pdf&amp;FILE_NAME=27GR75Q_PIS--.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=N",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20230420191140&amp;ORIGINAL_NAME_b1_a1=27GR75Q_Dismantling+information_final.pdf&amp;FILE_NAME=27GR75Q_Dismantling+information_final%5B20230420101705074%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20230118184886&amp;ORIGINAL_NAME_b1_a1=27GR75Q_EU+Erp+label.pdf&amp;FILE_NAME=27GR75Q_EU+Erp+label%5B20230118045951647%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20230118184881&amp;ORIGINAL_NAME_b1_a1=27GR75Q_EU+new+Erp+label%7F.pdf&amp;FILE_NAME=27GR75Q_EU+new+Erp+label%7F%5B20230118041017602%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20231102204091&amp;ORIGINAL_NAME_b1_a1=EPM_GMZ1_20231102110327218.PDF&amp;FILE_NAME=%5BEPM_GMZ1_20231102110327218%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20250709253484&amp;ORIGINAL_NAME_b1_a1=Adapter+card_250604.pdf&amp;FILE_NAME=Adapter+card_250604%5B20250709020440426%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20230412190656&amp;ORIGINAL_NAME_b1_a1=27GR75Q-B_UK+DOC.pdf&amp;FILE_NAME=27GR75Q-B_UK+DOC%5B20230412110258895%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20230412190665&amp;ORIGINAL_NAME_b1_a1=27GR75Q_UK+new+Erp+label.pdf&amp;FILE_NAME=27GR75Q_UK+new+Erp+label%5B20230412050725182%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20230412190655&amp;ORIGINAL_NAME_b1_a1=27GR75Q+UK+Erp+old+label.pdf&amp;FILE_NAME=27GR75Q+UK+Erp+old+label%5B20230412100944821%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20230118184884&amp;ORIGINAL_NAME_b1_a1=27GR75Q_OLD+ERP+fiche.pdf&amp;FILE_NAME=27GR75Q_OLD+ERP+fiche%5B20230118045917115%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20241128232315&amp;ORIGINAL_NAME_b1_a1=27GR75Q_PIS--.pdf&amp;FILE_NAME=27GR75Q_PIS--%5B20241128030704143%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20250407243601&amp;ORIGINAL_NAME_b1_a1=Safety_Information_MS.pdf&amp;FILE_NAME=Safety_Information_MS%5B20250407030757645%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y",
+            "https://www.lg.com/uk/lgecs.downloadFile.ldwf?DOC_ID=20230118184887&amp;ORIGINAL_NAME_b1_a1=Web+Information_IT%28MNT_SIGNAGE_MTV%29_EU_Turkey_27GR75Q.pdf&amp;FILE_NAME=Web+Information_IT%28MNT_SIGNAGE_MTV%29_EU_Turkey_27GR75Q%5B20230118050019663%5D.pdf&amp;TC=DwnCmd&amp;GSRI_DOC=GSRI&amp;SPEC_DOWNLOAD=Y"
+          ]
+        }
+      ],
+      "selectedObservation": {
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=19745933",
+        "pcode": "19745933",
+        "expectedTitle": "LG전자 울트라기어 27GR75Q",
+        "requestMethod": "GET",
+        "readOnly": true,
+        "collectionStatus": "PRICE_PARSED",
+        "observedAt": "2026-10-10T08:30:43.853Z",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "bodyBytes": 139038,
+        "sha256": "e74e9a1db4642ec9fbdcaf3e283e8e858665dfd54c8dab237a86029a29cfa08c",
+        "regularSectionCount": 1,
+        "dataBasePriceCount": 1,
+        "price": {
+          "amountKrw": 408010,
+          "observedAt": "2026-10-10T08:30:43.853Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=19745933",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "evidenceQuote": " <div class=\"sell-price\" data-base-price=\"408010\" data-delivery-price=\"0\"> <span class=\"text__num\">408,010</span> <span class=\"text__unit\">원</span> ",
+        "activeBridgeUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=860&cate2=13735&cate3=14883&cate4=58972&pcode=19745933&cmpnyc=EE128&safe_trade=4&fee_type=T&link_pcode=3053068114&package=0&setpc=0&r=17916210437054&deliveryCheckType=addDeliveryTopProd",
+        "retailerWarehouseInventoryVerified": false,
+        "stockEvidenceExtent": "Strict collector accepted an active ordinary domestic-new purchase row for this pcode; retailer warehouse stock was not independently verified. Regional PN differs from catalog and this observation is not import-ready."
+      },
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "regionalEquivalenceCandidate": {
+        "domesticModelNumber": "27GR75Q-BB",
+        "manufacturerFullPartNumbers": [
+          "27GR75Q-BB.BKRLMKN",
+          "27GR75Q-BB.AKRLMKN"
+        ],
+        "globalFullPartNumbers": [
+          "27GR75Q-B.AUS",
+          "27GR75Q-B.AEK"
+        ],
+        "commonModel": "27GR75Q",
+        "specificationCrosscheck": "27-inch 2560x1440 IPS 165 Hz matches. LG Korea identifies black middle cabinet with purple-gray rear/stand. Regional packaging/electronics equivalence is not confirmed by matching display specifications alone.",
+        "status": "REGIONAL_EQUIVALENCE_REVIEW_PENDING",
+        "importReady": false,
+        "reason": "Catalog PN differs from primary manufacturer domestic SKU. Full loader requires exact product PN = saleSku; manufacturer common-model/spec matches are evidence for a future explicit equivalence review, not authorization to normalize suffixes.",
+        "reviewedAt": "2026-10-10T08:31:55.176Z"
+      }
+    },
+    {
+      "localProductId": "9d5f7ccf-c847-4607-bde4-f41887b56be2",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "76c380ec-5f68-4ed7-a9d2-cb94a83908fb",
+        "manufacturer": "LG",
+        "modelName": "27UL500-W",
+        "partNumber": "27UL500-W"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-monitor/manifest.json",
+      "specification": {
+        "screenSizeInches": 27,
+        "nativeWidthPx": 3840,
+        "nativeHeightPx": 2160,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 60,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.lg.com/us/support/products/documents/27UL500-W%20Spec%20Sheet.pdf",
+          "retrievedAt": "2026-09-29T11:55:32Z",
+          "notes": [
+            "The official sheet identifies regional model 27UL500-W.AUS and UPC 719192629813; the UPC matches the selected BuildCores record.",
+            "The base model 27UL500-W is the catalog identity. The regional suffix is retained as source evidence.",
+            "No separate overclock specification was confirmed; support and OC frequency remain null, not false.",
+            "Power values retain their source region and published meanings. Detailed measurement conditions were not confirmed, so all three normalized active-power fields remain null.",
+            "Published refresh capabilities do not establish the current Windows setting, expected game FPS or support through every GPU, port and cable combination."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=7927372",
+          "pcode": "7927372",
+          "expectedTitle": "LG전자 27UL500",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:21.998Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 122519,
+          "sha256": "848080fed54b0b3656752d229da93e9e8667432a20917f4bd539961a7d803dd9",
+          "titleMatch": "LG전자 27UL500 상품비교",
+          "regularSectionCount": 1,
+          "dataBasePriceCount": 1,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "price": {
+            "amountKrw": 500000,
+            "observedAt": "2026-10-10T08:24:21.998Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=7927372",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "collectionStatus": "PRICE_PARSED",
+          "danawaSpecSummary": "모니터 / 68.4cm(27인치) / 4K UHD(3840 x 2160) / 60Hz / IPS / 와이드(16:9) / 평면 / 5ms / 300nits / 1,000:1 / HDR10 / 헤드폰 아웃 / 틸트(상하) / 5.1kg / [게임특화] 인풋랙 제어 / 블랙 이퀄라이저 / FreeSync / [단자정보] HDMI / DP",
+          "comparisonStoppedLiteralMatch": false
+        },
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=7927372",
+          "pcode": "7927372",
+          "expectedTitle": "LG전자 27UL500",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "collectionStatus": "PRICE_PARSED",
+          "observedAt": "2026-10-10T08:30:45.341Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 122519,
+          "sha256": "98e88946f92558b4427592f3df455d3528fd6a8ccf4be7ba21feaf8f7f71ff81",
+          "regularSectionCount": 1,
+          "dataBasePriceCount": 1,
+          "price": {
+            "amountKrw": 500000,
+            "observedAt": "2026-10-10T08:30:45.341Z",
+            "evidenceUrl": "https://prod.danawa.com/info/?pcode=7927372",
+            "condition": "NEW",
+            "inStock": true
+          },
+          "evidenceQuote": " <div class=\"sell-price\" data-base-price=\"500000\" data-delivery-price=\"0\"> <span class=\"text__num\">500,000</span> <span class=\"text__unit\">원</span> ",
+          "activeBridgeUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=860&cate2=13735&cate3=14883&cate4=58972&pcode=7927372&cmpnyc=TW5141&safe_trade=4&fee_type=N&link_pcode=10411153791&package=0&setpc=0&r=17916210459172&deliveryCheckType=addDeliveryTopProd",
+          "retailerWarehouseInventoryVerified": false,
+          "stockEvidenceExtent": "Strict collector accepted an active ordinary domestic-new purchase row for this pcode; retailer warehouse stock was not independently verified. Regional PN differs from catalog and this observation is not import-ready."
+        }
+      ],
+      "identityReviewStatus": "REGIONAL_EQUIVALENCE_REVIEW_PENDING",
+      "mapping": null,
+      "status": "REGIONAL_EQUIVALENCE_REVIEW_PENDING",
+      "domesticManufacturerEvidence": [
+        {
+          "url": "https://www.lge.co.kr/monitors/27ul500",
+          "observedAt": "2026-10-10T08:27:33.144Z",
+          "kind": "MANUFACTURER_DOMESTIC_IDENTITY_PAGE",
+          "readOnly": true,
+          "httpStatus": 200,
+          "finalUrl": "https://www.lge.co.kr/product/monitors/27ul500?modelId=MD08043851&pdpType=PURCHASE",
+          "bodyBytes": 980545,
+          "sha256": "95fd415d9d6aeb8d082055bfdf3c49c1aaf193302c96ca845e6256fd411714cc",
+          "title": "LG 울트라 HD 모니터 | 27UL500 | 모니터 | PC/모니터 | 제품/소모품 | LG전자",
+          "modelTokens": [
+            "27UL500",
+            "27ul500",
+            "27UL500.BKR",
+            "27UL500-WC",
+            "27UL500-WC.BKRENPN"
+          ],
+          "manufacturerModelContext": [
+            " LG 울트라 HD 모니터 | 27UL500 | 모니터 | PC/모니터 | 제품/소모품 | LG전자 본문 ",
+            "전 다음 홈 제품/소모품 PC/모니터 모니터 27UL500 ※소비자의 이해를 돕기 위해 연출된 이미지입니다. 추가 이미지",
+            "LG 울트라 HD 모니터 공유하기 내용 열기 27UL500 제품코드 복사하기 평점 5점 만점 중 4.9 총 리뷰 수 ( ",
+            "정보 품명 및 모델명 LED Monitor (27UL500) KC 인증 필 유무 R-R-LGE-27UL500 (전자파 적"
+          ],
+          "downloadUrls": []
+        },
+        {
+          "url": "https://www.lge.co.kr/support/product-27UL500-WW",
+          "observedAt": "2026-10-10T08:27:38.297Z",
+          "kind": "MANUFACTURER_DOMESTIC_IDENTITY_PAGE",
+          "readOnly": true,
+          "httpStatus": 200,
+          "finalUrl": "https://www.lge.co.kr/support",
+          "bodyBytes": 286961,
+          "sha256": "e5bffff0099881b0a9943c8ab1aee424b8f020d4432cc5fca074d122a1274972",
+          "title": "고객지원 | LG전자",
+          "modelTokens": [],
+          "manufacturerModelContext": [],
+          "downloadUrls": []
+        }
+      ],
+      "additionalManufacturerEvidence": [
+        {
+          "url": "https://www.lge.co.kr/support/product-27UL500-WC",
+          "observedAt": "2026-10-10T08:28:59.650Z",
+          "kind": "MANUFACTURER_DOMESTIC_IDENTITY_PAGE",
+          "readOnly": true,
+          "httpStatus": 200,
+          "finalUrl": "https://www.lge.co.kr/support/product-27UL500-WC",
+          "bodyBytes": 347309,
+          "sha256": "daddf65dbc9e3f5fea0812bcc446e396e4be3737d33a540cf449fb7cf86d27f8",
+          "title": "27UL500-WC | 고객지원 | LG전자",
+          "modelTokens": [
+            "27UL500-WC",
+            "27UL500-WC.BKRDNPN",
+            "27UL500",
+            "27ul500"
+          ],
+          "manufacturerModelContext": [
+            " 27UL500-WC | 고객지원 | LG전자 전환 API(CAP",
+            " LG 울트라 HD 모니터 27UL500-WC 제품 정보 노트북/모니터 > PC 모니터 출"
+          ],
+          "downloadUrls": [
+            "https://gscs-b2c.lge.com/open/downloadFile?fileId=TtPy73FIodObjn1jNeXeQ",
+            "https://gscs-b2c.lge.com/open/downloadFile?fileId=ssD3LCvNJM6p3iilgR5QA",
+            "https://gscs-b2c.lge.com/open/downloadFile?fileId=eSnZ7hw28oPs9bHKWUyeQ"
+          ]
+        },
+        {
+          "url": "https://www.lg.com/us/monitors/lg-27ul500-w-4k-uhd-led-monitor",
+          "observedAt": "2026-10-10T08:29:03.849Z",
+          "kind": "MANUFACTURER_GLOBAL_IDENTITY_PAGE",
+          "readOnly": true,
+          "httpStatus": 200,
+          "finalUrl": "https://www.lg.com/us/monitors/lg-27ul500-w-4k-uhd-led-monitor",
+          "bodyBytes": 935360,
+          "sha256": "1e5fda1578554954f0a2be375a49bf504df3e1c444e09e9bd79c3b2cf1d478c0",
+          "title": "27&quot; Class 4K UHD IPS LED Monitor  - 27UL500-W | LG USA",
+          "modelTokens": [
+            "27UL500-W",
+            "27ul500-w",
+            "27UL500",
+            "27UL500-W.AUS"
+          ],
+          "manufacturerModelContext": [
+            " LED Monitor - 27UL500-W | LG USA 27 Inch 4K UHD ",
+            "UHD Monitors / 27UL500-W 27 Inch 4K UHD UltraFine",
+            "tor with HDR10 27UL500-W DISCONTINUED DISCONTINUE"
+          ],
+          "downloadUrls": [
+            "https://www.lg.com/us/PDF/warranty/he/2022_Monitor_Warranty.pdf\\"
+          ]
+        }
+      ],
+      "selectedObservation": {
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=7927372",
+        "pcode": "7927372",
+        "expectedTitle": "LG전자 27UL500",
+        "requestMethod": "GET",
+        "readOnly": true,
+        "collectionStatus": "PRICE_PARSED",
+        "observedAt": "2026-10-10T08:30:45.341Z",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "bodyBytes": 122519,
+        "sha256": "98e88946f92558b4427592f3df455d3528fd6a8ccf4be7ba21feaf8f7f71ff81",
+        "regularSectionCount": 1,
+        "dataBasePriceCount": 1,
+        "price": {
+          "amountKrw": 500000,
+          "observedAt": "2026-10-10T08:30:45.341Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=7927372",
+          "condition": "NEW",
+          "inStock": true
+        },
+        "evidenceQuote": " <div class=\"sell-price\" data-base-price=\"500000\" data-delivery-price=\"0\"> <span class=\"text__num\">500,000</span> <span class=\"text__unit\">원</span> ",
+        "activeBridgeUrl": "https://prod.danawa.com/bridge/loadingBridge.html?cate1=860&cate2=13735&cate3=14883&cate4=58972&pcode=7927372&cmpnyc=TW5141&safe_trade=4&fee_type=N&link_pcode=10411153791&package=0&setpc=0&r=17916210459172&deliveryCheckType=addDeliveryTopProd",
+        "retailerWarehouseInventoryVerified": false,
+        "stockEvidenceExtent": "Strict collector accepted an active ordinary domestic-new purchase row for this pcode; retailer warehouse stock was not independently verified. Regional PN differs from catalog and this observation is not import-ready."
+      },
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "regionalEquivalenceCandidate": {
+        "domesticModelNumber": "27UL500-WC",
+        "manufacturerFullPartNumbers": [
+          "27UL500-WC.BKRENPN",
+          "27UL500-WC.BKRDNPN"
+        ],
+        "globalFullPartNumbers": [
+          "27UL500-W.AUS"
+        ],
+        "commonModel": "27UL500",
+        "specificationCrosscheck": "27-inch 3840x2160 IPS 60 Hz matches. LG Korea states black front, white rear and silver stand. LG Korea and USA mark their respective product discontinued; an active domestic Danawa offer still exists, so no zero/no-stock observation is inferred.",
+        "status": "REGIONAL_EQUIVALENCE_REVIEW_PENDING",
+        "importReady": false,
+        "reason": "Catalog PN differs from primary manufacturer domestic SKU. Full loader requires exact product PN = saleSku; manufacturer common-model/spec matches are evidence for a future explicit equivalence review, not authorization to normalize suffixes.",
+        "reviewedAt": "2026-10-10T08:31:55.176Z"
+      }
+    },
+    {
+      "localProductId": "327688a3-656a-4ae6-a308-77ce45a0d661",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "ab1efb0d-5979-4a90-9f6b-cac2f46456f2",
+        "manufacturer": "LG",
+        "modelName": "32GN650-B",
+        "partNumber": "32GN650-B"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand100/manifest.json",
+      "specification": {
+        "screenSizeInches": 31.5,
+        "nativeWidthPx": 2560,
+        "nativeHeightPx": 1440,
+        "panelType": "VA",
+        "nativeStandardRefreshHz": 165,
+        "hasRefreshOverclock": null,
+        "nativeOcRefreshHz": null,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.lg.com/us/monitors/lg-32gn650-b-gaming-monitor",
+          "retrievedAt": "2026-10-03T10:46:42Z",
+          "notes": [
+            "LG manufacturer display size, panel and native timing facts are used. Unverified overclock and operating power values remain null."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=13025645",
+          "pcode": "13025645",
+          "expectedTitle": "LG전자 울트라기어 32GN650",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:23.416Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 96521,
+          "sha256": "605b61887553e8a49be57c2abf48f67c2734ca9aff236d4f21bef1231e7c0f2b",
+          "titleMatch": "LG전자 울트라기어 32GN650 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "80cm(32인치) / QHD(2560 x 1440) / 165Hz / VA / 와이드(16:9) / 평면 / 5ms(GTG) / 350nits / 3,000:1 / HDR10 / 헤드폰 아웃 / 엘리베이션(높낮이) / 틸트(상하) / 피벗(회전) / 7.2kg / [게임특화] 블랙 이퀄라이저 / 인풋랙 제어 / 조준선 표시 / FreeSync 프리미엄 / FreeSync / [단자정보] HDMI / DP",
+          "comparisonStoppedLiteralMatch": false
+        }
+      ],
+      "identityReviewStatus": "DOMESTIC_SUFFIX_EQUIVALENCE_REQUIRED",
+      "mapping": null,
+      "status": "REGULAR_PRICE_SECTION_MISSING_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    },
+    {
+      "localProductId": "c1afe365-4d61-4571-b65d-a8cddeac6cb5",
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "f889503f-4e09-4ad1-8eec-2e094b9d1584",
+        "manufacturer": "LG",
+        "modelName": "32GQ950-B",
+        "partNumber": "32GQ950-B"
+      },
+      "seedManifest": "backend/src/main/resources/catalog/seed/week2-expand300/manifest.json",
+      "specification": {
+        "screenSizeInches": 31.5,
+        "nativeWidthPx": 3840,
+        "nativeHeightPx": 2160,
+        "panelType": "IPS",
+        "nativeStandardRefreshHz": 144,
+        "hasRefreshOverclock": true,
+        "nativeOcRefreshHz": 160,
+        "activePowerW": null,
+        "activePowerBasis": null,
+        "activePowerConditions": null
+      },
+      "manufacturerEvidence": [
+        {
+          "url": "https://www.lg.com/jp/monitors/4k-5k-monitors/32gq950-b/",
+          "retrievedAt": "2026-10-04T07:28:03.938696+00:00",
+          "notes": [
+            "제조사 제목은 32인치급이며 상세 규격의 실제 대각선은 31.5인치로 확인함. DisplayPort 기본 144Hz/OC160Hz, HDMI 144Hz. 주사율은 해당 해상도에서 제조사가 제시한 모드. 입력 단자·GPU 출력·케이블 조건은 향후 별도 호환성 판단 대상으로 유지. OC 최대 주사율은 기본 주사율과 별도 저장."
+          ]
+        }
+      ],
+      "candidateObservations": [
+        {
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=17354756",
+          "pcode": "17354756",
+          "expectedTitle": "LG전자 울트라기어 32GQ950",
+          "requestMethod": "GET",
+          "readOnly": true,
+          "observedAt": "2026-10-10T08:24:24.763Z",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bodyBytes": 99001,
+          "sha256": "d89c38f116ad942939f07bea45936db3db129698c6d50dca516c716b78ba087a",
+          "titleMatch": "LG전자 울트라기어 32GQ950 상품비교",
+          "regularSectionCount": 0,
+          "dataBasePriceCount": 0,
+          "temporaryOutOfStock": false,
+          "antiBotMarker": false,
+          "collectionStatus": "REJECTED",
+          "error": {
+            "code": "REGULAR_PRICE_SECTION_MISSING",
+            "message": "Exactly one active regular mall-price section is required"
+          },
+          "danawaSpecSummary": "80cm(32인치) / 4K UHD(3840 x 2160) / 160Hz / Nano-IPS / 와이드(16:9) / 평면 / 1ms(GTG) / 1000nits / 1,000:1 / HDR10 / VESA HDR 1000 / 헤드폰 아웃 / 틸트(상하) / 피벗(회전) / 엘리베이션(높낮이) / 11.6kg / [게임특화] 조준선 표시 / 인풋랙 제어 / 블랙 이퀄라이저 / FreeSync / FreeSync 프리미엄 / Adaptive Sync / G-Sync 호환(NVIDIA인증) / G-Sync 호환 / FreeSync 프리미엄 프로 / [단자정보] DP 1.4 / HDMI 2.1 / 출시가: 1,639,000원",
+          "comparisonStoppedLiteralMatch": false
+        }
+      ],
+      "identityReviewStatus": "DOMESTIC_SUFFIX_EQUIVALENCE_REQUIRED",
+      "mapping": null,
+      "status": "REGULAR_PRICE_SECTION_MISSING_CURRENT_PRICE_UNCONFIRMED",
+      "priceImportApproved": false,
+      "databaseWrites": 0,
+      "stockReview": {
+        "danawaActiveOrdinaryListing": false,
+        "retailerWarehouseInventoryVerified": false,
+        "domesticStockStatus": "UNKNOWN",
+        "manufacturingDiscontinuedStatus": "NOT_DETERMINED",
+        "reason": "No active ordinary price section accepted on current raw page; exact title alone and stale cached prices do not prove a current amount or nationwide stock."
+      }
+    }
+  ],
+  "reviewedMappings": {
+    "schemaVersion": 1,
+    "items": [
+      {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "d7385868-3658-4984-a5dd-0f8eebebd4e8",
+          "manufacturer": "Dell",
+          "modelName": "S2721DGF",
+          "partNumber": "S2721DGF"
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "12612587",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+          "saleSku": "S2721DGF",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-10T08:31:55.176Z"
+        },
+        "review": {
+          "expectedTitle": "DELL S2721DGF",
+          "identityEvidenceUrls": [
+            "https://prod.danawa.com/info/?pcode=12612587",
+            "https://www.dell.com/support/product-details/ko-kr/product/dell-s2721dgf-monitor/resources/manuals",
+            "https://www.dell.com/en-us/shop/dell-27-gaming-monitor-s2721dgf/apd/210-axeh/monitors-monitor-accessories"
+          ],
+          "reason": "Exact Dell S2721DGF manufacturer model and part number in seed, Korean manufacturer support page and domestic Danawa title. Official 27-inch QHD IPS, native DP 165 Hz/HDMI 144 Hz basis retained; no S2721DGFA or successor substituted. Price is ordinary active product data-base-price, conditional sections excluded. Retailer warehouse inventory was not independently checked."
+        }
+      }
+    ]
+  },
+  "previewPayload": {
+    "schemaVersion": 1,
+    "items": [
+      {
+        "product": {
+          "sourceName": "BUILDCORES",
+          "externalId": "d7385868-3658-4984-a5dd-0f8eebebd4e8",
+          "manufacturer": "Dell",
+          "modelName": "S2721DGF",
+          "partNumber": "S2721DGF"
+        },
+        "offer": {
+          "sourceName": "DANAWA",
+          "externalId": "12612587",
+          "sourceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+          "saleSku": "S2721DGF",
+          "saleUnit": "PRODUCT",
+          "verifiedAt": "2026-10-10T08:31:55.176Z"
+        },
+        "price": {
+          "amountKrw": 976500,
+          "observedAt": "2026-10-10T08:29:59.229Z",
+          "evidenceUrl": "https://prod.danawa.com/info/?pcode=12612587",
+          "condition": "NEW",
+          "inStock": true
+        }
+      }
+    ]
+  },
+  "notes": [
+    "Four prices were collected from fresh HTTP 200 HTML using the existing strict parser. Only Dell has exact catalog PN = saleSku and appears in import preview. All imports remain unapproved.",
+    "LG three fresh prices are regional-equivalence evidence only; no alias or suffix-normalization rule was changed, and they are absent from reviewedMappings and previewPayload.",
+    "Price evidence quotes retain data-base-price and the independent data-delivery-price=0 token solely to prove that ordinary product amounts exclude fees. No shipping or promotion data is included in the import payload.",
+    "inStock=true means an active ordinary Danawa purchase listing. It does not certify retailer warehouse inventory. No cart, checkout, order, account, purchase or paid API calls were performed.",
+    "REGULAR_PRICE_SECTION_MISSING does not establish discontinued manufacturing or nationwide stock. Snapshot cache prices were not imported.",
+    "LG 27GP850 Korean manufacturer page contains an inconsistent 0.2724 mm pixel pitch compared with global 0.2331 mm; no specification value was changed as part of price review.",
+    "Original product/source UUID and screen size, native/OC timing, color and revision fields were preserved."
+  ],
+  "collectionCompletedAt": "2026-10-10T08:30:45.341Z",
+  "summary": {
+    "scopedUnpricedMonitorProducts": 16,
+    "domesticCandidatePcodes": 18,
+    "rawRequests": 22,
+    "productsWithFreshStrictOrdinaryPrice": 4,
+    "exactPnPreviewReadyProducts": 1,
+    "regionalEquivalencePendingProducts": 3,
+    "currentPriceUnconfirmedProducts": 12,
+    "requestFailures": 0,
+    "zeroPricesCreated": 0,
+    "databaseWrites": 0
+  }
+}

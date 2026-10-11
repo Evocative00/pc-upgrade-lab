@@ -56,7 +56,8 @@ function Get-PcInventory {
         if ($null -ne $raw -and $raw.Length -gt 500) { $raw = $raw.Substring(0, 500) }
         $parts.Add([ordered]@{
             type = $Type; displayName = $display; rawName = $raw; quantity = 1
-            source = 'AUTO'; catalogProductId = $null; matchStatus = 'UNMATCHED'; specs = $Specs
+            source = 'AUTO'; catalogProductId = $null; matchStatus = 'UNMATCHED'
+            catalogModelId = $null; recognitionLevel = $null; specs = $Specs
         })
     }
 

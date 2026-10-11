@@ -1,0 +1,11 @@
+{
+  "VerifiedAt": "2026-10-11T08:16:02.1610040+00:00",
+  "BackendStarted": true,
+  "BackendPort": 8080,
+  "FrontendPort": 5173,
+  "Pid": 11200,
+  "Java21": true,
+  "FlywayUpToDate": true,
+  "PrivateConfigurationModified": false,
+  "SeedsEnabled": false
+}

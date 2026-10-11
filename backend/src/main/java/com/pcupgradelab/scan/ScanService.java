@@ -74,7 +74,8 @@ public class ScanService {
         if (session.status != ScanStatus.RUNNING) conflict();
         // 수집기는 자동 검출 원문만 보낸다. 카탈로그의 정확한 제품을 확정하는 역할은 맡지 않는다.
         if (result.parts().stream().anyMatch(p -> p.source() != InputSource.AUTO
-                || p.matchStatus() != MatchStatus.UNMATCHED || p.catalogProductId() != null)) {
+                || p.matchStatus() != MatchStatus.UNMATCHED || p.catalogProductId() != null
+                || p.catalogModelId() != null || p.recognitionLevel() != null)) {
             throw new ApiException(HttpStatus.BAD_REQUEST, "INVALID_SCAN_RESULT", "수집 결과의 입력 방식이 올바르지 않습니다.");
         }
         // 수집기가 필수 종류(CPU/GPU/RAM)의 누락 경고를 빠뜨렸어도 서버에서 보완한다.

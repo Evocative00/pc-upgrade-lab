@@ -1,15 +1,17 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import type { PartType } from '../pc-scan/types.ts'
 import { catalogClient } from './catalogClient.ts'
+import { CatalogModelPicker } from './CatalogModelPicker.tsx'
+import { CatalogSearchHelp } from './CatalogSearchHelp.tsx'
 import { CatalogAttributions, CatalogProductDetail } from './CatalogProductDetail.tsx'
-import { formatCurrentPrice, VERIFICATION_LABEL } from './catalogPresentation.ts'
-import { CurrentPriceSource } from './CurrentPriceSource.tsx'
-import type { CatalogDetail, CatalogPage, CatalogProduct } from './catalogTypes.ts'
+import { formatProjectPrice } from './catalogPresentation.ts'
+import type { CatalogDetail, CatalogModel, CatalogPage, CatalogProduct } from './catalogTypes.ts'
 
 type Props = {
   type: PartType
   initialQuery: string
   onSelect: (product: CatalogProduct) => void
+  onSelectModel?: (model: CatalogModel) => void
   onClose: () => void
 }
 
@@ -25,13 +27,15 @@ type DetailState =
   | { status: 'done'; product: CatalogProduct; result: CatalogDetail }
   | { status: 'error'; product: CatalogProduct; message: string }
 
-export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) {
+export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onClose }: Props) {
   const inputId = useId()
   const [query, setQuery] = useState(initialQuery.slice(0, 100))
+  const [mode, setMode] = useState<'product' | 'model'>('product')
   const [search, setSearch] = useState<SearchState>({ status: 'idle' })
   const [detail, setDetail] = useState<DetailState>({ status: 'idle' })
   const searchController = useRef<AbortController | null>(null)
   const detailController = useRef<AbortController | null>(null)
+  const modelSelection = ['CPU', 'GPU', 'MOTHERBOARD', 'RAM', 'STORAGE'].includes(type) ? onSelectModel : undefined
 
   useEffect(() => () => {
     searchController.current?.abort()
@@ -83,6 +87,13 @@ export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) 
     setSearch({ status: 'idle' })
   }
 
+  function showModels() {
+    searchController.current?.abort()
+    clearDetail()
+    setSearch({ status: 'idle' })
+    setMode('model')
+  }
+
   // 부품 입력 폼 안에 있으므로 Enter가 폼 전체를 제출하지 않게 막는다.
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.nativeEvent.isComposing) return
@@ -97,6 +108,12 @@ export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) 
 
   return (
     <div className="catalog-picker" aria-label="부품 카탈로그 검색">
+      {modelSelection && <div className="catalog-picker__bar" aria-label="확인 범위">
+        <button type="button" className="button" aria-pressed={mode === 'product'} onClick={() => setMode('product')}>제품 연결</button>
+        <button type="button" className="button" aria-pressed={mode === 'model'} onClick={showModels}>모델만 확인</button>
+      </div>}
+      {mode === 'model' && modelSelection ? <CatalogModelPicker type={type} initialQuery={query}
+        onSelect={modelSelection} onClose={onClose} /> : <>
       <div className="catalog-picker__bar">
         <label htmlFor={inputId} className="visually-hidden">
           부품 검색어
@@ -124,7 +141,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) 
       </div>
 
       <p className="muted">
-        현재 등록된 검토용 부품을 조회합니다. 제품을 연결한 뒤 구성 화면에서 CPU·메인보드·RAM 호환성을 확인할 수 있습니다.
+        등록된 부품을 조회합니다. 제품을 연결한 뒤 구성 화면에서 규격과 장착·전원 조건을 확인할 수 있습니다.
       </p>
 
       {search.status === 'idle' && <p className="muted">검색어를 입력하거나 ‘전체 보기’로 이 종류의 등록 부품을 확인해 주세요.</p>}
@@ -135,7 +152,10 @@ export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) 
       {search.status === 'done' && <>
         <p role="status" className="muted">{search.keyword ? `‘${search.keyword}’ 검색 결과` : '등록 부품'} {search.result.totalElements}개</p>
         {search.result.items.length === 0 ? (
-          <p className="muted">일치하는 제품이 없습니다. 현재 입력한 내용은 유지되며 직접 입력해 저장할 수 있습니다.</p>
+          <>
+            <p className="muted">일치하는 제품이 없습니다. 현재 입력한 내용은 유지되며 직접 입력해 저장할 수 있습니다.</p>
+            <CatalogSearchHelp type={type} mode="product" onShowModels={modelSelection ? showModels : undefined} />
+          </>
         ) : <>
           <ul className="catalog-picker__results">
             {search.result.items.map((product) => (
@@ -145,11 +165,10 @@ export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) 
                   aria-label={`${product.modelName} 상세 보기`}>
                   <span><span className="muted">{product.manufacturer}</span> {product.modelName}</span>
                   <span className="catalog-picker__meta muted">
-                    {VERIFICATION_LABEL[product.verificationStatus]} · {formatCurrentPrice(product.currentPrice)}
-                    {product.currentPrice && (type === 'RAM' ? ' / 판매 묶음' : ' / 1개')} · 상세 보기
+                    {formatProjectPrice(product)}
+                    {' · 상세 보기'}
                   </span>
                 </button>
-                <CurrentPriceSource price={product.currentPrice} />
               </li>
             ))}
           </ul>
@@ -167,12 +186,13 @@ export function CatalogPicker({ type, initialQuery, onSelect, onClose }: Props) 
         <p className="error">{detail.message}</p>
         <button type="button" className="button" onClick={() => void showDetail(detail.product)}>상세 다시 조회</button>
       </div>}
-      {detail.status === 'done' && <CatalogProductDetail detail={detail.result} onSelect={onSelect}
+      {detail.status === 'done' && <CatalogProductDetail detail={detail.result} onSelect={onSelect} onSelectModel={modelSelection}
         onRefresh={() => void showDetail(detail.product)} />}
       {(detail.status === 'done' || search.status === 'done') && (
         <CatalogAttributions items={detail.status === 'done' ? detail.result.attributions
           : search.status === 'done' ? search.result.attributions : []} />
       )}
+      </>}
     </div>
   )
 }

@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "status": "COMPLETE",
+  "completedAt": "2026-10-11T08:16:57.9481592+00:00",
+  "approvalScope": [
+    "V15_SCHEMA",
+    "EXACT_PSU_CASE_SEVEN_PRODUCTS",
+    "TWO_EXACT_CURRENT_PRICES",
+    "CENTRAL_WORKER_PUBLICATION"
+  ],
+  "reviewSha256": "e3575f9217ea88797ceec8788adf8f86e1440f2521c672e41a4ba42fc17e5830",
+  "originalReviewApprovalFlagsUnchanged": true,
+  "database": {
+    "migrationVersion": 15,
+    "products": 315,
+    "newPsuProducts": 4,
+    "newCaseProducts": 3,
+    "newCurrentPriceObservations": 2,
+    "newRows": 65.0,
+    "auditedTables": 36,
+    "preMigrationRowsPreserved": 4223,
+    "replayWrites": 0,
+    "existingModelWrites": 0,
+    "activations": 0,
+    "privateBackupProtection": "WINDOWS_DPAPI_CURRENT_USER",
+    "privateBackupPlaintextRemoved": true
+  },
+  "worker": {
+    "origin": "https://pc-upgrade-shared-prices.joony1024.workers.dev",
+    "versionId": "8a7a5ad7-e8b0-4814-91ec-c595e6717186",
+    "deploymentId": "dbc186d9-4ff5-4441-a765-f5ce130e8036",
+    "deployedAt": "2026-10-11T08:02:20.607388Z",
+    "trafficPercent": 100,
+    "catalogVersion": "all-catalog-v1-6bd04f97b7cba4fe30dc5113d15db56847026a744cf6c5f7006da62a1e9e140a",
+    "priceVersion": "prices-v1-dfa1885e2f5d29b7c747eb4c3a730467aa4b78f70830c9d682e2be104825c09b",
+    "referenceVersion": "references-v1-0a60f7fa4c600e99ea6c4c4c74b3398f1c6ebd168ff13ef3af73f9c2ebcc0dfd",
+    "products": 315,
+    "currentPrices": 83,
+    "references": 227,
+    "heldNewProducts": 5,
+    "previousVersionsPreserved": [
+      14,
+      307,
+      308
+    ],
+    "productionHttpsRequests": 36,
+    "productionHttpsStatus": "PASS",
+    "existingTeamSecretPreserved": true
+  },
+  "newProducts": [
+    {
+      "canonicalId": "084baffd-2ae4-3ada-b49d-3c1457d0b73c",
+      "type": "CASE",
+      "modelName": "Prime AP201 Mesh Black",
+      "currentStatus": "NO_PRICE",
+      "currentPrice": null,
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "0d0ffb4a-7815-37c1-a988-0b0ce0ba6917",
+      "type": "PSU",
+      "modelName": "MAG A850GL PCIE5 II",
+      "currentStatus": "NO_PRICE",
+      "currentPrice": null,
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "339c869d-4db6-38c4-a32a-cc488058616f",
+      "type": "PSU",
+      "modelName": "SF1000 Platinum (2024)",
+      "currentStatus": "NO_PRICE",
+      "currentPrice": null,
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "5ffeb16d-2a45-331f-9630-3de784ef358e",
+      "type": "CASE",
+      "modelName": "Pop Air Black Solid",
+      "currentStatus": "OK",
+      "currentPrice": {
+        "amountKrw": 149000,
+        "sourceName": "DANAWA",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=17357669",
+        "observedAt": "2026-10-11T06:42:09.811Z"
+      },
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "b398c8d7-2959-398b-90ac-136b4d00ee1c",
+      "type": "PSU",
+      "modelName": "MAG A650BN",
+      "currentStatus": "OK",
+      "currentPrice": {
+        "amountKrw": 75600,
+        "sourceName": "DANAWA",
+        "sourceUrl": "https://prod.danawa.com/info/?pcode=15283025",
+        "observedAt": "2026-10-11T06:42:09.48Z"
+      },
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "c3306ba5-4f2d-3d66-865b-4650cd4f363d",
+      "type": "CASE",
+      "modelName": "MasterBox NR200 Black",
+      "currentStatus": "NO_PRICE",
+      "currentPrice": null,
+      "referenceStatus": "NO_REFERENCE"
+    },
+    {
+      "canonicalId": "dbf4bdec-6871-39bf-8765-338795b644e8",
+      "type": "PSU",
+      "modelName": "MAG A750GL PCIE5 II",
+      "currentStatus": "NO_PRICE",
+      "currentPrice": null,
+      "referenceStatus": "NO_REFERENCE"
+    }
+  ],
+  "javaHttpsVerification": "PASS",
+  "localBackendRestart": {
+    "VerifiedAt": "2026-10-11T17:16:02.161004+09:00",
+    "BackendStarted": true,
+    "BackendPort": 8080,
+    "FrontendPort": 5173,
+    "Pid": 11200,
+    "Java21": true,
+    "FlywayUpToDate": true,
+    "PrivateConfigurationModified": false,
+    "SeedsEnabled": false
+  },
+  "localApi": {
+    "status": "PASS",
+    "products": 315,
+    "currentPrices": 83,
+    "references": 227,
+    "exactProductDetails": 7,
+    "heldNewProducts": 5,
+    "compatibilityCases": 10,
+    "csrfEnforced": true,
+    "anonymousStatus": 401,
+    "devHeaderStatus": 401,
+    "legacyScopePreserved": true,
+    "memoryGiBVerified": true,
+    "sourceEvidenceUtcVerified": true,
+    "pcOrAccountWrites": 0
+  },
+  "tests": {
+    "implementationFullBackendH2": {
+      "classes": 100,
+      "tests": 518,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "approvedReleaseBackendH2": {
+      "classes": 25,
+      "tests": 146,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "sourceTimeFixBackendH2": {
+      "classes": 3,
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "frontend": {
+      "tests": 142,
+      "lint": "PASS",
+      "build": "PASS"
+    },
+    "worker": {
+      "tests": 1155,
+      "typecheck": "PASS",
+      "build": "PASS"
+    }
+  },
+  "manualBrowserVerification": "NOT_RUN",
+  "manualOAuthLogin": "NOT_RUN",
+  "mysqlTestTask": "NOT_RUN",
+  "currentWorkGitCommitOrPush": "NOT_RUN",
+  "records": [
+    "power-case-db-verified-2026-10-11.json",
+    "power-case-worker-production-2026-10-11.json",
+    "power-case-java-https-2026-10-11.json",
+    "power-case-backend-restart-2026-10-11.json",
+    "power-case-local-api-2026-10-11.json"
+  ]
+}

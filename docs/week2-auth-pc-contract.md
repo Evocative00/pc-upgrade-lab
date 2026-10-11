@@ -70,6 +70,7 @@ public interface CurrentUser {
 
 - 로그인 필요: `/api/pcs/**`
 - 비로그인 허용: 부품·카탈로그 조회, 호환성 검사, `/api/scan-sessions/**`(수집기 검사별 토큰 인증 유지), `/api/health`, `/api/auth/**`
+- `local` 프로필의 모델 조회(`/api/catalog/models`)와 보드 슬롯 근거 조회(`/api/catalog/products/{id}/storage-support`)도 같은 읽기 접근 규칙을 따른다. 모델 연결은 PC 요청의 `catalogModelId`·`recognitionLevel`로 저장하며 [PC 규격](week1-contract.md)의 종류·확인 수준 검증을 적용한다. 개인 PC의 소유권·세션·CSRF 규칙은 그대로 유지한다.
 - 비로그인 `/api/pcs/**` 요청은 302 리다이렉트가 아니라 **401 JSON** `{ "code": "UNAUTHORIZED", "message": "로그인이 필요합니다." }`
 
 ## 6. CSRF

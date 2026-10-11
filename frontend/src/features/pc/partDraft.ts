@@ -2,10 +2,11 @@ import type { PartInput, PartType, ScanResult } from '../pc-scan/types.ts'
 import { PART_TYPES, getPartTypeInfo } from './partCategories.ts'
 import type { PartDraft } from './types.ts'
 
-export type PartStatus = 'linked' | 'auto' | 'manual' | 'empty'
+export type PartStatus = 'linked' | 'model' | 'auto' | 'manual' | 'empty'
 
 export const PART_STATUS_LABEL: Record<PartStatus, string> = {
   linked: '카탈로그 연결',
+  model: '모델 확인 · 상품 미연결',
   auto: '자동 인식 · 미연결',
   manual: '직접 입력 · 미연결',
   empty: '미입력',
@@ -19,6 +20,8 @@ export function getPartStatus(part: PartInput): PartStatus {
   if (part.matchStatus === 'MATCHED') {
     return 'linked'
   }
+
+  if (part.catalogModelId) return 'model'
 
   return part.source === 'AUTO' ? 'auto' : 'manual'
 }
@@ -54,13 +57,15 @@ export function renameDraft(draft: PartDraft, displayName: string): PartDraft {
     displayName,
     catalogProductId: null,
     matchStatus: 'UNMATCHED',
+    ...(draft.catalogModelId !== undefined ? { catalogModelId: null } : {}),
+    ...(draft.recognitionLevel !== undefined ? { recognitionLevel: null } : {}),
     edited: true,
   }
 }
 
 export function linkCatalog(
   draft: PartDraft,
-  product: { id: string; modelName: string; type: PartType },
+  product: { id: string; modelName: string; type: PartType; modelId?: string | null },
 ): PartDraft {
   if (product.type !== draft.type || !product.id.trim() || product.id.length > 128 ||
     !product.modelName.trim() || product.modelName.length > 255) {
@@ -72,12 +77,27 @@ export function linkCatalog(
     displayName: product.modelName,
     catalogProductId: product.id,
     matchStatus: 'MATCHED',
+    ...(draft.catalogModelId !== undefined || draft.recognitionLevel !== undefined
+      ? { catalogModelId: null, recognitionLevel: null } : {}),
     edited: true,
   }
 }
 
 export function unlinkCatalog(draft: PartDraft): PartDraft {
-  return { ...draft, catalogProductId: null, matchStatus: 'UNMATCHED', edited: true }
+  return { ...draft, catalogProductId: null, matchStatus: 'UNMATCHED',
+    ...(draft.catalogModelId !== undefined ? { catalogModelId: null } : {}),
+    ...(draft.recognitionLevel !== undefined ? { recognitionLevel: null } : {}), edited: true }
+}
+
+export function linkCatalogModel(draft: PartDraft,
+  model: { id: string; modelName: string; type: PartType; kind: string }): PartDraft {
+  if (model.type !== draft.type || !model.id.trim() || model.id.length > 128 ||
+    !model.modelName.trim() || model.modelName.length > 255) {
+    throw new Error('현재 항목에 확인할 수 없는 부품 모델입니다.')
+  }
+  return { ...draft, displayName: model.modelName, catalogModelId: model.id,
+    recognitionLevel: model.kind === 'RAM_SPEC_GROUP' ? 'SPEC_GROUP' : 'MODEL',
+    catalogProductId: null, matchStatus: 'UNMATCHED', edited: true }
 }
 
 // 장치 1개당 용량. 모르면 0이 아니라 null로 둔다.
@@ -167,6 +187,8 @@ export function toPartInputs(drafts: PartDraft[]): PartInput[] {
       source: draft.source,
       catalogProductId: draft.catalogProductId,
       matchStatus: draft.matchStatus,
+      ...(draft.catalogModelId !== undefined ? { catalogModelId: draft.catalogModelId } : {}),
+      ...(draft.recognitionLevel !== undefined ? { recognitionLevel: draft.recognitionLevel } : {}),
       specs: draft.specs,
     }))
 }
@@ -189,6 +211,16 @@ export function validatePcRequest(name: string, parts: PartInput[]): string[] {
 
   for (const part of parts) {
     const label = getPartTypeInfo(part.type).label
+
+    const modelId = part.catalogModelId ?? null
+    const level = part.recognitionLevel ?? null
+    if (modelId !== null && (!modelId.trim() || modelId.length > 128) ||
+      level !== null && !['SPEC_GROUP', 'MODEL', 'PHYSICAL_VARIANT'].includes(level) ||
+      modelId === null && level !== null && level !== 'PHYSICAL_VARIANT' ||
+      modelId !== null && level === null ||
+      level === 'PHYSICAL_VARIANT' && (part.matchStatus !== 'MATCHED' || !part.catalogProductId)) {
+      errors.push(`${label}: 모델 확인 수준과 부품 연결을 다시 확인해 주세요.`)
+    }
 
     if (part.displayName.length > 255) {
       errors.push(`${label}: 이름은 255자까지 입력할 수 있습니다.`)

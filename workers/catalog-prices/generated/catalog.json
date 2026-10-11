@@ -1,0 +1,259 @@
+{
+  "schemaVersion" : 1,
+  "catalogVersion" : "pilot-2026-10-10-28cc2bacb534dcc2-3028116ce4cae9ad",
+  "policy" : {
+    "staleAfterSeconds" : 172800,
+    "expireAfterSeconds" : 604800
+  },
+  "products" : [ {
+    "identity" : {
+      "canonicalId" : "0af25373-4f49-3301-851c-2989163fbf91",
+      "type" : "CPU",
+      "manufacturer" : "AMD",
+      "modelName" : "Ryzen 5 9600X",
+      "partNumber" : "100-100001405WOF",
+      "identityKind" : "PHYSICAL_VARIANT",
+      "role" : "BOTH",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : {
+      "amountKrw" : 399000,
+      "sourceName" : "DANAWA",
+      "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653718",
+      "observedAt" : "2026-10-09T16:28:00.260Z"
+    }
+  }, {
+    "identity" : {
+      "canonicalId" : "109952f9-01de-3293-9034-ab93de7f98d0",
+      "type" : "MOTHERBOARD",
+      "manufacturer" : "MSI",
+      "modelName" : "MAG B860M MORTAR WIFI",
+      "partNumber" : null,
+      "identityKind" : "MODEL_REFERENCE",
+      "role" : "INSTALLED_PC_REFERENCE",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : null
+  }, {
+    "identity" : {
+      "canonicalId" : "3439a6e8-ac3e-36ee-b8a6-541c2fc9e234",
+      "type" : "STORAGE",
+      "manufacturer" : "Samsung",
+      "modelName" : "990 PRO 1TB",
+      "partNumber" : "MZ-V9P1T0BW",
+      "identityKind" : "PHYSICAL_VARIANT",
+      "role" : "BOTH",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : {
+      "amountKrw" : 399000,
+      "sourceName" : "SAMSUNG_CNH",
+      "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+      "observedAt" : "2026-10-09T16:29:31.430Z"
+    }
+  }, {
+    "identity" : {
+      "canonicalId" : "4328778c-84af-324b-bc60-e51891fff949",
+      "type" : "CPU",
+      "manufacturer" : "Intel",
+      "modelName" : "Core Ultra 5 245K",
+      "partNumber" : null,
+      "identityKind" : "MODEL_REFERENCE",
+      "role" : "INSTALLED_PC_REFERENCE",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : null
+  }, {
+    "identity" : {
+      "canonicalId" : "656c192f-dfee-3cb1-893f-f0000cc8f53b",
+      "type" : "MOTHERBOARD",
+      "manufacturer" : "ASRock",
+      "modelName" : "B850M Pro RS",
+      "partNumber" : null,
+      "identityKind" : "MODEL_REFERENCE",
+      "role" : "INSTALLED_PC_REFERENCE",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : null
+  }, {
+    "identity" : {
+      "canonicalId" : "688c711d-70d2-39f5-9642-d1c2a87d4bb7",
+      "type" : "MOTHERBOARD",
+      "manufacturer" : "ASUS",
+      "modelName" : "TUF GAMING B860-PLUS WIFI",
+      "partNumber" : null,
+      "identityKind" : "MODEL_REFERENCE",
+      "role" : "INSTALLED_PC_REFERENCE",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : null
+  }, {
+    "identity" : {
+      "canonicalId" : "74721e70-72ea-3613-8e19-4455485a72e3",
+      "type" : "GPU",
+      "manufacturer" : "Sapphire",
+      "modelName" : "PULSE Radeon RX 9060 XT OC 16GB",
+      "partNumber" : "11350-03-20G",
+      "identityKind" : "PHYSICAL_VARIANT",
+      "role" : "BOTH",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : {
+      "amountKrw" : 822300,
+      "sourceName" : "DANAWA",
+      "sourceUrl" : "https://prod.danawa.com/info/?pcode=91909571",
+      "observedAt" : "2026-10-09T16:27:55.879Z"
+    }
+  }, {
+    "identity" : {
+      "canonicalId" : "7b004ce5-ca04-3fa0-a9bb-53a7855cbe7c",
+      "type" : "RAM",
+      "manufacturer" : "G.SKILL",
+      "modelName" : "Ripjaws S5 DDR5-6000 CL36 32GB (2x16GB)",
+      "partNumber" : "F5-6000J3636F16GX2-RS5K",
+      "identityKind" : "RETAIL_KIT",
+      "role" : "PURCHASE_CANDIDATE",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "RAM_KIT",
+      "moduleCount" : 2
+    },
+    "price" : null
+  }, {
+    "identity" : {
+      "canonicalId" : "ac896892-a9c3-35cd-a368-6f0bb78daffa",
+      "type" : "CPU",
+      "manufacturer" : "AMD",
+      "modelName" : "Ryzen 7 9700X",
+      "partNumber" : "100-100001404WOF",
+      "identityKind" : "PHYSICAL_VARIANT",
+      "role" : "BOTH",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : {
+      "amountKrw" : 686000,
+      "sourceName" : "DANAWA",
+      "sourceUrl" : "https://prod.danawa.com/info/?pcode=62653715",
+      "observedAt" : "2026-10-09T16:27:59.097Z"
+    }
+  }, {
+    "identity" : {
+      "canonicalId" : "c9cdf3a7-9d2b-3742-bc00-4906b0dddeef",
+      "type" : "GPU",
+      "manufacturer" : "MSI",
+      "modelName" : "GeForce RTX 5060 8G VENTUS 2X OC",
+      "partNumber" : "G5060-8V2C",
+      "identityKind" : "PHYSICAL_VARIANT",
+      "role" : "BOTH",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : {
+      "amountKrw" : 668860,
+      "sourceName" : "DANAWA",
+      "sourceUrl" : "https://prod.danawa.com/info/?pcode=90956033",
+      "observedAt" : "2026-10-09T16:27:54.952Z"
+    }
+  }, {
+    "identity" : {
+      "canonicalId" : "cd5cb06e-c2c0-389d-97c2-94c7c53f0020",
+      "type" : "MOTHERBOARD",
+      "manufacturer" : "MSI",
+      "modelName" : "MAG B650M MORTAR WIFI",
+      "partNumber" : "MAG B650M MORTAR WIFI",
+      "identityKind" : "MODEL_REFERENCE",
+      "role" : "INSTALLED_PC_REFERENCE",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : {
+      "amountKrw" : 202710,
+      "sourceName" : "DANAWA",
+      "sourceUrl" : "https://prod.danawa.com/info/?pcode=17971187",
+      "observedAt" : "2026-10-09T16:27:57.186Z"
+    }
+  }, {
+    "identity" : {
+      "canonicalId" : "f0a98fa1-b311-3001-ad31-cd5ad368ae44",
+      "type" : "CPU",
+      "manufacturer" : "Intel",
+      "modelName" : "Core Ultra 5 250K Plus",
+      "partNumber" : null,
+      "identityKind" : "MODEL_REFERENCE",
+      "role" : "INSTALLED_PC_REFERENCE",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : null
+  }, {
+    "identity" : {
+      "canonicalId" : "f5b6c1f5-bfc4-3d8a-8bfb-d39383c5e520",
+      "type" : "RAM",
+      "manufacturer" : "G.SKILL",
+      "modelName" : "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+      "partNumber" : "F5-6000J3038F16GX2-TZ5N",
+      "identityKind" : "RETAIL_KIT",
+      "role" : "PURCHASE_CANDIDATE",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "RAM_KIT",
+      "moduleCount" : 2
+    },
+    "price" : {
+      "amountKrw" : 939000,
+      "sourceName" : "DANAWA",
+      "sourceUrl" : "https://prod.danawa.com/info/?pcode=17932031",
+      "observedAt" : "2026-10-09T16:27:58.112Z"
+    }
+  }, {
+    "identity" : {
+      "canonicalId" : "fa9b25b5-1a11-34ee-8814-134afee45a55",
+      "type" : "STORAGE",
+      "manufacturer" : "Samsung",
+      "modelName" : "870 EVO 1TB",
+      "partNumber" : "MZ-77E1T0BW",
+      "identityKind" : "PHYSICAL_VARIANT",
+      "role" : "BOTH",
+      "verificationStatus" : "UNVERIFIED",
+      "active" : false,
+      "saleUnit" : "PRODUCT",
+      "moduleCount" : null
+    },
+    "price" : {
+      "amountKrw" : 459000,
+      "sourceName" : "SAMSUNG_CNH",
+      "sourceUrl" : "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+      "observedAt" : "2026-10-09T16:29:31.420Z"
+    }
+  } ]
+}

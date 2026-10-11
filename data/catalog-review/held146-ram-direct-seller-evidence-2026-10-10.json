@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "observations": [
+    {
+      "pcode": "96773492",
+      "id": "5749614893",
+      "expectedPn": "KVR56U46BS8-16",
+      "sourceUrl": "https://www.comoasis.co.kr/shop/item.php?it_id=5749614893&service_id=pcdn",
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:19:49.050Z",
+      "responseSha256": "43103b52b5353ac0f53d186396bf9a42a5d2074ae1f95ef0c5f49c818ecff6ac",
+      "pageTitle": "컴오아시스",
+      "pnTextContexts": [],
+      "structuredProducts": [],
+      "priceFields": [
+        "\t\t\t\t\t\t\t\t\t<input type=hidden name=it_price id=it_price value='444770'>",
+        "sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 불가항력적 사유(일시품절,천재지변 등)로 배송이 늦어질 수 있습니다.</p><p align=\"left\"><strong>배송 방법</strong> :&nbsp; &nbsp; &nbsp; &nbsp;1. 로젠택배(TEL : 1588 - 998",
+        "var it_price = '444770';",
+        "\tvar price = parseInt(it_price) + parseInt(opt_price);",
+        "\t$(\"input[name=it_price]\").val(rs);",
+        "\t\t$(\"#it_price\").val($(\"#hidden_it_price\").val());"
+      ],
+      "imageSources": []
+    },
+    {
+      "pcode": "96773477",
+      "id": "5749614894",
+      "expectedPn": "KVR56U46BD8-32",
+      "sourceUrl": "https://www.comoasis.co.kr/shop/item.php?it_id=5749614894&service_id=pcdn",
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:19:51.265Z",
+      "responseSha256": "7b7e03a73820bb1dc97488b628d55988fa1e57ddbe30fa1b28a779bd3cb4f609",
+      "pageTitle": "컴오아시스",
+      "pnTextContexts": [],
+      "structuredProducts": [],
+      "priceFields": [
+        "\t\t\t\t\t\t\t\t\t<input type=hidden name=it_price id=it_price value='938720'>",
+        "sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 불가항력적 사유(일시품절,천재지변 등)로 배송이 늦어질 수 있습니다.</p><p align=\"left\"><strong>배송 방법</strong> :&nbsp; &nbsp; &nbsp; &nbsp;1. 로젠택배(TEL : 1588 - 998",
+        "var it_price = '938720';",
+        "\tvar price = parseInt(it_price) + parseInt(opt_price);",
+        "\t$(\"input[name=it_price]\").val(rs);",
+        "\t\t$(\"#it_price\").val($(\"#hidden_it_price\").val());"
+      ],
+      "imageSources": []
+    }
+  ],
+  "publicationApproved": false,
+  "databaseWrites": 0,
+  "deployments": 0
+}

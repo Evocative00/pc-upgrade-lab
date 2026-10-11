@@ -12,7 +12,7 @@
 |RAM·저장장치 여러 항목 추가·수정·제거|구현 (수량, 1개당 용량 입력 포함)|
 |자동 인식 패널 연결|`PcScanPanel`의 `onApply`로 폼에 연결|
 |자동 인식 결과 반영 후 사용자 보완|구현 (반영 규칙은 아래 3장)|
-|예시 모델명 찾기|예시 제품명만 입력. 실제 카탈로그 연결은 후속 작업|
+|제품 검색·모델만 확인|실제 카탈로그 GET API 연결. 제품 ID 연결과 설치 모델 확인을 구분|
 |미연결 모델과 수동 입력 구분 표시|구현 (`source`와 `matchStatus` 기준)|
 
 PR #10 작성자가 초기 localStorage 버전에서 확인한 것 (2026-09-28, 아래 브라우저 기록은 HTTP 통합 후 검증과 구분):
@@ -43,7 +43,7 @@ HTTP 통합 후 자동 검사와 실제 백엔드 검증 결과는 [통합 기�
 1. **PC 이름**: 필수, 최대 100자
 2. **내 PC 불러오기**: `PcScanPanel`
 3. **부품 구성**: 공통 규격의 9종을 CPU, COOLER, MOTHERBOARD, RAM, GPU, STORAGE, PSU, CASE, MONITOR 순서로 표시
-   - 줄마다 모델명(`displayName`), 상태 배지, `예시 모델명 찾기`, 실제 연결 정보가 있는 경우 `연결 해제`를 둔다. 예시 선택은 이름만 채우며 `UNMATCHED`·제품 ID null로 저장한다.
+   - 줄마다 모델명(`displayName`), 상태 배지, 부품 검색, 연결 정보가 있는 경우 연결 해제를 둔다. 제품 선택은 이름·제품 ID·`MATCHED`를 반영한다. 모델만 확인은 모델 ID·확인 수준을 저장하고 제품 ID null·`UNMATCHED`를 유지한다. 수량·제원·수집 원문은 보존한다.
    - RAM·STORAGE는 수량(`quantity`)과 1개당 용량(`specs.capacityBytes`)을 입력하고 `+ 추가`와 `제거`를 쓸 수 있다.
      - 용량 단위: RAM은 GiB, STORAGE는 GB(10⁹)
      - 비워 두면 null이다. 0으로 단정하지 않는다.
@@ -71,17 +71,21 @@ HTTP 통합 후 자동 검사와 실제 백엔드 검증 결과는 [통합 기�
 - 교체될 AUTO 항목 중 이번 화면에서 보완한 항목, 카탈로그에 연결한 항목, 서버에서 불러온 항목이 있으면 확인 창을 띄운다. 서버 응답에는 과거 편집 여부가 없으므로 저장된 AUTO는 보수적으로 확인한다. 취소하면 입력값은 그대로다.
 - GPU가 2개 인식되는 경우처럼 한 종류에 여러 항목이 생기면 모두 표시하고 `제거`할 수 있게 한다.
 
-## 4. 서버 연결과 남은 예시 구현
+## 4. 서버 연결
 
 |위치|현재|교체 조건|
 |-|-|-|
 |`features/pc/pcRepository.ts`|HTTP `/api/pcs` 등록·목록·상세·수정. 서버 오류 시 대체 저장 없음|현재 구현. 실제 Windows·MySQL 화면 검증은 별도 기록|
-|`features/catalog/catalogClient.ts`|예시 제품명 검색. 선택해도 실제 카탈로그 연결로 저장하지 않음|데이터 원천 공동 선정 후 실제 검색 API와 연결|
+|`features/catalog/catalogClient.ts`|HTTP `/api/catalog/products`·`/api/catalog/models` 검색·상세 조회|`local` 검토용 API. 비활성·미검증 자료도 포함하며 자동 매칭은 없음|
+
+제품 검색·상세에는 설치 모델 참고·판매 키트·정확 상품 자료와 자료 용도를 표시한다. 상세의 “연결된 모델 보기”는 저장된 모델 ID로 조회하며, “이 모델만 확인”을 선택하면 폼의 제품·상품가 연결을 해제하고 장착 수량·제원·수집 원문을 보존한다. 검색 0건에는 핵심 모델명·정확 부품번호와 모델 검색 안내를 제공한다.
+
+첫 14종의 검색·연결 검증과 승인한 UI 변경은 [검증 기록](catalog-pilot-search-pc-verification-2026-10-10.md)을 따른다. 실제 MySQL의 읽기 전용 조회와 H2의 저장·재조회 검사를 실제 브라우저 저장 검증과 구분한다.
 
 ## 5. 팀과 정해야 할 것
 
-- [ ] 카탈로그 제품 형식과 검색 API. 화면에 필요한 값은 `catalogProductId`로 쓸 문자열 ID(최대 128자)와 표시 이름이다.
-- [ ] 실제 카탈로그 연결 시 `displayName`을 제품명으로 바꿀지. 현재 예시 선택은 이름만 채우고 미연결 상태·`rawName`을 유지한다.
+- [x] 카탈로그 제품·모델 형식과 검색 API 연결. `catalogProductId`는 로컬 문자열 ID(최대 128자)이며 모델 ID와 구분한다.
+- [x] 제품 연결 시 `displayName`을 제품명으로 바꾸고 수량·제원·`rawName`을 보존한다. 모델만 확인은 상품 연결과 구분한다.
 - [ ] 목록 카드에 CPU·GPU 등 요약을 보여 줄지. 보여 주려면 목록 응답에 필드를 추가해야 하므로 공통 규격 변경 대상이다.
 
 ## 6. 코드 위치
@@ -100,5 +104,5 @@ frontend/src/
    │  ├─ pcRepository.ts          HTTP 저장소·서버 오류·시간 초과 처리
    │  ├─ components/              PcForm, PartRow, PartStatusBadge
    │  └─ pages/                   PcListPage, PcDetailPage, PcFormPages
-   └─ catalog/                    카탈로그 검색 (예시 데이터) + 선택 UI
+   └─ catalog/                    실제 제품·모델 API 검색 + 상세·선택 UI
 ```

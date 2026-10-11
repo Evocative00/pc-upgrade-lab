@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "approvalDate": "2026-10-10",
+  "decision": "카탈로그 보강과 8종 가격 반영 승인",
+  "previewFile": "data/catalog-review/pilot-import-preview-2026-10-10.json",
+  "previewNormalizedSha256": "28cc2bacb534dcc284292359f61748de6a9bf0642318a3771f80937d7cbf0b21",
+  "pricesFile": "data/catalog-review/pilot-approved-prices-2026-10-10.json",
+  "pricesNormalizedSha256": "3028116ce4cae9adc1917ae3b42e4404b821eac83d589c0c1082dfe8051318c0",
+  "scope": {
+    "newProducts": 7,
+    "modelRecords": 13,
+    "productBindings": 14,
+    "storageProfiles": 4,
+    "storageSlots": 19,
+    "priceObservations": 8,
+    "autoActivation": false,
+    "githubPublish": false
+  }
+}

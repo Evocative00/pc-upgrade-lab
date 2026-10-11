@@ -1,0 +1,75 @@
+{
+  "testedAt" : "2026-10-10T10:29:43.638134900Z",
+  "result" : "PASSED",
+  "validation" : "Real Java SharedCatalogSnapshot parsing and full 307-product loopback HTTP v2 verification",
+  "catalogVersion" : "all-catalog-v1-805cdd3d9c9d8abf19f338bc646a28db33be49e4a7dbc5314d9c50aee5a16e92",
+  "priceVersion" : "prices-v1-7262b6764824fb79d2c8ea952808e814637558c30749366f923b3d4c791167bc",
+  "products" : 307,
+  "preservedApprovedPrices" : 75,
+  "additionalReviewedPrices" : 5,
+  "loopbackRequests" : 4,
+  "OK" : 80,
+  "FRESH" : 80,
+  "NO_PRICE" : 227,
+  "catalogIdentityChanges" : 0,
+  "previousApprovedPriceChanges" : 0,
+  "databaseAccess" : 0,
+  "deployments" : 0,
+  "publicationApproved" : false,
+  "additionalPrices" : [ {
+    "freshness" : "FRESH",
+    "modelName" : "GeForce RTX 3060 VENTUS 2X 8G OC",
+    "canonicalId" : "1c295333-8053-351c-82cd-071dc4f131db",
+    "price" : {
+      "amountKrw" : 472590,
+      "sourceName" : "DANAWA",
+      "sourceUrl" : "https://prod.danawa.com/info/?pcode=18279782",
+      "observedAt" : "2026-10-10T10:07:55.671Z"
+    },
+    "status" : "OK"
+  }, {
+    "freshness" : "FRESH",
+    "modelName" : "Ryzen 7 3800X",
+    "canonicalId" : "3f8a80d4-ebdb-33e1-83c2-8a0c026ab129",
+    "price" : {
+      "amountKrw" : 560760,
+      "sourceName" : "DANAWA",
+      "sourceUrl" : "https://prod.danawa.com/info/?pcode=8459781",
+      "observedAt" : "2026-10-10T10:26:34.472Z"
+    },
+    "status" : "OK"
+  }, {
+    "freshness" : "FRESH",
+    "modelName" : "Ryzen 7 5800X3D",
+    "canonicalId" : "4f86bcec-6d33-3b5c-80bc-d99991927a5e",
+    "price" : {
+      "amountKrw" : 582330,
+      "sourceName" : "DANAWA",
+      "sourceUrl" : "https://prod.danawa.com/info/?pcode=16872089",
+      "observedAt" : "2026-10-10T10:26:36.295Z"
+    },
+    "status" : "OK"
+  }, {
+    "freshness" : "FRESH",
+    "modelName" : "Ryzen 9 7950X",
+    "canonicalId" : "cb11f240-2d1d-32a8-af69-ae3645dd8037",
+    "price" : {
+      "amountKrw" : 1840490,
+      "sourceName" : "DANAWA",
+      "sourceUrl" : "https://prod.danawa.com/info/?pcode=17913980",
+      "observedAt" : "2026-10-10T10:26:37.901Z"
+    },
+    "status" : "OK"
+  }, {
+    "freshness" : "FRESH",
+    "modelName" : "MPG B650 CARBON WIFI",
+    "canonicalId" : "cbb05666-c220-3fe4-ac38-68e574ae51ce",
+    "price" : {
+      "amountKrw" : 915000,
+      "sourceName" : "DANAWA",
+      "sourceUrl" : "https://prod.danawa.com/info/?pcode=17971178",
+      "observedAt" : "2026-10-10T10:17:15.897Z"
+    },
+    "status" : "OK"
+  } ]
+}

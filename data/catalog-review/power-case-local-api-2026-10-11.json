@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-11T08:15:25.491Z",
+  "origin": "http://127.0.0.1:5173",
+  "passed": true,
+  "scope": "APPROVED_POWER_CASE_LOCAL_READ_ONLY_API_2026_10_11",
+  "catalogProducts": 315,
+  "currentPrices": 83,
+  "referenceEstimates": 227,
+  "detailsVerified": 7,
+  "heldProductsWithNoPriceOrEstimate": 5,
+  "centralOriginVerified": true,
+  "anonymousAuthStatus": 401,
+  "anonymousPcStatus": 401,
+  "devHeaderPcStatus": 401,
+  "csrfWithoutHeaderStatus": 403,
+  "csrfCookieAcquired": true,
+  "csrfWithHeaderVerified": true,
+  "compatibilityRequests": 11,
+  "compatibilityCases": [
+    {
+      "name": "board-case-supported",
+      "status": "NEEDS_CHECK",
+      "scope": "CPU_MOTHERBOARD_RAM_GPU_PSU_CASE_V2",
+      "expectedChecks": {
+        "MOTHERBOARD_CASE_FORM": "COMPATIBLE"
+      }
+    },
+    {
+      "name": "board-case-unsupported",
+      "status": "INCOMPATIBLE",
+      "scope": "CPU_MOTHERBOARD_RAM_GPU_PSU_CASE_V2",
+      "expectedChecks": {
+        "MOTHERBOARD_CASE_FORM": "INCOMPATIBLE"
+      }
+    },
+    {
+      "name": "gpu-case-conditional-clearance",
+      "status": "NEEDS_CHECK",
+      "scope": "CPU_MOTHERBOARD_RAM_GPU_PSU_CASE_V2",
+      "expectedChecks": {
+        "GPU_CASE_LENGTH": "NEEDS_CHECK",
+        "GPU_CASE_INSTALLATION": "NEEDS_CHECK"
+      }
+    },
+    {
+      "name": "psu-case-declared-fit",
+      "status": "NEEDS_CHECK",
+      "scope": "CPU_MOTHERBOARD_RAM_GPU_PSU_CASE_V2",
+      "expectedChecks": {
+        "PSU_CASE_FORM": "COMPATIBLE",
+        "PSU_CASE_LENGTH": "COMPATIBLE",
+        "PSU_CASE_INSTALLATION": "NEEDS_CHECK"
+      }
+    },
+    {
+      "name": "psu-case-unsupported-overrides-unknown",
+      "status": "INCOMPATIBLE",
+      "scope": "CPU_MOTHERBOARD_RAM_GPU_PSU_CASE_V2",
+      "expectedChecks": {
+        "PSU_CASE_FORM": "INCOMPATIBLE",
+        "PSU_CASE_LENGTH": "INCOMPATIBLE"
+      }
+    },
+    {
+      "name": "psu-case-layout-unknown",
+      "status": "NEEDS_CHECK",
+      "scope": "CPU_MOTHERBOARD_RAM_GPU_PSU_CASE_V2",
+      "expectedChecks": {
+        "PSU_CASE_FORM": "COMPATIBLE",
+        "PSU_CASE_LENGTH": "NEEDS_CHECK"
+      }
+    },
+    {
+      "name": "gpu-psu-cable-count-unknown",
+      "status": "NEEDS_CHECK",
+      "scope": "CPU_MOTHERBOARD_RAM_GPU_PSU_CASE_V2",
+      "expectedChecks": {
+        "GPU_PSU_WATTAGE": "COMPATIBLE",
+        "GPU_PSU_CONNECTORS": "NEEDS_CHECK"
+      }
+    },
+    {
+      "name": "gpu-psu-direct-connector-fit-power-unknown",
+      "status": "NEEDS_CHECK",
+      "scope": "CPU_MOTHERBOARD_RAM_GPU_PSU_CASE_V2",
+      "expectedChecks": {
+        "GPU_PSU_WATTAGE": "COMPATIBLE",
+        "GPU_PSU_CONNECTORS": "COMPATIBLE",
+        "GPU_PSU_CABLE_POWER": "NEEDS_CHECK"
+      }
+    },
+    {
+      "name": "unlinked-hardware-remains-unknown",
+      "status": "NEEDS_CHECK",
+      "scope": "CPU_MOTHERBOARD_RAM_GPU_PSU_CASE_V2",
+      "expectedChecks": {
+        "CATALOG_LINK_gpuProductId": "NEEDS_CHECK"
+      }
+    },
+    {
+      "name": "legacy-cpu-board-ram",
+      "status": "NEEDS_CHECK",
+      "scope": "CPU_MOTHERBOARD_RAM_V1",
+      "expectedChecks": {
+        "MOTHERBOARD_RAM_CAPACITY": "COMPATIBLE"
+      }
+    }
+  ],
+  "v1ScopePreserved": true,
+  "memoryGiBVerified": true,
+  "koreanCheckMessagesVerified": true,
+  "databaseWrites": 0,
+  "pcWrites": 0,
+  "accountWrites": 0,
+  "loginAttempts": 0,
+  "cookiesOrTokensPersisted": false,
+  "errors": []
+}

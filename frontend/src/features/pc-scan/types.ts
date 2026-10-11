@@ -12,6 +12,9 @@ export type PartInput = {
   // 카탈로그 미연결: ID는 null, 상태는 UNMATCHED. 이름만 보고 연결 완료로 판단하지 않는다.
   catalogProductId: string | null
   matchStatus: 'UNMATCHED' | 'MATCHED'
+  // 모델/규격군 확인은 정확한 판매 상품 연결과 별개다. 이전 응답에서는 생략될 수 있다.
+  catalogModelId?: string | null
+  recognitionLevel?: 'SPEC_GROUP' | 'MODEL' | 'PHYSICAL_VARIANT' | null
   // 종류마다 다른 제원을 담는다. 미확인 값은 null이며, 중첩 객체·배열은 사용하지 않는다.
   specs: Record<string, string | number | boolean | null>
 }

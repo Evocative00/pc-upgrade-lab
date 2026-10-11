@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "stage": "EXACT_SALE_IDENTITY_REVIEW_PREVIEW_ONLY",
+  "databaseWrites": 0,
+  "deployments": 0,
+  "publicationApproved": false,
+  "pages": [
+    {
+      "pcode": "13406096",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=13406096",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:27:44.667Z",
+      "responseSha256": "a91f4acce61c427e9a493a0e20166f65ead7d9b724ede6db3a628a8a20103a2d",
+      "title": "CORSAIR DDR4-3200 CL16-20-20 VENGEANCE LPX BLACK 패키지 (64GB(16Gx4))",
+      "summarySpecification": "데스크탑용 / DDR4 / 3200MHz (PC4-25600) / 램타이밍 : CL16-20-20-38 / 1.35V / 램개수 : 4개 / XMP / 히트싱크 : 방열판 / 방열판 색상 : 블랙",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: CORSAIR DDR4-3200 CL16-20-20 VENGEANCE LPX BLACK 패키지 (64GB(16Gx4))"
+      },
+      "quoteError": {
+        "code": "REGULAR_PRICE_SECTION_MISSING",
+        "message": "Exactly one active regular mall-price section is required"
+      }
+    },
+    {
+      "pcode": "13406465",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=13406465",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:27:47.149Z",
+      "responseSha256": "48fab358b0f7464aa81f9c9ea301362d754bf8e846808d9df17b502fbc00a5f7",
+      "title": "CORSAIR DDR4-3600 CL18 VENGEANCE LPX BLACK 패키지 (64GB(16Gx4))",
+      "summarySpecification": "데스크탑용 / DDR4 / 3600MHz (PC4-28800) / 램타이밍 : CL18-22-22-42 / 1.35V / 램개수 : 4개 / XMP / 히트싱크 : 방열판 / 방열판 색상 : 블랙",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: CORSAIR DDR4-3600 CL18 VENGEANCE LPX BLACK 패키지 (64GB(16Gx4))"
+      },
+      "quoteError": {
+        "code": "REGULAR_PRICE_SECTION_MISSING",
+        "message": "Exactly one active regular mall-price section is required"
+      }
+    },
+    {
+      "pcode": "99288431",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=99288431",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:27:49.622Z",
+      "responseSha256": "eabbd72c8864a3a474a5fc193a3c8f1389264271393df108ff0c0f98b40b6a60",
+      "title": "CORSAIR DDR5-6000 CL40 VENGEANCE BLACK 패키지 (128GB(64Gx2))",
+      "summarySpecification": "데스크탑용 / DDR5 / 6000MHz (PC5-48000) / 램타이밍 : CL40-50-50-96 / 1.35V / 램개수 : 2개 / XMP3.0 / 온다이ECC / 히트싱크 : 방열판 / 방열판 색상 : 블랙 / 높이 : 35mm",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: CORSAIR DDR5-6000 CL40 VENGEANCE BLACK 패키지 (128GB(64Gx2))"
+      },
+      "quoteError": {
+        "code": "REGULAR_PRICE_SECTION_MISSING",
+        "message": "Exactly one active regular mall-price section is required"
+      }
+    },
+    {
+      "pcode": "99290126",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=99290126",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:27:52.101Z",
+      "responseSha256": "d2afb771d5923c9b21d9d6f9c4b46018bc01476c75e42f8a95ba6e2ccd3cb84d",
+      "title": "CORSAIR DDR5-6000 CL40-40-40-77 VENGEANCE BLACK 패키지 (64GB(32Gx2))",
+      "summarySpecification": "데스크탑용 / DDR5 / 6000MHz (PC5-48000) / 램타이밍 : CL40-40-40-77 / 1.35V / 램개수 : 2개 / XMP3.0 / 온다이ECC / 히트싱크 : 방열판 / 방열판 색상 : 블랙 / 높이 : 35mm",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: CORSAIR DDR5-6000 CL40-40-40-77 VENGEANCE BLACK 패키지 (64GB(32Gx2))"
+      },
+      "quoteError": {
+        "code": "REGULAR_PRICE_SECTION_MISSING",
+        "message": "Exactly one active regular mall-price section is required"
+      }
+    },
+    {
+      "pcode": "124377550",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=124377550",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:27:54.580Z",
+      "responseSha256": "15870cc4b0c8fb9a339f77ccd20f5e1fdfae8181bfc1c589a8b2fef8f64f5e0d",
+      "title": "CORSAIR DDR5-6000 CL40 VENGEANCE 패키지 (64GB(32Gx2))",
+      "summarySpecification": "데스크탑용 / DDR5 / 6000MHz (PC5-48000) / 램타이밍 : CL40-50-50-96 / 1.35V / 램개수 : 2개 / XMP3.0 / EXPO / 온다이ECC / 히트싱크 : 방열판 / 방열판 색상 : 그레이 / 높이 : 35mm",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: CORSAIR DDR5-6000 CL40 VENGEANCE 패키지 (64GB(32Gx2))"
+      },
+      "quoteError": {
+        "code": "REGULAR_PRICE_SECTION_MISSING",
+        "message": "Exactly one active regular mall-price section is required"
+      }
+    },
+    {
+      "pcode": "17544278",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17544278",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:27:57.142Z",
+      "responseSha256": "235d7d44e008f46b2bde4c8de2317eb2d6947e90416c572e49ec3b7f502b3e65",
+      "title": "CORSAIR DDR5-6000 CL36 VENGEANCE RGB BLACK 패키지 (32GB(16Gx2))",
+      "summarySpecification": "데스크탑용 / DDR5 / 6000MHz (PC5-48000) / 램타이밍 : CL36-44-44-96 / 1.35V / 램개수 : 2개 / LED 라이트 / XMP3.0 / EXPO / 온다이ECC / 히트싱크 : 방열판 / 방열판 색상 : 블랙 / LED색상 : RGB / LED 시스템 : AURA SYNC , MYSTIC LIGHT , RGB FUSION , CORSAIR iCUE / 높이 : 45mm",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: CORSAIR DDR5-6000 CL36 VENGEANCE RGB BLACK 패키지 (32GB(16Gx2))"
+      },
+      "quoteCandidate": {
+        "amountKrw": 750000,
+        "observedAt": "2026-10-10T11:27:57.142Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=17544278",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "pcode": "105969236",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=105969236",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:27:59.777Z",
+      "responseSha256": "00e3230b324c5b8f0c398d4cd0909f723e05e084826df86125c628bbd95d3adb",
+      "title": "CORSAIR DDR5-6000 CL36 VENGEANCE RGB RS 패키지 (32GB(16Gx2))",
+      "summarySpecification": "데스크탑용 / DDR5 / 6000MHz (PC5-48000) / 램타이밍 : CL36-44-44-96 / 1.35V / 램개수 : 2개 / LED 라이트 / XMP3.0 / EXPO / 온다이ECC / 히트싱크 : 방열판 / 방열판 색상 : 그레이 / LED색상 : RGB / LED 시스템 : AURA SYNC , MYSTIC LIGHT , RGB FUSION , CORSAIR iCUE / 높이 : 35mm",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: CORSAIR DDR5-6000 CL36 VENGEANCE RGB RS 패키지 (32GB(16Gx2))"
+      },
+      "quoteCandidate": {
+        "amountKrw": 734990,
+        "observedAt": "2026-10-10T11:27:59.777Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=105969236",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "pcode": "17935550",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=17935550",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:28:02.258Z",
+      "responseSha256": "876e1d9179677b33b39c682e447d6645cf48368780008f2b9ad6c3201c4c0b8c",
+      "title": "CORSAIR DDR5-5600 CL36 Dominator Platinum RGB AMD 패키지 (32GB(16Gx2))",
+      "summarySpecification": "데스크탑용 / DDR5 / 5600MHz (PC5-44800) / 램타이밍 : CL36-36-36-76 / 1.25V / 램개수 : 2개 / LED 라이트 / EXPO / 히트싱크 : 방열판 / 방열판 색상 : 블랙 / LED색상 : RGB / LED 시스템 : AURA SYNC , MYSTIC LIGHT , RGB FUSION , CORSAIR iCUE / 높이 : 56mm",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: CORSAIR DDR5-5600 CL36 Dominator Platinum RGB AMD 패키지 (32GB(16Gx2))"
+      },
+      "quoteError": {
+        "code": "REGULAR_PRICE_SECTION_MISSING",
+        "message": "Exactly one active regular mall-price section is required"
+      }
+    },
+    {
+      "pcode": "27788273",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=27788273",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:28:04.794Z",
+      "responseSha256": "163f5653685a5dd78f90ff4848eef85f236a0586ada920dbb019e933bda530e9",
+      "title": "CORSAIR DDR5-5600 CL40 VENGEANCE RGB BLACK 패키지 (128GB(32Gx4))",
+      "summarySpecification": "데스크탑용 / DDR5 / 5600MHz (PC5-44800) / 램타이밍 : CL40-40-40-77 / 1.25V / 램개수 : 4개 / LED 라이트 / XMP3.0 / 온다이ECC / 히트싱크 : 방열판 / 방열판 색상 : 블랙 / LED색상 : RGB / LED 시스템 : CORSAIR iCUE / 높이 : 56mm",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: CORSAIR DDR5-5600 CL40 VENGEANCE RGB BLACK 패키지 (128GB(32Gx4))"
+      },
+      "quoteError": {
+        "code": "NO_ACTIVE_OFFER",
+        "message": "No active regular offer with an explicit base price and matching purchase bridge was found"
+      }
+    },
+    {
+      "pcode": "106776428",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=106776428",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:28:07.546Z",
+      "responseSha256": "ed926f36b2eb4d0938095e17ba0cc67ea1717dedce068b03a5cf75ead08f6f1f",
+      "title": "에스티오 King n Fury Beast 8GB 3200MHz DDR4 CL16 데스크탑 메모리 싱글 모듈 KF432C16BB8",
+      "summarySpecification": "조끼 / 가디건/니트/조끼 / 남성용",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: 에스티오 King n Fury Beast 8GB 3200MHz DDR4 CL16 데스크탑 메모리 싱글 모듈 KF432C16BB8"
+      },
+      "quoteCandidate": {
+        "amountKrw": 179370,
+        "observedAt": "2026-10-10T11:28:07.546Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=106776428",
+        "condition": "NEW",
+        "inStock": true
+      },
+      "exclusion": "AI-grouped page has clothing/vest category and no authoritative manufacturer part number; not an acceptable RAM mapping."
+    },
+    {
+      "pcode": "106223162",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=106223162",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:28:10.223Z",
+      "responseSha256": "115fe0680d18c76a450938cdff5730fa8b4a8a3ba91f20d04c0523d7d697f573",
+      "title": "킹스톤 FURY DDR5-5600 CL40 Beast 블랙 병행수입 (16GB)",
+      "summarySpecification": "데스크탑용 / DDR5 / 5600MHz (PC5-44800) / 램타이밍 : CL40 / 램개수 : 1개 / 히트싱크 : 방열판 / 방열판 색상 : 블랙",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: 킹스톤 FURY DDR5-5600 CL40 Beast 블랙 병행수입 (16GB)"
+      },
+      "quoteCandidate": {
+        "amountKrw": 349460,
+        "observedAt": "2026-10-10T11:28:10.223Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=106223162",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "pcode": "109872281",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=109872281",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:28:12.499Z",
+      "responseSha256": "71d0ee5e7cbdec3a53e765c1f39536d419fac1cc225544e92b04132c67adc3f6",
+      "title": "",
+      "summarySpecification": null,
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISSING",
+        "message": "The reviewed Danawa product title is missing or ambiguous"
+      },
+      "quoteError": {
+        "code": "TITLE_MISSING",
+        "message": "The reviewed Danawa product title is missing or ambiguous"
+      }
+    },
+    {
+      "pcode": "7013617",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=7013617",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:28:15.064Z",
+      "responseSha256": "34abb68cb22fe4d45ac3e97750214530f8ce766d3012ad1dfabf3664c0aca98b",
+      "title": "킹스톤 DDR4-2666 (4GB)",
+      "summarySpecification": "데스크탑용 / DDR4 / 2666MHz (PC4-21300) / 램타이밍 : CL19 / 1.20V / 램개수 : 1개 / 히트싱크 : 미포함",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: 킹스톤 DDR4-2666 (4GB)"
+      },
+      "quoteError": {
+        "code": "NO_ACTIVE_OFFER",
+        "message": "No active regular offer with an explicit base price and matching purchase bridge was found"
+      }
+    },
+    {
+      "pcode": "99639581",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=99639581",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:28:17.765Z",
+      "responseSha256": "884e3e728de65ba53bf4813c2c69ecfb7d571be10ef23069a83a269e9c123845",
+      "title": "SK하이닉스 DDR4-3200 (16GB)",
+      "summarySpecification": "데스크탑용 / DDR4 / 3200MHz (PC4-25600) / 1.20V / 램개수 : 1개 / 히트싱크 : 미포함 / 모듈제조사 : SK하이닉스",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: SK하이닉스 DDR4-3200 (16GB)"
+      },
+      "quoteCandidate": {
+        "amountKrw": 228450,
+        "observedAt": "2026-10-10T11:28:17.765Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=99639581",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "pcode": "16946459",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=16946459",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:28:20.368Z",
+      "responseSha256": "f2b1d06e01ce64e671f8e9b1795ab35a9c5dc5ded1e1b10ca46f77ec529ba543",
+      "title": "SK하이닉스 노트북 DDR4-2400 중고 (8GB)",
+      "summarySpecification": "노트북용 / DDR4 / 2400MHz (PC4-19200) / 1.20V / 램개수 : 1개 / 히트싱크 : 미포함",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: SK하이닉스 노트북 DDR4-2400 중고 (8GB)"
+      },
+      "quoteError": {
+        "code": "NOT_DOMESTIC_NEW",
+        "message": "Product is not a domestic new product: SK하이닉스 노트북 DDR4-2400 중고 (8GB)"
+      },
+      "exclusion": "Used laptop SODIMM is not the stored new desktop UDIMM."
+    },
+    {
+      "pcode": "116898273",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=116898273",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:28:23.021Z",
+      "responseSha256": "7821187bc71ce590976029b030f582cfaf36bd57eb42545c8abda37a235a8091",
+      "title": "삼성전자 DDR4-2133 (16GB)",
+      "summarySpecification": "데스크탑용 / DDR4 / 2,133MHz(PC4-17,000) / 1.20V / 램개수 : 1개",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: 삼성전자 DDR4-2133 (16GB)"
+      },
+      "quoteCandidate": {
+        "amountKrw": 125510,
+        "observedAt": "2026-10-10T11:28:23.021Z",
+        "evidenceUrl": "https://prod.danawa.com/info/?pcode=116898273",
+        "condition": "NEW",
+        "inStock": true
+      }
+    },
+    {
+      "pcode": "2879268",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=2879268",
+      "saleIdentityVerified": false,
+      "httpStatus": 200,
+      "observedAt": "2026-10-10T11:28:25.584Z",
+      "responseSha256": "15ba812e81d21fc8adc34086bb68e3637662193129f50ddec576b4a85d90c11f",
+      "title": "삼성전자 DDR4-2133 (8GB)",
+      "summarySpecification": "데스크탑용 / DDR4 / 2133MHz (PC4-17000) / 램개수 : 1개 / 히트싱크 : 미포함",
+      "exactPartNumberOccurrences": [],
+      "initialHeadingParseError": {
+        "code": "TITLE_MISMATCH",
+        "message": "Expected title does not match the fetched product: 삼성전자 DDR4-2133 (8GB)"
+      },
+      "quoteError": {
+        "code": "REGULAR_PRICE_SECTION_MISSING",
+        "message": "Exactly one active regular mall-price section is required"
+      }
+    }
+  ],
+  "updatedAt": "2026-10-10T11:28:25.608Z",
+  "localParseCorrectedAt": "2026-10-10T11:29:03.060Z",
+  "localParseCorrection": "Title read from product span only, excluding comparison buttons and the AI disclaimer. Network observation time remains unchanged. No sale identity has been verified."
+}

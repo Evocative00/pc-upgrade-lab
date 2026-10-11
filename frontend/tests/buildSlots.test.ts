@@ -3,10 +3,10 @@ import { readFileSync } from 'node:fs'
 import test from 'node:test'
 import ts from 'typescript'
 import {
-  applyCatalogSelection, assignSlots, chipLabel, priceTotal, ramLabel, ramModuleViews, slotInfo, slotOfDraft,
+  applyCatalogSelection, assignSlots, chipLabel, priceTotal, referencePriceTotal, ramLabel, ramModuleViews, slotInfo, slotOfDraft,
 } from '../src/features/builder/buildSlots.ts'
 import { createManualDraft, toPartInputs, withEmptyRows } from '../src/features/pc/partDraft.ts'
-import type { CatalogDetail, CatalogProduct } from '../src/features/catalog/catalogTypes.ts'
+import type { CatalogDetail, CatalogPriceStatus, CatalogProduct, ReferenceEstimate } from '../src/features/catalog/catalogTypes.ts'
 import type { PartDraft } from '../src/features/pc/types.ts'
 import type { DetailEntry } from '../src/features/builder/useCatalogDetails.ts'
 import { buildCompatibilityRequest, incompatibleByDraft } from '../src/features/builder/compatibility.ts'
@@ -24,6 +24,50 @@ const detail = (type: CatalogProduct['type'], kit?: number, id = 'catalog-1'): C
   product: product(type, id), specification: kit === undefined ? {} : { moduleCount: kit }, sources: [], attributions: [],
 })
 const gib = 1024 ** 3
+const sharedStatus = (overrides: Partial<CatalogPriceStatus> = {}): CatalogPriceStatus => ({
+  origin: 'SHARED', lookupStatus: 'OK', freshness: 'FRESH', catalogVersion: 'pilot-2026-10-10-v1',
+  checkedAt: '2026-10-10T12:00:00Z', lastSuccessAt: '2026-10-10T11:00:00Z', includedInTotal: true, ...overrides,
+})
+const estimate = (overrides: Partial<ReferenceEstimate> = {}): ReferenceEstimate => ({
+  amountKrw: 80000, basis: 'SIMILAR_PART_ESTIMATE', identityScope: 'SIMILAR_SPEC', saleUnit: 'PRODUCT', moduleCount: null,
+  sourceDate: null, reviewedAt: '2026-10-10T12:00:00Z', confidence: 'ESTIMATED', method: 'SPEC_NEIGHBOUR_MEDIAN',
+  rangeLowKrw: 60000, rangeHighKrw: 100000, notes: '유사 제원 참고가', sourceQuotes: [{ canonicalId: null,
+    modelName: '비교 부품', amountKrw: 100000, sourceName: '판매처', sourceUrl: 'https://shop.example/p/1',
+    sourceDate: '2026-10-06', saleUnit: 'PRODUCT', moduleCount: null }], ...overrides,
+})
+
+test('참고 합계는 만료된 실제 가격을 우선하며 별도 추정가를 중복 합산하지 않는다', () => {
+  const old = detail('CPU')
+  old.product.priceStatus = sharedStatus({ freshness: 'EXPIRED', includedInTotal: false })
+  old.product.referenceEstimate = estimate()
+  const pending = detail('GPU')
+  pending.product.currentPrice = null
+  pending.product.referenceEstimate = estimate()
+  const lines = [{ draft: named('CPU', 'old'), detail: old }, { draft: named('GPU', 'estimate', { quantity: 2 }), detail: pending }]
+  assert.equal(priceTotal(lines).currentKrw, 0)
+  assert.deepEqual(referencePriceTotal(lines), { referenceKrw: 260000, pricedItems: 2, unpriced: 0, quantityNeedsCheck: 0 })
+  assert.equal(old.product.priceStatus.includedInTotal, false)
+  assert.equal(pending.product.currentPrice, null)
+})
+
+test('참고 합계는 모델만 연결한 부품과 확인한 관측이 없는 장애 가격을 제외한다', () => {
+  const entry = detail('CPU')
+  entry.product.priceStatus = sharedStatus({ lookupStatus: 'UNAVAILABLE', lastSuccessAt: null, includedInTotal: false })
+  assert.equal(referencePriceTotal([{ draft: named('CPU', 'invalid observation'), detail: entry }]).pricedItems, 0)
+  entry.product.referenceEstimate = estimate()
+  const model = named('CPU', 'model only', { catalogModelId: 'model', catalogProductId: null })
+  assert.deepEqual(referencePriceTotal([{ draft: model, detail: entry }]), { referenceKrw: 0, pricedItems: 0, unpriced: 1, quantityNeedsCheck: 0 })
+})
+
+test('RAM 참고가는 원래 키트 단위로 실제 장착 모듈을 환산하며 수량 불일치를 제외한다', () => {
+  const kit = detail('RAM', 2)
+  kit.product.currentPrice = null
+  kit.product.referenceEstimate = estimate({ saleUnit: 'RAM_KIT', moduleCount: 2 })
+  assert.equal(referencePriceTotal([{ draft: named('RAM', 'kit', { quantity: 4 }), detail: kit }]).referenceKrw, 160000)
+  assert.equal(referencePriceTotal([{ draft: named('RAM', 'one module'), detail: kit }]).quantityNeedsCheck, 1)
+  kit.product.referenceEstimate.moduleCount = 4
+  assert.equal(referencePriceTotal([{ draft: named('RAM', 'unit mismatch', { quantity: 4 }), detail: kit }]).quantityNeedsCheck, 1)
+})
 
 test('CPU 이름은 굵은 줄과 작은 줄로 나눈다', () => {
   assert.deepEqual(chipLabel('Ryzen 5 5500GT'), ['RYZEN 5', '5500GT'])
@@ -90,6 +134,58 @@ test('확정 기준가격만 있어도 현재 상품가 합계는 산정하지 �
   assert.deepEqual(priceTotal([{ draft: named('CPU', 'cpu'), detail: legacy }]), {
     currentKrw: 0, pricedItems: 0, unpriced: 1, quantityNeedsCheck: 0,
   })
+})
+
+test('중앙 최근·오래된 관측은 서버 정책대로 합산하고 만료·장애 캐시 가격은 제외한다', () => {
+  const lines = (['FRESH', 'STALE', 'EXPIRED'] as const).map((freshness) => {
+    const entry = detail('GPU', undefined, freshness)
+    entry.product.priceStatus = sharedStatus({ freshness, includedInTotal: freshness !== 'EXPIRED' })
+    return { draft: named('GPU', freshness), detail: entry }
+  })
+  const unavailable = detail('CPU')
+  unavailable.product.priceStatus = sharedStatus({ lookupStatus: 'UNAVAILABLE', includedInTotal: false })
+  lines.push({ draft: named('CPU', 'last cached price'), detail: unavailable })
+  assert.deepEqual(priceTotal(lines), { currentKrw: 200000, pricedItems: 2, unpriced: 2, quantityNeedsCheck: 0 })
+  assert.equal(lines[0].detail.product.currentPrice?.observedAt, '2026-10-06T01:00:00Z')
+})
+
+test('중앙 미확인·미등록·장애와 잘못된 합계 포함 플래그는 0원 가격으로 산정하지 않는다', () => {
+  for (const lookupStatus of ['NO_PRICE', 'UNKNOWN_PRODUCT', 'UNAVAILABLE'] as const) {
+    const entry = detail('CPU')
+    entry.product.currentPrice = null
+    entry.product.priceStatus = sharedStatus({ lookupStatus, freshness: 'NO_PRICE', includedInTotal: false })
+    assert.deepEqual(priceTotal([{ draft: named('CPU', lookupStatus), detail: entry }]), {
+      currentKrw: 0, pricedItems: 0, unpriced: 1, quantityNeedsCheck: 0,
+    })
+  }
+  for (const overrides of [{ freshness: 'EXPIRED' as const }, { lookupStatus: 'UNAVAILABLE' as const },
+    { catalogVersion: null }, { lastSuccessAt: null }]) {
+    const entry = detail('CPU')
+    entry.product.priceStatus = sharedStatus(overrides)
+    assert.equal(priceTotal([{ draft: named('CPU', 'bad flag'), detail: entry }]).pricedItems, 0)
+  }
+})
+
+test('범위 밖 로컬 가격과 이전 응답의 가격 합계는 그대로 유지한다', () => {
+  const local = detail('GPU')
+  local.product.priceStatus = { origin: 'LOCAL', lookupStatus: 'NOT_IN_SCOPE', freshness: null,
+    catalogVersion: null, checkedAt: null, lastSuccessAt: null, includedInTotal: true }
+  const legacy = detail('CPU')
+  legacy.product.priceStatus = null
+  assert.deepEqual(priceTotal([{ draft: named('GPU', 'local'), detail: local }, { draft: named('CPU', 'legacy'), detail: legacy }]),
+    { currentKrw: 200000, pricedItems: 2, unpriced: 0, quantityNeedsCheck: 0 })
+})
+
+test('중앙 RAM 가격도 실제 모듈 수를 키트로 환산하며 만료·모델만 확인한 항목은 제외한다', () => {
+  const kit = detail('RAM', 2)
+  kit.product.priceStatus = sharedStatus({ freshness: 'STALE' })
+  const draft = named('RAM', 'kit', { quantity: 2, catalogProductId: kit.product.id })
+  assert.deepEqual(priceTotal([{ draft, detail: kit }]), { currentKrw: 100000, pricedItems: 1, unpriced: 0, quantityNeedsCheck: 0 })
+  kit.product.priceStatus = sharedStatus({ freshness: 'EXPIRED', includedInTotal: false })
+  assert.deepEqual(priceTotal([{ draft, detail: kit }]), { currentKrw: 0, pricedItems: 0, unpriced: 1, quantityNeedsCheck: 0 })
+  kit.product.priceStatus = sharedStatus()
+  const modelOnly = { ...draft, catalogProductId: null, catalogModelId: 'model-only', recognitionLevel: 'MODEL' as const }
+  assert.deepEqual(priceTotal([{ draft: modelOnly, detail: kit }]), { currentKrw: 0, pricedItems: 0, unpriced: 1, quantityNeedsCheck: 0 })
 })
 
 test('같은 RAM 제품의 여러 행은 모듈 합계를 판매 묶음 수로 환산한다', () => {

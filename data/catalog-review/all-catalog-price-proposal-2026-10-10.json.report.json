@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "stage": "APPROVED_AND_PUBLISHED_TO_CENTRAL_WORKER",
+  "databaseWrites": 0,
+  "deployments": 1,
+  "products": 307,
+  "prices": 75,
+  "missingPrices": 232,
+  "refreshedReviewedProducts": 72,
+  "originalSamsungObservationsPreserved": 2,
+  "newExactSkuPrices": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "d7385868-3658-4984-a5dd-0f8eebebd4e8",
+        "manufacturer": "Dell",
+        "modelName": "S2721DGF",
+        "partNumber": "S2721DGF"
+      },
+      "amountKrw": 976500,
+      "observedAt": "2026-10-10T08:41:21.151Z",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=12612587"
+    }
+  ],
+  "regionalSkuCandidatesHeld": 3,
+  "reviewStageBeforeApproval": "FULL_CENTRAL_PRICE_PROPOSAL_PENDING_CONFIRMATION",
+  "pricePublicationApproved": true,
+  "localPriceImportPerformed": false,
+  "databasePriceWrites": 0,
+  "publishedAt": "2026-10-10T09:25:45.216455Z",
+  "rolloutReport": "all-catalog-central-rollout-2026-10-10.json"
+}

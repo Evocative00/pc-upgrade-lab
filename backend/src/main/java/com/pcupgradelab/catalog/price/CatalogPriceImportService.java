@@ -1,6 +1,7 @@
 package com.pcupgradelab.catalog.price;
 
 import com.pcupgradelab.catalog.*;
+import com.pcupgradelab.catalog.shared.SharedPriceSourcePolicy;
 import com.pcupgradelab.pc.PartType;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -10,22 +11,27 @@ import java.util.Map;
 import java.util.Objects;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tools.jackson.databind.json.JsonMapper;
 
 /** 파일 전체의 제품 식별·판매 단위·충돌을 검증한 뒤 한 트랜잭션으로 적용한다. */
 @Service
 public class CatalogPriceImportService {
+    private static final JsonMapper REVIEW_MAPPER = JsonMapper.builder().build();
     private final CatalogProductSourceRepository sources;
     private final RamSpecRepository ram;
+    private final MotherboardSpecRepository motherboards;
     private final CatalogPriceMappingRepository mappings;
     private final CatalogPriceObservationRepository observations;
     private final CatalogPriceDatabaseTimeZone databaseTimeZone;
 
     public CatalogPriceImportService(CatalogProductSourceRepository sources, RamSpecRepository ram,
+                                     MotherboardSpecRepository motherboards,
                                      CatalogPriceMappingRepository mappings,
                                      CatalogPriceObservationRepository observations,
                                      CatalogPriceDatabaseTimeZone databaseTimeZone) {
         this.sources = sources;
         this.ram = ram;
+        this.motherboards = motherboards;
         this.mappings = mappings;
         this.observations = observations;
         this.databaseTimeZone = databaseTimeZone;
@@ -64,6 +70,7 @@ public class CatalogPriceImportService {
                             + identity.sourceName() + "/" + identity.externalId()));
             var product = source.getProduct();
             verifyIdentity(product, identity);
+            verifyReviewedSaleConfiguration(product, source, item);
             verifyUnit(product, item.offer());
             var offer = item.offer();
             var key = new MappingKey(offer.sourceName(), offer.externalId());
@@ -141,6 +148,43 @@ public class CatalogPriceImportService {
             }
         } else if (offer.saleUnit() != CatalogPriceImportBatch.SaleUnit.PRODUCT) {
             throw new IllegalArgumentException("Non-RAM price must cover one PRODUCT");
+        }
+    }
+
+    private void verifyReviewedSaleConfiguration(CatalogProduct product, CatalogProductSource source,
+                                                  CatalogPriceImportBatch.Item item) {
+        var configuration = item.product().reviewedSaleConfiguration();
+        if (configuration == null) return;
+        if (product.getPartNumber() != null || product.getType() != configuration.partType()
+                || product.getIdentityKind() != configuration.identityKind() || product.getRole() != configuration.role()
+                || !com.pcupgradelab.catalog.identity.CanonicalCatalogIds.productForReviewedSource(
+                    item.product().sourceName(), item.product().externalId()).equals(product.getCanonicalId())
+                || !Objects.equals(product.getIdentityEvidenceSourceId(), source.getId())
+                || !product.getModelName().equals(configuration.manufacturerModelName())) {
+            throw new IllegalArgumentException("Reviewed sale configuration does not match a distinct PN-less motherboard purchase product");
+        }
+        var specification = motherboards.findById(product.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Reviewed motherboard sale requires stored motherboard specification"))
+                .toSpecification();
+        if (!configuration.socketCode().equals(specification.socketCode())
+                || !configuration.memoryType().equals(specification.memoryType())
+                || !configuration.formFactor().equals(specification.formFactor())) {
+            throw new IllegalArgumentException("Reviewed sale configuration differs from the stored motherboard specification");
+        }
+        var payload = source.getRawPayload();
+        if (payload == null || !payload.containsKey("reviewedSaleConfiguration")
+                || !configuration.equals(REVIEW_MAPPER.convertValue(payload.get("reviewedSaleConfiguration"),
+                    ReviewedMotherboardSaleConfiguration.class))) {
+            throw new IllegalArgumentException("Reviewed sale configuration differs from the product's registered source evidence");
+        }
+        var offer = item.offer();
+        if (!configuration.saleSku().equals(offer.saleSku())
+                || !SharedPriceSourcePolicy.matches(offer.sourceName(), offer.sourceUrl(), offer.externalId())
+                || !item.price().evidenceUrl().equals(offer.sourceUrl())
+                || !configuration.evidenceUrls().contains(offer.sourceUrl())
+                || offer.verifiedAt().isBefore(configuration.verifiedAt())
+                || item.price().observedAt().isBefore(offer.verifiedAt())) {
+            throw new IllegalArgumentException("Reviewed sale offer or observation differs from its complete approved configuration");
         }
     }
 

@@ -1,6 +1,7 @@
-import type { CatalogDetail, CatalogProduct, CatalogSpecification } from '../catalog/catalogTypes.ts'
+import type { CatalogDetail, CatalogModel, CatalogProduct, CatalogSpecification } from '../catalog/catalogTypes.ts'
+import { hasObservedReferencePrice, isCurrentPriceIncluded } from '../catalog/catalogPresentation.ts'
 import type { PartType } from '../pc-scan/types.ts'
-import { createManualDraft, getPartStatus, linkCatalog, withEmptyRows } from '../pc/partDraft.ts'
+import { createManualDraft, getPartStatus, linkCatalog, linkCatalogModel, withEmptyRows } from '../pc/partDraft.ts'
 import type { PartDraft } from '../pc/types.ts'
 
 // SSD·HDD는 기존 화면 위치 ID다. 저장장치의 실제 종류를 뜻하지 않는다.
@@ -93,6 +94,17 @@ export type PriceLine = { draft: PartDraft; detail: CatalogDetail | null }
 // 일반 부품은 장치 수, RAM은 동일 제품의 실제 모듈 합계를 판매 묶음 수로 바꿔 계산한다.
 // 묶음이 딱 맞지 않거나 단위가 미확인이면 임의로 나누거나 올림하지 않는다.
 export function priceTotal(lines: PriceLine[]): { currentKrw: number; pricedItems: number; unpriced: number; quantityNeedsCheck: number } {
+  const { amountKrw, ...counts } = calculatePrices(lines, false)
+  return { currentKrw: amountKrw, ...counts }
+}
+
+// 참고 합계는 확인한 판매가(과거 관측 포함)를 우선하고, 없을 때만 별도 참고가를 쓴다.
+export function referencePriceTotal(lines: PriceLine[]): { referenceKrw: number; pricedItems: number; unpriced: number; quantityNeedsCheck: number } {
+  const { amountKrw, ...counts } = calculatePrices(lines, true)
+  return { referenceKrw: amountKrw, ...counts }
+}
+
+function calculatePrices(lines: PriceLine[], reference: boolean) {
   let currentKrw = 0
   let pricedItems = 0
   let unpriced = 0
@@ -105,9 +117,12 @@ export function priceTotal(lines: PriceLine[]): { currentKrw: number; pricedItem
     } else quantityNeedsCheck += 1
   }
   for (const { draft, detail } of lines) {
-    const price = detail?.product.currentPrice
+    const observed = detail && (reference ? hasObservedReferencePrice(detail.product) : isCurrentPriceIncluded(detail.product))
+      ? detail.product.currentPrice : null
+    const estimate = reference && !observed ? detail?.product.referenceEstimate : null
+    const price = observed ?? estimate
     if (!detail || detail.product.type !== draft.type || !price ||
-      !Number.isSafeInteger(price.amountKrw) || price.amountKrw <= 0) {
+      draft.catalogModelId && !draft.catalogProductId) {
       unpriced += 1
       continue
     }
@@ -116,13 +131,15 @@ export function priceTotal(lines: PriceLine[]): { currentKrw: number; pricedItem
       else quantityNeedsCheck += 1
       continue
     }
+    const kit = estimate ? estimate.moduleCount === detail.specification.moduleCount ? estimate.moduleCount : undefined
+      : detail.specification.moduleCount
     const group = ramGroups.get(detail.product.id) ?? {
-      amount: price.amountKrw, kit: detail.specification.moduleCount, quantity: 0, items: 0, valid: true,
+      amount: price.amountKrw, kit, quantity: 0, items: 0, valid: true,
     }
     group.quantity += draft.quantity
     group.items += 1
     group.valid &&= validQuantity(draft.quantity) && group.amount === price.amountKrw &&
-      group.kit === detail.specification.moduleCount
+      group.kit === kit
     ramGroups.set(detail.product.id, group)
   }
   for (const { amount, kit, quantity, items, valid } of ramGroups.values()) {
@@ -130,20 +147,29 @@ export function priceTotal(lines: PriceLine[]): { currentKrw: number; pricedItem
       addPrice(amount * (quantity / kit), items)
     } else quantityNeedsCheck += 1
   }
-  return { currentKrw, pricedItems, unpriced, quantityNeedsCheck }
+  return { amountKrw: currentKrw, pricedItems, unpriced, quantityNeedsCheck }
 }
 
 // 최신 입력을 기준으로 연결한다. 검색 중 수량을 고쳤거나 항목을 지워도 옛 상태를 복원하지 않는다.
 export function applyCatalogSelection(drafts: PartDraft[], target: PickTarget, product: CatalogProduct): PartDraft[] {
-  if (slotInfo(target.slot).type !== product.type) return drafts
+  return applySelection(drafts, target, product.type, (base) => linkCatalog(base, product))
+}
+
+export function applyCatalogModelSelection(drafts: PartDraft[], target: PickTarget, model: CatalogModel): PartDraft[] {
+  return applySelection(drafts, target, model.type, (base) => linkCatalogModel(base, model))
+}
+
+function applySelection(drafts: PartDraft[], target: PickTarget, type: PartType,
+  link: (base: PartDraft) => PartDraft): PartDraft[] {
+  if (slotInfo(target.slot).type !== type) return drafts
   const key = target.draftKey ?? assignSlots(drafts)[target.slot]?.key
-  const existing = drafts.find((draft) => draft.key === key && draft.type === product.type)
+  const existing = drafts.find((draft) => draft.key === key && draft.type === type)
   if (target.draftKey !== null && !existing) return drafts
-  const empty = drafts.find((draft) => draft.type === product.type && getPartStatus(draft) === 'empty')
-  const base = existing ?? empty ?? createManualDraft(product.type)
+  const empty = drafts.find((draft) => draft.type === type && getPartStatus(draft) === 'empty')
+  const base = existing ?? empty ?? createManualDraft(type)
   const visualSlot = target.draftKey === null && (target.slot === 'SSD' || target.slot === 'HDD')
     ? target.slot : base.visualSlot
-  const linked = { ...linkCatalog(base, product), visualSlot }
+  const linked = { ...link(base), visualSlot }
   return drafts.some((draft) => draft.key === base.key)
     ? drafts.map((draft) => draft.key === base.key ? linked : draft)
     : withEmptyRows([...drafts, linked])

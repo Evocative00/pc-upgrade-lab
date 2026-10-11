@@ -1,0 +1,606 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-10",
+  "startedAt": "2026-10-09T17:24:48.883Z",
+  "completedAt": "2026-10-09T17:24:55.765Z",
+  "purpose": "One GET per approved seller/aggregator URL immediately before local application; original approved observation timestamps and payload remain unchanged.",
+  "scope": {
+    "databaseAccessed": false,
+    "databaseWrites": 0,
+    "codeChanged": false,
+    "approvedPayloadChanged": false,
+    "shippingIncluded": false,
+    "conditionalDiscountsIncluded": false,
+    "physicalInventoryVerified": false,
+    "requestLimit": 8
+  },
+  "approvedPayloadFile": "data/catalog-review/pilot-approved-prices-2026-10-10.json",
+  "approvedPayloadSha256": "3028116ce4cae9adc1917ae3b42e4404b821eac83d589c0c1082dfe8051318c0",
+  "requestAudit": [
+    {
+      "method": "GET",
+      "url": "https://prod.danawa.com/info/?pcode=90956033",
+      "startedAt": "2026-10-09T17:24:48.885Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://prod.danawa.com/info/?pcode=91909571",
+      "startedAt": "2026-10-09T17:24:49.990Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://prod.danawa.com/info/?pcode=17971187",
+      "startedAt": "2026-10-09T17:24:51.102Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://prod.danawa.com/info/?pcode=17932031",
+      "startedAt": "2026-10-09T17:24:52.210Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://prod.danawa.com/info/?pcode=62653715",
+      "startedAt": "2026-10-09T17:24:53.311Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://prod.danawa.com/info/?pcode=62653718",
+      "startedAt": "2026-10-09T17:24:54.422Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+      "startedAt": "2026-10-09T17:24:54.862Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+      "startedAt": "2026-10-09T17:24:55.387Z"
+    }
+  ],
+  "collectorReport": {
+    "schemaVersion": 1,
+    "collectedAt": "2026-10-09T17:24:54.861Z",
+    "requested": 6,
+    "succeeded": 6,
+    "rejectedCount": 0,
+    "rejected": []
+  },
+  "summary": {
+    "requested": 8,
+    "httpResponses": 8,
+    "matched": 8,
+    "changed": 0,
+    "held": 0,
+    "ssdInitializationFieldsNotExtracted": 2
+  },
+  "items": [
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bb0cc615-e9f2-49e0-b555-192f5c573cc9",
+        "manufacturer": "MSI",
+        "modelName": "GeForce RTX 5060 8G VENTUS 2X OC",
+        "partNumber": "G5060-8V2C"
+      },
+      "provider": "DANAWA",
+      "evidenceUrl": "https://prod.danawa.com/info/?pcode=90956033",
+      "approvedAmountKrw": 668860,
+      "currentAmountKrw": 668860,
+      "amountUnchanged": true,
+      "approvedSaleSku": "G5060-8V2C",
+      "manifestSaleSku": "G5060-8V2C",
+      "saleSkuUnchanged": true,
+      "expectedTitle": "MSI 지포스 RTX 5060 벤투스 2X OC D7 8GB",
+      "identityReviewScope": "Live exact named-page title with previously reviewed sale-SKU mapping; not a fresh domestic numeric-PN or physical-stock verification",
+      "currentObservedAt": "2026-10-09T17:24:49.533Z",
+      "status": "MATCHED_APPROVED_PRICE_AND_ACTIVE_PAGE",
+      "checks": {
+        "exactTitleMatched": true,
+        "activeRegularPurchaseBridge": true,
+        "conditionalOfferExcluded": true,
+        "shippingExcluded": true,
+        "condition": "NEW",
+        "inStockPageOffer": true
+      },
+      "response": {
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "responseBytes": 169617,
+        "responseSha256": "b69d9d08a3f0a6e43a31aef2aebdf3c250cfe606ef7a271c6a329167e0f59889",
+        "rawDateHeader": "Fri, 09 Oct 2026 17:24:48 GMT"
+      },
+      "rejection": null
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "bd3e1d44-97d6-4679-8e43-829730a90f18",
+        "manufacturer": "Sapphire",
+        "modelName": "PULSE Radeon RX 9060 XT OC 16GB",
+        "partNumber": "11350-03-20G"
+      },
+      "provider": "DANAWA",
+      "evidenceUrl": "https://prod.danawa.com/info/?pcode=91909571",
+      "approvedAmountKrw": 822300,
+      "currentAmountKrw": 822300,
+      "amountUnchanged": true,
+      "approvedSaleSku": "11350-03-20G",
+      "manifestSaleSku": "11350-03-20G",
+      "saleSkuUnchanged": true,
+      "expectedTitle": "SAPPHIRE 라데온 RX 9060 XT PULSE OC D6 16GB",
+      "identityReviewScope": "Live exact named-page title with previously reviewed sale-SKU mapping; not a fresh domestic numeric-PN or physical-stock verification",
+      "currentObservedAt": "2026-10-09T17:24:50.635Z",
+      "status": "MATCHED_APPROVED_PRICE_AND_ACTIVE_PAGE",
+      "checks": {
+        "exactTitleMatched": true,
+        "activeRegularPurchaseBridge": true,
+        "conditionalOfferExcluded": true,
+        "shippingExcluded": true,
+        "condition": "NEW",
+        "inStockPageOffer": true
+      },
+      "response": {
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "responseBytes": 163138,
+        "responseSha256": "41fa1e4456b1bd0c22169e7d092c9eb27de0e5e2c4295ad93d0a28ccf32f39e5",
+        "rawDateHeader": "Fri, 09 Oct 2026 17:24:49 GMT"
+      },
+      "rejection": null
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "b4a7cd9a-692d-4289-a9ca-f5f9a659db5d",
+        "manufacturer": "MSI",
+        "modelName": "MAG B650M MORTAR WIFI",
+        "partNumber": "MAG B650M MORTAR WIFI"
+      },
+      "provider": "DANAWA",
+      "evidenceUrl": "https://prod.danawa.com/info/?pcode=17971187",
+      "approvedAmountKrw": 202710,
+      "currentAmountKrw": 202710,
+      "amountUnchanged": true,
+      "approvedSaleSku": "MAG B650M MORTAR WIFI",
+      "manifestSaleSku": "MAG B650M MORTAR WIFI",
+      "saleSkuUnchanged": true,
+      "expectedTitle": "MSI MAG B650M 박격포 WIFI",
+      "identityReviewScope": "Live exact named-page title with previously reviewed sale-SKU mapping; not a fresh domestic numeric-PN or physical-stock verification",
+      "currentObservedAt": "2026-10-09T17:24:51.811Z",
+      "status": "MATCHED_APPROVED_PRICE_AND_ACTIVE_PAGE",
+      "checks": {
+        "exactTitleMatched": true,
+        "activeRegularPurchaseBridge": true,
+        "conditionalOfferExcluded": true,
+        "shippingExcluded": true,
+        "condition": "NEW",
+        "inStockPageOffer": true
+      },
+      "response": {
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "responseBytes": 175293,
+        "responseSha256": "58d9b208c7ef36f953e5e1434de34fbcc03bad525bbff7a3dd7d8bd0f8687261",
+        "rawDateHeader": "Fri, 09 Oct 2026 17:24:51 GMT"
+      },
+      "rejection": null
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "a743f7bd-bdaf-4d25-820b-96e9b3293d34",
+        "manufacturer": "G.SKILL",
+        "modelName": "Trident Z5 Neo DDR5-6000 CL30 32GB (2x16GB)",
+        "partNumber": "F5-6000J3038F16GX2-TZ5N"
+      },
+      "provider": "DANAWA",
+      "evidenceUrl": "https://prod.danawa.com/info/?pcode=17932031",
+      "approvedAmountKrw": 939000,
+      "currentAmountKrw": 939000,
+      "amountUnchanged": true,
+      "approvedSaleSku": "F5-6000J3038F16GX2-TZ5N",
+      "manifestSaleSku": "F5-6000J3038F16GX2-TZ5N",
+      "saleSkuUnchanged": true,
+      "expectedTitle": "G.SKILL DDR5-6000 CL30 TRIDENT Z5 NEO J 패키지 (32GB(16Gx2))",
+      "identityReviewScope": "Live exact named-page title with previously reviewed sale-SKU mapping; not a fresh domestic numeric-PN or physical-stock verification",
+      "currentObservedAt": "2026-10-09T17:24:52.657Z",
+      "status": "MATCHED_APPROVED_PRICE_AND_ACTIVE_PAGE",
+      "checks": {
+        "exactTitleMatched": true,
+        "activeRegularPurchaseBridge": true,
+        "conditionalOfferExcluded": true,
+        "shippingExcluded": true,
+        "condition": "NEW",
+        "inStockPageOffer": true
+      },
+      "response": {
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "responseBytes": 154838,
+        "responseSha256": "39d787c31c3a4adfc3536683275bfb3abccc820c5e434007954d26174d2e9bb0",
+        "rawDateHeader": "Fri, 09 Oct 2026 17:24:52 GMT"
+      },
+      "rejection": null
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "09086e21-4979-41ba-a451-3f8bb1c9cc55",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 7 9700X",
+        "partNumber": "100-100001404WOF"
+      },
+      "provider": "DANAWA",
+      "evidenceUrl": "https://prod.danawa.com/info/?pcode=62653715",
+      "approvedAmountKrw": 686000,
+      "currentAmountKrw": 686000,
+      "amountUnchanged": true,
+      "approvedSaleSku": "100-100001404WOF",
+      "manifestSaleSku": "100-100001404WOF",
+      "saleSkuUnchanged": true,
+      "expectedTitle": "AMD 라이젠7-6세대 9700X (그래니트 릿지) (정품)",
+      "identityReviewScope": "Live exact named-page title with previously reviewed sale-SKU mapping; not a fresh domestic numeric-PN or physical-stock verification",
+      "currentObservedAt": "2026-10-09T17:24:54.013Z",
+      "status": "MATCHED_APPROVED_PRICE_AND_ACTIVE_PAGE",
+      "checks": {
+        "exactTitleMatched": true,
+        "activeRegularPurchaseBridge": true,
+        "conditionalOfferExcluded": true,
+        "shippingExcluded": true,
+        "condition": "NEW",
+        "inStockPageOffer": true
+      },
+      "response": {
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "responseBytes": 137076,
+        "responseSha256": "36645a0631978d3f94a9e86d8d7a1812439f7982bdd4606fc9ee9898b7575c8e",
+        "rawDateHeader": "Fri, 09 Oct 2026 17:24:53 GMT"
+      },
+      "rejection": null
+    },
+    {
+      "product": {
+        "sourceName": "BUILDCORES",
+        "externalId": "cc0a0e08-bc25-4539-af92-952cced58623",
+        "manufacturer": "AMD",
+        "modelName": "Ryzen 5 9600X",
+        "partNumber": "100-100001405WOF"
+      },
+      "provider": "DANAWA",
+      "evidenceUrl": "https://prod.danawa.com/info/?pcode=62653718",
+      "approvedAmountKrw": 399000,
+      "currentAmountKrw": 399000,
+      "amountUnchanged": true,
+      "approvedSaleSku": "100-100001405WOF",
+      "manifestSaleSku": "100-100001405WOF",
+      "saleSkuUnchanged": true,
+      "expectedTitle": "AMD 라이젠5-6세대 9600X (그래니트 릿지) (정품)",
+      "identityReviewScope": "Live exact named-page title with previously reviewed sale-SKU mapping; not a fresh domestic numeric-PN or physical-stock verification",
+      "currentObservedAt": "2026-10-09T17:24:54.851Z",
+      "status": "MATCHED_APPROVED_PRICE_AND_ACTIVE_PAGE",
+      "checks": {
+        "exactTitleMatched": true,
+        "activeRegularPurchaseBridge": true,
+        "conditionalOfferExcluded": true,
+        "shippingExcluded": true,
+        "condition": "NEW",
+        "inStockPageOffer": true
+      },
+      "response": {
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "responseBytes": 145920,
+        "responseSha256": "78768d49477a38a79175e1997a1f5d5ce12a61393d61d915f56fba6d1410d79d",
+        "rawDateHeader": "Fri, 09 Oct 2026 17:24:54 GMT"
+      },
+      "rejection": null
+    },
+    {
+      "product": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "samsung:MZ-77E1T0BW",
+        "manufacturer": "Samsung",
+        "modelName": "870 EVO 1TB",
+        "partNumber": "MZ-77E1T0BW"
+      },
+      "provider": "SAMSUNG_CNH",
+      "evidenceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000066",
+      "approvedAmountKrw": 459000,
+      "currentAmountKrw": 459000,
+      "amountUnchanged": true,
+      "approvedSaleSku": "MZ-77E1T0BW",
+      "currentSaleSku": "MZ-77E1T0BW",
+      "saleSkuUnchanged": true,
+      "currentObservedAt": "2026-10-09T17:24:55.387Z",
+      "status": "MATCHED_APPROVED_PRICE_SKU_AND_ORDER_ENABLED",
+      "checks": {
+        "declaredModelDtDd": "MZ-77E1T0BW",
+        "visibleProductTitle": "내장 SSD 870 EVO SATA 1TB",
+        "visiblePriceLabel": "판매가",
+        "visibleItemPriceKrw": 459000,
+        "hiddenSetGoodsPriceKrw": 459000,
+        "controllerSetGoodsPriceKrw": null,
+        "goodsDiscountFl": "n",
+        "goodsDiscountValue": 0,
+        "setCouponDcPriceKrw": 459000,
+        "optionFl": null,
+        "selectedOptionPriceKrw": 0,
+        "defaultQuantity": 1,
+        "setSalesUnit": 1,
+        "setMinOrderCnt": 1,
+        "setMaxOrderCnt": 2,
+        "setStockFl": "n",
+        "setStockCnt": "∞",
+        "orderButtonEnabled": true,
+        "orderButtonText": "바로 구매",
+        "cartButtonEnabled": true,
+        "addGoodsDefaults": [
+          {
+            "name": "addGoodsInput0",
+            "value": ""
+          }
+        ],
+        "selectedAddonCount": 0,
+        "setAddGoodsPriceKrw": 0,
+        "inspectionInputs": [
+          {
+            "name": "couponApplyNo[]",
+            "value": ""
+          },
+          {
+            "name": "optionPriceSum[]",
+            "value": "0"
+          },
+          {
+            "name": "set_goods_price",
+            "value": "459000"
+          },
+          {
+            "name": "set_goods_fixedPrice",
+            "value": "495000.00"
+          },
+          {
+            "name": "set_goods_mileage",
+            "value": "0"
+          },
+          {
+            "name": "set_goods_stock",
+            "value": "∞"
+          },
+          {
+            "name": "set_coupon_dc_price",
+            "value": "459000.00"
+          },
+          {
+            "name": "set_goods_total_price",
+            "value": "0"
+          },
+          {
+            "name": "set_option_price",
+            "value": "0"
+          },
+          {
+            "name": "set_option_text_price",
+            "value": "0"
+          },
+          {
+            "name": "set_add_goods_price",
+            "value": "0"
+          },
+          {
+            "name": "set_total_price",
+            "value": "459000"
+          },
+          {
+            "name": "goodsDiscountFl",
+            "value": "n"
+          },
+          {
+            "name": "goodsDiscount",
+            "value": "0.00"
+          },
+          {
+            "name": "goodsDiscountUnit",
+            "value": "percent"
+          },
+          {
+            "name": "couponApplyNo[]",
+            "value": ""
+          },
+          {
+            "name": "goodsCnt[]",
+            "value": "1"
+          },
+          {
+            "name": "optionPriceSum[]",
+            "value": "0.00"
+          }
+        ],
+        "couponApplyNumberValues": [
+          "",
+          ""
+        ],
+        "setCouponDcPriceEqualsItemPrice": true,
+        "couponNotApplied": true,
+        "currentNonNewTitleIndicatorFound": false
+      },
+      "response": {
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "responseBytes": 116529,
+        "responseSha256": "b6f1cf415eb0e6507ae940c2ad9ca232295bb3dced947b8c3d6db738e5361d97",
+        "rawDateHeader": "Sat, 10 Oct 2026 02:24:55 GMT"
+      },
+      "physicalStockStatus": "UNKNOWN_NOT_TRACKED_BY_PAGE",
+      "priorComparison": {
+        "requiredPriceChecksMatch": true,
+        "declaredPnMatches": true,
+        "orderActiveMatches": true,
+        "discountOffAndNoAddonMatches": true,
+        "initializationFieldsFullyRechecked": false
+      },
+      "priceComparisonBasis": "Visible sale price and hidden item price both equal approved integer KRW; coupon base price also equal. Displayed .00 values with zero fraction were normalized for this review.",
+      "initializationParameterReview": {
+        "controllerSetGoodsPriceKrw": null,
+        "optionFl": null,
+        "status": "NOT_EXTRACTED_IN_SINGLE_GET_RECHECK",
+        "effect": "No value-change conclusion drawn from missing initialization fields; required exact PN, displayed/hidden price, enabled buy buttons, zero default add-ons and discount/coupon-off controls were directly checked."
+      }
+    },
+    {
+      "product": {
+        "sourceName": "MANUFACTURER",
+        "externalId": "samsung:MZ-V9P1T0BW",
+        "manufacturer": "Samsung",
+        "modelName": "990 PRO 1TB",
+        "partNumber": "MZ-V9P1T0BW"
+      },
+      "provider": "SAMSUNG_CNH",
+      "evidenceUrl": "https://www.samsungzip.shop/goods/goods_view.php?goodsNo=1000000113",
+      "approvedAmountKrw": 399000,
+      "currentAmountKrw": 399000,
+      "amountUnchanged": true,
+      "approvedSaleSku": "MZ-V9P1T0BW",
+      "currentSaleSku": "MZ-V9P1T0BW",
+      "saleSkuUnchanged": true,
+      "currentObservedAt": "2026-10-09T17:24:55.764Z",
+      "status": "MATCHED_APPROVED_PRICE_SKU_AND_ORDER_ENABLED",
+      "checks": {
+        "declaredModelDtDd": "MZ-V9P1T0BW",
+        "visibleProductTitle": "내장 SSD 990 PRO NVMe 1TB",
+        "visiblePriceLabel": "판매가",
+        "visibleItemPriceKrw": 399000,
+        "hiddenSetGoodsPriceKrw": 399000,
+        "controllerSetGoodsPriceKrw": null,
+        "goodsDiscountFl": "n",
+        "goodsDiscountValue": 0,
+        "setCouponDcPriceKrw": 399000,
+        "optionFl": null,
+        "selectedOptionPriceKrw": 0,
+        "defaultQuantity": 1,
+        "setSalesUnit": 1,
+        "setMinOrderCnt": 1,
+        "setMaxOrderCnt": 2,
+        "setStockFl": "n",
+        "setStockCnt": "∞",
+        "orderButtonEnabled": true,
+        "orderButtonText": "바로 구매",
+        "cartButtonEnabled": true,
+        "addGoodsDefaults": [
+          {
+            "name": "addGoodsInput0",
+            "value": ""
+          }
+        ],
+        "selectedAddonCount": 0,
+        "setAddGoodsPriceKrw": 0,
+        "inspectionInputs": [
+          {
+            "name": "couponApplyNo[]",
+            "value": ""
+          },
+          {
+            "name": "optionPriceSum[]",
+            "value": "0"
+          },
+          {
+            "name": "set_goods_price",
+            "value": "399000"
+          },
+          {
+            "name": "set_goods_fixedPrice",
+            "value": "457000.00"
+          },
+          {
+            "name": "set_goods_mileage",
+            "value": "0"
+          },
+          {
+            "name": "set_goods_stock",
+            "value": "∞"
+          },
+          {
+            "name": "set_coupon_dc_price",
+            "value": "399000.00"
+          },
+          {
+            "name": "set_goods_total_price",
+            "value": "0"
+          },
+          {
+            "name": "set_option_price",
+            "value": "0"
+          },
+          {
+            "name": "set_option_text_price",
+            "value": "0"
+          },
+          {
+            "name": "set_add_goods_price",
+            "value": "0"
+          },
+          {
+            "name": "set_total_price",
+            "value": "399000"
+          },
+          {
+            "name": "goodsDiscountFl",
+            "value": "n"
+          },
+          {
+            "name": "goodsDiscount",
+            "value": "0.00"
+          },
+          {
+            "name": "goodsDiscountUnit",
+            "value": "percent"
+          },
+          {
+            "name": "couponApplyNo[]",
+            "value": ""
+          },
+          {
+            "name": "goodsCnt[]",
+            "value": "1"
+          },
+          {
+            "name": "optionPriceSum[]",
+            "value": "0.00"
+          }
+        ],
+        "couponApplyNumberValues": [
+          "",
+          ""
+        ],
+        "setCouponDcPriceEqualsItemPrice": true,
+        "couponNotApplied": true,
+        "currentNonNewTitleIndicatorFound": false
+      },
+      "response": {
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "responseBytes": 118920,
+        "responseSha256": "db79e5e6d2844f3e8f004e71741343523dda851fd0449fed4c15c0334515bb21",
+        "rawDateHeader": "Sat, 10 Oct 2026 02:24:55 GMT"
+      },
+      "physicalStockStatus": "UNKNOWN_NOT_TRACKED_BY_PAGE",
+      "priorComparison": {
+        "requiredPriceChecksMatch": true,
+        "declaredPnMatches": true,
+        "orderActiveMatches": true,
+        "discountOffAndNoAddonMatches": true,
+        "initializationFieldsFullyRechecked": false
+      },
+      "priceComparisonBasis": "Visible sale price and hidden item price both equal approved integer KRW; coupon base price also equal. Displayed .00 values with zero fraction were normalized for this review.",
+      "initializationParameterReview": {
+        "controllerSetGoodsPriceKrw": null,
+        "optionFl": null,
+        "status": "NOT_EXTRACTED_IN_SINGLE_GET_RECHECK",
+        "effect": "No value-change conclusion drawn from missing initialization fields; required exact PN, displayed/hidden price, enabled buy buttons, zero default add-ons and discount/coupon-off controls were directly checked."
+      }
+    }
+  ],
+  "extractionReviewNote": "Initial parser treated unavailable initialization fields as price mismatches. Review corrected that distinction using the same eight GET responses and retained explicit nulls; no extra HTTP requests occurred."
+}
