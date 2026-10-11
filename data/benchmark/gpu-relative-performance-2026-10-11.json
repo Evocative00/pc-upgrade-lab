@@ -1,0 +1,1002 @@
+{
+  "anchor": "GeForce GTX 1060 6GB",
+  "checkedOn": "2026-10-11",
+  "sources": [
+    {
+      "id": "toms-2026-1080p-ultra",
+      "name": "Tom's Hardware GPU 계층표 2026 (1080p Ultra)",
+      "url": "https://www.tomshardware.com/reviews/gpu-hierarchy,4388.html",
+      "note": "Current raster table, 1080p Ultra column (fps = geomean of 11 games), Ryzen 7 9800X3D testbed; article updateDate 2026-06-24. Ray-tracing table ignored. No GTX 1060 here, so it is bridged to the 2022-2024 table (tomsSuiteBridge)."
+    },
+    {
+      "id": "toms-2022-2024-1080p-ultra",
+      "name": "Tom's Hardware GPU 계층표 2022–2024 (1080p Ultra)",
+      "url": "https://www.tomshardware.com/reviews/gpu-hierarchy,4388-2.html",
+      "note": "First table on page 2 (raster, 8 games, Core i9-12900K), 1080p Ultra column. GTX 1060 6GB = 32.1 fps defines 100. No longer updated. Second table on that page is ray tracing (ignored). Cards above ~105 fps are CPU-limited at 1080p."
+    },
+    {
+      "id": "toms-2020-2021-combined",
+      "name": "Tom's Hardware GPU 계층표 2020–2021",
+      "url": "https://www.tomshardware.com/reviews/gpu-hierarchy,4388-3.html",
+      "note": "Score % = geomean of 9 games x 6 resolution/setting combos (not 1080p Ultra alone), Core i9-9900K. Used only for Intel UHD Graphics 630, normalized to its own GTX 1060 6GB (26.5%). The 4388-4 URL redirected to page 1 (no separate table found)."
+    },
+    {
+      "id": "passmark-g3d",
+      "name": "PassMark G3D Mark",
+      "url": "https://www.videocardbenchmark.net/gpu_list.php",
+      "note": "Synthetic G3D Mark. 'GeForce GTX 1060' = 10017 (3GB has its own entry, so treated as 6GB). Used only where Tom's has no data."
+    }
+  ],
+  "tomsSuiteBridge": {
+    "method": "rel = T1_fps x F / 32.1 x 100, where F = median(T2_fps / T1_fps) over models in both the 2026 and 2022-2024 Tom's tables with T2 1080p Ultra <= 105 fps (GPU-bound region; RX 7600 XT excluded as anomalous). For 2022-24-only cards above 105 fps (RTX 3080 12GB, RX 6800, RX 7900 GRE) the T2 value is divided by the median T2/T1 ratio of the 4 nearest overlap models (by T2 fps) and then multiplied by F, to undo CPU compression.",
+    "overlapModels": [
+      "GeForce RTX 3070 Ti",
+      "GeForce RTX 4060 Ti 16GB",
+      "GeForce RTX 3070",
+      "GeForce RTX 4060 Ti 8GB",
+      "Radeon RX 6750 XT",
+      "Radeon RX 6700 XT",
+      "GeForce RTX 3060 Ti",
+      "GeForce RTX 4060",
+      "Radeon RX 7600",
+      "GeForce RTX 3060 12GB",
+      "Radeon RX 6650 XT",
+      "Radeon RX 6600 XT",
+      "Radeon RX 6600",
+      "GeForce RTX 3050"
+    ],
+    "factor": 1.1815,
+    "spreadPct": 3.9,
+    "range": [
+      1.099,
+      1.256
+    ],
+    "note": "Above ~105 fps the T2/T1 ratio falls steadily to 0.84 (RTX 4090), showing 12900K CPU limits in the older table."
+  },
+  "bridge": {
+    "method": "PassMark relative = G3D / G3D('GeForce GTX 1060') x 100, then multiplied by factor. factor = median over overlap models of (Tom's 2022-24 1080p Ultra relative / PassMark relative). spreadPct = population std-dev of the ratios / median x 100.",
+    "overlapModels": [
+      {
+        "model": "GeForce GTX 970",
+        "tomsRel": 82.6,
+        "passmarkRel": 96.2,
+        "ratio": 0.858
+      },
+      {
+        "model": "GeForce GTX 980",
+        "tomsRel": 90.0,
+        "passmarkRel": 110.5,
+        "ratio": 0.815
+      },
+      {
+        "model": "GeForce GTX 980 Ti",
+        "tomsRel": 111.8,
+        "passmarkRel": 135.9,
+        "ratio": 0.823
+      },
+      {
+        "model": "GeForce GTX 1050 Ti",
+        "tomsRel": 61.7,
+        "passmarkRel": 63.6,
+        "ratio": 0.97
+      },
+      {
+        "model": "GeForce GTX 1070",
+        "tomsRel": 139.3,
+        "passmarkRel": 134.9,
+        "ratio": 1.032
+      },
+      {
+        "model": "GeForce GTX 1070 Ti",
+        "tomsRel": 159.2,
+        "passmarkRel": 146.5,
+        "ratio": 1.086
+      },
+      {
+        "model": "GeForce GTX 1080",
+        "tomsRel": 165.1,
+        "passmarkRel": 155.8,
+        "ratio": 1.06
+      },
+      {
+        "model": "GeForce GTX 1650 Super",
+        "tomsRel": 105.6,
+        "passmarkRel": 101.7,
+        "ratio": 1.038
+      },
+      {
+        "model": "GeForce GTX 1660 Super",
+        "tomsRel": 145.8,
+        "passmarkRel": 126.3,
+        "ratio": 1.154
+      },
+      {
+        "model": "GeForce GTX 1660",
+        "tomsRel": 132.7,
+        "passmarkRel": 115.9,
+        "ratio": 1.145
+      },
+      {
+        "model": "Radeon RX 590",
+        "tomsRel": 122.4,
+        "passmarkRel": 92.6,
+        "ratio": 1.322
+      },
+      {
+        "model": "Radeon R9 Fury X",
+        "tomsRel": 109.7,
+        "passmarkRel": 93.5,
+        "ratio": 1.173
+      },
+      {
+        "model": "Radeon R9 390",
+        "tomsRel": 92.8,
+        "passmarkRel": 87.3,
+        "ratio": 1.063
+      },
+      {
+        "model": "Radeon RX 560 4GB",
+        "tomsRel": 45.8,
+        "passmarkRel": 36.8,
+        "ratio": 1.244
+      },
+      {
+        "model": "Radeon RX 6400",
+        "tomsRel": 75.1,
+        "passmarkRel": 77.4,
+        "ratio": 0.97
+      },
+      {
+        "model": "Radeon RX 6500 XT",
+        "tomsRel": 95.3,
+        "passmarkRel": 96.0,
+        "ratio": 0.993
+      },
+      {
+        "model": "Intel Arc A380",
+        "tomsRel": 88.5,
+        "passmarkRel": 63.2,
+        "ratio": 1.401
+      }
+    ],
+    "factor": 1.0598,
+    "spreadPct": 14.9,
+    "range": [
+      0.815,
+      1.401
+    ]
+  },
+  "chipsets": [
+    {
+      "name": "GeForce GTX 560",
+      "vendor": "NVIDIA",
+      "relative": 29,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 2775",
+      "confidence": "low",
+      "note": "Non-Ti GTX 560. Fermi; synthetic score likely overstates modern-game performance. PassMark G3D / GTX 1060 10017 x bridge 1.060."
+    },
+    {
+      "name": "GeForce GT 730",
+      "vendor": "NVIDIA",
+      "relative": 8.7,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 821",
+      "confidence": "low",
+      "note": "PassMark entry mixes DDR3/GDDR5 and Kepler/Fermi variants. PassMark G3D / GTX 1060 10017 x bridge 1.060."
+    },
+    {
+      "name": "GeForce GTX 960",
+      "vendor": "NVIDIA",
+      "relative": 65,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 6148",
+      "confidence": "low",
+      "note": "Not in any Tom's table. Maxwell overlap cards (970/980/980 Ti) were overrated by PassMark by ~15-20% vs Tom's, so this may be slightly high. PassMark G3D / GTX 1060 10017 x bridge 1.060."
+    },
+    {
+      "name": "GeForce GTX 970",
+      "vendor": "NVIDIA",
+      "relative": 83,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "26.5 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce GTX 980",
+      "vendor": "NVIDIA",
+      "relative": 90,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "28.9 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce GTX 1050 Ti",
+      "vendor": "NVIDIA",
+      "relative": 62,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "19.8 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce GTX 1060 6GB",
+      "vendor": "NVIDIA",
+      "relative": 100,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "32.1 fps",
+      "confidence": "high",
+      "note": "Anchor (=100)."
+    },
+    {
+      "name": "GeForce GTX 1070",
+      "vendor": "NVIDIA",
+      "relative": 139,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "44.7 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce GTX 1070 Ti",
+      "vendor": "NVIDIA",
+      "relative": 159,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "51.1 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce GTX 1080",
+      "vendor": "NVIDIA",
+      "relative": 165,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "53.0 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce GTX 1080 Ti",
+      "vendor": "NVIDIA",
+      "relative": 207,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "66.4 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce GTX 1650 (GDDR6)",
+      "vendor": "NVIDIA",
+      "relative": 90,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "28.8 fps",
+      "confidence": "high",
+      "note": "GDDR5 GTX 1650 measured 27.0 fps (~84)."
+    },
+    {
+      "name": "GeForce GTX 1650 SUPER",
+      "vendor": "NVIDIA",
+      "relative": 106,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "33.9 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce GTX 1660 SUPER",
+      "vendor": "NVIDIA",
+      "relative": 146,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "46.8 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce GTX 1660 Ti",
+      "vendor": "NVIDIA",
+      "relative": 145,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "46.6 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce RTX 2060",
+      "vendor": "NVIDIA",
+      "relative": 173,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "55.5 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce RTX 2060 SUPER",
+      "vendor": "NVIDIA",
+      "relative": 204,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "65.5 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce RTX 2070",
+      "vendor": "NVIDIA",
+      "relative": 217,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "69.8 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce RTX 2070 SUPER",
+      "vendor": "NVIDIA",
+      "relative": 241,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "77.4 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce RTX 2080",
+      "vendor": "NVIDIA",
+      "relative": 257,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "82.5 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce RTX 2080 SUPER",
+      "vendor": "NVIDIA",
+      "relative": 268,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "86.0 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce RTX 2080 Ti",
+      "vendor": "NVIDIA",
+      "relative": 300,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "96.3 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "GeForce RTX 3060 12GB",
+      "vendor": "NVIDIA",
+      "relative": 226,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "61.5 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 3060 8GB",
+      "vendor": "NVIDIA",
+      "relative": 206,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 15203 (12GB: 16701)",
+      "confidence": "medium",
+      "note": "Not in Tom's. Sibling-scaled: Tom's RTX 3060 12GB value x PassMark 8GB/12GB ratio 0.910. Direct PassMark bridge would give 161 (PassMark underrates Ampere relative to Tom's)."
+    },
+    {
+      "name": "GeForce RTX 3060 Ti",
+      "vendor": "NVIDIA",
+      "relative": 273,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "74.2 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 3070",
+      "vendor": "NVIDIA",
+      "relative": 321,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "87.2 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 3070 Ti",
+      "vendor": "NVIDIA",
+      "relative": 348,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "94.6 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 3080 10GB",
+      "vendor": "NVIDIA",
+      "relative": 411,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "111.6 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 3080 12GB",
+      "vendor": "NVIDIA",
+      "relative": 416,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "122.1 fps",
+      "confidence": "medium",
+      "note": "CPU-limited region in 2022-24 table (>105 fps); decompressed with local T2/T1 ratio 1.079 from GeForce RTX 4070, Radeon RX 6800 XT, GeForce RTX 3080 Ti, Radeon RX 6900 XT"
+    },
+    {
+      "name": "GeForce RTX 3080 Ti",
+      "vendor": "NVIDIA",
+      "relative": 440,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "119.6 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 3090",
+      "vendor": "NVIDIA",
+      "relative": 452,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "122.9 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 3090 Ti",
+      "vendor": "NVIDIA",
+      "relative": 485,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "131.7 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 4060",
+      "vendor": "NVIDIA",
+      "relative": 263,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "71.5 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 4060 Ti 8GB",
+      "vendor": "NVIDIA",
+      "relative": 324,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "88.0 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 4060 Ti 16GB",
+      "vendor": "NVIDIA",
+      "relative": 329,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "89.3 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 4070",
+      "vendor": "NVIDIA",
+      "relative": 410,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "111.5 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 4070 SUPER",
+      "vendor": "NVIDIA",
+      "relative": 466,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "126.7 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 4070 Ti",
+      "vendor": "NVIDIA",
+      "relative": 497,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "135.1 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 4070 Ti SUPER",
+      "vendor": "NVIDIA",
+      "relative": 520,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "141.2 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 4080",
+      "vendor": "NVIDIA",
+      "relative": 579,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "157.3 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 4080 SUPER",
+      "vendor": "NVIDIA",
+      "relative": 585,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "158.9 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 4090",
+      "vendor": "NVIDIA",
+      "relative": 676,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "183.6 fps",
+      "confidence": "medium",
+      "note": "1080p partly CPU-bound at the top end; gap to lower cards is understated. Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 5060",
+      "vendor": "NVIDIA",
+      "relative": 326,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "88.5 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 5060 Ti 8GB",
+      "vendor": "NVIDIA",
+      "relative": 370,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "100.4 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 5060 Ti 16GB",
+      "vendor": "NVIDIA",
+      "relative": 387,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "105.2 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 5070",
+      "vendor": "NVIDIA",
+      "relative": 488,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "132.6 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 5070 Ti",
+      "vendor": "NVIDIA",
+      "relative": 572,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "155.4 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 5080",
+      "vendor": "NVIDIA",
+      "relative": 614,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "166.9 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "GeForce RTX 5090",
+      "vendor": "NVIDIA",
+      "relative": 750,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "203.8 fps",
+      "confidence": "medium",
+      "note": "1080p partly CPU-bound at the top end; gap to lower cards is understated. Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon HD 6570",
+      "vendor": "AMD",
+      "relative": 5.8,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 551",
+      "confidence": "low",
+      "note": "TeraScale 2; no modern driver support. PassMark G3D / GTX 1060 10017 x bridge 1.060."
+    },
+    {
+      "name": "Radeon HD 6950",
+      "vendor": "AMD",
+      "relative": 27,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 2590",
+      "confidence": "low",
+      "note": "TeraScale 3; no modern driver support. PassMark G3D / GTX 1060 10017 x bridge 1.060."
+    },
+    {
+      "name": "Radeon R5 220",
+      "vendor": "AMD",
+      "relative": 1.6,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 149",
+      "confidence": "low",
+      "note": "Very low-end OEM card. PassMark G3D / GTX 1060 10017 x bridge 1.060."
+    },
+    {
+      "name": "Radeon R7 240",
+      "vendor": "AMD",
+      "relative": 9.5,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 897",
+      "confidence": "low",
+      "note": "Entry mixes DDR3/GDDR5 variants. PassMark G3D / GTX 1060 10017 x bridge 1.060."
+    },
+    {
+      "name": "Radeon R7 370",
+      "vendor": "AMD",
+      "relative": 47,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 4483",
+      "confidence": "low",
+      "note": "A separate combined entry \"Radeon R9 270 / R7 370\" = 4259. PassMark G3D / GTX 1060 10017 x bridge 1.060."
+    },
+    {
+      "name": "Radeon R9 380",
+      "vendor": "AMD",
+      "relative": 63,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 5955",
+      "confidence": "low",
+      "note": "2GB/4GB variants not separated. PassMark G3D / GTX 1060 10017 x bridge 1.060."
+    },
+    {
+      "name": "Radeon RX 580 8GB",
+      "vendor": "AMD",
+      "relative": 110,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "35.3 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Radeon RX 5500 XT 4GB",
+      "vendor": "AMD",
+      "relative": 104,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "33.3 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Radeon RX 5500 XT 8GB",
+      "vendor": "AMD",
+      "relative": 124,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "39.7 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Radeon RX 5600 XT",
+      "vendor": "AMD",
+      "relative": 180,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "57.8 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Radeon RX 5700 XT",
+      "vendor": "AMD",
+      "relative": 228,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "73.3 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Radeon RX 6400",
+      "vendor": "AMD",
+      "relative": 75,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "24.1 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Radeon RX 6500 XT 4GB",
+      "vendor": "AMD",
+      "relative": 95,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "30.6 fps",
+      "confidence": "high",
+      "note": "Tom's lists the 4GB card as 'Radeon RX 6500 XT'."
+    },
+    {
+      "name": "Radeon RX 6600",
+      "vendor": "AMD",
+      "relative": 191,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "51.9 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 6600 XT",
+      "vendor": "AMD",
+      "relative": 231,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "62.7 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 6650 XT",
+      "vendor": "AMD",
+      "relative": 237,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "64.3 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 6700 XT",
+      "vendor": "AMD",
+      "relative": 292,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "79.2 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 6750 XT",
+      "vendor": "AMD",
+      "relative": 306,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "83.2 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 6800",
+      "vendor": "AMD",
+      "relative": 385,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "114.6 fps",
+      "confidence": "medium",
+      "note": "CPU-limited region in 2022-24 table (>105 fps); decompressed with local T2/T1 ratio 1.096 from Radeon RX 7700 XT, GeForce RTX 3080, GeForce RTX 4070, Radeon RX 6800 XT"
+    },
+    {
+      "name": "Radeon RX 6800 XT",
+      "vendor": "AMD",
+      "relative": 412,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "111.8 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 6900 XT",
+      "vendor": "AMD",
+      "relative": 431,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "117.1 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 6950 XT",
+      "vendor": "AMD",
+      "relative": 454,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "123.3 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 7600",
+      "vendor": "AMD",
+      "relative": 257,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "69.9 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 7600 XT",
+      "vendor": "AMD",
+      "relative": 286,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "91.9 fps",
+      "confidence": "medium",
+      "note": "2026 table 1080p value (102.1 fps) looks anomalous (above RX 7700 XT, while its 1440p/4K results are ~1.1x RX 7600), so the 2022-24 value is used."
+    },
+    {
+      "name": "Radeon RX 7700 XT",
+      "vendor": "AMD",
+      "relative": 379,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "102.9 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 7800 XT",
+      "vendor": "AMD",
+      "relative": 436,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "118.4 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 7900 GRE",
+      "vendor": "AMD",
+      "relative": 480,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "135.8 fps",
+      "confidence": "medium",
+      "note": "CPU-limited region in 2022-24 table (>105 fps); decompressed with local T2/T1 ratio 1.041 from GeForce RTX 4070 Super, GeForce RTX 4070 Ti, GeForce RTX 3090 Ti, Radeon RX 6950 XT"
+    },
+    {
+      "name": "Radeon RX 7900 XT",
+      "vendor": "AMD",
+      "relative": 535,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "145.4 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 7900 XTX",
+      "vendor": "AMD",
+      "relative": 594,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "161.5 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 9060 XT 8GB",
+      "vendor": "AMD",
+      "relative": 343,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "93.2 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 9060 XT 16GB",
+      "vendor": "AMD",
+      "relative": 362,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "98.3 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 9070",
+      "vendor": "AMD",
+      "relative": 519,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "140.9 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Radeon RX 9070 XT",
+      "vendor": "AMD",
+      "relative": 576,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "156.6 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Intel HD Graphics 4000",
+      "vendor": "Intel",
+      "relative": 3.6,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 340",
+      "confidence": "low",
+      "note": "iGPU; PassMark name \"Intel HD 4000\". PassMark-internal HD 4000/UHD 630 ratio = 0.28; sibling-scaled to the Tom's UHD 630 value it would be ~1.9. PassMark G3D / GTX 1060 10017 x bridge 1.060."
+    },
+    {
+      "name": "Intel HD Graphics 4600",
+      "vendor": "Intel",
+      "relative": 6.7,
+      "sourceId": "passmark-g3d",
+      "raw": "G3D 631",
+      "confidence": "low",
+      "note": "iGPU; PassMark name \"Intel HD 4600\". PassMark-internal HD 4600/UHD 630 ratio = 0.52; sibling-scaled to the Tom's UHD 630 value it would be ~3.5. Mixing sources makes HD 4600 ~= UHD 630 here, which is not realistic. PassMark G3D / GTX 1060 10017 x bridge 1.060."
+    },
+    {
+      "name": "Intel UHD Graphics 630",
+      "vendor": "Intel",
+      "relative": 6.8,
+      "sourceId": "toms-2020-2021-combined",
+      "raw": "1.8% vs GTX 1060 6GB 26.5%",
+      "confidence": "low",
+      "note": "Only Tom's data point is the 2020-21 legacy combined score (geomean of 6 resolution/setting combos, not 1080p Ultra), normalized to that table's own GTX 1060 6GB. PassMark-bridged value would be 12.9."
+    },
+    {
+      "name": "Intel Arc A380",
+      "vendor": "Intel",
+      "relative": 88,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "28.4 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Intel Arc A580",
+      "vendor": "Intel",
+      "relative": 203,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "65.1 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Intel Arc A750",
+      "vendor": "Intel",
+      "relative": 221,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "70.8 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Intel Arc A770 8GB",
+      "vendor": "Intel",
+      "relative": 235,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "75.3 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Intel Arc A770 16GB",
+      "vendor": "Intel",
+      "relative": 240,
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "raw": "76.9 fps",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Intel Arc B570",
+      "vendor": "Intel",
+      "relative": 234,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "63.5 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    },
+    {
+      "name": "Intel Arc B580",
+      "vendor": "Intel",
+      "relative": 263,
+      "sourceId": "toms-2026-1080p-ultra",
+      "raw": "71.5 fps",
+      "confidence": "high",
+      "note": "Tom's 2026 raster 1080p Ultra x suite bridge 1.182 / GTX 1060 6GB 32.1 fps."
+    }
+  ],
+  "missing": [
+    "Radeon RX 6500 XT 8GB"
+  ]
+}

@@ -39,8 +39,10 @@ export function normalizeHardwareModel(name: string): string {
     .replace(/[^a-z0-9]+/g, '')
 }
 
+// 'GeForce 400 Series'·'Radeon HD 7000 Series'처럼 끝자리가 0인 계열 표기만 제품군으로 본다.
+// Windows는 AMD 카드를 'Radeon RX 580 Series'처럼 보고하므로 정확한 번호 뒤의 Series는 허용한다.
 export function isSpecificHardwareModel(name: string): boolean {
-  if (/series|계열/i.test(name)) return false
+  if (/계열/.test(name) || /\b\d00{1,2}\s+series\b/i.test(name)) return false
   return !/^(?:core i[3579]|ryzen [3579])$/i.test(name.trim())
 }
 

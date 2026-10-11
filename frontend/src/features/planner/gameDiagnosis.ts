@@ -1,7 +1,7 @@
 import type { PartInput, PartType } from '../pc-scan/types.ts'
 import { isSpecificHardwareModel, normalizeHardwareModel } from './benchmarkComparison.ts'
 import type { GameRequirements, RequirementTier } from './gameRequirements.ts'
-import { comparePartScore } from './partScores.ts'
+import { comparePartScore, formatRatio } from './partScores.ts'
 
 export type Verdict = 'PASS' | 'FAIL' | 'UNKNOWN'
 export type Check = { label: string; required: string; actual: string; verdict: Verdict; reason: string }
@@ -19,17 +19,15 @@ function modelCheck(label: 'CPU' | 'GPU', parts: PartInput[], available: PartInp
     isSpecificHardwareModel(example) && normalizeHardwareModel(part.displayName) === normalizeHardwareModel(example)))
   if (matches) return { label, required, actual, verdict: 'PASS', reason: '공식 예시와 동일한 모델명이 확인되었습니다.' }
   if (available.length === 0) return { label, required, actual, verdict: 'UNKNOWN', reason: '부품이 입력되지 않았습니다.' }
-  // 모델명이 다르면 CPU는 벤치마크 점수, GPU는 내부 등급으로 공식 예시와 비교한다.
+  // 모델명이 다르면 CPU·GPU 점수 자료로 공식 예시와 비교한다. 점수는 배율로만 보여 준다.
   const score = comparePartScore(label, parts, examples)
   if (score.status === 'UNKNOWN') {
     return { label, required, actual, verdict: 'UNKNOWN', reason: `모델명이 공식 예시와 달라 비교 자료로 확인했지만 판단할 수 없습니다. ${score.reason}` }
   }
   const verdict: Verdict = score.status === 'ABOVE_BASELINE' ? 'PASS' : 'FAIL'
-  const detail = label === 'CPU'
-    ? `CPU 벤치마크 점수 ${score.actual} / 기준 ${score.baselineModel} ${score.baseline} (기준의 ${Number(score.ratio).toFixed(2)}배)`
-    : `GPU 등급 ${score.actual} / 기준 ${score.baselineModel} ${score.baseline}등급`
+  const kind = label === 'CPU' ? 'CPU 처리 성능' : 'GPU 게임 성능'
   return { label, required, actual, verdict,
-    reason: `${detail}. 공식 동일 모델 확인이 아닌 상대 비교이며 예상 FPS가 아닙니다.` }
+    reason: `${kind}이 기준 ${score.baselineModel}의 ${formatRatio(Number(score.ratio))}입니다. 공식 동일 모델 확인이 아닌 상대 비교이며 예상 FPS가 아닙니다.` }
 }
 
 function capacityCheck(label: string, available: PartInput[], requiredGiB: number, key: string,

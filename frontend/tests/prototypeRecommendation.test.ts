@@ -19,14 +19,14 @@ test('확인된 권장 용량 부족을 내부 등급 부족보다 먼저 점검
   assert.equal(focus.basis, 'OFFICIAL_CAPACITY')
 })
 
-test('용량이 충분할 때는 시연용 등급에서 낮은 부품을 하나 고른다', () => {
+test('용량이 충분할 때는 벤치마크 비교에서 낮은 부품을 하나 고른다', () => {
   const focus = recommendPrototypeFocus([
     part('CPU', 'Ryzen 5 3600'), part('GPU', 'GeForce GTX 960'),
     part('RAM', '16GB', { capacityBytes: 16 * GIB }),
   ], ['배틀그라운드'])
   assert.equal(focus.status, 'FOCUS')
   assert.equal(focus.part, 'GPU')
-  assert.equal(focus.basis, 'INTERNAL_SCORE')
+  assert.equal(focus.basis, 'BENCHMARK_SCORE')
 })
 
 test('점수표에 없는 부품만 있으면 임의 추천을 만들지 않는다', () => {
@@ -38,7 +38,7 @@ test('점수표에 없는 부품만 있으면 임의 추천을 만들지 않는�
   assert.equal(focus.part, null)
 })
 
-test('비교 가능한 항목이 모두 내부 기준 이상이면 교체를 꾸며내지 않는다', () => {
+test('비교 가능한 항목이 모두 기준 이상이면 교체를 꾸며내지 않는다', () => {
   const focus = recommendPrototypeFocus([
     part('CPU', 'Ryzen 7 7800X3D'), part('GPU', 'GeForce RTX 4070'),
     part('RAM', '16GB', { capacityBytes: 16 * GIB }),

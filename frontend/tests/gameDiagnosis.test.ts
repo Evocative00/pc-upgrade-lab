@@ -61,14 +61,14 @@ test('대상 5개 게임은 모두 출처와 최소·권장 단계가 있다', (
   }
 })
 
-test('모델명이 달라도 CPU는 벤치마크 점수, GPU는 내부 등급으로 공식 예시와 비교한다', () => {
+test('모델명이 달라도 CPU·GPU를 벤치마크 배율로 공식 예시와 비교한다', () => {
   const pubg = GAME_REQUIREMENTS['배틀그라운드']
   const parts = [part('CPU', '13th Gen Intel(R) Core(TM) i5-13600KF'), part('GPU', 'NVIDIA GeForce GTX 960')]
   const [cpu, gpu] = diagnoseTier(parts, pubg.recommended).checks
   assert.equal(cpu.verdict, 'PASS')
-  assert.match(cpu.reason, /CPU 벤치마크 점수 .*기준의 [\d.]+배/)
+  assert.match(cpu.reason, /CPU 처리 성능이 기준 .*의 ([\d.]+배|10배 이상)/)
   assert.equal(gpu.verdict, 'FAIL')
-  assert.match(gpu.reason, /GPU 등급 3 .*4등급/)
+  assert.match(gpu.reason, /GPU 게임 성능이 기준 GeForce GTX 1060의 0\.\d+배/)
   // 내장 그래픽처럼 이름만으로 특정할 수 없는 GPU는 여전히 판단을 보류한다.
   assert.equal(diagnoseTier([part('GPU', 'Intel(R) Graphics')], pubg.recommended).checks[1].verdict, 'UNKNOWN')
 })
