@@ -12,17 +12,17 @@ type ScriptStep =
   | { kind: 'type'; prefix: string; text: string; speed: number }
   | { kind: 'progress' }
 
-// 시안(Prototype.dc.html)의 출력 문구 그대로.
+// 기능 소개를 cmd 출력처럼 연출한다. 실제 서버 연결이나 스캔 완료 상태를 표시하지 않는다.
 const script: ScriptStep[] = [
   { kind: 'out', text: 'PC Upgrade Lab [Version 1.0]', fast: true },
   { kind: 'out', text: '(c) PC 업그레이드 실험실. 로그인 없이 바로 시작할 수 있습니다.', fast: true },
   { kind: 'out', text: '', fast: true },
   { kind: 'type', prefix: 'C:\\pc-upgrade-lab>', text: 'pc-upgrade-lab --start', speed: 28 },
-  { kind: 'out', text: '[INFO] PC 업그레이드 실험실 v1.0 booting...' },
-  { kind: 'out', text: '[LOAD] catalog: 315 parts (CPU / GPU / MB / RAM / SSD / PSU / CASE)' },
+  { kind: 'out', text: '[INFO] PC 업그레이드 실험실의 기능을 소개합니다.' },
+  { kind: 'out', text: '[LOAD] catalog: CPU / GPU / MB / RAM / SSD / PSU / CASE' },
   { kind: 'out', tag: '[ OK ]', text: ' compatibility engine ready  // CPU·메인보드·RAM·GPU·파워·케이스 검사' },
-  { kind: 'out', tag: '[ OK ]', text: ' price service connected     // 국내 현재 상품가' },
-  { kind: 'out', tag: '[ OK ]', text: ' scanner ready               // 내 PC 사양 자동 인식' },
+  { kind: 'out', tag: '[ OK ]', text: ' price information           // 국내 현재 상품가·참고가 구분' },
+  { kind: 'out', tag: '[ OK ]', text: ' Windows PC scan             // 내 PC 사양 자동 인식' },
   { kind: 'progress' },
   { kind: 'out', text: '' },
   { kind: 'type', prefix: '', text: '> 나만의 PC를, 더 선명하게.', speed: 40 },

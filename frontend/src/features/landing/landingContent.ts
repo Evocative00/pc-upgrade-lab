@@ -1,4 +1,4 @@
-// 랜딩 문구. 디자인 시안(pc-upgrade-lab-handoff의 Prototype.dc.html)의 문구를 그대로 쓴다.
+// 랜딩 문구. 서비스가 실제로 제공하는 검사와 가격 안내 범위를 설명한다.
 const assetBase = '/pc-assembly/'
 
 export type AssemblyStep = {
@@ -24,7 +24,7 @@ export const assemblySteps: AssemblyStep[] = [
   {
     label: 'STEP 2 / 3',
     title: '맞는 자리에만 들어갑니다',
-    body: '소켓이 다른 CPU, 규격이 다른 RAM은 보드에 꽂히지 않고 멈춥니다. 실제로 사서 끼워 보기 전에, 여기서 먼저 걸러집니다.',
+    body: 'CPU 소켓과 RAM 규격을 메인보드와 비교합니다. 맞지 않는 조합은 경고하고, 근거가 부족한 항목은 확인이 필요한 상태로 알려 드립니다.',
     meta: 'CPU ↔ MB ↔ RAM',
     image: `${assetBase}desktop/pose-0040.webp`,
     alt: '옆 패널이 열린 채 부품이 장착된 PC',
@@ -32,7 +32,7 @@ export const assemblySteps: AssemblyStep[] = [
   {
     label: 'STEP 3 / 3',
     title: '패널을 닫으면 끝',
-    body: '그래픽카드 길이, 쿨러 높이까지 케이스에 들어가는 걸 확인한 다음에 패널이 닫힙니다. 파워 용량이 모자라면 닫히기 전에 알려 드립니다.',
+    body: '그래픽카드 길이와 케이스 공간, 그래픽카드의 권장 파워 용량과 파워 제원을 비교합니다. 구매 전에 장착 조건과 전원 연결을 확인해 보세요.',
     meta: 'GPU ↔ PSU ↔ CASE',
     image: `${assetBase}poster-desktop.webp`,
     alt: '조립이 끝난 PC',
@@ -68,8 +68,8 @@ export const virtualBuildSlots: VirtualBuildSlot[] = [
 
 export const landingDetails = [
   { n: '01', title: '사양을 받아 적을 필요가 없습니다', body: 'Windows PC의 CPU, 그래픽카드, RAM, 메인보드, 저장장치를 자동으로 읽어 옵니다. 장치 관리자를 열어 모델명을 찾아볼 일이 없어집니다.' },
-  { n: '02', title: '안 맞는 조합은 담기 전에 막습니다', body: 'CPU와 메인보드 소켓, 메인보드와 RAM 규격, 그래픽카드 전력과 파워 용량, 그래픽카드 길이와 케이스 공간. 사고 나서 알게 되는 문제들을 미리 확인합니다.' },
-  { n: '03', title: '가격은 지금 기준으로 더합니다', body: '부품 315종의 국내 현재 상품가로 합계를 계산합니다. 탭 여러 개 열어 놓고 계산기 두드릴 필요가 없습니다.' },
+  { n: '02', title: '부품 조합의 호환성을 미리 확인합니다', body: 'CPU와 메인보드 소켓, 메인보드와 RAM 규격, 그래픽카드 전력과 파워 용량, 그래픽카드 길이와 케이스 공간. 사고 나서 알게 되는 문제들을 미리 확인합니다.' },
+  { n: '03', title: '가격은 지금 기준으로 더합니다', body: '확인된 국내 현재 상품가로 합계를 계산하고, 참고가와 가격 미확인 항목은 구분해 보여 줍니다. 구매 전에 가격의 출처와 확인 시각도 살펴보세요.' },
   { n: '04', title: '전부 새로 살 필요는 없습니다', body: '쓰던 부품은 그대로 두고 바꿀 것만 골라 넣습니다. 그래픽카드만 바꿀 때 파워도 같이 바꿔야 하는지 같은 질문에 바로 답이 나옵니다.' },
   { n: '05', title: '로그인은 저장할 때만', body: '구성은 바로 시작합니다. 나중에 다시 보고 싶을 때 Google, 카카오, 네이버 중 하나로 로그인하면 내 PC로 저장됩니다.' },
 ]
