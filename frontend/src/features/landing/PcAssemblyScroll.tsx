@@ -1,16 +1,22 @@
 import { useEffect, useRef, useState, type ReactNode, type RefObject } from 'react'
-import { advanceProgress, anchorPoseIndexes, clampProgress, desktopFramePlan, frameAtProgress, FrameCache, parseAnimationManifest, poseWindow, readyFrame, type AnimationManifest, type DesktopFramePlan } from './landingAnimation.ts'
+import { advanceProgress, anchorPoseIndexes, assembleSequence, clampProgress, desktopFramePlan, frameAtProgress, FrameCache, parseAnimationManifest, poseWindow, readyFrame, type AnimationManifest, type DesktopFramePlan } from './landingAnimation.ts'
+import { assemblyStepAt, assemblySteps } from './landingContent.ts'
 import './pc-assembly-scroll.css'
 
 const assetBase = '/pc-assembly/'
-type Props = { scrollRoot: RefObject<HTMLDivElement | null>; children: ReactNode }
+type Props = {
+  scrollRoot: RefObject<HTMLDivElement | null>
+  // 현재 단계(0–2)의 설명. 모션 감소 정지 화면에서는 단계마다 한 번씩 그린다.
+  renderStep: (step: number, active: boolean) => ReactNode
+}
 
-export function PcAssemblyScroll({ scrollRoot, children }: Props) {
+export function PcAssemblyScroll({ scrollRoot, renderStep }: Props) {
   const sectionRef = useRef<HTMLElement>(null), stageRef = useRef<HTMLDivElement>(null), canvasRef = useRef<HTMLCanvasElement>(null)
   const [manifest, setManifest] = useState<AnimationManifest | null>(null)
   const [renderPlan, setRenderPlan] = useState<DesktopFramePlan | null>(null)
   const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   const [motionOptIn, setMotionOptIn] = useState(false)
+  const [step, setStep] = useState(0)
   const motionPaused = reduced && !motionOptIn
 
   useEffect(() => {
@@ -28,8 +34,8 @@ export function PcAssemblyScroll({ scrollRoot, children }: Props) {
   }, [])
 
   useEffect(() => {
-    const root = scrollRoot.current, section = sectionRef.current, stage = stageRef.current, canvas = canvasRef.current
-    if (!root || !section || !stage || !canvas) return
+    const root = scrollRoot.current, section = sectionRef.current
+    if (!root || !section) return
     const resize = () => {
       const navigation = root.querySelector<HTMLElement>('.landing__tabs')
       const offset = root.clientWidth <= 640 ? navigation?.getBoundingClientRect().height ?? 0 : 0
@@ -43,6 +49,23 @@ export function PcAssemblyScroll({ scrollRoot, children }: Props) {
     resize()
     return () => observer.disconnect()
   }, [scrollRoot])
+
+  // 문구·진행 점은 스크롤 위치로 바로 정한다. 프레임 로딩과 무관하게 바뀐다.
+  useEffect(() => {
+    const root = scrollRoot.current, section = sectionRef.current, stage = stageRef.current
+    if (!root || !section || !stage || motionPaused) return
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const rootRect = root.getBoundingClientRect(), sectionRect = section.getBoundingClientRect()
+      const top = Number.parseFloat(section.style.getPropertyValue('--assembly-top')) || 0
+      setStep(assemblyStepAt(clampProgress((rootRect.top + top - sectionRect.top) / Math.max(1, sectionRect.height - stage.clientHeight))))
+    }
+    const schedule = () => { if (!raf) raf = requestAnimationFrame(update) }
+    root.addEventListener('scroll', schedule, { passive: true }); window.addEventListener('resize', schedule)
+    schedule()
+    return () => { cancelAnimationFrame(raf); root.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule) }
+  }, [motionPaused, scrollRoot])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -64,15 +87,15 @@ export function PcAssemblyScroll({ scrollRoot, children }: Props) {
     const observer = new ResizeObserver(resize); observer.observe(canvas)
     window.addEventListener('resize', resize); resize()
     return () => { observer.disconnect(); window.removeEventListener('resize', resize); density.removeEventListener('change', densityChange) }
-  }, [manifest])
-
-  useEffect(() => { if (motionPaused && stageRef.current) stageRef.current.dataset.ready = 'false' }, [motionPaused])
+  }, [manifest, motionPaused])
 
   useEffect(() => {
     const root = scrollRoot.current, section = sectionRef.current, stage = stageRef.current, canvas = canvasRef.current
     if (!manifest || !renderPlan || !root || !section || !stage || !canvas || motionPaused) return
     const context = canvas.getContext('2d', { alpha: false })
     if (!context) return
+    // 진행도 0 = 완전히 분해, 1 = 조립 완료.
+    const frames = assembleSequence(manifest.frames), frameCount = frames.length
     const specification = manifest.variants.desktop, limit = renderPlan.nearbyLimit
     const anchorIndexes = anchorPoseIndexes(manifest.poses.length, renderPlan.anchorLimit), anchorSet = new Set(anchorIndexes)
     const cache = new FrameCache<ImageBitmap>(limit, image => image.close())
@@ -125,7 +148,7 @@ export function PcAssemblyScroll({ scrollRoot, children }: Props) {
       if (!active()) return
       // Complete in-flight requests; the next rAF always dequeues from the latest position.
       for (const index of windowIndexes) load(index)
-      const pose = manifest.frames[desired]
+      const pose = frames[desired]
       const closest = anchorIndexes.filter(index => !anchors.has(manifest.poses[index].id) && !anchorJobs.has(manifest.poses[index].id)
         && (failures.get(manifest.poses[index].id) ?? 0) <= performance.now())
         .sort((a, b) => Math.abs(a - pose) - Math.abs(b - pose))[0]
@@ -135,7 +158,7 @@ export function PcAssemblyScroll({ scrollRoot, children }: Props) {
         load(index)
       }
       // Retry a temporarily failed exact image even if the user has stopped scrolling.
-      const exact = manifest.poses[manifest.frames[frameAtProgress(target, manifest.frameCount)]]
+      const exact = manifest.poses[frames[frameAtProgress(target, frameCount)]]
       const deadline = cache.has(exact.id) || anchors.has(exact.id) ? 0 : failures.get(exact.id) ?? 0
       if (deadline !== retryAt) {
         window.clearTimeout(retryTimer); retryAt = deadline
@@ -148,25 +171,25 @@ export function PcAssemblyScroll({ scrollRoot, children }: Props) {
       measure()
       progress = advanceProgress(progress, target, previousTime ? timestamp - previousTime : 16.67)
       previousTime = timestamp
-      const next = frameAtProgress(progress, manifest!.frameCount)
+      const next = frameAtProgress(progress, frameCount)
       if (next !== desired) direction = next > desired ? 1 : -1
       desired = next
-      const targetFrame = frameAtProgress(target, manifest!.frameCount)
-      windowIndexes = [...new Set([manifest!.frames[desired], manifest!.frames[targetFrame], ...poseWindow(manifest!.frames, desired, limit - 1, direction)])]
-      stage!.dataset.targetFrame = String(frameAtProgress(target, manifest!.frameCount))
+      const targetFrame = frameAtProgress(target, frameCount)
+      windowIndexes = [...new Set([frames[desired], frames[targetFrame], ...poseWindow(frames, desired, limit - 1, direction)])]
+      stage!.dataset.targetFrame = String(targetFrame)
       stage!.dataset.scrubProgress = progress.toFixed(5)
-      const ready = readyFrame(manifest!.frames, desired, hasPose, drawn, direction)
-      const pose = ready === null ? null : manifest!.poses[manifest!.frames[ready]]
+      const ready = readyFrame(frames, desired, hasPose, drawn, direction)
+      const pose = ready === null ? null : manifest!.poses[frames[ready]]
       const bitmap = pose === null ? undefined : anchors.get(pose.id) ?? cache.get(pose.id)
       if (bitmap && (drawn !== ready || drawnBitmap !== bitmap)) {
         const begin = performance.now(), scale = Math.min(canvas!.width / bitmap.width, canvas!.height / bitmap.height)
         const width = Math.round(bitmap.width * scale), height = Math.round(bitmap.height * scale)
-        context!.fillStyle = '#101214'; context!.fillRect(0, 0, canvas!.width, canvas!.height)
+        context!.fillStyle = '#0e0e0e'; context!.fillRect(0, 0, canvas!.width, canvas!.height)
         context!.imageSmoothingEnabled = true; context!.imageSmoothingQuality = 'high'
         context!.drawImage(bitmap, Math.round((canvas!.width - width) / 2), Math.round((canvas!.height - height) / 2), width, height)
         drawn = ready!; drawnBitmap = bitmap
         stage!.dataset.frame = String(drawn); stage!.dataset.quality = 'high'
-        stage!.dataset.buffer = anchorSet.has(manifest!.frames[drawn]) ? 'anchor' : 'nearby'
+        stage!.dataset.buffer = anchorSet.has(frames[drawn]) ? 'anchor' : 'nearby'
         stage!.dataset.ready = 'true'; stage!.dataset.renderMs = (performance.now() - begin).toFixed(2)
       }
       pump()
@@ -195,7 +218,7 @@ export function PcAssemblyScroll({ scrollRoot, children }: Props) {
         if (previous && previous.width && previous.height) {
           const scale = Math.min(width / previous.width, height / previous.height)
           const imageWidth = Math.round(previous.width * scale), imageHeight = Math.round(previous.height * scale)
-          context.fillStyle = '#101214'; context.fillRect(0, 0, width, height)
+          context.fillStyle = '#0e0e0e'; context.fillRect(0, 0, width, height)
           context.imageSmoothingEnabled = true; context.imageSmoothingQuality = 'high'
           context.drawImage(previous, Math.round((width - imageWidth) / 2), Math.round((height - imageHeight) / 2), imageWidth, imageHeight)
           stage.dataset.ready = 'true'
@@ -215,20 +238,60 @@ export function PcAssemblyScroll({ scrollRoot, children }: Props) {
       disposed = true; pause(); observer.disconnect(); resize.disconnect(); cache.clear(); jobs.clear()
       root.removeEventListener('scroll', onScroll); document.removeEventListener('visibilitychange', onVisibility)
       window.removeEventListener('resize', onResize)
-      stage.dataset.decodedCacheCount = '0'; stage.dataset.decodedCacheBytes = '0'
+      stage.dataset.ready = 'false'; stage.dataset.decodedCacheCount = '0'; stage.dataset.decodedCacheBytes = '0'
     }
   }, [manifest, motionPaused, renderPlan, scrollRoot])
 
-  const poster = manifest?.variants.desktop.poster ?? 'poster-desktop.webp'
+  const motionToggle = reduced && (
+    <button className="assembly-motion-toggle" type="button" onClick={() => setMotionOptIn(value => !value)}>
+      {motionOptIn ? '정지 장면으로 보기' : '조립 애니메이션 보기'}
+    </button>
+  )
+
   return (
     <>
-      <section className={`assembly-scroll${motionPaused ? ' assembly-scroll--still' : ''}${reduced && motionOptIn ? ' assembly-scroll--motion-enabled' : ''}`} ref={sectionRef}>
-        <div className="assembly-stage" ref={stageRef} data-ready="false">
-          <div className="assembly-copy">{children}{reduced && <button className="assembly-motion-toggle" type="button" onClick={() => setMotionOptIn(value => !value)}>{motionOptIn ? '정지 장면으로 보기' : '조립 애니메이션 보기'}</button>}</div>
-          <div className="assembly-visual"><img className="assembly-poster" src={assetBase + poster} alt="블랙과 실버의 유리 PC 케이스와 은은한 아이스 블루 조명" fetchPriority="high" onError={event => { event.currentTarget.style.opacity = '0' }} onLoad={event => { event.currentTarget.style.opacity = '' }} /><canvas ref={canvasRef} aria-hidden="true" /></div>
-          <span className="assembly-scroll-hint" aria-hidden="true">스크롤하며 살펴보세요 <span>↓</span></span>
-        </div>
-      </section>
+      {motionPaused ? (
+        <section className="assembly-scroll assembly-scroll--still" id="assembly" ref={sectionRef}>
+          {motionToggle}
+          <ol className="assembly-still">
+            {assemblySteps.map((item, index) => (
+              <li className="assembly-still__item" key={item.label}>
+                <div className="assembly-still__copy">{renderStep(index, true)}</div>
+                <div className="assembly-frame"><img src={item.image} alt={item.alt} loading="lazy" /></div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : (
+        <section className="assembly-scroll" id="assembly" ref={sectionRef}>
+          <div className="assembly-stage" ref={stageRef} data-ready="false">
+            <div className="assembly-steps">
+              <div className="assembly-dots" aria-hidden="true">
+                {assemblySteps.map((item, index) => (
+                  <span className="assembly-dots__item" key={item.label}>
+                    <span className={`assembly-dots__dot${index <= step ? ' is-done' : ''}${index === step ? ' is-current' : ''}`} />
+                    {index < assemblySteps.length - 1 && <span className={`assembly-dots__line${index < step ? ' is-done' : ''}`} />}
+                  </span>
+                ))}
+              </div>
+              <div className="assembly-copy">
+                {assemblySteps.map((item, index) => (
+                  <div className={`assembly-copy__step${index === step ? ' is-active' : index < step ? ' is-before' : ''}`} key={item.label} aria-hidden={index !== step}>
+                    {renderStep(index, index === step)}
+                  </div>
+                ))}
+              </div>
+              {motionToggle}
+            </div>
+            <div className="assembly-frame">
+              {assemblySteps.map((item, index) => (
+                <img className={`assembly-frame__cut${index === step ? ' is-active' : ''}`} key={item.label} src={item.image} alt={index === step ? item.alt : ''} fetchPriority={index === 0 ? 'high' : 'low'} />
+              ))}
+              <canvas ref={canvasRef} aria-hidden="true" />
+            </div>
+          </div>
+        </section>
+      )}
       {manifest !== null && manifest.references.length > 0 && <details className="landing__references"><summary>형태 참고</summary><p>실제 제품의 외형을 참고해 자체 제작한 3D 장면입니다.</p><ul>{manifest.references.map(reference => <li key={reference.url}><a href={reference.url} target="_blank" rel="noopener noreferrer">{reference.product}</a><span> · {reference.feature}</span></li>)}</ul></details>}
     </>
   )

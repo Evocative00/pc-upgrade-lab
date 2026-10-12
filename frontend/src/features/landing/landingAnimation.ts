@@ -38,6 +38,13 @@ export function parseAnimationManifest(value: unknown): AnimationManifest | null
   return { version: Number(value.version), frameCount: value.frames.length, variants, poses, frames: value.frames, references }
 }
 
+// 왕복(조립→분해→조립) 시퀀스에서 가장 많이 분해된 지점부터 끝까지, 분해→조립 구간만 남긴다.
+export function assembleSequence(frames: number[]): number[] {
+  if (!frames.length) return []
+  const peak = Math.max(...frames)
+  return frames.slice(frames.lastIndexOf(peak))
+}
+
 export function clampProgress(value: number): number {
   return Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : 0
 }
