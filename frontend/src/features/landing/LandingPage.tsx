@@ -97,6 +97,10 @@ export function LandingPage() {
             <Icon><rect x="6" y="2.5" width="12" height="19" rx="2" /><circle cx="12" cy="9" r="3" /><path d="M9.5 17h5" /></Icon>
             <span>내 PC</span>
           </a>
+          <a href={paths.upgrade()}>
+            <Icon><path d="M3 17l6-6 4 4 8-8" /><path d="M15 7h6v6" /></Icon>
+            <span>업그레이드 플랜</span>
+          </a>
         </nav>
         <div className="landing__account">
           <LandingAccount />

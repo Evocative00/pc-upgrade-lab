@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "test": "node --test tests/partDraft.test.ts tests/pcRepository.test.ts tests/catalogClient.test.ts tests/catalogExpansion.test.ts tests/catalogPresentation.test.ts tests/authClient.test.ts tests/authStore.test.ts tests/authNavigation.test.mjs tests/draftBridge.test.ts tests/router.test.ts tests/buildSlots.test.ts tests/compatibility.test.ts tests/landingAnimation.test.ts tests/landingBoot.test.ts",
+    "test": "node --test tests/partDraft.test.ts tests/pcRepository.test.ts tests/catalogClient.test.ts tests/catalogExpansion.test.ts tests/catalogPresentation.test.ts tests/authClient.test.ts tests/authStore.test.ts tests/authNavigation.test.mjs tests/draftBridge.test.ts tests/router.test.ts tests/buildSlots.test.ts tests/compatibility.test.ts tests/plannerGoal.test.ts tests/plannerNavigation.test.mjs tests/landingAnimation.test.ts tests/landingBoot.test.ts tests/benchmarkComparison.test.ts tests/partScores.test.ts tests/gameDiagnosis.test.ts tests/prototypeRecommendation.test.ts",
     "preview": "vite preview"
   },
   "dependencies": {

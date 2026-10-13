@@ -10,6 +10,7 @@ import { LandingPage } from './features/landing/LandingPage.tsx'
 import { PcDetailPage } from './features/pc/pages/PcDetailPage.tsx'
 import { PcEditPage, PcNewPage } from './features/pc/pages/PcFormPages.tsx'
 import { PcListPage } from './features/pc/pages/PcListPage.tsx'
+import { UpgradeEntryPage, UpgradeSavedPcPage } from './features/planner/UpgradeEntryPages.tsx'
 import { navigate, parseRoute, paths, useRoute, type Route } from './lib/router.ts'
 
 // 자동 인식 패널(PcScanPanel)은 PC 등록·수정 폼 안에서 onApply로 연결한다.
@@ -26,6 +27,10 @@ function Page({ route }: { route: Route }) {
       return <PcDetailPage key={route.id} id={route.id} />
     case 'edit':
       return <PcEditPage key={route.id} id={route.id} />
+    case 'upgrade':
+      return <UpgradeEntryPage />
+    case 'upgradePc':
+      return <UpgradeSavedPcPage key={route.id} id={route.id} />
     case 'login':
       return <LoginPage />
     case 'loginSuccess':
@@ -140,6 +145,7 @@ function App() {
         <nav className="app-nav">
           <a href={paths.list()}>내 PC</a>
           <a href={paths.new()}>PC 구성하기</a>
+          <a href={paths.upgrade()}>업그레이드 플랜</a>
         </nav>
         <AuthStatus />
       </header>

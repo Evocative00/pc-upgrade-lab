@@ -6,6 +6,7 @@ import { incompatibleByDraft } from '../../builder/compatibility.ts'
 import { useCompatibility } from '../../builder/useCompatibility.ts'
 import { PcScanPanel } from '../../pc-scan/PcScanPanel.tsx'
 import type { ScanResult } from '../../pc-scan/types.ts'
+import { UpgradePlanner } from '../../planner/UpgradePlanner.tsx'
 import { PART_TYPES } from '../partCategories.ts'
 import {
   createManualDraft,
@@ -56,6 +57,7 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
   // state가 다시 렌더링되기 전의 연속 클릭도 같은 요청을 두 번 보내지 않게 막는다.
   const savingRef = useRef(false)
   const [pickTarget, setPickTarget] = useState<PickTarget | null>(null)
+  const [plannerOpen, setPlannerOpen] = useState(false)
   // 구성 화면에서만 CPU·메인보드·RAM 호환성을 검사한다. 불가 판정 부품은 행에 경고를 표시한다.
   const compatibility = useCompatibility(drafts, visual)
   const warnings = compatibility.status === 'done'
@@ -114,7 +116,7 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    if (savingRef.current) return
+    if (plannerOpen || savingRef.current) return
 
     const request: PcRequest = { name: name.trim(), parts: toPartInputs(drafts) }
     const validationErrors = validatePcRequest(request.name, request.parts)
@@ -146,6 +148,14 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
       savingRef.current = false
       setSaving(false)
     }
+  }
+
+  function openPlanner() {
+    if (savingRef.current) return
+    // 진단에는 PC 이름이 없어도 되지만 부품의 수량·용량 규칙은 저장할 때와 같다.
+    const validationErrors = validatePcRequest('진단용 PC', toPartInputs(drafts))
+    setErrors(validationErrors)
+    if (validationErrors.length === 0) setPlannerOpen(true)
   }
 
   const unlinkedCount = drafts.filter((draft) => {
@@ -218,12 +228,16 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
 
   return (
     <form className="pc-form" onSubmit={handleSubmit} noValidate aria-busy={saving}>
+      {plannerOpen && <UpgradePlanner pcName={name} parts={toPartInputs(drafts)}
+        onBackToPc={() => setPlannerOpen(false)} />}
+      {/* 검사 패널을 유지해 계획 화면을 다녀와도 진행 중 검사와 미반영 결과를 잃지 않는다. */}
       {/* disabled는 입력·버튼을, inert는 수집기 실행 링크 등 나머지 조작도 잠근다. */}
       <fieldset
         className="pc-form"
+        hidden={plannerOpen}
         disabled={saving}
-        inert={saving}
-        style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}
+        inert={saving || plannerOpen}
+        style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: plannerOpen ? 'none' : undefined }}
       >
         <div className="field">
           <label htmlFor={nameId}>PC 이름</label>
@@ -264,6 +278,10 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
         ) : partsPanel}
 
         <div className="actions">
+          <button type="button" className="button button--ghost" disabled={toPartInputs(drafts).length === 0}
+            onClick={openPlanner}>
+            업그레이드 계획 살펴보기
+          </button>
           <button
             type="button"
             className="button button--ghost"
@@ -278,8 +296,8 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
           </button>
         </div>
       </fieldset>
-      {saving && <p role="status">PC 구성을 서버에 저장하고 있습니다.</p>}
-      {errors.length > 0 && (
+      {!plannerOpen && saving && <p role="status">PC 구성을 서버에 저장하고 있습니다.</p>}
+      {!plannerOpen && errors.length > 0 && (
         <ul role="alert" className="error">
           {errors.map((message, index) => (
             <li key={`${index}-${message}`}>{message}</li>

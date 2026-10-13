@@ -7,6 +7,8 @@ export type Route =
   | { name: 'new' }
   | { name: 'detail'; id: number }
   | { name: 'edit'; id: number }
+  | { name: 'upgrade' }
+  | { name: 'upgradePc'; id: number }
   | { name: 'login' }
   | { name: 'loginSuccess' }
   | { name: 'loginFailure'; reason: LoginFailureReason }
@@ -22,6 +24,8 @@ export const paths = {
   new: () => '#/pcs/new',
   detail: (id: number) => `#/pcs/${id}`,
   edit: (id: number) => `#/pcs/${id}/edit`,
+  upgrade: () => '#/upgrade',
+  upgradePc: (id: number) => `#/upgrade/pcs/${id}`,
   // 로그인 성공·실패 경로는 인증 서버의 리다이렉트 주소와 같아야 한다. (docs/week2-auth-pc-contract.md)
   login: () => '#/login',
   loginSuccess: () => '#/login/success',
@@ -47,6 +51,14 @@ export function parseRoute(hash: string): Route {
     if (segments.length === 2 && segments[1] === 'failure') {
       const reason = new URLSearchParams(query).get('reason')
       return { name: 'loginFailure', reason: reason === 'cancelled' ? 'cancelled' : 'error' }
+    }
+    return { name: 'notFound' }
+  }
+
+  if (segments[0] === 'upgrade') {
+    if (segments.length === 1) return { name: 'upgrade' }
+    if (segments.length === 3 && segments[1] === 'pcs' && /^[1-9]\d*$/.test(segments[2])) {
+      return { name: 'upgradePc', id: Number(segments[2]) }
     }
     return { name: 'notFound' }
   }
