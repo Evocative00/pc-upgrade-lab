@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { PartInput } from '../pc-scan/types.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { GameRequirementsDiagnosis } from './GameRequirementsDiagnosis.tsx'
@@ -50,6 +50,11 @@ function ScopeNotice({ gameDiagnosis }: { gameDiagnosis: boolean }) {
 export function UpgradePlanner({ pcName, parts, onBackToPc }: Props) {
   const [step, setStep] = useState<Step>(2)
   const [goal, setGoal] = useState<UpgradeGoal>(defaultGoal)
+
+  // 긴 진단 화면의 끝에서 다음 단계로 이동해도 새 단계의 제목부터 읽을 수 있게 한다.
+  useEffect(() => {
+    window.scrollTo?.({ top: 0, left: 0, behavior: 'auto' })
+  }, [step])
   const focus = goal.purpose === 'GAME' ? recommendPrototypeFocus(parts, goal.games) : null
 
   if (step === 2) return <UpgradeGoalForm pcName={pcName} parts={parts} goal={goal} onChange={setGoal}

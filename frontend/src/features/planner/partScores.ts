@@ -4,7 +4,7 @@ import { CPU_BLENDER_DATASET } from './cpuBlenderScores.ts'
 import { GPU_RELATIVE_DATASET } from './gpuRelativeScores.ts'
 
 /**
- * CPU는 Blender Open Data의 렌더링 점수, GPU는 게임 실측 기반 상대값으로 공식 예시와 비교한다.
+ * CPU는 Blender Open Data의 렌더링 점수, GPU는 같은 출처·시험판의 점수끼리만 공식 예시와 비교한다.
  * GPU에 Blender 점수를 쓰지 않는 이유: 레이트레이싱 하드웨어·제조사별 렌더 방식 차이로 게임 성능과 크게 어긋난다.
  * 두 자료 모두 점수의 절대값이 아니라 비교 대상 대비 배율만 의미가 있다.
  */
@@ -20,7 +20,12 @@ export type PartScoreComparison = ScoreComparison & {
 export function comparePartScore(kind: ScoredPart, parts: PartInput[], requirementModels: string[]): PartScoreComparison {
   const withGap = (result: ScoreComparison): PartScoreComparison => ({ ...result,
     gap: result.status === 'BELOW_BASELINE' && result.ratio !== null ? 1 - result.ratio : 0 })
-  const available = parts.filter((part) => part.type === kind && part.displayName.trim() && part.quantity > 0)
+  const available = parts.filter((part) => part.type === kind)
+  if (available.some((part) => !part.displayName.trim() || !Number.isSafeInteger(part.quantity) ||
+    part.quantity < 1 || part.quantity > 64)) {
+    return withGap({ status: 'UNKNOWN', actualScore: null, baselineScore: null, ratio: null,
+      baselineModel: null, reason: `내 ${kind} 모델과 수량을 확인해 주세요.` })
+  }
   if (available.length === 0) {
     return withGap({ status: 'UNKNOWN', actualScore: null, baselineScore: null, ratio: null,
       baselineModel: null, reason: `내 ${kind} 모델을 먼저 입력해 주세요.` })

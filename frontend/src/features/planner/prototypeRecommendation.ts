@@ -1,5 +1,5 @@
 import type { PartInput } from '../pc-scan/types.ts'
-import { diagnoseGame } from './gameDiagnosis.ts'
+import { diagnoseGame, diagnoseTier } from './gameDiagnosis.ts'
 import { GAME_REQUIREMENTS } from './gameRequirements.ts'
 import { comparePartScore, type ScoredPart } from './partScores.ts'
 
@@ -44,6 +44,14 @@ export function recommendPrototypeFocus(parts: PartInput[], selectedGames: strin
       const result = comparePartScore(kind, parts, game.recommended[kind.toLowerCase() as 'cpu' | 'gpu'])
       if (result.status === 'BELOW_BASELINE') add(kind, 'BENCHMARK_SCORE', name, result.gap)
       if (result.status === 'UNKNOWN') hasUnknown = true
+      if (kind === 'GPU' && result.status === 'ABOVE_BASELINE' &&
+        (game.recommended.vramGiB !== undefined || game.recommended.gpuVramGiBByModel !== undefined)) {
+        // 점수가 높은 GPU와 VRAM이 큰 다른 GPU를 합쳐 기준 이상이라고 보지 않는다.
+        const sameDevice = parts.filter((part) => part.type === 'GPU').some((part) =>
+          comparePartScore('GPU', [part], game.recommended.gpu).status === 'ABOVE_BASELINE' &&
+          diagnoseTier([part], game.recommended).checks.find((check) => check.label === 'VRAM')?.verdict === 'PASS')
+        if (!sameDevice) hasUnknown = true
+      }
     }
   }
 

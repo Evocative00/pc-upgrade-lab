@@ -22,25 +22,24 @@ function SavedPcListResults({ page, onPageChange, onRetry }: {
 }) {
   const query = usePcQuery(() => pcRepository.list(page, PAGE_SIZE))
 
-  if (query.status === 'loading') return <p className="muted">저장한 PC를 불러오는 중…</p>
-  if (query.status === 'error') return <div className="planner-main">
-    <p className="error" role="alert">PC 목록을 불러오지 못했습니다: {query.message}</p>
-    <button type="button" className="button button--ghost" onClick={onRetry}>다시 시도</button>
-  </div>
-
   return <>
-    {query.data.items.length === 0 ? <p className="muted">{page === 0 ? '저장한 PC가 아직 없습니다. 새 PC로 시작해 주세요.' : '이 페이지에 PC가 없습니다.'}</p>
+    {query.status === 'loading' && <p className="muted" role="status">저장한 PC를 불러오는 중…</p>}
+    {query.status === 'error' && <div className="planner-main">
+      <p className="error" role="alert">PC 목록을 불러오지 못했습니다: {query.message}</p>
+      <button type="button" className="button button--ghost" onClick={onRetry}>다시 시도</button>
+    </div>}
+    {query.status === 'ready' && (query.data.items.length === 0 ? <p className="muted">{page === 0 ? '저장한 PC가 아직 없습니다. 새 PC로 시작해 주세요.' : '이 페이지에 PC가 없습니다.'}</p>
       : <ul className="pc-list">{query.data.items.map((pc: PcSummary) => <li key={pc.id}>
         <a className="pc-card" href={paths.upgradePc(pc.id)}>
           <strong className="pc-card__name">{pc.name}</strong>
           <span className="muted">이 PC로 플랜 시작 →</span>
         </a>
-      </li>)}</ul>}
-    {query.data.totalPages > 1 && <nav className="planner-pager" aria-label="저장한 PC 페이지">
+      </li>)}</ul>)}
+    {(page > 0 || query.status === 'ready' && query.data.totalPages > 1) && <nav className="planner-pager" aria-label="저장한 PC 페이지">
       <button type="button" className="button button--ghost" disabled={page === 0}
         onClick={() => onPageChange(page - 1)}>이전</button>
-      <span className="muted">{page + 1} / {query.data.totalPages}페이지</span>
-      <button type="button" className="button button--ghost" disabled={page + 1 >= query.data.totalPages}
+      <span className="muted" role="status">{page + 1}페이지{query.status === 'ready' && ` · 전체 ${query.data.totalPages}페이지`}</span>
+      <button type="button" className="button button--ghost" disabled={query.status !== 'ready' || page + 1 >= query.data.totalPages}
         onClick={() => onPageChange(page + 1)}>다음</button>
     </nav>}
   </>

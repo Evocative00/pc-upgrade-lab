@@ -93,7 +93,7 @@ export function UpgradeGoalForm({ pcName, parts, goal, onChange, onBack, onNext 
             {PRESETS.map((amount) => <button type="button" key={amount} aria-pressed={goal.budgetWon === amount}
               onClick={() => setBudget(amount)}>{amount / 10_000}만</button>)}
           </div>
-          <p className="planner-caveat">현재 가격 데이터가 확정되지 않아 이 예산은 추천 계산에 반영되지 않습니다.</p>
+          <p className="planner-caveat">입력한 예산은 현재 플랜의 추천 계산에 반영되지 않습니다.</p>
         </section>
 
         <section className="planner-card" aria-labelledby="planner-purpose-title">

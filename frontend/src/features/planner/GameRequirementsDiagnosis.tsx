@@ -37,8 +37,8 @@ function InternalScoreRows({ parts, minimum, recommended }: {
   return <div className="planner-internal-score">
     <h4>CPU·GPU 모델 비교 <small>공개 벤치마크 기준 상대 성능</small></h4>
     <p>공식 최소·권장 예시 중 성능이 낮은 모델을 기준으로 내 부품이 몇 배인지 보여 줍니다.
-      CPU는 Blender 렌더링 점수(멀티코어 처리 성능), GPU는 1080p 게임 실측 기반 상대값입니다.
-      자료 오차가 있어 0.9~1.1배는 비슷한 수준으로 보세요. 공식 충족 판정이나 예상 FPS가 아닙니다.</p>
+      CPU는 Blender 렌더링 점수(멀티코어 처리 성능), GPU는 출처별 게임 실측 또는 합성 시험 값입니다.
+      현재 부품과 모든 공식 예시의 시험 지표·시험판이 같을 때만 배율을 표시합니다. 공식 충족 판정이나 예상 FPS가 아닙니다.</p>
     <p className="planner-source">근거:{' '}
       <a href={CPU_BLENDER_DATASET.sourceUrl} target="_blank" rel="noopener noreferrer">{CPU_BLENDER_DATASET.publisher}</a>
       {GPU_SCORE_SOURCES.map((source) => <span key={source.url}>{' · '}
@@ -75,8 +75,8 @@ function InternalScoreRows({ parts, minimum, recommended }: {
 export function GameRequirementsDiagnosis({ games, parts }: { games: string[]; parts: PartInput[] }) {
   return <section className="planner-card" aria-labelledby="planner-game-diagnosis">
     <h2 id="planner-game-diagnosis">게임별 공식 요구 사양 비교</h2>
-    <p className="planner-caveat">RAM·VRAM 용량은 수치로 비교합니다. CPU·GPU는 공식 예시와 같은 모델이면 그대로 충족으로 보고,
-      다른 모델이면 공개 벤치마크로 공식 예시 대비 배율을 비교합니다. 이 결과는 목표 FPS나 전체 실행 가능 여부를
+    <p className="planner-caveat">RAM·VRAM 용량은 수치로 비교합니다. CPU는 공식 예시 모델명을, GPU는 예시 모델과 필수 VRAM을 같은 장치에서 확인합니다.
+      다른 모델은 공식 판정을 보류하고 아래에서 별도로 벤치마크 배율을 비교합니다. 이 결과는 목표 FPS나 전체 실행 가능 여부를
       보증하지 않습니다.</p>
     <div className="planner-game-list">
       {games.map((name) => {
