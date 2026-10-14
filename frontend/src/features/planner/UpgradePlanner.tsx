@@ -42,7 +42,7 @@ function CurrentPc({ pcName, parts }: Pick<Props, 'pcName' | 'parts'>) {
 function ScopeNotice({ gameDiagnosis }: { gameDiagnosis: boolean }) {
   return <p className="planner-scope" role="status">
     {gameDiagnosis
-      ? '공식 요구 사양과 공개 벤치마크 기준 상대 성능을 함께 표시합니다. 예상 가격·FPS, 특정 제품 선정과 교체 후 호환성은 아직 계산하지 않습니다.'
+      ? '공식 요구 사양, 공개 벤치마크 기준 상대 성능, 해상도별 예상 프레임(추정)을 함께 표시합니다. 예상 가격·특정 제품 선정과 교체 후 호환성은 아직 계산하지 않습니다.'
       : '현재 화면은 흐름 확인용입니다. 제품 선정, 예상 가격·FPS와 교체 후 호환성 판정은 아직 계산하지 않습니다.'}
   </p>
 }
@@ -73,7 +73,7 @@ export function UpgradePlanner({ pcName, parts, onBackToPc }: Props) {
     <ScopeNotice gameDiagnosis={step === 3 && goal.purpose === 'GAME'} />
     {step === 3 && <div className="planner-result-grid">
       <div className="planner-main">
-        {goal.purpose === 'GAME' ? <GameRequirementsDiagnosis games={goal.games} parts={parts} /> :
+        {goal.purpose === 'GAME' ? <GameRequirementsDiagnosis games={goal.games} parts={parts} resolution={goal.resolution} targetFps={goal.targetFps} /> :
           <section className="planner-card planner-highlight">
           <span className="badge badge--empty">분석 준비 중</span>
           <h2>어떤 부품을 바꾸면 좋을까요?</h2>

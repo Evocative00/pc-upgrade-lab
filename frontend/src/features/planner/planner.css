@@ -129,3 +129,5 @@
 @media (prefers-reduced-motion: reduce) { .planner-reveal { animation: none; } }
 @media (max-width: 800px) { .planner-layout, .planner-result-grid, .planner-entry-options, .planner-tier-grid { grid-template-columns: 1fr; } .planner-aside { position: static; } }
 @media (max-width: 580px) { .planner-card { padding: 16px; } .planner-goal-pair, .planner-workloads, .planner-part-grid, .planner-placeholder-grid, .planner-internal-tier-grid { grid-template-columns: 1fr; } .planner-steps { justify-content: flex-start; } .planner-check-list li { flex-direction: column; gap: 4px; } .planner-check-list li span { text-align: left; } }
+.planner-frame-value { font-size: 18px; font-weight: 700; }
+.planner-frame-preview { display: grid; gap: 4px; margin-top: 10px; padding: 10px 12px; border: 1px solid var(--accent-border); border-radius: 6px; background: var(--accent-bg); font-size: 13px; }
