@@ -27,6 +27,8 @@ export type ScoreComparison = {
   ratio: number | null
   baselineModel: string | null
   reason: string
+  // 서로 다른 시험 표(출처·연도)의 점수를 공통 눈금으로 환산해 비교했는지. 같은 표끼리보다 오차가 크다.
+  bridged?: boolean
 }
 
 // 제조사·상표 표기와 WMI가 붙이는 설명만 제거한다. 숫자·Ti/SUPER 등 제품 변형은 유지한다.
@@ -60,14 +62,25 @@ function validScore(score: number | undefined): number | null {
 
 type ScoreEntry = { model: string; score: number; group: string }
 
-function scoreFor(model: string, dataset: BenchmarkDataset): ScoreEntry | null {
-  const key = normalizeHardwareModel(model)
-  const matches = Object.entries(dataset.scores).filter(([name]) => normalizeHardwareModel(name) === key)
-  if (!key || matches.length !== 1) return null
-  const [name, value] = matches[0]
-  const score = validScore(value)
+function entryFor(name: string, dataset: BenchmarkDataset): ScoreEntry | null {
+  const score = validScore(dataset.scores[name])
   const group = dataset.scoreGroups ? dataset.scoreGroups[name] : `${dataset.publisher}:${dataset.metric}:${dataset.edition}`
   return score !== null && group?.trim() ? { model: name, score, group } : null
+}
+
+function scoreFor(model: string, dataset: BenchmarkDataset): ScoreEntry | null {
+  const key = normalizeHardwareModel(model)
+  if (!key) return null
+  const matches = Object.keys(dataset.scores).filter((name) => normalizeHardwareModel(name) === key)
+  if (matches.length === 1) return entryFor(matches[0], dataset)
+  if (matches.length > 1) return null
+  // Windows와 공식 사양은 'GeForce GTX 1060', 'Radeon RX 580 Series'처럼 VRAM·메모리 종류를 빼고 적는다.
+  // 자료에 그 칩셋의 메모리 변형만 있으면 변형 중 점수가 낮은 값을 쓴다(성능을 부풀리지 않는 쪽).
+  const variants = Object.keys(dataset.scores).filter((name) => {
+    const nameKey = normalizeHardwareModel(name)
+    return nameKey.startsWith(key) && /^(?:\d{1,2}gb|gddr\d\w*|ddr\d\w*)+$/.test(nameKey.slice(key.length))
+  }).map((name) => entryFor(name, dataset)).filter((entry): entry is ScoreEntry => entry !== null)
+  return variants.length ? variants.reduce((low, entry) => entry.score < low.score ? entry : low) : null
 }
 
 // 내 부품은 카탈로그 판매 제품명(예: 'GeForce GTX 1660 SUPER VENTUS XS OC')일 수 있다.
@@ -102,23 +115,51 @@ export function compareBenchmarkScores(kind: ComponentKind, actualModel: string,
     return unknown('사용 가능한 동일 기준의 점수 자료가 없습니다.')
   }
   if (!actualModel.trim() || !isSpecificHardwareModel(actualModel)) return unknown('내 부품의 정확한 모델이 필요합니다.')
-  if (requirementModels.length === 0 || requirementModels.some((model) => !isSpecificHardwareModel(model))) {
-    return unknown('공식 요구 사양이 특정 모델이 아닌 계열로 제시됐습니다.')
-  }
+  if (requirementModels.length === 0) return unknown('공식 요구 사양 예시가 없습니다.')
   const actual = scoreForPart(actualModel, dataset)
   if (actual === null) return unknown('내 부품의 정확한 모델·변형에 해당하는 점수가 자료에 없습니다.')
-  const baselines = requirementModels.map((model) => ({ model, entry: scoreFor(model, dataset) }))
-  if (baselines.some((item) => item.entry === null)) {
-    return unknown('공식 예시 모델 중 점수가 없는 항목이 있어 기준을 정할 수 없습니다.')
+  // 공식 사양은 예시 중 하나만 갖추면 되는 구조다. 점수가 있는 예시 중 가장 낮은 것을 기준으로 삼는다.
+  // 계열 표기(Core i7 계열 등)나 자료에 없는 예시는 기준 후보에서 빠진다.
+  const baselines = requirementModels.map((model) => ({
+    model, entry: isSpecificHardwareModel(model) ? scoreFor(model, dataset) : null }))
+  const scored = baselines.filter((item): item is { model: string; entry: ScoreEntry } => item.entry !== null)
+  const missing = baselines.filter((item) => item.entry === null).map((item) => item.model)
+  if (scored.length === 0) {
+    const family = requirementModels.find((model) => !isSpecificHardwareModel(model))
+    return unknown(family
+      ? `공식 사양이 '${family}'처럼 제품군으로만 적혀 있어 성능을 비교할 수 없습니다.`
+      : '공식 예시 모델의 점수가 자료에 없어 기준을 정할 수 없습니다.')
   }
-  if (baselines.some((item) => item.entry?.group !== actual.group)) {
-    return unknown('내 부품과 모든 공식 예시 모델의 시험 지표·시험판이 같지 않아 비교를 보류합니다.')
-  }
-  // 공식 대안 중 하나를 충족하면 되는 구조이므로, 같은 지표에서 점수가 가장 낮은 예시를 기준으로 삼는다.
-  const baseline = baselines.reduce((lowest, item) => Number(item.entry?.score) < Number(lowest.entry?.score) ? item : lowest)
+  const baseline = scored.reduce((lowest, item) => item.entry.score < lowest.entry.score ? item : lowest)
   const actualScore = actual.score
-  const baselineScore = Number(baseline.entry?.score)
-  return { status: actualScore >= baselineScore ? 'ABOVE_BASELINE' : 'BELOW_BASELINE',
-    actualScore, baselineScore, ratio: actualScore / baselineScore, baselineModel: baseline.model,
-    reason: '같은 자료·시험 지표에서 공식 예시 모델과 비교한 값입니다. 실제 게임 FPS나 실행 가능 판정은 아닙니다.' }
+  const baselineScore = baseline.entry.score
+  const ratio = actualScore / baselineScore
+  // 활용도를 위해 다른 시험 표의 점수도 공통 눈금(GTX 1060 6GB = 100)으로 환산해 비교한다. 결과에 환산 여부를 표시한다.
+  const bridged = baseline.entry.group !== actual.group
+  const basis = bridged ? '서로 다른 시험 표를 공통 눈금으로 환산해 비교한 값입니다(오차 약 ±15%).'
+    : '같은 자료·시험 지표에서 공식 예시 모델과 비교한 값입니다.'
+  const missingNote = missing.length ? ` 자료 없음: ${missing.join(', ')}.` : ''
+  const caveat = '실제 게임 FPS나 실행 가능 판정은 아닙니다.'
+  if (actualScore >= baselineScore) {
+    // 점수가 있는 공식 대안 하나를 넘었으므로, 자료가 없는 예시가 있어도 기준 이상이다.
+    return { status: 'ABOVE_BASELINE', actualScore, baselineScore, ratio, baselineModel: baseline.model, bridged,
+      reason: `${basis}${missingNote} ${caveat}` }
+  }
+  if (missing.length > 0) {
+    // 자료가 없는 예시가 더 낮은 사양일 수 있으므로 부족하다고 단정하지 않는다.
+    return { status: 'UNKNOWN', actualScore, baselineScore, ratio, baselineModel: baseline.model, bridged,
+      reason: `점수 자료가 있는 공식 예시보다 낮지만, 자료가 없는 예시(${missing.join(', ')})가 있어 부족하다고 단정할 수 없습니다.` }
+  }
+  return { status: 'BELOW_BASELINE', actualScore, baselineScore, ratio, baselineModel: baseline.model, bridged,
+    reason: `${basis} ${caveat}` }
+}
+
+/** 내 부품 이름에 해당하는 자료 모델명. 예상 프레임 계산처럼 점수표를 직접 참조할 때 쓴다. */
+export function findPartModel(model: string, dataset: BenchmarkDataset): string | null {
+  return isSpecificHardwareModel(model) ? scoreForPart(model, dataset)?.model ?? null : null
+}
+
+/** 공식 예시·기준점 모델명에 정확히 해당하는 자료 모델명. */
+export function findDatasetModel(model: string, dataset: BenchmarkDataset): string | null {
+  return isSpecificHardwareModel(model) ? scoreFor(model, dataset)?.model ?? null : null
 }
