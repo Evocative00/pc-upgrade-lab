@@ -1,6 +1,7 @@
 import type { PartInput, PartType } from '../pc-scan/types.ts'
 import { isSpecificHardwareModel, normalizeHardwareModel } from './benchmarkComparison.ts'
 import type { GameRequirements, RequirementTier } from './gameRequirements.ts'
+import { comparePartScore, formatRatio } from './partScores.ts'
 
 export type Verdict = 'PASS' | 'FAIL' | 'UNKNOWN'
 export type Check = { label: string; required: string; actual: string; verdict: Verdict; reason: string }
@@ -65,8 +66,20 @@ function modelCheck(label: 'CPU' | 'GPU', available: PartInput[], requirement: R
   const reason = available.length === 0 ? '부품이 입력되지 않았습니다.'
     : matches.length > 0 && needsMemory ? '공식 예시 모델과 필요한 VRAM을 같은 GPU에서 확인할 수 없습니다.'
     : available.some((part) => !validQuantity(part)) ? '부품 개수는 1~64 사이의 정수여야 합니다.'
-    : '공식 예시와 동일한 모델이 아닙니다. 별도의 벤치마크 배율은 공식 요구 사양 충족·부족 판정에 사용하지 않습니다.'
-  return { label, required, actual, verdict: 'UNKNOWN', reason }
+    : null
+  if (reason !== null) return { label, required, actual, verdict: 'UNKNOWN', reason }
+  // ARM CPU(Apple M 시리즈, Snapdragon 등)는 Blender 점수가 있어도 Windows 데스크톱 게임 비교 대상이 아니다.
+  if (label === 'CPU' && available.some((part) => /\b(?:apple\s+m\d|snapdragon|qualcomm|oryon)\b/i.test(part.displayName))) {
+    return { label, required, actual, verdict: 'UNKNOWN', reason: 'ARM CPU는 Windows 데스크톱 게임 사양과 비교하지 않습니다.' }
+  }
+  // 모델이 공식 예시와 다르면 공개 벤치마크 배율로 판정한다. 공식 동일 모델 확인이 아니라는 점을 문구로 밝힌다.
+  // GPU의 VRAM 조건은 별도의 VRAM 행에서 확인한다.
+  const score = comparePartScore(label, available, examples)
+  if (score.status === 'UNKNOWN') return { label, required, actual, verdict: 'UNKNOWN', reason: score.reason }
+  const kind = label === 'CPU' ? 'CPU 처리 성능' : 'GPU 게임 성능'
+  const basis = score.bridged ? '다른 시험 표를 환산한 벤치마크 비교' : '같은 시험 표의 벤치마크 비교'
+  return { label, required, actual, verdict: score.status === 'ABOVE_BASELINE' ? 'PASS' : 'FAIL',
+    reason: `${kind}이 기준 ${score.baselineModel}의 ${formatRatio(Number(score.ratio))}입니다(${basis}). 공식 동일 모델 확인이 아닌 추정이며 예상 FPS가 아닙니다.` }
 }
 
 function capacityCheck(label: string, available: PartInput[], requiredGiB: number): Check {

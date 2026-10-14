@@ -1,0 +1,742 @@
+{
+  "checkedOn": "2026-10-11",
+  "method": "Tom's Hardware GPU 계층표의 같은 표·같은 행에서 r1440 = 1440p Ultra fps ÷ 1080p Ultra fps, r2160 = 4K Ultra fps ÷ 1080p Ultra fps. 래스터 결과만 사용.",
+  "sources": [
+    {
+      "id": "toms-2026-1080p-ultra",
+      "url": "https://www.tomshardware.com/reviews/gpu-hierarchy,4388.html"
+    },
+    {
+      "id": "toms-2022-2024-1080p-ultra",
+      "url": "https://www.tomshardware.com/reviews/gpu-hierarchy,4388-2.html"
+    }
+  ],
+  "chipsets": [
+    {
+      "name": "GeForce GTX 970",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 26.5,
+      "fps1440": null,
+      "fps2160": null,
+      "r1440": null,
+      "r2160": null
+    },
+    {
+      "name": "GeForce GTX 980",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 28.9,
+      "fps1440": null,
+      "fps2160": null,
+      "r1440": null,
+      "r2160": null
+    },
+    {
+      "name": "GeForce GTX 1050 Ti",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 19.8,
+      "fps1440": null,
+      "fps2160": null,
+      "r1440": null,
+      "r2160": null
+    },
+    {
+      "name": "GeForce GTX 1060 6GB",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 32.1,
+      "fps1440": 23.0,
+      "fps2160": null,
+      "r1440": 0.717,
+      "r2160": null
+    },
+    {
+      "name": "GeForce GTX 1070",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 44.7,
+      "fps1440": 33.1,
+      "fps2160": null,
+      "r1440": 0.74,
+      "r2160": null
+    },
+    {
+      "name": "GeForce GTX 1070 Ti",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 51.1,
+      "fps1440": 37.9,
+      "fps2160": null,
+      "r1440": 0.742,
+      "r2160": null
+    },
+    {
+      "name": "GeForce GTX 1080",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 53.0,
+      "fps1440": 39.4,
+      "fps2160": null,
+      "r1440": 0.743,
+      "r2160": null
+    },
+    {
+      "name": "GeForce GTX 1080 Ti",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 66.4,
+      "fps1440": 50.2,
+      "fps2160": 29.5,
+      "r1440": 0.756,
+      "r2160": 0.444
+    },
+    {
+      "name": "GeForce GTX 1650 (GDDR6)",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 28.8,
+      "fps1440": null,
+      "fps2160": null,
+      "r1440": null,
+      "r2160": null
+    },
+    {
+      "name": "GeForce GTX 1650 SUPER",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 33.9,
+      "fps1440": 21.2,
+      "fps2160": null,
+      "r1440": 0.625,
+      "r2160": null
+    },
+    {
+      "name": "GeForce GTX 1660 SUPER",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 46.8,
+      "fps1440": 33.3,
+      "fps2160": null,
+      "r1440": 0.712,
+      "r2160": null
+    },
+    {
+      "name": "GeForce GTX 1660 Ti",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 46.6,
+      "fps1440": 33.3,
+      "fps2160": null,
+      "r1440": 0.715,
+      "r2160": null
+    },
+    {
+      "name": "GeForce RTX 2060",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 55.5,
+      "fps1440": 40.1,
+      "fps2160": null,
+      "r1440": 0.723,
+      "r2160": null
+    },
+    {
+      "name": "GeForce RTX 2060 SUPER",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 65.5,
+      "fps1440": 48.3,
+      "fps2160": null,
+      "r1440": 0.737,
+      "r2160": null
+    },
+    {
+      "name": "GeForce RTX 2070",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 69.8,
+      "fps1440": 51.8,
+      "fps2160": null,
+      "r1440": 0.742,
+      "r2160": null
+    },
+    {
+      "name": "GeForce RTX 2070 SUPER",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 77.4,
+      "fps1440": 58.4,
+      "fps2160": null,
+      "r1440": 0.755,
+      "r2160": null
+    },
+    {
+      "name": "GeForce RTX 2080",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 82.5,
+      "fps1440": 63.2,
+      "fps2160": null,
+      "r1440": 0.766,
+      "r2160": null
+    },
+    {
+      "name": "GeForce RTX 2080 SUPER",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 86.0,
+      "fps1440": 66.1,
+      "fps2160": 36.7,
+      "r1440": 0.769,
+      "r2160": 0.427
+    },
+    {
+      "name": "GeForce RTX 2080 Ti",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 96.3,
+      "fps1440": 75.6,
+      "fps2160": 43.5,
+      "r1440": 0.785,
+      "r2160": 0.452
+    },
+    {
+      "name": "GeForce RTX 3060 12GB",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 61.5,
+      "fps1440": 41.9,
+      "fps2160": 22.2,
+      "r1440": 0.681,
+      "r2160": 0.361
+    },
+    {
+      "name": "GeForce RTX 3060 Ti",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 74.2,
+      "fps1440": 51.0,
+      "fps2160": 19.4,
+      "r1440": 0.687,
+      "r2160": 0.261
+    },
+    {
+      "name": "GeForce RTX 3070",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 87.2,
+      "fps1440": 58.2,
+      "fps2160": 26.2,
+      "r1440": 0.667,
+      "r2160": 0.3
+    },
+    {
+      "name": "GeForce RTX 3070 Ti",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 94.6,
+      "fps1440": 66.9,
+      "fps2160": 26.0,
+      "r1440": 0.707,
+      "r2160": 0.275
+    },
+    {
+      "name": "GeForce RTX 3080 10GB",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 111.6,
+      "fps1440": 82.0,
+      "fps2160": 43.9,
+      "r1440": 0.735,
+      "r2160": 0.393
+    },
+    {
+      "name": "GeForce RTX 3080 12GB",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 122.1,
+      "fps1440": 102.3,
+      "fps2160": 66.7,
+      "r1440": 0.838,
+      "r2160": 0.546
+    },
+    {
+      "name": "GeForce RTX 3080 Ti",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 119.6,
+      "fps1440": 89.1,
+      "fps2160": 51.0,
+      "r1440": 0.745,
+      "r2160": 0.426
+    },
+    {
+      "name": "GeForce RTX 3090",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 122.9,
+      "fps1440": 91.5,
+      "fps2160": 53.1,
+      "r1440": 0.745,
+      "r2160": 0.432
+    },
+    {
+      "name": "GeForce RTX 3090 Ti",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 131.7,
+      "fps1440": 99.9,
+      "fps2160": 59.3,
+      "r1440": 0.759,
+      "r2160": 0.45
+    },
+    {
+      "name": "GeForce RTX 4060",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 71.5,
+      "fps1440": 47.6,
+      "fps2160": 17.4,
+      "r1440": 0.666,
+      "r2160": 0.243
+    },
+    {
+      "name": "GeForce RTX 4060 Ti 8GB",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 88.0,
+      "fps1440": 58.9,
+      "fps2160": 23.9,
+      "r1440": 0.669,
+      "r2160": 0.272
+    },
+    {
+      "name": "GeForce RTX 4060 Ti 16GB",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 89.3,
+      "fps1440": 60.5,
+      "fps2160": 31.3,
+      "r1440": 0.677,
+      "r2160": 0.351
+    },
+    {
+      "name": "GeForce RTX 4070",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 111.5,
+      "fps1440": 77.8,
+      "fps2160": 41.3,
+      "r1440": 0.698,
+      "r2160": 0.37
+    },
+    {
+      "name": "GeForce RTX 4070 SUPER",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 126.7,
+      "fps1440": 91.2,
+      "fps2160": 49.2,
+      "r1440": 0.72,
+      "r2160": 0.388
+    },
+    {
+      "name": "GeForce RTX 4070 Ti",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 135.1,
+      "fps1440": 97.9,
+      "fps2160": 53.9,
+      "r1440": 0.725,
+      "r2160": 0.399
+    },
+    {
+      "name": "GeForce RTX 4070 Ti SUPER",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 141.2,
+      "fps1440": 104.0,
+      "fps2160": 58.5,
+      "r1440": 0.737,
+      "r2160": 0.414
+    },
+    {
+      "name": "GeForce RTX 4080",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 157.3,
+      "fps1440": 117.5,
+      "fps2160": 67.5,
+      "r1440": 0.747,
+      "r2160": 0.429
+    },
+    {
+      "name": "GeForce RTX 4080 SUPER",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 158.9,
+      "fps1440": 118.6,
+      "fps2160": 69.4,
+      "r1440": 0.746,
+      "r2160": 0.437
+    },
+    {
+      "name": "GeForce RTX 4090",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 183.6,
+      "fps1440": 143.4,
+      "fps2160": 89.1,
+      "r1440": 0.781,
+      "r2160": 0.485
+    },
+    {
+      "name": "GeForce RTX 5060",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 88.5,
+      "fps1440": 59.8,
+      "fps2160": 21.8,
+      "r1440": 0.676,
+      "r2160": 0.246
+    },
+    {
+      "name": "GeForce RTX 5060 Ti 8GB",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 100.4,
+      "fps1440": 68.6,
+      "fps2160": 28.1,
+      "r1440": 0.683,
+      "r2160": 0.28
+    },
+    {
+      "name": "GeForce RTX 5060 Ti 16GB",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 105.2,
+      "fps1440": 73.4,
+      "fps2160": 40.2,
+      "r1440": 0.698,
+      "r2160": 0.382
+    },
+    {
+      "name": "GeForce RTX 5070",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 132.6,
+      "fps1440": 96.4,
+      "fps2160": 54.3,
+      "r1440": 0.727,
+      "r2160": 0.41
+    },
+    {
+      "name": "GeForce RTX 5070 Ti",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 155.4,
+      "fps1440": 116.8,
+      "fps2160": 68.6,
+      "r1440": 0.752,
+      "r2160": 0.441
+    },
+    {
+      "name": "GeForce RTX 5080",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 166.9,
+      "fps1440": 128.3,
+      "fps2160": 77.4,
+      "r1440": 0.769,
+      "r2160": 0.464
+    },
+    {
+      "name": "GeForce RTX 5090",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 203.8,
+      "fps1440": 167.3,
+      "fps2160": 110.8,
+      "r1440": 0.821,
+      "r2160": 0.544
+    },
+    {
+      "name": "Radeon RX 580 8GB",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 35.3,
+      "fps1440": 26.0,
+      "fps2160": null,
+      "r1440": 0.737,
+      "r2160": null
+    },
+    {
+      "name": "Radeon RX 5500 XT 4GB",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 33.3,
+      "fps1440": null,
+      "fps2160": null,
+      "r1440": null,
+      "r2160": null
+    },
+    {
+      "name": "Radeon RX 5500 XT 8GB",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 39.7,
+      "fps1440": 28.2,
+      "fps2160": null,
+      "r1440": 0.71,
+      "r2160": null
+    },
+    {
+      "name": "Radeon RX 5600 XT",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 57.8,
+      "fps1440": 42.0,
+      "fps2160": null,
+      "r1440": 0.727,
+      "r2160": null
+    },
+    {
+      "name": "Radeon RX 5700 XT",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 73.3,
+      "fps1440": 53.1,
+      "fps2160": 29.3,
+      "r1440": 0.724,
+      "r2160": 0.4
+    },
+    {
+      "name": "Radeon RX 6400",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 24.1,
+      "fps1440": null,
+      "fps2160": null,
+      "r1440": null,
+      "r2160": null
+    },
+    {
+      "name": "Radeon RX 6500 XT 4GB",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 30.6,
+      "fps1440": 18.0,
+      "fps2160": null,
+      "r1440": 0.588,
+      "r2160": null
+    },
+    {
+      "name": "Radeon RX 6600",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 51.9,
+      "fps1440": 24.8,
+      "fps2160": 14.5,
+      "r1440": 0.478,
+      "r2160": 0.279
+    },
+    {
+      "name": "Radeon RX 6600 XT",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 62.7,
+      "fps1440": 40.7,
+      "fps2160": 17.3,
+      "r1440": 0.649,
+      "r2160": 0.276
+    },
+    {
+      "name": "Radeon RX 6650 XT",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 64.3,
+      "fps1440": 38.0,
+      "fps2160": 19.0,
+      "r1440": 0.591,
+      "r2160": 0.295
+    },
+    {
+      "name": "Radeon RX 6700 XT",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 79.2,
+      "fps1440": 54.3,
+      "fps2160": 28.0,
+      "r1440": 0.686,
+      "r2160": 0.354
+    },
+    {
+      "name": "Radeon RX 6750 XT",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 83.2,
+      "fps1440": 57.6,
+      "fps2160": 29.6,
+      "r1440": 0.692,
+      "r2160": 0.356
+    },
+    {
+      "name": "Radeon RX 6800",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 114.6,
+      "fps1440": 89.2,
+      "fps2160": 50.7,
+      "r1440": 0.778,
+      "r2160": 0.442
+    },
+    {
+      "name": "Radeon RX 6800 XT",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 111.8,
+      "fps1440": 79.6,
+      "fps2160": 42.2,
+      "r1440": 0.712,
+      "r2160": 0.377
+    },
+    {
+      "name": "Radeon RX 6900 XT",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 117.1,
+      "fps1440": 83.9,
+      "fps2160": 44.9,
+      "r1440": 0.716,
+      "r2160": 0.383
+    },
+    {
+      "name": "Radeon RX 6950 XT",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 123.3,
+      "fps1440": 89.5,
+      "fps2160": 48.3,
+      "r1440": 0.726,
+      "r2160": 0.392
+    },
+    {
+      "name": "Radeon RX 7600",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 69.9,
+      "fps1440": 45.4,
+      "fps2160": 18.4,
+      "r1440": 0.649,
+      "r2160": 0.263
+    },
+    {
+      "name": "Radeon RX 7600 XT",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 91.9,
+      "fps1440": 65.9,
+      "fps2160": 37.1,
+      "r1440": 0.717,
+      "r2160": 0.404
+    },
+    {
+      "name": "Radeon RX 7700 XT",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 102.9,
+      "fps1440": 72.7,
+      "fps2160": 38.0,
+      "r1440": 0.707,
+      "r2160": 0.369
+    },
+    {
+      "name": "Radeon RX 7800 XT",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 118.4,
+      "fps1440": 84.7,
+      "fps2160": 45.1,
+      "r1440": 0.715,
+      "r2160": 0.381
+    },
+    {
+      "name": "Radeon RX 7900 GRE",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 135.8,
+      "fps1440": 113.9,
+      "fps2160": 69.3,
+      "r1440": 0.839,
+      "r2160": 0.51
+    },
+    {
+      "name": "Radeon RX 7900 XT",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 145.4,
+      "fps1440": 108.0,
+      "fps2160": 59.8,
+      "r1440": 0.743,
+      "r2160": 0.411
+    },
+    {
+      "name": "Radeon RX 7900 XTX",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 161.5,
+      "fps1440": 122.3,
+      "fps2160": 70.6,
+      "r1440": 0.757,
+      "r2160": 0.437
+    },
+    {
+      "name": "Radeon RX 9060 XT 8GB",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 93.2,
+      "fps1440": 62.5,
+      "fps2160": 29.7,
+      "r1440": 0.671,
+      "r2160": 0.319
+    },
+    {
+      "name": "Radeon RX 9060 XT 16GB",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 98.3,
+      "fps1440": 67.3,
+      "fps2160": 35.2,
+      "r1440": 0.685,
+      "r2160": 0.358
+    },
+    {
+      "name": "Radeon RX 9070",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 140.9,
+      "fps1440": 104.0,
+      "fps2160": 57.7,
+      "r1440": 0.738,
+      "r2160": 0.41
+    },
+    {
+      "name": "Radeon RX 9070 XT",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 156.6,
+      "fps1440": 116.5,
+      "fps2160": 65.8,
+      "r1440": 0.744,
+      "r2160": 0.42
+    },
+    {
+      "name": "Intel Arc A380",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 28.4,
+      "fps1440": 19.5,
+      "fps2160": null,
+      "r1440": 0.687,
+      "r2160": null
+    },
+    {
+      "name": "Intel Arc A580",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 65.1,
+      "fps1440": 48.8,
+      "fps2160": 27.9,
+      "r1440": 0.75,
+      "r2160": 0.429
+    },
+    {
+      "name": "Intel Arc A750",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 70.8,
+      "fps1440": 53.7,
+      "fps2160": 31.1,
+      "r1440": 0.758,
+      "r2160": 0.439
+    },
+    {
+      "name": "Intel Arc A770 8GB",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 75.3,
+      "fps1440": 57.5,
+      "fps2160": 33.2,
+      "r1440": 0.764,
+      "r2160": 0.441
+    },
+    {
+      "name": "Intel Arc A770 16GB",
+      "sourceId": "toms-2022-2024-1080p-ultra",
+      "fps1080": 76.9,
+      "fps1440": 59.8,
+      "fps2160": 35.3,
+      "r1440": 0.778,
+      "r2160": 0.459
+    },
+    {
+      "name": "Intel Arc B570",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 63.5,
+      "fps1440": 44.3,
+      "fps2160": 19.6,
+      "r1440": 0.698,
+      "r2160": 0.309
+    },
+    {
+      "name": "Intel Arc B580",
+      "sourceId": "toms-2026-1080p-ultra",
+      "fps1080": 71.5,
+      "fps1440": 50.7,
+      "fps2160": 27.6,
+      "r1440": 0.709,
+      "r2160": 0.386
+    }
+  ],
+  "missing": [
+    "GeForce GTX 560",
+    "GeForce GT 730",
+    "GeForce GTX 960",
+    "GeForce RTX 3060 8GB",
+    "Radeon HD 6570",
+    "Radeon HD 6950",
+    "Radeon R5 220",
+    "Radeon R7 240",
+    "Radeon R7 370",
+    "Radeon R9 380",
+    "Intel HD Graphics 4000",
+    "Intel HD Graphics 4600",
+    "Intel UHD Graphics 630"
+  ]
+}

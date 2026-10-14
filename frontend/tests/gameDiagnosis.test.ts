@@ -104,12 +104,13 @@ test('대상 5개 게임은 모두 출처와 최소·권장 단계가 있다', (
   }
 })
 
-test('벤치마크 배율이 높거나 낮아도 다른 모델의 공식 판정은 보류한다', () => {
+test('모델이 공식 예시와 다르면 벤치마크 배율로 충족·부족을 추정하고 근거를 밝힌다', () => {
   const parts = [part('CPU', '13th Gen Intel(R) Core(TM) i5-13600KF'), part('GPU', 'NVIDIA GeForce GTX 960')]
   const [cpu, gpu] = diagnoseTier(parts, GAME_REQUIREMENTS['배틀그라운드'].recommended).checks
-  assert.equal(cpu.verdict, 'UNKNOWN')
-  assert.equal(gpu.verdict, 'UNKNOWN')
-  assert.match(cpu.reason, /벤치마크.*공식 요구 사양/)
+  assert.equal(cpu.verdict, 'PASS')
+  assert.equal(gpu.verdict, 'FAIL')
+  assert.match(cpu.reason, /벤치마크.*공식 동일 모델 확인이 아닌 추정/)
+  assert.match(gpu.reason, /GPU 게임 성능이 기준 .*배입니다/)
   assert.equal(check([part('GPU', 'Intel(R) Graphics')], 'GPU')?.verdict, 'UNKNOWN')
 })
 

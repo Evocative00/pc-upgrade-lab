@@ -2,6 +2,8 @@ import type { PartInput } from '../pc-scan/types.ts'
 import { diagnoseGame, type TierDiagnosis, type Verdict } from './gameDiagnosis.ts'
 import { GAME_REQUIREMENTS, type RequirementTier } from './gameRequirements.ts'
 import { CPU_BLENDER_DATASET } from './cpuBlenderScores.ts'
+import { estimateGameFrames, frameText, SOURCE_KIND_LABEL, supportsFrameEstimate } from './frameEstimate.ts'
+import { FRAME_SOURCES, GAME_FRAME_PROFILES, type FrameResolution } from './gameFrameData.ts'
 import { GPU_SCORE_SOURCES } from './gpuRelativeScores.ts'
 import { comparePartScore, formatRatio, type PartScoreComparison, type ScoredPart } from './partScores.ts'
 
@@ -38,7 +40,7 @@ function InternalScoreRows({ parts, minimum, recommended }: {
     <h4>CPU·GPU 모델 비교 <small>공개 벤치마크 기준 상대 성능</small></h4>
     <p>공식 최소·권장 예시 중 성능이 낮은 모델을 기준으로 내 부품이 몇 배인지 보여 줍니다.
       CPU는 Blender 렌더링 점수(멀티코어 처리 성능), GPU는 출처별 게임 실측 또는 합성 시험 값입니다.
-      현재 부품과 모든 공식 예시의 시험 지표·시험판이 같을 때만 배율을 표시합니다. 공식 충족 판정이나 예상 FPS가 아닙니다.</p>
+      시험 표가 다르면 공통 눈금(GTX 1060 6GB = 100)으로 환산해 비교하며 오차가 더 큽니다. 예상 FPS가 아닙니다.</p>
     <p className="planner-source">근거:{' '}
       <a href={CPU_BLENDER_DATASET.sourceUrl} target="_blank" rel="noopener noreferrer">{CPU_BLENDER_DATASET.publisher}</a>
       {GPU_SCORE_SOURCES.map((source) => <span key={source.url}>{' · '}
@@ -72,12 +74,45 @@ function InternalScoreRows({ parts, minimum, recommended }: {
   </div>
 }
 
-export function GameRequirementsDiagnosis({ games, parts }: { games: string[]; parts: PartInput[] }) {
+const RESOLUTION_TEXT: Record<FrameResolution, string> = { FHD: 'FHD(1080p)', QHD: 'QHD(1440p)', '4K': '4K(2160p)' }
+const TARGET_TEXT = { MEETS: '목표 충족 예상', BORDERLINE: '목표 경계', BELOW: '목표 미달 예상' } as const
+
+function FrameEstimates({ parts, game, resolution, targetFps }: {
+  parts: PartInput[]; game: string; resolution: FrameResolution; targetFps: number
+}) {
+  const estimates = estimateGameFrames(parts, game, resolution, targetFps)
+  const sourceIds = [...new Set(GAME_FRAME_PROFILES[game].presets.flatMap((preset) => preset.points.map((point) => point.sourceId)))]
+  return <div className="planner-internal-score planner-frame-estimate">
+    <h4>예상 프레임 <small>{RESOLUTION_TEXT[resolution]} · 목표 {targetFps}fps · 추정</small></h4>
+    <p>{GAME_FRAME_PROFILES[game].note} GPU가 병목인 상황을 기준으로 하며 CPU·드라이버·게임 패치·장면에 따라 달라질 수 있습니다.</p>
+    <div className="planner-internal-tier-grid">
+      {estimates.map((estimate) => {
+        const verdict = estimate.target === 'MEETS' ? 'pass' : estimate.target === 'BELOW' ? 'fail' : 'unknown'
+        return <div className="planner-internal-tier" key={estimate.preset.label}>
+          <strong>화질 {estimate.preset.label}</strong>
+          <span className="planner-frame-value">{frameText(estimate)}</span>
+          {estimate.target && <span className={`planner-verdict planner-verdict--${verdict}`}>{TARGET_TEXT[estimate.target]}</span>}
+          {estimate.requiredGpuMultiplier !== null && !estimate.cpuLimited &&
+            <span>목표에 필요한 GPU 성능: 현재의 약 {estimate.requiredGpuMultiplier.toFixed(1)}배</span>}
+          <small>{estimate.reason}</small>
+          {estimate.cpuNote && <small className="planner-warning">{estimate.cpuNote}</small>}
+        </div>
+      })}
+    </div>
+    <p className="planner-source">근거: {sourceIds.map((id, index) => <span key={id}>{index > 0 && ' · '}
+      <a href={FRAME_SOURCES[id].url} target="_blank" rel="noopener noreferrer">{FRAME_SOURCES[id].name}</a>
+      {' '}({SOURCE_KIND_LABEL[FRAME_SOURCES[id].kind]})</span>)}</p>
+  </div>
+}
+
+export function GameRequirementsDiagnosis({ games, parts, resolution, targetFps }: {
+  games: string[]; parts: PartInput[]; resolution: FrameResolution; targetFps: number
+}) {
   return <section className="planner-card" aria-labelledby="planner-game-diagnosis">
     <h2 id="planner-game-diagnosis">게임별 공식 요구 사양 비교</h2>
-    <p className="planner-caveat">RAM·VRAM 용량은 수치로 비교합니다. CPU는 공식 예시 모델명을, GPU는 예시 모델과 필수 VRAM을 같은 장치에서 확인합니다.
-      다른 모델은 공식 판정을 보류하고 아래에서 별도로 벤치마크 배율을 비교합니다. 이 결과는 목표 FPS나 전체 실행 가능 여부를
-      보증하지 않습니다.</p>
+    <p className="planner-caveat">RAM·VRAM 용량은 수치로 비교합니다. CPU·GPU는 공식 예시와 같은 모델이면 그대로 확인하고,
+      다른 모델이면 공개 벤치마크 배율로 충족·부족을 추정합니다(다른 시험 표를 환산한 경우 함께 표시). 이 결과는 실제 프레임이나
+      전체 실행 가능 여부를 보증하지 않습니다.</p>
     <div className="planner-game-list">
       {games.map((name) => {
         const game = Object.hasOwn(GAME_REQUIREMENTS, name) ? GAME_REQUIREMENTS[name] : undefined
@@ -93,6 +128,8 @@ export function GameRequirementsDiagnosis({ games, parts }: { games: string[]; p
             <TierCard title="최소 사양" requirement={game.minimum} diagnosis={result.minimum} />
             <TierCard title="권장 사양" requirement={game.recommended} diagnosis={result.recommended} />
           </div>
+          {supportsFrameEstimate(name) &&
+            <FrameEstimates parts={parts} game={name} resolution={resolution} targetFps={targetFps} />}
           <InternalScoreRows parts={parts} minimum={game.minimum} recommended={game.recommended} />
           {game.note && <p className="planner-caveat">{game.note}</p>}
         </article>
