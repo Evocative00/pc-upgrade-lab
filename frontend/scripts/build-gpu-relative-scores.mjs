@@ -1,7 +1,9 @@
 // 팀이 검토한 GPU 상대 성능 자료(JSON)에서 src/features/planner/gpuRelativeScores.ts를 만든다.
 //
 // 사용법 (frontend 폴더, Node 24):
-//   node scripts/build-gpu-relative-scores.mjs ../data/benchmark/gpu-relative-performance-YYYY-MM-DD.json
+//   node scripts/build-gpu-relative-scores.mjs ../data/benchmark/gpu-relative-performance-YYYY-MM-DD.json \
+//     ../data/benchmark/gpu-resolution-scaling-YYYY-MM-DD.json
+// 두 번째 파일(선택)은 GPU별 1080p 대비 1440p·4K 프레임 비율이다. 예상 프레임의 해상도 환산에 쓴다.
 //
 // 입력 JSON은 칩셋별 'GTX 1060 6GB = 100' 상대값과 출처를 담는다. 자료의 원문 표는 저장하지 않는다.
 import { readFileSync, writeFileSync } from 'node:fs'
@@ -11,7 +13,7 @@ import { isSpecificHardwareModel, normalizeHardwareModel } from '../src/features
 // 게임 공식 사양의 표기가 실제 제품명과 다른 경우. 왼쪽 표기로도 오른쪽 칩셋 값을 찾는다.
 const ALIASES = { 'GeForce 560': 'GeForce GTX 560' }
 
-const [inputPath] = process.argv.slice(2)
+const [inputPath, scalingPath] = process.argv.slice(2)
 if (!inputPath) {
   console.error('사용법: node scripts/build-gpu-relative-scores.mjs <gpu-relative-performance.json>')
   process.exit(1)
@@ -68,6 +70,20 @@ for (const [alias, target] of Object.entries(ALIASES)) {
 }
 rows.sort((a, b) => a.relative - b.relative || a.name.localeCompare(b.name))
 
+// 해상도 비율: Tom's Hardware 같은 표·같은 행의 1440p·4K ÷ 1080p 프레임. 일반 이름·별칭은 같은 칩셋 변형 중 낮은 비율을 쓴다.
+const scaling = scalingPath ? JSON.parse(readFileSync(scalingPath, 'utf8')) : { chipsets: [] }
+const baseKey = (name) => normalizeHardwareModel(name.replace(/\s*\((?:G?DDR\d\w*)\)$/i, '').replace(/\s+\d{1,2}\s*GB$/i, ''))
+function ratioFor(row, field) {
+  const exact = scaling.chipsets.filter((item) => normalizeHardwareModel(item.name) === normalizeHardwareModel(row.name))
+  const aliasTarget = ALIASES[row.name]
+  const candidates = exact.length ? exact : scaling.chipsets.filter((item) =>
+    baseKey(item.name) === baseKey(aliasTarget ?? row.name))
+  const values = candidates.map((item) => item[field]).filter((value) => Number.isFinite(value) && value > 0 && value <= 1)
+  return values.length ? Math.min(...values) : null
+}
+const resolutionRows = rows.map((row) => ({ name: row.name, qhd: ratioFor(row, 'r1440'), uhd: ratioFor(row, 'r2160') }))
+  .filter((row) => row.qhd !== null || row.uhd !== null)
+
 const keys = rows.map((row) => normalizeHardwareModel(row.name))
 if (new Set(keys).size !== keys.length) throw new Error('정규화 후 이름이 겹치는 GPU가 있습니다.')
 
@@ -100,7 +116,13 @@ ${rows.map((row) => `    ${JSON.stringify(row.name)}: ${row.relative},`).join('\
   },
   scoreGroups: Object.fromEntries(Object.entries(GPU_SCORE_BASIS).map(([name, basis]) => [name, basis.comparisonGroup])),
 }
+
+// 1080p 대비 1440p(qhd)·4K(uhd) 프레임 비율. 예상 프레임의 해상도 환산에 쓴다.
+// 값이 없으면 그 해상도 측정 자료가 없다는 뜻이다(구형·보급형은 4K를 측정하지 않음).
+export const GPU_RESOLUTION_SCALE: Record<string, { qhd: number | null; uhd: number | null }> = {
+${resolutionRows.map((row) => `  ${JSON.stringify(row.name)}: { qhd: ${row.qhd}, uhd: ${row.uhd} },`).join('\n')}
+}
 `
 const target = fileURLToPath(new URL('../src/features/planner/gpuRelativeScores.ts', import.meta.url))
 writeFileSync(target, output)
-console.log(`GPU ${rows.length}종 저장 (출처 ${usedSources.length}개): ${target}`)
+console.log(`GPU ${rows.length}종 저장 (출처 ${usedSources.length}개, 해상도 비율 ${resolutionRows.length}종): ${target}`)
