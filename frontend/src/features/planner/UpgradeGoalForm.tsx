@@ -157,6 +157,8 @@ export function UpgradeGoalForm({ pcName, parts, goal, onChange, onBack, onNext 
                 onClick={() => onChange({ ...goal, workload: item.value })}>
                 <strong>{item.label}</strong><span>{item.help}</span></button>)}
             </div>
+            {goal.purpose === 'CREATION' && <p className="planner-caveat">영상 편집은 작업 규모를 편집 해상도로 계산합니다:
+              가벼움 = 1080p, 보통 = 4K, 무거움 = 6K~8K.</p>}
           </div>}
         </section>
         <div className="planner-actions"><button type="button" className="planner-primary" disabled={!goalIsReady(goal)}
