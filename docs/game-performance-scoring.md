@@ -59,8 +59,14 @@ GPU는 모든 자료를 GTX 1060 6GB = 100 공통 눈금으로 두고, 시험 �
   - 코드 컴파일: OpenBenchmarking 리눅스 커널 빌드 시간 기준점 4개 중 CPU 점수가 가까운 것을 점수 비율로 환산, 오차 ±30%.
   - Android Studio: (RAM − 8GB) ÷ 에뮬레이터 1개당 4GB(공식 안내).
   - Docker: 기본 할당 RAM 50%에 컨테이너 0.5GB, VM 4GB(Windows용 8GB 제외)를 가정. 가정값을 화면에 표시한다.
-  - Premiere·Resolve: 팀이 정한 '4K 편집 원활' 기준 부품 대비 CPU·GPU 배율과 Intel Quick Sync 유무. 공개된 내보내기 시간
-    자료가 없어 시간 추정은 하지 않는다. PugetBench 점수는 상업 이용에 라이선스가 필요해 옮기지 않았다.
+  - Premiere Pro(`premiereEstimate.ts`): 편집 해상도(1080p·4K·8K)를 직접 고른다.
+    - 내보내기 시간(10분 영상 → H.264, 하드웨어 인코딩): Techgage 2020 실측(Premiere 14.2, i9-10980XE + RTX 2060 SUPER,
+      4K 60초 → 22초, 8K 22초 → 31초)을 CPU·GPU 점수 비율로 환산. 4K는 GPU 영향이 크고(지수 0.5), 8K는 CPU 위주(지수 0.9).
+      1080p는 실측이 없어 4K의 35%로 가정. Intel Quick Sync가 있으면 20% 단축. 오차 ±40%. 최신 버전은 더 빠를 수 있다.
+    - 타임라인 재생(원활·가끔 끊김·프록시 권장): 해상도별 CPU 점수·GPU 상대값·VRAM(Puget 최소값) 기준. 단계 기준은 팀 설정이다.
+    - 해상도별 RAM·VRAM 확인: 1080p 16GB·4GB, 4K 32GB·8GB, 8K 64GB·16GB.
+  - Premiere·Resolve 공통: 팀이 정한 '4K 편집 원활' 기준 부품 대비 CPU·GPU 배율과 Intel Quick Sync 유무.
+    PugetBench 점수는 상업 이용에 라이선스가 필요해 옮기지 않았다.
 
 ## 자료와 재생성
 

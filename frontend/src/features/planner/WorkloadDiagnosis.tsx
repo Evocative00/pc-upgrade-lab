@@ -1,5 +1,5 @@
 import type { PartInput } from '../pc-scan/types.ts'
-import type { Workload } from './plannerGoal.ts'
+import type { VideoResolution, Workload } from './plannerGoal.ts'
 import { WORKLOAD_SOURCES, type WorkloadSourceKind } from './workloadData.ts'
 import { diagnoseProgram, type Verdict } from './workloadEstimate.ts'
 
@@ -10,15 +10,15 @@ const SOURCE_KIND: Record<WorkloadSourceKind, string> = {
   OFFICIAL: '제작사 공식', SECONDARY: '공식 안내 재인용', REVIEW: '전문 업체 가이드', BENCHMARK_DB: '공개 벤치마크',
 }
 
-export function WorkloadDiagnosis({ programs, parts, workload }: {
-  programs: string[]; parts: PartInput[]; workload: Workload
+export function WorkloadDiagnosis({ programs, parts, workload, videoResolution }: {
+  programs: string[]; parts: PartInput[]; workload: Workload; videoResolution: VideoResolution
 }) {
   return <section className="planner-card" aria-labelledby="planner-workload-diagnosis">
     <h2 id="planner-workload-diagnosis">작업별 요구 사양과 예상 성능</h2>
     <p className="planner-caveat">공식 사양과 작업 규모({WORKLOAD_TEXT[workload]}) 기준으로 확인합니다. 예상 성능은 공개 벤치마크로 계산한 추정치입니다.</p>
     <div className="planner-game-list">
       {programs.map((program) => {
-        const result = diagnoseProgram(program, parts, workload)
+        const result = diagnoseProgram(program, parts, workload, videoResolution)
         if (!result) return <article className="planner-game" key={program}>
           <h3>{program}</h3><p>이 프로그램의 요구 사양 자료가 아직 없어 판단하지 않습니다.</p>
         </article>

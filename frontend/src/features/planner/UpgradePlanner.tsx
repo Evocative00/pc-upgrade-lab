@@ -78,7 +78,7 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
       <div className="planner-main">
         {goal.purpose === 'GAME' ? <GameRequirementsDiagnosis games={goal.games} parts={parts} resolution={goal.resolution} targetFps={goal.targetFps} /> :
           goal.purpose === 'CREATION' || goal.purpose === 'DEVELOPMENT'
-            ? <WorkloadDiagnosis programs={goal.programs} parts={parts} workload={goal.workload} /> :
+            ? <WorkloadDiagnosis programs={goal.programs} parts={parts} workload={goal.workload} videoResolution={goal.videoResolution} /> :
           <section className="planner-card planner-highlight">
           <span className="badge badge--empty">분석 준비 중</span>
           <h2>어떤 부품을 바꾸면 좋을까요?</h2>

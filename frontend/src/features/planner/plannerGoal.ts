@@ -4,6 +4,8 @@ import { isRecord } from '../../lib/pageState.ts'
 export type Purpose = 'GAME' | 'CREATION' | 'DEVELOPMENT' | 'OFFICE'
 export type Workload = 'LIGHT' | 'MEDIUM' | 'HEAVY'
 export type Resolution = 'FHD' | 'QHD' | '4K'
+// 영상 편집 해상도(Premiere Pro 예상 성능에 쓴다).
+export type VideoResolution = 'FHD' | '4K' | '8K'
 export type TargetFps = 30 | 60 | 120 | 144 | 240
 export const TARGET_FPS_OPTIONS: TargetFps[] = [30, 60, 120, 144, 240]
 
@@ -13,6 +15,7 @@ export type UpgradeGoal = {
   games: string[]
   resolution: Resolution
   targetFps: TargetFps
+  videoResolution: VideoResolution
   programs: string[]
   workload: Workload
 }
@@ -38,6 +41,7 @@ export const defaultGoal = (): UpgradeGoal => ({
   games: [],
   resolution: 'FHD',
   targetFps: 60,
+  videoResolution: '4K',
   programs: [],
   workload: 'MEDIUM',
 })
@@ -81,6 +85,8 @@ export function goalSummary(goal: UpgradeGoal): string {
     const frame = frameEstimateGames(goal.games).length > 0 ? ` · ${goal.resolution} · ${goal.targetFps}fps 목표` : ''
     return `${purpose} · ${goal.games.join(', ') || '게임 미선택'}${frame}`
   }
+  const premiere = goal.purpose === 'CREATION' && goal.programs.includes('Premiere Pro')
+    ? ` · Premiere ${goal.videoResolution === 'FHD' ? '1080p' : goal.videoResolution}` : ''
   return `${purpose} · ${goal.programs.join(', ') || '프로그램 미선택'} · ${
-    { LIGHT: '가벼운 작업', MEDIUM: '보통 작업', HEAVY: '무거운 작업' }[goal.workload]}`
+    { LIGHT: '가벼운 작업', MEDIUM: '보통 작업', HEAVY: '무거운 작업' }[goal.workload]}${premiere}`
 }

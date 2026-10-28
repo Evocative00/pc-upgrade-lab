@@ -4,9 +4,10 @@ import { usePageState } from '../../lib/usePageState.ts'
 import type { PartInput } from '../pc-scan/types.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { estimateGameFrames, frameText } from './frameEstimate.ts'
+import { diagnoseProgram } from './workloadEstimate.ts'
 import {
   changePurpose, frameEstimateGames, GAME_SUGGESTIONS, goalIsReady, goalSummary, PROGRAMS, PURPOSES,
-  TARGET_FPS_OPTIONS, toggleChoice, type Purpose, type Resolution, type UpgradeGoal, type Workload,
+  TARGET_FPS_OPTIONS, toggleChoice, type Purpose, type Resolution, type UpgradeGoal, type VideoResolution, type Workload,
 } from './plannerGoal.ts'
 import './planner.css'
 
@@ -160,8 +161,21 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
                 onClick={() => onChange({ ...goal, workload: item.value })}>
                 <strong>{item.label}</strong><span>{item.help}</span></button>)}
             </div>
-            {goal.purpose === 'CREATION' && <p className="planner-caveat">영상 편집은 작업 규모를 편집 해상도로 계산합니다:
-              가벼움 = 1080p, 보통 = 4K, 무거움 = 6K~8K.</p>}
+            {goal.purpose === 'CREATION' && goal.programs.includes('Premiere Pro') && <>
+              <h3>Premiere Pro 편집 해상도</h3>
+              <Choice label="Premiere Pro 편집 해상도"
+                options={([['FHD', '1080p'], ['4K', '4K'], ['8K', '8K']] as [VideoResolution, string][])
+                  .map(([value, label]) => ({ value, label }))}
+                value={goal.videoResolution} onChange={(videoResolution) => onChange({ ...goal, videoResolution })} />
+              <div className="planner-frame-preview" role="status" aria-live="polite">
+                <strong>Premiere Pro · 내 PC 예상</strong>
+                {diagnoseProgram('Premiere Pro', parts, goal.workload, goal.videoResolution)?.estimates.slice(0, 2)
+                  .map((estimate) => <span key={estimate.title}>{estimate.title}: <b>{estimate.value}</b></span>)}
+              </div>
+            </>}
+            {goal.purpose === 'CREATION' && goal.programs.some((program) => program !== 'Premiere Pro') &&
+              <p className="planner-caveat">DaVinci Resolve·Blender는 작업 규모를 편집 해상도로 계산합니다:
+                가벼움 = 1080p, 보통 = 4K, 무거움 = 6K~8K.</p>}
           </div>}
         </section>
         <div className="planner-actions"><button type="button" className="planner-primary" disabled={!goalIsReady(goal)}
