@@ -20,7 +20,7 @@ async function checkedJson<T>(response: Response): Promise<T> {
 /**
  * 자동 인식의 통신과 상태를 담당하는 커스텀 훅(여러 컴포넌트에서 사용할 수 있는 React 상태 로직).
  * prepare: 검사 생성, reset: 화면에서 대기 취소, result: 수집 결과를 제공한다.
- * Windows 프로그램 실행은 패널의 링크 클릭으로, 입력 폼 반영과 PC 저장은 연결한 화면에서 처리한다.
+ * Windows 프로그램은 prepare 직후 자동으로 열고, 입력 폼 반영과 PC 저장은 연결한 화면에서 처리한다.
  */
 export function usePcScan() {
   const [session, setSession] = useState<ScanSession | null>(null)
@@ -37,7 +37,8 @@ export function usePcScan() {
     prepareController.current?.abort()
   }, [])
 
-  // 이전 화면 상태를 비운 뒤 새 세션을 만든다. 프로그램 실행 자체는 사용자의 명시적인 링크 클릭을 기다린다.
+  // 이전 화면 상태를 비운 뒤 새 세션을 만들고, 바로 설치된 보조 프로그램을 연다.
+  // 버튼 클릭 직후(사용자 동작 유효 시간 안)에 열어야 브라우저가 프로그램 열기 확인 창을 띄운다.
   async function prepare() {
     const generation = ++requestGeneration.current
     prepareController.current?.abort()
@@ -61,6 +62,7 @@ export function usePcScan() {
       }
       setSession(created)
       setStatus('CREATED')
+      window.location.href = created.launchUri
     } catch (cause) {
       if (generation !== requestGeneration.current) return
       setStatus('CONNECTION_ERROR')

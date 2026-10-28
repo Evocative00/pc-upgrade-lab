@@ -62,32 +62,29 @@ export function PcNewPage() {
     return saved !== null && saved.pcId === null ? saved.request : null
   })
   const [formKey, setFormKey] = useState(0)
+  const reset = () => {
+    clearDraftFor(null)
+    setDraft(null)
+    setFormKey((key) => key + 1)
+  }
 
   return (
     <>
-      <div className="page-head">
-        <div>
-          <a href={paths.list()} className="back-link">
-            ← 목록
-          </a>
-          <h1>새 PC 등록</h1>
-        </div>
-      </div>
-      <p className="muted">로그인 없이 PC 구성을 작성할 수 있습니다. 계정에 저장할 때 로그인이 필요합니다.</p>
-      {draft !== null && (
-        <RestoredDraftNotice
-          onReset={() => {
-            clearDraftFor(null)
-            setDraft(null)
-            setFormKey((key) => key + 1)
-          }}
-        />
-      )}
+      {draft !== null && <RestoredDraftNotice onReset={reset} />}
       <PcForm
         key={formKey}
         initial={draft ?? { name: '', parts: [] }}
-        submitLabel="계정에 저장"
+        submitLabel="구성 저장 →"
         visual
+        head={<>
+          <p className="eyebrow">&gt; CONFIGURE YOUR BUILD</p>
+          <h1>부품을 하나씩, 정확하게.</h1>
+          <p className="muted">모델명을 직접 입력하거나 카탈로그에서 검색하세요. 카탈로그에서 고른 부품은 호환성까지 함께 검사합니다.
+            로그인 없이 작성하고, 계정에 저장할 때만 로그인합니다.</p>
+        </>}
+        onReset={() => {
+          if (window.confirm('작성 중인 구성을 초기화할까요? 계정에 저장된 PC는 삭제되지 않습니다.')) reset()
+        }}
         onCancel={() => navigate(paths.list())}
         onSubmit={(request) => saveOrAskLogin(request, null, async () => {
           const pc = await pcRepository.create(request)

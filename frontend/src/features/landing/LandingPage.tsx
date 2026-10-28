@@ -36,6 +36,50 @@ function Icon({ children, size = 20 }: { children: ReactNode; size?: number }) {
   )
 }
 
+// 왼쪽 탭 바. 랜딩과 PC 구성 화면이 같이 쓴다. current는 현재 화면의 탭이다.
+export function LandingTabs({ current }: { current: 'home' | 'new' | 'list' | 'upgrade' }) {
+  const page = (tab: typeof current) => (tab === current ? 'page' : undefined)
+  const dot = (tab: typeof current) => tab === current && <span className="landing__nav-dot" aria-hidden="true" />
+  return (
+    <aside className="landing__tabs">
+      <a href={paths.home()} className="landing__brand">
+        <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="5" y="2.5" width="14" height="19" rx="2" /><circle cx="12" cy="10" r="3.5" /><path d="M9 17.5h6" />
+        </svg>
+        <span className="landing__brand-text">
+          <span className="landing__brand-name">PC 업그레이드 실험실</span>
+          <span className="landing__brand-sub">UPGRADE LAB</span>
+        </span>
+      </a>
+      <nav className="landing__nav" aria-label="주요 메뉴">
+        <a href={paths.home()} aria-current={page('home')}>
+          <Icon><path d="M3 11l9-7 9 7" /><path d="M5 10v10h14V10" /></Icon>
+          <span>홈</span>
+          {dot('home')}
+        </a>
+        <a href={paths.new()} aria-current={page('new')}>
+          <Icon><rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" /><rect x="3" y="13" width="8" height="8" rx="1.5" /><path d="M17 13v8M13 17h8" /></Icon>
+          <span>PC 구성하기</span>
+          {dot('new')}
+        </a>
+        <a href={paths.list()} aria-current={page('list')}>
+          <Icon><rect x="6" y="2.5" width="12" height="19" rx="2" /><circle cx="12" cy="9" r="3" /><path d="M9.5 17h5" /></Icon>
+          <span>내 PC</span>
+          {dot('list')}
+        </a>
+        <a href={paths.upgrade()} aria-current={page('upgrade')}>
+          <Icon><path d="M3 17l6-6 4 4 8-8" /><path d="M15 7h6v6" /></Icon>
+          <span>업그레이드 플랜</span>
+          {dot('upgrade')}
+        </a>
+      </nav>
+      <div className="landing__account">
+        <LandingAccount />
+      </div>
+    </aside>
+  )
+}
+
 export function LandingPage() {
   const scrollRoot = useRef<HTMLDivElement>(null)
   const heroArt = useRef<HTMLDivElement>(null)
@@ -73,39 +117,7 @@ export function LandingPage() {
 
   return (
     <div className="landing" data-theme={theme} ref={scrollRoot}>
-      <aside className="landing__tabs">
-        <a href={paths.home()} className="landing__brand">
-          <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="5" y="2.5" width="14" height="19" rx="2" /><circle cx="12" cy="10" r="3.5" /><path d="M9 17.5h6" />
-          </svg>
-          <span className="landing__brand-text">
-            <span className="landing__brand-name">PC 업그레이드 실험실</span>
-            <span className="landing__brand-sub">UPGRADE LAB</span>
-          </span>
-        </a>
-        <nav className="landing__nav" aria-label="주요 메뉴">
-          <a href={paths.home()} aria-current="page">
-            <Icon><path d="M3 11l9-7 9 7" /><path d="M5 10v10h14V10" /></Icon>
-            <span>홈</span>
-            <span className="landing__nav-dot" aria-hidden="true" />
-          </a>
-          <a href={paths.new()}>
-            <Icon><rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" /><rect x="3" y="13" width="8" height="8" rx="1.5" /><path d="M17 13v8M13 17h8" /></Icon>
-            <span>PC 구성하기</span>
-          </a>
-          <a href={paths.list()}>
-            <Icon><rect x="6" y="2.5" width="12" height="19" rx="2" /><circle cx="12" cy="9" r="3" /><path d="M9.5 17h5" /></Icon>
-            <span>내 PC</span>
-          </a>
-          <a href={paths.upgrade()}>
-            <Icon><path d="M3 17l6-6 4 4 8-8" /><path d="M15 7h6v6" /></Icon>
-            <span>업그레이드 플랜</span>
-          </a>
-        </nav>
-        <div className="landing__account">
-          <LandingAccount />
-        </div>
-      </aside>
+      <LandingTabs current="home" />
 
       <main className="landing__main">
         <section className="landing-hero" onMouseMove={moveArt} onMouseLeave={resetArt}>
