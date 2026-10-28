@@ -44,12 +44,31 @@ GPU는 모든 자료를 GTX 1060 6GB = 100 공통 눈금으로 두고, 시험 �
 - CPU: 롤·발로란트·배틀그라운드·오버워치 2는 최상위 GPU의 1080p 측정값을 내 CPU의 Blender 점수 비율로 낮춘 상한을
   모든 해상도에 적용한다. Blender 멀티코어 점수라 게임 단일 코어 성능과 차이가 있다.
 
+## 영상 편집·개발 프로그램
+
+`workloadData.ts`·`workloadEstimate.ts`·`WorkloadDiagnosis.tsx`. 플랜에서 용도를 '영상·그래픽 작업' 또는 '개발'로 고르면 표시한다.
+
+- 요구 사양: 제작사 공식 최소·권장 RAM·VRAM·코어. Premiere Pro는 Adobe 공식(26.x), DaVinci Resolve는 공식 안내문을 옮긴 2차 자료,
+  Blender·VS Code·Android Studio·Unity·Docker Desktop은 각 공식 문서. 영상은 작업 규모를 편집 해상도(1080p·4K·6K~8K)로 보고
+  RAM은 공식 안내, VRAM은 Puget Systems 해상도별 최소값으로 판정한다.
+- RAM은 모듈 용량 × 수량 합계, VRAM은 제원이 없으면 판매명의 용량 표기('16G')에서 읽고 '이름에서 추정'으로 표시한다.
+- 예상 성능(모두 추정):
+  - Blender: Blender Open Data GPU 렌더링 점수표(`gpuBlenderScores.ts`, 데스크톱 179종, CPU 점수와 같은 단위)로
+    GPU·CPU 렌더 시간을 계산한다. BMW27 장면 기준점은 OpenBenchmarking의 Ryzen 7 9700X CPU 86초, 오차 ±25%.
+    이 GPU 점수는 Blender 렌더링 전용이며 게임 비교에는 쓰지 않는다.
+  - 코드 컴파일: OpenBenchmarking 리눅스 커널 빌드 시간 기준점 4개 중 CPU 점수가 가까운 것을 점수 비율로 환산, 오차 ±30%.
+  - Android Studio: (RAM − 8GB) ÷ 에뮬레이터 1개당 4GB(공식 안내).
+  - Docker: 기본 할당 RAM 50%에 컨테이너 0.5GB, VM 4GB(Windows용 8GB 제외)를 가정. 가정값을 화면에 표시한다.
+  - Premiere·Resolve: 팀이 정한 '4K 편집 원활' 기준 부품 대비 CPU·GPU 배율과 Intel Quick Sync 유무. 공개된 내보내기 시간
+    자료가 없어 시간 추정은 하지 않는다. PugetBench 점수는 상업 이용에 라이선스가 필요해 옮기지 않았다.
+
 ## 자료와 재생성
 
 - CPU: `frontend/src/features/planner/cpuBlenderScores.ts`, 생성기 `frontend/scripts/build-cpu-blender-scores.mjs`.
   [Blender Open Data 다운로드](https://opendata.blender.org/download/)는 원본 데이터를 CC0로 제공한다.
   생성기는 단일 소켓의 monster·junkshop·classroom 측정값을 모아 CPU별 중앙값을 계산하고 버전 보정 계수를 적용한다.
   CPU의 버전 환산값은 렌더링 비교 참고이며, 이번 PR 검토에서 원본 전체를 새로 내려받아 재생성하지는 않았다.
+- Blender GPU: `data/benchmark/blender-gpu-2026-10-28/`(검색 API 응답), 생성기 `frontend/scripts/build-gpu-blender-scores.mjs`.
 - GPU: `data/benchmark/gpu-relative-performance-2026-10-11.json`, 생성기 `frontend/scripts/build-gpu-relative-scores.mjs`.
   모델별 출처와 변형 정보를 생성 결과에 보존하며, 시험 그룹이 다른 모델은 비교하지 않는다.
   측정값의 재사용 범위·출처·갱신일과 추가 변형의 자료는 새로운 배포·추가 수집 전에 확인한다.
