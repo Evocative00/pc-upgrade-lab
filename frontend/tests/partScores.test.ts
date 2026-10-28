@@ -112,8 +112,7 @@ test('카탈로그 판매 제품명도 이름 안의 가장 구체적인 칩셋�
 
 test('미수록 모바일·OEM 접미사와 메모리 변형은 기본 GPU 점수를 빌리지 않는다', () => {
   for (const model of ['GeForce GTX 980M', 'Radeon RX 6800M', 'GeForce RTX 5090D',
-    'GeForce RTX 5090 D', 'GeForce GTX 1060 3GB', 'GeForce GTX 1650 (GDDR5)',
-    'GeForce GTX 1660 Ti VENTUS XS 6G OC']) {
+    'GeForce RTX 5090 D', 'GeForce GTX 1060 3GB', 'GeForce GTX 1650 (GDDR5)']) {
     const result = comparePartScore('GPU', [part('GPU', model)], ['GeForce GTX 1060 6GB'])
     assert.equal(result.status, 'UNKNOWN', model)
     assert.equal(result.actualScore, null, model)
@@ -121,6 +120,9 @@ test('미수록 모바일·OEM 접미사와 메모리 변형은 기본 GPU 점�
   }
   assert.equal(comparePartScore('GPU', [part('GPU', 'GeForce GTX 1650 (GDDR6)')],
     ['GeForce GTX 1060 6GB']).actualScore, 90)
+  // 메모리 변형이 하나뿐인 칩셋(GTX 1660 Ti = 6GB)은 판매명의 VRAM 표기를 떼고 칩셋 점수로 찾는다.
+  assert.equal(comparePartScore('GPU', [part('GPU', 'GeForce GTX 1660 Ti VENTUS XS 6G OC')],
+    ['GeForce GTX 1060 6GB']).status, 'ABOVE_BASELINE')
 })
 
 test('다른 게임 시험판·합성 시험의 점수도 환산 비교로 결과를 낸다', () => {
@@ -137,5 +139,17 @@ test('수량 오류가 있는 부품은 정상 부품만 골라 점수를 확정
     const result = comparePartScore('CPU', [part('CPU', 'Ryzen 7 7800X3D'), invalid], ['Core i7-6700'])
     assert.equal(result.status, 'UNKNOWN', String(quantity))
     assert.equal(result.actualScore, null)
+  }
+})
+
+test('목록에 없는 판매명 표기(Challenger, SFF, 2X, BLACK)도 칩셋 이름으로 찾는다', () => {
+  for (const [name, chipset] of [
+    ['Intel Arc B580 Challenger 12GB OC', 'Intel Arc B580'],
+    ['GeForce RTX 5070 Ti WINDFORCE OC SFF 16G', 'GeForce RTX 5070 Ti'],
+    ['GeForce RTX 4060 VENTUS 2X BLACK 8G OC', 'GeForce RTX 4060'],
+    ['PULSE Radeon RX 6600 8GB', 'Radeon RX 6600'],
+  ]) {
+    const result = comparePartScore('GPU', [part('GPU', name)], ['GeForce GTX 1060 6GB'])
+    assert.equal(result.actualScore, GPU_RELATIVE_DATASET.scores[chipset], name)
   }
 })

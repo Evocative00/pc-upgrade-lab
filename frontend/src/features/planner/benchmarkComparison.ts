@@ -2,7 +2,7 @@
  * 같은 시험·같은 판의 점수끼리만 비교한다. 점수 데이터는 외부에서 주입하며,
  * 이 파일은 점수를 수집하거나 특정 게임의 FPS를 추정하지 않는다.
  */
-export type BenchmarkMetric = 'CPU_SINGLE_THREAD' | 'CPU_MULTI_THREAD' | 'GPU_3D'
+export type BenchmarkMetric = 'CPU_SINGLE_THREAD' | 'CPU_MULTI_THREAD' | 'GPU_3D' | 'GPU_RENDER'
 export type ComponentKind = 'CPU' | 'GPU'
 
 export type BenchmarkDataset = {
@@ -80,7 +80,12 @@ function scoreFor(model: string, dataset: BenchmarkDataset): ScoreEntry | null {
     const nameKey = normalizeHardwareModel(name)
     return nameKey.startsWith(key) && /^(?:\d{1,2}gb|gddr\d\w*|ddr\d\w*)+$/.test(nameKey.slice(key.length))
   }).map((name) => entryFor(name, dataset)).filter((entry): entry is ScoreEntry => entry !== null)
-  return variants.length ? variants.reduce((low, entry) => entry.score < low.score ? entry : low) : null
+  if (variants.length) return variants.reduce((low, entry) => entry.score < low.score ? entry : low)
+  // 반대로 내 부품 이름에만 VRAM이 붙어 있고(RX 7900 GRE 16GB) 자료에는 칩셋 이름만 있으면 칩셋 이름으로 찾는다.
+  const bareKey = key.replace(/(?:\d{1,2}gb|gddr\d\w*|ddr\d\w*)+$/, '')
+  if (bareKey === key || !bareKey) return null
+  const bare = Object.keys(dataset.scores).filter((name) => normalizeHardwareModel(name) === bareKey)
+  return bare.length === 1 ? entryFor(bare[0], dataset) : null
 }
 
 // 내 부품은 카탈로그 판매 제품명(예: 'GeForce GTX 1660 SUPER VENTUS XS OC')일 수 있다.
@@ -95,13 +100,51 @@ function scoreForPart(model: string, dataset: BenchmarkDataset): ScoreEntry | nu
   if (exact !== null || dataset.kind === 'CPU' || /laptop|mobile|max[\s-]?q/i.test(model)) return exact
   const words = modelWords(model)
   const chipsets = [...words.matchAll(/\b(?:gtx|rtx|gt|rx|r[579]|hd|uhd|arc)\s*\d+[a-z0-9]*(?:\s+(?:ti|super|xt|xtx|gre))*\b/g)]
-  if (chipsets.length !== 1) return null
-  const chipset = chipsets[0]
-  const memory = words.match(/\b(?:\d{1,2}gb|gddr\d\w*|ddr\d\w*)\b/g) ?? []
-  const tail = words.slice(Number(chipset.index) + chipset[0].length)
-    .replace(/\b(?:\d{1,2}gb|gddr\d\w*|ddr\d\w*)\b/g, '').trim()
-  if (tail && tail.split(/\s+/).some((word) => !marketingWords.has(word))) return null
-  return scoreFor([chipset[0], ...memory].join(' '), dataset)
+  if (chipsets.length === 1) {
+    const chipset = chipsets[0]
+    const memory = words.match(/\b(?:\d{1,2}gb|gddr\d\w*|ddr\d\w*)\b/g) ?? []
+    const tail = words.slice(Number(chipset.index) + chipset[0].length)
+      .replace(/\b(?:\d{1,2}gb|gddr\d\w*|ddr\d\w*)\b/g, '').trim()
+    if (!tail || tail.split(/\s+/).every((word) => marketingWords.has(word))) {
+      const found = scoreFor([chipset[0], ...memory].join(' '), dataset)
+      if (found) return found
+    }
+  }
+  return longestContainedChipset(words, dataset)
+}
+
+// 판매명에 목록에 없는 제조사 표기(Challenger, Phantom Gaming, SFF, 2X, PLUS 등)가 있어도 찾을 수 있게,
+// 이름 안에 들어 있는 자료 모델 중 가장 긴 것을 쓴다('GTX 1660'보다 'GTX 1660 SUPER'). 메모리 표기는 떼고 비교한다.
+// 오매칭을 막기 위해 영문자·숫자가 모두 있는 모델만 찾고, 바로 뒤에 숫자가 이어지면(1060 → 10600) 같은 모델로 보지 않는다.
+// 칩셋 바로 뒤에 오면 다른 제품(상위·하위 변형, 노트북)을 뜻하는 단어. 자료에 그 변형이 없으면 기본 모델로 대신하지 않는다.
+const variantWords = new Set(['ti', 'super', 'xt', 'xtx', 'gre', 'mobile', 'max', 'laptop'])
+
+function longestContainedChipset(words: string, dataset: BenchmarkDataset): ScoreEntry | null {
+  const memoryPattern = /\b(?:\d{1,2}gb|gddr\d\w*|ddr\d\w*)\b/g
+  const memory = new Set(words.match(memoryPattern) ?? [])
+  const tokens = words.replace(memoryPattern, ' ').trim().split(/\s+/).filter(Boolean)
+  const found = Object.keys(dataset.scores).flatMap((name) => {
+    const nameWords = modelWords(name)
+    const nameMemory = nameWords.match(memoryPattern) ?? []
+    // 양쪽에 메모리 표기가 있는데 다르면(GDDR5 ↔ GDDR6, 3GB ↔ 6GB) 다른 제품이다.
+    if (memory.size && nameMemory.length && !nameMemory.some((item) => memory.has(item))) return []
+    const chipset = nameWords.replace(memoryPattern, ' ').trim().split(/\s+/).filter(Boolean)
+    if (!chipset.length || !/[a-z]/.test(chipset.join('')) || !/\d/.test(chipset.join(''))) return []
+    // 단어 단위로 연속해서 들어 있어야 하고, 바로 뒤에 한 글자 접미사(980M, 5090 D)가 오면 다른 제품으로 본다.
+    for (let at = 0; at + chipset.length <= tokens.length; at += 1) {
+      if (chipset.every((word, index) => tokens[at + index] === word)) {
+        const next = tokens[at + chipset.length]
+        if (next !== undefined && (/^[a-z]$/.test(next) || variantWords.has(next))) return []
+        return [{ name, length: chipset.join('').length }]
+      }
+    }
+    return []
+  })
+  const longest = Math.max(0, ...found.map((item) => item.length))
+  const entries = found.filter((item) => item.length === longest).map((item) => entryFor(item.name, dataset))
+    .filter((entry): entry is ScoreEntry => entry !== null)
+  // 같은 칩셋의 메모리 변형이 여러 개면 낮은 점수를 쓴다(성능을 부풀리지 않는 쪽).
+  return entries.length ? entries.reduce((low, entry) => entry.score < low.score ? entry : low) : null
 }
 
 export function compareBenchmarkScores(kind: ComponentKind, actualModel: string,
