@@ -48,7 +48,7 @@ test('개발 프로그램은 컴파일 시간, 에뮬레이터 수, 컨테이너
   assert.equal(studio.estimates[0].value, '약 6개')
   assert.match(studio.estimates[1].value, /약 \d+~\d+초/)
   const docker = diagnoseProgram('Docker·가상 머신', desktop, 'MEDIUM')!
-  assert.match(docker.estimates[0].value, /컨테이너 약 32개 · 가상 머신 약 6대/)
+  assert.match(docker.estimates[0].value, /컨테이너 약 32개 · VM 약 6대/)
   assert.match(docker.estimates[0].detail, /논리 프로세서 20개/)
 })
 

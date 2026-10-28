@@ -15,8 +15,7 @@ export function WorkloadDiagnosis({ programs, parts, workload }: {
 }) {
   return <section className="planner-card" aria-labelledby="planner-workload-diagnosis">
     <h2 id="planner-workload-diagnosis">작업별 요구 사양과 예상 성능</h2>
-    <p className="planner-caveat">제작사 공식 최소·권장 사양과 작업 규모({WORKLOAD_TEXT[workload]})에 맞는 RAM·VRAM·코어를 확인하고,
-      공개 벤치마크를 내 부품 점수로 환산한 예상 수치를 보여 줍니다. 예상 수치는 추정이며 프로젝트·설정에 따라 크게 달라집니다.</p>
+    <p className="planner-caveat">공식 사양과 작업 규모({WORKLOAD_TEXT[workload]}) 기준으로 확인합니다. 예상 성능은 공개 벤치마크로 계산한 추정치입니다.</p>
     <div className="planner-game-list">
       {programs.map((program) => {
         const result = diagnoseProgram(program, parts, workload)
@@ -25,7 +24,7 @@ export function WorkloadDiagnosis({ programs, parts, workload }: {
         </article>
         return <article className="planner-game" key={program}>
           <div className="planner-card-head"><h3>{program}</h3></div>
-          <p className="planner-source">성능을 좌우하는 부품: {result.profile.keyParts}</p>
+          <p className="planner-source">핵심 부품: {result.profile.keyParts}</p>
           <div className="planner-tier-grid">
             {result.levels.map((level) => <div className="planner-tier" key={level.level}>
               <div className="planner-tier-head"><div><h4>{level.level}</h4></div>

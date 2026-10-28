@@ -62,9 +62,9 @@ export const WORKLOAD_SOURCES: Record<string, WorkloadSource> = {
 export const PROGRAM_PROFILES: Record<string, ProgramProfile> = {
   'Premiere Pro': {
     name: 'Premiere Pro', sourceIds: ['adobe-premiere', 'puget-premiere'], estimates: ['VIDEO'],
-    keyParts: 'CPU(H.264·HEVC 디코딩, Intel Quick Sync 유리)와 GPU(효과·RAW), 편집 해상도에 따른 RAM·VRAM',
-    minimum: { ramGiB: 8, vramGiB: 4, note: 'Intel 6세대·Ryzen 1000 이상(AVX2)' },
-    recommended: { ramGiB: 32, vramGiB: 8, note: 'Intel 11세대 이상(Quick Sync)·Ryzen 3000 이상, 4K 이상은 32GB' },
+    keyParts: 'CPU · GPU · RAM·VRAM(해상도에 따라)',
+    minimum: { ramGiB: 8, vramGiB: 4, note: 'CPU: Intel 6세대·Ryzen 1000 이상' },
+    recommended: { ramGiB: 32, vramGiB: 8, note: 'CPU: Intel 11세대·Ryzen 3000 이상 · HD는 16GB로 충분' },
     // RAM은 Adobe 공식(HD 16GB, 4K 이상 32GB), VRAM은 Puget 해상도별 최소값.
     comfortable: {
       LIGHT: { label: '1080p 편집', ramGiB: 16, vramGiB: 4 },
@@ -74,9 +74,9 @@ export const PROGRAM_PROFILES: Record<string, ProgramProfile> = {
   },
   'DaVinci Resolve': {
     name: 'DaVinci Resolve', sourceIds: ['resolve-readme', 'puget-resolve'], estimates: ['VIDEO'],
-    keyParts: 'GPU와 VRAM이 가장 중요하고, 그다음 RAM',
+    keyParts: 'GPU·VRAM > RAM',
     minimum: { ramGiB: 16, vramGiB: 4 },
-    recommended: { ramGiB: 32, vramGiB: 8, note: 'Fusion 사용 시 32GB' },
+    recommended: { ramGiB: 32, vramGiB: 8, note: 'Fusion은 32GB' },
     // RAM은 Blackmagic 안내(16GB, Fusion 32GB)를 해상도에 맞춰 늘린 값, VRAM은 Puget 해상도별 최소값.
     comfortable: {
       LIGHT: { label: '1080p 편집', ramGiB: 16, vramGiB: 8 },
@@ -86,28 +86,28 @@ export const PROGRAM_PROFILES: Record<string, ProgramProfile> = {
   },
   Blender: {
     name: 'Blender', sourceIds: ['blender-requirements', 'blender-opendata', 'openbenchmarking-blender'],
-    estimates: ['BLENDER_RENDER'], keyParts: 'GPU 렌더링(OptiX·HIP·oneAPI)과 VRAM, GPU 미지원 시 CPU 멀티코어',
+    estimates: ['BLENDER_RENDER'], keyParts: 'GPU·VRAM (미지원 GPU는 CPU)',
     minimum: { ramGiB: 8, vramGiB: 2, cores: 4 }, recommended: { ramGiB: 32, vramGiB: 8, cores: 8 },
   },
   'VS Code': {
     name: 'VS Code', sourceIds: ['vscode-requirements', 'openbenchmarking-kernel'], estimates: ['COMPILE'],
-    keyParts: '편집기 자체는 가볍고, 빌드 속도는 CPU 멀티코어',
+    keyParts: 'CPU (빌드 속도)',
     minimum: { ramGiB: 1 }, recommended: { ramGiB: 1 },
   },
   'Android Studio': {
     name: 'Android Studio', sourceIds: ['android-studio', 'openbenchmarking-kernel'], estimates: ['EMULATORS', 'COMPILE'],
-    keyParts: 'RAM(에뮬레이터 1개당 약 4GB), CPU 단일 코어 성능, SSD',
-    minimum: { ramGiB: 16, vramGiB: 4, note: '에뮬레이터 없이 쓰면 8GB' }, recommended: { ramGiB: 32, vramGiB: 8 },
+    keyParts: 'RAM · CPU · SSD',
+    minimum: { ramGiB: 16, vramGiB: 4, note: '에뮬레이터 없으면 8GB' }, recommended: { ramGiB: 32, vramGiB: 8 },
   },
   Unity: {
     name: 'Unity', sourceIds: ['unity-requirements', 'openbenchmarking-kernel'], estimates: ['COMPILE'],
-    keyParts: 'CPU(스크립트 컴파일·라이트 굽기), RAM, NVMe SSD',
-    minimum: { ramGiB: 8 }, recommended: { ramGiB: 32, note: '공식은 8GB 권장, 큰 프로젝트·라이트 굽기는 32GB 이상' },
+    keyParts: 'CPU · RAM · SSD',
+    minimum: { ramGiB: 8 }, recommended: { ramGiB: 32, note: '공식 8GB · 큰 프로젝트는 32GB 이상' },
   },
   'Docker·가상 머신': {
     name: 'Docker·가상 머신', sourceIds: ['docker-desktop', 'openbenchmarking-kernel'], estimates: ['CONTAINERS', 'COMPILE'],
-    keyParts: 'RAM과 CPU 코어 수(기본으로 RAM의 50%를 Docker에 할당)',
-    minimum: { ramGiB: 8 }, recommended: { ramGiB: 32, note: '공식 권장값 없음. 여러 컨테이너·VM 동시 실행 기준' },
+    keyParts: 'RAM · CPU 코어 수',
+    minimum: { ramGiB: 8 }, recommended: { ramGiB: 32, note: '공식 권장 없음 · 여러 개 동시 실행 기준' },
   },
 }
 
