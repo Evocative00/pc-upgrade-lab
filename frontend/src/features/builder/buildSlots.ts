@@ -56,6 +56,29 @@ export function chipLabel(modelName: string): [string, string] {
   return [words.slice(0, -1).join(' ').toUpperCase(), words[words.length - 1]]
 }
 
+// 그림에는 모델을 알아볼 수 있는 짧은 이름만 쓴다. 입력값(displayName)은 바꾸지 않는다.
+// 예: 'Intel(R) Core(TM) i5-13600KF' → 'i5-13600KF', 'NVIDIA GeForce RTX 5070 Ti' → 'RTX 5070 Ti'
+// ponytail: 이름 패턴 추정이라 못 맞추면 상표·괄호만 걷어낸 원래 이름을 쓴다. 카탈로그 모델명 필드가 생기면 그걸로 대체.
+export function shortPartName(type: PartType, name: string): string {
+  const clean = name.replace(/\((?:R|TM|C)\)|[®™]/gi, '').replace(/\s+/g, ' ').trim()
+  if (type === 'CPU') {
+    const intel = clean.match(/\bi[3579]-\d{4,5}[A-Z]*\b/i) ?? clean.match(/\bUltra [3579] \d{3}[A-Z]*\b/i)
+    if (intel) return intel[0]
+    const ryzen = clean.match(/\bRyzen(?: Threadripper)?(?: \d)? (\d{4}[A-Z0-9]*)\b/i)
+    if (ryzen) return `Ryzen ${ryzen[1]}`
+  }
+  if (type === 'GPU') {
+    const gpu = clean.match(/\b(RTX|GTX|RX|Arc) ?([A-Z]?\d{3,4})((?: ?(?:Ti|SUPER|XTX|XT|GRE)\b)*)/i)
+    if (gpu) {
+      const brand = /^arc$/i.test(gpu[1]) ? 'Arc' : gpu[1].toUpperCase()
+      return [brand, gpu[2].toUpperCase(), ...gpu[3].trim().split(/ +/).filter(Boolean)].join(' ')
+    }
+  }
+  const trimmed = clean.replace(/\(.*?\)/g, '').replace(/\b\d+-Core\b|\bProcessor\b|\bwith Radeon Graphics\b/gi, '')
+    .replace(/\s+/g, ' ').trim()
+  return trimmed || name.trim()
+}
+
 type Specs = CatalogSpecification | PartDraft['specs']
 
 // 사용자 PC의 1개당 용량을 우선한다. 미확인일 때만 카탈로그 제원으로 보완한다.

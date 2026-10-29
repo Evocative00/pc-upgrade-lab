@@ -67,10 +67,12 @@ function harness({ list = async () => ({ items: [], page: 0, size: 20, totalElem
     }) },
     'usePcScan.ts': { usePcScan() {
       const [complete, setComplete] = react.useState(false)
+      // 실제 훅처럼 같은 결과 객체를 유지한다. 패널은 같은 결과를 한 번만 입력란에 반영한다.
+      const [scanned] = react.useState(() => ({ parts: [part('CPU', '수집한 CPU')], warnings: [] }))
       react.useEffect(() => { scanMounts++; return () => { scanUnmounts++ } }, [])
       return {
         status: complete ? 'COMPLETED' : 'IDLE', error: null,
-        result: complete ? { parts: [part('CPU', '수집한 CPU')], warnings: [] } : null,
+        result: complete ? scanned : null,
         prepare: () => setComplete(true), reset: () => setComplete(false),
       }
     } },
@@ -239,7 +241,7 @@ test('계획 진입은 잘못된 RAM 수량·용량을 표시하고 이름 없�
   assert.equal(elements(accepted).some((node) => node.props?.role === 'alert'), false)
 })
 
-test('계획 왕복은 미반영 자동 인식 결과와 부품 초안을 유지하고 Enter로 저장하지 않는다', async () => {
+test('계획 왕복은 자동 인식 결과와 부품 초안을 유지하고 Enter로 저장하지 않는다', async () => {
   const h = harness()
   const { PcForm } = h.load('features/pc/components/PcForm.tsx')
   const bridge = h.load('features/auth/draftBridge.ts')
@@ -256,12 +258,15 @@ test('계획 왕복은 미반영 자동 인식 결과와 부품 초안을 유지
   assert.equal(saves, 0)
   const hidden = find(tree, (node) => node.type === 'fieldset' && node.props.hidden === true)
   assert.equal(hidden.props.inert, true)
-  assert.ok(elements(hidden).some((node) => node.type === 'button' && text(node) === '입력란에 반영'))
+  assert.match(text(hidden), /입력란에 반영했습니다/)
   button(tree, '내 PC 수정').props.onClick()
   tree = h.paint(PcForm, props)
   assert.match(text(tree), /수집한 CPU/)
-  assert.ok(button(tree, '입력란에 반영'))
+  assert.match(text(tree), /입력란에 반영했습니다/)
   assert.deepEqual(h.scanCounts(), { mounts: 1, unmounts: 0 })
   assert.equal(bridge.saveActiveDraft(), true)
-  assert.deepEqual(bridge.loadDraft().request, initial)
+  // 불러온 CPU는 한 번만 자동 반영되고, 직접 입력한 RAM은 그대로 남는다.
+  const saved = bridge.loadDraft().request
+  assert.equal(saved.name, initial.name)
+  assert.deepEqual(saved.parts.map((item) => item.displayName).sort(), ['8GiB RAM', '수집한 CPU'])
 })

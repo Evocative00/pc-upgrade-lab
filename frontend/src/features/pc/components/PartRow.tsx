@@ -42,10 +42,14 @@ export function PartRow({ draft, index, count, onChange, onRemove, onSearch, war
 
   return (
     <div className={`part-row part-row--${status}${warnings.length > 0 ? ' part-row--invalid' : ''}`}>
-      <div className="part-row__fields">
+      <div className="part-row__head">
+        <span className="part-row__code" aria-hidden="true">{info.code}</span>
         <label htmlFor={nameId} className="part-row__label">
           {label}
         </label>
+        <PartStatusBadge status={status} />
+      </div>
+      <div className="part-row__fields">
         <input
           id={nameId}
           value={draft.displayName}
@@ -53,6 +57,7 @@ export function PartRow({ draft, index, count, onChange, onRemove, onSearch, war
           placeholder="모델명 직접 입력"
           onChange={(event) => onChange(renameDraft(draft, event.target.value))}
         />
+        {(info.multiple || info.capacityUnit !== null) && <span className="part-row__units">
         {info.multiple && (
           <span className="part-row__unit">
             <label htmlFor={quantityId} className="muted">
@@ -79,7 +84,7 @@ export function PartRow({ draft, index, count, onChange, onRemove, onSearch, war
         {info.capacityUnit !== null && (
           <span className="part-row__unit">
             <label htmlFor={capacityId} className="muted">
-              1개당
+              개당
             </label>
             <input
               id={capacityId}
@@ -91,7 +96,8 @@ export function PartRow({ draft, index, count, onChange, onRemove, onSearch, war
                   ? ''
                   : capacityBytes / info.capacityUnit.bytes)
               }
-              placeholder="미확인"
+              placeholder="—"
+              title="모르면 비워 두세요 (미확인)"
               aria-invalid={invalidCapacity || undefined}
               aria-describedby={invalidCapacity ? `${capacityId}-error` : undefined}
               onChange={(event) => onChange(setCapacityInput(
@@ -101,21 +107,20 @@ export function PartRow({ draft, index, count, onChange, onRemove, onSearch, war
               ))}
             />
             <span className="muted">{info.capacityUnit.label}</span>
-            {invalidCapacity && (
-              <span id={`${capacityId}-error`} className="error">
-                0보다 큰 유효한 용량을 입력해 주세요. 모르면 비워 주세요.
-              </span>
-            )}
           </span>
         )}
-        <PartStatusBadge status={status} />
+        </span>}
         <button
           type="button"
-          className="button button--ghost"
+          className="button button--ghost part-row__search"
           onClick={() => onSearch ? onSearch() : setPickerOpen((open) => !open)}
           aria-expanded={onSearch ? undefined : pickerOpen}
         >
-          부품 검색
+          <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
+            <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
+            <path d="M10.5 10.5 14 14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+          검색
         </button>
         {(draft.matchStatus === 'MATCHED' || draft.catalogModelId) && (
           <button
@@ -136,6 +141,12 @@ export function PartRow({ draft, index, count, onChange, onRemove, onSearch, war
           </button>
         )}
       </div>
+
+      {invalidCapacity && (
+        <p id={`${capacityId}-error`} className="part-row__hint error">
+          0보다 큰 유효한 용량을 입력해 주세요. 모르면 비워 주세요.
+        </p>
+      )}
 
       {(draft.rawName !== null || otherSpecs.length > 0) && (
         <p className="part-row__hint muted">

@@ -1,6 +1,97 @@
-/* 구성 화면에서는 좌우 여백을 줄여 그림과 요약을 넓게 쓴다. */
+/* 구성 화면은 좌우 여백 없이 화면을 채운다. 왼쪽 220px는 랜딩과 같은 탭 바(.app-side-nav) 자리다. */
 #root:has(.builder) {
-  width: 1440px;
+  width: auto;
+  margin: 0 0 0 220px;
+  border-right: 0;
+
+  @media (max-width: 640px) {
+    margin-left: 0;
+  }
+}
+
+/* 머리말: 영문 안내 · 큰 제목 · 설명 | 초기화·저장 */
+.builder-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+  padding: 8px 24px 8px 0;
+
+  h1 {
+    margin: 10px 0 12px;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+}
+
+.builder-head__text {
+  max-width: 820px;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+}
+
+/* 어두운 화면에서도 저장 버튼은 진한 강조색 바탕에 흰 글자로 둔다. */
+.builder .button--primary.button--lg,
+.builder-head .button--primary {
+  background: #1e3a8a;
+  border-color: #3b5bd0;
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(91, 123, 224, 0.25), 0 0 18px rgba(59, 91, 208, 0.55);
+  transition: box-shadow 160ms ease-out;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 0 0 1px rgba(147, 169, 232, 0.5), 0 0 28px rgba(59, 91, 208, 0.8);
+  }
+}
+
+.button--lg {
+  padding: 11px 20px;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+.builder .panel,
+.builder-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 24px;
+  background: var(--surface);
+}
+
+.builder .panel h2,
+.builder-card h2,
+.builder-card h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.builder-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.builder-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.builder-card__tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text);
 }
 
 .builder {
@@ -12,7 +103,11 @@
 /* 부품 구성 입력 | 구성 그림 | 요약·상태·기준가격 */
 .builder__layout {
   display: grid;
-  grid-template-columns: minmax(360px, 1fr) minmax(300px, 440px) minmax(260px, 320px);
+  /* 부품 구성의 오른쪽 끝이 화면(스크롤바 제외) 정중앙에 오게 한다. 남는 폭은 그림과 요약이 나눈다.
+     이 칸의 왼쪽은 탭 바 220px + 테두리 1px + 본문 여백 24px = 245px, 오른쪽은 본문 여백 24px + 이 칸 여백 24px 안쪽에서 끝난다.
+     화면 폭 = 칸 폭(100%) + 293px 이므로, 중앙까지의 폭 = (100% + 293px) / 2 − 245px = 50% − 98.5px. 여백을 바꾸면 이 값도 바꾼다. */
+  grid-template-columns: max(340px, calc(50% - 98.5px)) minmax(280px, 1fr) minmax(280px, 340px);
+  padding-right: 24px;
   gap: 20px;
   align-items: start;
 
@@ -29,8 +124,7 @@
   }
 }
 
-/* 입력란이 길어도 그림과 요약은 화면에 남아 있게 한다. */
-.builder__visual,
+/* 입력란이 길어도 요약은 화면에 남아 있게 한다. */
 .builder__summary {
   position: sticky;
   top: 16px;
@@ -40,23 +134,57 @@
   }
 }
 
+/* 그림 열은 따로 스크롤하지 않고 아래 포트 정보까지 아래로 늘어나 페이지와 함께 스크롤된다. */
 .builder__visual {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  /* 두 열에서는 그림이 스크롤되어야 같은 열의 요약을 가리지 않는다. */
-  @media (max-width: 1100px) {
-    position: static;
-  }
+  align-items: stretch;
+  gap: 12px;
 }
 
+.builder__view-head {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--text);
+}
+
+/* 배치도는 항상 어두운 판 위에 그린다. */
+.builder__view {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  border: 1px solid #232836;
+  border-radius: 14px;
+  background: #0d0f14;
+}
+
+/* 원래 그림 비율(360×518)을 유지한 채 열 폭에 맞춰 키운다. */
 .case-view {
+  aspect-ratio: 360 / 518;
   width: 100%;
-  max-width: 420px;
   height: auto;
+  align-self: center;
   font-family: var(--sans);
+}
+
+.board-ports {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+
+  h3 {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text-h);
+  }
 }
 
 .case-slot {
@@ -65,41 +193,57 @@
 
   &:hover .case-slot__empty,
   &:focus-visible .case-slot__empty {
-    fill: rgba(255, 255, 255, 0.22);
+    fill: rgba(91, 123, 224, 0.12);
+    stroke: #5b7be0;
   }
 
   &:focus-visible > g {
-    filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 2px #3b82f6);
+    filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 2px #93a9e8);
   }
 }
 
 .case-slot__empty {
-  fill: rgba(255, 255, 255, 0.1);
-  stroke: rgba(255, 255, 255, 0.7);
-  stroke-width: 1.5;
-  stroke-dasharray: 6 4;
+  fill: rgba(255, 255, 255, 0.02);
+  stroke: #2a2f3c;
+  stroke-width: 1.2;
 }
 
 .case-slot--active .case-slot__empty {
-  fill: rgba(255, 255, 255, 0.25);
-  stroke: #fff;
+  fill: rgba(91, 123, 224, 0.18);
+  stroke: #93a9e8;
 }
 
 .case-slot__hint {
-  fill: rgba(255, 255, 255, 0.9);
+  fill: #c3c9d6;
   font-size: 13px;
   text-anchor: middle;
   dominant-baseline: middle;
 }
 
+/* 규격 이름(SOCKET·PCIE X16·MAINBOARD) */
+.case-slot__sub {
+  fill: #5d6577;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* 고른 자리는 네온 테두리로 보인다. */
+.case-slot--active .case-slot__empty {
+  filter: drop-shadow(0 0 6px #5b7be0);
+}
+
 /* 부품이 바뀐 자리만 다시 그려지므로 그 자리에만 페이드가 걸린다. */
 .case-slot__fade {
-  animation: case-fade 320ms ease-out;
+  animation: case-fade 450ms ease-out;
 }
 
 @keyframes case-fade {
   from {
     opacity: 0;
+    filter: brightness(0.3);
   }
 }
 
@@ -112,102 +256,143 @@
 .builder__summary {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 18px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface);
+  gap: 16px;
   max-height: calc(100svh - 32px);
   overflow-y: auto;
   box-sizing: border-box;
-
-  dl {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* 부품 종류 | 이름·가격·빼기 */
-  .builder__row {
-    display: grid;
-    grid-template-columns: 72px minmax(0, 1fr);
-    gap: 8px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  dt {
-    font-size: 13px;
-  }
-
-  dd {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-  }
 
   @media (max-width: 760px) {
     max-height: none;
   }
 }
 
-.builder__name {
-  color: var(--text-h);
-  font-weight: 500;
-  word-break: break-all;
-}
-
-.builder__remove {
-  padding: 2px 8px;
-  font-size: 13px;
-}
-
-/* 합계는 시안처럼 검은 카드로 강조한다. */
-.builder__total {
+/* 부품 목록: 한 줄에 상태 점 · 종류 | 짧은 이름 | 가격 */
+.builder__list {
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 14px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: #111;
-  color: #e5e5e5;
+  font-size: 13px;
 
-  strong {
-    color: #fff;
-    font-size: 22px;
-    word-break: keep-all;
-  }
-
-  .muted {
-    color: #a3a3a3;
-    font-size: 12px;
-  }
-
-  /* 검은 카드 안의 가격 새로고침 버튼 */
-  .button--ghost {
-    align-self: flex-start;
-    margin-top: 4px;
-    color: #fff;
-    border-color: #555;
+  dd {
+    margin: 0;
   }
 }
 
-/* 호환성 체크 3단계: 호환 / 확인 필요 / 불가 */
-.compat {
+.builder__row {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  border-top: 1px solid var(--border);
+
+  dt {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+
+    /* 상태 점: 왼쪽 범례 칩과 같은 색 */
+    &::before {
+      content: '';
+      flex: none;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--manual);
+    }
+  }
+}
+
+.builder__row--linked dt::before { background: var(--linked); }
+.builder__row--auto dt::before { background: var(--detected); }
+.builder__row--model dt::before { background: transparent; box-shadow: inset 0 0 0 1px var(--detected); }
+
+.builder__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-h);
+  font-weight: 500;
+}
+
+.builder__row-price {
+  color: var(--text-h);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.builder__row-warning {
+  grid-column: 1 / -1;
+  font-size: 12px;
+}
+
+/* 요약 칸이 길어져도 저장 버튼은 칸 아래쪽에 붙어 보인다. */
+.builder__submit {
+  position: sticky;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
+  padding: 12px 0 4px;
+  background: var(--bg);
 
-  h3 {
-    margin: 0;
-    font-size: 15px;
-    color: var(--text-h);
+  .button {
+    justify-content: center;
   }
+}
+
+.part-group__add {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .muted {
+    font-size: 12px;
+  }
+}
+
+/* 합계: 현재 상품가(크게) / 참고가격(작게), 사이에 구분선 */
+.builder__total {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-h);
+
+  & + & {
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .muted {
+    font-size: 12px;
+  }
+}
+
+.builder__price {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-h);
+  word-break: keep-all;
+}
+
+.builder__price--sub {
+  font-size: 20px;
+  color: var(--text);
+}
+
+.builder__refresh {
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  font-weight: 700;
+}
+
+/* 호환성 체크 3단계: 호환 / 확인 필요 / 불가 */
+.compat .muted {
+  font-size: 13px;
 }
 
 .compat__steps {
@@ -216,22 +401,28 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
+  gap: 8px;
 }
 
 .compat__step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  padding: 6px 2px;
+  gap: 4px;
+  padding: 12px 2px;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 12px;
   color: var(--text);
 
-  span {
-    font-weight: 700;
+  strong {
+    font-family: var(--mono);
+    font-size: 20px;
+    color: var(--text-h);
+  }
+
+  &[aria-current='step'] strong {
+    color: inherit;
   }
 
   &[aria-current='step'] {
@@ -285,8 +476,8 @@
 
 /* 호환성 불가 판정을 받은 부품 */
 .builder__summary .builder__row--invalid {
-  padding: 8px;
-  margin: 4px 0;
+  padding: 6px 8px;
+  margin: 2px 0;
   border: 2px solid var(--danger);
   border-radius: 6px;
 }

@@ -6,7 +6,7 @@ import { saveActiveDraft } from './features/auth/draftBridge.ts'
 import { LoginFailurePage, LoginPage, LoginSuccessPage } from './features/auth/pages/LoginPages.tsx'
 import { BootScreen } from './features/landing/BootScreen.tsx'
 import { hasSeenBoot, markBootSeen } from './features/landing/bootScript.ts'
-import { LandingPage } from './features/landing/LandingPage.tsx'
+import { LandingPage, LandingTabs } from './features/landing/LandingPage.tsx'
 import { PcDetailPage } from './features/pc/pages/PcDetailPage.tsx'
 import { PcEditPage, PcNewPage } from './features/pc/pages/PcFormPages.tsx'
 import { PcListPage } from './features/pc/pages/PcListPage.tsx'
@@ -134,6 +134,23 @@ function App() {
       )
     }
     return <LandingPage />
+  }
+
+  // PC 구성 화면은 랜딩과 같은 왼쪽 탭 바를 쓰고, 메뉴·로그인이 겹치는 머리말은 숨긴다.
+  if (route.name === 'new') {
+    return (
+      <>
+        <div className="app-side-nav">
+          <LandingTabs current="new" />
+        </div>
+        <main className="app-main">
+          <Page route={route} />
+        </main>
+        <footer className="app-footer">
+          <BackendStatus />
+        </footer>
+      </>
+    )
   }
 
   return (

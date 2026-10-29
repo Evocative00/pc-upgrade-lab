@@ -1,4 +1,4 @@
-import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { registerActiveDraft } from '../../auth/draftBridge.ts'
 import { PcBuilder, type PickTarget } from '../../builder/PcBuilder.tsx'
 import { slotOfDraft } from '../../builder/buildSlots.ts'
@@ -31,9 +31,12 @@ type Props = {
   onCancel: () => void
   // 2D 구성 화면(부품 선택·케이스 그림·요약)을 함께 보여 준다. 카탈로그 검색은 구성 화면의 검색 창으로 통일한다.
   visual?: boolean
+  // 구성 화면 머리말(제목·설명). 오른쪽에 초기화·저장 버튼이 붙는다.
+  head?: ReactNode
+  onReset?: () => void
 }
 
-export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, visual = false }: Props) {
+export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, visual = false, head, onReset }: Props) {
   const nameId = useId()
   const nameErrorId = useId()
   const nameInputRef = useRef<HTMLInputElement>(null)
@@ -90,7 +93,7 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
     })
   }
 
-  // PcScanPanel의 '입력란에 반영'을 눌렀을 때 호출된다.
+  // PcScanPanel이 사양을 불러오면 자동으로 호출된다.
   function applyScan(result: ScanResult) {
     if (savingRef.current) return
     const plan = planScanApply(drafts, result)
@@ -164,14 +167,41 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
     return status === 'auto' || status === 'manual' || status === 'model'
   }).length
 
+  // 저장 버튼은 구성 화면에서 머리말과 요약 칸 두 곳에 같은 모양으로 둔다.
+  const submitButton = (
+    <button type="submit" className="button button--primary button--lg" disabled={saving}>
+      {saving ? '저장 중…' : submitLabel}
+    </button>
+  )
+
+  // 구성 화면은 머리말에, 수정 화면은 아래 버튼 줄에 둔다.
+  const plannerButton = (
+    <button type="button" className={`button button--ghost${visual ? ' button--lg' : ''}`}
+      disabled={toPartInputs(drafts).length === 0} onClick={openPlanner}>
+      업그레이드 계획 살펴보기
+    </button>
+  )
+
+  const errorList = errors.length > 0 && (
+    <ul role="alert" className="error">
+      {errors.map((message, index) => (
+        <li key={`${index}-${message}`}>{message}</li>
+      ))}
+    </ul>
+  )
+
+  const filledTypes = PART_TYPES.filter((info) =>
+    partsOfType(drafts, info.type).some((draft) => getPartStatus(draft) !== 'empty')).length
+
   // 구성 화면에서는 이 입력란이 케이스 그림 왼쪽(부품 선택 칸 자리)에 들어간다.
   const partsPanel = (
     <section className="panel">
       <div className="panel__head">
         <h2>부품 구성</h2>
-        {unlinkedCount > 0 && (
-          <span className="muted">카탈로그 미연결 {unlinkedCount}개</span>
-        )}
+        <span className="panel__count">
+          {filledTypes} / {PART_TYPES.length} SET
+          {unlinkedCount > 0 && ` · 미연결 ${unlinkedCount}`}
+        </span>
       </div>
       <PartStatusLegend />
 
@@ -192,33 +222,27 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
                 onSearch={visual
                   ? () => setPickTarget({ slot: slotOfDraft(drafts, draft), draftKey: draft.key })
                   : undefined}
-                // 여러 항목을 쓰는 종류이거나, 자동 인식으로 한 종류에 항목이 여러 개 생긴 경우 제거할 수 있다.
-                // 구성 화면에서는 단일 종류도 입력한 항목을 삭제(빈 줄로 되돌리기)할 수 있다.
+                // 한 종류에 항목이 여러 개이면 제거할 수 있다. 하나뿐이면 입력한 항목만 지울 수 있다
+                // (여러 항목 종류, 또는 구성 화면). 빈 줄 하나를 지우면 다시 생기므로 버튼을 두지 않는다.
                 onRemove={
-                  info.multiple || rows.length > 1 || (visual && getPartStatus(draft) !== 'empty')
+                  rows.length > 1 || (getPartStatus(draft) !== 'empty' && (info.multiple || visual))
                     ? () => removeDraft(draft.key)
                     : undefined
                 }
               />
             ))}
-            {/* 구성 화면에서 비어 있는 단일 종류는 오른쪽 선택 창을 연다. */}
-            {visual && !info.multiple && rows.every((draft) => getPartStatus(draft) === 'empty') && (
-              <button
-                type="button"
-                className="button button--ghost"
-                onClick={() => setPickTarget({ slot: slotOfDraft(drafts, rows[0]), draftKey: rows[0].key })}
-              >
-                + {info.label} 추가
-              </button>
-            )}
             {info.multiple && (
-              <button
-                type="button"
-                className="button button--ghost"
-                onClick={() => addDraft(info.type)}
-              >
-                + {info.label} 추가
-              </button>
+              <div className="part-group__add">
+                <button
+                  type="button"
+                  className="button button--ghost button--add"
+                  aria-label={`${info.label} 추가`}
+                  onClick={() => addDraft(info.type)}
+                >
+                  {visual ? '+' : `+ ${info.label} 추가`}
+                </button>
+                <span className="muted">같은 모델은 수량을 늘리고, 다른 모델은 +로 추가하세요.</span>
+              </div>
             )}
           </fieldset>
         )
@@ -239,6 +263,24 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
         inert={saving || plannerOpen}
         style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: plannerOpen ? 'none' : undefined }}
       >
+        {visual && (
+          <div className="builder-head">
+            <div className="builder-head__text">{head}</div>
+            <div className="actions">
+              {plannerButton}
+              {onReset && (
+                <button type="button" className="button button--ghost button--lg"
+                  onClick={() => { if (!savingRef.current) onReset() }}>
+                  초기화
+                </button>
+              )}
+              {submitButton}
+            </div>
+          </div>
+        )}
+        {/* 구성 화면은 저장 버튼이 위에 있으므로 오류도 바로 아래에 보인다. */}
+        {visual && errorList}
+
         <div className="field">
           <label htmlFor={nameId}>PC 이름</label>
           <input
@@ -272,16 +314,14 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
 
         {visual ? (
           <PcBuilder drafts={drafts} updateDrafts={updateDrafts} target={pickTarget} onTarget={setPickTarget}
-            compatibility={compatibility} warnings={warnings}>
+            compatibility={compatibility} warnings={warnings}
+            submit={<>{submitButton}{errorList}</>}>
             {partsPanel}
           </PcBuilder>
         ) : partsPanel}
 
-        <div className="actions">
-          <button type="button" className="button button--ghost" disabled={toPartInputs(drafts).length === 0}
-            onClick={openPlanner}>
-            업그레이드 계획 살펴보기
-          </button>
+        {!visual && <div className="actions">
+          {plannerButton}
           <button
             type="button"
             className="button button--ghost"
@@ -294,16 +334,10 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
           <button type="submit" className="button button--primary" disabled={saving}>
             {saving ? '저장 중…' : submitLabel}
           </button>
-        </div>
+        </div>}
       </fieldset>
       {!plannerOpen && saving && <p role="status">PC 구성을 서버에 저장하고 있습니다.</p>}
-      {!plannerOpen && errors.length > 0 && (
-        <ul role="alert" className="error">
-          {errors.map((message, index) => (
-            <li key={`${index}-${message}`}>{message}</li>
-          ))}
-        </ul>
-      )}
+      {!plannerOpen && !visual && errorList}
     </form>
   )
 }

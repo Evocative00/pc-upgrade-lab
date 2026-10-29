@@ -158,19 +158,32 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
           </>
         ) : <>
           <ul className="catalog-picker__results">
-            {search.result.items.map((product) => (
-              <li key={product.id}>
-                <button type="button" onClick={() => void showDetail(product)}
-                  aria-expanded={detail.status !== 'idle' && detail.product.id === product.id}
-                  aria-label={`${product.modelName} 상세 보기`}>
-                  <span><span className="muted">{product.manufacturer}</span> {product.modelName}</span>
-                  <span className="catalog-picker__meta muted">
-                    {formatProjectPrice(product)}
-                    {' · 상세 보기'}
-                  </span>
-                </button>
-              </li>
-            ))}
+            {search.result.items.map((product) => {
+              // 상세 정보는 목록 맨 아래가 아니라 누른 부품 바로 아래에 펼친다. 다시 누르면 접는다.
+              const expanded = detail.status !== 'idle' && detail.product.id === product.id
+              return (
+                <li key={product.id}>
+                  <button type="button" onClick={() => expanded ? clearDetail() : void showDetail(product)}
+                    aria-expanded={expanded}
+                    aria-label={`${product.modelName} 상세 ${expanded ? '접기' : '보기'}`}>
+                    <span><span className="muted">{product.manufacturer}</span> {product.modelName}</span>
+                    <span className="catalog-picker__meta muted">
+                      {formatProjectPrice(product)}
+                      {expanded ? ' · 상세 접기' : ' · 상세 보기'}
+                    </span>
+                  </button>
+                  {expanded && <div className="catalog-picker__inline-detail">
+                    {detail.status === 'loading' && <p role="status" className="muted">{detail.product.modelName} 상세 조회 중…</p>}
+                    {detail.status === 'error' && <div role="alert">
+                      <p className="error">{detail.message}</p>
+                      <button type="button" className="button" onClick={() => void showDetail(detail.product)}>상세 다시 조회</button>
+                    </div>}
+                    {detail.status === 'done' && <CatalogProductDetail detail={detail.result} onSelect={onSelect}
+                      onSelectModel={modelSelection} onRefresh={() => void showDetail(detail.product)} />}
+                  </div>}
+                </li>
+              )
+            })}
           </ul>
         </>}
         {search.result.totalPages > 1 && <div className="catalog-pagination" aria-label="부품 검색 페이지">
@@ -181,13 +194,6 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
             onClick={() => void runSearch(search.result.page + 1, search.keyword)}>다음</button>
         </div>}
       </>}
-      {detail.status === 'loading' && <p role="status" className="muted">{detail.product.modelName} 상세 조회 중…</p>}
-      {detail.status === 'error' && <div role="alert">
-        <p className="error">{detail.message}</p>
-        <button type="button" className="button" onClick={() => void showDetail(detail.product)}>상세 다시 조회</button>
-      </div>}
-      {detail.status === 'done' && <CatalogProductDetail detail={detail.result} onSelect={onSelect} onSelectModel={modelSelection}
-        onRefresh={() => void showDetail(detail.product)} />}
       {(detail.status === 'done' || search.status === 'done') && (
         <CatalogAttributions items={detail.status === 'done' ? detail.result.attributions
           : search.status === 'done' ? search.result.attributions : []} />

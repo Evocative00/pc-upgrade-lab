@@ -194,9 +194,34 @@
 .legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   align-items: center;
 }
+
+/* 범례 칩: 점 색이 부품 상태 색이다. */
+.legend__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text-h);
+
+  &::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+}
+
+.legend__chip--linked::before { background: var(--linked); }
+.legend__chip--model::before { background: transparent; box-shadow: inset 0 0 0 1px var(--detected); }
+.legend__chip--auto::before { background: var(--detected); }
+.legend__chip--manual::before { background: var(--manual); }
 
 /* 목록 */
 .pc-list {
@@ -297,10 +322,17 @@
   gap: 12px;
 }
 
+.panel__count {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--text);
+}
+
 .panel__head {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
 }
@@ -308,7 +340,7 @@
 .part-group {
   border: 0;
   margin: 0;
-  padding: 0 0 12px;
+  padding: 14px 0;
   border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -323,24 +355,34 @@
 
 .part-row {
   width: 100%;
-  padding-left: 10px;
-  border-left: 3px solid var(--border);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
-.part-row--linked {
-  border-left-color: var(--linked);
+/* 머리 줄: 짧은 코드 · 종류 이름 · (오른쪽) 상태 */
+.part-row__head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+
+  .badge {
+    margin-left: auto;
+  }
+
+  .badge--empty {
+    padding: 0;
+    border: 0;
+    color: var(--text);
+  }
 }
 
-.part-row--auto {
-  border-left-color: var(--detected);
-}
-
-.part-row--manual {
-  border-left-color: var(--manual);
+.part-row__code {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text);
 }
 
 /* 호환성 불가 판정을 받은 부품 */
@@ -359,28 +401,70 @@
 .part-row__fields {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
   gap: 8px;
 
   > input {
-    flex: 1 1 240px;
+    flex: 1 1 120px;
+    padding: 10px 14px;
+  }
+
+  > .button {
+    justify-content: center;
+    gap: 6px;
   }
 }
 
 .part-row__label {
-  width: 96px;
   color: var(--text-h);
-  font-weight: 500;
+  font-weight: 700;
+}
+
+/* 수량·용량을 한 칸으로 묶는다: [수량 | 1 | 개당 — GiB] */
+.part-row__units {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  font-size: 13px;
 }
 
 .part-row__unit {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  padding: 0 10px;
+
+  & + & {
+    border-left: 1px solid var(--border);
+  }
+
+  .muted {
+    font-size: 13px;
+  }
 
   input {
-    width: 88px;
+    width: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-align: center;
   }
+}
+
+.part-row__search {
+  min-width: 74px;
+}
+
+/* 정사각형 '+' 추가 버튼 (점선) */
+.button--add {
+  min-width: 44px;
+  min-height: 42px;
+  justify-content: center;
+  border-style: dashed;
+  font-size: 16px;
+  color: var(--text);
 }
 
 .catalog-picker {
@@ -410,7 +494,8 @@
   flex-direction: column;
   gap: 4px;
 
-  button {
+  /* 결과 항목 버튼만. 항목 아래에 펼친 상세 정보 안의 버튼에는 적용하지 않는다. */
+  > li > button {
     font: inherit;
     width: 100%;
     text-align: left;
@@ -433,13 +518,17 @@
   margin-top: 4px;
 }
 
-.catalog-picker__results button {
+.catalog-picker__results > li > button {
   overflow-wrap: anywhere;
 }
 
-.catalog-picker__results button[aria-expanded='true'] {
+.catalog-picker__results > li > button[aria-expanded='true'] {
   border-color: var(--accent);
   background: var(--accent-bg);
+}
+
+.catalog-picker__inline-detail {
+  margin: 6px 0 8px;
 }
 
 .catalog-detail {
@@ -514,4 +603,48 @@ ul.error {
 
 .table-wrap {
   overflow-x: auto;
+}
+
+/* PC 구성 화면의 왼쪽 탭 바 (랜딩과 같은 220px). 본문은 pc-builder.css에서 그만큼 비켜 둔다. */
+/* 탭 바 모양은 landing.css를 그대로 쓰고, .landing에만 있는 색 변수를 이 화면 색(밝은·어두운)에 맞춰 둔다. */
+.app-side-nav {
+  --card: var(--surface);
+  --landing-border: var(--border);
+  --landing-border-strong: #cfcfcb;
+  --landing-title: var(--text-h);
+  --landing-body: var(--text);
+  --landing-muted: #6b6b6b;
+  --ice: #22708f;
+  --nav-active: #ebebe8;
+  --nav-hover: #ebebe8;
+  --landing-mono: Consolas, 'JetBrains Mono', 'Malgun Gothic', 'Noto Sans KR', monospace;
+
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 220px;
+  z-index: 3;
+  font-family: 'Malgun Gothic', '맑은 고딕', 'Noto Sans KR', sans-serif;
+
+  @media (prefers-color-scheme: dark) {
+    --landing-border-strong: #3a3a3a;
+    --landing-muted: #8a8a8a;
+    --ice: #9ad8f2;
+    --nav-active: #1f1f1f;
+    --nav-hover: #1c1c1c;
+  }
+
+  @media (max-width: 640px) {
+    position: static;
+    width: auto;
+  }
+
+  /* 폭이 220px로 고정이라 랜딩의 좁은 화면(1440px 이하) 크기를 늘 쓴다. */
+  .landing__brand {
+    gap: 10px;
+    padding: 0;
+  }
+
+  .landing__brand-name {
+    font-size: 14px;
+  }
 }

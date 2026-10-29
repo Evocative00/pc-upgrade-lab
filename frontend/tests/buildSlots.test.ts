@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import test from 'node:test'
 import ts from 'typescript'
 import {
-  applyCatalogSelection, assignSlots, chipLabel, priceTotal, referencePriceTotal, ramLabel, ramModuleViews, slotInfo, slotOfDraft,
+  applyCatalogSelection, assignSlots, chipLabel, shortPartName, priceTotal, referencePriceTotal, ramLabel, ramModuleViews, slotInfo, slotOfDraft,
 } from '../src/features/builder/buildSlots.ts'
 import { createManualDraft, toPartInputs, withEmptyRows } from '../src/features/pc/partDraft.ts'
 import type { CatalogDetail, CatalogPriceStatus, CatalogProduct, ReferenceEstimate } from '../src/features/catalog/catalogTypes.ts'
@@ -72,6 +72,17 @@ test('RAM 참고가는 원래 키트 단위로 실제 장착 모듈을 환산하
 test('CPU 이름은 굵은 줄과 작은 줄로 나눈다', () => {
   assert.deepEqual(chipLabel('Ryzen 5 5500GT'), ['RYZEN 5', '5500GT'])
   assert.deepEqual(chipLabel('i5'), ['I5', ''])
+})
+
+test('그림용 짧은 부품 이름은 모델명만 남긴다', () => {
+  assert.equal(shortPartName('CPU', 'Intel(R) Core(TM) i5-13600KF'), 'i5-13600KF')
+  assert.equal(shortPartName('CPU', 'AMD Ryzen 7 9800X3D 8-Core Processor'), 'Ryzen 9800X3D')
+  assert.equal(shortPartName('CPU', 'Intel(R) Core(TM) Ultra 7 265K'), 'Ultra 7 265K')
+  assert.equal(shortPartName('GPU', 'NVIDIA GeForce RTX 5070 Ti'), 'RTX 5070 Ti')
+  assert.equal(shortPartName('GPU', 'NVIDIA GeForce RTX 4070 Ti SUPER'), 'RTX 4070 Ti SUPER')
+  assert.equal(shortPartName('GPU', 'AMD Radeon RX 7900 XTX'), 'RX 7900 XTX')
+  assert.equal(shortPartName('MOTHERBOARD', 'ASUS PRIME B650M-A WIFI (Rev 1.0)'), 'ASUS PRIME B650M-A WIFI')
+  assert.equal(shortPartName('CPU', '알 수 없는 CPU'), '알 수 없는 CPU')
 })
 
 test('RAM 그림은 실제 장착 수량만 사용하며 카탈로그 묶음 장수를 더하지 않는다', () => {
