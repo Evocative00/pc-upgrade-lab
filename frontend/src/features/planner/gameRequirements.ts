@@ -73,8 +73,8 @@ export const GAME_REQUIREMENTS: Record<string, GameRequirements> = {
   },
   '사이버펑크 2077': {
     name: '사이버펑크 2077',
-    source: 'https://store.steampowered.com/app/1091500/2077/',
-    sourceName: '게임 배급사의 Steam 요구 사양', checkedOn: '2026-10-11',
+    source: 'https://support.cdprojektred.com/en/cyberpunk/pc/sp-technical/issue/1556/cyberpunk-2077-system-requirements',
+    sourceName: 'CD PROJEKT RED 공식 지원 (2.0 이후)', checkedOn: '2026-10-14',
     minimum: { cpu: ['Core i7-6700', 'Ryzen 5 1600'],
       gpu: ['GeForce GTX 1060', 'Radeon RX 580', 'Intel Arc A380'],
       ramGiB: 12, vramGiB: 6, storage: '70GB 여유 공간 · SSD 필수',

@@ -28,7 +28,15 @@ test('자료가 없거나 공식 사양이 제품군이면 점수를 꾸며내�
   assert.equal(compareBenchmarkScores('GPU', 'GeForce RTX 9999', ['GeForce GTX 1060'], null).status, 'UNKNOWN')
   assert.equal(compareBenchmarkScores('GPU', 'GeForce RTX 9999', ['GeForce GTX 600 Series'], gpuFixture).status, 'UNKNOWN')
   assert.equal(compareBenchmarkScores('GPU', 'GeForce RTX 8888', ['GeForce GTX 1060'], gpuFixture).status, 'UNKNOWN')
-  assert.equal(compareBenchmarkScores('GPU', 'GeForce RTX 9999', ['GeForce GTX 1060', 'GeForce RTX 8888'], gpuFixture).status, 'UNKNOWN')
+})
+
+test('공식 예시 일부만 점수가 있으면 넘었을 때만 충족이고, 낮으면 판단을 보류한다', () => {
+  const above = compareBenchmarkScores('GPU', 'GeForce RTX 9999', ['GeForce GTX 1060', 'GeForce RTX 8888'], gpuFixture)
+  assert.equal(above.status, 'ABOVE_BASELINE')
+  assert.match(above.reason, /자료 없음: GeForce RTX 8888/)
+  const below = compareBenchmarkScores('GPU', 'GeForce GTX 999', ['GeForce GTX 1060', 'GeForce 400 Series'], gpuFixture)
+  assert.equal(below.status, 'UNKNOWN')
+  assert.match(below.reason, /GeForce 400 Series.*단정할 수 없습니다/)
 })
 
 test('CPU 점수와 GPU 점수를 섞어 비교하지 않는다', () => {
@@ -81,13 +89,17 @@ test('알려진 칩셋 뒤의 판매명은 허용하되 명시된 메모리 변�
   assert.notEqual(normalizeHardwareModel('Ryzen 5 5600G'), normalizeHardwareModel('Ryzen 5 5600'))
 })
 
-test('발행처·시험판이 다른 모델은 공통 기준 점수로 환산돼도 비교하지 않는다', () => {
+test('시험판이 다른 모델도 공통 눈금으로 환산해 비교하고 환산 여부를 표시한다', () => {
   const gpu = { ...gpuFixture, scoreGroups: { 'GeForce GTX 1060': 'raster-old',
     'Radeon RX 580': 'raster-old', 'GeForce RTX 9999': 'raster-new', 'GeForce GTX 999': 'synthetic' } }
-  assert.equal(compareBenchmarkScores('GPU', 'GeForce RTX 9999', ['GeForce GTX 1060'], gpu).status, 'UNKNOWN')
-  assert.equal(compareBenchmarkScores('GPU', 'GeForce GTX 999', ['GeForce GTX 1060'], gpu).status, 'UNKNOWN')
-  assert.equal(compareBenchmarkScores('GPU', 'Radeon RX 580', ['GeForce GTX 1060', 'GeForce GTX 999'], gpu).status, 'UNKNOWN')
-  assert.equal(compareBenchmarkScores('GPU', 'Radeon RX 580', ['GeForce GTX 1060'], gpu).ratio, 1.1)
+  const bridged = compareBenchmarkScores('GPU', 'GeForce RTX 9999', ['GeForce GTX 1060'], gpu)
+  assert.equal(bridged.status, 'ABOVE_BASELINE')
+  assert.equal(bridged.bridged, true)
+  assert.match(bridged.reason, /환산/)
+  assert.equal(compareBenchmarkScores('GPU', 'GeForce GTX 999', ['GeForce GTX 1060'], gpu).status, 'BELOW_BASELINE')
+  const same = compareBenchmarkScores('GPU', 'Radeon RX 580', ['GeForce GTX 1060'], gpu)
+  assert.equal(same.ratio, 1.1)
+  assert.equal(same.bridged, false)
   const missingGroup = { ...gpu, scoreGroups: { 'GeForce GTX 1060': 'raster-old' } }
   assert.equal(compareBenchmarkScores('GPU', 'Radeon RX 580', ['GeForce GTX 1060'], missingGroup).status, 'UNKNOWN')
 })

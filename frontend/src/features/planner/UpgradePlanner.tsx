@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import type { PartInput } from '../pc-scan/types.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { GameRequirementsDiagnosis } from './GameRequirementsDiagnosis.tsx'
+import { WorkloadDiagnosis } from './WorkloadDiagnosis.tsx'
 import { UpgradeGoalForm } from './UpgradeGoalForm.tsx'
 import { defaultGoal, goalSummary, type UpgradeGoal } from './plannerGoal.ts'
 import { recommendPrototypeFocus } from './prototypeRecommendation.ts'
@@ -39,11 +40,13 @@ function CurrentPc({ pcName, parts }: Pick<Props, 'pcName' | 'parts'>) {
   </section>
 }
 
-function ScopeNotice({ gameDiagnosis }: { gameDiagnosis: boolean }) {
+function ScopeNotice({ diagnosis }: { diagnosis: 'GAME' | 'WORKLOAD' | null }) {
   return <p className="planner-scope" role="status">
-    {gameDiagnosis
-      ? '공식 요구 사양과 공개 벤치마크 기준 상대 성능을 함께 표시합니다. 예상 가격·FPS, 특정 제품 선정과 교체 후 호환성은 아직 계산하지 않습니다.'
-      : '현재 화면은 흐름 확인용입니다. 제품 선정, 예상 가격·FPS와 교체 후 호환성 판정은 아직 계산하지 않습니다.'}
+    {diagnosis === 'GAME'
+      ? '공식 요구 사양, 공개 벤치마크 기준 상대 성능, 해상도별 예상 프레임(추정)을 함께 표시합니다. 예상 가격·특정 제품 선정과 교체 후 호환성은 아직 계산하지 않습니다.'
+      : diagnosis === 'WORKLOAD'
+        ? '제작사 공식 사양과 작업 규모별 RAM·VRAM, 공개 벤치마크 기준 예상 성능(추정)을 함께 표시합니다. 예상 가격·특정 제품 선정은 아직 계산하지 않습니다.'
+        : '현재 화면은 흐름 확인용입니다. 제품 선정, 예상 가격·FPS와 교체 후 호환성 판정은 아직 계산하지 않습니다.'}
   </p>
 }
 
@@ -70,10 +73,13 @@ export function UpgradePlanner({ pcName, parts, onBackToPc }: Props) {
         step === 4 ? '가장 적합한 업그레이드 한 가지를 보여줄 자리입니다.' :
           '교체 전후의 연결 조건을 항목별로 확인할 자리입니다.'}</p>
     </header>
-    <ScopeNotice gameDiagnosis={step === 3 && goal.purpose === 'GAME'} />
+    <ScopeNotice diagnosis={step !== 3 ? null : goal.purpose === 'GAME' ? 'GAME'
+      : goal.purpose === 'CREATION' || goal.purpose === 'DEVELOPMENT' ? 'WORKLOAD' : null} />
     {step === 3 && <div className="planner-result-grid">
       <div className="planner-main">
-        {goal.purpose === 'GAME' ? <GameRequirementsDiagnosis games={goal.games} parts={parts} /> :
+        {goal.purpose === 'GAME' ? <GameRequirementsDiagnosis games={goal.games} parts={parts} resolution={goal.resolution} targetFps={goal.targetFps} /> :
+          goal.purpose === 'CREATION' || goal.purpose === 'DEVELOPMENT'
+            ? <WorkloadDiagnosis programs={goal.programs} parts={parts} workload={goal.workload} /> :
           <section className="planner-card planner-highlight">
           <span className="badge badge--empty">분석 준비 중</span>
           <h2>어떤 부품을 바꾸면 좋을까요?</h2>

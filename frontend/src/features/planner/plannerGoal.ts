@@ -1,7 +1,10 @@
+import { supportsFrameEstimate } from './frameEstimate.ts'
+
 export type Purpose = 'GAME' | 'CREATION' | 'DEVELOPMENT' | 'OFFICE'
 export type Workload = 'LIGHT' | 'MEDIUM' | 'HEAVY'
 export type Resolution = 'FHD' | 'QHD' | '4K'
-export type TargetFps = 60 | 144 | 240
+export type TargetFps = 30 | 60 | 120 | 144 | 240
+export const TARGET_FPS_OPTIONS: TargetFps[] = [30, 60, 120, 144, 240]
 
 export type UpgradeGoal = {
   budgetWon: number
@@ -56,9 +59,17 @@ export function goalIsReady(goal: UpgradeGoal): boolean {
     (goal.purpose === 'GAME' ? goal.games.length > 0 : goal.programs.length > 0)
 }
 
+// 예상 프레임 기준점이 있는 게임만 해상도·프레임 목표를 계산에 쓴다.
+export function frameEstimateGames(games: string[]): string[] {
+  return games.filter(supportsFrameEstimate)
+}
+
 export function goalSummary(goal: UpgradeGoal): string {
   const purpose = PURPOSES.find((item) => item.value === goal.purpose)?.label ?? '용도 미선택'
-  if (goal.purpose === 'GAME') return `${purpose} · ${goal.games.join(', ') || '게임 미선택'} · ${goal.resolution} · ${goal.targetFps}fps 목표`
+  if (goal.purpose === 'GAME') {
+    const frame = frameEstimateGames(goal.games).length > 0 ? ` · ${goal.resolution} · ${goal.targetFps}fps 목표` : ''
+    return `${purpose} · ${goal.games.join(', ') || '게임 미선택'}${frame}`
+  }
   return `${purpose} · ${goal.programs.join(', ') || '프로그램 미선택'} · ${
     { LIGHT: '가벼운 작업', MEDIUM: '보통 작업', HEAVY: '무거운 작업' }[goal.workload]}`
 }

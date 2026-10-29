@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import type { PartInput } from '../pc-scan/types.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
+import { estimateGameFrames, frameText } from './frameEstimate.ts'
 import {
-  changePurpose, GAME_SUGGESTIONS, goalIsReady, goalSummary, PROGRAMS, PURPOSES, toggleChoice,
-  type Purpose, type Resolution, type TargetFps, type UpgradeGoal, type Workload,
+  changePurpose, frameEstimateGames, GAME_SUGGESTIONS, goalIsReady, goalSummary, PROGRAMS, PURPOSES,
+  TARGET_FPS_OPTIONS, toggleChoice, type Purpose, type Resolution, type UpgradeGoal, type Workload,
 } from './plannerGoal.ts'
 import './planner.css'
 
@@ -41,6 +42,7 @@ export function UpgradeGoalForm({ pcName, parts, goal, onChange, onBack, onNext 
   const [gameLimitNotice, setGameLimitNotice] = useState(false)
   const [budgetText, setBudgetText] = useState(String(goal.budgetWon))
   const pcSummary = parts.slice(0, 5).map((part) => `${getPartTypeInfo(part.type).label} ${part.displayName}`)
+  const frameGames = frameEstimateGames(goal.games)
 
   function chooseGame(game: string) {
     if (goal.games.length >= 3 && !goal.games.includes(game.trim())) {
@@ -119,15 +121,25 @@ export function UpgradeGoalForm({ pcName, parts, goal, onChange, onBack, onNext 
               <button type="button" onClick={() => chooseGame(gameInput)} disabled={!gameInput.trim()}>추가</button>
             </div>
             {gameLimitNotice && <p role="status" className="planner-warning">게임은 최대 3개까지 선택할 수 있어요.</p>}
-            <div className="planner-goal-pair">
-              <div><h3>목표 해상도</h3><Choice label="목표 해상도"
-                options={(['FHD', 'QHD', '4K'] as Resolution[]).map((value) => ({ value, label: value }))}
-                value={goal.resolution} onChange={(resolution) => onChange({ ...goal, resolution })} /></div>
-              <div><h3>목표 프레임</h3><Choice label="목표 프레임"
-                options={([60, 144, 240] as TargetFps[]).map((value) => ({ value, label: `${value}fps` }))}
-                value={goal.targetFps} onChange={(targetFps) => onChange({ ...goal, targetFps })} /></div>
-            </div>
-            <p className="planner-caveat">목표 프레임은 희망 조건으로만 기록합니다. 실제 예상 FPS는 계산하지 않습니다.</p>
+            {frameGames.length > 0 && <>
+              <div className="planner-goal-pair">
+                <div><h3>목표 해상도</h3><Choice label="목표 해상도"
+                  options={(['FHD', 'QHD', '4K'] as Resolution[]).map((value) => ({ value, label: value }))}
+                  value={goal.resolution} onChange={(resolution) => onChange({ ...goal, resolution })} /></div>
+                <div><h3>목표 프레임</h3><Choice label="목표 프레임"
+                  options={TARGET_FPS_OPTIONS.map((value) => ({ value, label: `${value}fps` }))}
+                  value={goal.targetFps} onChange={(targetFps) => onChange({ ...goal, targetFps })} /></div>
+              </div>
+              {frameGames.map((game) => <div className="planner-frame-preview" key={game} role="status" aria-live="polite">
+                <strong>{game} · 내 PC 예상 ({goal.resolution})</strong>
+                {estimateGameFrames(parts, game, goal.resolution, goal.targetFps).map((estimate) =>
+                  <span key={estimate.preset.label}>화질 {estimate.preset.label}: <b>{frameText(estimate)}</b>
+                    {estimate.target === 'MEETS' ? ' · 목표 충족' : estimate.target === 'BELOW' ? ' · 목표 미달'
+                      : estimate.target === 'BORDERLINE' ? ' · 목표 경계' : ''}</span>)}
+              </div>)}
+              <p className="planner-caveat">예상 프레임은 공식 사양·공개 측정값을 기준으로 GPU 성능 비율로 계산한 추정치입니다.
+                출처와 신뢰도는 진단 결과에서 확인할 수 있습니다.</p>
+            </>}
           </div>}
           {goal.purpose !== null && goal.purpose !== 'GAME' && <div className="planner-reveal" aria-label="작업 목표">
             <h3>주로 사용하는 프로그램·작업 <small>최대 3개</small></h3>
@@ -145,6 +157,8 @@ export function UpgradeGoalForm({ pcName, parts, goal, onChange, onBack, onNext 
                 onClick={() => onChange({ ...goal, workload: item.value })}>
                 <strong>{item.label}</strong><span>{item.help}</span></button>)}
             </div>
+            {goal.purpose === 'CREATION' && <p className="planner-caveat">영상 편집은 작업 규모를 편집 해상도로 계산합니다:
+              가벼움 = 1080p, 보통 = 4K, 무거움 = 6K~8K.</p>}
           </div>}
         </section>
         <div className="planner-actions"><button type="button" className="planner-primary" disabled={!goalIsReady(goal)}
@@ -154,7 +168,7 @@ export function UpgradeGoalForm({ pcName, parts, goal, onChange, onBack, onNext 
         <h2>진단 기준</h2>
         <dl><div><dt>예산</dt><dd>₩{goal.budgetWon.toLocaleString('ko-KR')}</dd></div>
           <div><dt>용도·목표</dt><dd>{goalSummary(goal)}</dd></div></dl>
-        <p className="planner-caveat">예산·목표 프레임은 아직 추천 판단에 반영되지 않습니다.</p>
+        <p className="planner-caveat">예산은 아직 추천 판단에 반영되지 않습니다.</p>
         <hr /><h3>기존 구성 · {pcName.trim() || '이름 없는 PC'}</h3>
         {pcSummary.length > 0 ? <ul>{pcSummary.map((part, index) => <li key={`${index}-${part}`}>{part}</li>)}</ul>
           : <p className="planner-warning">부품을 먼저 불러오거나 입력해 주세요.</p>}
