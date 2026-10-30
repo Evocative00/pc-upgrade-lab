@@ -1,4 +1,7 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
+import { isString } from '../../lib/pageState.ts'
+import { usePageState } from '../../lib/usePageState.ts'
+import { isExpandedId, isSearchMode, isSearchRequest } from './catalogSearchState.ts'
 import type { PartType } from '../pc-scan/types.ts'
 import { catalogClient } from './catalogClient.ts'
 import { CatalogModelPicker } from './CatalogModelPicker.tsx'
@@ -8,6 +11,7 @@ import { formatProjectPrice } from './catalogPresentation.ts'
 import type { CatalogDetail, CatalogModel, CatalogPage, CatalogProduct } from './catalogTypes.ts'
 
 type Props = {
+  stateKey: string
   type: PartType
   initialQuery: string
   onSelect: (product: CatalogProduct) => void
@@ -27,12 +31,15 @@ type DetailState =
   | { status: 'done'; product: CatalogProduct; result: CatalogDetail }
   | { status: 'error'; product: CatalogProduct; message: string }
 
-export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onClose }: Props) {
+export function CatalogPicker({ stateKey, type, initialQuery, onSelect, onSelectModel, onClose }: Props) {
   const inputId = useId()
-  const [query, setQuery] = useState(initialQuery.slice(0, 100))
-  const [mode, setMode] = useState<'product' | 'model'>('product')
-  const [search, setSearch] = useState<SearchState>({ status: 'idle' })
+  const [query, setQuery] = usePageState(`${stateKey}query`, initialQuery.slice(0, 100), isString)
+  const [mode, setMode] = usePageState(`${stateKey}mode`, 'product', isSearchMode)
+  const [request, setRequest] = usePageState(`${stateKey}request`, null, isSearchRequest)
+  const [expandedId, setExpandedId] = usePageState(`${stateKey}expanded`, null, isExpandedId)
+  const [search, setSearch] = useState<SearchState>(() => ({ status: request ? 'loading' : 'idle' }))
   const [detail, setDetail] = useState<DetailState>({ status: 'idle' })
+  const [detailAttempt, setDetailAttempt] = useState(0)
   const searchController = useRef<AbortController | null>(null)
   const detailController = useRef<AbortController | null>(null)
   const modelSelection = ['CPU', 'GPU', 'MOTHERBOARD', 'RAM', 'STORAGE'].includes(type) ? onSelectModel : undefined
@@ -45,45 +52,62 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
   function clearDetail() {
     detailController.current?.abort()
     setDetail({ status: 'idle' })
+    setExpandedId(null)
   }
 
-  async function runSearch(page = 0, keyword = query.trim()) {
+  function runSearch(page = 0, keyword = query.trim()) {
     searchController.current?.abort()
-    const controller = new AbortController()
-    searchController.current = controller
     clearDetail()
     setSearch({ status: 'loading' })
+    setRequest({ page, keyword })
+  }
 
-    try {
-      const result = await catalogClient.search(type, keyword, { page, signal: controller.signal })
-      if (!controller.signal.aborted) setSearch({ status: 'done', result, keyword })
-    } catch (error) {
+  useEffect(() => {
+    if (request === null || mode !== 'product') return
+    const controller = new AbortController()
+    searchController.current = controller
+    catalogClient.search(type, request.keyword, { page: request.page, signal: controller.signal }).then((result) => {
+      if (!controller.signal.aborted) setSearch({ status: 'done', result, keyword: request.keyword })
+    }, (error: unknown) => {
       if (!controller.signal.aborted) setSearch({
         status: 'error',
         message: error instanceof Error ? error.message : '부품 검색 중 오류가 발생했습니다.',
       })
-    }
+    })
+    return () => controller.abort()
+  }, [request, mode, type])
+
+  function showDetail(product: CatalogProduct) {
+    detailController.current?.abort()
+    setExpandedId(product.id)
+    setDetailAttempt((attempt) => attempt + 1)
+    setDetail({ status: 'loading', product })
   }
 
-  async function showDetail(product: CatalogProduct) {
-    detailController.current?.abort()
+  useEffect(() => {
+    if (search.status !== 'done' || expandedId === null || mode !== 'product') return
+    const product = search.result.items.find((item) => item.id === expandedId)
+    if (!product) return
     const controller = new AbortController()
     detailController.current = controller
-    setDetail({ status: 'loading', product })
-    try {
-      const result = await catalogClient.get(product.id, controller.signal)
-      if (result.product.type !== type) throw new Error('현재 입력 항목과 부품 종류가 다릅니다.')
+    catalogClient.get(product.id, controller.signal).then((result) => {
+      if (result.product.type !== type) {
+        if (!controller.signal.aborted) setDetail({ status: 'error', product, message: '현재 입력 항목과 부품 종류가 다릅니다.' })
+        return
+      }
       if (!controller.signal.aborted) setDetail({ status: 'done', product, result })
-    } catch (error) {
+    }, (error: unknown) => {
       if (!controller.signal.aborted) setDetail({ status: 'error', product,
         message: error instanceof Error ? error.message : '상세 정보를 불러오지 못했습니다.' })
-    }
-  }
+    })
+    return () => controller.abort()
+  }, [expandedId, detailAttempt, search, mode, type])
 
   function changeQuery(value: string) {
     searchController.current?.abort()
     clearDetail()
     setQuery(value)
+    setRequest(null)
     setSearch({ status: 'idle' })
   }
 
@@ -109,10 +133,14 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
   return (
     <div className="catalog-picker" aria-label="부품 카탈로그 검색">
       {modelSelection && <div className="catalog-picker__bar" aria-label="확인 범위">
-        <button type="button" className="button" aria-pressed={mode === 'product'} onClick={() => setMode('product')}>제품 연결</button>
+        <button type="button" className="button" aria-pressed={mode === 'product'} onClick={() => {
+          if (mode === 'product') return
+          setSearch({ status: request ? 'loading' : 'idle' })
+          setMode('product')
+        }}>제품 연결</button>
         <button type="button" className="button" aria-pressed={mode === 'model'} onClick={showModels}>모델만 확인</button>
       </div>}
-      {mode === 'model' && modelSelection ? <CatalogModelPicker type={type} initialQuery={query}
+      {mode === 'model' && modelSelection ? <CatalogModelPicker stateKey={stateKey} type={type} initialQuery={query}
         onSelect={modelSelection} onClose={onClose} /> : <>
       <div className="catalog-picker__bar">
         <label htmlFor={inputId} className="visually-hidden">
@@ -160,7 +188,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
           <ul className="catalog-picker__results">
             {search.result.items.map((product) => {
               // 상세 정보는 목록 맨 아래가 아니라 누른 부품 바로 아래에 펼친다. 다시 누르면 접는다.
-              const expanded = detail.status !== 'idle' && detail.product.id === product.id
+              const expanded = expandedId === product.id
               return (
                 <li key={product.id}>
                   <button type="button" onClick={() => expanded ? clearDetail() : void showDetail(product)}
@@ -173,7 +201,7 @@ export function CatalogPicker({ type, initialQuery, onSelect, onSelectModel, onC
                     </span>
                   </button>
                   {expanded && <div className="catalog-picker__inline-detail">
-                    {detail.status === 'loading' && <p role="status" className="muted">{detail.product.modelName} 상세 조회 중…</p>}
+                    {(detail.status === 'idle' || detail.status === 'loading') && <p role="status" className="muted">{product.modelName} 상세 조회 중…</p>}
                     {detail.status === 'error' && <div role="alert">
                       <p className="error">{detail.message}</p>
                       <button type="button" className="button" onClick={() => void showDetail(detail.product)}>상세 다시 조회</button>

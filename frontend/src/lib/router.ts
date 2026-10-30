@@ -102,9 +102,37 @@ function subscribe(callback: () => void) {
 }
 
 export function useRoute(): Route {
-  const hash = useSyncExternalStore(subscribe, () => window.location.hash)
+  const hash = useLocationHash()
 
   return parseRoute(hash)
+}
+
+export function useLocationHash() {
+  return useSyncExternalStore(subscribe, () => window.location.hash)
+}
+
+export type PlannerStep = 1 | 2 | 3 | 4 | 5
+
+export function plannerStepFromHash(hash: string, fallback: PlannerStep): PlannerStep {
+  const step = new URLSearchParams(hash.split('?')[1] ?? '').get('step')
+  return step !== null && /^[1-5]$/.test(step) ? Number(step) as PlannerStep : fallback
+}
+
+export function plannerStepPath(hash: string, step: PlannerStep) {
+  const [path, query] = hash.split('?', 2)
+  const params = new URLSearchParams(query)
+  if (step === 1) params.delete('step')
+  else params.set('step', String(step))
+  return `${path}${params.size ? `?${params}` : ''}`
+}
+
+export function usePlannerStep(fallback: PlannerStep) {
+  const step = plannerStepFromHash(useLocationHash(), fallback)
+  return [step, (next: PlannerStep) => navigate(plannerStepPath(window.location.hash, next))] as const
+}
+
+export function replacePlannerStep(step: PlannerStep) {
+  window.location.replace(plannerStepPath(window.location.hash, step))
 }
 
 export function navigate(path: string) {

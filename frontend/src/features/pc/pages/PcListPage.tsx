@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { isPageNumber } from '../../../lib/pageState.ts'
+import { usePageState } from '../../../lib/usePageState.ts'
 import { paths } from '../../../lib/router.ts'
 import { authKey, useAuth } from '../../auth/authStore.ts'
 import { pcRepository } from '../pcApi.ts'
@@ -116,7 +118,7 @@ function LoginRequired() {
 
 export function PcListPage() {
   const auth = useAuth()
-  const [page, setPage] = useState(0)
+  const [page, setPage] = usePageState('pcs:page', 0, isPageNumber)
   const [attempt, setAttempt] = useState(0)
 
   return (

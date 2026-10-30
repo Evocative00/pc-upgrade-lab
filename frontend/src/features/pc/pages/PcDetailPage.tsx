@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { navigate, paths } from '../../../lib/router.ts'
+import { pageStateStore, pcStateKey } from '../../../lib/pageState.ts'
 import { clearDraftFor } from '../../auth/draftBridge.ts'
 import { PartStatusBadge, PartStatusLegend } from '../components/PartStatusBadge.tsx'
 import { PART_TYPES } from '../partCategories.ts'
@@ -26,12 +27,20 @@ function DeletePcButton({ id, name }: { id: number; name: string }) {
 
     setDeleting(true)
     setError(null)
+    const cache = pageStateStore()
+    const epoch = cache.getEpoch()
+    function clearDeletedState() {
+      if (cache.getEpoch() !== epoch) return
+      clearDraftFor(id)
+      cache.clearPrefix(pcStateKey(id))
+    }
     try {
       await pcRepository.delete(id)
-      clearDraftFor(id)
+      clearDeletedState()
       navigate(paths.list())
     } catch (deleteError) {
       if (deleteError instanceof PcApiError && deleteError.status === 404) {
+        clearDeletedState()
         window.alert('이미 삭제되었거나 찾을 수 없는 PC입니다. 목록을 새로 불러옵니다.')
         navigate(paths.list())
         return

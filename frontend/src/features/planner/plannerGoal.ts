@@ -1,4 +1,5 @@
 import { supportsFrameEstimate } from './frameEstimate.ts'
+import { isRecord } from '../../lib/pageState.ts'
 
 export type Purpose = 'GAME' | 'CREATION' | 'DEVELOPMENT' | 'OFFICE'
 export type Workload = 'LIGHT' | 'MEDIUM' | 'HEAVY'
@@ -40,6 +41,16 @@ export const defaultGoal = (): UpgradeGoal => ({
   programs: [],
   workload: 'MEDIUM',
 })
+
+export function isUpgradeGoal(value: unknown): value is UpgradeGoal {
+  if (!isRecord(value)) return false
+  const choices = (items: unknown) => Array.isArray(items) && items.length <= 3 &&
+    items.every((item: unknown) => typeof item === 'string' && item.trim().length > 0 && item.length <= 40)
+  return Number.isInteger(value.budgetWon) && Number(value.budgetWon) >= 100_000 && Number(value.budgetWon) <= 2_000_000 &&
+    (value.purpose === null || PURPOSES.some((purpose) => purpose.value === value.purpose)) &&
+    choices(value.games) && choices(value.programs) && ['FHD', 'QHD', '4K'].includes(String(value.resolution)) &&
+    TARGET_FPS_OPTIONS.some((fps) => fps === value.targetFps) && ['LIGHT', 'MEDIUM', 'HEAVY'].includes(String(value.workload))
+}
 
 export function changePurpose(goal: UpgradeGoal, purpose: Purpose): UpgradeGoal {
   return { ...goal, purpose, games: [], programs: [], workload: 'MEDIUM' }

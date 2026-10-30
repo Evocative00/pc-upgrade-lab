@@ -1,6 +1,9 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
+import { isString, pcStateKey } from '../../../lib/pageState.ts'
+import { usePageState } from '../../../lib/usePageState.ts'
+import { replacePlannerStep, usePlannerStep } from '../../../lib/router.ts'
 import { registerActiveDraft } from '../../auth/draftBridge.ts'
-import { PcBuilder, type PickTarget } from '../../builder/PcBuilder.tsx'
+import { PcBuilder } from '../../builder/PcBuilder.tsx'
 import { slotOfDraft } from '../../builder/buildSlots.ts'
 import { incompatibleByDraft } from '../../builder/compatibility.ts'
 import { useCompatibility } from '../../builder/useCompatibility.ts'
@@ -20,6 +23,7 @@ import {
 } from '../partDraft.ts'
 import { PcApiError } from '../pcRepository.ts'
 import type { PartDraft, PcRequest } from '../types.ts'
+import { isPartDrafts, isPickTarget } from '../pcFormState.ts'
 import { PartRow } from './PartRow.tsx'
 import { PartStatusLegend } from './PartStatusBadge.tsx'
 
@@ -40,7 +44,8 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
   const nameId = useId()
   const nameErrorId = useId()
   const nameInputRef = useRef<HTMLInputElement>(null)
-  const [name, setName] = useState(initial.name)
+  const stateKey = pcStateKey(pcId)
+  const [name, setName] = usePageState(`${stateKey}name`, initial.name, isString)
   // 같은 회원 안의 이름 중복(409 PC_NAME_DUPLICATE)은 이름 입력란 바로 아래에 안내한다.
   const [nameError, setNameError] = useState<string | null>(null)
 
@@ -48,7 +53,7 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
   useEffect(() => {
     if (nameError !== null) nameInputRef.current?.focus()
   }, [nameError])
-  const [drafts, setDrafts] = useState(() => withEmptyRows(initial.parts.map(toPersistedDraft)))
+  const [drafts, setDrafts] = usePageState(`${stateKey}parts`, () => withEmptyRows(initial.parts.map(toPersistedDraft)), isPartDrafts)
   // 다음 클릭 전에 최신 값을 등록한다. 편집 초안은 기존 PC ID를 유지한다.
   useLayoutEffect(() => registerActiveDraft(() => ({
     request: { name, parts: toPartInputs(drafts) },
@@ -59,8 +64,15 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
   const [saving, setSaving] = useState(false)
   // state가 다시 렌더링되기 전의 연속 클릭도 같은 요청을 두 번 보내지 않게 막는다.
   const savingRef = useRef(false)
-  const [pickTarget, setPickTarget] = useState<PickTarget | null>(null)
-  const [plannerOpen, setPlannerOpen] = useState(false)
+  const [pickTarget, setPickTarget] = usePageState(`${stateKey}pickTarget`, null, isPickTarget)
+  const [plannerStep, setPlannerStep] = usePlannerStep(1)
+  const parts = toPartInputs(drafts)
+  const restoredPlannerErrors = plannerStep > 1 && parts.length > 0 ? validatePcRequest('진단용 PC', parts) : []
+  const plannerOpen = plannerStep > 1 && parts.length > 0 && restoredPlannerErrors.length === 0
+  useEffect(() => {
+    // 초안이 없는 예전 진단 주소는 입력 화면으로 정리한다. 첫 부품을 적는 중 갑자기 플랜이 열리지 않는다.
+    if (plannerStep > 1 && parts.length === 0) replacePlannerStep(1)
+  }, [plannerStep, parts.length])
   // 구성 화면에서만 CPU·메인보드·RAM 호환성을 검사한다. 불가 판정 부품은 행에 경고를 표시한다.
   const compatibility = useCompatibility(drafts, visual)
   const warnings = compatibility.status === 'done'
@@ -158,7 +170,7 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
     // 진단에는 PC 이름이 없어도 되지만 부품의 수량·용량 규칙은 저장할 때와 같다.
     const validationErrors = validatePcRequest('진단용 PC', toPartInputs(drafts))
     setErrors(validationErrors)
-    if (validationErrors.length === 0) setPlannerOpen(true)
+    if (validationErrors.length === 0) setPlannerStep(2)
   }
 
   const unlinkedCount = drafts.filter((draft) => {
@@ -182,9 +194,10 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
     </button>
   )
 
-  const errorList = errors.length > 0 && (
+  const visibleErrors = [...new Set([...errors, ...restoredPlannerErrors])]
+  const errorList = visibleErrors.length > 0 && (
     <ul role="alert" className="error">
-      {errors.map((message, index) => (
+      {visibleErrors.map((message, index) => (
         <li key={`${index}-${message}`}>{message}</li>
       ))}
     </ul>
@@ -215,6 +228,7 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
               <PartRow
                 key={draft.key}
                 draft={draft}
+                stateKey={stateKey}
                 index={index}
                 count={rows.length}
                 onChange={updateDraft}
@@ -252,8 +266,8 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
 
   return (
     <form className="pc-form" onSubmit={handleSubmit} noValidate aria-busy={saving}>
-      {plannerOpen && <UpgradePlanner pcName={name} parts={toPartInputs(drafts)}
-        onBackToPc={() => setPlannerOpen(false)} />}
+      {plannerOpen && <UpgradePlanner stateKey={stateKey} pcName={name} parts={toPartInputs(drafts)}
+        onBackToPc={() => setPlannerStep(1)} />}
       {/* 검사 패널을 유지해 계획 화면을 다녀와도 진행 중 검사와 미반영 결과를 잃지 않는다. */}
       {/* disabled는 입력·버튼을, inert는 수집기 실행 링크 등 나머지 조작도 잠근다. */}
       <fieldset
@@ -313,7 +327,7 @@ export function PcForm({ initial, pcId = null, submitLabel, onSubmit, onCancel, 
         )}
 
         {visual ? (
-          <PcBuilder drafts={drafts} updateDrafts={updateDrafts} target={pickTarget} onTarget={setPickTarget}
+          <PcBuilder stateKey={stateKey} drafts={drafts} updateDrafts={updateDrafts} target={pickTarget} onTarget={setPickTarget}
             compatibility={compatibility} warnings={warnings}
             submit={<>{submitButton}{errorList}</>}>
             {partsPanel}

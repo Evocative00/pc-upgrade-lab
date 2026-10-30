@@ -9,7 +9,7 @@ import ts from 'typescript'
 // React 훅과 JSX 렌더링, 수집기 등 관련 없는 하위 화면만 대체한다.
 const sourceRoot = fileURLToPath(new URL('../src/', import.meta.url))
 
-function harness({ blockedStorage = false, detail = null, user = null, logoutStatus = 404, createResponse = null } = {}) {
+function harness({ blockedStorage = false, detail = null, user = null, logoutStatus = 404, createResponse = null, deleteStatus = 204 } = {}) {
   let active = null
   const hook = () => active.index++
   const effect = (callback, deps) => {
@@ -49,13 +49,14 @@ function harness({ blockedStorage = false, detail = null, user = null, logoutSta
     },
     removeItem: (key) => values.delete(key),
   }
-  const window = { location: { hash: '#/pcs/new' }, confirm: () => true, addEventListener() {}, removeEventListener() {} }
+  const window = { location: { hash: '#/pcs/new' }, confirm: () => true, alert() {}, addEventListener() {}, removeEventListener() {} }
   const calls = []
   const fetcher = async (url, init) => {
     calls.push({ url, method: init?.method ?? 'GET' })
     if (url === '/api/auth/me' && user) return new Response(JSON.stringify(user), { status: 200 })
     if (url === '/api/auth/logout') return new Response(null, { status: logoutStatus })
     if (url === '/api/pcs' && init?.method === 'POST' && createResponse) return createResponse()
+    if (detail && url === `/api/pcs/${detail.id}` && init?.method === 'DELETE') return new Response(null, { status: deleteStatus })
     if (detail && url === `/api/pcs/${detail.id}` && (!init?.method || init.method === 'GET')) {
       return new Response(JSON.stringify(detail), { status: 200 })
     }
@@ -66,6 +67,7 @@ function harness({ blockedStorage = false, detail = null, user = null, logoutSta
   const globals = { sessionStorage: storage, fetch: fetcher }
   const cache = new Map()
   const unrelated = {
+    'usePageScroll.ts': ['usePageScroll'],
     'PcScanPanel.tsx': ['PcScanPanel'], 'PartRow.tsx': ['PartRow'],
     'PartStatusBadge.tsx': ['PartStatusBadge', 'PartStatusLegend'], 'BackendStatus.tsx': ['BackendStatus'],
     'PcDetailPage.tsx': ['PcDetailPage'], 'PcListPage.tsx': ['PcListPage'],
@@ -261,5 +263,92 @@ test('새 PC A의 늦은 저장 성공은 그 사이 작성한 새 PC B의 최�
   await saving
   assert.equal(bridge.loadDraft().request.name, '새 PC B')
   assert.equal(bridge.loadDraft().pcId, null)
+  const cache = h.load('lib/pageState.ts').pageStateStore()
+  assert.equal(cache.read('pc:new:name', '', (value) => typeof value === 'string'), '새 PC B')
   assert.equal(h.window.location.hash, '#/pcs/new')
+})
+
+test('저장 성공 후 이전 폼이 다시 렌더되어도 저장한 초안을 되살리지 않는다', async () => {
+  const request = { name: '저장한 PC', parts: [{ type: 'CPU', displayName: 'Ryzen 5 5600', rawName: null,
+    quantity: 1, source: 'MANUAL', catalogProductId: null, matchStatus: 'UNMATCHED', specs: {} }] }
+  const h = harness({ createResponse: async () => new Response(JSON.stringify({
+    ...request, id: 17, createdAt: '2026-10-30', updatedAt: '2026-10-30',
+  }), { status: 201 }) })
+  const bridge = h.load('features/auth/draftBridge.ts')
+  const { PcNewPage } = h.load('features/pc/pages/PcFormPages.tsx')
+  const { PcForm } = h.load('features/pc/components/PcForm.tsx')
+  const cache = h.load('lib/pageState.ts').pageStateStore()
+  bridge.saveDraft(request, null)
+  const page = h.render(PcNewPage)
+  const props = find(page.tree, (node) => node.type === PcForm).props
+  const form = h.render(PcForm, props)
+  await form.tree.props.onSubmit({ preventDefault() {} })
+  assert.equal(h.window.location.hash, '#/pcs/17')
+  h.render(PcForm, props, form.owner)
+  assert.equal(cache.has('pc:new:name'), false)
+  assert.equal(cache.has('pc:new:parts'), false)
+  assert.equal(bridge.loadDraft(), null)
+  const freshPage = h.render(PcNewPage)
+  const freshProps = find(freshPage.tree, (node) => node.type === PcForm).props
+  assert.equal(nameInput(h.render(PcForm, freshProps).tree).props.value, '')
+})
+
+test('초기화는 PC 구성·플랜·검색을 함께 비우고 입력 화면 주소로 돌아간다', () => {
+  const h = harness()
+  const { PcNewPage } = h.load('features/pc/pages/PcFormPages.tsx')
+  const { PcForm } = h.load('features/pc/components/PcForm.tsx')
+  const { pageStateStore, isString } = h.load('lib/pageState.ts')
+  const cache = pageStateStore()
+  cache.write('pc:new:name', '초기화할 PC', '', isString)
+  cache.write('pc:new:gameInput', '미완성 게임 입력', '', isString)
+  cache.write('pc:new:catalog:CPU:query', '검색어', '', isString)
+  cache.write('pc:17:name', '다른 PC', '', isString)
+  h.window.location.hash = '#/pcs/new?step=3'
+  let page = h.render(PcNewPage)
+  find(page.tree, (node) => node.type === PcForm).props.onReset()
+  page = h.render(PcNewPage, {}, page.owner)
+  assert.equal(cache.has('pc:new:name'), false)
+  assert.equal(cache.has('pc:new:gameInput'), false)
+  assert.equal(cache.has('pc:new:catalog:CPU:query'), false)
+  assert.equal(cache.read('pc:17:name', '', isString), '다른 PC')
+  assert.equal(h.window.location.hash, '#/pcs/new')
+  assert.equal(find(page.tree, (node) => node.type === PcForm).props.initial.name, '')
+})
+
+for (const deleteStatus of [204, 404]) {
+  test(`PC 삭제 HTTP ${deleteStatus} 후 해당 PC의 임시 편집·플랜을 비운다`, async () => {
+    const detail = { id: 17, name: '삭제할 PC', parts: [], createdAt: '2026-10-30', updatedAt: '2026-10-30' }
+    const h = harness({ detail, deleteStatus })
+    const { PcDetailPage } = h.load('features/pc/pages/PcDetailPage.tsx')
+    const { pageStateStore, isString } = h.load('lib/pageState.ts')
+    const cache = pageStateStore()
+    cache.write('pc:17:name', '수정 중', '', isString)
+    cache.write('pc:17:gameInput', '게임', '', isString)
+    cache.write('pc:18:name', '다른 PC', '', isString)
+    let page = h.render(PcDetailPage, { id: 17 })
+    await new Promise((resolve) => setImmediate(resolve))
+    page = h.render(PcDetailPage, { id: 17 }, page.owner)
+    const element = find(page.tree, (node) => node.type?.name === 'DeletePcButton')
+    const button = h.render(element.type, element.props)
+    await find(button.tree, (node) => node.type === 'button').props.onClick()
+    assert.equal(cache.has('pc:17:name'), false)
+    assert.equal(cache.has('pc:17:gameInput'), false)
+    assert.equal(cache.has('pc:18:name'), true)
+    assert.equal(h.window.location.hash, '#/pcs')
+  })
+}
+
+test('회원 재확인 실패 화면은 보관한 개인 입력을 표시하지 않고 다시 확인할 수 있다', async () => {
+  const h = harness()
+  const { pageStateStore, isString } = h.load('lib/pageState.ts')
+  const cache = pageStateStore()
+  cache.syncOwner('user-1')
+  cache.write('pc:new:name', '이전 회원의 입력', '', isString)
+  const app = h.render(h.load('App.tsx').default)
+  const Page = find(app.tree, (node) => node.type?.name === 'Page').type
+  await new Promise((resolve) => setImmediate(resolve))
+  const page = h.render(Page, { route: { name: 'new' } })
+  assert.equal(elements(page.tree).some((node) => node.type?.name === 'PcNewPage'), false)
+  assert.ok(elements(page.tree).some((node) => node.type === 'button' && node.props.children === '로그인 상태 다시 확인'))
+  assert.equal(cache.read('pc:new:name', '', isString), '이전 회원의 입력')
 })

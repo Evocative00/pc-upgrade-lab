@@ -38,3 +38,16 @@ test('logout은 POST로 요청하고 이미 끝난 세션(401)도 성공으로 �
   ])
   await assert.rejects(createAuthClient(async () => new Response(null, { status: 500 })).logout())
 })
+
+test('인증 확인 시간이 초과되면 무한 대기하지 않고 unavailable로 처리한다', async (t) => {
+  t.mock.method(AbortSignal, 'timeout', (milliseconds: number) => {
+    assert.equal(milliseconds, 8000)
+    return AbortSignal.abort(new DOMException('timeout', 'TimeoutError'))
+  })
+  const client = createAuthClient(async (_url, init) => {
+    assert.ok(init?.signal?.aborted)
+    throw init.signal.reason
+  })
+  assert.deepEqual(await client.me(), { status: 'unavailable' })
+  assert.deepEqual(await client.providers(), ['google'])
+})

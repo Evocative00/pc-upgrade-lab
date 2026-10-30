@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { authClient, createAuthClient } from '../src/features/auth/authClient.ts'
 import { getAuthState, logout, refreshAuth } from '../src/features/auth/authStore.ts'
+import { isString, pageStateStore } from '../src/lib/pageState.ts'
 
 const user = { id: 1, name: '회원 A', email: null, provider: 'google' }
 
@@ -32,3 +33,17 @@ for (const status of [204, 401]) {
     assert.deepEqual(getAuthState(), { status: 'signedOut' })
   })
 }
+
+test('인증 서버 장애는 회원의 임시 입력을 지우지 않고, 같은 회원 재확인 후 이어 간다', async (t) => {
+  t.mock.method(authClient, 'me', async () => ({ status: 'signedIn', user }))
+  await refreshAuth()
+  const cache = pageStateStore()
+  cache.write('pc:new:name', '네트워크 오류에도 남길 PC', '', isString)
+  t.mock.method(authClient, 'me', async () => ({ status: 'unavailable' }))
+  await refreshAuth()
+  assert.equal(cache.getOwner(), 'user-1')
+  assert.equal(cache.read('pc:new:name', '', isString), '네트워크 오류에도 남길 PC')
+  t.mock.method(authClient, 'me', async () => ({ status: 'signedIn', user }))
+  await refreshAuth()
+  assert.equal(cache.read('pc:new:name', '', isString), '네트워크 오류에도 남길 PC')
+})

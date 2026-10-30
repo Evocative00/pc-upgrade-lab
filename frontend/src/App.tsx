@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { BackendStatus } from './components/BackendStatus.tsx'
-import { logout, refreshAuth, useAuth } from './features/auth/authStore.ts'
+import { authKey, logout, refreshAuth, useAuth } from './features/auth/authStore.ts'
 import { saveActiveDraft } from './features/auth/draftBridge.ts'
 import { LoginFailurePage, LoginPage, LoginSuccessPage } from './features/auth/pages/LoginPages.tsx'
 import { BootScreen } from './features/landing/BootScreen.tsx'
@@ -12,9 +12,23 @@ import { PcEditPage, PcNewPage } from './features/pc/pages/PcFormPages.tsx'
 import { PcListPage } from './features/pc/pages/PcListPage.tsx'
 import { UpgradeEntryPage, UpgradeSavedPcPage } from './features/planner/UpgradeEntryPages.tsx'
 import { navigate, parseRoute, paths, useRoute, type Route } from './lib/router.ts'
+import { usePageScroll } from './lib/usePageScroll.ts'
+import { pageStateStore } from './lib/pageState.ts'
 
 // 자동 인식 패널(PcScanPanel)은 PC 등록·수정 폼 안에서 onApply로 연결한다.
 function Page({ route }: { route: Route }) {
+  const auth = useAuth()
+  if (auth.status === 'loading' && route.name !== 'loginSuccess') {
+    return <p role="status">로그인 상태를 확인하는 중…</p>
+  }
+  // 통신 장애는 로그아웃이 아니다. 회원을 재확인하기 전까지 개인 임시 입력을 표시하거나 지우지 않는다.
+  if (auth.status === 'unavailable' && pageStateStore().getOwner() !== 'guest' &&
+    !['login', 'loginSuccess', 'loginFailure'].includes(route.name)) {
+    return <div className="empty">
+      <p role="status">로그인 상태를 확인하지 못했습니다. 임시 입력은 이 탭에 보관되어 있습니다.</p>
+      <button type="button" className="button" onClick={() => void refreshAuth()}>로그인 상태 다시 확인</button>
+    </div>
+  }
   switch (route.name) {
     // 랜딩 화면은 App에서 머리말 없이 따로 그린다.
     case 'home':
@@ -111,9 +125,11 @@ function AuthStatus() {
 
 function App() {
   const route = useRoute()
+  const auth = useAuth()
   const isAuthPage = route.name === 'login' || route.name === 'loginSuccess' || route.name === 'loginFailure'
   // 홈으로 처음 들어온 세션에서만 로딩 화면을 한 번 보여 준다.
   const [booting, setBooting] = useState(() => parseRoute(window.location.hash).name === 'home' && !hasSeenBoot())
+  usePageScroll(`${authKey(auth)}:${booting}`)
 
   // 처음 열 때 한 번 로그인 상태를 확인한다. 로그인 성공 화면은 직접 다시 확인한다.
   useEffect(() => {
@@ -144,7 +160,7 @@ function App() {
           <LandingTabs current="new" />
         </div>
         <main className="app-main">
-          <Page route={route} />
+          <Page key={authKey(auth)} route={route} />
         </main>
         <footer className="app-footer">
           <BackendStatus />
@@ -167,7 +183,7 @@ function App() {
         <AuthStatus />
       </header>
       <main className={isAuthPage ? 'app-main app-main--auth' : 'app-main'}>
-        <Page route={route} />
+        <Page key={isAuthPage ? 'auth' : authKey(auth)} route={route} />
       </main>
       <footer className="app-footer">
         <BackendStatus />

@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from 'react'
 import { authClient, type AuthUser } from './authClient.ts'
+import { pageStateStore } from '../../lib/pageState.ts'
 
 // 화면 전체가 공유하는 로그인 상태. 회원이 바뀌면 user.id가 바뀌므로 개인 PC 화면은 이 값을 key로 다시 불러온다.
 export type AuthState =
@@ -12,6 +13,8 @@ let state: AuthState = { status: 'loading' }
 const listeners = new Set<() => void>()
 
 function setState(next: AuthState) {
+  if (next.status === 'signedIn') pageStateStore().syncOwner(`user-${next.user.id}`)
+  if (next.status === 'signedOut') pageStateStore().syncOwner('guest')
   state = next
   listeners.forEach((listener) => listener())
 }

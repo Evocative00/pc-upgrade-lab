@@ -4,6 +4,7 @@ import type { CatalogModel, CatalogProduct } from '../catalog/catalogTypes.ts'
 import type { PartType } from '../pc-scan/types.ts'
 
 type Props = {
+  stateKey: string
   label: string
   type: PartType
   initialQuery: string
@@ -13,7 +14,7 @@ type Props = {
 }
 
 // 네이티브 모달은 배경 조작과 Tab 이탈을 막고, 닫을 때 열었던 자리로 돌아간다.
-export function CatalogPickerDialog({ label, type, initialQuery, onClose, onSelect, onSelectModel }: Props) {
+export function CatalogPickerDialog({ stateKey, label, type, initialQuery, onClose, onSelect, onSelectModel }: Props) {
   const titleId = useId()
   const dialogRef = useRef<HTMLDialogElement>(null)
 
@@ -50,7 +51,7 @@ export function CatalogPickerDialog({ label, type, initialQuery, onClose, onSele
           event.clientY < bounds.top || event.clientY > bounds.bottom) onClose()
       }}>
       <h2 id={titleId}>{label} 고르기</h2>
-      <CatalogPicker type={type} initialQuery={initialQuery} onClose={onClose} onSelect={onSelect} onSelectModel={onSelectModel} />
+      <CatalogPicker stateKey={stateKey} type={type} initialQuery={initialQuery} onClose={onClose} onSelect={onSelect} onSelectModel={onSelectModel} />
     </dialog>
   )
 }

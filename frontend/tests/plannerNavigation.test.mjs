@@ -10,7 +10,11 @@ import ts from 'typescript'
 const sourceRoot = fileURLToPath(new URL('../src/', import.meta.url))
 const GIB = 1024 ** 3
 
-function harness({ list = async () => ({ items: [], page: 0, size: 20, totalElements: 0, totalPages: 0 }) } = {}) {
+function harness({ list = async () => ({ items: [], page: 0, size: 20, totalElements: 0, totalPages: 0 }),
+  realPlanner = false, realCatalog = false, storageValues = new Map(), initialHash = '#/pcs/new',
+  searchCatalog = async () => ({ items: [], page: 0, size: 20, totalElements: 0, totalPages: 0, attributions: [] }),
+  searchModels = async () => ({ items: [], page: 0, size: 20, totalElements: 0, totalPages: 0 }),
+} = {}) {
   let active = null
   let nextOwnerId = 0
   let scanMounts = 0
@@ -18,7 +22,17 @@ function harness({ list = async () => ({ items: [], page: 0, size: 20, totalElem
   const owners = new Map()
   const cache = new Map()
   const calls = []
-  const storageValues = new Map()
+  const history = [initialHash]
+  let cursor = 0
+  const window = { confirm: () => true, location: {
+    replace(next) { history[cursor] = next },
+    get hash() { return history[cursor] },
+    set hash(next) {
+      if (next === history[cursor]) return
+      history.splice(++cursor)
+      history[cursor] = next
+    },
+  } }
   const storage = {
     getItem: (key) => storageValues.get(key) ?? null,
     setItem: (key, value) => storageValues.set(key, value),
@@ -49,6 +63,7 @@ function harness({ list = async () => ({ items: [], page: 0, size: 20, totalElem
     useId: () => `id-${active.id}-${active.index++}`,
     useEffect: effect,
     useLayoutEffect: effect,
+    useSyncExternalStore(_subscribe, snapshot) { active.index++; return snapshot() },
   }
   const jsx = {
     jsx: (type, props, key) => ({ type, props, key }),
@@ -58,6 +73,14 @@ function harness({ list = async () => ({ items: [], page: 0, size: 20, totalElem
   const stubs = {
     'authStore.ts': { useAuth: () => ({ status: 'signedIn', user: { id: 1 } }), authKey: () => 'user-1' },
     'pcApi.ts': { pcRepository: { async list(page, size) { calls.push({ page, size }); return list(page, size) } } },
+    'catalogClient.ts': { catalogClient: { async search(type, keyword, options) {
+      calls.push({ type, keyword, page: options.page })
+      return searchCatalog(type, keyword, options)
+    } } },
+    'catalogModelClient.ts': { catalogModelClient: { async search(type, keyword, options) {
+      calls.push({ type, keyword, page: options.page })
+      return searchModels(type, keyword, options)
+    } } },
     'useCompatibility.ts': { useCompatibility: () => ({ status: 'idle' }) },
     'PcBuilder.tsx': { PcBuilder: () => null },
     'CatalogPicker.tsx': { CatalogPicker: () => null },
@@ -77,6 +100,8 @@ function harness({ list = async () => ({ items: [], page: 0, size: 20, totalElem
       }
     } },
   }
+  if (realPlanner) delete stubs['UpgradePlanner.tsx']
+  if (realCatalog) delete stubs['CatalogPicker.tsx']
   function resolve(filename) {
     if (path.extname(filename)) return filename
     return `${filename}.ts`
@@ -99,7 +124,7 @@ function harness({ list = async () => ({ items: [], page: 0, size: 20, totalElem
     }
     new Function('require', 'exports', 'module', 'globalThis', 'window', 'document', code)(
       require, module.exports, module, { sessionStorage: storage },
-      { confirm: () => true, location: { hash: '#/upgrade' } }, { cookie: '' },
+      window, { cookie: '' },
     )
     return module.exports
   }
@@ -136,7 +161,9 @@ function harness({ list = async () => ({ items: [], page: 0, size: 20, totalElem
     }
     return tree
   }
-  return { load, paint, calls, scanCounts: () => ({ mounts: scanMounts, unmounts: scanUnmounts }) }
+  return { load, paint, calls, storageValues, window,
+    back: () => { if (cursor > 0) cursor-- }, forward: () => { if (cursor + 1 < history.length) cursor++ },
+    scanCounts: () => ({ mounts: scanMounts, unmounts: scanUnmounts }) }
 }
 
 function elements(node) {
@@ -270,3 +297,151 @@ test('계획 왕복은 자동 인식 결과와 부품 초안을 유지하고 Ent
   assert.equal(saved.name, initial.name)
   assert.deepEqual(saved.parts.map((item) => item.displayName).sort(), ['8GiB RAM', '수집한 CPU'])
 })
+
+test('플랜 조건은 브라우저 뒤로가기·앞으로가기·다른 화면 왕복·새로고침 후 복원된다', () => {
+  const h = harness({ realPlanner: true })
+  const { PcForm } = h.load('features/pc/components/PcForm.tsx')
+  const props = { initial: { name: 'PC A', parts: [part('GPU', 'GeForce RTX 3060')] },
+    submitLabel: '저장', onCancel() {}, onSubmit() { assert.fail('복원 중 서버 저장 금지') } }
+  let tree = h.paint(PcForm, props)
+  button(tree, '업그레이드 계획 살펴보기').props.onClick()
+  tree = h.paint(PcForm, props)
+  button(tree, '게임').props.onClick()
+  tree = h.paint(PcForm, props)
+  button(tree, '발로란트').props.onClick()
+  tree = h.paint(PcForm, props)
+  find(tree, (node) => node.props?.['aria-label'] === '업그레이드 예산').props.onChange({ target: { value: '1200000' } })
+  tree = h.paint(PcForm, props)
+  button(tree, '진단 결과 보기 →').props.onClick()
+  assert.match(h.window.location.hash, /step=3/)
+  assert.match(text(h.paint(PcForm, props)), /현재 구성 진단/)
+  h.back()
+  tree = h.paint(PcForm, props)
+  assert.equal(button(tree, '발로란트').props['aria-pressed'], true)
+  assert.equal(find(tree, (node) => node.props?.['aria-label'] === '업그레이드 예산').props.value, '1200000')
+  h.forward()
+  assert.match(text(h.paint(PcForm, props)), /현재 구성 진단/)
+  h.paint(() => null)
+  assert.match(text(h.paint(PcForm, props)), /현재 구성 진단/)
+
+  const reloaded = harness({ realPlanner: true, storageValues: h.storageValues, initialHash: h.window.location.hash })
+  const ReloadedForm = reloaded.load('features/pc/components/PcForm.tsx').PcForm
+  const empty = { ...props, initial: { name: '', parts: [] } }
+  assert.match(text(reloaded.paint(ReloadedForm, empty)), /현재 구성 진단/)
+  reloaded.window.location.hash = '#/pcs/new?step=2'
+  tree = reloaded.paint(ReloadedForm, empty)
+  assert.equal(button(tree, '발로란트').props['aria-pressed'], true)
+  assert.equal(find(tree, (node) => node.props?.['aria-label'] === '업그레이드 예산').props.value, '1200000')
+  reloaded.window.location.hash = '#/pcs/new'
+  tree = reloaded.paint(ReloadedForm, empty)
+  assert.equal(find(tree, (node) => node.props?.placeholder === '예: 집 데스크톱').props.value, 'PC A')
+  assert.ok(elements(tree).some((node) => node.type === 'input' && node.props.value === 'GeForce RTX 3060'))
+})
+
+test('예전 진단 주소로 앞으로 가도 복원한 부품 수량이 잘못되었으면 폼에서 보완한다', () => {
+  const h = harness({ realPlanner: true, initialHash: '#/pcs/new?step=3' })
+  const { PcForm } = h.load('features/pc/components/PcForm.tsx')
+  const tree = h.paint(PcForm, { initial: { name: 'PC', parts: [part('RAM', 'RAM', {}, NaN)] },
+    submitLabel: '저장', onCancel() {}, onSubmit() {} })
+  assert.equal(elements(tree).some((node) => node.type === 'h1' && text(node) === '현재 구성 진단'), false)
+  assert.match(text(find(tree, (node) => node.props?.role === 'alert')), /수량은 1~64 사이 정수/)
+})
+
+test('초안이 없는 진단 주소는 입력 화면으로 정리하고 첫 부품을 적을 때 플랜을 열지 않는다', () => {
+  const h = harness({ realPlanner: true, initialHash: '#/pcs/new?step=3' })
+  const { PcForm } = h.load('features/pc/components/PcForm.tsx')
+  const props = { initial: { name: '', parts: [] }, submitLabel: '저장', onCancel() {}, onSubmit() {} }
+  let tree = h.paint(PcForm, props)
+  assert.equal(h.window.location.hash, '#/pcs/new')
+  const cpu = find(tree, (node) => node.type === 'div' && node.props?.className?.startsWith('part-row ') &&
+    elements(node).some((child) => child.type === 'label' && text(child) === 'CPU'))
+  find(cpu, (node) => node.type === 'input').props.onChange({ target: { value: 'Ryzen 5 5600' } })
+  tree = h.paint(PcForm, props)
+  assert.equal(elements(tree).some((node) => node.type === 'h1' && text(node) === '예산과 목적을 정해주세요'), false)
+  assert.equal(button(tree, '업그레이드 계획 살펴보기').props.disabled, false)
+})
+
+test('부품 검색은 작성 검색어와 마지막 검색 페이지를 구분해 복원하고 결과를 다시 조회한다', async () => {
+  const h = harness({ realCatalog: true, searchCatalog: async (_type, _keyword, options) => ({
+    items: [], page: options.page, size: 20, totalElements: 42, totalPages: 3, attributions: [],
+  }) })
+  const { CatalogPicker } = h.load('features/catalog/CatalogPicker.tsx')
+  const props = { stateKey: 'pc:new:catalog:CPU:', type: 'CPU', initialQuery: '', onSelect() {}, onClose() {} }
+  let tree = h.paint(CatalogPicker, props)
+  find(tree, (node) => node.type === 'input' && node.props.type === 'search').props.onChange({ target: { value: 'Ryzen' } })
+  tree = h.paint(CatalogPicker, props)
+  button(tree, '검색').props.onClick()
+  h.paint(CatalogPicker, props)
+  await settle()
+  tree = h.paint(CatalogPicker, props)
+  button(tree, '다음').props.onClick()
+  h.paint(CatalogPicker, props)
+  await settle()
+  h.paint(() => null)
+  h.paint(CatalogPicker, props)
+  await settle()
+  tree = h.paint(CatalogPicker, props)
+  assert.equal(find(tree, (node) => node.type === 'input' && node.props.type === 'search').props.value, 'Ryzen')
+  assert.match(text(tree), /2 \/ 3 페이지/)
+  assert.deepEqual(h.calls.map(({ keyword, page }) => [keyword, page]), [['Ryzen', 0], ['Ryzen', 1], ['Ryzen', 1]])
+  find(tree, (node) => node.type === 'input' && node.props.type === 'search').props.onChange({ target: { value: '검색 전 입력' } })
+  h.paint(() => null)
+  tree = h.paint(CatalogPicker, props)
+  assert.equal(find(tree, (node) => node.type === 'input' && node.props.type === 'search').props.value, '검색 전 입력')
+  assert.match(text(tree), /검색어를 입력하거나/)
+  assert.equal(h.calls.length, 3)
+})
+
+test('모델만 확인 모드의 검색어·페이지도 새로고침 후 다시 조회한다', async () => {
+  const options = { realCatalog: true, searchModels: async (_type, _keyword, options) => ({
+    items: [], page: options.page, size: 20, totalElements: 42, totalPages: 3,
+  }) }
+  const h = harness(options)
+  const { CatalogPicker } = h.load('features/catalog/CatalogPicker.tsx')
+  const props = { stateKey: 'pc:new:catalog:RAM:', type: 'RAM', initialQuery: '',
+    onSelect() {}, onSelectModel() {}, onClose() {} }
+  let tree = h.paint(CatalogPicker, props)
+  button(tree, '모델만 확인').props.onClick()
+  tree = h.paint(CatalogPicker, props)
+  find(tree, (node) => node.type === 'input' && node.props.type === 'search').props.onChange({ target: { value: 'DDR5' } })
+  tree = h.paint(CatalogPicker, props)
+  button(tree, '검색').props.onClick()
+  h.paint(CatalogPicker, props)
+  await settle()
+  tree = h.paint(CatalogPicker, props)
+  button(tree, '다음').props.onClick()
+  h.paint(CatalogPicker, props)
+  await settle()
+  const fresh = harness({ ...options, storageValues: h.storageValues })
+  const FreshPicker = fresh.load('features/catalog/CatalogPicker.tsx').CatalogPicker
+  fresh.paint(FreshPicker, props)
+  await settle()
+  tree = fresh.paint(FreshPicker, props)
+  assert.equal(button(tree, '모델만 확인').props['aria-pressed'], true)
+  assert.equal(find(tree, (node) => node.type === 'input' && node.props.type === 'search').props.value, 'DDR5')
+  assert.match(text(tree), /2 \/ 3/)
+  assert.deepEqual(fresh.calls.map(({ keyword, page }) => [keyword, page]), [['DDR5', 1]])
+})
+
+for (const pageFile of ['features/planner/UpgradeEntryPages.tsx', 'features/pc/pages/PcListPage.tsx']) {
+  test(`${pageFile}의 PC 목록 페이지는 화면 왕복·새로고침 후 유지된다`, async () => {
+    const options = { list: async (page) => ({ items: [savedPc], page, size: 20, totalElements: 41, totalPages: 3 }) }
+    const h = harness(options)
+    const module = h.load(pageFile)
+    const ListPage = module.UpgradeEntryPage ?? module.PcListPage
+    h.paint(ListPage)
+    await settle()
+    button(h.paint(ListPage), pageFile.includes('planner') ? '다음' : '다음 페이지').props.onClick()
+    h.paint(ListPage)
+    await settle()
+    h.paint(() => null)
+    h.paint(ListPage)
+    await settle()
+    assert.equal(h.calls.at(-1).page, 1)
+    const fresh = harness({ ...options, storageValues: h.storageValues })
+    const freshModule = fresh.load(pageFile)
+    fresh.paint(freshModule.UpgradeEntryPage ?? freshModule.PcListPage)
+    await settle()
+    assert.equal(fresh.calls[0].page, 1)
+  })
+}

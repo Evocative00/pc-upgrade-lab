@@ -1,40 +1,50 @@
 import { useEffect, useId, useRef, useState } from 'react'
+import { isString } from '../../lib/pageState.ts'
+import { usePageState } from '../../lib/usePageState.ts'
+import { isSearchRequest } from './catalogSearchState.ts'
 import type { PartType } from '../pc-scan/types.ts'
 import { catalogModelClient } from './catalogModelClient.ts'
 import { CatalogSearchHelp } from './CatalogSearchHelp.tsx'
 import type { CatalogModel, CatalogModelPage } from './catalogTypes.ts'
 
-export function CatalogModelPicker({ type, initialQuery, onSelect, onClose }: {
-  type: PartType; initialQuery: string; onSelect: (model: CatalogModel) => void; onClose: () => void
+export function CatalogModelPicker({ stateKey, type, initialQuery, onSelect, onClose }: {
+  stateKey: string; type: PartType; initialQuery: string; onSelect: (model: CatalogModel) => void; onClose: () => void
 }) {
   const inputId = useId()
-  const [query, setQuery] = useState(initialQuery.slice(0, 100))
+  const [query, setQuery] = usePageState(`${stateKey}modelQuery`, initialQuery.slice(0, 100), isString)
+  const [request, setRequest] = usePageState(`${stateKey}modelRequest`, null, isSearchRequest)
   const [result, setResult] = useState<CatalogModelPage | null>(null)
   const [keyword, setKeyword] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(request !== null)
   const [error, setError] = useState<string | null>(null)
   const controllerRef = useRef<AbortController | null>(null)
   useEffect(() => () => controllerRef.current?.abort(), [])
 
-  async function search(page = 0, term = query.trim()) {
+  function search(page = 0, term = query.trim()) {
     controllerRef.current?.abort()
+    setLoading(true); setError(null); setResult(null)
+    setRequest({ page, keyword: term })
+  }
+
+  useEffect(() => {
+    if (request === null) return
     const controller = new AbortController()
     controllerRef.current = controller
-    setLoading(true); setError(null); setResult(null)
-    try {
-      const response = await catalogModelClient.search(type, term, { page, signal: controller.signal })
-      if (!controller.signal.aborted) { setResult(response); setKeyword(term) }
-    } catch (failure) {
+    catalogModelClient.search(type, request.keyword, { page: request.page, signal: controller.signal }).then((response) => {
+      if (!controller.signal.aborted) { setResult(response); setKeyword(request.keyword); setLoading(false) }
+    }, (failure: unknown) => {
       if (!controller.signal.aborted) setError(failure instanceof Error ? failure.message : '모델 조회 실패')
-    } finally { if (!controller.signal.aborted) setLoading(false) }
-  }
+      if (!controller.signal.aborted) setLoading(false)
+    })
+    return () => controller.abort()
+  }, [request, type])
   return <section aria-label="부품 모델 확인">
     <p className="notice">모델명이나 RAM 규격군만 확인할 때 사용합니다. 정확한 판매 상품과 현재 상품가는 연결되지 않습니다.</p>
     <div className="catalog-picker__bar">
       <label className="visually-hidden" htmlFor={inputId}>모델 검색어</label>
       <input id={inputId} type="search" maxLength={100} value={query} autoFocus
         onChange={(event) => {
-          controllerRef.current?.abort(); setQuery(event.target.value); setResult(null); setError(null); setLoading(false)
+          controllerRef.current?.abort(); setQuery(event.target.value); setRequest(null); setResult(null); setError(null); setLoading(false)
         }} onKeyDown={(event) => {
           if (event.nativeEvent.isComposing) return
           if (event.key === 'Enter') { event.preventDefault(); void search() }

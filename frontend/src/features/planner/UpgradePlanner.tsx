@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react'
+import { usePlannerStep, type PlannerStep } from '../../lib/router.ts'
+import { usePageState } from '../../lib/usePageState.ts'
 import type { PartInput } from '../pc-scan/types.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { GameRequirementsDiagnosis } from './GameRequirementsDiagnosis.tsx'
 import { WorkloadDiagnosis } from './WorkloadDiagnosis.tsx'
 import { UpgradeGoalForm } from './UpgradeGoalForm.tsx'
-import { defaultGoal, goalSummary, type UpgradeGoal } from './plannerGoal.ts'
+import { defaultGoal, goalIsReady, goalSummary, isUpgradeGoal } from './plannerGoal.ts'
 import { recommendPrototypeFocus } from './prototypeRecommendation.ts'
 import './planner.css'
 
 type Step = 2 | 3 | 4 | 5
 
 type Props = {
+  stateKey: string
   pcName: string
   parts: PartInput[]
   onBackToPc: () => void
@@ -50,23 +52,20 @@ function ScopeNotice({ diagnosis }: { diagnosis: 'GAME' | 'WORKLOAD' | null }) {
   </p>
 }
 
-export function UpgradePlanner({ pcName, parts, onBackToPc }: Props) {
-  const [step, setStep] = useState<Step>(2)
-  const [goal, setGoal] = useState<UpgradeGoal>(defaultGoal)
-
-  // 긴 진단 화면의 끝에서 다음 단계로 이동해도 새 단계의 제목부터 읽을 수 있게 한다.
-  useEffect(() => {
-    window.scrollTo?.({ top: 0, left: 0, behavior: 'auto' })
-  }, [step])
+export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
+  const [requestedStep, setStep] = usePlannerStep(2)
+  const [goal, setGoal] = usePageState(`${stateKey}goal`, defaultGoal, isUpgradeGoal)
+  // 임시 상태가 없는 직접 주소·초기화 후 방문 기록에서는 조건부터 다시 입력한다.
+  const step: Step = requestedStep < 2 || !goalIsReady(goal) ? 2 : requestedStep as Step
   const focus = goal.purpose === 'GAME' ? recommendPrototypeFocus(parts, goal.games) : null
 
-  if (step === 2) return <UpgradeGoalForm pcName={pcName} parts={parts} goal={goal} onChange={setGoal}
+  if (step === 2) return <UpgradeGoalForm stateKey={stateKey} pcName={pcName} parts={parts} goal={goal} onChange={setGoal}
     onBack={onBackToPc} onNext={() => setStep(3)} />
 
   return <div className="planner-shell">
     <Stepper current={step} />
     <header className="planner-heading">
-      <button type="button" className="planner-text-button" onClick={() => setStep((step - 1) as Step)}>← 이전 단계</button>
+      <button type="button" className="planner-text-button" onClick={() => setStep((step - 1) as PlannerStep)}>← 이전 단계</button>
       <p className="planner-eyebrow">{goalSummary(goal)}</p>
       <h1>{step === 3 ? '현재 구성 진단' : step === 4 ? '추천 플랜' : '호환성 상세'}</h1>
       <p>{step === 3 ? '내 PC와 선택한 목표를 공식 요구 사양에 비춰 확인해 보세요.' :
@@ -134,7 +133,7 @@ export function UpgradePlanner({ pcName, parts, onBackToPc }: Props) {
       </aside>
     </div>}
     <div className="planner-actions">
-      {step < 5 ? <button type="button" className="button button--primary" onClick={() => setStep((step + 1) as Step)}>
+      {step < 5 ? <button type="button" className="button button--primary" onClick={() => setStep((step + 1) as PlannerStep)}>
         {step === 3 ? '추천 플랜 보기' : '호환성 상세 보기'} →</button> :
         <button type="button" className="button button--ghost" onClick={onBackToPc}>내 PC로 돌아가기</button>}
     </div>

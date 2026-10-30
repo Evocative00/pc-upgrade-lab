@@ -1,4 +1,6 @@
-import { useId, useState } from 'react'
+import { useId } from 'react'
+import { isBoolean } from '../../../lib/pageState.ts'
+import { usePageState } from '../../../lib/usePageState.ts'
 import { CatalogPicker } from '../../catalog/CatalogPicker.tsx'
 import { getPartTypeInfo } from '../partCategories.ts'
 import {
@@ -16,6 +18,7 @@ import type { PartDraft } from '../types.ts'
 import { PartStatusBadge } from './PartStatusBadge.tsx'
 
 type Props = {
+  stateKey: string
   draft: PartDraft
   // 같은 종류의 몇 번째 항목인지와 전체 개수 (여러 항목일 때 라벨에 쓴다)
   index: number
@@ -28,11 +31,11 @@ type Props = {
   warnings?: string[]
 }
 
-export function PartRow({ draft, index, count, onChange, onRemove, onSearch, warnings = [] }: Props) {
+export function PartRow({ stateKey, draft, index, count, onChange, onRemove, onSearch, warnings = [] }: Props) {
   const nameId = useId()
   const quantityId = useId()
   const capacityId = useId()
-  const [pickerOpen, setPickerOpen] = useState(false)
+  const [pickerOpen, setPickerOpen] = usePageState(`${stateKey}row:${draft.key}:open`, false, isBoolean)
   const info = getPartTypeInfo(draft.type)
   const status = getPartStatus(draft)
   const label = count > 1 ? `${info.label} ${index + 1}` : info.label
@@ -165,6 +168,7 @@ export function PartRow({ draft, index, count, onChange, onRemove, onSearch, war
 
       {pickerOpen && (
         <CatalogPicker
+          stateKey={`${stateKey}catalog:${draft.key}:`}
           type={draft.type}
           initialQuery={draft.displayName}
           onClose={() => setPickerOpen(false)}

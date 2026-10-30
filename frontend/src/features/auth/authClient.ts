@@ -34,7 +34,9 @@ export function loginUrl(provider: AuthProvider) {
 export function createAuthClient(fetcher: typeof fetch = globalThis.fetch, baseUrl = '/api/auth') {
   async function get(path: string): Promise<Response | null> {
     try {
-      return await fetcher(`${baseUrl}${path}`, { headers: { Accept: 'application/json' }, cache: 'no-store' })
+      return await fetcher(`${baseUrl}${path}`, {
+        headers: { Accept: 'application/json' }, cache: 'no-store', signal: AbortSignal.timeout(8000),
+      })
     } catch {
       return null
     }

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { parseRoute, paths } from '../src/lib/router.ts'
+import { parseRoute, paths, plannerStepFromHash, plannerStepPath } from '../src/lib/router.ts'
 
 test('로그인 안내·성공·실패 경로를 해석한다', () => {
   assert.deepEqual(parseRoute(paths.login()), { name: 'login' })
@@ -25,4 +25,15 @@ test('업그레이드 플랜과 저장된 PC 선택 경로를 해석한다', () 
   assert.deepEqual(parseRoute(paths.upgradePc(12)), { name: 'upgradePc', id: 12 })
   assert.deepEqual(parseRoute('#/upgrade/pcs/0'), { name: 'notFound' })
   assert.deepEqual(parseRoute('#/upgrade/pcs/12/edit'), { name: 'notFound' })
+})
+
+test('새 구성·편집·저장 PC의 플랜 단계를 주소에 남기고 입력 화면 주소로 돌아간다', () => {
+  for (const path of [paths.new(), paths.edit(7), paths.upgradePc(7)]) {
+    const next = plannerStepPath(path, 3)
+    assert.equal(plannerStepFromHash(next, 1), 3)
+    assert.deepEqual(parseRoute(next), parseRoute(path))
+    assert.equal(plannerStepPath(next, 1), path)
+  }
+  assert.equal(plannerStepPath('#/pcs/new?view=all&step=2', 3), '#/pcs/new?view=all&step=3')
+  for (const step of ['0', '6', 'NaN', '3.5', '']) assert.equal(plannerStepFromHash(`#/pcs/new?step=${step}`, 1), 1)
 })

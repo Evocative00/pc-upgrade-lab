@@ -19,6 +19,7 @@ import './pc-builder.css'
 export type { PickTarget } from './buildSlots.ts'
 
 type Props = {
+  stateKey: string
   drafts: PartDraft[]
   updateDrafts: (update: (drafts: PartDraft[]) => PartDraft[]) => void
   target: PickTarget | null
@@ -99,7 +100,7 @@ function BoardPorts({ board, linked }: { board: CatalogDetail | null; linked: bo
 }
 
 // 2D 구성 화면: 부품 구성 입력 | 케이스 그림 | 요약·상태·현재 상품가. 내용은 PC 입력 폼의 부품 항목과 같은 데이터다.
-export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibility, warnings, children, submit }: Props) {
+export function PcBuilder({ stateKey, drafts, updateDrafts, target, onTarget, compatibility, warnings, children, submit }: Props) {
   const slots = assignSlots(drafts)
   const named = drafts.filter((draft) => getPartStatus(draft) !== 'empty')
   const catalogIds = named.flatMap((draft) => draft.catalogProductId ?? [])
@@ -226,6 +227,7 @@ export function PcBuilder({ drafts, updateDrafts, target, onTarget, compatibilit
 
       {activeTarget && (
         <CatalogPickerDialog key={`${activeTarget.slot}-${activeTarget.draftKey}`} label={activeLabel!}
+          stateKey={`${stateKey}catalog:${activeTarget.draftKey ?? activeTarget.slot}:`}
           type={slotInfo(activeTarget.slot).type}
           initialQuery={drafts.find((draft) => draft.key === activeTarget.draftKey)?.displayName ?? ''}
           onClose={() => onTarget(null)} onSelect={choose} onSelectModel={chooseModel} />

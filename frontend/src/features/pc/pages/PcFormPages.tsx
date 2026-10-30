@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { navigate, paths } from '../../../lib/router.ts'
+import { navigate, paths, plannerStepPath } from '../../../lib/router.ts'
+import { pageStateStore, pcStateKey } from '../../../lib/pageState.ts'
 import { clearDraftFor, clearSavedDraftFor, loadDraft, saveDraft } from '../../auth/draftBridge.ts'
 import { PcForm } from '../components/PcForm.tsx'
 import { pcRepository } from '../pcApi.ts'
@@ -62,15 +63,19 @@ export function PcNewPage() {
     return saved !== null && saved.pcId === null ? saved.request : null
   })
   const [formKey, setFormKey] = useState(0)
+  const [restored, setRestored] = useState(() => pageStateStore().has(`${pcStateKey(null)}parts`))
   const reset = () => {
     clearDraftFor(null)
+    pageStateStore().clearPrefix(pcStateKey(null))
     setDraft(null)
+    setRestored(false)
     setFormKey((key) => key + 1)
+    navigate(plannerStepPath(window.location.hash, 1))
   }
 
   return (
     <>
-      {draft !== null && <RestoredDraftNotice onReset={reset} />}
+      {(draft !== null || restored) && <RestoredDraftNotice onReset={reset} />}
       <PcForm
         key={formKey}
         initial={draft ?? { name: '', parts: [] }}
@@ -87,8 +92,11 @@ export function PcNewPage() {
         }}
         onCancel={() => navigate(paths.list())}
         onSubmit={(request) => saveOrAskLogin(request, null, async () => {
+          const cache = pageStateStore()
+          const snapshot = cache.capturePrefix(pcStateKey(null))
           const pc = await pcRepository.create(request)
           clearSavedDraftFor(null, request)
+          cache.clearPrefixIfUnchanged(pcStateKey(null), snapshot)
           // 서버 저장은 계속될 수 있지만, 이미 떠난 화면의 응답으로 현재 화면을 바꾸지 않는다.
           if (mounted.current) navigate(paths.detail(pc.id))
         })}
@@ -106,6 +114,7 @@ export function PcEditPage({ id }: { id: number }) {
     return saved !== null && saved.pcId === id ? saved.request : null
   })
   const [formKey, setFormKey] = useState(0)
+  const [restored, setRestored] = useState(() => pageStateStore().has(`${pcStateKey(id)}parts`))
 
   if (query.status === 'loading') {
     return <p className="muted">불러오는 중…</p>
@@ -145,12 +154,15 @@ export function PcEditPage({ id }: { id: number }) {
           <h1>PC 수정</h1>
         </div>
       </div>
-      {draft !== null && (
+      {(draft !== null || restored) && (
         <RestoredDraftNotice
           onReset={() => {
             clearDraftFor(id)
+            pageStateStore().clearPrefix(pcStateKey(id))
             setDraft(null)
+            setRestored(false)
             setFormKey((key) => key + 1)
+            navigate(plannerStepPath(window.location.hash, 1))
           }}
         />
       )}
@@ -161,8 +173,11 @@ export function PcEditPage({ id }: { id: number }) {
         submitLabel="저장"
         onCancel={() => navigate(paths.detail(pc.id))}
         onSubmit={(request) => saveOrAskLogin(request, pc.id, async () => {
+          const cache = pageStateStore()
+          const snapshot = cache.capturePrefix(pcStateKey(pc.id))
           await pcRepository.update(pc.id, request)
           clearSavedDraftFor(pc.id, request)
+          cache.clearPrefixIfUnchanged(pcStateKey(pc.id), snapshot)
           if (mounted.current) navigate(paths.detail(pc.id))
         })}
       />

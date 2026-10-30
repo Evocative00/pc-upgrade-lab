@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { isString } from '../../lib/pageState.ts'
+import { usePageState } from '../../lib/usePageState.ts'
 import type { PartInput } from '../pc-scan/types.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { estimateGameFrames, frameText } from './frameEstimate.ts'
@@ -9,6 +11,7 @@ import {
 import './planner.css'
 
 type Props = {
+  stateKey: string
   pcName: string
   parts: PartInput[]
   goal: UpgradeGoal
@@ -37,10 +40,10 @@ function Choice<T extends string | number>({ options, value, onChange, label }: 
   </div>
 }
 
-export function UpgradeGoalForm({ pcName, parts, goal, onChange, onBack, onNext }: Props) {
-  const [gameInput, setGameInput] = useState('')
+export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBack, onNext }: Props) {
+  const [gameInput, setGameInput] = usePageState(`${stateKey}gameInput`, '', isString)
   const [gameLimitNotice, setGameLimitNotice] = useState(false)
-  const [budgetText, setBudgetText] = useState(String(goal.budgetWon))
+  const [budgetText, setBudgetText] = usePageState(`${stateKey}budgetText`, String(goal.budgetWon), isString)
   const pcSummary = parts.slice(0, 5).map((part) => `${getPartTypeInfo(part.type).label} ${part.displayName}`)
   const frameGames = frameEstimateGames(goal.games)
 

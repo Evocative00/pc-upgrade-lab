@@ -4,6 +4,8 @@ import { pcRepository } from '../pc/pcApi.ts'
 import type { PcSummary } from '../pc/types.ts'
 import { usePcQuery } from '../pc/usePcQuery.ts'
 import { navigate, paths } from '../../lib/router.ts'
+import { isPageNumber, pcStateKey } from '../../lib/pageState.ts'
+import { usePageState } from '../../lib/usePageState.ts'
 import { UpgradePlanner } from './UpgradePlanner.tsx'
 import './planner.css'
 
@@ -47,7 +49,7 @@ function SavedPcListResults({ page, onPageChange, onRetry }: {
 
 export function UpgradeEntryPage() {
   const auth = useAuth()
-  const [page, setPage] = useState(0)
+  const [page, setPage] = usePageState('upgrade:page', 0, isPageNumber)
 
   return <div className="planner-entry">
     <header className="page-head"><div><h1>업그레이드 플랜</h1>
@@ -78,7 +80,7 @@ function SavedPcPlanner({ id, onRetry }: { id: number; onRetry: () => void }) {
   if (query.data === null) return <div className="empty"><p>PC를 찾을 수 없습니다.</p>
     <a href={paths.upgrade()}>다른 PC 선택하기</a></div>
 
-  return <UpgradePlanner pcName={query.data.name} parts={query.data.parts}
+  return <UpgradePlanner stateKey={pcStateKey(id)} pcName={query.data.name} parts={query.data.parts}
     onBackToPc={() => navigate(paths.edit(id))} />
 }
 
