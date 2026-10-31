@@ -66,7 +66,7 @@ export function UpgradeEntryPage() {
           <SavedPcList key={authKey(auth)} page={page} onPageChange={setPage} />}
       </section>
     </div>
-    <p className="planner-scope">게임 5종은 공식 최소·권장 사양의 일부 항목을 비교합니다. 추천 제품·가격·예상 FPS 계산은 아직 제공하지 않습니다.</p>
+    <p className="planner-scope">게임 5종과 영상 편집·개발 프로그램 7종의 공식 사양을 비교하고 예상 프레임·작업 성능(추정)을 보여 줍니다. 추천 제품·가격은 아직 제공하지 않습니다.</p>
   </div>
 }
 
