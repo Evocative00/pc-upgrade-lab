@@ -403,6 +403,39 @@
   color: #c0262d;
 }
 
+/* ── 테마 전환 ── */
+.landing-theme {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 4;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--landing-border-strong);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--landing-title);
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--ice);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ice);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 640px) {
+    top: 12px;
+    right: 16px;
+  }
+}
+
 /* ── 공통 ── */
 .landing__main {
   min-width: 0;
@@ -441,19 +474,8 @@
   }
 }
 
-.landing-cta--compact {
-  height: 60px;
-  padding: 0 30px;
-  font-size: 18px;
-}
-
 .landing-section {
   padding: 160px var(--landing-gutter);
-}
-
-.landing-section--intro {
-  padding-bottom: 0;
-  border-top: 1px solid var(--landing-border-soft);
 }
 
 .landing-section--alt {
@@ -464,10 +486,6 @@
 
 .landing-section--details {
   padding-bottom: 120px;
-}
-
-.landing-section--closing {
-  padding-top: 120px;
 }
 
 .landing-heading {
@@ -503,199 +521,107 @@
   }
 }
 
-/* ── 섹션 1. 히어로 ── */
-.landing-hero {
-  position: relative;
-  height: 100vh;
-  min-height: 720px;
-  overflow: hidden;
-  display: flex;
+/* ── 섹션 1. 첫 화면 문구 ──
+   진행도·전원·캐치프레이즈 세 묶음을 한 칸에 겹쳐 두고, 스크롤로 정한 --reveal(0–1)로 나타나고 사라진다. */
+.hero-copy {
+  display: grid;
   align-items: center;
-}
 
-.landing-hero__art {
-  position: absolute;
-  inset: -24px;
-  transform: translate(var(--parallax-x), var(--parallax-y));
-  transition: transform 0.4s ease-out;
-
-  img {
-    position: absolute;
-    right: -6vw;
-    top: 50%;
-    width: clamp(1100px, 86vw, 1660px);
-    aspect-ratio: 4 / 3;
-    transform: translateY(-52%);
-    object-fit: cover;
+  > .hero-copy__progress,
+  > .hero-copy__power,
+  > .hero-copy__final {
+    grid-area: 1 / 1;
+    min-width: 0;
+    opacity: var(--reveal, 0);
   }
 }
 
-.landing-hero__glow {
-  position: absolute;
-  right: 10vw;
-  top: 50%;
-  width: 520px;
-  height: 500px;
-  margin-top: -310px;
-  background: radial-gradient(ellipse at 60% 45%, rgba(154, 216, 242, 0.26), rgba(154, 216, 242, 0) 62%);
-  mix-blend-mode: screen;
-  animation: landing-breathe 4.8s ease-in-out infinite;
+.hero-copy__progress {
+  transform: translateY(calc((1 - var(--reveal, 0)) * -16px));
 }
 
-.landing-hero__scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(0deg, #111 0%, rgba(17, 17, 17, 0.7) 12%, rgba(17, 17, 17, 0) 30%),
-    linear-gradient(90deg, #111 0%, #111 8%, rgba(17, 17, 17, 0.86) 30%, rgba(17, 17, 17, 0) 56%);
-}
-
-/* 라이트: 렌더 장면은 오른쪽 다크 패널 안에 둔다. */
-.landing[data-theme='light'] {
-  .landing-hero__art {
-    inset: 24px 24px 24px auto;
-    width: 45%;
-    border-radius: 20px;
-    overflow: hidden;
-    background: #111;
-    box-shadow: 0 30px 80px rgba(17, 17, 17, 0.18);
-
-    img {
-      right: auto;
-      left: 50%;
-      top: 3%;
-      width: auto;
-      height: 94%;
-      transform: translateX(-59%);
-    }
-  }
-
-  .landing-hero__glow {
-    right: 12%;
-  }
-
-  .landing-hero__scrim {
-    display: none;
-  }
-
-  .landing-hero__theme {
-    border-color: #3a3a3a;
-    background: rgba(17, 17, 17, 0.6);
-    color: #c8c8c8;
-  }
-
-  .landing-hero__copy {
-    max-width: calc(55% - var(--landing-gutter));
-  }
-
-  .landing-hero__scroll {
-    right: 45%;
-  }
-}
-
-.landing-hero__theme {
-  position: absolute;
-  top: 28px;
-  right: 40px;
-  z-index: 2;
-  width: 44px;
-  height: 44px;
+.hero-copy__meter {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 22px;
-  border: 1px solid var(--landing-border);
-  background: rgba(17, 17, 17, 0.5);
-  color: #c8c8c8;
-  cursor: pointer;
-
-  &:hover,
-  &:focus-visible {
-    border-color: #9ad8f2;
-    color: #f5f5f5;
-  }
-
-  &:focus-visible {
-    outline: none;
-  }
-}
-
-.landing[data-theme='light'] .landing-hero__theme {
-  top: 48px;
-  right: 48px;
-}
-
-.landing-hero__copy {
-  position: relative;
-  width: 780px;
-  max-width: calc(100% - var(--landing-gutter) * 2);
-  margin-left: var(--landing-gutter);
-  display: flex;
-  flex-direction: column;
-}
-
-.landing-hero__eyebrow {
-  font-size: 16px;
-  letter-spacing: 0.24em;
-}
-
-.landing-hero__title {
-  margin: 28px 0 0;
-  font-size: clamp(56px, 5.3vw, 96px);
-  line-height: 1.14;
+  align-items: baseline;
+  margin: 0;
+  font-family: var(--landing-mono);
+  font-size: clamp(32px, 2.6vw, 48px);
   font-weight: 700;
-  letter-spacing: -0.035em;
-}
-
-.landing-hero__line {
-  display: block;
+  letter-spacing: -0.02em;
+  color: var(--landing-title);
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
-.landing-hero__line--1 {
-  animation: landing-type 0.48s steps(8) 0.12s both;
+.hero-copy__dots {
+  color: var(--ice);
 }
 
-.landing-hero__line--2 {
-  animation: landing-type 0.56s steps(7) 0.64s both;
+/* 재치 문구도 같은 칸에 겹쳐 두고 현재 것만 보인다. */
+.hero-copy__quips {
+  display: grid;
+  margin-top: 18px;
 }
 
-.landing-hero__caret {
-  display: inline-block;
-  width: 6px;
-  height: 0.78em;
-  margin-left: 14px;
-  vertical-align: -0.04em;
-  background: var(--ice);
-  animation: landing-blink 1.06s steps(1) infinite;
+.hero-copy__quip {
+  grid-area: 1 / 1;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--landing-body);
+  word-break: keep-all;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+
+  &.is-before {
+    transform: translateY(-12px);
+  }
+
+  &.is-active {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.landing-hero__lead {
-  margin-top: 32px;
-  max-width: 620px;
-  font-size: 21px;
-  line-height: 1.7;
+.hero-copy__power {
+  margin: 0;
+  font-family: var(--landing-mono);
+  font-size: clamp(28px, 2.2vw, 40px);
+  font-weight: 700;
+  color: var(--landing-title);
+  white-space: nowrap;
+}
+
+.hero-copy__final {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 44px;
+  transform: translateY(calc((1 - var(--reveal, 0)) * 24px));
+  pointer-events: none;
+
+  &.is-shown {
+    pointer-events: auto;
+  }
+
+  /* 키보드로 버튼에 오면 스크롤 위치와 상관없이 보인다. */
+  &:focus-within {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-copy__title {
+  margin: 0;
+  font-size: clamp(44px, 3.6vw, 72px);
+  line-height: 1.18;
+  font-weight: 700;
+  letter-spacing: -0.035em;
   word-break: keep-all;
 }
 
-.landing-hero__actions {
-  display: flex;
-  margin-top: 44px;
-}
-
-.landing-fade {
-  animation: landing-fade-up 0.6s var(--ease-out-expo) both;
-}
-
-.landing-hero__lead.landing-fade {
-  animation-delay: 1.25s;
-}
-
-.landing-hero__actions.landing-fade {
-  animation-delay: 1.4s;
-}
-
-.landing-hero__scroll {
+.hero-copy__scroll {
   position: absolute;
   left: 0;
   right: 0;
@@ -711,9 +637,10 @@
   color: var(--landing-body);
   font-family: inherit;
   cursor: pointer;
+  opacity: var(--reveal, 0);
 
-  &.landing-fade {
-    animation-delay: 1.6s;
+  &.is-hidden {
+    visibility: hidden;
   }
 
   &:focus-visible {
@@ -723,70 +650,52 @@
   }
 }
 
-.landing-hero__scroll-label {
+.hero-copy__scroll-label {
   padding-left: 0.34em;
   font-family: var(--landing-mono);
   font-size: 12px;
   letter-spacing: 0.34em;
 }
 
-.landing-hero__scroll-arrow {
+.hero-copy__scroll-arrow {
   color: var(--ice);
   animation: landing-bob 1.8s ease-in-out infinite;
 }
 
-.landing-hero__scroll-hint {
+.hero-copy__scroll-hint {
   font-size: 12px;
   color: var(--landing-muted);
 }
 
-/* ── 섹션 2. 조립 문구 ── */
-.assembly-step {
+@media (max-width: 900px) {
+  .hero-copy__meter { font-size: 28px; }
+  .hero-copy__quips { margin-top: 10px; }
+  .hero-copy__quip { font-size: 15px; }
+  .hero-copy__power { font-size: 24px; }
+  .hero-copy__final { gap: 24px; }
+  .hero-copy__title { font-size: clamp(32px, 5vw, 44px); }
+  .hero-copy__scroll { display: none; }
+}
+
+/* 좁은 화면: 조립 장면 없이 캐치프레이즈와 버튼만 */
+.hero-compact {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 32px;
+  min-height: 60svh;
+  padding: 64px var(--landing-gutter);
 
-  h3 {
-    margin: 0;
-    font-size: 36px;
-    line-height: 1.3;
-    font-weight: 700;
-    word-break: keep-all;
+  .hero-copy__title {
+    font-size: clamp(34px, 9vw, 44px);
   }
 
-  p {
-    font-size: 18px;
-    line-height: 1.8;
-    word-break: keep-all;
+  .landing-cta {
+    height: 56px;
+    padding: 0 26px;
+    font-size: 17px;
   }
-}
-
-.assembly-step__label {
-  font-family: var(--landing-mono);
-  font-size: 14px;
-  color: var(--landing-muted);
-}
-
-.assembly-step__meta {
-  font-family: var(--landing-mono);
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  color: var(--landing-meta);
-}
-
-@media (max-width: 900px) {
-  .assembly-step { gap: 12px; }
-  .assembly-step h3 { font-size: clamp(24px, 4.2vw, 32px); line-height: 1.25; }
-  .assembly-step p { font-size: 15px; line-height: 1.6; }
-  .assembly-step__label { font-size: 12px; }
-  .assembly-step__meta { font-size: 11px; overflow-wrap: anywhere; }
-}
-@media (max-width: 900px) and (max-height: 500px) {
-  .assembly-step { gap: 10px; }
-  .assembly-step h3 { font-size: 24px; }
-  .assembly-step p { font-size: 14px; line-height: 1.5; }
-  .assembly-step__label { font-size: 11px; }
-  .assembly-step__meta { font-size: 10px; }
 }
 
 /* ── 섹션 3. 가상 조립 ── */
@@ -992,57 +901,7 @@
   color: var(--landing-muted);
 }
 
-/* ── 섹션 5. 마무리·푸터 ── */
-.landing-closing {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  padding-bottom: 40px;
-
-  h2 {
-    margin: 0;
-    font-size: clamp(48px, 3.8vw, 72px);
-    line-height: 1.18;
-    font-weight: 700;
-    letter-spacing: -0.035em;
-  }
-}
-
-.landing-closing__prompt {
-  font-size: 18px;
-  color: var(--landing-body);
-}
-
-.landing-closing__cursor {
-  display: inline-block;
-  width: 0.55em;
-  height: 1.1em;
-  margin-left: 2px;
-  vertical-align: -0.2em;
-  background: var(--landing-title);
-  animation: landing-blink 1s steps(1) infinite;
-}
-
-.landing-closing__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 28px;
-  margin-top: 12px;
-}
-
-.landing-closing__link {
-  font-size: 17px;
-  color: var(--landing-body);
-  text-decoration: underline;
-  text-underline-offset: 6px;
-
-  &:hover,
-  &:focus-visible {
-    color: var(--landing-title);
-  }
-}
-
+/* ── 푸터 ── */
 .landing-footer {
   display: flex;
   flex-wrap: wrap;
@@ -1055,36 +914,6 @@
   color: var(--landing-muted);
 }
 
-@keyframes landing-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes landing-type {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes landing-breathe {
-  0%,
-  100% {
-    opacity: 0.35;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
 @keyframes landing-bob {
   0%,
   100% {
@@ -1095,31 +924,13 @@
   }
 }
 
-@keyframes landing-blink {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .landing-fade,
-  .landing-hero__line--1,
-  .landing-hero__line--2,
-  .landing-hero__caret,
-  .landing-hero__glow,
-  .landing-hero__scroll-arrow,
-  .landing-closing__cursor {
+  .hero-copy__scroll-arrow {
     animation: none;
   }
 
-  .landing-hero__art,
   .landing-reveal,
-  .assembly-copy__step,
+  .hero-copy__quip,
   .assembly-frame__cut {
     transition: none;
   }

@@ -1,48 +1,68 @@
 // 랜딩 문구. 서비스가 실제로 제공하는 검사와 가격 안내 범위를 설명한다.
 const assetBase = '/pc-assembly/'
 
-export type AssemblyStep = {
-  label: string
-  title: string
-  body: string
-  meta: string
-  // 모션 감소 설정에서 세로로 나열할 정지 컷
-  image: string
-  alt: string
-}
-
-// 스크롤 진행도 0 = 분해(pose-0239), 1 = 완성(포스터). 컷 이미지는 같은 렌더 시퀀스에서 골랐다.
-export const assemblySteps: AssemblyStep[] = [
-  {
-    label: 'STEP 1 / 3',
-    title: '일단 다 꺼내 놓습니다',
-    body: 'CPU, 쿨러, 메인보드, 그래픽카드, 파워, 팬. 지금 내 PC에 들어 있는 부품이 이렇게 한 장에 펼쳐집니다. 어떤 걸 남기고 어떤 걸 바꿀지는 여기서 고릅니다.',
-    meta: 'CPU · COOLER · MB · RAM · GPU · PSU · FAN',
-    image: `${assetBase}desktop/pose-0239.webp`,
-    alt: '부품별로 분해된 PC',
-  },
-  {
-    label: 'STEP 2 / 3',
-    title: '맞는 자리에만 들어갑니다',
-    body: 'CPU 소켓과 RAM 규격을 메인보드와 비교합니다. 맞지 않는 조합은 경고하고, 근거가 부족한 항목은 확인이 필요한 상태로 알려 드립니다.',
-    meta: 'CPU ↔ MB ↔ RAM',
-    image: `${assetBase}desktop/pose-0040.webp`,
-    alt: '옆 패널이 열린 채 부품이 장착된 PC',
-  },
-  {
-    label: 'STEP 3 / 3',
-    title: '패널을 닫으면 끝',
-    body: '그래픽카드 길이와 케이스 공간, 그래픽카드의 권장 파워 용량과 파워 제원을 비교합니다. 구매 전에 장착 조건과 전원 연결을 확인해 보세요.',
-    meta: 'GPU ↔ PSU ↔ CASE',
-    image: `${assetBase}poster-desktop.webp`,
-    alt: '조립이 끝난 PC',
-  },
+// 캔버스가 준비되기 전과 모션 감소 화면에서 보여 줄 정지 컷. 진행도 0 = 분해(pose-0239), 1 = 완성(포스터).
+export const assemblyStills = [
+  { image: `${assetBase}desktop/pose-0239.webp`, alt: '부품별로 분해된 PC' },
+  { image: `${assetBase}desktop/pose-0040.webp`, alt: '옆 패널이 열린 채 부품이 장착된 PC' },
+  { image: `${assetBase}poster-desktop.webp`, alt: '조립이 끝난 PC' },
 ]
 
-// 진행도 0–1/3, 1/3–2/3, 2/3–1을 STEP 1~3으로 나눈다.
+// 진행도 0–1/3, 1/3–2/3, 2/3–1을 정지 컷 1~3으로 나눈다.
 export function assemblyStepAt(progress: number): number {
   const value = Number.isFinite(progress) ? progress : 0
   return value < 1 / 3 ? 0 : value < 2 / 3 ? 1 : 2
+}
+
+// 첫 화면 진행도는 조립 완료를 100으로 두고 120까지 간다. 100 이후는 전원 문구와 캐치프레이즈 구간이다.
+export const heroEnd = 120
+
+// 진행도 아래에 5%마다 바뀌는 문구. 조립 순서를 따른다.
+export const heroQuips = [
+  '부품 상자 뜯는 중',
+  '설명서는 일단 옆에 두는 중',
+  '정전기 방지 손목띠 찾는 중',
+  '메인보드 꺼내는 중',
+  'CPU 방향 세 번 확인하는 중',
+  'CPU 조립 중',
+  '서멀 구리스 얼마나 짤지 고민하는 중',
+  'CPU 쿨러 올리는 중',
+  '램 몇 개 꽂을지 고민하는 중',
+  '램 딸깍 소리 기다리는 중',
+  '메인보드 케이스에 넣는 중',
+  '나사 하나 어디 갔는지 찾는 중',
+  'SSD 끼우는 중',
+  '그래픽카드 찾는 중',
+  '그래픽카드 길이 재는 중',
+  '파워 용량 다시 계산하는 중',
+  '파워 케이블 연결하는 중',
+  '선 정리 포기할지 고민하는 중',
+  '케이스 팬 방향 확인하는 중',
+  '옆 패널 닫는 중',
+]
+
+const ramp = (value: number, from: number, to: number) => Math.min(1, Math.max(0, (value - from) / (to - from)))
+
+export type HeroCopy = {
+  // 화면에 적는 진행도(0–100)
+  percent: number
+  quip: number
+  // 각 문구 묶음의 불투명도(0–1)
+  progress: number
+  power: number
+  final: number
+}
+
+// 0–100 진행도와 문구, 100–103 진행도 퇴장, 103–110 "전원 켜는 중", 111–120 캐치프레이즈.
+export function heroCopyAt(percent: number): HeroCopy {
+  const value = Number.isFinite(percent) ? Math.min(heroEnd, Math.max(0, percent)) : 0
+  return {
+    percent: Math.min(100, Math.floor(value)),
+    quip: Math.min(heroQuips.length - 1, Math.floor(value / 5)),
+    progress: 1 - ramp(value, 100, 103),
+    power: Math.min(ramp(value, 103, 105), 1 - ramp(value, 108, 110)),
+    final: ramp(value, 111, 114),
+  }
 }
 
 export type VirtualBuildSlot = {

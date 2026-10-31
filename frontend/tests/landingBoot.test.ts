@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { bootTimeline, finalBootLines, hasSeenBoot, markBootSeen, progressCells, progressLine } from '../src/features/landing/bootScript.ts'
 import { assembleSequence } from '../src/features/landing/landingAnimation.ts'
-import { assemblyStepAt, nameInitial, providerLabel, virtualBuildSlots } from '../src/features/landing/landingContent.ts'
+import { assemblyStepAt, heroCopyAt, heroQuips, nameInitial, providerLabel, virtualBuildSlots } from '../src/features/landing/landingContent.ts'
 
 const lineText = (line: { tag: string; text: string; fill: string; empty: string; post: string }) => line.tag + line.text + line.fill + line.empty + line.post
 
@@ -60,6 +60,26 @@ test('스크롤 진행도를 STEP 1~3으로 나눈다', () => {
   assert.equal(assemblyStepAt(0.67), 2)
   assert.equal(assemblyStepAt(1), 2)
   assert.equal(assemblyStepAt(Number.NaN), 0)
+})
+
+test('첫 화면 문구는 진행도 → 전원 켜는 중 → 캐치프레이즈 구간을 따른다', () => {
+  assert.equal(heroQuips.length, 20)
+  assert.deepEqual(heroCopyAt(0), { percent: 0, quip: 0, progress: 1, power: 0, final: 0 })
+  assert.equal(heroCopyAt(4.9).quip, 0)
+  assert.equal(heroCopyAt(5).quip, 1)
+  assert.equal(heroCopyAt(99.9).quip, 19)
+  assert.equal(heroCopyAt(100).quip, 19)
+  assert.equal(heroCopyAt(57.8).percent, 57)
+  assert.equal(heroCopyAt(102).percent, 100)
+  assert.equal(heroCopyAt(100).progress, 1)
+  assert.equal(heroCopyAt(103).progress, 0)
+  assert.equal(heroCopyAt(103).power, 0)
+  assert.equal(heroCopyAt(106).power, 1)
+  assert.equal(heroCopyAt(110).power, 0)
+  assert.equal(heroCopyAt(110.5).final, 0)
+  assert.equal(heroCopyAt(114).final, 1)
+  assert.deepEqual(heroCopyAt(500), heroCopyAt(120))
+  assert.deepEqual(heroCopyAt(Number.NaN), heroCopyAt(0))
 })
 
 test('회원 표시와 가상 조립 예시는 지어낸 가격 없이 자리 표시를 유지한다', () => {
