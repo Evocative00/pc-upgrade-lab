@@ -152,12 +152,12 @@ function App() {
     return <LandingPage />
   }
 
-  // PC 구성 화면은 랜딩과 같은 왼쪽 탭 바를 쓰고, 메뉴·로그인이 겹치는 머리말은 숨긴다.
-  if (route.name === 'new') {
+  // PC 구성·업그레이드 플랜 화면은 랜딩과 같은 왼쪽 탭 바를 쓰고, 메뉴·로그인이 겹치는 머리말은 숨긴다.
+  if (route.name === 'new' || route.name === 'upgrade' || route.name === 'upgradePc') {
     return (
       <>
         <div className="app-side-nav">
-          <LandingTabs current="new" />
+          <LandingTabs current={route.name === 'new' ? 'new' : 'upgrade'} />
         </div>
         <main className="app-main">
           <Page key={authKey(auth)} route={route} />

@@ -1,14 +1,3 @@
-/* 구성 화면은 좌우 여백 없이 화면을 채운다. 왼쪽 220px는 랜딩과 같은 탭 바(.app-side-nav) 자리다. */
-#root:has(.builder) {
-  width: auto;
-  margin: 0 0 0 220px;
-  border-right: 0;
-
-  @media (max-width: 640px) {
-    margin-left: 0;
-  }
-}
-
 /* 머리말: 영문 안내 · 큰 제목 · 설명 | 초기화·저장 */
 .builder-head {
   display: flex;
@@ -28,33 +17,6 @@
 
 .builder-head__text {
   max-width: 820px;
-}
-
-.eyebrow {
-  font-family: var(--mono);
-  font-size: 13px;
-  letter-spacing: 0.3em;
-  color: var(--accent);
-}
-
-/* 어두운 화면에서도 저장 버튼은 진한 강조색 바탕에 흰 글자로 둔다. */
-.builder .button--primary.button--lg,
-.builder-head .button--primary {
-  background: #1e3a8a;
-  border-color: #3b5bd0;
-  color: #fff;
-  box-shadow: 0 0 0 1px rgba(91, 123, 224, 0.25), 0 0 18px rgba(59, 91, 208, 0.55);
-  transition: box-shadow 160ms ease-out;
-
-  &:hover:not(:disabled) {
-    box-shadow: 0 0 0 1px rgba(147, 169, 232, 0.5), 0 0 28px rgba(59, 91, 208, 0.8);
-  }
-}
-
-.button--lg {
-  padding: 11px 20px;
-  font-weight: 700;
-  border-radius: 8px;
 }
 
 .builder .panel,

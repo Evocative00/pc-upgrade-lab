@@ -6,10 +6,15 @@ import { GameRequirementsDiagnosis } from './GameRequirementsDiagnosis.tsx'
 import { WorkloadDiagnosis } from './WorkloadDiagnosis.tsx'
 import { UpgradeGoalForm } from './UpgradeGoalForm.tsx'
 import { defaultGoal, goalIsReady, goalSummary, isUpgradeGoal, withGoalDefaults } from './plannerGoal.ts'
-import { recommendPrototypeFocus } from './prototypeRecommendation.ts'
+import { UpgradeRecommendationPanel } from './UpgradeRecommendationPanel.tsx'
+import { isRecommendPriority, isUpgradePartKind, type RecommendPriority, type UpgradePartKind } from './upgradeRecommendation.ts'
 import './planner.css'
 
 type Step = 2 | 3 | 4 | 5
+
+// null이면 진단에서 부족한 부품을 그대로 쓴다.
+const isPartKindList = (value: unknown): value is UpgradePartKind[] | null =>
+  value === null || Array.isArray(value) && value.every(isUpgradePartKind)
 
 type Props = {
   stateKey: string
@@ -45,10 +50,10 @@ function CurrentPc({ pcName, parts }: Pick<Props, 'pcName' | 'parts'>) {
 function ScopeNotice({ diagnosis }: { diagnosis: 'GAME' | 'WORKLOAD' | null }) {
   return <p className="planner-scope" role="status">
     {diagnosis === 'GAME'
-      ? '공식 요구 사양, 공개 벤치마크 기준 상대 성능, 해상도별 예상 프레임(추정)을 함께 표시합니다. 예상 가격·특정 제품 선정과 교체 후 호환성은 아직 계산하지 않습니다.'
+      ? '공식 요구 사양, 공개 벤치마크 기준 상대 성능, 해상도별 예상 프레임(추정)을 함께 표시합니다. 추천 제품·가격은 다음 단계 추천 플랜에서 보여 줍니다.'
       : diagnosis === 'WORKLOAD'
-        ? '제작사 공식 사양과 작업 규모별 RAM·VRAM, 공개 벤치마크 기준 예상 성능(추정)을 함께 표시합니다. 예상 가격·특정 제품 선정은 아직 계산하지 않습니다.'
-        : '현재 화면은 흐름 확인용입니다. 제품 선정, 예상 가격·FPS와 교체 후 호환성 판정은 아직 계산하지 않습니다.'}
+        ? '제작사 공식 사양과 작업 규모별 RAM·VRAM, 공개 벤치마크 기준 예상 성능(추정)을 함께 표시합니다. 추천 제품·가격은 다음 단계 추천 플랜에서 보여 줍니다.'
+        : '교체 후 호환성 판정은 아직 계산하지 않습니다. 추천 제품의 제원을 직접 확인해 주세요.'}
   </p>
 }
 
@@ -58,7 +63,8 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
   const goal = withGoalDefaults(storedGoal)
   // 임시 상태가 없는 직접 주소·초기화 후 방문 기록에서는 조건부터 다시 입력한다.
   const step: Step = requestedStep < 2 || !goalIsReady(goal) ? 2 : requestedStep as Step
-  const focus = goal.purpose === 'GAME' ? recommendPrototypeFocus(parts, goal.games) : null
+  const [priority, setPriority] = usePageState<RecommendPriority>(`${stateKey}priority`, 'PERFORMANCE', isRecommendPriority)
+  const [upgradeKinds, setUpgradeKinds] = usePageState<UpgradePartKind[] | null>(`${stateKey}upgradeParts`, null, isPartKindList)
 
   if (step === 2) return <UpgradeGoalForm stateKey={stateKey} pcName={pcName} parts={parts} goal={goal} onChange={setGoal}
     onBack={onBackToPc} onNext={() => setStep(3)} />
@@ -66,15 +72,16 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
   return <div className="planner-shell">
     <Stepper current={step} />
     <header className="planner-heading">
-      <button type="button" className="planner-text-button" onClick={() => setStep((step - 1) as PlannerStep)}>← 이전 단계</button>
-      <p className="planner-eyebrow">{goalSummary(goal)}</p>
+      <button type="button" className="button button--ghost" onClick={() => setStep((step - 1) as PlannerStep)}>← 이전 단계</button>
+      <p className="eyebrow">UPGRADE PLAN</p>
       <h1>{step === 3 ? '현재 구성 진단' : step === 4 ? '추천 플랜' : '호환성 상세'}</h1>
+      <p className="planner-goal-line">{goalSummary(goal)}</p>
       <p>{step === 3 ? '내 PC와 선택한 목표를 공식 요구 사양에 비춰 확인해 보세요.' :
-        step === 4 ? '가장 적합한 업그레이드 한 가지를 보여줄 자리입니다.' :
+        step === 4 ? '부족한 부품은 바꾸고 나머지는 그대로 둔 최종 구성을 보여 드립니다(추정).' :
           '교체 전후의 연결 조건을 항목별로 확인할 자리입니다.'}</p>
     </header>
-    <ScopeNotice diagnosis={step !== 3 ? null : goal.purpose === 'GAME' ? 'GAME'
-      : goal.purpose === 'CREATION' || goal.purpose === 'DEVELOPMENT' ? 'WORKLOAD' : null} />
+    {step !== 4 && <ScopeNotice diagnosis={step !== 3 ? null : goal.purpose === 'GAME' ? 'GAME'
+      : goal.purpose === 'CREATION' || goal.purpose === 'DEVELOPMENT' ? 'WORKLOAD' : null} />}
     {step === 3 && <div className="planner-result-grid">
       <div className="planner-main">
         {goal.purpose === 'GAME' ? <GameRequirementsDiagnosis games={goal.games} parts={parts} resolution={goal.resolution} targetFps={goal.targetFps} /> :
@@ -89,32 +96,12 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
       </div>
       <aside className="planner-card planner-aside">
         <h2>선택한 목표</h2><p>{goalSummary(goal)}</p>
-        <hr /><p className="planner-caveat">입력 예산 ₩{goal.budgetWon.toLocaleString('ko-KR')}은 아직 추천 계산에 반영되지 않습니다.</p>
+        <hr /><p className="planner-caveat">입력 예산 ₩{goal.budgetWon.toLocaleString('ko-KR')}은 다음 단계 추천 플랜에 반영됩니다.</p>
       </aside>
     </div>}
     {step === 4 && <div className="planner-main">
-      <section className="planner-card planner-plan-card">
-        <div className="planner-card-head"><h2>추천 플랜 1개</h2><span className="badge badge--empty">시연용 점검 방향</span></div>
-        <p>{focus?.reason ?? '선택한 작업에 대한 비교 점수는 아직 준비 중입니다.'}</p>
-        <div className="planner-placeholder-grid">
-          <div><span>먼저 점검할 부품</span><strong>{focus?.part === 'RAM' ? '메모리' : focus?.part === 'GPU' ? '그래픽카드'
-            : focus?.part === 'CPU' ? 'CPU' : '판단 보류'}</strong></div>
-          <div><span>판단 근거</span><strong>{focus?.basis === 'OFFICIAL_CAPACITY' ? '공식 권장 용량'
-            : focus?.basis === 'BENCHMARK_SCORE' ? '공개 벤치마크 비교' : '추가 자료 필요'}</strong></div>
-          <div><span>제품·비용·FPS</span><strong>아직 선정·계산하지 않음</strong></div>
-        </div>
-        <p className="planner-caveat">이 화면은 구매할 제품을 확정한 추천이 아닙니다. 입력 예산과 목표 해상도·FPS는
-          아직 계산에 반영되지 않으며, 실제 교체 전에는 제원과 호환성을 별도로 확인해야 합니다.</p>
-      </section>
-      <section className="planner-card">
-        <h2>현재 구성과 추천 구성 비교</h2>
-        <p>선정 기준이 정해지면 유지·교체 항목을 한 줄씩 비교할 수 있습니다.</p>
-        <div className="planner-compare-head"><strong>현재 부품</strong><strong>추천 부품</strong></div>
-        {parts.map((part, index) => <div className="planner-compare-row" key={`${part.type}-${index}`}>
-          <span>{getPartTypeInfo(part.type).label} · {part.displayName} ({part.quantity}개)</span>
-          <span>선정 전</span>
-        </div>)}
-      </section>
+      <UpgradeRecommendationPanel parts={parts} goal={goal} priority={priority} onPriorityChange={setPriority}
+        kinds={upgradeKinds} onKindsChange={setUpgradeKinds} />
     </div>}
     {step === 5 && <div className="planner-result-grid">
       <section className="planner-card">
@@ -134,9 +121,9 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
       </aside>
     </div>}
     <div className="planner-actions">
-      {step < 5 ? <button type="button" className="button button--primary" onClick={() => setStep((step + 1) as PlannerStep)}>
+      {step < 5 ? <button type="button" className="button button--primary button--lg" onClick={() => setStep((step + 1) as PlannerStep)}>
         {step === 3 ? '추천 플랜 보기' : '호환성 상세 보기'} →</button> :
-        <button type="button" className="button button--ghost" onClick={onBackToPc}>내 PC로 돌아가기</button>}
+        <button type="button" className="button button--ghost button--lg" onClick={onBackToPc}>내 PC로 돌아가기</button>}
     </div>
   </div>
 }

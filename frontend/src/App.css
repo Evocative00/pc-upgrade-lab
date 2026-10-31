@@ -134,16 +134,42 @@
   }
 }
 
+/* 주 버튼은 어두운 화면에서도 진한 남색 바탕에 흰 글자로 둔다(PC 구성 화면 기준). */
 .button--primary {
-  background: var(--accent);
-  color: var(--on-accent);
-  border-color: var(--accent);
+  background: #1e3a8a;
+  color: #fff;
+  border-color: #3b5bd0;
 }
 
 .button--ghost {
   background: transparent;
   border-color: var(--border);
   color: var(--text-h);
+}
+
+/* 큰 버튼. 주 버튼이면 빛 번짐을 더한다. */
+.button--lg {
+  padding: 11px 20px;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+.button--primary.button--lg {
+  box-shadow: 0 0 0 1px rgba(91, 123, 224, 0.25), 0 0 18px rgba(59, 91, 208, 0.55);
+  transition: box-shadow 160ms ease-out;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 0 0 1px rgba(147, 169, 232, 0.5), 0 0 28px rgba(59, 91, 208, 0.8);
+  }
+}
+
+/* 머리말 위 영문 안내 */
+.eyebrow {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
 }
 
 .button--danger {
@@ -605,7 +631,17 @@ ul.error {
   overflow-x: auto;
 }
 
-/* PC 구성 화면의 왼쪽 탭 바 (랜딩과 같은 220px). 본문은 pc-builder.css에서 그만큼 비켜 둔다. */
+/* PC 구성·업그레이드 플랜 화면의 왼쪽 탭 바 (랜딩과 같은 220px). 본문은 그만큼 비켜 화면을 채운다. */
+#root:has(.app-side-nav) {
+  width: auto;
+  margin: 0 0 0 220px;
+  border-right: 0;
+
+  @media (max-width: 640px) {
+    margin-left: 0;
+  }
+}
+
 /* 탭 바 모양은 landing.css를 그대로 쓰고, .landing에만 있는 색 변수를 이 화면 색(밝은·어두운)에 맞춰 둔다. */
 .app-side-nav {
   --card: var(--surface);

@@ -74,7 +74,8 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
     <div className="planner-layout">
       <div className="planner-main">
         <header className="planner-heading">
-          <button type="button" className="planner-text-button" onClick={onBack}>← 내 PC 수정</button>
+          <button type="button" className="button button--ghost" onClick={onBack}>← 내 PC 수정</button>
+          <p className="eyebrow">UPGRADE PLAN</p>
           <h1>예산과 목적을 정해주세요</h1>
           <p>목적에 따라 먼저 살펴볼 부품이 달라져요. 모르는 항목은 내 PC 화면에서 보완할 수 있습니다.</p>
         </header>
@@ -178,19 +179,19 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
                 가벼움 = 1080p, 보통 = 4K, 무거움 = 6K~8K.</p>}
           </div>}
         </section>
-        <div className="planner-actions"><button type="button" className="planner-primary" disabled={!goalIsReady(goal)}
+        <div className="planner-actions"><button type="button" className="button button--primary button--lg" disabled={!goalIsReady(goal)}
           onClick={onNext}>진단 결과 보기 →</button></div>
       </div>
       <aside className="planner-card planner-aside" aria-label="진단 기준">
         <h2>진단 기준</h2>
         <dl><div><dt>예산</dt><dd>₩{goal.budgetWon.toLocaleString('ko-KR')}</dd></div>
           <div><dt>용도·목표</dt><dd>{goalSummary(goal)}</dd></div></dl>
-        <p className="planner-caveat">예산은 아직 추천 판단에 반영되지 않습니다.</p>
+        <p className="planner-caveat">예산은 추천 플랜에서 제품을 고를 때 반영됩니다.</p>
         <hr /><h3>기존 구성 · {pcName.trim() || '이름 없는 PC'}</h3>
         {pcSummary.length > 0 ? <ul>{pcSummary.map((part, index) => <li key={`${index}-${part}`}>{part}</li>)}</ul>
           : <p className="planner-warning">부품을 먼저 불러오거나 입력해 주세요.</p>}
         {parts.length > 5 && <p>외 {parts.length - 5}개 부품</p>}
-        <button type="button" className="planner-text-button" onClick={onBack}>기존 구성 수정하기</button>
+        <button type="button" className="button button--ghost" onClick={onBack}>기존 구성 수정하기</button>
       </aside>
     </div>
   </div>
