@@ -5,7 +5,7 @@ import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { GameRequirementsDiagnosis } from './GameRequirementsDiagnosis.tsx'
 import { WorkloadDiagnosis } from './WorkloadDiagnosis.tsx'
 import { UpgradeGoalForm } from './UpgradeGoalForm.tsx'
-import { defaultGoal, goalIsReady, goalSummary, isUpgradeGoal } from './plannerGoal.ts'
+import { defaultGoal, goalIsReady, goalSummary, isUpgradeGoal, withGoalDefaults } from './plannerGoal.ts'
 import { recommendPrototypeFocus } from './prototypeRecommendation.ts'
 import './planner.css'
 
@@ -54,7 +54,8 @@ function ScopeNotice({ diagnosis }: { diagnosis: 'GAME' | 'WORKLOAD' | null }) {
 
 export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
   const [requestedStep, setStep] = usePlannerStep(2)
-  const [goal, setGoal] = usePageState(`${stateKey}goal`, defaultGoal, isUpgradeGoal)
+  const [storedGoal, setGoal] = usePageState(`${stateKey}goal`, defaultGoal, isUpgradeGoal)
+  const goal = withGoalDefaults(storedGoal)
   // 임시 상태가 없는 직접 주소·초기화 후 방문 기록에서는 조건부터 다시 입력한다.
   const step: Step = requestedStep < 2 || !goalIsReady(goal) ? 2 : requestedStep as Step
   const focus = goal.purpose === 'GAME' ? recommendPrototypeFocus(parts, goal.games) : null

@@ -53,7 +53,14 @@ export function isUpgradeGoal(value: unknown): value is UpgradeGoal {
   return Number.isInteger(value.budgetWon) && Number(value.budgetWon) >= 100_000 && Number(value.budgetWon) <= 2_000_000 &&
     (value.purpose === null || PURPOSES.some((purpose) => purpose.value === value.purpose)) &&
     choices(value.games) && choices(value.programs) && ['FHD', 'QHD', '4K'].includes(String(value.resolution)) &&
-    TARGET_FPS_OPTIONS.some((fps) => fps === value.targetFps) && ['LIGHT', 'MEDIUM', 'HEAVY'].includes(String(value.workload))
+    TARGET_FPS_OPTIONS.some((fps) => fps === value.targetFps) && ['LIGHT', 'MEDIUM', 'HEAVY'].includes(String(value.workload)) &&
+    // 편집 해상도는 나중에 추가된 값이라, 예전에 저장된 목표에는 없을 수 있다. 없으면 withGoalDefaults가 채운다.
+    (value.videoResolution === undefined || ['FHD', '4K', '8K'].includes(String(value.videoResolution)))
+}
+
+// 저장된 목표에 나중에 추가된 항목이 없으면 기본값으로 채운다.
+export function withGoalDefaults(goal: UpgradeGoal): UpgradeGoal {
+  return { ...defaultGoal(), ...goal, videoResolution: goal.videoResolution ?? defaultGoal().videoResolution }
 }
 
 export function changePurpose(goal: UpgradeGoal, purpose: Purpose): UpgradeGoal {
