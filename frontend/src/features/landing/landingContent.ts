@@ -1,6 +1,9 @@
 // 랜딩 문구. 서비스가 실제로 제공하는 검사와 가격 안내 범위를 설명한다.
 const assetBase = '/pc-assembly/'
 
+// 시작 화면의 미리받기와 랜딩 본문에 같은 모바일 경계를 적용한다.
+export const compactLandingQuery = '(max-width: 640px)'
+
 // 캔버스가 준비되기 전과 모션 감소 화면에서 보여 줄 정지 컷. 진행도 0 = 분해(pose-0239), 1 = 완성(포스터).
 export const assemblyStills = [
   { image: `${assetBase}desktop/pose-0239.webp`, alt: '부품별로 분해된 PC' },

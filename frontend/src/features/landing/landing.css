@@ -534,6 +534,14 @@
     min-width: 0;
     opacity: var(--reveal, 0);
   }
+
+  /* 키보드로 구성 버튼을 드러낸 동안 진행 문구가 같은 자리에 겹치지 않게 한다. */
+  &:has(.hero-copy__final:focus-within) {
+    > .hero-copy__progress,
+    > .hero-copy__power {
+      opacity: 0;
+    }
+  }
 }
 
 .hero-copy__progress {
@@ -609,6 +617,7 @@
   &:focus-within {
     opacity: 1;
     transform: none;
+    pointer-events: auto;
   }
 }
 

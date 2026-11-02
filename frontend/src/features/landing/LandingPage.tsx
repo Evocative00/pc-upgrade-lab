@@ -1,18 +1,15 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react'
 import { paths } from '../../lib/router.ts'
 import { LandingAccount } from './LandingAccount.tsx'
-import { heroCopyAt, heroQuips, landingDetails, readLandingTheme, saveLandingTheme, virtualBuildSlots, type LandingTheme } from './landingContent.ts'
+import { compactLandingQuery, heroCopyAt, heroQuips, landingDetails, readLandingTheme, saveLandingTheme, virtualBuildSlots, type LandingTheme } from './landingContent.ts'
 import { PcAssemblyScroll } from './PcAssemblyScroll.tsx'
 import './landing.css'
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
-// 이 폭 이하에서는 조립 장면 없이 캐치프레이즈와 버튼만 보여 준다.
-const compactQuery = '(max-width: 640px)'
-
 function useCompact() {
-  const [compact, setCompact] = useState(() => window.matchMedia(compactQuery).matches)
+  const [compact, setCompact] = useState(() => window.matchMedia(compactLandingQuery).matches)
   useEffect(() => {
-    const query = window.matchMedia(compactQuery)
+    const query = window.matchMedia(compactLandingQuery)
     const change = () => setCompact(query.matches)
     query.addEventListener('change', change)
     return () => query.removeEventListener('change', change)
