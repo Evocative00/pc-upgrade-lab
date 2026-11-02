@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { bootCountdownSeconds, bootTimeline, finalBootLines, type BootLine } from './bootScript.ts'
+import { compactLandingQuery } from './landingContent.ts'
 import './boot.css'
 
 type Props = {
@@ -34,6 +35,8 @@ export function BootScreen({ onDone }: Props) {
   }, [])
 
   useEffect(() => {
+    // 모바일 랜딩에는 조립 장면이 없으므로 시작 화면에서도 이미지를 요청하지 않는다.
+    if (window.matchMedia(compactLandingQuery).matches) return
     const image = new Image()
     image.src = heroImage
   }, [])
