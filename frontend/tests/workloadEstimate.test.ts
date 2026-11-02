@@ -30,8 +30,8 @@ test('RAM은 모듈 수량까지 합치고, VRAM은 제원이 없으면 판매�
 
 test('작업 규모에 맞는 기준으로 RAM·VRAM 부족을 판정한다', () => {
   const small = [part('GPU', 'GeForce RTX 3060 8GB'), part('RAM', 'DDR4 8GB', { capacityBytes: 8 * GIB }, 2)]
-  const premiere = diagnoseProgram('Premiere Pro', small, 'HEAVY')!
-  const heavy = premiere.levels.find((level) => level.level === '6K~8K 편집')!
+  const premiere = diagnoseProgram('Premiere Pro', small, 'LIGHT', '8K')!
+  const heavy = premiere.levels.find((level) => level.level === '8K 편집')!
   assert.equal(heavy.verdict, 'FAIL')
   assert.equal(premiere.levels.find((level) => level.level === '공식 최소')!.verdict, 'PASS')
 })

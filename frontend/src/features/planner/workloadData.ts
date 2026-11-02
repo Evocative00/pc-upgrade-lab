@@ -2,7 +2,7 @@
  * 영상 편집·개발 프로그램의 공식 요구 사양과 예상 수치 계산 기준. 확인일 2026-10-28.
  * 공식 사양이 막혀 있거나 없으면 2차 자료임을 출처 종류로 밝힌다. 화면에는 출처와 신뢰도를 함께 보여 준다.
  */
-import type { Workload } from './plannerGoal.ts'
+import type { VideoResolution, Workload } from './plannerGoal.ts'
 
 export type WorkloadSourceKind = 'OFFICIAL' | 'SECONDARY' | 'REVIEW' | 'BENCHMARK_DB'
 export type WorkloadSource = { id: string; name: string; url: string; kind: WorkloadSourceKind; note: string }
@@ -12,7 +12,7 @@ export type Requirement = { ramGiB?: number; vramGiB?: number; cores?: number; n
 // 예상 수치 종류. BLENDER_RENDER: 기준 장면 렌더 시간, COMPILE: 코드 컴파일 시간,
 // EMULATORS: 동시에 띄울 수 있는 Android 에뮬레이터 수, CONTAINERS: Docker 컨테이너·가상 머신 수,
 // VIDEO: 편집 해상도별 RAM·VRAM 여유와 CPU·GPU 성능 수준.
-export type EstimateKind = 'BLENDER_RENDER' | 'COMPILE' | 'EMULATORS' | 'CONTAINERS' | 'VIDEO'
+export type EstimateKind = 'BLENDER_RENDER' | 'COMPILE' | 'EMULATORS' | 'CONTAINERS' | 'VIDEO' | 'PREMIERE'
 
 export type ProgramProfile = {
   name: string
@@ -21,6 +21,8 @@ export type ProgramProfile = {
   recommended: Requirement
   // 작업 규모별 여유 있게 쓰는 기준(영상은 편집 해상도). 공식 권장보다 높을 수 있다.
   comfortable?: Record<Workload, Requirement & { label: string }>
+  // 편집 해상도를 직접 고르는 프로그램(Premiere Pro). 있으면 작업 규모 대신 이 기준을 쓴다.
+  byResolution?: Record<VideoResolution, Requirement & { label: string }>
   estimates: EstimateKind[]
   keyParts: string
 }
@@ -47,6 +49,12 @@ export const WORKLOAD_SOURCES: Record<string, WorkloadSource> = {
   'openbenchmarking-kernel': { id: 'openbenchmarking-kernel', name: 'OpenBenchmarking 리눅스 커널 컴파일 시간', kind: 'BENCHMARK_DB',
     url: 'https://mail.openbenchmarking.org/test/pts/build-linux-kernel',
     note: 'defconfig 빌드. Ryzen 9 9950X 56초, 7900X 73초, 9800X3D 86초, 5950X 95초. 컴파일 시간 기준점.' },
+  'techgage-premiere': { id: 'techgage-premiere', name: 'Techgage Premiere Pro 인코딩 성능 (2020)', kind: 'REVIEW',
+    url: 'https://techgage.com/article/adobe-premiere-pro-may-2020-amd-vs-nvidia-gpu-encoding-performance/',
+    note: 'Premiere 14.2, i9-10980XE + RTX 2060 SUPER. 4K60 60초 → H.264 NVENC 22초, 8K RED 22초 → 31초. 최신 버전은 더 빠를 수 있음.' },
+  'puget-premiere-encoding': { id: 'puget-premiere-encoding', name: 'Puget Systems Premiere 하드웨어 인코딩 성능 (2020)', kind: 'REVIEW',
+    url: 'https://www.pugetsystems.com/labs/articles/Premiere-Pro-14-2-H-264-and-H-265-Hardware-Encoding-Performance-1778/',
+    note: '하드웨어 인코딩 사용 시 상위 GPU가 30~50% 빠르고 CPU 영향은 작음.' },
   'vscode-requirements': { id: 'vscode-requirements', name: 'VS Code 요구 사양', kind: 'OFFICIAL',
     url: 'https://code.visualstudio.com/docs/supporting/requirements', note: '1.6GHz CPU, 1GB RAM.' },
   'android-studio': { id: 'android-studio', name: 'Android Studio 설치 요구 사양', kind: 'OFFICIAL',
@@ -61,15 +69,16 @@ export const WORKLOAD_SOURCES: Record<string, WorkloadSource> = {
 
 export const PROGRAM_PROFILES: Record<string, ProgramProfile> = {
   'Premiere Pro': {
-    name: 'Premiere Pro', sourceIds: ['adobe-premiere', 'puget-premiere'], estimates: ['VIDEO'],
+    name: 'Premiere Pro', sourceIds: ['adobe-premiere', 'puget-premiere', 'techgage-premiere', 'puget-premiere-encoding'],
+    estimates: ['PREMIERE', 'VIDEO'],
     keyParts: 'CPU · GPU · RAM·VRAM(해상도에 따라)',
     minimum: { ramGiB: 8, vramGiB: 4, note: 'CPU: Intel 6세대·Ryzen 1000 이상' },
     recommended: { ramGiB: 32, vramGiB: 8, note: 'CPU: Intel 11세대·Ryzen 3000 이상 · HD는 16GB로 충분' },
-    // RAM은 Adobe 공식(HD 16GB, 4K 이상 32GB), VRAM은 Puget 해상도별 최소값.
-    comfortable: {
-      LIGHT: { label: '1080p 편집', ramGiB: 16, vramGiB: 4 },
-      MEDIUM: { label: '4K 편집', ramGiB: 32, vramGiB: 8 },
-      HEAVY: { label: '6K~8K 편집', ramGiB: 64, vramGiB: 12 },
+    // RAM은 Adobe 공식(HD 16GB, 4K 이상 32GB, 8K는 64GB로 확장), VRAM은 Puget 해상도별 최소값.
+    byResolution: {
+      FHD: { label: '1080p 편집', ramGiB: 16, vramGiB: 4 },
+      '4K': { label: '4K 편집', ramGiB: 32, vramGiB: 8 },
+      '8K': { label: '8K 편집', ramGiB: 64, vramGiB: 16 },
     },
   },
   'DaVinci Resolve': {

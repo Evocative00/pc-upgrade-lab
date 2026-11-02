@@ -3,7 +3,8 @@ import { findDatasetModel, findPartModel } from './benchmarkComparison.ts'
 import { CPU_BLENDER_DATASET } from './cpuBlenderScores.ts'
 import { GPU_BLENDER_DATASET } from './gpuBlenderScores.ts'
 import { GPU_RELATIVE_DATASET } from './gpuRelativeScores.ts'
-import type { Workload } from './plannerGoal.ts'
+import type { VideoResolution, Workload } from './plannerGoal.ts'
+import { estimatePremiere, EXPORT_CLIP_SECONDS, exportText, hasQuickSync, PLAYBACK_TEXT } from './premiereEstimate.ts'
 import {
   BLENDER_RENDER_ANCHOR, COMPILE_ANCHORS, CONTAINER_ASSUMPTION, EMULATOR_ASSUMPTION, PROGRAM_PROFILES,
   type ProgramProfile, type Requirement,
@@ -171,21 +172,37 @@ function videoLevel(program: string, facts: PcFacts): WorkloadEstimate {
   if (facts.gpuRelative && refGpu) parts.push(`GPU ${(facts.gpuRelative / refGpu).toFixed(2)}배`)
   if (!parts.length) return unknown(title, 'CPU·GPU 점수 자료 없음')
   // Premiere의 H.264·HEVC 하드웨어 디코딩은 내장 그래픽이 있는 Intel CPU(Quick Sync)가 유리하다.
-  const quickSync = program === 'Premiere Pro' && facts.cpuName
-    ? /intel|core/i.test(facts.cpuName) && !/\d{4,5}K?F\b/i.test(facts.cpuName)
-      ? ' · Quick Sync 있음(H.264·HEVC 유리)'
-      : ' · Quick Sync 없음(GPU로 디코딩)' : ''
+  const sync = program === 'Premiere Pro' ? hasQuickSync(facts.cpuName) : null
+  const quickSync = sync === null ? '' : sync ? ' · Quick Sync 있음(H.264·HEVC 유리)' : ' · Quick Sync 없음(GPU로 디코딩)'
   return { title, known: true, value: parts.join(' · '),
     detail: `기준: ${reference.cpu.replace(/^Core /, '')} · ${reference.gpu.replace(/^GeForce /, '')} (4K 편집 원활, 팀 설정)${quickSync}` }
 }
 
-export function diagnoseProgram(program: string, parts: PartInput[], workload: Workload): ProgramDiagnosis | null {
+function premiereEstimates(facts: PcFacts, resolution: VideoResolution): WorkloadEstimate[] {
+  const result = estimatePremiere(resolution, { cpuScore: facts.cpuScore, gpuRelative: facts.gpuRelative,
+    vramGiB: facts.vramGiB, quickSync: hasQuickSync(facts.cpuName) })
+  const label = resolution === 'FHD' ? '1080p' : resolution
+  return [
+    { title: `내보내기 시간 (${label} ${EXPORT_CLIP_SECONDS / 60}분 영상 → H.264)`, value: exportText(result),
+      detail: result.exportDetail, known: result.exportLow !== null },
+    { title: `타임라인 재생 (${label})`, value: result.playback ? PLAYBACK_TEXT[result.playback] : '추정 불가',
+      detail: result.playbackDetail, known: result.playback !== null },
+  ]
+}
+
+export function diagnoseProgram(program: string, parts: PartInput[], workload: Workload,
+  videoResolution: VideoResolution = '4K'): ProgramDiagnosis | null {
   const profile = Object.hasOwn(PROGRAM_PROFILES, program) ? PROGRAM_PROFILES[program] : undefined
   if (!profile) return null
   const facts = pcFacts(parts)
   const levels = [checkLevel('공식 최소', profile.minimum, facts), checkLevel('공식 권장', profile.recommended, facts)]
-  if (profile.comfortable) levels.push(checkLevel(profile.comfortable[workload].label, profile.comfortable[workload], facts))
-  const estimates = profile.estimates.map((kind) => kind === 'BLENDER_RENDER' ? blenderRender(facts)
+  if (profile.byResolution) {
+    levels.push(checkLevel(profile.byResolution[videoResolution].label, profile.byResolution[videoResolution], facts))
+  } else if (profile.comfortable) {
+    levels.push(checkLevel(profile.comfortable[workload].label, profile.comfortable[workload], facts))
+  }
+  const estimates = profile.estimates.flatMap((kind) => kind === 'PREMIERE' ? premiereEstimates(facts, videoResolution)
+    : kind === 'BLENDER_RENDER' ? blenderRender(facts)
     : kind === 'COMPILE' ? compileTime(facts) : kind === 'EMULATORS' ? emulators(facts)
       : kind === 'CONTAINERS' ? containers(facts) : videoLevel(program, facts))
   return { profile, levels, estimates }

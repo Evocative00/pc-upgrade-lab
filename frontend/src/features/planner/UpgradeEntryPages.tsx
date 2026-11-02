@@ -52,21 +52,20 @@ export function UpgradeEntryPage() {
   const [page, setPage] = usePageState('upgrade:page', 0, isPageNumber)
 
   return <div className="planner-entry">
-    <header className="page-head"><div><h1>업그레이드 플랜</h1>
-      <p className="muted">업그레이드할 PC를 선택해 주세요. 예산과 용도는 다음 화면에서 입력합니다.</p></div></header>
+    <header className="planner-heading"><div><p className="eyebrow">UPGRADE PLAN</p><h1>업그레이드 플랜</h1>
+      <p className="muted">업그레이드할 PC를 골라 주세요.</p></div></header>
     <div className="planner-entry-options">
-      <section className="panel"><h2>새 PC로 시작</h2>
-        <p className="muted">부품을 직접 입력하거나 Windows 보조 프로그램으로 불러올 수 있습니다.</p>
+      <section className="panel planner-card"><h2>새 PC로 시작</h2>
+        <p className="muted">직접 입력하거나 자동으로 불러옵니다.</p>
         <a className="button button--primary button--lg" href={paths.new()}>내 PC 불러오기·입력하기 →</a>
       </section>
-      <section className="panel"><h2>저장한 PC로 시작</h2>
+      <section className="panel planner-card"><h2>저장한 PC로 시작</h2>
         {auth.status === 'loading' && <p className="muted">로그인 상태를 확인하는 중…</p>}
         {auth.status === 'signedOut' && <p className="muted">저장한 PC를 사용하려면 <a href={paths.login()}>로그인</a>해 주세요.</p>}
         {(auth.status === 'signedIn' || auth.status === 'unavailable') &&
           <SavedPcList key={authKey(auth)} page={page} onPageChange={setPage} />}
       </section>
     </div>
-    <p className="planner-scope">게임 5종은 공식 최소·권장 사양의 일부 항목을 비교합니다. 추천 제품·가격·예상 FPS 계산은 아직 제공하지 않습니다.</p>
   </div>
 }
 
@@ -86,8 +85,8 @@ function SavedPcPlanner({ id, onRetry }: { id: number; onRetry: () => void }) {
 
 export function UpgradeSavedPcPage({ id }: { id: number }) {
   const [attempt, setAttempt] = useState(0)
-  return <>
-    <a className="back-link" href={paths.upgrade()}>← 다른 PC 선택</a>
+  return <div className="planner-page">
+    <a className="button button--ghost planner-back" href={paths.upgrade()}>← 다른 PC 선택</a>
     <SavedPcPlanner key={attempt} id={id} onRetry={() => setAttempt((current) => current + 1)} />
-  </>
+  </div>
 }

@@ -1,3 +1,35 @@
+/* 업그레이드 플랜 화면은 메인(랜딩)과 같은 어두운 색을 쓴다. 왼쪽 탭 바와 페이지 배경까지 함께 바꾼다.
+   값은 index.css의 어두운 모드와 landing.css의 색과 같다. */
+:root:has(.planner-shell, .planner-entry, .planner-page) {
+  --text: #a3a3a3;
+  --text-h: #f5f5f5;
+  --bg: #111;
+  --surface: #1a1a1a;
+  --border: #2e2e2e;
+  --code-bg: #222;
+  --accent: #93a9e8;
+  --accent-bg: rgba(147, 169, 232, 0.12);
+  --accent-border: rgba(147, 169, 232, 0.4);
+  --on-accent: #0b1638;
+  --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  --linked: #4ade80;
+  --linked-bg: rgba(74, 222, 128, 0.12);
+  --detected: #7cb2ff;
+  --detected-bg: rgba(124, 178, 255, 0.14);
+  --manual: #fbbf24;
+  --manual-bg: rgba(251, 191, 36, 0.14);
+  --danger: #f87171;
+  color-scheme: dark;
+
+  .app-side-nav {
+    --landing-border-strong: #3a3a3a;
+    --landing-muted: #8a8a8a;
+    --ice: #9ad8f2;
+    --nav-active: #1f1f1f;
+    --nav-hover: #1c1c1c;
+  }
+}
+
 .planner-shell {
   container-type: inline-size;
   --planner-blue: var(--accent);
@@ -6,10 +38,15 @@
   color: var(--planner-ink);
   width: 100%;
   max-width: 1200px;
+  padding-right: 24px;
+  box-sizing: border-box;
   margin: 0 auto;
 }
 
-.planner-entry { container-type: inline-size; display: grid; gap: 18px; }
+/* 왼쪽 탭 바 옆 본문. PC 구성 화면(pc-builder.css)과 같은 카드·제목·버튼 모양을 쓴다. */
+.planner-entry { container-type: inline-size; display: grid; gap: 18px; width: 100%; max-width: 1200px; margin: 0 auto; padding-right: 24px; box-sizing: border-box; }
+.planner-page { display: flex; flex-direction: column; }
+.planner-back { align-self: flex-start; margin-bottom: 12px; }
 .planner-entry-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
 .planner-entry-options .panel { min-width: 0; }
 .planner-entry-options .panel > .button { align-self: flex-start; white-space: normal; }
@@ -25,18 +62,19 @@
   font-size: 13px;
 }
 
-.planner-steps span { padding: 8px 12px; border-radius: 24px; }
-.planner-steps .is-current { background: #1e3a8a; color: #fff; font-weight: 700; }
+.planner-steps span { padding: 8px 14px; border: 1px solid var(--border); border-radius: 24px; font-family: var(--mono); font-size: 12px; }
+.planner-steps .is-current { background: #1e3a8a; border-color: #3b5bd0; color: #fff; font-weight: 700; }
 .planner-steps .is-complete { color: var(--linked); }
 
 .planner-layout { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 24px; align-items: start; }
 .planner-main { display: grid; gap: 18px; min-width: 0; }
 .planner-main > .button { justify-self: start; }
-/* 제목·카드·버튼은 PC 구성 화면(pc-builder.css)과 같은 크기와 모서리를 쓴다. */
-.planner-heading h1 { margin: 16px 0 8px; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+.planner-heading h1 { margin: 10px 0 12px; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.planner-heading .eyebrow { margin: 18px 0 0; }
+.planner-goal-line { font: 13px var(--mono); color: var(--text); margin: 0 0 6px !important; }
 .planner-heading p { margin: 0; color: var(--text); }
 .planner-card { background: var(--surface); border: 1px solid var(--planner-line); border-radius: 14px; padding: 22px 24px; }
-.planner-card h2 { margin: 0 0 18px; font-size: 18px; font-weight: 700; }
+.planner-card h2 { margin: 0 0 18px; font-size: 18px; font-weight: 700; color: var(--text-h); }
 .planner-card h3 { margin: 18px 0 10px; font-size: 15px; }
 .planner-card h3 small { font-size: 12px; font-weight: 400; color: var(--text); }
 .planner-card-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
@@ -57,15 +95,14 @@
 .planner-purpose-options { margin-bottom: 16px; }
 .planner-reveal { border-top: 1px solid var(--border); padding-top: 6px; animation: planner-reveal .22s ease-out; }
 .planner-inline-input { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
-.planner-inline-input input { min-height: 42px; flex: 1; min-width: 170px; border: 1px solid var(--border); border-radius: 6px; padding: 0 10px; font: inherit; }
+.planner-inline-input input { min-height: 42px; flex: 1; min-width: 170px; border: 1px solid var(--border); border-radius: 8px; padding: 0 10px; font: inherit; }
 .planner-goal-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .planner-workloads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.planner-workloads button { min-height: 94px; text-align: left; display: grid; gap: 6px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text-h); }
+.planner-workloads button { min-height: 94px; text-align: left; display: grid; gap: 6px; padding: 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text-h); }
 .planner-workloads span { color: var(--text); font-size: 12px; }
 .planner-caveat { color: var(--text); font-size: 13px; line-height: 1.5; margin: 16px 0 0; }
 .planner-warning { color: var(--manual); font-size: 13px; }
-.planner-actions { display: flex; justify-content: flex-end; }
-.planner-text-button { padding: 4px 0; border: 0; background: transparent; color: var(--planner-blue); text-decoration: underline; text-underline-offset: 3px; }
+.planner-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }
 .planner-aside { position: sticky; top: 16px; }
 .planner-aside dl { display: grid; gap: 12px; margin: 0; }
 .planner-aside dl div { display: flex; justify-content: space-between; gap: 12px; }
@@ -75,18 +112,17 @@
 .planner-aside ul { padding-left: 18px; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
 
 .planner-heading { margin-bottom: 18px; }
-.planner-eyebrow { font: 13px var(--mono); letter-spacing: 0.15em; color: var(--accent); margin-top: 12px !important; }
-.planner-scope { border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; background: var(--accent-bg); font-size: 13px; margin-bottom: 18px; }
+.planner-scope { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; background: var(--accent-bg); font-size: 13px; margin-bottom: 18px; }
 .planner-result-grid { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 16px; align-items: start; }
 .planner-highlight { background: var(--text-h); color: var(--bg); }
 .planner-highlight h2 { color: var(--bg); margin: 12px 0 8px; font-size: 23px; }
 .planner-highlight p, .planner-card > p { line-height: 1.6; }
 .planner-part-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
-.planner-part-item { min-width: 0; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; display: grid; gap: 4px; }
+.planner-part-item { min-width: 0; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; display: grid; gap: 4px; }
 .planner-part-item span, .planner-placeholder-grid span { font-size: 12px; color: var(--text); }
 .planner-part-item strong, .planner-placeholder-grid strong { font-size: 14px; overflow-wrap: anywhere; }
 .planner-placeholder-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 20px; }
-.planner-placeholder-grid > div { padding: 14px; border: 1px solid var(--border); border-radius: 6px; display: grid; gap: 6px; }
+.planner-placeholder-grid > div { padding: 14px; border: 1px solid var(--border); border-radius: 10px; display: grid; gap: 6px; }
 .planner-compare-head, .planner-compare-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
 .planner-compare-head { margin-top: 16px; color: var(--text-h); }
 .planner-compare-row span { overflow-wrap: anywhere; }
@@ -98,7 +134,7 @@
 .planner-game a { color: var(--accent); font-size: 13px; }
 .planner-source { margin: 6px 0 16px; color: var(--text); font-size: 12px; }
 .planner-tier-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.planner-tier { min-width: 0; padding: 14px; border: 1px solid var(--border); border-radius: 6px; }
+.planner-tier { min-width: 0; padding: 14px; border: 1px solid var(--border); border-radius: 10px; }
 .planner-tier-head { display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; align-items: start; }
 .planner-tier h4 { margin: 0; font-size: 15px; }
 .planner-tier-head p { margin: 4px 0 0; font-size: 12px; color: var(--text); }
@@ -111,14 +147,14 @@
 .planner-requirement-row span { overflow-wrap: anywhere; line-height: 1.5; }
 .planner-requirement-row > div { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .planner-requirement-row small { color: var(--text); font-size: 12px; line-height: 1.4; }
-.planner-internal-score { margin-top: 16px; padding: 14px; border: 1px solid var(--accent-border); border-radius: 6px; background: var(--accent-bg); }
+.planner-internal-score { margin-top: 16px; padding: 14px; border: 1px solid var(--accent-border); border-radius: 10px; background: var(--accent-bg); }
 .planner-internal-score h4 { margin: 0; font-size: 14px; }
 .planner-internal-score h4 small { color: var(--text); font-weight: 400; }
 .planner-internal-score > p { margin: 6px 0 10px; color: var(--text); font-size: 12px; line-height: 1.5; }
 .planner-internal-model { padding: 12px 0; border-top: 1px solid var(--border); font-size: 12px; }
 .planner-internal-model > strong { display: block; margin-bottom: 8px; overflow-wrap: anywhere; }
 .planner-internal-tier-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.planner-internal-tier { display: grid; justify-items: start; align-content: start; gap: 5px; min-width: 0; padding: 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); }
+.planner-internal-tier { display: grid; justify-items: start; align-content: start; gap: 5px; min-width: 0; padding: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
 .planner-internal-tier > span:not(.planner-verdict) { overflow-wrap: anywhere; }
 .planner-internal-tier > small { color: var(--text); line-height: 1.4; }
 .planner-check-list { list-style: none; padding: 0; margin: 16px 0 0; }
@@ -132,4 +168,64 @@
 @container (max-width: 800px) { .planner-layout, .planner-result-grid, .planner-entry-options, .planner-tier-grid { grid-template-columns: 1fr; } .planner-aside { position: static; } }
 @container (max-width: 580px) { .planner-card { padding: 16px; } .planner-goal-pair, .planner-workloads, .planner-part-grid, .planner-placeholder-grid, .planner-internal-tier-grid { grid-template-columns: 1fr; } .planner-steps { justify-content: flex-start; } .planner-check-list li { flex-direction: column; gap: 4px; } .planner-check-list li span { text-align: left; } }
 .planner-frame-value { font-size: 18px; font-weight: 700; }
-.planner-frame-preview { display: grid; gap: 4px; margin-top: 10px; padding: 10px 12px; border: 1px solid var(--accent-border); border-radius: 6px; background: var(--accent-bg); font-size: 13px; }
+.planner-frame-preview { display: grid; gap: 4px; margin-top: 10px; padding: 10px 12px; border: 1px solid var(--accent-border); border-radius: 10px; background: var(--accent-bg); font-size: 13px; }
+
+/* 추천 플랜: 우선순위 탭 · 부품 선택 · 추천 제품 */
+.planner-priority { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 4px 0 14px; }
+.planner-priority button { display: grid; gap: 4px; text-align: left; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text-h); }
+.planner-priority button strong { font-size: 16px; }
+.planner-priority button span { font-size: 12px; color: var(--text); }
+.planner-shell .planner-priority button[aria-pressed="true"] { background: #1e3a8a; border-color: #3b5bd0; color: #fff; box-shadow: 0 0 0 1px rgba(91, 123, 224, 0.25), 0 0 18px rgba(59, 91, 208, 0.45); }
+.planner-priority button[aria-pressed="true"] span { color: rgba(255, 255, 255, 0.8); }
+.planner-part-choice { margin-bottom: 18px; }
+.planner-price-line small { color: var(--text); font-size: 11px; }
+.planner-price-line { display: inline-grid; justify-items: end; font-family: var(--mono); }
+.planner-frame-change { margin-top: 18px; }
+.planner-frame-change table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.planner-frame-change th, .planner-frame-change td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+.planner-frame-change th { color: var(--text); font-weight: 400; font-size: 12px; }
+.planner-frame-change td:not(:first-child) { font-family: var(--mono); }
+.planner-frame-change td.is-meets { color: var(--linked); font-weight: 700; }
+.planner-part-choice { display: grid; gap: 8px; margin-bottom: 18px; }
+.planner-part-choice .muted { font-size: 13px; }
+.planner-plan-summary { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; padding: 16px 18px; border: 1px solid var(--accent-border); border-radius: 12px; background: var(--accent-bg); }
+.planner-plan-summary div { display: grid; gap: 2px; }
+.planner-plan-summary span { font-size: 12px; color: var(--text); }
+.planner-plan-summary strong { font: 800 26px var(--mono); color: var(--text-h); }
+.planner-plan-summary small { font-size: 12px; color: var(--text); }
+.planner-plan-summary p { margin: 0; font-size: 14px; }
+.planner-final { margin-top: 18px; }
+.planner-final h3 small, .planner-frame-change h3 small { font-weight: 400; color: var(--text); }
+.planner-final ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.planner-final li { display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; }
+.planner-final li.is-replaced { border-color: #3b5bd0; background: var(--accent-bg); box-shadow: inset 4px 0 0 #3b5bd0; }
+.planner-final-type { font: 12px var(--mono); color: var(--text); }
+.planner-final-name { display: grid; gap: 2px; min-width: 0; }
+.planner-final-name strong { overflow-wrap: anywhere; }
+.planner-final-name small { font-size: 12px; color: var(--text); }
+.planner-final li.is-replaced .planner-final-name small { color: var(--text-h); }
+@container (max-width: 720px) {
+  .planner-priority, .planner-plan-summary { grid-template-columns: 1fr; }
+  .planner-final li { grid-template-columns: 1fr; }
+}
+
+/* 호환성 상세: 최종 구성 부품별 검사 상태 */
+.planner-compat-parts { list-style: none; margin: 14px 0; padding: 0; display: grid; gap: 6px; }
+.planner-compat-parts li { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 14px; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; }
+.planner-compat-parts li.is-replaced { border-color: #3b5bd0; background: var(--accent-bg); }
+.planner-compat-parts li.is-bad { border-color: var(--danger); box-shadow: inset 4px 0 0 var(--danger); }
+.planner-compat-warning { color: var(--danger) !important; }
+.planner-compat-action { display: grid; gap: 10px; justify-items: start; margin: 8px 0 16px; padding: 14px 16px; border: 1px solid var(--danger); border-radius: 12px; }
+.planner-compat-action p { margin: 0; color: var(--text-h); }
+
+/* 핵심만 먼저 보여 주고 근거·세부 비교는 접어 둔다. */
+.planner-short { margin: 4px 0 0; color: var(--danger); font-weight: 700; font-size: 14px; }
+.planner-frame-estimate { margin-top: 14px; }
+.planner-frame-estimate h4 { margin: 0 0 10px; }
+.planner-frame-estimate h4 small { font-weight: 400; color: var(--text); }
+.planner-details { margin-top: 14px; }
+.planner-details > summary { cursor: pointer; width: fit-content; color: var(--accent); font-size: 13px; list-style-position: inside; }
+.planner-details[open] > summary { margin-bottom: 12px; }
+.planner-card.planner-details > summary { font-size: 15px; font-weight: 700; color: var(--text-h); }
+.planner-card.planner-details { margin-top: 0; }
+.planner-detail-notes { margin: 12px 0 0; padding-left: 18px; font-size: 13px; line-height: 1.6; }

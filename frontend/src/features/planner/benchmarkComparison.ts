@@ -2,7 +2,7 @@
  * 같은 시험·같은 판의 점수끼리만 비교한다. 점수 데이터는 외부에서 주입하며,
  * 이 파일은 점수를 수집하거나 특정 게임의 FPS를 추정하지 않는다.
  */
-export type BenchmarkMetric = 'CPU_SINGLE_THREAD' | 'CPU_MULTI_THREAD' | 'GPU_3D' | 'GPU_RENDER'
+export type BenchmarkMetric = 'CPU_SINGLE_THREAD' | 'CPU_MULTI_THREAD' | 'CPU_GAMING' | 'GPU_3D' | 'GPU_RENDER'
 export type ComponentKind = 'CPU' | 'GPU'
 
 export type BenchmarkDataset = {
