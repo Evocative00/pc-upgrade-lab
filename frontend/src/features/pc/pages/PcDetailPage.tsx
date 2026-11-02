@@ -56,7 +56,7 @@ function DeletePcButton({ id, name }: { id: number; name: string }) {
 
   return (
     <>
-      <button type="button" className="button button--danger" onClick={handleDelete} disabled={deleting}>
+      <button type="button" className="button button--danger button--lg" onClick={handleDelete} disabled={deleting}>
         {deleting ? '삭제 중…' : '저장된 PC 삭제'}
       </button>
       {error !== null && <p role="alert" className="error">{error}</p>}
@@ -93,77 +93,83 @@ export function PcDetailPage({ id }: { id: number }) {
           <a href={paths.list()} className="back-link">
             ← 목록
           </a>
+          <p className="eyebrow">&gt; BUILD DETAIL</p>
           <h1>{pc.name}</h1>
         </div>
         <div className="actions">
           <DeletePcButton id={pc.id} name={pc.name} />
-          <a className="button button--primary" href={paths.edit(pc.id)}>
+          <a className="button button--primary button--lg" href={paths.edit(pc.id)}>
             수정
           </a>
         </div>
       </div>
 
-      <PartStatusLegend />
+      <section className="panel">
+        <div className="panel__head">
+          <h2>부품 구성</h2>
+        </div>
+        <PartStatusLegend />
 
-      <div className="table-wrap">
-        <table className="part-table">
-          <thead>
-            <tr>
-              <th scope="col">부품</th>
-              <th scope="col">모델</th>
-              <th scope="col">수량</th>
-              <th scope="col">상태</th>
-            </tr>
-          </thead>
-          <tbody>
-            {PART_TYPES.map((info) => {
-              const parts = partsOfType(pc.parts, info.type)
+        <div className="table-wrap">
+          <table className="part-table">
+            <thead>
+              <tr>
+                <th scope="col">부품</th>
+                <th scope="col">모델</th>
+                <th scope="col">수량</th>
+                <th scope="col">상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              {PART_TYPES.map((info) => {
+                const parts = partsOfType(pc.parts, info.type)
 
-              if (parts.length === 0) {
-                return (
-                  <tr key={info.type}>
-                    <th scope="row">{info.label}</th>
-                    <td className="muted">—</td>
-                    <td className="muted">—</td>
-                    <td>
-                      <PartStatusBadge status="empty" />
-                    </td>
-                  </tr>
-                )
-              }
+                if (parts.length === 0) {
+                  return (
+                    <tr key={info.type}>
+                      <th scope="row">{info.label}</th>
+                      <td className="muted">—</td>
+                      <td className="muted">—</td>
+                      <td>
+                        <PartStatusBadge status="empty" />
+                      </td>
+                    </tr>
+                  )
+                }
 
-              return parts.map((part, index) => {
-                const capacity = formatCapacity(part)
-                const otherSpecs = formatOtherSpecs(part)
+                return parts.map((part, index) => {
+                  const capacity = formatCapacity(part)
+                  const otherSpecs = formatOtherSpecs(part)
 
-                return (
-                  <tr key={`${info.type}-${index}`}>
-                    <th scope="row">
-                      {parts.length > 1 ? `${info.label} ${index + 1}` : info.label}
-                    </th>
-                    <td>
-                      {part.displayName}
-                      {info.capacityUnit !== null && (
-                        <span className="muted"> · 1개당 {capacity ?? '용량 미확인'}</span>
-                      )}
-                      {part.rawName !== null && part.rawName !== part.displayName && (
-                        <div className="muted">검출 원문: {part.rawName}</div>
-                      )}
-                      {otherSpecs.length > 0 && (
-                        <div className="muted">{otherSpecs.join(', ')}</div>
-                      )}
-                    </td>
-                    <td>{part.quantity}</td>
-                    <td>
-                      <PartStatusBadge status={getPartStatus(part)} />
-                    </td>
-                  </tr>
-                )
-              })
-            })}
-          </tbody>
-        </table>
-      </div>
+                  return (
+                    <tr key={`${info.type}-${index}`}>
+                      <th scope="row">
+                        {parts.length > 1 ? `${info.label} ${index + 1}` : info.label}
+                      </th>
+                      <td>
+                        {part.displayName}
+                        {info.capacityUnit !== null && (
+                          <span className="muted"> · 1개당 {capacity ?? '용량 미확인'}</span>
+                        )}
+                        {part.rawName !== null && part.rawName !== part.displayName && (
+                          <div className="muted">검출 원문: {part.rawName}</div>
+                        )}
+                        {otherSpecs.length > 0 && (
+                          <div className="muted">{otherSpecs.join(', ')}</div>
+                        )}
+                      </td>
+                      <td>{part.quantity}</td>
+                      <td>
+                        <PartStatusBadge status={getPartStatus(part)} />
+                      </td>
+                    </tr>
+                  )
+                })
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
     </>
   )
 }

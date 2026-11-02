@@ -133,9 +133,9 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
       </aside>
     </div>}
     <div className="planner-actions">
-      {step < 5 ? <button type="button" className="button button--primary" onClick={() => setStep((step + 1) as PlannerStep)}>
+      {step < 5 ? <button type="button" className="button button--primary button--lg" onClick={() => setStep((step + 1) as PlannerStep)}>
         {step === 3 ? '추천 플랜 보기' : '호환성 상세 보기'} →</button> :
-        <button type="button" className="button button--ghost" onClick={onBackToPc}>내 PC로 돌아가기</button>}
+        <button type="button" className="button button--ghost button--lg" onClick={onBackToPc}>내 PC로 돌아가기</button>}
     </div>
   </div>
 }

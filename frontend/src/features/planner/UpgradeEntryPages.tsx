@@ -57,7 +57,7 @@ export function UpgradeEntryPage() {
     <div className="planner-entry-options">
       <section className="panel"><h2>새 PC로 시작</h2>
         <p className="muted">부품을 직접 입력하거나 Windows 보조 프로그램으로 불러올 수 있습니다.</p>
-        <a className="button button--primary" href={paths.new()}>내 PC 불러오기·입력하기 →</a>
+        <a className="button button--primary button--lg" href={paths.new()}>내 PC 불러오기·입력하기 →</a>
       </section>
       <section className="panel"><h2>저장한 PC로 시작</h2>
         {auth.status === 'loading' && <p className="muted">로그인 상태를 확인하는 중…</p>}

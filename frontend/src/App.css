@@ -109,12 +109,13 @@
   white-space: nowrap;
 }
 
-/* 버튼 */
+/* 버튼: 모든 화면이 PC 구성 화면과 같은 모양을 쓴다. */
 .button {
   font: inherit;
   font-size: 14px;
-  padding: 6px 12px;
-  border-radius: 6px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
   border: 1px solid var(--accent-border);
   background: var(--accent-bg);
   color: var(--accent);
@@ -134,10 +135,22 @@
   }
 }
 
+/* 어두운 화면에서도 주 버튼은 진한 강조색 바탕에 흰 글자로 둔다. */
 .button--primary {
-  background: var(--accent);
-  color: var(--on-accent);
-  border-color: var(--accent);
+  background: #1e3a8a;
+  border-color: #3b5bd0;
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(91, 123, 224, 0.25), 0 0 18px rgba(59, 91, 208, 0.55);
+  transition: box-shadow 160ms ease-out;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 0 0 1px rgba(147, 169, 232, 0.5), 0 0 28px rgba(59, 91, 208, 0.8);
+  }
+}
+
+.button--lg {
+  padding: 11px 20px;
+  font-weight: 700;
 }
 
 .button--ghost {
@@ -229,7 +242,7 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   gap: 12px;
 }
 
@@ -237,9 +250,10 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 16px;
+  padding: 18px 22px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 14px;
+  background: var(--surface);
   color: inherit;
   text-decoration: none;
   height: 100%;
@@ -314,12 +328,18 @@
 
 .panel {
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 14px;
+  padding: 22px 24px;
   background: var(--surface);
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+  }
 }
 
 .panel__count {
@@ -574,6 +594,7 @@
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px;
 }
@@ -605,7 +626,25 @@ ul.error {
   overflow-x: auto;
 }
 
-/* PC 구성 화면의 왼쪽 탭 바 (랜딩과 같은 220px). 본문은 pc-builder.css에서 그만큼 비켜 둔다. */
+/* 탭 바를 쓰는 화면은 좌우 여백 없이 화면을 채우고, 왼쪽 220px는 탭 바 자리로 비켜 둔다. */
+#root:has(> .app-side-nav) {
+  width: auto;
+  margin: 0 0 0 220px;
+  border-right: 0;
+
+  @media (max-width: 640px) {
+    margin-left: 0;
+  }
+}
+
+/* 탭 바를 쓰는 화면의 제목은 PC 구성 화면 머리말(.builder-head h1)과 같은 크기로 둔다. */
+#root:has(> .app-side-nav) .page-head h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* PC 구성·업그레이드 플랜·PC 수정 화면의 왼쪽 탭 바 (랜딩과 같은 220px). */
 /* 탭 바 모양은 landing.css를 그대로 쓰고, .landing에만 있는 색 변수를 이 화면 색(밝은·어두운)에 맞춰 둔다. */
 .app-side-nav {
   --card: var(--surface);
@@ -636,6 +675,51 @@ ul.error {
   @media (max-width: 640px) {
     position: static;
     width: auto;
+  }
+
+  /* 선택 표시 점이 붙어도 메뉴 이름이 두 줄로 꺾이지 않게 한다. */
+  .landing__nav span {
+    white-space: nowrap;
+  }
+
+  .landing__nav svg {
+    flex: none;
+  }
+
+  .landing__nav-dot {
+    flex: none;
+  }
+
+  @media (min-width: 641px) {
+    .landing__nav a {
+      gap: 8px;
+      padding-inline: 10px;
+      font-size: 14px;
+    }
+
+    /* 220px 탭 바에서도 계정 안내가 한 글자씩 꺾이지 않게 한다. */
+    .landing-account--member {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 8px;
+    }
+
+    .landing-account__logout {
+      grid-column: 2;
+      justify-self: end;
+    }
+
+    .landing-account__error {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .landing__nav a {
+      gap: 4px;
+      padding-inline: 6px;
+      font-size: 12px;
+    }
   }
 
   /* 폭이 220px로 고정이라 랜딩의 좁은 화면(1440px 이하) 크기를 늘 쓴다. */

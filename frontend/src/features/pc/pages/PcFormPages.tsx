@@ -146,14 +146,6 @@ export function PcEditPage({ id }: { id: number }) {
 
   return (
     <>
-      <div className="page-head">
-        <div>
-          <a href={paths.detail(pc.id)} className="back-link">
-            ← {pc.name}
-          </a>
-          <h1>PC 수정</h1>
-        </div>
-      </div>
       {(draft !== null || restored) && (
         <RestoredDraftNotice
           onReset={() => {
@@ -171,6 +163,12 @@ export function PcEditPage({ id }: { id: number }) {
         initial={draft ?? pc}
         pcId={pc.id}
         submitLabel="저장"
+        visual
+        head={<>
+          <a href={paths.detail(pc.id)} className="back-link">← {pc.name}</a>
+          <p className="eyebrow">&gt; EDIT YOUR BUILD</p>
+          <h1>PC 수정</h1>
+        </>}
         onCancel={() => navigate(paths.detail(pc.id))}
         onSubmit={(request) => saveOrAskLogin(request, pc.id, async () => {
           const cache = pageStateStore()
