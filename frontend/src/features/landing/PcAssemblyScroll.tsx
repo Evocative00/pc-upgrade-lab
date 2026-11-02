@@ -1,22 +1,28 @@
 import { useEffect, useRef, useState, type ReactNode, type RefObject } from 'react'
 import { advanceProgress, anchorPoseIndexes, assembleSequence, clampProgress, desktopFramePlan, frameAtProgress, FrameCache, parseAnimationManifest, poseWindow, readyFrame, type AnimationManifest, type DesktopFramePlan } from './landingAnimation.ts'
-import { assemblyStepAt, assemblySteps } from './landingContent.ts'
+import { assemblyStepAt, assemblyStills, heroEnd } from './landingContent.ts'
 import './pc-assembly-scroll.css'
 
 const assetBase = '/pc-assembly/'
 type Props = {
   scrollRoot: RefObject<HTMLDivElement | null>
-  // 현재 단계(0–2)의 설명. 모션 감소 정지 화면에서는 단계마다 한 번씩 그린다.
-  renderStep: (step: number, active: boolean) => ReactNode
+  // 왼쪽 문구. percent는 0–120(조립 완료 100)이며 모션 감소 정지 화면에서는 끝 상태로 한 번 그린다.
+  renderCopy: (percent: number) => ReactNode
 }
 
-export function PcAssemblyScroll({ scrollRoot, renderStep }: Props) {
+// 고정 무대가 머무는 동안의 스크롤 비율(0–1). 조립은 그중 앞 100/120을 쓴다.
+function stageFraction(root: HTMLElement, section: HTMLElement, stage: HTMLElement) {
+  const rootRect = root.getBoundingClientRect(), sectionRect = section.getBoundingClientRect()
+  return clampProgress((rootRect.top - sectionRect.top) / Math.max(1, sectionRect.height - stage.clientHeight))
+}
+
+export function PcAssemblyScroll({ scrollRoot, renderCopy }: Props) {
   const sectionRef = useRef<HTMLElement>(null), stageRef = useRef<HTMLDivElement>(null), canvasRef = useRef<HTMLCanvasElement>(null)
   const [manifest, setManifest] = useState<AnimationManifest | null>(null)
   const [renderPlan, setRenderPlan] = useState<DesktopFramePlan | null>(null)
   const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   const [motionOptIn, setMotionOptIn] = useState(false)
-  const [step, setStep] = useState(0)
+  const [percent, setPercent] = useState(0)
   const motionPaused = reduced && !motionOptIn
 
   useEffect(() => {
@@ -33,33 +39,14 @@ export function PcAssemblyScroll({ scrollRoot, renderStep }: Props) {
     return () => preference.removeEventListener('change', change)
   }, [])
 
-  useEffect(() => {
-    const root = scrollRoot.current, section = sectionRef.current
-    if (!root || !section) return
-    const resize = () => {
-      const navigation = root.querySelector<HTMLElement>('.landing__tabs')
-      const offset = root.clientWidth <= 640 ? navigation?.getBoundingClientRect().height ?? 0 : 0
-      root.style.setProperty('--landing-navigation-height', `${offset}px`)
-      section.style.setProperty('--assembly-top', `${offset}px`)
-    }
-    const observer = new ResizeObserver(resize)
-    observer.observe(root)
-    const navigation = root.querySelector('.landing__tabs')
-    if (navigation) observer.observe(navigation)
-    resize()
-    return () => observer.disconnect()
-  }, [scrollRoot])
-
-  // 문구·진행 점은 스크롤 위치로 바로 정한다. 프레임 로딩과 무관하게 바뀐다.
+  // 문구 진행도는 스크롤 위치로 바로 정한다. 프레임 로딩과 무관하게 바뀐다.
   useEffect(() => {
     const root = scrollRoot.current, section = sectionRef.current, stage = stageRef.current
     if (!root || !section || !stage || motionPaused) return
     let raf = 0
     const update = () => {
       raf = 0
-      const rootRect = root.getBoundingClientRect(), sectionRect = section.getBoundingClientRect()
-      const top = Number.parseFloat(section.style.getPropertyValue('--assembly-top')) || 0
-      setStep(assemblyStepAt(clampProgress((rootRect.top + top - sectionRect.top) / Math.max(1, sectionRect.height - stage.clientHeight))))
+      setPercent(Math.round(stageFraction(root, section, stage) * heroEnd * 10) / 10)
     }
     const schedule = () => { if (!raf) raf = requestAnimationFrame(update) }
     root.addEventListener('scroll', schedule, { passive: true }); window.addEventListener('resize', schedule)
@@ -114,9 +101,7 @@ export function PcAssemblyScroll({ scrollRoot, renderStep }: Props) {
     }
     const hasPose = (index: number) => cache.has(manifest.poses[index].id) || anchors.has(manifest.poses[index].id)
     const measure = () => {
-      const rootRect = root.getBoundingClientRect(), sectionRect = section.getBoundingClientRect()
-      const top = Number.parseFloat(section.style.getPropertyValue('--assembly-top')) || 0
-      target = clampProgress((rootRect.top + top - sectionRect.top) / Math.max(1, sectionRect.height - stage.clientHeight))
+      target = clampProgress(stageFraction(root, section, stage) * heroEnd / 100)
       stage.dataset.progress = target.toFixed(5)
     }
     const active = () => visible && !document.hidden && !disposed
@@ -248,51 +233,36 @@ export function PcAssemblyScroll({ scrollRoot, renderStep }: Props) {
     </button>
   )
 
+  const step = assemblyStepAt(Math.min(1, percent / 100))
+
   return (
     <>
       {motionPaused ? (
-        <section className="assembly-scroll assembly-scroll--still" id="assembly" ref={sectionRef}>
-          {motionToggle}
-          <ol className="assembly-still">
-            {assemblySteps.map((item, index) => (
-              <li className="assembly-still__item" key={item.label}>
-                <div className="assembly-still__copy">{renderStep(index, true)}</div>
-                <div className="assembly-frame"><img src={item.image} alt={item.alt} loading="lazy" /></div>
-              </li>
-            ))}
-          </ol>
+        <section className="assembly-scroll assembly-scroll--still" ref={sectionRef}>
+          <div className="assembly-stage">
+            <div className="assembly-copy">
+              {renderCopy(heroEnd)}
+              {motionToggle}
+            </div>
+            <div className="assembly-frame"><img src={assemblyStills[2].image} alt={assemblyStills[2].alt} /></div>
+          </div>
         </section>
       ) : (
-        <section className="assembly-scroll" id="assembly" ref={sectionRef}>
+        <section className="assembly-scroll" ref={sectionRef}>
           <div className="assembly-stage" ref={stageRef} data-ready="false">
-            <div className="assembly-steps">
-              <div className="assembly-dots" aria-hidden="true">
-                {assemblySteps.map((item, index) => (
-                  <span className="assembly-dots__item" key={item.label}>
-                    <span className={`assembly-dots__dot${index <= step ? ' is-done' : ''}${index === step ? ' is-current' : ''}`} />
-                    {index < assemblySteps.length - 1 && <span className={`assembly-dots__line${index < step ? ' is-done' : ''}`} />}
-                  </span>
-                ))}
-              </div>
-              <div className="assembly-copy">
-                {assemblySteps.map((item, index) => (
-                  <div className={`assembly-copy__step${index === step ? ' is-active' : index < step ? ' is-before' : ''}`} key={item.label} aria-hidden={index !== step}>
-                    {renderStep(index, index === step)}
-                  </div>
-                ))}
-              </div>
+            <div className="assembly-copy">
+              {renderCopy(percent)}
               {motionToggle}
             </div>
             <div className="assembly-frame">
-              {assemblySteps.map((item, index) => (
-                <img className={`assembly-frame__cut${index === step ? ' is-active' : ''}`} key={item.label} src={item.image} alt={index === step ? item.alt : ''} fetchPriority={index === 0 ? 'high' : 'low'} />
+              {assemblyStills.map((item, index) => (
+                <img className={`assembly-frame__cut${index === step ? ' is-active' : ''}`} key={item.image} src={item.image} alt={index === step ? item.alt : ''} fetchPriority={index === 0 ? 'high' : 'low'} />
               ))}
               <canvas ref={canvasRef} aria-hidden="true" />
             </div>
           </div>
         </section>
       )}
-      {manifest !== null && manifest.references.length > 0 && <details className="landing__references"><summary>형태 참고</summary><p>실제 제품의 외형을 참고해 자체 제작한 3D 장면입니다.</p><ul>{manifest.references.map(reference => <li key={reference.url}><a href={reference.url} target="_blank" rel="noopener noreferrer">{reference.product}</a><span> · {reference.feature}</span></li>)}</ul></details>}
     </>
   )
 }

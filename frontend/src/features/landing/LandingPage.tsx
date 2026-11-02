@@ -1,11 +1,21 @@
-import { useEffect, useRef, useState, type CSSProperties, type MouseEvent, type ReactNode, type RefObject } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react'
 import { paths } from '../../lib/router.ts'
 import { LandingAccount } from './LandingAccount.tsx'
-import { assemblySteps, landingDetails, readLandingTheme, saveLandingTheme, virtualBuildSlots, type LandingTheme } from './landingContent.ts'
+import { compactLandingQuery, heroCopyAt, heroQuips, landingDetails, readLandingTheme, saveLandingTheme, virtualBuildSlots, type LandingTheme } from './landingContent.ts'
 import { PcAssemblyScroll } from './PcAssemblyScroll.tsx'
 import './landing.css'
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+function useCompact() {
+  const [compact, setCompact] = useState(() => window.matchMedia(compactLandingQuery).matches)
+  useEffect(() => {
+    const query = window.matchMedia(compactLandingQuery)
+    const change = () => setCompact(query.matches)
+    query.addEventListener('change', change)
+    return () => query.removeEventListener('change', change)
+  }, [])
+  return compact
+}
 
 // 화면 80% 지점에 들어오면 한 번 나타난다. 모션 감소 설정이면 처음부터 보인다.
 function Reveal({ scrollRoot, className, children }: { scrollRoot: RefObject<HTMLDivElement | null>; className?: string; children: ReactNode }) {
@@ -33,6 +43,42 @@ function Icon({ children, size = 20 }: { children: ReactNode; size?: number }) {
     <svg aria-hidden="true" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
       {children}
     </svg>
+  )
+}
+
+function HeroTitle() {
+  return (
+    <>
+      <h1 className="hero-copy__title">조립은 편하게,<br />정보는 확실하게</h1>
+      <a href={paths.new()} className="landing-cta">PC 구성하기 <span aria-hidden="true">→</span></a>
+    </>
+  )
+}
+
+// 첫 화면 왼쪽 문구. 진행도 → 전원 켜는 중 → 캐치프레이즈 순서로 스크롤에 맞춰 바뀐다.
+function HeroCopy({ percent, onScrollHint }: { percent: number; onScrollHint: () => void }) {
+  const copy = heroCopyAt(percent)
+  const hint = Math.max(0, 1 - percent / 3)
+  return (
+    <div className="hero-copy">
+      <div className="hero-copy__progress" aria-hidden="true" style={{ '--reveal': copy.progress } as CSSProperties}>
+        <p className="hero-copy__meter"><span>진행도</span><span className="hero-copy__dots">....</span><span>{copy.percent}%</span></p>
+        <div className="hero-copy__quips">
+          {heroQuips.map((quip, index) => (
+            <p className={`hero-copy__quip${index === copy.quip ? ' is-active' : index < copy.quip ? ' is-before' : ''}`} key={quip}>{quip}</p>
+          ))}
+        </div>
+      </div>
+      <p className="hero-copy__power" aria-hidden="true" style={{ '--reveal': copy.power } as CSSProperties}>전원 켜는 중…</p>
+      <div className={`hero-copy__final${copy.final > 0.5 ? ' is-shown' : ''}`} style={{ '--reveal': copy.final } as CSSProperties}>
+        <HeroTitle />
+      </div>
+      <button type="button" className={`hero-copy__scroll${hint > 0 ? '' : ' is-hidden'}`} style={{ '--reveal': hint } as CSSProperties} onClick={onScrollHint}>
+        <span className="hero-copy__scroll-label">SCROLL</span>
+        <svg className="hero-copy__scroll-arrow" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v14" /><path d="M6 12l6 6 6-6" /></svg>
+        <span className="hero-copy__scroll-hint">내리면 조립됩니다</span>
+      </button>
+    </div>
   )
 }
 
@@ -82,8 +128,8 @@ export function LandingTabs({ current }: { current: 'home' | 'new' | 'list' | 'u
 
 export function LandingPage() {
   const scrollRoot = useRef<HTMLDivElement>(null)
-  const heroArt = useRef<HTMLDivElement>(null)
   const [theme, setTheme] = useState<LandingTheme>(readLandingTheme)
+  const compact = useCompact()
 
   function toggleTheme() {
     const next = theme === 'dark' ? 'light' : 'dark'
@@ -91,89 +137,30 @@ export function LandingPage() {
     saveLandingTheme(next)
   }
 
-  // 배경 PC 장면이 마우스 반대 방향으로 조금 움직인다.
-  function moveArt(event: MouseEvent<HTMLElement>) {
-    const art = heroArt.current
-    if (!art || reducedMotion()) return
-    const rectangle = event.currentTarget.getBoundingClientRect()
-    const x = (event.clientX - rectangle.left) / rectangle.width - 0.5
-    const y = (event.clientY - rectangle.top) / rectangle.height - 0.5
-    art.style.setProperty('--parallax-x', `${Math.round(-x * 24)}px`)
-    art.style.setProperty('--parallax-y', `${Math.round(-y * 16)}px`)
-  }
-
-  function resetArt() {
-    heroArt.current?.style.setProperty('--parallax-x', '0px')
-    heroArt.current?.style.setProperty('--parallax-y', '0px')
-  }
-
-  function scrollToAssembly() {
+  function scrollHint() {
     const root = scrollRoot.current
-    const section = root?.querySelector<HTMLElement>('#assembly')
-    if (!root || !section) return
-    const top = section.getBoundingClientRect().top - root.getBoundingClientRect().top + root.scrollTop
-    root.scrollTo({ top: Math.max(0, top - root.clientHeight * 0.6), behavior: reducedMotion() ? 'auto' : 'smooth' })
+    root?.scrollBy({ top: root.clientHeight * 0.8, behavior: reducedMotion() ? 'auto' : 'smooth' })
   }
 
   return (
     <div className="landing" data-theme={theme} ref={scrollRoot}>
       <LandingTabs current="home" />
 
+      {/* 지금 테마를 보여 준다. 다크는 달, 화이트는 해. */}
+      <button type="button" className="landing-theme" aria-label={theme === 'dark' ? '화이트 모드로 전환' : '다크 모드로 전환'} onClick={toggleTheme}>
+        {theme === 'dark'
+          ? <Icon size={18}><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" /></Icon>
+          : <Icon size={18}><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></Icon>}
+      </button>
+
       <main className="landing__main">
-        <section className="landing-hero" onMouseMove={moveArt} onMouseLeave={resetArt}>
-          <div className="landing-hero__art" ref={heroArt} aria-hidden="true" style={{ '--parallax-x': '0px', '--parallax-y': '0px' } as CSSProperties}>
-            <img src="/pc-assembly/poster-desktop.webp" alt="" fetchPriority="high" />
-            <div className="landing-hero__glow" />
-          </div>
-          <div className="landing-hero__scrim" aria-hidden="true" />
-
-          <button type="button" className="landing-hero__theme" aria-label={theme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환'} onClick={toggleTheme}>
-            {theme === 'dark'
-              ? <Icon size={18}><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></Icon>
-              : <Icon size={18}><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" /></Icon>}
-          </button>
-
-          <div className="landing-hero__copy">
-            <p className="landing-eyebrow landing-hero__eyebrow landing-fade" aria-hidden="true">&gt; BUILD YOUR NEXT PC</p>
-            <h1 className="landing-hero__title" aria-label="나만의 PC를, 더 선명하게.">
-              <span className="landing-hero__line landing-hero__line--1" aria-hidden="true">나만의 PC를,</span>
-              <span className="landing-hero__line landing-hero__line--2" aria-hidden="true">더 선명하게.<span className="landing-hero__caret" /></span>
-            </h1>
-            <p className="landing-hero__lead landing-fade">부품 하나부터 다음 업그레이드까지.<br />호환성과 현재 상품가를 확인하고 로그인 없이 구성을 시작하세요.</p>
-            <div className="landing-hero__actions landing-fade">
-              <a href={paths.new()} className="landing-cta">PC 빌드 시작 →</a>
-            </div>
-          </div>
-
-          <button type="button" className="landing-hero__scroll landing-fade" onClick={scrollToAssembly}>
-            <span className="landing-hero__scroll-label">SCROLL</span>
-            <svg className="landing-hero__scroll-arrow" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v14" /><path d="M6 12l6 6 6-6" /></svg>
-            <span className="landing-hero__scroll-hint">내리면 조립됩니다</span>
-          </button>
-        </section>
-
-        <section className="landing-section landing-section--intro">
-          <div className="landing-heading">
-            <p className="landing-eyebrow">ASSEMBLY</p>
-            <h2>흩어진 부품이<br />한 대의 PC가 될 때까지.</h2>
-            <p className="landing-heading__lead">스크롤을 내리는 만큼 조립이 진행됩니다. 순서는 실제로 PC를 조립할 때와 같습니다.</p>
-          </div>
-        </section>
-
-        <PcAssemblyScroll
-          scrollRoot={scrollRoot}
-          renderStep={(index) => {
-            const item = assemblySteps[index]
-            return (
-              <div className="assembly-step">
-                <span className="assembly-step__label">{item.label}</span>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-                <span className="assembly-step__meta">{item.meta}</span>
-              </div>
-            )
-          }}
-        />
+        {compact ? (
+          <section className="hero-compact">
+            <HeroTitle />
+          </section>
+        ) : (
+          <PcAssemblyScroll scrollRoot={scrollRoot} renderCopy={(percent) => <HeroCopy percent={percent} onScrollHint={scrollHint} />} />
+        )}
 
         <section className="landing-section landing-section--alt">
           <Reveal scrollRoot={scrollRoot}>
@@ -183,7 +170,6 @@ export function LandingPage() {
                 <h2>결제하기 전에,<br />화면에서 먼저 조립해 보세요.</h2>
                 <p className="landing-heading__lead">부품을 슬롯에 하나씩 넣을 때마다 맞는지, 케이스에 들어가는지, 전부 합쳐 얼마인지가 바로 바뀝니다. 지금 쓰는 부품은 그대로 두고 바꿀 것만 넣어도 됩니다.</p>
               </div>
-              <a href={paths.new()} className="landing-cta landing-cta--compact">가상 조립 해 보기 →</a>
             </div>
 
             <div className="landing-build">
@@ -238,18 +224,6 @@ export function LandingPage() {
                 </li>
               ))}
             </ol>
-          </Reveal>
-        </section>
-
-        <section className="landing-section landing-section--closing">
-          <Reveal scrollRoot={scrollRoot} className="landing-closing">
-            <p className="landing-mono landing-closing__prompt" aria-hidden="true">C:\pc-upgrade-lab&gt;<span className="landing-closing__cursor" /></p>
-            <h2>지금 쓰는 PC부터<br />불러와 보세요.</h2>
-            <p className="landing-heading__lead">로그인 없이 바로 시작합니다.</p>
-            <div className="landing-closing__actions">
-              <a href={paths.new()} className="landing-cta">PC 빌드 시작 →</a>
-              <a href={paths.new()} className="landing-closing__link">내 PC 사양 먼저 불러오기</a>
-            </div>
           </Reveal>
         </section>
 
