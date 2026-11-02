@@ -1,14 +1,3 @@
-/* 구성 화면은 좌우 여백 없이 화면을 채운다. 왼쪽 220px는 랜딩과 같은 탭 바(.app-side-nav) 자리다. */
-#root:has(.builder) {
-  width: auto;
-  margin: 0 0 0 220px;
-  border-right: 0;
-
-  @media (max-width: 640px) {
-    margin-left: 0;
-  }
-}
-
 /* 머리말: 영문 안내 · 큰 제목 · 설명 | 초기화·저장 */
 .builder-head {
   display: flex;
@@ -37,27 +26,6 @@
   color: var(--accent);
 }
 
-/* 어두운 화면에서도 저장 버튼은 진한 강조색 바탕에 흰 글자로 둔다. */
-.builder .button--primary.button--lg,
-.builder-head .button--primary {
-  background: #1e3a8a;
-  border-color: #3b5bd0;
-  color: #fff;
-  box-shadow: 0 0 0 1px rgba(91, 123, 224, 0.25), 0 0 18px rgba(59, 91, 208, 0.55);
-  transition: box-shadow 160ms ease-out;
-
-  &:hover:not(:disabled) {
-    box-shadow: 0 0 0 1px rgba(147, 169, 232, 0.5), 0 0 28px rgba(59, 91, 208, 0.8);
-  }
-}
-
-.button--lg {
-  padding: 11px 20px;
-  font-weight: 700;
-  border-radius: 8px;
-}
-
-.builder .panel,
 .builder-card {
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -65,7 +33,6 @@
   background: var(--surface);
 }
 
-.builder .panel h2,
 .builder-card h2,
 .builder-card h3 {
   margin: 0;
@@ -103,12 +70,17 @@
 /* 부품 구성 입력 | 구성 그림 | 요약·상태·기준가격 */
 .builder__layout {
   display: grid;
-  /* 부품 구성의 오른쪽 끝이 화면(스크롤바 제외) 정중앙에 오게 한다. 남는 폭은 그림과 요약이 나눈다.
+  /* 기준 폭(--parts-full)은 부품 구성의 오른쪽 끝이 화면(스크롤바 제외) 정중앙에 오는 폭이다.
      이 칸의 왼쪽은 탭 바 220px + 테두리 1px + 본문 여백 24px = 245px, 오른쪽은 본문 여백 24px + 이 칸 여백 24px 안쪽에서 끝난다.
-     화면 폭 = 칸 폭(100%) + 293px 이므로, 중앙까지의 폭 = (100% + 293px) / 2 − 245px = 50% − 98.5px. 여백을 바꾸면 이 값도 바꾼다. */
-  grid-template-columns: max(340px, calc(50% - 98.5px)) minmax(280px, 1fr) minmax(280px, 340px);
+     화면 폭 = 칸 폭(100%) + 293px 이므로, 중앙까지의 폭 = (100% + 293px) / 2 − 245px = 50% − 98.5px. 여백을 바꾸면 이 값도 바꾼다.
+     부품 구성은 기준 폭의 2/3만 쓰고, 그림·요약 폭은 기준 폭일 때와 같게 둔다. 줄어든 폭은 좌우에 같은 여백으로 나눈다. */
+  --parts-full: max(340px, calc(50% - 98.5px));
+  --builder-gap: 56px;
+  /* 그림 칸 = 남은 폭 − 요약 340px − 칸 사이 간격 2개 */
+  grid-template-columns: max(340px, calc(var(--parts-full) * 2 / 3)) max(280px, calc(100% - var(--parts-full) - 340px - 2 * var(--builder-gap))) minmax(280px, 340px);
+  justify-content: center;
   padding-right: 24px;
-  gap: 20px;
+  gap: var(--builder-gap);
   align-items: start;
 
   @media (max-width: 1100px) {

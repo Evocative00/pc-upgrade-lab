@@ -1,7 +1,7 @@
 import { useId } from 'react'
 import { isBoolean } from '../../../lib/pageState.ts'
 import { usePageState } from '../../../lib/usePageState.ts'
-import { CatalogPicker } from '../../catalog/CatalogPicker.tsx'
+import { CatalogPickerDialog } from '../../builder/CatalogPickerDialog.tsx'
 import { getPartTypeInfo } from '../partCategories.ts'
 import {
   formatOtherSpecs,
@@ -166,8 +166,10 @@ export function PartRow({ stateKey, draft, index, count, onChange, onRemove, onS
         </ul>
       )}
 
+      {/* 검색 창은 구성 화면과 같은 오른쪽 패널로 연다. */}
       {pickerOpen && (
-        <CatalogPicker
+        <CatalogPickerDialog
+          label={label}
           stateKey={`${stateKey}catalog:${draft.key}:`}
           type={draft.type}
           initialQuery={draft.displayName}

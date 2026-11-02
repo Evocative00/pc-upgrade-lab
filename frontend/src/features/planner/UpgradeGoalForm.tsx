@@ -164,7 +164,7 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
               가벼움 = 1080p, 보통 = 4K, 무거움 = 6K~8K.</p>}
           </div>}
         </section>
-        <div className="planner-actions"><button type="button" className="planner-primary" disabled={!goalIsReady(goal)}
+        <div className="planner-actions"><button type="button" className="button button--primary button--lg" disabled={!goalIsReady(goal)}
           onClick={onNext}>진단 결과 보기 →</button></div>
       </div>
       <aside className="planner-card planner-aside" aria-label="진단 기준">

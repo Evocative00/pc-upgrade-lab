@@ -153,11 +153,15 @@ function App() {
   }
 
   // PC 구성 화면은 랜딩과 같은 왼쪽 탭 바를 쓰고, 메뉴·로그인이 겹치는 머리말은 숨긴다.
-  if (route.name === 'new') {
+  // 업그레이드 플랜·내 PC 화면도 구성 화면과 같은 틀을 쓴다.
+  const sideTab = route.name === 'new' ? 'new'
+    : route.name === 'upgrade' || route.name === 'upgradePc' ? 'upgrade'
+      : route.name === 'list' || route.name === 'detail' || route.name === 'edit' ? 'list' : null
+  if (sideTab !== null) {
     return (
       <>
         <div className="app-side-nav">
-          <LandingTabs current="new" />
+          <LandingTabs current={sideTab} />
         </div>
         <main className="app-main">
           <Page key={authKey(auth)} route={route} />

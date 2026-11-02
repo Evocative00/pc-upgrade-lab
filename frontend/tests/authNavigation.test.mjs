@@ -218,17 +218,19 @@ test('회원 PC 편집 초안은 원래 PC ID를 유지하고 로그인 이동�
   assert.equal(bridge.loadDraft().pcId, 17)
 })
 
-test('상단 로그아웃 실패는 오류를 표시하고 회원과 현재 화면을 유지한다', async () => {
+test('탭 바 로그아웃 실패는 오류를 표시하고 회원과 현재 화면을 유지한다', async () => {
   const user = { id: 1, name: '회원 A', email: null, provider: 'google' }
   const h = harness({ user, logoutStatus: 500 })
   h.window.location.hash = '#/pcs/17'
+  // 내 PC 화면도 랜딩과 같은 왼쪽 탭 바를 쓰므로 로그아웃 버튼은 탭 바의 LandingAccount에 있다.
   const app = h.render(h.load('App.tsx').default)
-  const AuthStatus = find(app.tree, (e) => e.type?.name === 'AuthStatus').type
+  find(app.tree, (e) => e.type?.name === 'LandingTabs')
+  const { LandingAccount } = h.load('features/landing/LandingAccount.tsx')
   const auth = h.load('features/auth/authStore.ts')
   await auth.refreshAuth()
-  let header = h.render(AuthStatus)
+  let header = h.render(LandingAccount)
   await find(header.tree, (e) => e.type === 'button').props.onClick()
-  header = h.render(AuthStatus, {}, header.owner)
+  header = h.render(LandingAccount, {}, header.owner)
   assert.deepEqual(auth.getAuthState(), { status: 'signedIn', user })
   assert.equal(h.window.location.hash, '#/pcs/17')
   assert.match(find(header.tree, (e) => e.props?.role === 'alert').props.children, /HTTP 500/)

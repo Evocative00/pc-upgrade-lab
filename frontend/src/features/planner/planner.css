@@ -25,20 +25,22 @@
 }
 
 .planner-steps span { padding: 8px 12px; border-radius: 24px; }
-.planner-steps .is-current { background: var(--accent); color: var(--on-accent); font-weight: 700; }
+.planner-steps .is-current { background: #1e3a8a; color: #fff; font-weight: 700; }
 .planner-steps .is-complete { color: var(--linked); }
 
 .planner-layout { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 24px; align-items: start; }
 .planner-main { display: grid; gap: 18px; min-width: 0; }
-.planner-heading h1 { margin: 16px 0 8px; font-size: clamp(26px, 3vw, 34px); line-height: 1.2; }
+.planner-main > .button { justify-self: start; }
+/* 제목·카드·버튼은 PC 구성 화면(pc-builder.css)과 같은 크기와 모서리를 쓴다. */
+.planner-heading h1 { margin: 16px 0 8px; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
 .planner-heading p { margin: 0; color: var(--text); }
-.planner-card { background: var(--surface); border: 1px solid var(--planner-line); border-radius: 8px; padding: 20px; }
-.planner-card h2 { margin: 0 0 18px; font-size: 18px; }
+.planner-card { background: var(--surface); border: 1px solid var(--planner-line); border-radius: 14px; padding: 22px 24px; }
+.planner-card h2 { margin: 0 0 18px; font-size: 18px; font-weight: 700; }
 .planner-card h3 { margin: 18px 0 10px; font-size: 15px; }
 .planner-card h3 small { font-size: 12px; font-weight: 400; color: var(--text); }
 .planner-card-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .planner-card-head h2 { margin: 0; }
-.planner-money { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--planner-line); border-radius: 6px; font-family: var(--mono); }
+.planner-money { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--planner-line); border-radius: 8px; font-family: var(--mono); }
 .planner-money input { width: 130px; border: 0; background: transparent; color: var(--planner-ink); font: 700 20px var(--mono); text-align: right; }
 .planner-range { width: 100%; margin: 28px 0 8px; accent-color: var(--planner-blue); }
 .planner-range-labels { display: flex; justify-content: space-between; color: var(--text); font: 12px var(--mono); }
@@ -46,7 +48,7 @@
 .planner-presets { margin-top: 18px; }
 .planner-shell button { cursor: pointer; font: inherit; }
 .planner-presets button, .planner-chip-list button, .planner-purpose-options button, .planner-choice button,
-.planner-inline-input button { min-height: 44px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); color: var(--text-h); }
+.planner-inline-input button { min-height: 44px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px; font-weight: 600; background: var(--surface); color: var(--text-h); }
 .planner-shell button.is-selected, .planner-shell button[aria-pressed="true"] {
   border-color: var(--accent); background: var(--accent-bg); color: var(--text-h); font-weight: 700;
 }
@@ -57,13 +59,11 @@
 .planner-inline-input input { min-height: 42px; flex: 1; min-width: 170px; border: 1px solid var(--border); border-radius: 6px; padding: 0 10px; font: inherit; }
 .planner-goal-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .planner-workloads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.planner-workloads button { min-height: 94px; text-align: left; display: grid; gap: 6px; padding: 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); color: var(--text-h); }
+.planner-workloads button { min-height: 94px; text-align: left; display: grid; gap: 6px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text-h); }
 .planner-workloads span { color: var(--text); font-size: 12px; }
 .planner-caveat { color: var(--text); font-size: 13px; line-height: 1.5; margin: 16px 0 0; }
 .planner-warning { color: var(--manual); font-size: 13px; }
 .planner-actions { display: flex; justify-content: flex-end; }
-.planner-primary { min-height: 44px; padding: 8px 16px; border: 1px solid var(--accent); border-radius: 6px; background: var(--accent); color: var(--on-accent); font-weight: 700 !important; }
-.planner-primary:disabled { opacity: .45; cursor: not-allowed; }
 .planner-text-button { padding: 4px 0; border: 0; background: transparent; color: var(--planner-blue); text-decoration: underline; text-underline-offset: 3px; }
 .planner-aside { position: sticky; top: 16px; }
 .planner-aside dl { display: grid; gap: 12px; margin: 0; }
@@ -74,8 +74,8 @@
 .planner-aside ul { padding-left: 18px; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
 
 .planner-heading { margin-bottom: 18px; }
-.planner-eyebrow { font: 12px var(--mono); margin-top: 12px !important; }
-.planner-scope { border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; background: var(--accent-bg); font-size: 13px; margin-bottom: 18px; }
+.planner-eyebrow { font: 13px var(--mono); letter-spacing: 0.15em; color: var(--accent); margin-top: 12px !important; }
+.planner-scope { border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; background: var(--accent-bg); font-size: 13px; margin-bottom: 18px; }
 .planner-result-grid { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 16px; align-items: start; }
 .planner-highlight { background: var(--text-h); color: var(--bg); }
 .planner-highlight h2 { color: var(--bg); margin: 12px 0 8px; font-size: 23px; }
