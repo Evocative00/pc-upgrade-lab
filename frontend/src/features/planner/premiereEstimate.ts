@@ -38,7 +38,6 @@ const EXPORT_MODEL: Record<VideoResolution, { secondsPerSecond: number; cpuExpon
 }
 export const EXPORT_CLIP_SECONDS = 600
 const EXPORT_SPREAD = 0.4
-const QUICK_SYNC_FACTOR = 0.8
 
 // 타임라인 재생 수준(팀 기준). CPU는 Blender 점수, GPU는 게임 성능 상대값(GTX 1060 6GB = 100), VRAM은 Puget 해상도별 최소값.
 const PLAYBACK_RULES: Record<VideoResolution, {
@@ -69,17 +68,17 @@ function exportTime(resolution: VideoResolution, facts: PremiereFacts): Pick<Pre
   const seconds = EXPORT_CLIP_SECONDS * model.secondsPerSecond
     * (anchorCpu / facts.cpuScore) ** model.cpuExponent
     * (anchorGpu / facts.gpuRelative) ** model.gpuExponent
-    * (facts.quickSync ? QUICK_SYNC_FACTOR : 1)
   return { exportLow: Math.round(seconds * (1 - EXPORT_SPREAD)), exportHigh: Math.round(seconds * (1 + EXPORT_SPREAD)),
-    exportDetail: `${model.note} · 오차 ±40%${facts.quickSync ? ' · Quick Sync 반영' : ''}` }
+    exportDetail: `${model.note} · 팀 환산 시나리오 ±40%(검증된 오차 한계 아님) · 하드웨어 인코딩 활성화 가정` }
 }
 
 function playback(resolution: VideoResolution, facts: PremiereFacts): Pick<PremiereEstimate, 'playback' | 'playbackDetail'> {
   if (!facts.cpuScore) return { playback: null, playbackDetail: 'CPU 점수 자료 없음' }
+  if (facts.vramGiB === null || facts.gpuRelative === null) return { playback: null, playbackDetail: 'GPU·VRAM 자료 확인 필요' }
   const rule = PLAYBACK_RULES[resolution]
   const vram = facts.vramGiB
   // Quick Sync가 있는 Intel CPU는 H.264·HEVC 디코딩을 맡아 GPU 조건을 대신한다.
-  const gpuOk = facts.quickSync === true || (facts.gpuRelative ?? 0) >= rule.smooth.gpu
+  const gpuOk = facts.gpuRelative >= rule.smooth.gpu
   const short: string[] = []
   if (facts.cpuScore < rule.smooth.cpu) short.push('CPU')
   if (!gpuOk) short.push('GPU')
@@ -106,6 +105,6 @@ export function hasQuickSync(cpuName: string | null): boolean | null {
   if (!cpuName) return null
   // AMD 이름에도 '8-Core'처럼 Core가 들어가므로 제조사부터 구분한다.
   if (/\b(?:amd|ryzen|athlon|threadripper)\b/i.test(cpuName)) return false
-  if (!/\bintel\b|\bcore(?:\(tm\))?\s+(?:i[3579]|ultra)\b/i.test(cpuName)) return false
-  return !/\d{4,5}K?F\b/i.test(cpuName)
+  if (!/\bcore(?:\(tm\))?\s+(?:i[3579]-\d{4,5}|ultra\s+[579]\s+\d{3})/i.test(cpuName)) return null
+  return !/\d{3,5}(?:K?F|XE?)\b/i.test(cpuName)
 }

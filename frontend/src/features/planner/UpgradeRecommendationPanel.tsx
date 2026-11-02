@@ -7,10 +7,11 @@ import {
   type PlanItem, type PricedProduct, type RecommendPriority, type UpgradePartKind, type UpgradePlan,
 } from './upgradeRecommendation.ts'
 import type { UpgradePlanState } from './useUpgradePlan.ts'
+import { CPU_GAMING_DATASET } from './cpuGamingScores.ts'
 
 const PRIORITY_HINT: Record<RecommendPriority, string> = {
   PERFORMANCE: '예산 안에서 가장 크게 좋아지는 조합',
-  BUDGET: '목표를 채우는 가장 저렴한 조합',
+  BUDGET: '비교 기준을 채우는 가장 저렴한 조합',
 }
 
 const won = (amount: number) => `₩${amount.toLocaleString('ko-KR')}`
@@ -37,9 +38,10 @@ function FinalBuild({ parts, plan }: { parts: PartInput[]; plan: UpgradePlan }) 
       return <li key={`${part.type}-${index}`} className={choice ? 'is-replaced' : undefined}>
         <span className="planner-final-type">{getPartTypeInfo(part.type).label}</span>
         <div className="planner-final-name">
-          <strong>{part.displayName}{!choice && part.quantity > 1 && ` × ${part.quantity}`}</strong>
+          <strong>{part.displayName}{part.quantity > 1 && ` · 모듈 ${part.quantity}개`}</strong>
           {choice && item
-            ? <small>기존 {item.currentLabel}{choice.ratio && ` · 약 ${choice.ratio.toFixed(1)}배`}{item.meets === false && ' · 목표 미달'}</small>
+            ? <small>기존 {item.currentLabel}{choice.ratio && ` · ${item.kind === 'RAM' ? '용량' : '점수'} 약 ${choice.ratio.toFixed(1)}배`}
+              {item.meets === false ? ' · 목표 미달' : item.meets === null ? ' · 목표 충족 확인 필요' : ' · 선택 기준 충족'}</small>
             : item?.note && <small>{item.note}</small>}
         </div>
         <span className="planner-final-status">{choice ? <PriceLine product={choice} />
@@ -83,6 +85,8 @@ export function UpgradeRecommendationPanel({ parts, goal, priority, onPriorityCh
   onResetExcluded: () => void
 }) {
   const { load, targets, selected, plan } = state
+  const attributions = [...new Map((plan?.items.flatMap((item) => item.choice?.attributions ?? []) ?? [])
+    .map((entry) => [entry.url, entry])).values()]
   const toggle = (kind: UpgradePartKind) => onKindsChange(UPGRADE_PART_KINDS.filter((value) =>
     value === kind ? !selected.includes(kind) : selected.includes(value)))
 
@@ -107,7 +111,8 @@ export function UpgradeRecommendationPanel({ parts, goal, priority, onPriorityCh
     </div>
 
     {load.status === 'loading' && <p className="muted" role="status">제품과 가격을 불러오는 중…</p>}
-    {load.status === 'error' && <p className="error" role="alert">제품 목록을 불러오지 못했습니다: {load.message}</p>}
+    {load.status === 'error' && <div role="alert"><p className="error">제품 목록을 불러오지 못했습니다: {load.message}</p>
+      <button type="button" className="button button--ghost" onClick={state.retry}>다시 불러오기</button></div>}
     {plan && <>
       <div className="planner-plan-summary">
         <div><span>추가 비용</span><strong>{won(plan.totalKrw)}</strong>
@@ -118,7 +123,16 @@ export function UpgradeRecommendationPanel({ parts, goal, priority, onPriorityCh
         <button type="button" className="button button--ghost" onClick={onResetExcluded}>초기화</button></p>}
       <FinalBuild parts={parts} plan={plan} />
       {goal.purpose === 'GAME' && <FrameChange parts={parts} plan={plan} goal={goal} />}
-      <p className="planner-caveat">가격·성능은 추정치입니다. 메인보드는 그대로 두고 호환되는 제품만 고릅니다.</p>
+      <p className="planner-caveat">가격·성능은 추정치입니다. 이름·소켓·DDR로 후보를 좁힌 참고 구성이며,
+        BIOS·슬롯 수·파워·케이스 등 호환성은 다음 단계에서 확인하세요. 검사하지 않은 항목은 구매 전에 별도로 확인해야 합니다.</p>
+      <details className="planner-details"><summary>계산 기준 보기</summary>
+        <p>CPU 게임 점수에는 실측 외 단일 스레드·클럭·구조로 환산한 팀 추정이 포함됩니다.
+          작업 CPU는 Blender, GPU는 게임 점수를 사용하며 실제 프로그램 성능 향상 배율을 보장하지 않습니다.</p>
+        <a href={CPU_GAMING_DATASET.sourceUrl} target="_blank" rel="noreferrer">CPU 게임 점수 기준 자료</a>
+        {attributions.map((entry) => <p key={entry.url}>{entry.notice}{' '}
+          <a href={entry.url} target="_blank" rel="noreferrer">{entry.name}</a>{' · '}
+          <a href={entry.licenseUrl} target="_blank" rel="noreferrer">{entry.license}</a></p>)}
+      </details>
     </>}
   </section>
 }

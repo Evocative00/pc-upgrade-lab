@@ -2,6 +2,9 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import type { PartInput, PartType } from '../src/features/pc-scan/types.ts'
 import { defaultGoal, type UpgradeGoal } from '../src/features/planner/plannerGoal.ts'
+import { buildCompatibilityRequest } from '../src/features/builder/compatibility.ts'
+import { diagnoseGame } from '../src/features/planner/gameDiagnosis.ts'
+import { GAME_REQUIREMENTS } from '../src/features/planner/gameRequirements.ts'
 import {
   applyPlan, buildUpgradePlan, cpuSocket, currentSocket, gameTargetScore, planTargets, withReplacedPart,
   type KindTarget, type PlanInput, type PricedProduct,
@@ -23,7 +26,10 @@ const products: PlanInput['productsByKind'] = {
   GPU: [product('Sapphire PULSE Radeon RX 7600 8GB', 489_400), product('MSI GeForce RTX 5060 8G VENTUS 2X OC', 668_860),
     product('Sapphire PULSE Radeon RX 7700 XT 12GB', 726_440)],
   CPU: [product('AMD Ryzen 7 5800X3D', 582_330), product('AMD Ryzen 9 3900X', 400_000), product('AMD Ryzen 7 9800X3D', 720_000)],
-  RAM: [product('Samsung DDR4-3200 32GB (2x16GB)', 120_000), product('G.SKILL DDR5-6000 32GB (2x16GB)', 150_000)],
+  RAM: [{ ...product('Samsung DDR4-3200 32GB (2x16GB)', 120_000),
+    specification: { moduleCount: 2, moduleCapacityBytes: 16 * GIB, memoryType: 'DDR4' } },
+    { ...product('G.SKILL DDR5-6000 32GB (2x16GB)', 150_000),
+      specification: { moduleCount: 2, moduleCapacityBytes: 16 * GIB, memoryType: 'DDR5' } }],
 }
 const need = (minScore: number | null, needed: boolean | null = true): KindTarget => ({ minScore, minVramGiB: null, needed })
 function plan(overrides: Partial<PlanInput>) {
@@ -86,7 +92,8 @@ test('최종 구성은 교체 부품만 바꾸고 나머지 부품과 순서를 
   assert.equal(final[1].displayName, 'MSI B550M PRO-VDH')
   assert.equal(final[4].displayName, 'Samsung 980 1TB')
   assert.equal(final[2].displayName, 'Samsung DDR4-3200 32GB (2x16GB)')
-  assert.equal(final[2].quantity, 1)
+  assert.equal(final[2].quantity, 2)
+  assert.equal(final[2].specs.capacityBytes, 16 * GIB)
 })
 
 test('RAM 여러 개는 키트 하나로 바뀐다', () => {
@@ -140,4 +147,83 @@ test('3단계 진단에서 권장 사양 부족인 부품은 추천 플랜에서
 
 test('바꿀 부품을 모두 끄면 선택하라고 안내한다', () => {
   assert.equal(plan({ kinds: [] }).reason, '바꿀 부품을 골라 주세요.')
+})
+
+test('추천 RAM은 판매 키트 가격 한 번과 실제 모듈 2개·개당 용량으로 검사한다', () => {
+  const result = plan({ kinds: ['RAM'] })
+  const final = applyPlan(pc, result)
+  const ram = final.find((item) => item.type === 'RAM')!
+  assert.equal(result.totalKrw, 120_000)
+  assert.equal(ram.quantity, 2)
+  assert.equal(ram.specs.capacityBytes, 16 * GIB)
+  const request = buildCompatibilityRequest(final.map((item, index) => ({ ...item, key: String(index), edited: false, persisted: false })))!
+  assert.deepEqual(request.ram, [{ catalogProductId: ram.catalogProductId, quantity: 2 }])
+})
+
+test('이름만 32GB인 RAM은 모듈 개수·용량을 확정하거나 추천하지 않는다', () => {
+  const result = plan({ kinds: ['RAM'], productsByKind: { RAM: [product('DDR4 32GB (2x16GB)', 50_000)] } })
+  assert.equal(result.items[0].choice, null)
+})
+
+test('후보가 30개를 넘어도 저렴한 목표 충족 제품을 보존한다', () => {
+  const result = plan({ kinds: ['RAM'], parts: [part('RAM', 'DDR4', { capacityBytes: GIB })],
+    targets: { RAM: need(4) }, productsByKind: { RAM: Array.from({ length: 35 }, (_, index) => ({
+      ...product(`DDR4 ${index + 4}GB`, (index + 1) * 10_000),
+      specification: { moduleCount: 1, moduleCapacityBytes: (index + 4) * GIB, memoryType: 'DDR4' },
+    })) } })
+  assert.equal(result.totalKrw, 10_000)
+})
+
+test('작업 CPU 코어 부족은 후보의 확인된 코어 수로 해결 여부를 판정한다', () => {
+  const parts = [part('CPU', 'Ryzen 5 5600', { cores: 4 }), ...pc.filter((item) => item.type !== 'CPU')]
+  const targets = planTargets(parts, { ...defaultGoal(), purpose: 'CREATION', programs: ['Blender'] })
+  const input = { kinds: ['CPU'] as const, parts, targets, cpuMetric: 'WORK' as const }
+  const under = { ...product('Ryzen 9 5950X', 500_000), specification: { coreCount: 4 } }
+  const unresolved = plan({ ...input, kinds: [...input.kinds], productsByKind: { CPU: [under] } })
+  assert.equal(unresolved.items[0].choice, null)
+  assert.equal(unresolved.items[0].note, '현재 후보로 목표 기준 충족 확인 불가')
+  const result = plan({ ...input, kinds: [...input.kinds], productsByKind: { CPU: [{ ...under, specification: { coreCount: 16 } }] } })
+  assert.equal(result.items[0].meets, true)
+  assert.equal(applyPlan(parts, result).find((item) => item.type === 'CPU')?.specs.cores, 16)
+})
+
+test('성능 차이가 10% 미만이어도 VRAM 부족을 해결하는 제품을 남긴다', () => {
+  const result = plan({ kinds: ['GPU'], parts: [part('GPU', 'GeForce GTX 1060 3GB', { vramBytes: 3 * GIB })],
+    targets: { GPU: { minScore: 100, minVramGiB: 6, needed: true } }, productsByKind: { GPU: [
+      { ...product('GeForce GTX 1060 6GB', 100_000), specification: { vramBytes: 6 * GIB } },
+    ] } })
+  assert.ok(result.items[0].choice)
+  assert.equal(result.items[0].meets, true)
+})
+
+test('확인되지 않은 목표는 충분·해결로 표시하지 않는다', () => {
+  const result = plan({ kinds: ['CPU'], productsByKind: {}, targets: {} })
+  assert.doesNotMatch(result.reason, /이미 목표를 충족|모두 해결/)
+})
+
+test('추천 CPU의 기준 충족 표시는 교체 후 공식 사양 진단과 모순되지 않는다', () => {
+  const goal = { ...defaultGoal(), purpose: 'GAME' as const, games: ['사이버펑크 2077'] }
+  const parts = [part('CPU', 'Ryzen 5 7600'), part('GPU', 'GeForce RTX 4070')]
+  const result = plan({ parts, kinds: ['CPU'], targets: planTargets(parts, goal),
+    productsByKind: { CPU: [product('Ryzen 7 7800X3D', 500_000)] } })
+  const after = diagnoseGame(applyPlan(parts, result), GAME_REQUIREMENTS['사이버펑크 2077'])
+  if (result.items[0].meets === true) assert.equal(after.recommended.checks.find((check) => check.label === 'CPU')?.verdict, 'PASS')
+})
+
+test('소켓 미확인·모바일 CPU는 임의의 데스크톱 CPU 추천으로 확정하지 않는다', () => {
+  assert.equal(cpuSocket('AMD Ryzen 7 7840HS'), null)
+  assert.equal(cpuSocket('Intel Core Ultra 7 258V'), null)
+  assert.equal(cpuSocket('Ryzen Threadripper 3970X'), null)
+  assert.equal(plan({ parts: [part('CPU', '알 수 없는 CPU')], kinds: ['CPU'] }).items[0].choice, null)
+})
+
+test('현재 CPU 점수가 미확인이어도 성능 우선은 후보 중 높은 점수를 고른다', () => {
+  const result = plan({ priority: 'PERFORMANCE', budgetWon: 700_000, kinds: ['CPU'], cpuMetric: 'WORK',
+    parts: [part('CPU', '수동 입력 CPU', { cores: 4 }), part('MOTHERBOARD', 'B550')],
+    targets: { CPU: { ...need(null), minCores: 8 } }, productsByKind: { CPU: [
+      { ...product('Ryzen 7 5800X3D', 300_000), specification: { coreCount: 8 } },
+      { ...product('Ryzen 9 5950X', 500_000), specification: { coreCount: 16 } },
+    ] } })
+  assert.equal(result.items[0].choice?.name, 'Ryzen 9 5950X')
+  assert.equal(result.items[0].choice?.ratio, null)
 })

@@ -50,3 +50,8 @@ test('Premiere 진단은 고른 해상도로 사양과 예상 시간을 보여 �
   assert.match(result.estimates[0].value, /^약 /)
   assert.ok(['원활', '가끔 끊김', '프록시 권장'].includes(result.estimates[1].value))
 })
+
+test('GPU·VRAM을 모르면 Quick Sync 이름 추정으로 원활 판정을 만들지 않는다', () => {
+  assert.equal(estimatePremiere('4K', { cpuScore: 600, gpuRelative: null, vramGiB: null, quickSync: true }).playback, null)
+  assert.equal(estimatePremiere('4K', { cpuScore: 600, gpuRelative: 600, vramGiB: null, quickSync: false }).playback, null)
+})

@@ -21,7 +21,7 @@ function TierCard({ title, requirement, diagnosis }: {
       {diagnosis.checks.map((check) => <div className="planner-requirement-row" key={check.label}>
         <strong>{check.label}</strong><span>기준: {check.required}<br />내 PC: {check.actual}</span>
         <div><span className={`planner-verdict planner-verdict--${check.verdict.toLowerCase()}`}>
-          {CHECK_STATUS[check.verdict]}</span></div>
+          {CHECK_STATUS[check.verdict]}</span><small>{check.reason}</small></div>
       </div>)}
     </div>
     <small>저장 공간 {requirement.storage}</small>
@@ -38,6 +38,7 @@ function InternalScoreRows({ parts, minimum, recommended }: {
 }) {
   return <div className="planner-internal-score">
     <h4>CPU·GPU 성능 비교 <small>공식 예시 대비 배율</small></h4>
+    <p>CPU는 Blender 멀티코어 점수, GPU는 게임·합성 시험을 환산한 비교입니다. 실제 게임 성능·FPS와 차이가 있습니다.</p>
     {(['CPU', 'GPU'] as ScoredPart[]).map((kind) => {
       const models = parts.filter((part) => part.type === kind && part.quantity > 0 && part.displayName.trim())
         .map((part) => part.displayName).join(', ') || '미입력'
@@ -84,6 +85,7 @@ function FrameEstimates({ parts, game, resolution, targetFps }: {
           {estimate.requiredGpuMultiplier !== null && !estimate.cpuLimited &&
             <small>목표까지 GPU 약 {estimate.requiredGpuMultiplier.toFixed(1)}배 필요</small>}
           {estimate.cpuLimited && <small className="planner-warning">CPU가 한계</small>}
+          <small>{estimate.reason}</small>
         </div>
       })}
     </div>
@@ -113,6 +115,7 @@ export function GameRequirementsDiagnosis({ games, parts, resolution, targetFps 
 }) {
   return <section className="planner-card" aria-labelledby="planner-game-diagnosis">
     <h2 id="planner-game-diagnosis">게임별 진단</h2>
+    <p className="planner-caveat">벤치마크·예상 프레임은 추정이며 전체 실행 가능 여부를 보증하지 않습니다.</p>
     <div className="planner-game-list">
       {games.map((name) => {
         const game = Object.hasOwn(GAME_REQUIREMENTS, name) ? GAME_REQUIREMENTS[name] : undefined

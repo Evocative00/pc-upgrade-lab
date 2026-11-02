@@ -28,13 +28,24 @@ export function UpgradeCompatibilityPanel({ parts, state, onExclude, onLinkParts
   onLinkParts: () => void
 }) {
   const { plan, load } = state
+  if (load.status === 'loading') return <p role="status">추천 구성을 불러오는 중…</p>
+  if (load.status === 'error' || !plan) return <div role="alert">
+    <p>추천 구성을 확인하지 못해 최종 호환성을 검사하지 않았습니다.</p>
+    <button type="button" className="button button--ghost" onClick={state.retry}>다시 불러오기</button>
+  </div>
+  return <FinalCompatibilityPanel parts={parts} plan={plan} onExclude={onExclude} onLinkParts={onLinkParts} />
+}
+
+function FinalCompatibilityPanel({ parts, plan, onExclude, onLinkParts }: {
+  parts: PartInput[]; plan: UpgradePlan; onExclude: (ids: string[]) => void; onLinkParts: () => void
+}) {
   const drafts = finalDraftsOf(parts, plan)
-  const compatibility = useCompatibility(drafts, load.status !== 'loading')
+  const compatibility = useCompatibility(drafts, true)
   const replacedIds = new Map(plan?.items.flatMap((item) => item.choice ? [[item.choice.id, item]] as const : []) ?? [])
   const isReplaced = (draft: PartDraft) => draft.catalogProductId !== null && replacedIds.has(draft.catalogProductId)
 
   const unlinked = CHECKED_TYPES.filter((type) => drafts.some((draft) => draft.type === type && !draft.catalogProductId))
-  const missing = (['PSU', 'CASE'] as PartType[]).filter((type) => !drafts.some((draft) => draft.type === type))
+  const missing = CHECKED_TYPES.filter((type) => !drafts.some((draft) => draft.type === type))
   const result = compatibility.status === 'done' ? compatibility.result : null
   const warnings = result ? incompatibleByDraft(drafts, result) : new Map<string, string[]>()
   const badReplaced = drafts.filter((draft) => isReplaced(draft) && warnings.has(draft.key))
@@ -79,8 +90,10 @@ export function UpgradeCompatibilityPanel({ parts, state, onExclude, onLinkParts
       {unlinked.length > 0 ? <>
         <p className="planner-warning">미연결: {unlinked.map((type) => getPartTypeInfo(type).label).join(', ')}</p>
         <button type="button" className="button button--ghost" onClick={onLinkParts}>내 PC에서 연결하기</button>
-      </> : <p className="planner-caveat">모든 부품 검사됨</p>}
+      </> : <p className="planner-caveat">입력한 검사 대상 부품은 카탈로그에 연결되어 있습니다.</p>}
       {missing.length > 0 && <p className="planner-caveat">미입력: {missing.map((type) => getPartTypeInfo(type).label).join(', ')}</p>}
+      <p className="planner-caveat">CPU·메인보드·RAM·그래픽카드·파워·케이스의 일부 조건만 검사합니다.
+        저장장치·쿨러·모니터, BIOS·전체 PC 동작은 별도로 확인하세요.</p>
     </aside>
   </div>
 }

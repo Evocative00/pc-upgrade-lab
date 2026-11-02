@@ -10,6 +10,73 @@ import ts from 'typescript'
 const sourceRoot = fileURLToPath(new URL('../src/', import.meta.url))
 const GIB = 1024 ** 3
 
+test('추천 목록 조회 실패 후 다시 불러오면 현재 플랜을 복구한다', async () => {
+  let fail = true
+  const h = harness({ searchCatalog: async () => {
+    if (fail) throw new Error('temporary catalog failure')
+    return { items: [], page: 0, size: 100, totalElements: 0, totalPages: 0, attributions: [] }
+  } })
+  const { useUpgradePlan } = h.load('features/planner/useUpgradePlan.ts')
+  const { defaultGoal } = h.load('features/planner/plannerGoal.ts')
+  let state
+  function Probe() {
+    state = useUpgradePlan({ parts: [], goal: defaultGoal(), priority: 'BUDGET', kinds: [], excludedIds: [], enabled: true })
+    return null
+  }
+  h.paint(Probe)
+  await new Promise(setImmediate)
+  h.paint(Probe)
+  assert.equal(state.load.status, 'error')
+  fail = false
+  state.retry()
+  h.paint(Probe)
+  await new Promise(setImmediate)
+  h.paint(Probe)
+  assert.equal(state.load.status, 'ready')
+  assert.ok(state.plan)
+})
+
+for (const status of ['loading', 'error']) {
+  test(`추천 ${status}에서는 기존 부품을 최종 구성 검사 결과로 표시하지 않는다`, () => {
+    const h = harness()
+    const { UpgradeCompatibilityPanel } = h.load('features/planner/UpgradeCompatibilityPanel.tsx')
+    const tree = h.paint(UpgradeCompatibilityPanel, { parts: [part('CPU', 'Ryzen 5 5600')],
+      state: { load: { status }, plan: null, selected: [], targets: {}, retry() {} }, onExclude() {}, onLinkParts() {} })
+    assert.doesNotMatch(text(tree), /최종 구성 호환성|모든 부품 검사됨/)
+  })
+}
+
+test('조건 화면을 다녀온 뒤 새 가격을 받기 전에는 이전 플랜을 최종 검사에 쓰지 않는다', async () => {
+  let pending = false
+  const finishes = []
+  const h = harness({ searchCatalog: async () => {
+    if (pending) await new Promise((resolve) => { finishes.push(resolve) })
+    return { items: [], page: 0, size: 100, totalElements: 0, totalPages: 0, attributions: [] }
+  } })
+  const { useUpgradePlan } = h.load('features/planner/useUpgradePlan.ts')
+  const { defaultGoal } = h.load('features/planner/plannerGoal.ts')
+  let enabled = true, state
+  function Probe() {
+    state = useUpgradePlan({ parts: [], goal: defaultGoal(), priority: 'BUDGET', kinds: [], excludedIds: [], enabled })
+    return null
+  }
+  h.paint(Probe)
+  await new Promise(setImmediate)
+  h.paint(Probe)
+  assert.equal(state.load.status, 'ready')
+  enabled = false
+  h.paint(Probe); h.paint(Probe)
+  pending = true
+  enabled = true
+  h.paint(Probe); h.paint(Probe)
+  assert.equal(state.load.status, 'loading')
+  assert.equal(state.plan, null)
+  // 완료되지 않은 가짜 조회는 실제 네트워크가 없으며 언마운트로 취소한다.
+  h.paint(() => null)
+  finishes.forEach((finish) => finish())
+  await new Promise(setImmediate)
+})
+
 function harness({ list = async () => ({ items: [], page: 0, size: 20, totalElements: 0, totalPages: 0 }),
   realPlanner = false, realCatalog = false, storageValues = new Map(), initialHash = '#/pcs/new',
   searchCatalog = async () => ({ items: [], page: 0, size: 20, totalElements: 0, totalPages: 0, attributions: [] }),

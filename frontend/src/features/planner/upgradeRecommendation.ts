@@ -9,6 +9,7 @@ import { comparePartScore, SCORE_DATASETS } from './partScores.ts'
 import type { UpgradeGoal } from './plannerGoal.ts'
 import { PROGRAM_PROFILES, type Requirement } from './workloadData.ts'
 import { pcFacts } from './workloadEstimate.ts'
+import type { CatalogSpecification } from '../catalog/catalogTypes.ts'
 
 /**
  * 업그레이드 플랜: 목표에 부족한 부품을 한 예산 안에서 함께 바꾸고, 나머지 부품은 그대로 둔 최종 구성을 만든다. 모두 추정이다.
@@ -41,6 +42,8 @@ export type PricedProduct = {
   priceKind: 'CURRENT' | 'ESTIMATE'
   priceSource: string | null
   priceUrl: string | null
+  specification?: CatalogSpecification
+  attributions?: import('../catalog/catalogTypes.ts').CatalogAttribution[]
 }
 
 export type ScoredProduct = PricedProduct & {
@@ -53,7 +56,8 @@ export type ScoredProduct = PricedProduct & {
 }
 
 /** 부품 종류별 목표. needed: 지금 부품이 목표에 못 미치는지(모르면 null). */
-export type KindTarget = { minScore: number | null; minVramGiB: number | null; needed: boolean | null }
+export type KindTarget = { minScore: number | null; minVramGiB: number | null; needed: boolean | null;
+  minCores?: number | null; games?: string[] }
 
 export type PlanItem = {
   kind: UpgradePartKind
@@ -103,6 +107,7 @@ const CHIPSET_SOCKETS: [RegExp, string][] = [
 
 /** CPU 이름에서 데스크톱 소켓을 추정한다. 모르면 null. */
 export function cpuSocket(name: string): string | null {
+  if (/threadripper|\b\d{3,5}(?:HX|HS|H|U|P|V)\b/i.test(name)) return null
   const ryzen = name.match(/ryzen\s+(?:threadripper\s+)?[3579]\s+(\d)(\d{3})/i)
   if (ryzen) {
     const series = Number(ryzen[1])
@@ -142,7 +147,7 @@ export function ddrGeneration(name: string): number | null {
 
 function currentDdr(parts: PartInput[]): number | null {
   for (const ram of parts.filter((part) => part.type === 'RAM')) {
-    const generation = ddrGeneration(ram.displayName)
+    const generation = ddrGeneration(String(ram.specs.memoryType ?? '')) ?? ddrGeneration(ram.displayName)
     if (generation) return generation
   }
   return null
@@ -181,16 +186,30 @@ export function currentPartScore(kind: UpgradePartKind, parts: PartInput[], cpuM
 }
 
 function compatible(kind: UpgradePartKind, product: PricedProduct, socket: string | null, ddr: number | null): boolean {
-  if (kind === 'CPU' && socket) return cpuSocket(product.name) === socket
-  if (kind === 'RAM' && ddr) return ddrGeneration(product.name) === ddr
+  if (kind === 'CPU') return socket !== null && (product.specification?.socketCode ?? cpuSocket(product.name)) === socket
+  if (kind === 'RAM') return ddr !== null &&
+    (ddrGeneration(String(product.specification?.memoryType ?? '')) ?? ddrGeneration(product.name)) === ddr
   return true
 }
 
-function meetsTarget(target: KindTarget | undefined, score: number, vramGiB: number | null): boolean | null {
-  if (!target || target.minScore === null && target.minVramGiB === null) return null
-  const scoreOk = target.minScore === null || score >= target.minScore
-  const vramOk = target.minVramGiB === null || (vramGiB !== null && vramGiB >= target.minVramGiB)
-  return scoreOk && vramOk
+function meetsTarget(target: KindTarget | undefined, score: number, vramGiB: number | null,
+  kind: UpgradePartKind, product: PricedProduct, parts: PartInput[]): boolean | null {
+  if (!target) return null
+  const checks: (boolean | null)[] = []
+  if (target.minScore !== null) checks.push(score >= target.minScore)
+  if (target.minVramGiB !== null) checks.push(vramGiB === null ? null : vramGiB >= target.minVramGiB)
+  if (target.minCores != null) {
+    const cores = product.specification?.coreCount
+    checks.push(typeof cores === 'number' ? cores >= target.minCores : null)
+  }
+  const after = replaceWithProduct(parts, kind, product)
+  for (const name of target.games ?? []) {
+    const game = GAME_REQUIREMENTS[name]
+    const labels = kind === 'GPU' ? ['GPU', 'VRAM'] : [kind]
+    checks.push(...diagnoseGame(after, game).recommended.checks.filter((check) => labels.includes(check.label))
+      .map((check) => check.verdict === 'UNKNOWN' ? null : check.verdict === 'PASS'))
+  }
+  return checks.includes(false) ? false : checks.length && checks.every((check) => check === true) ? true : null
 }
 
 type KindCandidates = { list: ScoredProduct[]; incompatible: number }
@@ -208,51 +227,67 @@ function candidatesFor(kind: UpgradePartKind, input: PlanInput): KindCandidates 
   for (const product of input.productsByKind[kind] ?? []) {
     if (excluded.has(product.id)) continue
     if (!compatible(kind, product, socket, ddr)) { incompatible += 1; continue }
-    const score = productScore(kind, product.name, cpuMetric)
+    const ram = kind === 'RAM' ? ramModules(product.specification) : null
+    if (kind === 'RAM' && !ram) continue
+    const score = ram ? ram.quantity * ram.capacityBytes / GIB : productScore(kind, product.name, cpuMetric)
     if (score === null) continue
-    if (currentScore !== null && score < currentScore * (kind === 'RAM' ? 1.01 : MIN_GAIN)) continue
-    const vramGiB = kind === 'GPU' ? vramFromName(product.name) : null
+    const vramBytes = product.specification?.vramBytes
+    const vramGiB = kind === 'GPU' ? typeof vramBytes === 'number' ? vramBytes / GIB : vramFromName(product.name) : null
+    const meets = meetsTarget(target, score, vramGiB, kind, product, parts)
+    // 용량·코어 부족을 해결하는 교체는 점수 상승 폭이 작아도 남긴다.
+    if (currentScore !== null && score < currentScore * (kind === 'RAM' ? 1.01 : MIN_GAIN) &&
+      !(target?.needed === true && meets === true && score >= currentScore)) continue
     scored.push({ ...product, score, vramGiB, ratio: currentScore ? score / currentScore : null,
-      meetsTarget: meetsTarget(target, score, vramGiB) })
+      meetsTarget: meets })
   }
   const buyable = scored.filter((product) => product.priceKind === 'CURRENT')
   const pool = (buyable.length ? buyable : scored).sort((a, b) => a.priceKrw - b.priceKrw || b.score - a.score)
-  // 더 싼 제품보다 (목표 충족, 점수)가 나아지는 제품만 남긴다. 조합 수를 줄인다.
+  // 가격·목표 충족·성능 모두 열등한 후보만 제외한다. 저렴한 후보도 끝까지 보존한다.
   const list: ScoredProduct[] = []
-  let best = -Infinity
   for (const product of pool) {
-    const key = (product.meetsTarget ? 1e6 : 0) + product.score
-    if (key > best) { list.push(product); best = key }
+    if (!list.some((other) => other.priceKrw <= product.priceKrw && other.score >= product.score &&
+      Number(other.meetsTarget === true) >= Number(product.meetsTarget === true))) list.push(product)
   }
-  return { list: list.slice(-30), incompatible }
+  return { list, incompatible }
 }
 
 type Combo = { choices: (ScoredProduct | null)[]; total: number; met: number; gain: number }
 
 
 export function buildUpgradePlan(input: PlanInput): UpgradePlan {
-  const { parts, kinds, priority, budgetWon } = input
+  const { parts, priority, budgetWon } = input
+  const kinds = UPGRADE_PART_KINDS.filter((kind) => input.kinds.includes(kind))
   const kindData = kinds.map((kind) => ({ kind, target: input.targets[kind], ...candidatesFor(kind, input) }))
   const neededMet = (index: number, choice: ScoredProduct | null) =>
     kindData[index].target?.needed === true && choice?.meetsTarget === true ? 1 : 0
 
-  // 종류별 후보(유지 포함)의 모든 조합. 종류 3개·후보 30개 이하라 계산량이 작다.
+  // 각 단계에서 예산을 넘은 조합은 이후에 더 저렴해질 수 없으므로 버린다.
   let combos: Combo[] = [{ choices: [], total: 0, met: 0, gain: 0 }]
   kindData.forEach((data, index) => {
-    combos = combos.flatMap((combo) => [null, ...data.list].map((choice) => ({
+    // 현재 점수가 없으면 후보끼리만 상대 비교한다. 현재 대비 임의의 1.2배를 만들지 않는다.
+    const candidateBase = Math.min(...data.list.map((choice) => choice.score))
+    const next = combos.flatMap((combo) => [null, ...data.list].map((choice) => ({
       choices: [...combo.choices, choice],
       total: combo.total + (choice?.priceKrw ?? 0),
       met: combo.met + neededMet(index, choice),
-      gain: combo.gain + (choice ? Math.log(choice.ratio ?? 1.2) : 0),
-    })))
+      gain: combo.gain + (choice ? Math.log(choice.ratio ?? choice.score / candidateBase) : 0),
+    }))).filter((combo) => combo.total <= budgetWon).sort((a, b) => a.total - b.total || b.gain - a.gain)
+    const bestGains = new Map<number, number>()
+    combos = next.filter((combo) => {
+      const bestGain = bestGains.get(combo.met)
+      if (bestGain !== undefined && (priority === 'BUDGET' || bestGain >= combo.gain)) return false
+      bestGains.set(combo.met, combo.gain)
+      return true
+    })
   })
   const neededCount = kindData.filter((data) => data.target?.needed === true).length
   const compare = (a: Combo, b: Combo) => b.met - a.met || (priority === 'PERFORMANCE'
     ? b.gain - a.gain || a.total - b.total
     : a.total - b.total || b.gain - a.gain)
   const best = combos.filter((combo) => combo.total <= budgetWon).sort(compare)[0] ?? combos[0]
-  const fullFix = neededCount
-    ? combos.filter((combo) => combo.met === neededCount).sort((a, b) => a.total - b.total)[0] : undefined
+  const minimumFixPrices = kindData.filter((data) => data.target?.needed === true).map((data) =>
+    data.list.filter((choice) => choice.meetsTarget === true).reduce((min, choice) => Math.min(min, choice.priceKrw), Infinity))
+  const fullFixTotal = minimumFixPrices.reduce((sum, value) => sum + value, 0)
 
   const items: PlanItem[] = kindData.map((data, index) => {
     const choice = best.choices[index] ?? null
@@ -260,7 +295,8 @@ export function buildUpgradePlan(input: PlanInput): UpgradePlan {
     const currentLabel = parts.filter((part) => part.type === data.kind).map((part) => part.displayName).join(', ') || '입력 없음'
     const note = choice ? null : data.list.length === 0
       ? data.incompatible ? '같은 메인보드에 맞는 더 나은 제품 없음' : '더 나은 제품 없음'
-      : target.needed === true ? '예산 부족으로 유지' : null
+      : target.needed === true ? data.list.some((candidate) => candidate.meetsTarget === true)
+        ? '예산 부족으로 유지' : '현재 후보로 목표 기준 충족 확인 불가' : null
     return { kind: data.kind, currentLabel, target, choice,
       meets: choice ? choice.meetsTarget : target.needed === null ? null : !target.needed, note }
   })
@@ -268,13 +304,15 @@ export function buildUpgradePlan(input: PlanInput): UpgradePlan {
   const changed = items.filter((item) => item.choice).length
   const reason = changed === 0
     ? kinds.length === 0 ? '바꿀 부품을 골라 주세요.'
-      : neededCount === 0 ? '선택한 부품은 이미 목표를 충족합니다.'
+      : neededCount === 0 ? kindData.every((data) => data.target?.needed === false)
+        ? '선택한 부품은 이미 목표를 충족합니다.' : '판단에 필요한 부품·목표 자료를 확인해 주세요.'
         : items.some((item) => item.note === '예산 부족으로 유지') ? '예산 안에서 바꿀 수 있는 부품이 없습니다.'
-          : '지금보다 나은 호환 제품이 없습니다.'
-    : best.met < neededCount ? `부족한 부품 ${neededCount}개 중 ${best.met}개 해결.`
-      : '부족한 부품을 모두 해결합니다.'
+          : '목표 기준을 충족하는 제품을 확인하지 못했습니다.'
+    : neededCount === 0 ? '선택한 부품의 성능을 높이는 참고 구성입니다. 목표 충족 여부는 별도로 확인하세요.'
+      : best.met < neededCount ? `선택한 부족 부품 ${neededCount}개 중 ${best.met}개 기준 충족.`
+        : '선택한 부족 부품의 기준을 충족합니다. 전체 진단·호환성은 별도로 확인하세요.'
   return { priority, items, totalKrw: best.total, budgetWon, reason,
-    fullFixKrw: fullFix && fullFix.total > budgetWon ? fullFix.total : null }
+    fullFixKrw: neededCount > 0 && Number.isFinite(fullFixTotal) && fullFixTotal > budgetWon ? fullFixTotal : null }
 }
 
 /**
@@ -337,8 +375,10 @@ export function planTargets(parts: PartInput[], goal: UpgradeGoal): Partial<Reco
     ]
     return {
       CPU: { minScore: cpu, minVramGiB: null,
+        games: goal.games.filter((name) => Object.hasOwn(GAME_REQUIREMENTS, name)),
         needed: failed.has('CPU') ? true : needed(currentPartScore('CPU', parts, 'GAME'), cpu) },
-      GPU: { minScore: gpu, minVramGiB: vram, needed: anyNeeded(gpuChecks) },
+      GPU: { minScore: gpu, minVramGiB: vram, needed: anyNeeded(gpuChecks),
+        games: goal.games.filter((name) => Object.hasOwn(GAME_REQUIREMENTS, name)) },
       RAM: { minScore: ram, minVramGiB: null, needed: failed.has('RAM') ? true : needed(facts.ramGiB, ram) },
     }
   }
@@ -353,7 +393,7 @@ export function planTargets(parts: PartInput[], goal: UpgradeGoal): Partial<Reco
     const cores = maxOf(levels.map((level) => level.cores))
     return {
       // 판매명에서 코어 수를 알 수 없어 CPU는 코어 부족 여부만 보고, 후보는 작업 성능(Blender 점수)으로 고른다.
-      CPU: { minScore: null, minVramGiB: null, needed: needed(facts.cores, cores) },
+      CPU: { minScore: null, minVramGiB: null, minCores: cores, needed: needed(facts.cores, cores) },
       GPU: { minScore: null, minVramGiB: vram, needed: needed(facts.vramGiB, vram) },
       RAM: { minScore: ram, minVramGiB: null, needed: needed(facts.ramGiB, ram) },
     }
@@ -363,21 +403,41 @@ export function planTargets(parts: PartInput[], goal: UpgradeGoal): Partial<Reco
 
 const GIB = 1024 ** 3
 
+export function ramModules(specification: CatalogSpecification | undefined): { quantity: number; capacityBytes: number } | null {
+  const quantity = specification?.moduleCount, capacityBytes = specification?.moduleCapacityBytes
+  return typeof quantity === 'number' && Number.isSafeInteger(quantity) && quantity >= 1 && quantity <= 64 &&
+    typeof capacityBytes === 'number' && Number.isSafeInteger(capacityBytes) && capacityBytes > 0
+    ? { quantity, capacityBytes } : null
+}
+
+function replaceWithProduct(parts: PartInput[], kind: UpgradePartKind, product: PricedProduct): PartInput[] {
+  const ram = kind === 'RAM' ? ramModules(product.specification) : null
+  const replaced = withReplacedPart(parts, kind, product.name, product.id)
+  return replaced.map((part) => {
+    if (part.catalogProductId !== product.id || part.type !== kind) return part
+    const spec = product.specification
+    return { ...part, quantity: ram?.quantity ?? 1, specs: kind === 'RAM'
+      ? { capacityBytes: ram?.capacityBytes ?? null, memoryType: typeof spec?.memoryType === 'string' ? spec.memoryType : null }
+      : kind === 'CPU' ? { cores: typeof spec?.coreCount === 'number' ? spec.coreCount : null }
+        : { vramBytes: typeof spec?.vramBytes === 'number' ? spec.vramBytes : null } }
+  })
+}
+
 /**
  * 한 종류의 부품을 후보 제품으로 바꾼 가상 구성. 같은 종류의 기존 부품(RAM 여러 개 등)은 모두 빠진다.
+ * 이 이름만 받는 함수는 용량을 확정하지 않는다. 실제 플랜은 replaceWithProduct에서 카탈로그 제원을 반영한다.
  * 카탈로그 상품 ID를 주면 연결된 부품으로 두어 호환성 검사에 쓸 수 있다.
  */
 export function withReplacedPart(parts: PartInput[], kind: UpgradePartKind, name: string, productId: string | null = null): PartInput[] {
   const index = parts.findIndex((part) => part.type === kind)
-  const capacity = kind === 'RAM' ? ramKitGiB(name) : null
   const replacement: PartInput = { type: kind, displayName: name, rawName: null, quantity: 1, source: 'MANUAL',
     catalogProductId: productId, matchStatus: productId ? 'MATCHED' : 'UNMATCHED',
-    specs: capacity ? { capacityBytes: capacity * GIB } : {} }
+    specs: {} }
   const others = parts.filter((part) => part.type !== kind)
   return index < 0 ? [...parts, replacement] : [...others.slice(0, index), replacement, ...others.slice(index)]
 }
 
 /** 플랜의 교체 부품을 모두 반영한 최종 구성. */
 export function applyPlan(parts: PartInput[], plan: UpgradePlan): PartInput[] {
-  return plan.items.reduce((next, item) => item.choice ? withReplacedPart(next, item.kind, item.choice.name, item.choice.id) : next, parts)
+  return plan.items.reduce((next, item) => item.choice ? replaceWithProduct(next, item.kind, item.choice) : next, parts)
 }

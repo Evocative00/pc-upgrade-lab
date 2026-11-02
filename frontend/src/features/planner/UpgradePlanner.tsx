@@ -16,9 +16,9 @@ type Step = 2 | 3 | 4 | 5
 
 // null이면 진단에서 부족한 부품을 그대로 쓴다.
 const isPartKindList = (value: unknown): value is UpgradePartKind[] | null =>
-  value === null || Array.isArray(value) && value.every(isUpgradePartKind)
+  value === null || Array.isArray(value) && value.length <= 3 && new Set(value).size === value.length && value.every(isUpgradePartKind)
 const isIdList = (value: unknown): value is string[] =>
-  Array.isArray(value) && value.length <= 100 && value.every((item) => typeof item === 'string' && item.length <= 64)
+  Array.isArray(value) && value.length <= 100 && value.every((item) => typeof item === 'string' && item.trim().length > 0 && item.length <= 128)
 
 type Props = {
   stateKey: string
