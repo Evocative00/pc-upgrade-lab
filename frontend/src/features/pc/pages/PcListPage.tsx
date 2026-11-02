@@ -50,7 +50,7 @@ function PcListResults({
           <p className="error" role="alert">
             목록을 불러오지 못했습니다: {query.message}
           </p>
-          <button type="button" className="button" onClick={onRetry}>
+          <button type="button" className="button button--ghost" onClick={onRetry}>
             다시 시도
           </button>
         </div>
@@ -124,8 +124,11 @@ export function PcListPage() {
   return (
     <>
       <div className="page-head">
-        <h1>내 PC</h1>
-        <a className="button button--primary" href={paths.new()}>
+        <div>
+          <p className="eyebrow">&gt; MY BUILDS</p>
+          <h1>내 PC</h1>
+        </div>
+        <a className="button button--primary button--lg" href={paths.new()}>
           새 PC 등록
         </a>
       </div>

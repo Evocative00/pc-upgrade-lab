@@ -31,6 +31,7 @@
 }
 
 .planner-shell {
+  container-type: inline-size;
   --planner-blue: var(--accent);
   --planner-line: var(--border);
   --planner-ink: var(--text-h);
@@ -43,12 +44,12 @@
 }
 
 /* 왼쪽 탭 바 옆 본문. PC 구성 화면(pc-builder.css)과 같은 카드·제목·버튼 모양을 쓴다. */
-.planner-entry { display: grid; gap: 18px; width: 100%; max-width: 1200px; margin: 0 auto; padding-right: 24px; box-sizing: border-box; }
+.planner-entry { container-type: inline-size; display: grid; gap: 18px; width: 100%; max-width: 1200px; margin: 0 auto; padding-right: 24px; box-sizing: border-box; }
 .planner-page { display: flex; flex-direction: column; }
 .planner-back { align-self: flex-start; margin-bottom: 12px; }
 .planner-entry-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
 .planner-entry-options .panel { min-width: 0; }
-.planner-entry-options .panel > .button { align-self: flex-start; }
+.planner-entry-options .panel > .button { align-self: flex-start; white-space: normal; }
 .planner-entry-options .pc-list { grid-template-columns: 1fr; max-height: 360px; overflow-y: auto; }
 .planner-pager { display: flex; gap: 12px; justify-content: space-between; align-items: center; }
 
@@ -67,15 +68,16 @@
 
 .planner-layout { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 24px; align-items: start; }
 .planner-main { display: grid; gap: 18px; min-width: 0; }
+.planner-main > .button { justify-self: start; }
 .planner-heading h1 { margin: 10px 0 12px; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
-.planner-heading .eyebrow { margin-top: 18px; }
+.planner-heading .eyebrow { margin: 18px 0 0; }
 .planner-goal-line { font: 13px var(--mono); color: var(--text); margin: 0 0 6px !important; }
 .planner-heading p { margin: 0; color: var(--text); }
 .planner-card { background: var(--surface); border: 1px solid var(--planner-line); border-radius: 14px; padding: 22px 24px; }
 .planner-card h2 { margin: 0 0 18px; font-size: 18px; font-weight: 700; color: var(--text-h); }
 .planner-card h3 { margin: 18px 0 10px; font-size: 15px; }
 .planner-card h3 small { font-size: 12px; font-weight: 400; color: var(--text); }
-.planner-card-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.planner-card-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
 .planner-card-head h2 { margin: 0; }
 .planner-money { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--planner-line); border-radius: 8px; font-family: var(--mono); }
 .planner-money input { width: 130px; border: 0; background: transparent; color: var(--planner-ink); font: 700 20px var(--mono); text-align: right; }
@@ -85,7 +87,7 @@
 .planner-presets { margin-top: 18px; }
 .planner-shell button { cursor: pointer; font: inherit; }
 .planner-presets button, .planner-chip-list button, .planner-purpose-options button, .planner-choice button,
-.planner-inline-input button { min-height: 44px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text-h); }
+.planner-inline-input button { min-height: 44px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px; font-weight: 600; background: var(--surface); color: var(--text-h); }
 .planner-shell button.is-selected, .planner-shell button[aria-pressed="true"] {
   border-color: var(--accent); background: var(--accent-bg); color: var(--text-h); font-weight: 700;
 }
@@ -162,8 +164,9 @@
 
 @keyframes planner-reveal { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { .planner-reveal { animation: none; } }
-@media (max-width: 800px) { .planner-layout, .planner-result-grid, .planner-entry-options, .planner-tier-grid { grid-template-columns: 1fr; } .planner-aside { position: static; } }
-@media (max-width: 580px) { .planner-card { padding: 16px; } .planner-goal-pair, .planner-workloads, .planner-part-grid, .planner-placeholder-grid, .planner-internal-tier-grid { grid-template-columns: 1fr; } .planner-steps { justify-content: flex-start; } .planner-check-list li { flex-direction: column; gap: 4px; } .planner-check-list li span { text-align: left; } }
+/* 창 폭 대신 사이드바를 제외한 플랜 영역의 폭으로 배치를 바꾼다. */
+@container (max-width: 800px) { .planner-layout, .planner-result-grid, .planner-entry-options, .planner-tier-grid { grid-template-columns: 1fr; } .planner-aside { position: static; } }
+@container (max-width: 580px) { .planner-card { padding: 16px; } .planner-goal-pair, .planner-workloads, .planner-part-grid, .planner-placeholder-grid, .planner-internal-tier-grid { grid-template-columns: 1fr; } .planner-steps { justify-content: flex-start; } .planner-check-list li { flex-direction: column; gap: 4px; } .planner-check-list li span { text-align: left; } }
 .planner-frame-value { font-size: 18px; font-weight: 700; }
 .planner-frame-preview { display: grid; gap: 4px; margin-top: 10px; padding: 10px 12px; border: 1px solid var(--accent-border); border-radius: 10px; background: var(--accent-bg); font-size: 13px; }
 
