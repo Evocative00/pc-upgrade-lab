@@ -62,6 +62,8 @@
 }
 
 .builder {
+  /* 사이드바를 뺀 실제 본문 폭을 기준으로 열을 줄인다. */
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -83,7 +85,7 @@
   gap: var(--builder-gap);
   align-items: start;
 
-  @media (max-width: 1100px) {
+  @container (max-width: 1100px) {
     grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
 
     .builder__parts {
@@ -91,8 +93,9 @@
     }
   }
 
-  @media (max-width: 760px) {
-    grid-template-columns: 1fr;
+  @container (max-width: 760px) {
+    grid-template-columns: minmax(0, 1fr);
+    padding-right: 0;
   }
 }
 
@@ -101,7 +104,7 @@
   position: sticky;
   top: 16px;
 
-  @media (max-width: 760px) {
+  @container (max-width: 760px) {
     position: static;
   }
 }
@@ -233,7 +236,7 @@
   overflow-y: auto;
   box-sizing: border-box;
 
-  @media (max-width: 760px) {
+  @container (max-width: 760px) {
     max-height: none;
   }
 }

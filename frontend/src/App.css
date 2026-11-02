@@ -242,7 +242,7 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   gap: 12px;
 }
 
@@ -594,6 +594,7 @@
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px;
 }
@@ -683,6 +684,42 @@ ul.error {
 
   .landing__nav svg {
     flex: none;
+  }
+
+  .landing__nav-dot {
+    flex: none;
+  }
+
+  @media (min-width: 641px) {
+    .landing__nav a {
+      gap: 8px;
+      padding-inline: 10px;
+      font-size: 14px;
+    }
+
+    /* 220px 탭 바에서도 계정 안내가 한 글자씩 꺾이지 않게 한다. */
+    .landing-account--member {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 8px;
+    }
+
+    .landing-account__logout {
+      grid-column: 2;
+      justify-self: end;
+    }
+
+    .landing-account__error {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .landing__nav a {
+      gap: 4px;
+      padding-inline: 6px;
+      font-size: 12px;
+    }
   }
 
   /* 폭이 220px로 고정이라 랜딩의 좁은 화면(1440px 이하) 크기를 늘 쓴다. */
