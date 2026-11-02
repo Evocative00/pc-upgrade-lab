@@ -77,7 +77,6 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
           <button type="button" className="button button--ghost" onClick={onBack}>← 내 PC 수정</button>
           <p className="eyebrow">UPGRADE PLAN</p>
           <h1>예산과 목적을 정해주세요</h1>
-          <p>목적에 따라 먼저 살펴볼 부품이 달라져요. 모르는 항목은 내 PC 화면에서 보완할 수 있습니다.</p>
         </header>
 
         <section className="planner-card" aria-labelledby="planner-budget-title">
@@ -100,7 +99,6 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
             {PRESETS.map((amount) => <button type="button" key={amount} aria-pressed={goal.budgetWon === amount}
               onClick={() => setBudget(amount)}>{amount / 10_000}만</button>)}
           </div>
-          <p className="planner-caveat">입력한 예산은 현재 플랜의 추천 계산에 반영되지 않습니다.</p>
         </section>
 
         <section className="planner-card" aria-labelledby="planner-purpose-title">
@@ -142,8 +140,7 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
                     {estimate.target === 'MEETS' ? ' · 목표 충족' : estimate.target === 'BELOW' ? ' · 목표 미달'
                       : estimate.target === 'BORDERLINE' ? ' · 목표 경계' : ''}</span>)}
               </div>)}
-              <p className="planner-caveat">예상 프레임은 공식 사양·공개 측정값을 기준으로 GPU 성능 비율로 계산한 추정치입니다.
-                출처와 신뢰도는 진단 결과에서 확인할 수 있습니다.</p>
+              <p className="planner-caveat">예상 프레임은 추정치입니다.</p>
             </>}
           </div>}
           {goal.purpose !== null && goal.purpose !== 'GAME' && <div className="planner-reveal" aria-label="작업 목표">
@@ -175,8 +172,7 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
               </div>
             </>}
             {goal.purpose === 'CREATION' && goal.programs.some((program) => program !== 'Premiere Pro') &&
-              <p className="planner-caveat">DaVinci Resolve·Blender는 작업 규모를 편집 해상도로 계산합니다:
-                가벼움 = 1080p, 보통 = 4K, 무거움 = 6K~8K.</p>}
+              <p className="planner-caveat">작업 규모: 가벼움 1080p · 보통 4K · 무거움 6K~8K</p>}
           </div>}
         </section>
         <div className="planner-actions"><button type="button" className="button button--primary button--lg" disabled={!goalIsReady(goal)}
@@ -186,7 +182,6 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
         <h2>진단 기준</h2>
         <dl><div><dt>예산</dt><dd>₩{goal.budgetWon.toLocaleString('ko-KR')}</dd></div>
           <div><dt>용도·목표</dt><dd>{goalSummary(goal)}</dd></div></dl>
-        <p className="planner-caveat">예산은 추천 플랜에서 제품을 고를 때 반영됩니다.</p>
         <hr /><h3>기존 구성 · {pcName.trim() || '이름 없는 PC'}</h3>
         {pcSummary.length > 0 ? <ul>{pcSummary.map((part, index) => <li key={`${index}-${part}`}>{part}</li>)}</ul>
           : <p className="planner-warning">부품을 먼저 불러오거나 입력해 주세요.</p>}

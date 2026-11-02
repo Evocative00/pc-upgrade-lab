@@ -64,13 +64,13 @@ test('예산이 모자라면 채울 수 있는 부품만 바꾸고 나머지는 
   assert.ok(changed.length >= 1 && changed.length < 3)
   assert.ok(result.totalKrw <= 700_000)
   assert.equal(result.fullFixKrw, 489_400 + 582_330 + 120_000)
-  assert.ok(result.items.some((item) => !item.choice && item.note === '예산 안에서 바꿀 수 없어 유지합니다.'))
+  assert.ok(result.items.some((item) => !item.choice && item.note === '예산 부족으로 유지'))
 })
 
 test('부족하지 않은 부품은 예산 위주에서 바꾸지 않는다', () => {
   const result = plan({ targets: { GPU: need(200), CPU: need(40, false), RAM: need(16, false) } })
   assert.deepEqual(result.items.filter((item) => item.choice).map((item) => item.kind), ['GPU'])
-  assert.equal(result.items.find((item) => item.kind === 'CPU')?.note, '목표를 충족해 유지합니다.')
+  assert.equal(result.items.find((item) => item.kind === 'CPU')?.note, null)
 })
 
 test('판매가 제품이 있으면 더 빠른 참고 추정가 제품보다 먼저 고른다', () => {
@@ -109,4 +109,35 @@ test('작업 목표는 프로그램의 RAM·VRAM 기준으로 부족한 부품�
   const targets = planTargets(pc, goal)
   assert.equal(targets.RAM?.needed, true)
   assert.equal(targets.RAM?.minScore, 64)
+})
+
+test('호환성 검사에서 뺀 제품은 다음 후보로 바뀐다', () => {
+  const first = plan({ kinds: ['GPU'] })
+  const firstId = first.items[0].choice?.id
+  assert.ok(firstId)
+  const next = plan({ kinds: ['GPU'], excludedIds: [firstId] })
+  assert.ok(next.items[0].choice && next.items[0].choice.id !== firstId)
+})
+
+test('교체 부품은 카탈로그 상품으로 연결되어 호환성 검사에 쓰인다', () => {
+  const final = applyPlan(pc, plan({ kinds: ['GPU'] }))
+  const gpu = final.find((item) => item.type === 'GPU')
+  assert.equal(gpu?.matchStatus, 'MATCHED')
+  assert.equal(gpu?.catalogProductId, 'Sapphire PULSE Radeon RX 7600 8GB')
+  assert.equal(final.find((item) => item.type === 'CPU')?.catalogProductId, null)
+})
+
+test('3단계 진단에서 권장 사양 부족인 부품은 추천 플랜에서도 바꿀 대상이 된다', () => {
+  // 게임 점수로는 충분하지만 공식 권장 예시(Blender 점수) 비교에서는 CPU 부족으로 나오는 구성
+  const parts = [part('CPU', 'AMD Ryzen 5 7600'), part('GPU', 'GeForce RTX 4070')]
+  const goal: UpgradeGoal = { ...defaultGoal(), purpose: 'GAME', games: ['사이버펑크 2077'], resolution: 'FHD', targetFps: 60 }
+  const targets = planTargets(parts, goal)
+  assert.equal(targets.CPU?.needed, true)
+  const result = buildUpgradePlan({ parts, targets, kinds: ['CPU'], priority: 'BUDGET', budgetWon: 800_000, cpuMetric: 'GAME',
+    productsByKind: { CPU: [product('AMD Ryzen 7 7800X3D', 690_180), product('AMD Ryzen 5 5600', 150_000)] } })
+  assert.equal(result.items[0].choice?.name, 'AMD Ryzen 7 7800X3D')
+})
+
+test('바꿀 부품을 모두 끄면 선택하라고 안내한다', () => {
+  assert.equal(plan({ kinds: [] }).reason, '바꿀 부품을 골라 주세요.')
 })
