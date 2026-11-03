@@ -1,6 +1,7 @@
 import type { CatalogDetail, CatalogModel, CatalogProduct, CatalogSpecification } from '../catalog/catalogTypes.ts'
 import { hasObservedReferencePrice, isCurrentPriceIncluded } from '../catalog/catalogPresentation.ts'
 import type { PartType } from '../pc-scan/types.ts'
+import { clearStaleVram } from '../pc/gpuVram.ts'
 import { createManualDraft, getPartStatus, linkCatalog, linkCatalogModel, withEmptyRows } from '../pc/partDraft.ts'
 import type { PartDraft } from '../pc/types.ts'
 
@@ -175,11 +176,11 @@ function calculatePrices(lines: PriceLine[], reference: boolean) {
 
 // 최신 입력을 기준으로 연결한다. 검색 중 수량을 고쳤거나 항목을 지워도 옛 상태를 복원하지 않는다.
 export function applyCatalogSelection(drafts: PartDraft[], target: PickTarget, product: CatalogProduct): PartDraft[] {
-  return applySelection(drafts, target, product.type, (base) => linkCatalog(base, product))
+  return applySelection(drafts, target, product.type, (base) => clearStaleVram(base, linkCatalog(base, product)))
 }
 
 export function applyCatalogModelSelection(drafts: PartDraft[], target: PickTarget, model: CatalogModel): PartDraft[] {
-  return applySelection(drafts, target, model.type, (base) => linkCatalogModel(base, model))
+  return applySelection(drafts, target, model.type, (base) => clearStaleVram(base, linkCatalogModel(base, model)))
 }
 
 function applySelection(drafts: PartDraft[], target: PickTarget, type: PartType,

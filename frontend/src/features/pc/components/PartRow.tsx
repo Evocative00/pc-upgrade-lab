@@ -16,6 +16,9 @@ import {
 } from '../partDraft.ts'
 import type { PartDraft } from '../types.ts'
 import { PartStatusBadge } from './PartStatusBadge.tsx'
+import { clearStaleVram } from '../gpuVram.ts'
+import { VramField } from './VramField.tsx'
+import { VramHelpButton } from './VramHelp.tsx'
 
 type Props = {
   stateKey: string
@@ -58,7 +61,7 @@ export function PartRow({ stateKey, draft, index, count, onChange, onRemove, onS
           value={draft.displayName}
           maxLength={255}
           placeholder="모델명 직접 입력"
-          onChange={(event) => onChange(renameDraft(draft, event.target.value))}
+          onChange={(event) => onChange(clearStaleVram(draft, renameDraft(draft, event.target.value)))}
         />
         {(info.multiple || info.capacityUnit !== null) && <span className="part-row__units">
         {info.multiple && (
@@ -113,6 +116,7 @@ export function PartRow({ stateKey, draft, index, count, onChange, onRemove, onS
           </span>
         )}
         </span>}
+        {draft.type === 'GPU' && draft.displayName.trim() && <VramField draft={draft} onChange={onChange} />}
         <button
           type="button"
           className="button button--ghost part-row__search"
@@ -145,6 +149,12 @@ export function PartRow({ stateKey, draft, index, count, onChange, onRemove, onS
         )}
       </div>
 
+      {draft.type === 'GPU' && !draft.displayName.trim() && (
+        <div className="part-row__hint vram-row-hint">
+          그래픽카드를 고르기 전에 <strong>내 VRAM</strong>을 먼저 확인해 두세요. <VramHelpButton variant="link" />
+        </div>
+      )}
+
       {invalidCapacity && (
         <p id={`${capacityId}-error`} className="part-row__hint error">
           0보다 큰 유효한 용량을 입력해 주세요. 모르면 비워 주세요.
@@ -175,11 +185,11 @@ export function PartRow({ stateKey, draft, index, count, onChange, onRemove, onS
           initialQuery={draft.displayName}
           onClose={() => setPickerOpen(false)}
           onSelect={(product) => {
-            onChange(linkCatalog(draft, product))
+            onChange(clearStaleVram(draft, linkCatalog(draft, product)))
             setPickerOpen(false)
           }}
           onSelectModel={(model) => {
-            onChange(linkCatalogModel(draft, model))
+            onChange(clearStaleVram(draft, linkCatalogModel(draft, model)))
             setPickerOpen(false)
           }}
         />

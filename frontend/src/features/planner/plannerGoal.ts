@@ -46,11 +46,33 @@ export const defaultGoal = (): UpgradeGoal => ({
   workload: 'MEDIUM',
 })
 
+// 업그레이드 예산 범위. 최상위 그래픽카드와 같은 소켓의 상위 CPU를 함께 바꿔도 들어가도록 500만 원까지 둔다.
+export const MIN_BUDGET_WON = 100_000
+export const MAX_BUDGET_WON = 5_000_000
+// 슬라이더 칸: 100만 원까지는 1만 원(90칸), 그 위로는 10만 원(40칸) 단위라 자주 쓰는 낮은 금액을 맞추기 쉽다.
+const FINE_LIMIT_WON = 1_000_000
+const FINE_STEPS = (FINE_LIMIT_WON - MIN_BUDGET_WON) / 10_000
+export const BUDGET_SLIDER_STEPS = FINE_STEPS + (MAX_BUDGET_WON - FINE_LIMIT_WON) / 100_000
+
+export function budgetFromSlider(step: number): number {
+  const clamped = Math.min(BUDGET_SLIDER_STEPS, Math.max(0, Math.round(step)))
+  return clamped <= FINE_STEPS ? MIN_BUDGET_WON + clamped * 10_000 : FINE_LIMIT_WON + (clamped - FINE_STEPS) * 100_000
+}
+
+export function sliderFromBudget(budgetWon: number): number {
+  return budgetWon <= FINE_LIMIT_WON ? Math.round((budgetWon - MIN_BUDGET_WON) / 10_000)
+    : FINE_STEPS + Math.round((budgetWon - FINE_LIMIT_WON) / 100_000)
+}
+
+export function isBudgetInRange(budgetWon: number): boolean {
+  return Number.isInteger(budgetWon) && budgetWon >= MIN_BUDGET_WON && budgetWon <= MAX_BUDGET_WON
+}
+
 export function isUpgradeGoal(value: unknown): value is UpgradeGoal {
   if (!isRecord(value)) return false
   const choices = (items: unknown) => Array.isArray(items) && items.length <= 3 &&
     items.every((item: unknown) => typeof item === 'string' && item.trim().length > 0 && item.length <= 40)
-  return Number.isInteger(value.budgetWon) && Number(value.budgetWon) >= 100_000 && Number(value.budgetWon) <= 2_000_000 &&
+  return isBudgetInRange(Number(value.budgetWon)) &&
     (value.purpose === null || PURPOSES.some((purpose) => purpose.value === value.purpose)) &&
     choices(value.games) && choices(value.programs) && ['FHD', 'QHD', '4K'].includes(String(value.resolution)) &&
     TARGET_FPS_OPTIONS.some((fps) => fps === value.targetFps) && ['LIGHT', 'MEDIUM', 'HEAVY'].includes(String(value.workload)) &&
@@ -76,8 +98,7 @@ export function toggleChoice(values: string[], value: string, max = 3): string[]
 }
 
 export function goalIsReady(goal: UpgradeGoal): boolean {
-  return goal.purpose !== null && Number.isInteger(goal.budgetWon) &&
-    goal.budgetWon >= 100_000 && goal.budgetWon <= 2_000_000 &&
+  return goal.purpose !== null && isBudgetInRange(goal.budgetWon) &&
     (goal.purpose === 'GAME' ? goal.games.length > 0 : goal.programs.length > 0)
 }
 

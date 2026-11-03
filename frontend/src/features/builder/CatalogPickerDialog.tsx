@@ -2,6 +2,7 @@ import { useEffect, useId, useRef } from 'react'
 import { CatalogPicker } from '../catalog/CatalogPicker.tsx'
 import type { CatalogModel, CatalogProduct } from '../catalog/catalogTypes.ts'
 import type { PartType } from '../pc-scan/types.ts'
+import { VramCheckNotice } from '../pc/components/VramHelp.tsx'
 
 type Props = {
   stateKey: string
@@ -51,6 +52,8 @@ export function CatalogPickerDialog({ stateKey, label, type, initialQuery, onClo
           event.clientY < bounds.top || event.clientY > bounds.bottom) onClose()
       }}>
       <h2 id={titleId}>{label} 고르기</h2>
+      {/* 같은 모델도 VRAM이 다른 그래픽카드가 있어, 검색 전에 내 VRAM부터 확인하게 한다. */}
+      {type === 'GPU' && <VramCheckNotice />}
       <CatalogPicker stateKey={stateKey} type={type} initialQuery={initialQuery} onClose={onClose} onSelect={onSelect} onSelectModel={onSelectModel} />
     </dialog>
   )

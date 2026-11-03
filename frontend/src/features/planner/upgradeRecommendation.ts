@@ -296,9 +296,9 @@ function itemsOf(parts: PartInput[], kindData: KindData[], choices: (ScoredProdu
     const target = data.target ?? NO_TARGET
     const currentLabel = parts.filter((part) => part.type === data.kind).map((part) => part.displayName).join(', ') || '입력 없음'
     const note = choice ? null : data.list.length === 0
-      ? data.incompatible ? '같은 메인보드에 맞는 더 나은 제품 없음' : '더 나은 제품 없음'
+      ? data.incompatible ? '메인보드에 맞는 제품 없음' : '더 나은 제품 없음'
       : target.needed === true ? data.list.some((candidate) => candidate.meetsTarget === true)
-        ? '예산 부족으로 유지' : '현재 후보로 목표 기준 충족 확인 불가' : null
+        ? '예산 부족' : '목표를 채우는 제품 없음' : null
     return { kind: data.kind, currentLabel, target, choice,
       meets: choice ? choice.meetsTarget : target.needed === null ? null : !target.needed, note }
   })
@@ -310,7 +310,7 @@ function reasonOf(items: PlanItem[], neededCount: number): string {
     return items.length === 0 ? '바꿀 부품이 없습니다.'
       : neededCount === 0 ? items.every((item) => item.target.needed === false)
         ? '지금 구성으로 목표를 충족합니다.' : '판단에 필요한 부품·목표 자료를 확인해 주세요.'
-        : items.some((item) => item.note === '예산 부족으로 유지') ? '예산 안에서 바꿀 수 있는 부품이 없습니다.'
+        : items.some((item) => item.note === '예산 부족') ? '예산 안에서 바꿀 수 있는 부품이 없습니다.'
           : '목표 기준을 충족하는 제품을 확인하지 못했습니다.'
   }
   return neededCount === 0 ? '목표는 이미 충족하며, 더 빠르게 하는 참고 구성입니다.'
@@ -406,7 +406,7 @@ export function applyOverrides(plan: UpgradePlan, overrides: PlanOverrides, opti
     const override = overrides[item.kind]
     if (override === undefined) return item
     if (override === KEEP) return { ...item, choice: null, meets: item.target.needed === null ? null : !item.target.needed,
-      note: item.target.needed === true ? '직접 유지로 선택' : null }
+      note: item.target.needed === true ? '직접 유지' : null }
     const choice = options.candidates[item.kind]?.find((product) => product.id === override)
     return choice ? { ...item, choice, meets: choice.meetsTarget, note: null } : item
   })
