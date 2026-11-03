@@ -4,7 +4,7 @@ import { CPU_GAMING_DATASET } from './cpuGamingScores.ts'
 import { estimateGameFrames, frameText, supportsFrameEstimate } from './frameEstimate.ts'
 import type { UpgradeGoal } from './plannerGoal.ts'
 import {
-  applyPlan, KEEP, PLAN_OPTION_LABEL, PLAN_OPTIONS, UPGRADE_PART_LABEL,
+  applyPlan, KEEP, PLAN_OPTION_LABEL, PLAN_OPTIONS, UPGRADE_PART_KINDS, UPGRADE_PART_LABEL,
   type PlanOption, type PlanOverrides, type PricedProduct, type UpgradePartKind, type UpgradePlan,
 } from './upgradeRecommendation.ts'
 import { COMPAT_CLASS, COMPAT_TEXT, usePlanCompatibility } from './planCompatibility.ts'
@@ -75,8 +75,10 @@ const shortName = (name: string) => name
 
 function Diagnosis({ state, metric }: { state: UpgradePlanState; metric: KeyMetric | null }) {
   const short = state.selected.filter((kind) => state.targets[kind]?.needed === true)
+  const unknown = UPGRADE_PART_KINDS.filter((kind) => state.targets[kind]?.needed == null)
   return <p className="planner-diagnosis-line">
     {short.length ? <>부족: <strong>{short.map((kind) => UPGRADE_PART_LABEL[kind]).join(', ')}</strong></>
+      : unknown.length ? <>확인 필요: <strong>{unknown.map((kind) => UPGRADE_PART_LABEL[kind]).join(', ')}</strong></>
       : <strong>지금 구성으로 충분합니다</strong>}
     {metric?.target && <span> · {metric.target}</span>}
   </p>
@@ -97,12 +99,14 @@ function OptionCards({ parts, goal, state, option, onOptionChange }: {
         className={`planner-option${value === 'BALANCED' ? ' is-recommended' : ''}`} onClick={() => onOptionChange(value)}>
         <span className="planner-option-head"><strong>{PLAN_OPTION_LABEL[value]}</strong><small>{OPTION_HINT[value]}</small></span>
         <span className="planner-option-price">{won(plan.totalKrw)}</span>
+        {changed.some((item) => item.choice?.priceKind === 'PAST') && <small>지난 판매가 포함 · 실제 구매가 확인 필요</small>}
+        {changed.some((item) => item.choice?.priceKind === 'ESTIMATE') && <small>참고 추정가 포함</small>}
         {plan.totalKrw > plan.budgetWon && <span className="planner-option-over">예산 {won(plan.totalKrw - plan.budgetWon)} 초과</span>}
         <span className="planner-option-parts">{changed.length
           ? changed.map((item) => shortName(item.choice!.name)).join(' + ')
           : plan.items.some((item) => item.target.needed === true)
             ? `예산 부족${state.options?.cheapestFixKrw ? ` · ${won(state.options.cheapestFixKrw)}부터` : ''}`
-            : '바꿀 필요 없음'}</span>
+            : state.options?.hasUnknownTargets ? '목표 충족 확인 필요' : '바꿀 필요 없음'}</span>
         {metric && <span className={`planner-option-metric${metric.meets === true ? ' is-meets' : metric.meets === false ? ' is-below' : ''}`}>
           {metric.label.split(' · ').at(-1)} {metric.after}{metric.meets === false && ' · 목표 미달'}</span>}
         {sameAs && <small className="muted">{SAME_AS[sameAs]}</small>}
