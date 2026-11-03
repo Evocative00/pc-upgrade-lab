@@ -72,7 +72,7 @@ export type PlanItem = {
   note: string | null
 }
 
-// 추천 안 3개: 가성비(가장 싸게 목표 달성) · 추천(가격 대비 향상이 좋은 조합) · 최고 성능(예산 안 최대 향상)
+// 추천 안 3개: 가성비(가격 대비 향상) · 추천(예산 안 최대 향상) · 최고 성능(예산 1.5배 안 최대 향상)
 export type PlanOption = 'VALUE' | 'BALANCED' | 'BEST'
 export const PLAN_OPTIONS: PlanOption[] = ['VALUE', 'BALANCED', 'BEST']
 export const PLAN_OPTION_LABEL: Record<PlanOption, string> = { VALUE: '가성비', BALANCED: '추천', BEST: '최고 성능' }
@@ -106,6 +106,8 @@ export type UpgradeOptions = {
   // 종류별 교체 후보(가격 오름차순). '다른 제품'에서 고를 수 있다.
   candidates: Partial<Record<UpgradePartKind, ScoredProduct[]>>
   neededCount: number
+  // 교체를 검토하지 않는 부품까지 포함해, 목표 충족 여부가 확인되지 않은 항목이 있는지
+  hasUnknownTargets: boolean
   // 부족한 부품 하나라도 해결하는 가장 싼 제품 가격. 예산이 모자랄 때 안내에 쓴다.
   cheapestFixKrw: number | null
 }
@@ -304,17 +306,23 @@ function itemsOf(parts: PartInput[], kindData: KindData[], choices: (ScoredProdu
   })
 }
 
-function reasonOf(items: PlanItem[], neededCount: number): string {
+function reasonOf(items: PlanItem[], neededCount: number, hasUnknownTargets: boolean): string {
   const met = items.filter((item) => item.target.needed === true && item.choice && item.meets === true).length
+  const withUnknown = (reason: string) => hasUnknownTargets
+    ? `${reason} 일부 부품의 목표 충족 여부는 추가 확인이 필요합니다.` : reason
   if (!items.some((item) => item.choice)) {
-    return items.length === 0 ? '바꿀 부품이 없습니다.'
-      : neededCount === 0 ? items.every((item) => item.target.needed === false)
-        ? '지금 구성으로 목표를 충족합니다.' : '판단에 필요한 부품·목표 자료를 확인해 주세요.'
-        : items.some((item) => item.note === '예산 부족으로 유지') ? '예산 안에서 바꿀 수 있는 부품이 없습니다.'
-          : '목표 기준을 충족하는 제품을 확인하지 못했습니다.'
+    if (items.length === 0) return '바꿀 부품이 없습니다.'
+    if (neededCount === 0) return !hasUnknownTargets && items.every((item) => item.target.needed === false)
+      ? '지금 구성으로 목표를 충족합니다.' : '판단에 필요한 부품·목표 자료를 확인해 주세요.'
+    return withUnknown(items.some((item) => item.note === '예산 부족으로 유지') ? '예산 안에서 바꿀 수 있는 부품이 없습니다.'
+      : '목표 기준을 충족하는 제품을 확인하지 못했습니다.')
   }
-  return neededCount === 0 ? '목표는 이미 충족하며, 더 빠르게 하는 참고 구성입니다.'
-    : met < neededCount ? `부족한 부품 ${neededCount}개 중 ${met}개 해결` : '부족한 부품을 모두 해결합니다.'
+  if (neededCount === 0) return hasUnknownTargets
+    ? '목표 충족 여부는 추가 확인이 필요한 참고 구성입니다.'
+    : '목표는 이미 충족하며, 더 빠르게 하는 참고 구성입니다.'
+  const reason = met < neededCount ? `부족한 부품 ${neededCount}개 중 ${met}개 해결`
+    : hasUnknownTargets ? '확인된 부족 부품을 모두 해결합니다.' : '부족한 부품을 모두 해결합니다.'
+  return withUnknown(reason)
 }
 
 /**
@@ -335,10 +343,11 @@ export function buildUpgradeOptions(input: PlanInput): UpgradeOptions {
     let combos: Combo[] = [{ choices: [], total: 0, met: 0, gain: 0 }]
     kindData.forEach((data, index) => {
       // 현재 점수가 없으면 후보끼리만 상대 비교한다. 현재 대비 임의의 배율을 만들지 않는다.
-      const candidateBase = Math.min(...data.list.map((choice) => choice.score))
-      // RAM 용량은 목표를 넘으면 체감 성능이 거의 늘지 않아 향상 계산에서는 1.25배까지만 친다.
+      const baseScore = currentPartScore(data.kind, parts, input.cpuMetric) ?? Math.min(...data.list.map((choice) => choice.score))
+      // RAM은 목표 용량에 도달할 때까지 향상 폭을 구분하고, 그 이상은 가산하지 않는다.
+      const gainCap = data.kind === 'RAM' ? Math.max(1.25, (data.target?.minScore ?? 0) / baseScore) : Infinity
       const gainOf = (choice: ScoredProduct) =>
-        Math.log(Math.min(choice.ratio ?? choice.score / candidateBase, data.kind === 'RAM' ? 1.25 : Infinity))
+        Math.log(Math.min(choice.ratio ?? choice.score / baseScore, gainCap))
       const next = combos.flatMap((combo) => [null, ...data.list].map((choice) => ({
         choices: [...combo.choices, choice],
         total: combo.total + (choice?.priceKrw ?? 0),
@@ -359,6 +368,8 @@ export function buildUpgradeOptions(input: PlanInput): UpgradeOptions {
   }
   const byGain = (a: Combo, b: Combo) => b.gain - a.gain || a.total - b.total
   const neededCount = kindData.filter((data) => data.target?.needed === true).length
+  const hasUnknownTargets = Object.values(input.targets).some((target) => target?.needed == null)
+    || kindData.some((data) => data.target?.needed == null)
   const pool = frontier(budgetWon)
   const perWon = (a: Combo, b: Combo) => b.gain / b.total - a.gain / a.total || a.total - b.total
   const cheapest = [...pool].sort((a, b) => a.total - b.total || b.gain - a.gain)[0]
@@ -368,12 +379,8 @@ export function buildUpgradeOptions(input: PlanInput): UpgradeOptions {
   // 최고 성능은 예산을 조금 넘어도 고른다(예산의 1.5배까지, 화면에 초과 금액을 함께 보여 준다).
   // 상한이 없으면 예산과 관계없이 항상 카탈로그의 가장 비싼 조합이 나와 비교 의미가 없다.
   const best = frontier(budgetWon * BEST_BUDGET_RATIO).sort(byGain)[0]
-  // 추천: 예산을 최대한 활용해 가장 빠른 조합. 최고 성능과 같으면 가성비보다 빠른 다른 조합을 고르고,
-  // 그런 조합이 없으면(가성비가 이미 가장 빠름) 같은 구성으로 둔다. 가성비보다 느린 조합은 추천하지 않는다.
-  const keyOf = (combo: Combo) => combo.choices.map((choice) => choice?.id ?? '-').join('|')
-  const taken = new Set([keyOf(value), keyOf(best)])
-  const balanced = !taken.has(keyOf(bestInBudget)) ? bestInBudget
-    : pool.filter((combo) => combo.gain > value.gain && !taken.has(keyOf(combo))).sort(byGain)[0] ?? bestInBudget
+  // 추천은 최고 성능 안과 중복되더라도 예산 안에서 가장 빠른 조합을 유지한다.
+  const balanced = bestInBudget
   const minimumFixPrices = kindData.filter((data) => data.target?.needed === true).map((data) =>
     data.list.filter((choice) => choice.meetsTarget === true).reduce((min, choice) => Math.min(min, choice.priceKrw), Infinity))
   const fullFixTotal = minimumFixPrices.reduce((sum, price) => sum + price, 0)
@@ -381,7 +388,7 @@ export function buildUpgradeOptions(input: PlanInput): UpgradeOptions {
 
   const planOf = (option: PlanOption, combo: Combo): UpgradePlan => {
     const items = itemsOf(parts, kindData, combo.choices)
-    return { option, items, totalKrw: combo.total, budgetWon, reason: reasonOf(items, neededCount), fullFixKrw, custom: false }
+    return { option, items, totalKrw: combo.total, budgetWon, reason: reasonOf(items, neededCount, hasUnknownTargets), fullFixKrw, custom: false }
   }
   return {
     plans: { VALUE: planOf('VALUE', value), BALANCED: planOf('BALANCED', balanced), BEST: planOf('BEST', best) },
@@ -390,6 +397,7 @@ export function buildUpgradeOptions(input: PlanInput): UpgradeOptions {
     cheapestFixKrw: Number.isFinite(Math.min(...minimumFixPrices)) ? Math.min(...minimumFixPrices) : null,
     candidates: Object.fromEntries(kindData.map((data) => [data.kind, data.list])),
     neededCount,
+    hasUnknownTargets,
   }
 }
 
@@ -411,7 +419,7 @@ export function applyOverrides(plan: UpgradePlan, overrides: PlanOverrides, opti
     return choice ? { ...item, choice, meets: choice.meetsTarget, note: null } : item
   })
   const totalKrw = items.reduce((sum, item) => sum + (item.choice?.priceKrw ?? 0), 0)
-  return { ...plan, items, totalKrw, custom: true, reason: reasonOf(items, options.neededCount) }
+  return { ...plan, items, totalKrw, custom: true, reason: reasonOf(items, options.neededCount, options.hasUnknownTargets) }
 }
 
 /**

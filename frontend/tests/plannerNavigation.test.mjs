@@ -50,6 +50,31 @@ for (const status of ['loading', 'error']) {
   })
 }
 
+test('사양이 미확인인 추천 화면은 부족 부품이 없어도 목표 충족을 확정하지 않는다', () => {
+  const h = harness()
+  const { UpgradeRecommendationPanel } = h.load('features/planner/UpgradeRecommendationPanel.tsx')
+  const { defaultGoal } = h.load('features/planner/plannerGoal.ts')
+  const { planTargets, buildUpgradeOptions } = h.load('features/planner/upgradeRecommendation.ts')
+  const parts = [part('CPU', 'Unknown processor'), part('GPU', 'Unknown graphics'),
+    part('RAM', 'DDR4 32GB', { capacityBytes: 32 * GIB })]
+  const goal = { ...defaultGoal(), purpose: 'GAME', games: ['발로란트'] }
+  const targets = planTargets(parts, goal)
+  assert.equal(targets.CPU.needed, null)
+  assert.equal(targets.GPU.needed, null)
+  assert.equal(targets.RAM.needed, false)
+  const options = buildUpgradeOptions({ parts, productsByKind: {}, kinds: ['CPU', 'GPU'], targets,
+    budgetWon: goal.budgetWon, cpuMetric: 'GAME' })
+  const tree = h.paint(UpgradeRecommendationPanel, { parts, goal,
+    state: { load: { status: 'ready', products: {} }, plan: options.plans.BALANCED, options,
+      selected: ['CPU', 'GPU'], targets, retry() {} },
+    option: 'BALANCED', onOptionChange() {}, overrides: {}, onOverride() {}, excludedCount: 0,
+    onResetExcluded() {}, onExclude() {}, onLinkParts() {} })
+  assert.match(text(tree), /목표 충족 여부를 확인할 수 없습니다/)
+  assert.match(text(tree), /확인 필요: CPU·그래픽카드/)
+  assert.match(text(tree), /바꾸지 않음 · 목표 충족 확인 필요/)
+  assert.doesNotMatch(text(tree), /지금 구성으로 목표를 충족합니다|지금 구성으로 충분/)
+})
+
 test('조건 화면을 다녀온 뒤 새 가격을 받기 전에는 이전 플랜을 최종 검사에 쓰지 않는다', async () => {
   let pending = false
   const finishes = []

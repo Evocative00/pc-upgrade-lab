@@ -4,7 +4,7 @@ import { CPU_GAMING_DATASET } from './cpuGamingScores.ts'
 import { estimateGameFrames, frameText, supportsFrameEstimate } from './frameEstimate.ts'
 import type { UpgradeGoal } from './plannerGoal.ts'
 import {
-  applyPlan, KEEP, PLAN_OPTION_LABEL, PLAN_OPTIONS, UPGRADE_PART_LABEL,
+  applyPlan, KEEP, PLAN_OPTION_LABEL, PLAN_OPTIONS, UPGRADE_PART_KINDS, UPGRADE_PART_LABEL,
   type PlanOption, type PlanOverrides, type PricedProduct, type UpgradePartKind, type UpgradePlan,
 } from './upgradeRecommendation.ts'
 import { COMPAT_CLASS, COMPAT_TEXT, usePlanCompatibility } from './planCompatibility.ts'
@@ -77,9 +77,12 @@ const shortName = (name: string) => name.replace(/^(AMD|Intel|NVIDIA|MSI|Sapphir
 
 function Diagnosis({ state, metric }: { state: UpgradePlanState; metric: KeyMetric | null }) {
   const short = state.selected.filter((kind) => state.targets[kind]?.needed === true)
+  const unknown = UPGRADE_PART_KINDS.filter((kind) => state.targets[kind]?.needed == null)
   return <p className="planner-diagnosis-line">
     {short.length ? <><strong>{short.map((kind) => UPGRADE_PART_LABEL[kind]).join('·')}</strong>가 목표에 못 미칩니다.</>
+      : unknown.length ? <><strong>목표 충족 여부를 확인할 수 없습니다.</strong> 부품 사양과 목표 자료를 확인해 주세요.</>
       : <><strong>지금 구성으로 목표를 충족합니다.</strong> 더 빠르게 하려면 아래 안을 참고하세요.</>}
+    {unknown.length > 0 && <span> 확인 필요: {unknown.map((kind) => UPGRADE_PART_LABEL[kind]).join('·')}</span>}
     {metric && <span> {metric.label} 지금 {metric.before}{metric.target && ` (${metric.target})`}</span>}
   </p>
 }
@@ -99,15 +102,17 @@ function OptionCards({ parts, goal, state, option, onOptionChange }: {
         className={`planner-option${value === 'BALANCED' ? ' is-recommended' : ''}`} onClick={() => onOptionChange(value)}>
         <span className="planner-option-head"><strong>{PLAN_OPTION_LABEL[value]}</strong><small>{OPTION_HINT[value]}</small></span>
         <span className="planner-option-price">{won(plan.totalKrw)}</span>
+        {changed.some((item) => item.choice?.priceKind === 'PAST') && <small>지난 판매가 포함 · 실제 구매가 확인 필요</small>}
+        {changed.some((item) => item.choice?.priceKind === 'ESTIMATE') && <small>참고 추정가 포함</small>}
         {plan.totalKrw > plan.budgetWon && <span className="planner-option-over">예산 {won(plan.totalKrw - plan.budgetWon)} 초과</span>}
         <span className="planner-option-parts">{changed.length
           ? changed.map((item) => `${UPGRADE_PART_LABEL[item.kind]} ${shortName(item.choice!.name)}`).join(' + ')
           : plan.items.some((item) => item.target.needed === true)
             ? `바꾸지 않음 · 예산 부족${state.options?.cheapestFixKrw ? ` (${won(state.options.cheapestFixKrw)}부터 해결 가능)` : ''}`
-            : '바꾸지 않음 · 지금 구성으로 충분'}</span>
+            : state.options?.hasUnknownTargets ? '바꾸지 않음 · 목표 충족 확인 필요' : '바꾸지 않음 · 지금 구성으로 충분'}</span>
         {metric && <span className={`planner-option-metric${metric.meets === true ? ' is-meets' : metric.meets === false ? ' is-below' : ''}`}>
           {metric.label.split(' · ').at(-1)} {metric.after}{metric.meets === false && ' · 목표 미달'}</span>}
-        {sameAs && <small className="muted">{SAME_AS[sameAs]} · 예산 안 다른 후보 없음</small>}
+        {sameAs && <small className="muted">{SAME_AS[sameAs]}</small>}
       </button>
     })}
   </div>
@@ -237,7 +242,7 @@ export function UpgradeRecommendationPanel({ parts, goal, state, option, onOptio
         onExclude={onExclude} onLinkParts={onLinkParts} />
       {goal.purpose === 'GAME' && <FrameChange parts={parts} plan={plan} goal={goal} />}
       <p className="planner-caveat">가격·성능은 추정치입니다. 메인보드는 그대로 두고 소켓·DDR이 맞는 제품만 고르며,
-        BIOS·파워·케이스 등 호환성은 다음 단계에서 확인합니다.</p>
+        BIOS·파워·케이스 등은 위 최종 구성의 호환성 검사 결과와 확인 범위를 살펴보세요.</p>
       <details className="planner-details"><summary>계산 기준 보기</summary>
         <p>CPU 게임 점수에는 실측 외 단일 스레드·클럭·구조로 환산한 팀 추정이 포함됩니다.
           작업 CPU는 Blender, GPU는 게임 점수를 사용하며 실제 프로그램 성능 향상 배율을 보장하지 않습니다.</p>

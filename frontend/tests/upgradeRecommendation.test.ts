@@ -159,6 +159,17 @@ test('추천 안 3개: 가성비는 가격 대비 성능이 가장 좋고, 추�
   for (const option of ['VALUE', 'BALANCED', 'BEST'] as const) assert.equal(plans[option].reason, '부족한 부품을 모두 해결합니다.')
 })
 
+test('예산 안 최고 성능과 최고 성능 안이 같아도 추천 안을 더 느린 제품으로 낮추지 않는다', () => {
+  const { plans, bestWithinBudget } = buildUpgradeOptions({ ...optionInput(), kinds: ['GPU'], targets: { GPU: need(200) },
+    budgetWon: 1_000_000, productsByKind: { GPU: [
+      product('Radeon RX 7600 8GB', 100_000), product('Radeon RX 7700 XT 12GB', 400_000), product('GeForce RTX 4070 12GB', 500_000),
+    ] } })
+  assert.equal(plans.VALUE.items[0].choice?.name, 'Radeon RX 7600 8GB')
+  assert.equal(plans.BALANCED.items[0].choice?.name, 'GeForce RTX 4070 12GB')
+  assert.equal(plans.BALANCED.items[0].choice?.id, bestWithinBudget.items[0].choice?.id)
+  assert.equal(plans.BEST.items[0].choice?.id, plans.BALANCED.items[0].choice?.id)
+})
+
 test('안에서 부품을 다른 후보로 바꾸거나 유지하면 총액과 해결 여부를 다시 계산한다', () => {
   const options = buildUpgradeOptions(optionInput())
   const base = options.plans.VALUE
@@ -183,6 +194,29 @@ test('추천 RAM은 판매 키트 가격 한 번과 실제 모듈 2개·개당 �
   assert.equal(ram.specs.capacityBytes, 16 * GIB)
   const request = buildCompatibilityRequest(final.map((item, index) => ({ ...item, key: String(index), edited: false, persisted: false })))!
   assert.deepEqual(request.ram, [{ catalogProductId: ram.catalogProductId, quantity: 2 }])
+})
+
+test('목표 RAM 용량을 아직 못 채우면 성능 안은 예산 안에서 더 큰 용량을 고른다', () => {
+  const ramProduct = (capacityGiB: number, priceKrw: number): PricedProduct => ({
+    ...product(`DDR4 ${capacityGiB}GB`, priceKrw),
+    specification: { memoryType: 'DDR4', moduleCount: 1, moduleCapacityBytes: capacityGiB * GIB },
+  })
+  const input: PlanInput = { ...optionInput(), kinds: ['RAM'], targets: { RAM: need(64) }, budgetWon: 300_000,
+    productsByKind: { RAM: [ramProduct(32, 200_000), ramProduct(48, 300_000)] } }
+  const options = buildUpgradeOptions(input)
+  assert.equal(options.plans.BALANCED.items[0].choice?.score, 48)
+  assert.equal(options.plans.BEST.items[0].choice?.score, 48)
+  assert.equal(buildUpgradePlan({ ...input, priority: 'PERFORMANCE' }).items[0].choice?.score, 48)
+  assert.equal(options.plans.BALANCED.items[0].meets, false)
+
+  const enough = buildUpgradeOptions({ ...input, budgetWon: 600_000,
+    productsByKind: { RAM: [ramProduct(64, 400_000), ramProduct(128, 600_000)] } })
+  assert.equal(enough.plans.BALANCED.items[0].choice?.score, 64)
+  assert.equal(enough.plans.BEST.items[0].choice?.score, 64)
+
+  const unknown = buildUpgradeOptions({ ...input, parts: [part('RAM', 'DDR4')], targets: { RAM: need(64, null) } })
+  assert.equal(unknown.plans.BALANCED.items[0].choice?.score, 48)
+  assert.equal(unknown.plans.BALANCED.items[0].choice?.ratio, null)
 })
 
 test('이름만 32GB인 RAM은 모듈 개수·용량을 확정하거나 추천하지 않는다', () => {
@@ -224,6 +258,38 @@ test('성능 차이가 10% 미만이어도 VRAM 부족을 해결하는 제품을
 test('확인되지 않은 목표는 충분·해결로 표시하지 않는다', () => {
   const result = plan({ kinds: ['CPU'], productsByKind: {}, targets: {} })
   assert.doesNotMatch(result.reason, /이미 목표를 충족|모두 해결/)
+})
+
+test('현재 GPU 자료가 없으면 제품을 추천해도 지금 목표를 이미 충족했다고 단정하지 않는다', () => {
+  const parts = [part('CPU', 'Ryzen 7 5800X3D', { cores: 8 }), part('GPU', '알 수 없는 GPU')]
+  const targets = planTargets(parts, { ...defaultGoal(), purpose: 'CREATION', programs: ['Blender'] })
+  assert.equal(targets.GPU?.needed, null)
+  const options = buildUpgradeOptions({ parts, targets, kinds: ['CPU', 'GPU'], budgetWon: 800_000, cpuMetric: 'WORK',
+    productsByKind: { GPU: [product('Radeon RX 7600 8GB', 200_000), product('GeForce RTX 4070 12GB', 300_000)] } })
+  for (const result of Object.values(options.plans)) {
+    assert.ok(result.items.some((item) => item.choice))
+    assert.doesNotMatch(result.reason, /이미 충족|모두 해결/)
+    assert.match(result.reason, /추가 확인/)
+  }
+  const custom = applyOverrides(options.plans.BALANCED, { GPU: 'Radeon RX 7600 8GB' }, options)
+  assert.doesNotMatch(custom.reason, /이미 충족|모두 해결/)
+  assert.match(custom.reason, /추가 확인/)
+})
+
+test('교체 대상 밖의 RAM 용량이 미확인이면 목표 전체를 이미 충족했다고 표시하지 않는다', () => {
+  const parts = [part('CPU', 'Ryzen 7 5800X3D', { cores: 8 }), part('GPU', 'GeForce GTX 1070 Ti', { vramBytes: 8 * GIB })]
+  const targets = planTargets(parts, { ...defaultGoal(), purpose: 'CREATION', programs: ['Blender'] })
+  const input = { ...optionInput(), parts, kinds: ['CPU', 'GPU'] as ('CPU' | 'GPU')[], targets }
+  assert.equal(targets.CPU?.needed, false)
+  assert.equal(targets.GPU?.needed, false)
+  assert.equal(targets.RAM?.needed, null)
+  const options = buildUpgradeOptions(input)
+  for (const result of Object.values(options.plans)) {
+    assert.doesNotMatch(result.reason, /이미 충족/)
+    assert.match(result.reason, /추가 확인/)
+  }
+  const known = buildUpgradeOptions({ ...input, targets: { ...input.targets, RAM: need(32, false) } })
+  assert.match(known.plans.BALANCED.reason, /이미 충족/)
 })
 
 test('추천 CPU의 기준 충족 표시는 교체 후 공식 사양 진단과 모순되지 않는다', () => {
