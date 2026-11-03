@@ -9,6 +9,7 @@ import {
   changePurpose, frameEstimateGames, GAME_SUGGESTIONS, goalIsReady, goalSummary, PROGRAMS, PURPOSES,
   TARGET_FPS_OPTIONS, toggleChoice, type Purpose, type Resolution, type UpgradeGoal, type VideoResolution, type Workload,
 } from './plannerGoal.ts'
+import { PlannerStepper } from './PlannerStepper.tsx'
 import './planner.css'
 
 type Props = {
@@ -19,6 +20,8 @@ type Props = {
   onChange: (goal: UpgradeGoal) => void
   onBack: () => void
   onNext: () => void
+  // 단계 표시에서 진단(3)·추천 플랜(4)으로 바로 이동
+  onStep: (step: 3 | 4) => void
 }
 
 const PRESETS = [300_000, 500_000, 800_000, 1_200_000, 1_800_000]
@@ -41,7 +44,7 @@ function Choice<T extends string | number>({ options, value, onChange, label }: 
   </div>
 }
 
-export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBack, onNext }: Props) {
+export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBack, onNext, onStep }: Props) {
   const [gameInput, setGameInput] = usePageState(`${stateKey}gameInput`, '', isString)
   const [gameLimitNotice, setGameLimitNotice] = useState(false)
   const [budgetText, setBudgetText] = usePageState(`${stateKey}budgetText`, String(goal.budgetWon), isString)
@@ -67,10 +70,8 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
   }
 
   return <div className="planner-shell">
-    <nav className="planner-steps" aria-label="업그레이드 진행 단계">
-      <span className="is-complete">✓ 내 PC</span><span aria-current="step" className="is-current">2 예산·목적</span>
-      <span>3 진단</span><span>4 추천 플랜</span><span>5 호환성</span>
-    </nav>
+    <PlannerStepper current={2} canGo={(step) => step === 1 || goalIsReady(goal)}
+      onGo={(step) => step === 1 ? onBack() : step === 3 || step === 4 ? onStep(step) : undefined} />
     <div className="planner-layout">
       <div className="planner-main">
         <header className="planner-heading">

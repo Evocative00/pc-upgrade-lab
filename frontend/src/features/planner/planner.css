@@ -62,7 +62,9 @@
   font-size: 13px;
 }
 
-.planner-steps span { padding: 8px 14px; border: 1px solid var(--border); border-radius: 24px; font-family: var(--mono); font-size: 12px; }
+.planner-steps span, .planner-steps button { padding: 8px 14px; border: 1px solid var(--border); border-radius: 24px; background: transparent; color: var(--text); font-family: var(--mono); font-size: 12px; line-height: 1.5; }
+.planner-steps button:hover:not(:disabled) { border-color: var(--accent-border); color: var(--text-h); background: var(--accent-bg); }
+.planner-steps button:disabled { opacity: 0.45; cursor: not-allowed; }
 .planner-steps .is-current { background: #1e3a8a; border-color: #3b5bd0; color: #fff; font-weight: 700; }
 .planner-steps .is-complete { color: var(--linked); }
 
@@ -171,13 +173,6 @@
 .planner-frame-preview { display: grid; gap: 4px; margin-top: 10px; padding: 10px 12px; border: 1px solid var(--accent-border); border-radius: 10px; background: var(--accent-bg); font-size: 13px; }
 
 /* 추천 플랜: 우선순위 탭 · 부품 선택 · 추천 제품 */
-.planner-priority { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 4px 0 14px; }
-.planner-priority button { display: grid; gap: 4px; text-align: left; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text-h); }
-.planner-priority button strong { font-size: 16px; }
-.planner-priority button span { font-size: 12px; color: var(--text); }
-.planner-shell .planner-priority button[aria-pressed="true"] { background: #1e3a8a; border-color: #3b5bd0; color: #fff; box-shadow: 0 0 0 1px rgba(91, 123, 224, 0.25), 0 0 18px rgba(59, 91, 208, 0.45); }
-.planner-priority button[aria-pressed="true"] span { color: rgba(255, 255, 255, 0.8); }
-.planner-part-choice { margin-bottom: 18px; }
 .planner-price-line small { color: var(--text); font-size: 11px; }
 .planner-price-line { display: inline-grid; justify-items: end; font-family: var(--mono); }
 .planner-frame-change { margin-top: 18px; }
@@ -186,27 +181,26 @@
 .planner-frame-change th { color: var(--text); font-weight: 400; font-size: 12px; }
 .planner-frame-change td:not(:first-child) { font-family: var(--mono); }
 .planner-frame-change td.is-meets { color: var(--linked); font-weight: 700; }
-.planner-part-choice { display: grid; gap: 8px; margin-bottom: 18px; }
-.planner-part-choice .muted { font-size: 13px; }
 .planner-plan-summary { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; padding: 16px 18px; border: 1px solid var(--accent-border); border-radius: 12px; background: var(--accent-bg); }
 .planner-plan-summary div { display: grid; gap: 2px; }
 .planner-plan-summary span { font-size: 12px; color: var(--text); }
-.planner-plan-summary strong { font: 800 26px var(--mono); color: var(--text-h); }
+.planner-plan-summary div strong { font: 800 26px var(--mono); color: var(--text-h); }
+.planner-plan-summary p strong { color: var(--text-h); }
 .planner-plan-summary small { font-size: 12px; color: var(--text); }
 .planner-plan-summary p { margin: 0; font-size: 14px; }
 .planner-final { margin-top: 18px; }
 .planner-final h3 small, .planner-frame-change h3 small { font-weight: 400; color: var(--text); }
-.planner-final ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.planner-final li { display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; }
-.planner-final li.is-replaced { border-color: #3b5bd0; background: var(--accent-bg); box-shadow: inset 4px 0 0 #3b5bd0; }
+.planner-final > ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.planner-final > ul > li { display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; }
+.planner-final > ul > li.is-replaced { border-color: #3b5bd0; background: var(--accent-bg); box-shadow: inset 4px 0 0 #3b5bd0; }
 .planner-final-type { font: 12px var(--mono); color: var(--text); }
 .planner-final-name { display: grid; gap: 2px; min-width: 0; }
 .planner-final-name strong { overflow-wrap: anywhere; }
 .planner-final-name small { font-size: 12px; color: var(--text); }
-.planner-final li.is-replaced .planner-final-name small { color: var(--text-h); }
+.planner-final > ul > li.is-replaced .planner-final-name small { color: var(--text-h); }
 @container (max-width: 720px) {
-  .planner-priority, .planner-plan-summary { grid-template-columns: 1fr; }
-  .planner-final li { grid-template-columns: 1fr; }
+  .planner-plan-summary, .planner-option-cards { grid-template-columns: 1fr; }
+  .planner-final > ul > li { grid-template-columns: 1fr; }
 }
 
 /* 호환성 상세: 최종 구성 부품별 검사 상태 */
@@ -229,3 +223,36 @@
 .planner-card.planner-details > summary { font-size: 15px; font-weight: 700; color: var(--text-h); }
 .planner-card.planner-details { margin-top: 0; }
 .planner-detail-notes { margin: 12px 0 0; padding-left: 18px; font-size: 13px; line-height: 1.6; }
+
+/* 추천 플랜: 한 줄 진단 · 안 3개 카드 · 부품별 다른 제품 고르기 */
+.planner-diagnosis-line { margin: 0 0 16px; font-size: 15px; color: var(--text); }
+.planner-diagnosis-line strong { color: var(--text-h); }
+.planner-option-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+.planner-shell .planner-option { display: grid; gap: 8px; align-content: start; text-align: left; padding: 16px 18px;
+  border: 1px solid var(--border); border-radius: 12px; background: var(--surface); color: var(--text-h); font-weight: 400; }
+.planner-shell .planner-option:hover { border-color: var(--accent-border); }
+.planner-shell .planner-option[aria-checked="true"] { border-color: #3b5bd0; background: var(--accent-bg);
+  box-shadow: 0 0 0 1px rgba(91, 123, 224, 0.35), 0 0 18px rgba(59, 91, 208, 0.35); }
+.planner-option.is-recommended .planner-option-head strong::after { content: '추천'; margin-left: 8px; padding: 2px 8px; border-radius: 999px;
+  background: #1e3a8a; color: #fff; font-size: 11px; vertical-align: middle; }
+.planner-option-head { display: grid; gap: 2px; }
+.planner-option-head strong { font-size: 16px; }
+.planner-option-head small { color: var(--text); font-size: 12px; }
+.planner-option-price { font: 800 22px var(--mono); }
+.planner-option-parts { font-size: 13px; color: var(--text); overflow-wrap: anywhere; }
+.planner-option-metric { font: 700 14px var(--mono); }
+.planner-option-metric.is-meets { color: var(--linked); }
+.planner-option-metric.is-below { color: var(--manual); }
+.planner-over { color: var(--danger) !important; font-weight: 700; }
+.planner-swap { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 12px; color: var(--text); }
+.planner-swap select { max-width: 100%; min-height: 32px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 8px;
+  background: var(--surface); color: var(--text-h); font: inherit; font-size: 13px; }
+.planner-option-over { width: fit-content; padding: 2px 8px; border-radius: 999px; background: rgba(248, 113, 113, 0.14); color: var(--danger); font-size: 12px; font-weight: 700; }
+.planner-compat-scope { margin: 12px 0 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: var(--text); }
+/* 최종 구성 + 호환성: 부품 행마다 호환성 판정을 붙인다. */
+.planner-final-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.planner-final-head h3 { margin: 0; }
+.planner-final .planner-final-type { display: grid; gap: 6px; justify-items: start; }
+.planner-final .planner-final-type .planner-verdict { font-family: inherit; font-size: 11px; }
+.planner-final > ul > li.is-bad { border-color: var(--danger); box-shadow: inset 4px 0 0 var(--danger); }
+.planner-final > ul { margin-top: 12px; }

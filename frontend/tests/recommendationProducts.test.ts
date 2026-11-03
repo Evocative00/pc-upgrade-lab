@@ -14,8 +14,15 @@ function detail(id = 'gpu', amount = 200_000): CatalogDetail {
     specification: { vramBytes: 12 * 1024 ** 3 }, sources: [], attributions: [] }
 }
 
+test('만료 가격은 현재가가 아닌 지난 판매가로 쓴다', () => {
+  const value = detail()
+  Object.assign(value.product.priceStatus!, { freshness: 'EXPIRED', includedInTotal: false })
+  const priced = toPricedProduct(value)
+  assert.equal(priced?.priceKind, 'PAST')
+  assert.equal(priced?.observedAt, time)
+})
+
 for (const [name, status] of [
-  ['만료', { freshness: 'EXPIRED', includedInTotal: false }],
   ['연결 실패', { lookupStatus: 'UNAVAILABLE', includedInTotal: false }],
   ['로컬', { origin: 'LOCAL' }],
 ] as [string, Partial<CatalogPriceStatus>][]) {
@@ -56,4 +63,11 @@ test('취소 이후 도착한 목록은 추천 자료로 확정하지 않는다'
     async get() { return detail() },
   }, controller.signal)
   await assert.rejects(request, { name: 'AbortError' })
+})
+
+test('카탈로그 기본값인 비활성(미검증) 상품도 가격이 있으면 추천 후보로 쓴다', () => {
+  const value = detail()
+  value.product.active = false
+  value.product.verificationStatus = 'UNVERIFIED'
+  assert.equal(toPricedProduct(value)?.priceKind, 'CURRENT')
 })

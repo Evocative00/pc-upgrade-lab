@@ -6,7 +6,7 @@ import { buildCompatibilityRequest } from '../src/features/builder/compatibility
 import { diagnoseGame } from '../src/features/planner/gameDiagnosis.ts'
 import { GAME_REQUIREMENTS } from '../src/features/planner/gameRequirements.ts'
 import {
-  applyPlan, buildUpgradePlan, cpuSocket, currentSocket, gameTargetScore, planTargets, withReplacedPart,
+  applyOverrides, applyPlan, buildUpgradeOptions, buildUpgradePlan, cpuSocket, KEEP, currentSocket, gameTargetScore, planTargets, withReplacedPart,
   type KindTarget, type PlanInput, type PricedProduct,
 } from '../src/features/planner/upgradeRecommendation.ts'
 
@@ -145,8 +145,33 @@ test('3단계 진단에서 권장 사양 부족인 부품은 추천 플랜에서
   assert.equal(result.items[0].choice?.name, 'AMD Ryzen 7 7800X3D')
 })
 
-test('바꿀 부품을 모두 끄면 선택하라고 안내한다', () => {
-  assert.equal(plan({ kinds: [] }).reason, '바꿀 부품을 골라 주세요.')
+const optionInput = () => ({ parts: pc, productsByKind: products, kinds: ['CPU', 'GPU', 'RAM'] as ('CPU' | 'GPU' | 'RAM')[],
+  targets: { GPU: need(200), CPU: need(60), RAM: need(32) }, budgetWon: 2_000_000, cpuMetric: 'GAME' as const })
+
+test('추천 안 3개: 가성비는 가격 대비 성능이 가장 좋고, 추천·최고 성능 순으로 빨라진다', () => {
+  const { plans } = buildUpgradeOptions(optionInput())
+  const gain = (option: 'VALUE' | 'BALANCED' | 'BEST') => plans[option].items
+    .reduce((sum, item) => sum + Math.log(Math.min(item.choice?.ratio ?? 1, item.kind === 'RAM' ? 1.25 : Infinity)), 0)
+  const perWon = (option: 'VALUE' | 'BALANCED' | 'BEST') => gain(option) / plans[option].totalKrw
+  assert.ok(perWon('VALUE') >= perWon('BALANCED') - 1e-12 && perWon('VALUE') >= perWon('BEST') - 1e-12)
+  assert.ok(gain('BEST') >= gain('BALANCED') && gain('BALANCED') >= gain('VALUE'))
+  for (const option of ['VALUE', 'BALANCED'] as const) assert.ok(plans[option].totalKrw <= 2_000_000)
+  for (const option of ['VALUE', 'BALANCED', 'BEST'] as const) assert.equal(plans[option].reason, '부족한 부품을 모두 해결합니다.')
+})
+
+test('안에서 부품을 다른 후보로 바꾸거나 유지하면 총액과 해결 여부를 다시 계산한다', () => {
+  const options = buildUpgradeOptions(optionInput())
+  const base = options.plans.VALUE
+  const baseGpu = base.items.find((item) => item.kind === 'GPU')?.choice
+  const other = options.candidates.GPU?.find((product) => product.id !== baseGpu?.id)
+  assert.ok(baseGpu && other)
+  const swapped = applyOverrides(base, { GPU: other.id }, options)
+  assert.equal(swapped.custom, true)
+  assert.equal(swapped.items.find((item) => item.kind === 'GPU')?.choice?.id, other.id)
+  assert.equal(swapped.totalKrw, base.totalKrw - baseGpu.priceKrw + other.priceKrw)
+  const kept = applyOverrides(base, { CPU: KEEP }, options)
+  assert.equal(kept.items.find((item) => item.kind === 'CPU')?.choice, null)
+  assert.equal(kept.reason, '부족한 부품 3개 중 2개 해결')
 })
 
 test('추천 RAM은 판매 키트 가격 한 번과 실제 모듈 2개·개당 용량으로 검사한다', () => {
@@ -226,4 +251,20 @@ test('현재 CPU 점수가 미확인이어도 성능 우선은 후보 중 높은
     ] } })
   assert.equal(result.items[0].choice?.name, 'Ryzen 9 5950X')
   assert.equal(result.items[0].choice?.ratio, null)
+})
+
+test('최고 성능 안은 예산의 1.5배까지 넘어도 가장 빠른 조합을 고르고, 가성비·추천은 예산 안에 둔다', () => {
+  const { plans, bestWithinBudget } = buildUpgradeOptions({ ...optionInput(), kinds: ['GPU'], targets: { GPU: need(200) }, budgetWon: 700_000 })
+  assert.ok(plans.VALUE.totalKrw <= 700_000 && plans.BALANCED.totalKrw <= 700_000)
+  assert.ok(plans.BEST.totalKrw > 700_000 && plans.BEST.totalKrw <= 700_000 * 1.5)
+  assert.ok((plans.BEST.items[0].choice?.score ?? 0) > (bestWithinBudget.items[0].choice?.score ?? 0))
+  assert.ok(bestWithinBudget.totalKrw <= 700_000)
+})
+
+test('실제 관측 가격(지난 판매가 포함) 제품이 있으면 계산한 추정가 제품보다 먼저 고른다', () => {
+  const past: PricedProduct = { ...product('Sapphire PULSE Radeon RX 7700 XT 12GB', 726_440), priceKind: 'PAST' }
+  const estimate: PricedProduct = { ...product('MSI GeForce RTX 3080 VENTUS 3X PLUS 10G OC LHR', 709_000), priceKind: 'ESTIMATE' }
+  const { plans } = buildUpgradeOptions({ ...optionInput(), kinds: ['GPU'], targets: { GPU: need(200) }, budgetWon: 800_000,
+    productsByKind: { GPU: [past, estimate] } })
+  assert.equal(plans.BALANCED.items[0].choice?.priceKind, 'PAST')
 })

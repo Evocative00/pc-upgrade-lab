@@ -20,7 +20,7 @@ test('추천 목록 조회 실패 후 다시 불러오면 현재 플랜을 복�
   const { defaultGoal } = h.load('features/planner/plannerGoal.ts')
   let state
   function Probe() {
-    state = useUpgradePlan({ parts: [], goal: defaultGoal(), priority: 'BUDGET', kinds: [], excludedIds: [], enabled: true })
+    state = useUpgradePlan({ parts: [], goal: defaultGoal(), option: 'VALUE', overrides: {}, excludedIds: [], enabled: true })
     return null
   }
   h.paint(Probe)
@@ -39,10 +39,14 @@ test('추천 목록 조회 실패 후 다시 불러오면 현재 플랜을 복�
 for (const status of ['loading', 'error']) {
   test(`추천 ${status}에서는 기존 부품을 최종 구성 검사 결과로 표시하지 않는다`, () => {
     const h = harness()
-    const { UpgradeCompatibilityPanel } = h.load('features/planner/UpgradeCompatibilityPanel.tsx')
-    const tree = h.paint(UpgradeCompatibilityPanel, { parts: [part('CPU', 'Ryzen 5 5600')],
-      state: { load: { status }, plan: null, selected: [], targets: {}, retry() {} }, onExclude() {}, onLinkParts() {} })
-    assert.doesNotMatch(text(tree), /최종 구성 호환성|모든 부품 검사됨/)
+    // 호환성 결과는 추천 플랜의 최종 구성 목록 안에서만 보여 준다.
+    const { UpgradeRecommendationPanel } = h.load('features/planner/UpgradeRecommendationPanel.tsx')
+    const { defaultGoal } = h.load('features/planner/plannerGoal.ts')
+    const tree = h.paint(UpgradeRecommendationPanel, { parts: [part('CPU', 'Ryzen 5 5600')], goal: defaultGoal(),
+      state: { load: { status, message: 'x' }, plan: null, options: null, selected: [], targets: {}, retry() {} },
+      option: 'BALANCED', onOptionChange() {}, overrides: {}, onOverride() {}, excludedCount: 0, onResetExcluded() {},
+      onExclude() {}, onLinkParts() {} })
+    assert.doesNotMatch(text(tree), /최종 구성|호환성 (호환|비호환|확인 필요)|검사 제외/)
   })
 }
 
@@ -57,7 +61,7 @@ test('조건 화면을 다녀온 뒤 새 가격을 받기 전에는 이전 플�
   const { defaultGoal } = h.load('features/planner/plannerGoal.ts')
   let enabled = true, state
   function Probe() {
-    state = useUpgradePlan({ parts: [], goal: defaultGoal(), priority: 'BUDGET', kinds: [], excludedIds: [], enabled })
+    state = useUpgradePlan({ parts: [], goal: defaultGoal(), option: 'VALUE', overrides: {}, excludedIds: [], enabled })
     return null
   }
   h.paint(Probe)

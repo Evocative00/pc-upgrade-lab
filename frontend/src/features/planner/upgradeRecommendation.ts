@@ -38,8 +38,10 @@ export type PricedProduct = {
   id: string
   name: string
   priceKrw: number
-  // CURRENT: 판매처 현재가, ESTIMATE: 과거 판매가·출시가 등으로 만든 참고 추정가
-  priceKind: 'CURRENT' | 'ESTIMATE'
+  // CURRENT: 판매처 현재가, PAST: 기간이 지난 판매처 관측가(지난 판매가), ESTIMATE: 비슷한 제품·출시가 등으로 만든 참고 추정가
+  priceKind: 'CURRENT' | 'PAST' | 'ESTIMATE'
+  // 판매처 관측 시각(CURRENT·PAST)
+  observedAt?: string | null
   priceSource: string | null
   priceUrl: string | null
   specification?: CatalogSpecification
@@ -70,14 +72,42 @@ export type PlanItem = {
   note: string | null
 }
 
+// 추천 안 3개: 가성비(가장 싸게 목표 달성) · 추천(가격 대비 향상이 좋은 조합) · 최고 성능(예산 안 최대 향상)
+export type PlanOption = 'VALUE' | 'BALANCED' | 'BEST'
+export const PLAN_OPTIONS: PlanOption[] = ['VALUE', 'BALANCED', 'BEST']
+export const PLAN_OPTION_LABEL: Record<PlanOption, string> = { VALUE: '가성비', BALANCED: '추천', BEST: '최고 성능' }
+export const isPlanOption = (value: unknown): value is PlanOption => value === 'VALUE' || value === 'BALANCED' || value === 'BEST'
+
 export type UpgradePlan = {
-  priority: RecommendPriority
+  option: PlanOption
   items: PlanItem[]
   totalKrw: number
   budgetWon: number
   reason: string
   // 부족한 부품을 모두 채우는 가장 싼 조합이 예산을 넘을 때 그 금액
   fullFixKrw: number | null
+  // 사용자가 부품을 직접 바꿨는지
+  custom: boolean
+}
+
+// 부품 종류별 직접 고른 카탈로그 상품 ID. KEEP이면 지금 부품을 유지한다.
+export const KEEP = 'KEEP'
+export type PlanOverrides = Partial<Record<UpgradePartKind, string>>
+export const isPlanOverrides = (value: unknown): value is PlanOverrides =>
+  typeof value === 'object' && value !== null && !Array.isArray(value) && Object.entries(value)
+    .every(([key, id]) => isUpgradePartKind(key) && typeof id === 'string' && id.trim().length > 0 && id.length <= 128)
+
+export type UpgradeOptions = {
+  plans: Record<PlanOption, UpgradePlan>
+  // 예산 안에서 향상이 가장 큰 조합(최고 성능 안은 예산을 넘을 수 있다). 이전 '성능 우선' 호환용.
+  bestWithinBudget: UpgradePlan
+  // 예산 안에서 가장 싼 조합. 이전 '예산 위주' 호환용.
+  cheapestWithinBudget: UpgradePlan
+  // 종류별 교체 후보(가격 오름차순). '다른 제품'에서 고를 수 있다.
+  candidates: Partial<Record<UpgradePartKind, ScoredProduct[]>>
+  neededCount: number
+  // 부족한 부품 하나라도 해결하는 가장 싼 제품 가격. 예산이 모자랄 때 안내에 쓴다.
+  cheapestFixKrw: number | null
 }
 
 export type PlanInput = {
@@ -85,12 +115,14 @@ export type PlanInput = {
   productsByKind: Partial<Record<UpgradePartKind, PricedProduct[]>>
   kinds: UpgradePartKind[]
   targets: Partial<Record<UpgradePartKind, KindTarget>>
-  priority: RecommendPriority
   budgetWon: number
   cpuMetric: CpuMetric
   // 호환성 검사에서 맞지 않은 제품 등 후보에서 뺄 카탈로그 상품 ID
   excludedIds?: string[]
 }
+
+// 최고 성능 안이 넘을 수 있는 예산 배율
+export const BEST_BUDGET_RATIO = 1.5
 
 // 이만큼은 빨라야 교체 의미가 있다고 본다.
 const MIN_GAIN = 1.1
@@ -240,7 +272,9 @@ function candidatesFor(kind: UpgradePartKind, input: PlanInput): KindCandidates 
     scored.push({ ...product, score, vramGiB, ratio: currentScore ? score / currentScore : null,
       meetsTarget: meets })
   }
-  const buyable = scored.filter((product) => product.priceKind === 'CURRENT')
+  // 실제 판매처에서 관측한 가격(현재가·지난 판매가)이 있는 제품을 먼저 쓰고, 없을 때만 계산한 참고 추정가 제품을 쓴다.
+  // 추정가는 단종 제품도 싸게 계산되는 경우가 있어(예: RTX 3080) 실제 가격 제품과 섞으면 항상 추천되는 문제가 있었다.
+  const buyable = scored.filter((product) => product.priceKind !== 'ESTIMATE')
   const pool = (buyable.length ? buyable : scored).sort((a, b) => a.priceKrw - b.priceKrw || b.score - a.score)
   // 가격·목표 충족·성능 모두 열등한 후보만 제외한다. 저렴한 후보도 끝까지 보존한다.
   const list: ScoredProduct[] = []
@@ -252,46 +286,14 @@ function candidatesFor(kind: UpgradePartKind, input: PlanInput): KindCandidates 
 }
 
 type Combo = { choices: (ScoredProduct | null)[]; total: number; met: number; gain: number }
+type KindData = KindCandidates & { kind: UpgradePartKind; target: KindTarget | undefined }
 
+const NO_TARGET: KindTarget = { minScore: null, minVramGiB: null, needed: null }
 
-export function buildUpgradePlan(input: PlanInput): UpgradePlan {
-  const { parts, priority, budgetWon } = input
-  const kinds = UPGRADE_PART_KINDS.filter((kind) => input.kinds.includes(kind))
-  const kindData = kinds.map((kind) => ({ kind, target: input.targets[kind], ...candidatesFor(kind, input) }))
-  const neededMet = (index: number, choice: ScoredProduct | null) =>
-    kindData[index].target?.needed === true && choice?.meetsTarget === true ? 1 : 0
-
-  // 각 단계에서 예산을 넘은 조합은 이후에 더 저렴해질 수 없으므로 버린다.
-  let combos: Combo[] = [{ choices: [], total: 0, met: 0, gain: 0 }]
-  kindData.forEach((data, index) => {
-    // 현재 점수가 없으면 후보끼리만 상대 비교한다. 현재 대비 임의의 1.2배를 만들지 않는다.
-    const candidateBase = Math.min(...data.list.map((choice) => choice.score))
-    const next = combos.flatMap((combo) => [null, ...data.list].map((choice) => ({
-      choices: [...combo.choices, choice],
-      total: combo.total + (choice?.priceKrw ?? 0),
-      met: combo.met + neededMet(index, choice),
-      gain: combo.gain + (choice ? Math.log(choice.ratio ?? choice.score / candidateBase) : 0),
-    }))).filter((combo) => combo.total <= budgetWon).sort((a, b) => a.total - b.total || b.gain - a.gain)
-    const bestGains = new Map<number, number>()
-    combos = next.filter((combo) => {
-      const bestGain = bestGains.get(combo.met)
-      if (bestGain !== undefined && (priority === 'BUDGET' || bestGain >= combo.gain)) return false
-      bestGains.set(combo.met, combo.gain)
-      return true
-    })
-  })
-  const neededCount = kindData.filter((data) => data.target?.needed === true).length
-  const compare = (a: Combo, b: Combo) => b.met - a.met || (priority === 'PERFORMANCE'
-    ? b.gain - a.gain || a.total - b.total
-    : a.total - b.total || b.gain - a.gain)
-  const best = combos.filter((combo) => combo.total <= budgetWon).sort(compare)[0] ?? combos[0]
-  const minimumFixPrices = kindData.filter((data) => data.target?.needed === true).map((data) =>
-    data.list.filter((choice) => choice.meetsTarget === true).reduce((min, choice) => Math.min(min, choice.priceKrw), Infinity))
-  const fullFixTotal = minimumFixPrices.reduce((sum, value) => sum + value, 0)
-
-  const items: PlanItem[] = kindData.map((data, index) => {
-    const choice = best.choices[index] ?? null
-    const target = data.target ?? { minScore: null, minVramGiB: null, needed: null }
+function itemsOf(parts: PartInput[], kindData: KindData[], choices: (ScoredProduct | null)[]): PlanItem[] {
+  return kindData.map((data, index) => {
+    const choice = choices[index] ?? null
+    const target = data.target ?? NO_TARGET
     const currentLabel = parts.filter((part) => part.type === data.kind).map((part) => part.displayName).join(', ') || '입력 없음'
     const note = choice ? null : data.list.length === 0
       ? data.incompatible ? '같은 메인보드에 맞는 더 나은 제품 없음' : '더 나은 제품 없음'
@@ -300,19 +302,116 @@ export function buildUpgradePlan(input: PlanInput): UpgradePlan {
     return { kind: data.kind, currentLabel, target, choice,
       meets: choice ? choice.meetsTarget : target.needed === null ? null : !target.needed, note }
   })
+}
 
-  const changed = items.filter((item) => item.choice).length
-  const reason = changed === 0
-    ? kinds.length === 0 ? '바꿀 부품을 골라 주세요.'
-      : neededCount === 0 ? kindData.every((data) => data.target?.needed === false)
-        ? '선택한 부품은 이미 목표를 충족합니다.' : '판단에 필요한 부품·목표 자료를 확인해 주세요.'
+function reasonOf(items: PlanItem[], neededCount: number): string {
+  const met = items.filter((item) => item.target.needed === true && item.choice && item.meets === true).length
+  if (!items.some((item) => item.choice)) {
+    return items.length === 0 ? '바꿀 부품이 없습니다.'
+      : neededCount === 0 ? items.every((item) => item.target.needed === false)
+        ? '지금 구성으로 목표를 충족합니다.' : '판단에 필요한 부품·목표 자료를 확인해 주세요.'
         : items.some((item) => item.note === '예산 부족으로 유지') ? '예산 안에서 바꿀 수 있는 부품이 없습니다.'
           : '목표 기준을 충족하는 제품을 확인하지 못했습니다.'
-    : neededCount === 0 ? '선택한 부품의 성능을 높이는 참고 구성입니다. 목표 충족 여부는 별도로 확인하세요.'
-      : best.met < neededCount ? `선택한 부족 부품 ${neededCount}개 중 ${best.met}개 기준 충족.`
-        : '선택한 부족 부품의 기준을 충족합니다. 전체 진단·호환성은 별도로 확인하세요.'
-  return { priority, items, totalKrw: best.total, budgetWon, reason,
-    fullFixKrw: neededCount > 0 && Number.isFinite(fullFixTotal) && fullFixTotal > budgetWon ? fullFixTotal : null }
+  }
+  return neededCount === 0 ? '목표는 이미 충족하며, 더 빠르게 하는 참고 구성입니다.'
+    : met < neededCount ? `부족한 부품 ${neededCount}개 중 ${met}개 해결` : '부족한 부품을 모두 해결합니다.'
+}
+
+/**
+ * 추천 안 3개. 모두 예산 안에서 부족한 부품을 가장 많이 해결하는 조합 중에서 고른다.
+ * 가성비: 예산 안에서 1원당 성능 향상이 가장 큰 조합(가격 대비 성능).
+ * 추천: 예산 안에서 성능 향상이 가장 큰 조합. 최고 성능: 예산의 1.5배 안에서 성능 향상이 가장 큰 조합.
+ */
+export function buildUpgradeOptions(input: PlanInput): UpgradeOptions {
+  const { parts, budgetWon } = input
+  const kinds = UPGRADE_PART_KINDS.filter((kind) => input.kinds.includes(kind))
+  const kindData: KindData[] = kinds.map((kind) => ({ kind, target: input.targets[kind], ...candidatesFor(kind, input) }))
+  const neededMet = (index: number, choice: ScoredProduct | null) =>
+    kindData[index].target?.needed === true && choice?.meetsTarget === true ? 1 : 0
+
+  // 각 단계에서 한도를 넘은 조합은 버리고, 해결 개수별로 '더 비싼데 향상이 같거나 작은' 조합도 버린다.
+  // 남는 조합은 해결 개수별 가격-향상 경계선이라 안을 모두 여기서 고를 수 있다.
+  const frontier = (limit: number) => {
+    let combos: Combo[] = [{ choices: [], total: 0, met: 0, gain: 0 }]
+    kindData.forEach((data, index) => {
+      // 현재 점수가 없으면 후보끼리만 상대 비교한다. 현재 대비 임의의 배율을 만들지 않는다.
+      const candidateBase = Math.min(...data.list.map((choice) => choice.score))
+      // RAM 용량은 목표를 넘으면 체감 성능이 거의 늘지 않아 향상 계산에서는 1.25배까지만 친다.
+      const gainOf = (choice: ScoredProduct) =>
+        Math.log(Math.min(choice.ratio ?? choice.score / candidateBase, data.kind === 'RAM' ? 1.25 : Infinity))
+      const next = combos.flatMap((combo) => [null, ...data.list].map((choice) => ({
+        choices: [...combo.choices, choice],
+        total: combo.total + (choice?.priceKrw ?? 0),
+        met: combo.met + neededMet(index, choice),
+        gain: combo.gain + (choice ? gainOf(choice) : 0),
+      }))).filter((combo) => combo.total <= limit).sort((a, b) => a.total - b.total || b.gain - a.gain)
+      const bestGains = new Map<number, number>()
+      combos = next.filter((combo) => {
+        const bestGain = bestGains.get(combo.met)
+        if (bestGain !== undefined && bestGain >= combo.gain) return false
+        bestGains.set(combo.met, combo.gain)
+        return true
+      })
+    })
+    // 부족한 부품을 가장 많이 해결하는 조합만 비교한다.
+    const topMet = Math.max(0, ...combos.map((combo) => combo.met))
+    return combos.filter((combo) => combo.met === topMet)
+  }
+  const byGain = (a: Combo, b: Combo) => b.gain - a.gain || a.total - b.total
+  const neededCount = kindData.filter((data) => data.target?.needed === true).length
+  const pool = frontier(budgetWon)
+  const perWon = (a: Combo, b: Combo) => b.gain / b.total - a.gain / a.total || a.total - b.total
+  const cheapest = [...pool].sort((a, b) => a.total - b.total || b.gain - a.gain)[0]
+  // 가성비: 예산 안에서 1원당 성능 향상이 가장 큰 조합. 바꿀 것이 없으면 유지.
+  const value = pool.filter((combo) => combo.total > 0 && combo.gain > 0).sort(perWon)[0] ?? cheapest
+  const bestInBudget = [...pool].sort(byGain)[0]
+  // 최고 성능은 예산을 조금 넘어도 고른다(예산의 1.5배까지, 화면에 초과 금액을 함께 보여 준다).
+  // 상한이 없으면 예산과 관계없이 항상 카탈로그의 가장 비싼 조합이 나와 비교 의미가 없다.
+  const best = frontier(budgetWon * BEST_BUDGET_RATIO).sort(byGain)[0]
+  // 추천: 예산을 최대한 활용해 가장 빠른 조합. 최고 성능과 같으면 가성비보다 빠른 다른 조합을 고르고,
+  // 그런 조합이 없으면(가성비가 이미 가장 빠름) 같은 구성으로 둔다. 가성비보다 느린 조합은 추천하지 않는다.
+  const keyOf = (combo: Combo) => combo.choices.map((choice) => choice?.id ?? '-').join('|')
+  const taken = new Set([keyOf(value), keyOf(best)])
+  const balanced = !taken.has(keyOf(bestInBudget)) ? bestInBudget
+    : pool.filter((combo) => combo.gain > value.gain && !taken.has(keyOf(combo))).sort(byGain)[0] ?? bestInBudget
+  const minimumFixPrices = kindData.filter((data) => data.target?.needed === true).map((data) =>
+    data.list.filter((choice) => choice.meetsTarget === true).reduce((min, choice) => Math.min(min, choice.priceKrw), Infinity))
+  const fullFixTotal = minimumFixPrices.reduce((sum, price) => sum + price, 0)
+  const fullFixKrw = neededCount > 0 && Number.isFinite(fullFixTotal) && fullFixTotal > budgetWon ? fullFixTotal : null
+
+  const planOf = (option: PlanOption, combo: Combo): UpgradePlan => {
+    const items = itemsOf(parts, kindData, combo.choices)
+    return { option, items, totalKrw: combo.total, budgetWon, reason: reasonOf(items, neededCount), fullFixKrw, custom: false }
+  }
+  return {
+    plans: { VALUE: planOf('VALUE', value), BALANCED: planOf('BALANCED', balanced), BEST: planOf('BEST', best) },
+    bestWithinBudget: planOf('BEST', bestInBudget),
+    cheapestWithinBudget: planOf('VALUE', cheapest),
+    cheapestFixKrw: Number.isFinite(Math.min(...minimumFixPrices)) ? Math.min(...minimumFixPrices) : null,
+    candidates: Object.fromEntries(kindData.map((data) => [data.kind, data.list])),
+    neededCount,
+  }
+}
+
+/** 이전 방식(성능 우선·예산 위주) 호환용. 예산 위주는 예산 안 가장 싼 조합, 성능 우선은 예산 안 가장 빠른 조합이다. */
+export function buildUpgradePlan(input: PlanInput & { priority: RecommendPriority }): UpgradePlan {
+  const { bestWithinBudget, cheapestWithinBudget } = buildUpgradeOptions(input)
+  return input.priority === 'PERFORMANCE' ? bestWithinBudget : cheapestWithinBudget
+}
+
+/** 사용자가 고른 안에서 부품 하나를 다른 후보로 바꾸거나 유지로 돌린 구성. 총액·충족 여부를 다시 계산한다. */
+export function applyOverrides(plan: UpgradePlan, overrides: PlanOverrides, options: UpgradeOptions): UpgradePlan {
+  if (!Object.keys(overrides).length) return plan
+  const items = plan.items.map((item) => {
+    const override = overrides[item.kind]
+    if (override === undefined) return item
+    if (override === KEEP) return { ...item, choice: null, meets: item.target.needed === null ? null : !item.target.needed,
+      note: item.target.needed === true ? '직접 유지로 선택' : null }
+    const choice = options.candidates[item.kind]?.find((product) => product.id === override)
+    return choice ? { ...item, choice, meets: choice.meetsTarget, note: null } : item
+  })
+  const totalKrw = items.reduce((sum, item) => sum + (item.choice?.priceKrw ?? 0), 0)
+  return { ...plan, items, totalKrw, custom: true, reason: reasonOf(items, options.neededCount) }
 }
 
 /**
