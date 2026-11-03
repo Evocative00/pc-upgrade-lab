@@ -626,10 +626,19 @@ ul.error {
   overflow-x: auto;
 }
 
-/* 탭 바를 쓰는 화면은 좌우 여백 없이 화면을 채우고, 왼쪽 220px는 탭 바 자리로 비켜 둔다. */
+/* 탭 바를 쓰는 화면은 좌우 여백 없이 화면을 채우고, 왼쪽은 탭 바 폭만큼 비켜 둔다. */
+/* 왼쪽 탭 바 폭. 랜딩(.landing의 --landing-tabs)과 같이 넓은 화면 248px, 1440px 이하 220px이다. */
+:root {
+  --side-nav-width: 248px;
+
+  @media (max-width: 1440px) {
+    --side-nav-width: 220px;
+  }
+}
+
 #root:has(> .app-side-nav) {
   width: auto;
-  margin: 0 0 0 220px;
+  margin: 0 0 0 var(--side-nav-width);
   border-right: 0;
 
   @media (max-width: 640px) {
@@ -644,7 +653,7 @@ ul.error {
   letter-spacing: -0.02em;
 }
 
-/* PC 구성·업그레이드 플랜·PC 수정 화면의 왼쪽 탭 바 (랜딩과 같은 220px). */
+/* PC 구성·업그레이드 플랜·PC 수정 화면의 왼쪽 탭 바. 폭·글자·간격은 랜딩과 같다(landing.css의 화면 폭 규칙을 그대로 따른다). */
 /* 탭 바 모양은 landing.css를 그대로 쓰고, .landing에만 있는 색 변수를 이 화면 색(밝은·어두운)에 맞춰 둔다. */
 .app-side-nav {
   --card: var(--surface);
@@ -660,7 +669,7 @@ ul.error {
 
   position: fixed;
   inset: 0 auto 0 0;
-  width: 220px;
+  width: var(--side-nav-width);
   z-index: 3;
   font-family: 'Malgun Gothic', '맑은 고딕', 'Noto Sans KR', sans-serif;
 
@@ -691,12 +700,6 @@ ul.error {
   }
 
   @media (min-width: 641px) {
-    .landing__nav a {
-      gap: 8px;
-      padding-inline: 10px;
-      font-size: 14px;
-    }
-
     /* 220px 탭 바에서도 계정 안내가 한 글자씩 꺾이지 않게 한다. */
     .landing-account--member {
       display: grid;
@@ -720,15 +723,5 @@ ul.error {
       padding-inline: 6px;
       font-size: 12px;
     }
-  }
-
-  /* 폭이 220px로 고정이라 랜딩의 좁은 화면(1440px 이하) 크기를 늘 쓴다. */
-  .landing__brand {
-    gap: 10px;
-    padding: 0;
-  }
-
-  .landing__brand-name {
-    font-size: 14px;
   }
 }

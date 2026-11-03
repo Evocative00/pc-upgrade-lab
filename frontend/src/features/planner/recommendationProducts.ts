@@ -6,19 +6,26 @@ import { productScore, ramModules, UPGRADE_PART_KINDS, type PricedProduct, type 
 export type UpgradeProducts = Partial<Record<UpgradePartKind, PricedProduct[]>>
 
 // 검색 응답과 상세 응답의 ID·종류·판매 단위를 함께 확인한다.
+// active(is_active)는 판매 중 여부가 아니다. 카탈로그 상품은 기본이 미검증·비활성이고(중앙 가격 자료 227종 모두 false)
+// 시드도 활성 상품을 거부하므로, 이 값으로 걸러내면 추천 후보가 하나도 남지 않는다. 판매 여부는 가격 자료로만 판단한다.
 export function toPricedProduct(detail: CatalogDetail): PricedProduct | null {
   const { product, specification } = detail
   const current = product.priceStatus?.origin === 'SHARED' && isCurrentPriceIncluded(product) ? product.currentPrice : null
+  // 중앙 서버가 정상 조회했지만 관측 후 7일이 지나 현재가에서 빠진 가격은 '지난 판매가'로 표시해 쓴다.
+  // 연결 실패·로컬 가격은 쓰지 않는다.
+  const status = product.priceStatus
+  const past = !current && status?.origin === 'SHARED' && status.lookupStatus === 'OK' && status.freshness === 'EXPIRED'
+    ? product.currentPrice : null
   const estimate = product.referenceEstimate
-  const price = current ?? estimate
-  if (!product.active || !price || !Number.isSafeInteger(price.amountKrw) || price.amountKrw <= 0) return null
+  const price = current ?? past ?? estimate
+  if (!price || !Number.isSafeInteger(price.amountKrw) || price.amountKrw <= 0) return null
   if (product.type === 'RAM') {
     const modules = ramModules(specification)
-    if (!modules || !current && estimate?.moduleCount !== modules.quantity) return null
+    if (!modules || !current && !past && estimate?.moduleCount !== modules.quantity) return null
   }
   return { id: product.id, name: `${product.manufacturer} ${product.modelName}`, priceKrw: price.amountKrw,
-    priceKind: current ? 'CURRENT' : 'ESTIMATE', priceSource: current?.sourceName ?? null,
-    priceUrl: current?.sourceUrl ?? null, specification, attributions: detail.attributions }
+    priceKind: current ? 'CURRENT' : past ? 'PAST' : 'ESTIMATE', priceSource: (current ?? past)?.sourceName ?? null,
+    priceUrl: (current ?? past)?.sourceUrl ?? null, observedAt: (current ?? past)?.observedAt ?? null, specification, attributions: detail.attributions }
 }
 
 export async function loadUpgradeProducts(client: CatalogClient, signal: AbortSignal): Promise<UpgradeProducts> {
@@ -28,7 +35,7 @@ export async function loadUpgradeProducts(client: CatalogClient, signal: AbortSi
       const result = await client.search(kind, '', { page, size: 100, signal })
       signal.throwIfAborted()
       for (const product of result.items) {
-        if (product.type === kind && product.active &&
+        if (product.type === kind &&
           (product.currentPrice || product.referenceEstimate) &&
           (kind === 'RAM' || productScore(kind, `${product.manufacturer} ${product.modelName}`, kind === 'CPU' ? 'GAME' : 'WORK') !== null ||
             kind === 'CPU' && productScore(kind, product.modelName, 'WORK') !== null)) found.set(product.id, product)

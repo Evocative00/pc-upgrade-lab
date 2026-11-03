@@ -6,17 +6,18 @@ import { GameRequirementsDiagnosis } from './GameRequirementsDiagnosis.tsx'
 import { WorkloadDiagnosis } from './WorkloadDiagnosis.tsx'
 import { UpgradeGoalForm } from './UpgradeGoalForm.tsx'
 import { defaultGoal, goalIsReady, goalSummary, isUpgradeGoal, withGoalDefaults } from './plannerGoal.ts'
-import { UpgradeCompatibilityPanel } from './UpgradeCompatibilityPanel.tsx'
+import { PlannerStepper } from './PlannerStepper.tsx'
 import { UpgradeRecommendationPanel } from './UpgradeRecommendationPanel.tsx'
 import { useUpgradePlan } from './useUpgradePlan.ts'
-import { isRecommendPriority, isUpgradePartKind, type RecommendPriority, type UpgradePartKind } from './upgradeRecommendation.ts'
+import {
+  isPlanOption, isPlanOverrides, type PlanOption, type PlanOverrides, type UpgradePartKind,
+} from './upgradeRecommendation.ts'
 import './planner.css'
 
-type Step = 2 | 3 | 4 | 5
+// 호환성 검사는 추천 플랜(4단계) 아래에 함께 보여 주므로 단계는 4개다.
+type Step = 2 | 3 | 4
 
 // null이면 진단에서 부족한 부품을 그대로 쓴다.
-const isPartKindList = (value: unknown): value is UpgradePartKind[] | null =>
-  value === null || Array.isArray(value) && value.length <= 3 && new Set(value).size === value.length && value.every(isUpgradePartKind)
 const isIdList = (value: unknown): value is string[] =>
   Array.isArray(value) && value.length <= 100 && value.every((item) => typeof item === 'string' && item.trim().length > 0 && item.length <= 128)
 
@@ -25,18 +26,6 @@ type Props = {
   pcName: string
   parts: PartInput[]
   onBackToPc: () => void
-}
-
-const STEP_LABELS = ['내 PC', '예산·목적', '진단', '추천 플랜', '호환성']
-
-function Stepper({ current }: { current: Step }) {
-  return <nav className="planner-steps" aria-label="업그레이드 진행 단계">
-    {STEP_LABELS.map((label, index) => {
-      const step = index + 1
-      return <span key={label} className={step === current ? 'is-current' : step < current ? 'is-complete' : undefined}
-        aria-current={step === current ? 'step' : undefined}>{step < current ? '✓' : step} {label}</span>
-    })}
-  </nav>
 }
 
 // 진단 아래에 접어 두는 내 PC 부품 목록
@@ -56,22 +45,32 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
   const [storedGoal, setGoal] = usePageState(`${stateKey}goal`, defaultGoal, isUpgradeGoal)
   const goal = withGoalDefaults(storedGoal)
   // 임시 상태가 없는 직접 주소·초기화 후 방문 기록에서는 조건부터 다시 입력한다.
-  const step: Step = requestedStep < 2 || !goalIsReady(goal) ? 2 : requestedStep as Step
-  const [priority, setPriority] = usePageState<RecommendPriority>(`${stateKey}priority`, 'PERFORMANCE', isRecommendPriority)
-  const [upgradeKinds, setUpgradeKinds] = usePageState<UpgradePartKind[] | null>(`${stateKey}upgradeParts`, null, isPartKindList)
-  // 호환성 검사(5단계)에서 맞지 않아 후보에서 뺀 카탈로그 상품
+  // 예전 주소의 5단계(호환성)는 이제 추천 플랜에 포함되어 4단계로 연다.
+  const step: Step = requestedStep < 2 || !goalIsReady(goal) ? 2 : Math.min(requestedStep, 4) as Step
+  // 추천 안(가성비·추천·최고 성능)과 그 안에서 사용자가 직접 바꾼 부품
+  const [option, setOption] = usePageState<PlanOption>(`${stateKey}planOption`, 'BALANCED', isPlanOption)
+  const [overrides, setOverrides] = usePageState<PlanOverrides>(`${stateKey}planOverrides`, {}, isPlanOverrides)
+  // 호환성 검사에서 맞지 않아 후보에서 뺀 카탈로그 상품
   const [excludedIds, setExcludedIds] = usePageState<string[]>(`${stateKey}excludedProducts`, [], isIdList)
-  const planState = useUpgradePlan({ parts, goal, priority, kinds: upgradeKinds, excludedIds, enabled: step >= 4 })
+  const planState = useUpgradePlan({ parts, goal, option, overrides, excludedIds, enabled: step >= 4 })
+  const chooseOption = (next: PlanOption) => { setOption(next); setOverrides({}) }
+  const override = (kind: UpgradePartKind, value: string | null) => {
+    const next = { ...overrides }
+    if (value === null) delete next[kind]
+    else next[kind] = value
+    setOverrides(next)
+  }
 
   if (step === 2) return <UpgradeGoalForm stateKey={stateKey} pcName={pcName} parts={parts} goal={goal} onChange={setGoal}
-    onBack={onBackToPc} onNext={() => setStep(3)} />
+    onBack={onBackToPc} onNext={() => setStep(3)} onStep={setStep} />
 
   return <div className="planner-shell">
-    <Stepper current={step} />
+    <PlannerStepper current={step} canGo={(target) => target === 1 || target === 2 || goalIsReady(goal)}
+      onGo={(target) => target === 1 ? onBackToPc() : setStep(target)} />
     <header className="planner-heading">
       <button type="button" className="button button--ghost" onClick={() => setStep((step - 1) as PlannerStep)}>← 이전 단계</button>
       <p className="eyebrow">UPGRADE PLAN</p>
-      <h1>{step === 3 ? '현재 구성 진단' : step === 4 ? '추천 플랜' : '호환성 상세'}</h1>
+      <h1>{step === 3 ? '현재 구성 진단' : '추천 플랜'}</h1>
       <p className="planner-goal-line">{goalSummary(goal)} · 예산 ₩{goal.budgetWon.toLocaleString('ko-KR')}</p>
     </header>
     {step === 3 && <div className="planner-main">
@@ -83,14 +82,14 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
       <CurrentPc pcName={pcName} parts={parts} />
     </div>}
     {step === 4 && <div className="planner-main">
-      <UpgradeRecommendationPanel parts={parts} goal={goal} priority={priority} onPriorityChange={setPriority}
-        onKindsChange={setUpgradeKinds} state={planState} excludedCount={excludedIds.length} onResetExcluded={() => setExcludedIds([])} />
+      <UpgradeRecommendationPanel parts={parts} goal={goal} state={planState} option={option} onOptionChange={chooseOption}
+        overrides={overrides} onOverride={override}
+        excludedCount={excludedIds.length} onResetExcluded={() => setExcludedIds([])} onLinkParts={onBackToPc}
+        onExclude={(ids) => { setExcludedIds([...new Set([...excludedIds, ...ids])]); setOverrides({}) }} />
     </div>}
-    {step === 5 && <UpgradeCompatibilityPanel parts={parts} state={planState} onLinkParts={onBackToPc}
-      onExclude={(ids) => setExcludedIds([...new Set([...excludedIds, ...ids])])} />}
     <div className="planner-actions">
-      {step < 5 ? <button type="button" className="button button--primary button--lg" onClick={() => setStep((step + 1) as PlannerStep)}>
-        {step === 3 ? '추천 플랜 보기' : '호환성 상세 보기'} →</button> :
+      {step < 4 ? <button type="button" className="button button--primary button--lg" onClick={() => setStep((step + 1) as PlannerStep)}>
+        추천 플랜 보기 →</button> :
         <button type="button" className="button button--ghost button--lg" onClick={onBackToPc}>내 PC로 돌아가기</button>}
     </div>
   </div>

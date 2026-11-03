@@ -3,8 +3,9 @@ import { catalogClient } from '../catalog/catalogClient.ts'
 import type { PartInput } from '../pc-scan/types.ts'
 import type { UpgradeGoal } from './plannerGoal.ts'
 import {
-  buildUpgradePlan, planTargets, UPGRADE_PART_KINDS,
-  type KindTarget, type PricedProduct, type RecommendPriority, type UpgradePartKind, type UpgradePlan,
+  applyOverrides, buildUpgradeOptions, planTargets, UPGRADE_PART_KINDS,
+  type KindTarget, type PlanOption, type PlanOverrides, type PricedProduct, type UpgradeOptions, type UpgradePartKind,
+  type UpgradePlan,
 } from './upgradeRecommendation.ts'
 import { loadUpgradeProducts } from './recommendationProducts.ts'
 
@@ -14,8 +15,10 @@ export type ProductLoad = { status: 'loading' } | { status: 'error'; message: st
 export type UpgradePlanState = {
   load: ProductLoad
   targets: Partial<Record<UpgradePartKind, KindTarget>>
-  // 실제 교체 대상. 사용자가 고르지 않았으면 진단에서 부족한 부품 전부.
+  // 교체를 검토하는 부품. 진단에서 부족한 부품이고, 없으면 CPU·그래픽카드.
   selected: UpgradePartKind[]
+  options: UpgradeOptions | null
+  // 고른 안에 직접 바꾼 부품까지 반영한 최종 플랜(5단계 호환성 검사에도 쓴다).
   plan: UpgradePlan | null
   retry: () => void
 }
@@ -43,18 +46,21 @@ function useProducts(enabled: boolean): { load: ProductLoad; retry: () => void }
 }
 
 /** 추천 플랜(4단계)과 호환성 검사(5단계)가 같은 플랜을 쓰도록 한 곳에서 계산한다. */
-export function useUpgradePlan({ parts, goal, priority, kinds, excludedIds, enabled }: {
+export function useUpgradePlan({ parts, goal, option, overrides, excludedIds, enabled }: {
   parts: PartInput[]
   goal: UpgradeGoal
-  priority: RecommendPriority
-  kinds: UpgradePartKind[] | null
+  option: PlanOption
+  overrides: PlanOverrides
   excludedIds: string[]
   enabled: boolean
 }): UpgradePlanState {
   const { load, retry } = useProducts(enabled)
   const targets = planTargets(parts, goal)
-  const selected = kinds ?? UPGRADE_PART_KINDS.filter((kind) => targets[kind]?.needed === true)
-  const plan = load.status === 'ready' ? buildUpgradePlan({ parts, productsByKind: load.products, kinds: selected, targets,
-    priority, budgetWon: goal.budgetWon, cpuMetric: goal.purpose === 'GAME' ? 'GAME' : 'WORK', excludedIds }) : null
-  return { load, targets, selected, plan, retry }
+  const needed = UPGRADE_PART_KINDS.filter((kind) => targets[kind]?.needed === true)
+  // 부족한 부품이 없으면 '더 빠르게' 안을 보여 주기 위해 CPU·그래픽카드를 검토한다(메모리 용량은 체감 향상이 작다).
+  const selected: UpgradePartKind[] = needed.length ? needed : ['CPU', 'GPU']
+  const options = load.status === 'ready' ? buildUpgradeOptions({ parts, productsByKind: load.products, kinds: selected, targets,
+    budgetWon: goal.budgetWon, cpuMetric: goal.purpose === 'GAME' ? 'GAME' : 'WORK', excludedIds }) : null
+  const plan = options ? applyOverrides(options.plans[option], overrides, options) : null
+  return { load, targets, selected, options, plan, retry }
 }

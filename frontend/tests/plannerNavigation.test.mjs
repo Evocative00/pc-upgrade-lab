@@ -20,7 +20,7 @@ test('추천 목록 조회 실패 후 다시 불러오면 현재 플랜을 복�
   const { defaultGoal } = h.load('features/planner/plannerGoal.ts')
   let state
   function Probe() {
-    state = useUpgradePlan({ parts: [], goal: defaultGoal(), priority: 'BUDGET', kinds: [], excludedIds: [], enabled: true })
+    state = useUpgradePlan({ parts: [], goal: defaultGoal(), option: 'VALUE', overrides: {}, excludedIds: [], enabled: true })
     return null
   }
   h.paint(Probe)
@@ -39,12 +39,41 @@ test('추천 목록 조회 실패 후 다시 불러오면 현재 플랜을 복�
 for (const status of ['loading', 'error']) {
   test(`추천 ${status}에서는 기존 부품을 최종 구성 검사 결과로 표시하지 않는다`, () => {
     const h = harness()
-    const { UpgradeCompatibilityPanel } = h.load('features/planner/UpgradeCompatibilityPanel.tsx')
-    const tree = h.paint(UpgradeCompatibilityPanel, { parts: [part('CPU', 'Ryzen 5 5600')],
-      state: { load: { status }, plan: null, selected: [], targets: {}, retry() {} }, onExclude() {}, onLinkParts() {} })
-    assert.doesNotMatch(text(tree), /최종 구성 호환성|모든 부품 검사됨/)
+    // 호환성 결과는 추천 플랜의 최종 구성 목록 안에서만 보여 준다.
+    const { UpgradeRecommendationPanel } = h.load('features/planner/UpgradeRecommendationPanel.tsx')
+    const { defaultGoal } = h.load('features/planner/plannerGoal.ts')
+    const tree = h.paint(UpgradeRecommendationPanel, { parts: [part('CPU', 'Ryzen 5 5600')], goal: defaultGoal(),
+      state: { load: { status, message: 'x' }, plan: null, options: null, selected: [], targets: {}, retry() {} },
+      option: 'BALANCED', onOptionChange() {}, overrides: {}, onOverride() {}, excludedCount: 0, onResetExcluded() {},
+      onExclude() {}, onLinkParts() {} })
+    assert.doesNotMatch(text(tree), /최종 구성|호환성 (호환|비호환|확인 필요)|검사 제외/)
   })
 }
+
+test('사양이 미확인인 추천 화면은 부족 부품이 없어도 목표 충족을 확정하지 않는다', () => {
+  const h = harness()
+  const { UpgradeRecommendationPanel } = h.load('features/planner/UpgradeRecommendationPanel.tsx')
+  const { defaultGoal } = h.load('features/planner/plannerGoal.ts')
+  const { planTargets, buildUpgradeOptions } = h.load('features/planner/upgradeRecommendation.ts')
+  const parts = [part('CPU', 'Unknown processor'), part('GPU', 'Unknown graphics'),
+    part('RAM', 'DDR4 32GB', { capacityBytes: 32 * GIB })]
+  const goal = { ...defaultGoal(), purpose: 'GAME', games: ['발로란트'] }
+  const targets = planTargets(parts, goal)
+  assert.equal(targets.CPU.needed, null)
+  assert.equal(targets.GPU.needed, null)
+  assert.equal(targets.RAM.needed, false)
+  const options = buildUpgradeOptions({ parts, productsByKind: {}, kinds: ['CPU', 'GPU'], targets,
+    budgetWon: goal.budgetWon, cpuMetric: 'GAME' })
+  const tree = h.paint(UpgradeRecommendationPanel, { parts, goal,
+    state: { load: { status: 'ready', products: {} }, plan: options.plans.BALANCED, options,
+      selected: ['CPU', 'GPU'], targets, retry() {} },
+    option: 'BALANCED', onOptionChange() {}, overrides: {}, onOverride() {}, excludedCount: 0,
+    onResetExcluded() {}, onExclude() {}, onLinkParts() {} })
+  assert.match(text(tree), /목표 충족 여부를 확인할 수 없습니다/)
+  assert.match(text(tree), /확인 필요: CPU·그래픽카드/)
+  assert.match(text(tree), /바꾸지 않음 · 목표 충족 확인 필요/)
+  assert.doesNotMatch(text(tree), /지금 구성으로 목표를 충족합니다|지금 구성으로 충분/)
+})
 
 test('조건 화면을 다녀온 뒤 새 가격을 받기 전에는 이전 플랜을 최종 검사에 쓰지 않는다', async () => {
   let pending = false
@@ -57,7 +86,7 @@ test('조건 화면을 다녀온 뒤 새 가격을 받기 전에는 이전 플�
   const { defaultGoal } = h.load('features/planner/plannerGoal.ts')
   let enabled = true, state
   function Probe() {
-    state = useUpgradePlan({ parts: [], goal: defaultGoal(), priority: 'BUDGET', kinds: [], excludedIds: [], enabled })
+    state = useUpgradePlan({ parts: [], goal: defaultGoal(), option: 'VALUE', overrides: {}, excludedIds: [], enabled })
     return null
   }
   h.paint(Probe)
