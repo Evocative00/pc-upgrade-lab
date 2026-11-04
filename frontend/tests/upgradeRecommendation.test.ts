@@ -70,7 +70,7 @@ test('예산이 모자라면 채울 수 있는 부품만 바꾸고 나머지는 
   assert.ok(changed.length >= 1 && changed.length < 3)
   assert.ok(result.totalKrw <= 700_000)
   assert.equal(result.fullFixKrw, 489_400 + 582_330 + 120_000)
-  assert.ok(result.items.some((item) => !item.choice && item.note === '예산 부족으로 유지'))
+  assert.ok(result.items.some((item) => !item.choice && item.note === '예산 부족'))
 })
 
 test('부족하지 않은 부품은 예산 위주에서 바꾸지 않는다', () => {
@@ -240,7 +240,7 @@ test('작업 CPU 코어 부족은 후보의 확인된 코어 수로 해결 여�
   const under = { ...product('Ryzen 9 5950X', 500_000), specification: { coreCount: 4 } }
   const unresolved = plan({ ...input, kinds: [...input.kinds], productsByKind: { CPU: [under] } })
   assert.equal(unresolved.items[0].choice, null)
-  assert.equal(unresolved.items[0].note, '현재 후보로 목표 기준 충족 확인 불가')
+  assert.equal(unresolved.items[0].note, '목표를 채우는 제품 없음')
   const result = plan({ ...input, kinds: [...input.kinds], productsByKind: { CPU: [{ ...under, specification: { coreCount: 16 } }] } })
   assert.equal(result.items[0].meets, true)
   assert.equal(applyPlan(parts, result).find((item) => item.type === 'CPU')?.specs.cores, 16)

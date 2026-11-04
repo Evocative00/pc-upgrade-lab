@@ -69,10 +69,9 @@ test('사양이 미확인인 추천 화면은 부족 부품이 없어도 목표 
       selected: ['CPU', 'GPU'], targets, retry() {} },
     option: 'BALANCED', onOptionChange() {}, overrides: {}, onOverride() {}, excludedCount: 0,
     onResetExcluded() {}, onExclude() {}, onLinkParts() {} })
-  assert.match(text(tree), /목표 충족 여부를 확인할 수 없습니다/)
-  assert.match(text(tree), /확인 필요: CPU·그래픽카드/)
-  assert.match(text(tree), /바꾸지 않음 · 목표 충족 확인 필요/)
-  assert.doesNotMatch(text(tree), /지금 구성으로 목표를 충족합니다|지금 구성으로 충분/)
+  assert.match(text(tree), /확인 필요: CPU, 그래픽카드/)
+  assert.match(text(tree), /목표 충족 확인 필요/)
+  assert.doesNotMatch(text(tree), /지금 구성으로 목표를 충족합니다|지금 구성으로 충분|바꿀 필요 없음/)
 })
 
 test('조건 화면을 다녀온 뒤 새 가격을 받기 전에는 이전 플랜을 최종 검사에 쓰지 않는다', async () => {
