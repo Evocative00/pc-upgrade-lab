@@ -383,6 +383,45 @@ tasks.register('setupDevCatalog', JavaExec) {
     }
 }
 
+// 가격 판단 기능 전용 테이블(price_history_observation)에만 쓴다. 기본값은 DB 없는 파일 검증이다.
+tasks.register('importPriceHistory', JavaExec) {
+    group = 'application'
+    description = 'Validate reviewed price observation files; -PcheckPriceHistoryDb=true previews against the DB read-only, -PapplyPriceHistory=true commits new history rows.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.pricetrend.PriceTrendApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+    doFirst {
+        def apply = providers.gradleProperty('applyPriceHistory').getOrElse('false')
+        def check = providers.gradleProperty('checkPriceHistoryDb').getOrElse('false')
+        if (!(apply in ['true','false']) || !(check in ['true','false']) || (apply == 'true' && check == 'true')) {
+            throw new GradleException('Choose only one: -PcheckPriceHistoryDb=true or -PapplyPriceHistory=true')
+        }
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath, '--history']
+            + (apply == 'true' ? ['--apply'] : check == 'true' ? ['--check-db'] : []))
+    }
+}
+
+// 기본값은 DB 읽기 전용 미리보기다. -PapplyPriceAnalysis=true일 때만 price_analysis_result에 스냅샷을 추가한다.
+tasks.register('analyzePriceTrends', JavaExec) {
+    group = 'application'
+    description = 'Preview price verdicts from registered observations; -PapplyPriceAnalysis=true stores an analysis snapshot.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.pcupgradelab.pricetrend.PriceTrendApplication'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    jvmArgs '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+    doFirst {
+        def apply = providers.gradleProperty('applyPriceAnalysis').getOrElse('false')
+        if (!(apply in ['true', 'false'])) {
+            throw new GradleException('applyPriceAnalysis must be true or false')
+        }
+        setArgs(['--source-root', rootProject.projectDir.parentFile.absolutePath, '--analyze']
+            + (apply == 'true' ? ['--apply'] : []))
+    }
+}
+
 // 파워 4종·케이스 3종의 공개 자료만 검증한다. DB·개인 설정·실제 반영 경로가 없다.
 tasks.register('previewPowerCaseCatalog', JavaExec) {
     group = 'verification'
