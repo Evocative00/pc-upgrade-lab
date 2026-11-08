@@ -6,6 +6,10 @@ import { PcAssemblyScroll } from './PcAssemblyScroll.tsx'
 import './landing.css'
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+const sampleChecked = virtualBuildSlots.filter((row) => row.status === 'checked').length
+const sampleNeedsCheck = virtualBuildSlots.filter((row) => row.status === 'needs-check').length
+const sampleOutsideScope = virtualBuildSlots.length - sampleChecked - sampleNeedsCheck
+
 function useCompact() {
   const [compact, setCompact] = useState(() => window.matchMedia(compactLandingQuery).matches)
   useEffect(() => {
@@ -181,8 +185,8 @@ export function LandingPage() {
             <div className="landing-build">
               <div className="landing-build__bar">
                 <div className="landing-build__title">
-                  <span>내 구성</span>
-                  <span className="landing-build__state">저장 안 됨 · 로그인하면 내 PC로 저장</span>
+                  <span>예시 구성</span>
+                  <span className="landing-build__state">부품별 호환성 · 가격 표시 예시</span>
                 </div>
                 <span className="landing-mono landing-build__count">8 SLOTS</span>
               </div>
@@ -194,22 +198,21 @@ export function LandingPage() {
                   <span role="columnheader" className="landing-build__price">현재가</span>
                 </div>
                 {virtualBuildSlots.map((row) => (
-                  <div role="row" className={`landing-build__row${row.warn ? ' landing-build__row--warn' : ''}`} key={row.slot}>
+                  <div role="row" className={`landing-build__row${row.status === 'needs-check' ? ' landing-build__row--warn' : ''}`} key={row.slot}>
                     <span role="cell" className="landing-build__slot">{row.slot}</span>
                     <span role="cell">{row.part}{row.kept && <span className="landing-build__kept">기존 부품</span>}</span>
                     <span role="cell" className="landing-build__note">
-                      {row.warn
-                        ? <span className="landing-build__warn" aria-label="확인 필요">!</span>
-                        : <span className="landing-build__ok" aria-label="호환">✓</span>}
+                      {row.status === 'needs-check' && <span className="landing-build__warn" aria-hidden="true">!</span>}
+                      {row.status === 'checked' && <span className="landing-build__ok" aria-hidden="true">✓</span>}
                       {row.note}
                     </span>
-                    <span role="cell" className="landing-mono landing-build__price">{row.price}</span>
+                    <span role="cell" className="landing-mono landing-build__price">{row.kept ? '—' : '미확인'}</span>
                   </div>
                 ))}
               </div>
               <div className="landing-build__foot">
-                <span>호환 확인 <strong>7</strong> · 확인 필요 <strong>1</strong></span>
-                <span className="landing-build__total"><span>새로 살 부품 합계</span><span className="landing-mono">[합계]</span></span>
+                <span>규격 일치 <strong>{sampleChecked}</strong> · 확인 필요 <strong>{sampleNeedsCheck}</strong> · 별도 확인 <strong>{sampleOutsideScope}</strong></span>
+                <span className="landing-build__total"><span>새로 살 부품 합계</span><span className="landing-mono">가격 미확인</span></span>
               </div>
             </div>
           </Reveal>

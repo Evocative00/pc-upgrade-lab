@@ -49,6 +49,79 @@ test('추천 목록 조회 실패 후 다시 불러오면 현재 플랜을 복�
   assert.ok(state.plan)
 })
 
+test('잘못된 예산 초안은 남아 있고 버튼·단계 링크·이전 진단 주소로 진행하지 않는다', () => {
+  const h = harness({ realPlanner: true, initialHash: '#/upgrade/pcs/1?step=2' })
+  const { UpgradePlanner } = h.load('features/planner/UpgradePlanner.tsx')
+  const props = { stateKey: 'pc:1:', pcName: '내 PC', parts: [part('CPU', 'Ryzen 5 5600')], onBackToPc() {} }
+  const budgetInput = (tree) => find(tree, (node) => node.props?.['aria-label'] === '업그레이드 예산')
+  const stepButton = (tree, label) => find(tree, (node) => node.type === 'button' && text(node) === label)
+  button(h.paint(UpgradePlanner, props), '게임').props.onClick()
+  button(h.paint(UpgradePlanner, props), '발로란트').props.onClick()
+  let tree = h.paint(UpgradePlanner, props)
+  assert.equal(button(tree, '진단 결과 보기 →').props.disabled, false)
+  budgetInput(tree).props.onChange({ target: { value: '99999' } })
+  tree = h.paint(UpgradePlanner, props)
+  budgetInput(tree).props.onBlur?.()
+  assert.equal(button(tree, '진단 결과 보기 →').props.disabled, true)
+  assert.equal(stepButton(tree, '3 진단').props.disabled, true)
+  assert.equal(stepButton(tree, '4 추천 플랜').props.disabled, true)
+  assert.equal(budgetInput(tree).props['aria-invalid'], true)
+  assert.match(text(tree), /10만 원부터 500만 원까지/)
+  h.window.location.hash = '#/upgrade/pcs/1?step=3'
+  tree = h.paint(UpgradePlanner, props)
+  assert.equal(budgetInput(tree).props.value, '99999')
+  assert.doesNotMatch(text(tree), /현재 구성 진단/)
+  assert.match(h.window.location.hash, /step=2$/)
+  button(h.paint(UpgradePlanner, props), '50만').props.onClick()
+  tree = h.paint(UpgradePlanner, props)
+  assert.equal(budgetInput(tree).props.value, '500000')
+  assert.equal(button(tree, '진단 결과 보기 →').props.disabled, false)
+})
+
+test('직접 입력한 게임은 조합 완료 후 Enter로 추가하고 선택 목록에서 바로 해제한다', () => {
+  const h = harness({ realPlanner: true, initialHash: '#/upgrade/pcs/1?step=2' })
+  const { UpgradePlanner } = h.load('features/planner/UpgradePlanner.tsx')
+  const props = { stateKey: 'pc:1:', pcName: '내 PC', parts: [part('CPU', 'Ryzen 5 5600')], onBackToPc() {} }
+  const input = (tree) => find(tree, (node) => node.type === 'input' && node.props.id === 'planner-custom-game')
+  const remove = (tree) => elements(tree).find((node) => node.props?.['aria-label'] === '직접 입력한 게임 선택 해제')
+  button(h.paint(UpgradePlanner, props), '게임').props.onClick()
+  input(h.paint(UpgradePlanner, props)).props.onChange({ target: { value: ' 직접 입력한 게임 ' } })
+  let tree = h.paint(UpgradePlanner, props)
+  input(tree).props.onKeyDown({ key: 'Enter', nativeEvent: { isComposing: true }, preventDefault() { assert.fail('조합을 막지 않는다') } })
+  assert.equal(remove(h.paint(UpgradePlanner, props)), undefined)
+  let prevented = false
+  input(tree).props.onKeyDown({ key: 'Enter', nativeEvent: { isComposing: false }, preventDefault() { prevented = true } })
+  assert.equal(prevented, true)
+  tree = h.paint(UpgradePlanner, props)
+  assert.equal(input(tree).props.value, '')
+  assert.equal(button(tree, '진단 결과 보기 →').props.disabled, false)
+  remove(tree).props.onClick()
+  tree = h.paint(UpgradePlanner, props)
+  assert.equal(remove(tree), undefined)
+  assert.equal(button(tree, '진단 결과 보기 →').props.disabled, true)
+})
+
+test('선택된 추천 안을 다시 눌러도 직접 바꾼 부품을 유지하며 되돌리기에서만 초기화한다', async () => {
+  const h = harness({ realPlanner: true, initialHash: '#/upgrade/pcs/1?step=4' })
+  const { UpgradePlanner } = h.load('features/planner/UpgradePlanner.tsx')
+  const { defaultGoal, isUpgradeGoal } = h.load('features/planner/plannerGoal.ts')
+  const { KEEP, isPlanOverrides } = h.load('features/planner/upgradeRecommendation.ts')
+  const { pageStateStore } = h.load('lib/pageState.ts')
+  const stateKey = 'pc:1:'
+  const overrides = { CPU: KEEP }
+  pageStateStore().write(`${stateKey}goal`, { ...defaultGoal(), purpose: 'OFFICE', programs: ['브라우저 탭'] }, defaultGoal, isUpgradeGoal)
+  pageStateStore().write(`${stateKey}planOverrides`, overrides, {}, isPlanOverrides)
+  const props = { stateKey, pcName: '내 PC', parts: [part('CPU', 'Ryzen 5 5600')], onBackToPc() {} }
+  h.paint(UpgradePlanner, props)
+  await new Promise(setImmediate)
+  let tree = h.paint(UpgradePlanner, props)
+  find(tree, (node) => node.props?.role === 'radio' && node.props['aria-checked']).props.onClick()
+  tree = h.paint(UpgradePlanner, props)
+  assert.deepEqual(pageStateStore().read(`${stateKey}planOverrides`, {}, isPlanOverrides), overrides)
+  button(tree, '추천대로 되돌리기').props.onClick()
+  assert.deepEqual(pageStateStore().read(`${stateKey}planOverrides`, {}, isPlanOverrides), {})
+})
+
 test('진단에서 먼저 시작한 상품 조회를 추천 단계와 세 가지 추천 안에서 이어 쓴다', async () => {
   let release
   const pending = new Promise((resolve) => { release = resolve })
@@ -448,6 +521,26 @@ test('계획 왕복은 자동 인식 결과와 부품 초안을 유지하고 Ent
   const saved = bridge.loadDraft().request
   assert.equal(saved.name, initial.name)
   assert.deepEqual(saved.parts.map((item) => item.displayName).sort(), ['8GiB RAM', '수집한 CPU'])
+})
+
+test('자동 인식 부품 교체를 취소하면 수집 완료만 표시하고 기존 부품을 유지한다', () => {
+  const h = harness()
+  let confirms = 0
+  h.window.confirm = () => { confirms++; return false }
+  const { PcForm } = h.load('features/pc/components/PcForm.tsx')
+  const bridge = h.load('features/auth/draftBridge.ts')
+  const original = { ...part('CPU', '기존 자동 인식 CPU'), source: 'AUTO' }
+  const props = { initial: { name: 'PC A', parts: [original] }, submitLabel: '저장', onCancel() {}, onSubmit() {} }
+
+  const tree = h.paint(PcForm, props)
+  button(tree, '내 PC 불러오기').props.onClick()
+  const collected = h.paint(PcForm, props)
+
+  assert.equal(confirms, 1)
+  assert.match(text(collected), /PC 사양을 읽었습니다/)
+  assert.doesNotMatch(text(collected), /입력란에 반영했습니다/)
+  assert.equal(bridge.saveActiveDraft(), true)
+  assert.deepEqual(bridge.loadDraft().request.parts, [original])
 })
 
 test('플랜 조건은 브라우저 뒤로가기·앞으로가기·다른 화면 왕복·새로고침 후 복원된다', () => {

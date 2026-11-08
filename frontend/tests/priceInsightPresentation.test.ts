@@ -86,6 +86,17 @@ test('chart leaves an unobserved Korean calendar date empty even when the gap is
   assert.deepEqual(geometry.lines[0].segments, [])
 })
 
+test('chart keys distinguish sale SKU and source URL within a listing', () => {
+  const listing = series('1', [['2026-10-08T00:00:00Z', 100]])
+  const geometry = chartGeometry([
+    listing,
+    { ...listing, saleSku: 'OTHER-SKU' },
+    { ...listing, sourceUrl: 'https://example.com/other' },
+  ])
+  assert.ok(geometry)
+  assert.equal(new Set(geometry.lines.map((line) => line.key)).size, 3)
+})
+
 test('does not generate a chart from a large otherwise valid history response', () => {
   const row = series('A', [['2026-10-01T14:59:00Z', 20_000]])
   const history = Array.from({ length: 32 }, (_, index) => ({ ...row,

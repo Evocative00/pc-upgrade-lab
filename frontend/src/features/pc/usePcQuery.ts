@@ -5,22 +5,25 @@ export type QueryState<T> =
   | { status: 'ready'; data: T }
   | { status: 'error'; message: string }
 
-// 화면이 열릴 때 한 번 불러온다. 대상이 바뀌면 호출하는 쪽에서 key로 다시 마운트한다.
-export function usePcQuery<T>(load: () => Promise<T>): QueryState<T> {
-  const [state, setState] = useState<QueryState<T>>({ status: 'loading' })
+// 대상이 바뀌면 key로 다시 마운트하고, 같은 화면에서 다시 읽으려면 attempt를 늘린다.
+export function usePcQuery<T>(load: () => Promise<T>, attempt = 0): QueryState<T> {
+  const [result, setResult] = useState<{ attempt: number; state: QueryState<T> }>()
 
   useEffect(() => {
     let ignore = false
 
     load().then(
       (data) => {
-        if (!ignore) setState({ status: 'ready', data })
+        if (!ignore) setResult({ attempt, state: { status: 'ready', data } })
       },
       (error: unknown) => {
         if (!ignore) {
-          setState({
-            status: 'error',
-            message: error instanceof Error ? error.message : '알 수 없는 오류',
+          setResult({
+            attempt,
+            state: {
+              status: 'error',
+              message: error instanceof Error ? error.message : '알 수 없는 오류',
+            },
           })
         }
       },
@@ -29,9 +32,9 @@ export function usePcQuery<T>(load: () => Promise<T>): QueryState<T> {
     return () => {
       ignore = true
     }
-    // 최초 마운트 때만 불러온다.
+    // 콜백이 바뀌어도 최초 마운트와 재시도 때만 불러온다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [attempt])
 
-  return state
+  return result?.attempt === attempt ? result.state : { status: 'loading' }
 }

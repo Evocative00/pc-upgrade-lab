@@ -85,12 +85,12 @@ test('첫 화면 문구는 인트로 → 진행도 → 전원 켜는 중 → 캐
   assert.deepEqual(heroCopyAt(Number.NaN), heroCopyAt(0))
 })
 
-test('회원 표시와 가상 조립 예시는 지어낸 가격 없이 자리 표시를 유지한다', () => {
+test('회원 표시와 가상 조립 예시는 확인이 필요한 규격과 검사 범위 밖 항목을 구분한다', () => {
   assert.equal(providerLabel('google'), 'Google 계정')
   assert.equal(providerLabel('KAKAO'), '카카오 계정')
   assert.equal(providerLabel('github'), 'github 계정')
   assert.equal(nameInitial(' 김민준'), '김')
   assert.equal(nameInitial(''), '?')
-  assert.ok(virtualBuildSlots.every((row) => row.price === '[현재가]' || row.price === '—'))
-  assert.equal(virtualBuildSlots.filter((row) => row.warn).length, 1)
+  assert.deepEqual(virtualBuildSlots.filter((row) => row.status === 'needs-check').map((row) => row.slot), ['파워'])
+  assert.deepEqual(virtualBuildSlots.filter((row) => row.status === 'outside-scope').map((row) => row.slot), ['CPU 쿨러', 'SSD'])
 })

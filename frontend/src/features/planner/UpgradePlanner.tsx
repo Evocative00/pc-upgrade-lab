@@ -1,12 +1,13 @@
-import { useMemo } from 'react'
-import { usePlannerStep, type PlannerStep } from '../../lib/router.ts'
+import { useEffect, useMemo } from 'react'
+import { isString } from '../../lib/pageState.ts'
+import { replacePlannerStep, usePlannerStep, type PlannerStep } from '../../lib/router.ts'
 import { usePageState } from '../../lib/usePageState.ts'
 import type { PartInput } from '../pc-scan/types.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { GameRequirementsDiagnosis } from './GameRequirementsDiagnosis.tsx'
 import { WorkloadDiagnosis } from './WorkloadDiagnosis.tsx'
 import { UpgradeGoalForm } from './UpgradeGoalForm.tsx'
-import { defaultGoal, goalIsReady, goalSummary, isUpgradeGoal, withGoalDefaults } from './plannerGoal.ts'
+import { defaultGoal, goalIsReady, goalSummary, isBudgetInRange, isUpgradeGoal, withGoalDefaults } from './plannerGoal.ts'
 import { PlannerStepper } from './PlannerStepper.tsx'
 import { UpgradeRecommendationPanel } from './UpgradeRecommendationPanel.tsx'
 import { useUpgradePlan } from './useUpgradePlan.ts'
@@ -45,9 +46,15 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
   const [requestedStep, setStep] = usePlannerStep(2)
   const [storedGoal, setGoal] = usePageState(`${stateKey}goal`, defaultGoal, isUpgradeGoal)
   const goal = useMemo(() => withGoalDefaults(storedGoal), [storedGoal])
+  const [budgetText, setBudgetText] = usePageState(`${stateKey}budgetText`, String(goal.budgetWon), isString)
+  const budgetWon = Number(budgetText)
   // 임시 상태가 없는 직접 주소·초기화 후 방문 기록에서는 조건부터 다시 입력한다.
   // 예전 주소의 5단계(호환성)는 이제 추천 플랜에 포함되어 4단계로 연다.
-  const step: Step = requestedStep < 2 || !goalIsReady(goal) ? 2 : Math.min(requestedStep, 4) as Step
+  const step: Step = requestedStep < 2 || !isBudgetInRange(budgetWon) || !goalIsReady(goal) ? 2 : Math.min(requestedStep, 4) as Step
+  useEffect(() => {
+    // 이전 주소에서 조건 화면으로 돌아왔다면 입력을 고치는 중에 진단 화면이 열리지 않게 한다.
+    if (requestedStep > 2 && step === 2) replacePlannerStep(2)
+  }, [requestedStep, step])
   // 추천 안(가성비·추천·최고 성능)과 그 안에서 사용자가 직접 바꾼 부품
   const [option, setOption] = usePageState<PlanOption>(`${stateKey}planOption`, 'BALANCED', isPlanOption)
   const [overrides, setOverrides] = usePageState<PlanOverrides>(`${stateKey}planOverrides`, {}, isPlanOverrides)
@@ -55,8 +62,14 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
   const [excludedIds, setExcludedIds] = usePageState<string[]>(`${stateKey}excludedProducts`, [], isIdList)
   // 진단을 보는 동안 추천에 필요한 상품과 가격을 준비한다.
   const planState = useUpgradePlan({ parts, goal, option, overrides, excludedIds, enabled: step >= 3 })
+  const changeBudget = (value: string) => {
+    setBudgetText(value)
+    const amount = Number(value)
+    if (isBudgetInRange(amount)) setGoal((current) => ({ ...current, budgetWon: amount }))
+  }
   const chooseOption = (next: PlanOption) => {
-    if (next !== option) setOption(next)
+    if (next === option) return
+    setOption(next)
     if (Object.keys(overrides).length > 0) setOverrides({})
   }
   const override = (kind: UpgradePartKind, value: string | null) => {
@@ -67,6 +80,7 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
   }
 
   if (step === 2) return <UpgradeGoalForm stateKey={stateKey} pcName={pcName} parts={parts} goal={goal} onChange={setGoal}
+    budgetText={budgetText} onBudgetTextChange={changeBudget}
     onBack={onBackToPc} onNext={() => setStep(3)} onStep={setStep} />
 
   return <div className="planner-shell">
@@ -88,7 +102,7 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
     </div>}
     {step === 4 && <div className="planner-main">
       <UpgradeRecommendationPanel parts={parts} goal={goal} state={planState} option={option} onOptionChange={chooseOption}
-        overrides={overrides} onOverride={override}
+        overrides={overrides} onOverride={override} onResetOverrides={() => setOverrides({})}
         excludedCount={excludedIds.length} onResetExcluded={() => setExcludedIds([])} onLinkParts={onBackToPc}
         onExclude={(ids) => { setExcludedIds([...new Set([...excludedIds, ...ids])]); setOverrides({}) }} />
     </div>}

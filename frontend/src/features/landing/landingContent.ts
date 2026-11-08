@@ -76,21 +76,19 @@ export type VirtualBuildSlot = {
   slot: string
   part: string
   note: string
-  // 현재가는 가격 데이터를 연결하기 전까지 자리 표시로 둔다.
-  price: string
+  status: 'checked' | 'needs-check' | 'outside-scope'
   kept?: boolean
-  warn?: boolean
 }
 
 export const virtualBuildSlots: VirtualBuildSlot[] = [
-  { slot: 'CPU', part: '8코어 데스크톱 CPU', note: '메인보드 소켓과 일치', price: '[현재가]' },
-  { slot: 'CPU 쿨러', part: '타워형 공랭 쿨러', note: '케이스 장착 높이 안쪽', price: '[현재가]' },
-  { slot: '메인보드', part: 'ATX 메인보드', note: 'RAM 규격과 일치', price: '[현재가]' },
-  { slot: 'RAM', part: '32GB (16GB × 2)', note: '슬롯 4개 중 2개 사용', price: '[현재가]' },
-  { slot: '그래픽카드', part: '3팬 그래픽카드', note: '케이스 장착 길이 안쪽', price: '[현재가]' },
-  { slot: '파워', part: '650W', note: '새 그래픽카드 권장 용량보다 낮음', price: '—', kept: true, warn: true },
-  { slot: 'SSD', part: '1TB NVMe', note: '그대로 사용', price: '—', kept: true },
-  { slot: '케이스', part: '미들타워 · 강화유리', note: '모든 부품 장착 가능', price: '[현재가]' },
+  { slot: 'CPU', part: '8코어 데스크톱 CPU', note: '메인보드 소켓과 일치', status: 'checked' },
+  { slot: 'CPU 쿨러', part: '타워형 공랭 쿨러', note: '장착 높이는 별도 확인', status: 'outside-scope' },
+  { slot: '메인보드', part: 'ATX 메인보드', note: 'RAM 규격과 일치', status: 'checked' },
+  { slot: 'RAM', part: '32GB (16GB × 2)', note: '슬롯 4개 중 2개 사용', status: 'checked' },
+  { slot: '그래픽카드', part: '3팬 그래픽카드', note: '케이스 장착 길이 안쪽', status: 'checked' },
+  { slot: '파워', part: '650W', note: '새 그래픽카드 권장 용량보다 낮음', status: 'needs-check', kept: true },
+  { slot: 'SSD', part: '1TB NVMe', note: '저장장치 규격은 별도 확인', status: 'outside-scope', kept: true },
+  { slot: '케이스', part: '미들타워 · 강화유리', note: 'ATX 메인보드 장착 규격 일치', status: 'checked' },
 ]
 
 export const landingDetails = [
@@ -98,7 +96,7 @@ export const landingDetails = [
   { n: '02', title: '부품 조합의 호환성을 미리 확인합니다', body: 'CPU와 메인보드 소켓, 메인보드와 RAM 규격, 그래픽카드 전력과 파워 용량, 그래픽카드 길이와 케이스 공간. 사고 나서 알게 되는 문제들을 미리 확인합니다.' },
   { n: '03', title: '가격은 지금 기준으로 더합니다', body: '확인된 국내 현재 상품가로 합계를 계산하고, 참고가와 가격 미확인 항목은 구분해 보여 줍니다. 구매 전에 가격의 출처와 확인 시각도 살펴보세요.' },
   { n: '04', title: '전부 새로 살 필요는 없습니다', body: '쓰던 부품은 그대로 두고 바꿀 것만 골라 넣습니다. 그래픽카드만 바꿀 때 파워도 같이 바꿔야 하는지 같은 질문에 바로 답이 나옵니다.' },
-  { n: '05', title: '로그인은 저장할 때만', body: '구성은 바로 시작합니다. 나중에 다시 보고 싶을 때 Google, 카카오, 네이버 중 하나로 로그인하면 내 PC로 저장됩니다.' },
+  { n: '05', title: '로그인은 저장할 때만', body: '구성은 바로 시작합니다. 나중에 다시 보고 싶을 때 로그인하고 저장을 누르면 내 PC에서 구성을 확인할 수 있습니다.' },
 ]
 
 const providerNames: Record<string, string> = { google: 'Google', kakao: '카카오', naver: '네이버' }

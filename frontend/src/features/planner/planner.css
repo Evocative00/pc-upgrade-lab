@@ -241,15 +241,31 @@
 .planner-option-head strong { font-size: 16px; }
 .planner-option-head small { color: var(--text); font-size: 12px; }
 .planner-option-price { font: 800 22px var(--mono); }
+.planner-option-details, .planner-option-result { display: grid; gap: 8px; }
 .planner-option-parts { font-size: 13px; color: var(--text); overflow-wrap: anywhere; }
 .planner-option-metric { font: 700 14px var(--mono); }
 .planner-option-metric.is-meets { color: var(--linked); }
 .planner-option-metric.is-below { color: var(--manual); }
+@supports (grid-template-rows: subgrid) {
+  .planner-option-cards { row-gap: 0; }
+  /* 제목, 가격, 안내·부품, 성능 영역의 높이를 카드 사이에서 공유한다. */
+  .planner-shell .planner-option { grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; align-items: start; }
+  .planner-option > :not(:first-child) { margin-top: 8px; }
+}
 .planner-over { color: var(--danger) !important; font-weight: 700; }
 .planner-swap { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 12px; color: var(--text); }
-.planner-swap select { max-width: 100%; min-height: 32px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 8px;
+.planner-swap select { min-width: 0; max-width: 100%; min-height: 32px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 8px;
   background: var(--surface); color: var(--text-h); font: inherit; font-size: 13px; }
 .planner-option-over { width: fit-content; padding: 2px 8px; border-radius: 999px; background: rgba(248, 113, 113, 0.14); color: var(--danger); font-size: 12px; font-weight: 700; }
+@container (max-width: 580px) {
+  .planner-shell .planner-option { grid-template-columns: minmax(0, 1fr); padding-inline: clamp(4px, 2cqi, 18px); }
+  .planner-option-head, .planner-option-details, .planner-option-result { grid-template-columns: minmax(0, 1fr); }
+  .planner-option.is-recommended .planner-option-head strong::after { display: inline-block; padding-inline: 6px; white-space: nowrap; }
+  .planner-option-price { font-size: clamp(12px, 4cqi, 22px); }
+  .planner-option-metric { font-size: clamp(11px, 3.4cqi, 14px); }
+  .planner-option-head, .planner-option-details, .planner-option-result, .planner-option-price { overflow-wrap: anywhere; }
+  .planner-option-over { box-sizing: border-box; max-width: 100%; padding-inline: 6px; }
+}
 .planner-compat-scope { margin: 12px 0 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: var(--text); }
 /* 최종 구성 + 호환성: 부품 행마다 호환성 판정을 붙인다. */
 .planner-final-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
@@ -286,7 +302,6 @@
 .planner-compat-dot.is-fail { background: var(--danger); }
 .planner-compat-dot.is-unchecked { background: var(--text); opacity: 0.45; }
 .planner-final .planner-final-type { display: block; }
-.planner-compat-retry { margin: 10px 0 4px; }
 @container (max-width: 720px) {
   .planner-compat-pairs li { grid-template-columns: 22px minmax(0, 1fr); }
   .planner-compat-pairs small { grid-column: 2; }

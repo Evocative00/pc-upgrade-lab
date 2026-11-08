@@ -68,14 +68,23 @@ function DeletePcButton({ id, name }: { id: number; name: string }) {
 }
 
 export function PcDetailPage({ id }: { id: number }) {
-  const query = usePcQuery(() => pcRepository.get(id))
+  const [attempt, setAttempt] = useState(0)
+  const query = usePcQuery(() => pcRepository.get(id), attempt)
 
   if (query.status === 'loading') {
-    return <p className="muted">불러오는 중…</p>
+    return <p className="muted" role="status">PC 구성을 불러오는 중…</p>
   }
 
   if (query.status === 'error') {
-    return <p className="error">PC를 불러오지 못했습니다: {query.message}</p>
+    return (
+      <div className="empty">
+        <p className="error" role="alert">PC를 불러오지 못했습니다: {query.message}</p>
+        <div className="actions">
+          <a className="button button--ghost" href={paths.list()}>목록으로</a>
+          <button type="button" className="button button--primary" onClick={() => setAttempt((current) => current + 1)}>다시 시도</button>
+        </div>
+      </div>
+    )
   }
 
   const pc = query.data
@@ -101,6 +110,9 @@ export function PcDetailPage({ id }: { id: number }) {
         </div>
         <div className="actions">
           <DeletePcButton id={pc.id} name={pc.name} />
+          <a className="button button--ghost button--lg" href={paths.upgradePc(pc.id)}>
+            이 PC로 업그레이드
+          </a>
           <a className="button button--primary button--lg" href={paths.edit(pc.id)}>
             수정
           </a>

@@ -112,7 +112,8 @@ export function PcNewPage() {
 
 export function PcEditPage({ id }: { id: number }) {
   const mounted = useMountedPage()
-  const query = usePcQuery(() => pcRepository.get(id))
+  const [attempt, setAttempt] = useState(0)
+  const query = usePcQuery(() => pcRepository.get(id), attempt)
   // 수정 중 세션이 끝나 로그인을 다녀왔다면 같은 PC의 초안을 채운다.
   const [draft, setDraft] = useState(() => {
     const saved = loadDraft()
@@ -122,20 +123,21 @@ export function PcEditPage({ id }: { id: number }) {
   const [restored, setRestored] = useState(() => pageStateStore().has(`${pcStateKey(id)}parts`))
 
   if (query.status === 'loading') {
-    return <p className="muted">불러오는 중…</p>
+    return <p className="muted" role="status">PC 구성을 불러오는 중…</p>
   }
 
   if (query.status === 'error') {
-    if (draft !== null) {
-      return (
-        <div className="empty">
-          <p className="error">PC를 불러오지 못했습니다: {query.message}</p>
-          <p className="muted">작성 중인 내용은 이 브라우저 탭에 보관되어 있습니다.</p>
-          <button type="button" className="button button--primary" aria-haspopup="dialog" onClick={openLogin}>로그인하기</button>
+    return (
+      <div className="empty">
+        <p className="error" role="alert">PC를 불러오지 못했습니다: {query.message}</p>
+        {(draft !== null || restored) && <p className="muted">작성 중인 내용은 이 브라우저 탭에 보관되어 있습니다.</p>}
+        <div className="actions">
+          <a className="button button--ghost" href={paths.list()}>목록으로</a>
+          <button type="button" className="button button--primary" onClick={() => setAttempt((current) => current + 1)}>다시 시도</button>
+          {draft !== null && <button type="button" className="button button--ghost" aria-haspopup="dialog" onClick={openLogin}>로그인하기</button>}
         </div>
-      )
-    }
-    return <p className="error">PC를 불러오지 못했습니다: {query.message}</p>
+      </div>
+    )
   }
 
   const pc = query.data
