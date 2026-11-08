@@ -100,7 +100,7 @@ export const landingDetails = [
 const providerNames: Record<string, string> = { google: 'Google', kakao: '카카오', naver: '네이버' }
 
 export function providerLabel(provider: string): string {
-  return `${providerNames[provider.toLowerCase()] ?? provider} 계정으로 로그인`
+  return `${providerNames[provider.toLowerCase()] ?? provider} 계정`
 }
 
 // 아바타에 넣을 이름 첫 글자. 이름이 비어 있으면 물음표.

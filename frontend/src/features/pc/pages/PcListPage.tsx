@@ -3,6 +3,7 @@ import { isPageNumber } from '../../../lib/pageState.ts'
 import { usePageState } from '../../../lib/usePageState.ts'
 import { paths } from '../../../lib/router.ts'
 import { authKey, useAuth } from '../../auth/authStore.ts'
+import { openLogin } from '../../auth/loginDialog.ts'
 import { pcRepository } from '../pcApi.ts'
 import type { PcSummary } from '../types.ts'
 import { usePcQuery } from '../usePcQuery.ts'
@@ -109,9 +110,9 @@ function LoginRequired() {
     <div className="empty">
       <p>로그인하면 계정에 저장한 PC를 볼 수 있습니다.</p>
       <p className="muted">PC 구성은 로그인 없이 시작하고, 저장할 때 로그인할 수 있습니다.</p>
-      <a className="button button--primary" href={paths.login()}>
+      <button type="button" className="button button--primary" aria-haspopup="dialog" onClick={openLogin}>
         로그인
-      </a>
+      </button>
     </div>
   )
 }

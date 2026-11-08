@@ -83,9 +83,9 @@ test('첫 화면 문구는 진행도 → 전원 켜는 중 → 캐치프레이�
 })
 
 test('회원 표시와 가상 조립 예시는 지어낸 가격 없이 자리 표시를 유지한다', () => {
-  assert.equal(providerLabel('google'), 'Google 계정으로 로그인')
-  assert.equal(providerLabel('KAKAO'), '카카오 계정으로 로그인')
-  assert.equal(providerLabel('github'), 'github 계정으로 로그인')
+  assert.equal(providerLabel('google'), 'Google 계정')
+  assert.equal(providerLabel('KAKAO'), '카카오 계정')
+  assert.equal(providerLabel('github'), 'github 계정')
   assert.equal(nameInitial(' 김민준'), '김')
   assert.equal(nameInitial(''), '?')
   assert.ok(virtualBuildSlots.every((row) => row.price === '[현재가]' || row.price === '—'))

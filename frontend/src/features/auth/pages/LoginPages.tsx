@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useRef, useState, type MouseEvent } from 'react'
 import { paths, type LoginFailureReason } from '../../../lib/router.ts'
 import { authClient, loginUrl, type AuthProvider } from '../authClient.ts'
 import { SocialLoginButton } from '../components/SocialLoginButton.tsx'
 import { refreshAuth } from '../authStore.ts'
-import { loadDraft, type PcDraft } from '../draftBridge.ts'
+import { loadDraft, saveActiveDraft, type PcDraft } from '../draftBridge.ts'
+import { openLogin } from '../loginDialog.ts'
 import './login.css'
 
 function PcMark() {
@@ -13,34 +14,6 @@ function PcMark() {
       <rect x="9" y="9" width="6" height="6" rx="1" />
       <path d="M9 3v3m6-3v3M9 18v3m6-3v3M3 9h3m-3 6h3m12-6h3m-3 6h3" />
     </svg>
-  )
-}
-
-function PcIllustration() {
-  return (
-    <div className="login-intro__illustration" aria-hidden="true">
-      <svg viewBox="0 0 440 240" fill="none" focusable="false">
-        <path className="login-art__grid" d="M20 200h400M20 160h400M20 120h400M60 40v160m80-160v160m80-160v160m80-160v160m80-160v160" />
-        <ellipse className="login-art__ground" cx="225" cy="210" rx="185" ry="9" />
-        <rect className="login-art__body" x="48" y="55" width="245" height="139" rx="12" />
-        <rect className="login-art__screen" x="60" y="67" width="221" height="111" rx="5" />
-        <path className="login-art__line" d="M145 194v14m51-14v14m-72 3h95" />
-        <rect className="login-art__chip" x="107" y="94" width="40" height="40" rx="7" />
-        <rect className="login-art__core" x="118" y="105" width="18" height="18" rx="3" />
-        <path className="login-art__line" d="M118 88v6m11-6v6m-11 40v6m11-6v6m-28-35h6m-6 11h6m40-11h6m-6 11h6M175 101h76m-76 13h51m-51 13h64" />
-        <rect className="login-art__bar" x="91" y="152" width="80" height="5" rx="2.5" />
-        <rect className="login-art__muted-bar" x="179" y="152" width="72" height="5" rx="2.5" />
-        <rect className="login-art__body" x="315" y="36" width="78" height="175" rx="12" />
-        <path className="login-art__line" d="M330 57h20m12 0h14" />
-        <circle className="login-art__fan" cx="354" cy="104" r="22" />
-        <circle className="login-art__fan" cx="354" cy="159" r="22" />
-        <circle className="login-art__core" cx="354" cy="104" r="5" />
-        <circle className="login-art__core" cx="354" cy="159" r="5" />
-        <path className="login-art__line" d="m339 89 30 30m-30 0 30-30m-30 55 30 30m-30 0 30-30" />
-        <circle className="login-art__power" cx="376" cy="195" r="2" />
-      </svg>
-      <span>BUILD. SAVE. UPGRADE.</span>
-    </div>
   )
 }
 
@@ -62,10 +35,24 @@ function DraftSummary({ draft }: { draft: PcDraft | null }) {
   )
 }
 
-// 저장할 때 로그인이 필요하면 이동하는 안내 화면. 추가 제공자는 서버 설정이 있을 때만 보인다.
-export function LoginPage() {
-  const [draft] = useState(() => loadDraft())
+// 작성 화면을 유지한 채 로그인 방법을 고른다. 소셜 로그인으로 나갈 때만 최신 초안을 보관한다.
+export function LoginDialog({ onDismiss }: { onDismiss: () => void }) {
+  const titleId = useId()
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const [draft, setDraft] = useState(() => loadDraft())
   const [providers, setProviders] = useState<AuthProvider[]>(['google'])
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+    const opener = document.activeElement
+    dialog.showModal()
+    return () => {
+      if (dialog.open) dialog.close()
+      if (opener instanceof HTMLElement && opener.isConnected) opener.focus({ preventScroll: true })
+    }
+  }, [])
 
   useEffect(() => {
     let ignore = false
@@ -77,43 +64,49 @@ export function LoginPage() {
     }
   }, [])
 
+  function handleProviderClick(event: MouseEvent<HTMLAnchorElement>) {
+    if (event.defaultPrevented) return
+    if (saveActiveDraft()) {
+      setDraft(loadDraft())
+      setError(null)
+      return
+    }
+    event.preventDefault()
+    setError('작성 중인 구성을 임시 보관하지 못했습니다. 부품 용량·수량과 브라우저 저장소 설정을 확인한 뒤 다시 시도해 주세요.')
+  }
+
   return (
-    <section className="login-layout" aria-labelledby="login-title">
-      <div className="login-intro">
-        <p className="login-intro__eyebrow">PC UPGRADE LAB</p>
-        <h1 id="login-title">내 PC의 다음을,<br />여기서 시작하세요.</h1>
-        <p className="login-intro__description">
-          고민하며 고른 부품부터 다음 업그레이드까지.<br className="login-intro__break" />{' '}
-          나만의 PC 구성을 한곳에 모아두세요.
-        </p>
-        <PcIllustration />
-        <div className="login-intro__benefit">
-          <span className="login-intro__benefit-icon"><PcMark /></span>
-          <p><strong>저장해두고, 언제든 이어서</strong><span>내 PC 구성을 다시 확인하고 수정할 수 있어요.</span></p>
-        </div>
+    <dialog ref={dialogRef} className="login-card login-dialog" aria-labelledby={titleId}
+      onCancel={(event) => { event.preventDefault(); onDismiss() }}
+      onClick={(event) => {
+        if (event.target !== event.currentTarget) return
+        const bounds = event.currentTarget.getBoundingClientRect()
+        if (event.clientX < bounds.left || event.clientX > bounds.right ||
+          event.clientY < bounds.top || event.clientY > bounds.bottom) onDismiss()
+      }}>
+      <button type="button" className="login-card__close" aria-label="로그인 닫기" onClick={onDismiss}>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" focusable="false">
+          <path d="m5 5 10 10M15 5 5 15" />
+        </svg>
+      </button>
+      <div className="login-card__mark"><PcMark /></div>
+      <div className="login-card__heading">
+        <h2 id={titleId}>로그인</h2>
+        <p>사용하던 계정으로 간편하게 시작하세요.</p>
       </div>
-      <div className="login-card">
-        <div className="login-card__mark"><PcMark /></div>
-        <div className="login-card__heading">
-          <h2>로그인</h2>
-          <p>사용하던 계정으로 간편하게 시작하세요.</p>
-        </div>
-        <DraftSummary draft={draft} />
-        <div className="login-card__providers" role="group" aria-label="소셜 계정으로 로그인">
-          {providers.map((provider) => (
-            <SocialLoginButton key={provider} provider={provider} href={loginUrl(provider)} />
-          ))}
-        </div>
-        <p className="login-card__first-visit">처음 로그인하면 계정이 자동으로 만들어집니다.</p>
-        <div className="login-card__guest">
-          <p>부품 검색과 PC 구성은 로그인 없이도 이용할 수 있어요.</p>
-          <a className="back-link" href={draftReturnPath(draft)}>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" focusable="false"><path d="m8 5-5 5 5 5M3 10h14" /></svg>
-            {draft === null ? '내 PC 목록으로 돌아가기' : '로그인하지 않고 작성 화면으로 돌아가기'}
-          </a>
-        </div>
+      <DraftSummary draft={draft} />
+      <div className="login-card__providers" role="group" aria-label="소셜 계정으로 로그인">
+        {providers.map((provider) => (
+          <SocialLoginButton key={provider} provider={provider} href={loginUrl(provider)} onClick={handleProviderClick} />
+        ))}
       </div>
-    </section>
+      {error !== null && <p className="login-card__error error" role="alert">{error}</p>}
+      <p className="login-card__first-visit">처음 로그인하면 계정이 자동으로 만들어집니다.</p>
+      <div className="login-card__guest">
+        <p>부품 검색과 PC 구성은 로그인 없이도 이용할 수 있어요.</p>
+        <button type="button" className="login-card__continue link-button" onClick={onDismiss}>로그인 없이 계속하기</button>
+      </div>
+    </dialog>
   )
 }
 
@@ -177,9 +170,9 @@ function LoginRetryLinks({ draft }: { draft: PcDraft | null }) {
       <a className="button button--ghost" href={draftReturnPath(draft)}>
         {draft === null ? '목록으로' : '작성 화면으로 돌아가기'}
       </a>
-      <a className="button button--primary" href={paths.login()}>
+      <button type="button" className="button button--primary" onClick={openLogin}>
         다시 로그인
-      </a>
+      </button>
     </div>
   )
 }

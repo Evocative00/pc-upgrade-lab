@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { navigate, paths, plannerStepPath } from '../../../lib/router.ts'
 import { pageStateStore, pcStateKey } from '../../../lib/pageState.ts'
+import { markSignedOut } from '../../auth/authStore.ts'
 import { clearDraftFor, clearSavedDraftFor, loadDraft, saveDraft } from '../../auth/draftBridge.ts'
+import { openLogin } from '../../auth/loginDialog.ts'
 import { PcForm } from '../components/PcForm.tsx'
 import { pcRepository } from '../pcApi.ts'
 import { PcApiError } from '../pcRepository.ts'
@@ -19,19 +21,22 @@ function useMountedPage() {
   return mounted
 }
 
-// 로그인이 필요하면(401) 작성 내용을 임시 보관하고 로그인 안내로 이동한다. 그 외 오류는 폼에 표시한다.
+// 로그인이 필요하면(401) 작성 내용을 임시 보관하고 로그인 창을 연다. 그 외 오류는 폼에 표시한다.
 async function saveOrAskLogin(request: PcRequest, pcId: number | null, save: () => Promise<void>) {
+  const origin = window.location.hash
   try {
     await save()
   } catch (error) {
     if (error instanceof PcApiError && error.status === 401) {
-      if (!saveDraft(request, pcId)) {
+      const draftSaved = saveDraft(request, pcId)
+      markSignedOut()
+      if (!draftSaved) {
         throw new PcApiError(
           '로그인이 필요합니다. 이 브라우저에서 임시 보관을 사용할 수 없어 로그인 후 내용이 사라질 수 있습니다. 내용을 복사해 두고 로그인해 주세요.',
           401, 'UNAUTHORIZED',
         )
       }
-      navigate(paths.login())
+      if (window.location.hash === origin) openLogin()
       return
     }
     throw error
@@ -126,7 +131,7 @@ export function PcEditPage({ id }: { id: number }) {
         <div className="empty">
           <p className="error">PC를 불러오지 못했습니다: {query.message}</p>
           <p className="muted">작성 중인 내용은 이 브라우저 탭에 보관되어 있습니다.</p>
-          <a className="button button--primary" href={paths.login()}>로그인하기</a>
+          <button type="button" className="button button--primary" aria-haspopup="dialog" onClick={openLogin}>로그인하기</button>
         </div>
       )
     }

@@ -3,137 +3,51 @@
   padding: 64px 40px;
 }
 
-.login-layout {
-  width: 100%;
-  max-width: 920px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
-  gap: 56px;
-  align-items: center;
-}
-
-.login-intro__eyebrow {
-  margin-bottom: 20px;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+.login-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(420px, calc(100% - 32px));
+  height: fit-content;
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  overflow: auto;
+  overscroll-behavior: contain;
   color: var(--text);
 }
 
-.login-intro h1 {
-  font-size: clamp(28px, 3.8vw, 40px);
-  font-weight: 700;
-  line-height: 1.35;
-  letter-spacing: -0.055em;
-  word-break: keep-all;
+.login-dialog::backdrop {
+  background: rgb(14 18 26 / 0.64);
 }
 
-.login-intro__description {
-  margin-top: 18px;
-  font-size: 14px;
-  line-height: 1.85;
-  word-break: keep-all;
+/* 랜딩은 문서와 별개의 스크롤 영역을 사용한다. */
+html:has(.login-dialog[open]),
+html:has(.login-dialog[open]) .landing {
+  overflow: hidden;
 }
 
-.login-intro__illustration {
-  margin: 28px -12px 22px;
-  color: var(--text-h);
-}
-
-.login-intro__illustration svg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.login-intro__illustration > span {
-  display: block;
-  margin-top: 6px;
-  text-align: center;
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  color: var(--text);
-}
-
-.login-art__grid {
-  stroke: var(--border);
-  stroke-dasharray: 2 8;
-}
-
-.login-art__ground {
-  fill: var(--accent-bg);
-}
-
-.login-art__body {
-  fill: var(--surface);
-  stroke: var(--accent-border);
-  stroke-width: 1.5;
-}
-
-.login-art__screen {
-  fill: var(--bg);
-  stroke: var(--border);
-}
-
-.login-art__chip {
-  fill: var(--accent-bg);
-  stroke: var(--text);
-}
-
-.login-art__core,
-.login-art__bar,
-.login-art__power {
-  fill: currentColor;
-}
-
-.login-art__line,
-.login-art__fan {
-  stroke: var(--text);
-  stroke-width: 1.2;
-  stroke-linecap: round;
-}
-
-.login-art__muted-bar {
-  fill: var(--border);
-}
-
-.login-intro__benefit {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.login-intro__benefit-icon {
+.login-card__close {
+  position: absolute;
+  inset: 12px 12px auto auto;
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
-  flex-shrink: 0;
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
   color: var(--text-h);
+  background: transparent;
+  cursor: pointer;
 }
 
-.login-intro__benefit-icon svg {
-  width: 22px;
-  height: 22px;
+.login-card__close svg {
+  width: 20px;
+  height: 20px;
 }
 
-.login-intro__benefit p {
-  display: grid;
-  gap: 3px;
-  font-size: 12px;
-  line-height: 1.6;
-  word-break: keep-all;
-}
-
-.login-intro__benefit strong {
-  color: var(--text-h);
-  font-size: 13px;
-  font-weight: 600;
+.login-card__close:hover {
+  background: var(--accent-bg);
 }
 
 .login-card {
@@ -203,30 +117,23 @@
   word-break: keep-all;
 }
 
-.login-card__guest .back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  width: fit-content;
-  margin: 0;
-  font-size: 12px;
+.login-card__continue {
+  justify-self: start;
+  font-size: 13px;
   line-height: 1.7;
 }
 
-.login-card__guest .back-link svg {
-  width: 17px;
-  height: 17px;
-  flex-shrink: 0;
-}
-
-.login-card__guest .back-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.login-card a:focus-visible {
+.login-card a:focus-visible,
+.login-card button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
+}
+
+.login-card__error {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.7;
+  word-break: keep-all;
 }
 
 .login-draft {
@@ -283,21 +190,8 @@
     padding: 48px 24px;
   }
 
-  .login-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
-    gap: 28px;
-  }
-
-  .login-intro h1 {
-    font-size: 30px;
-  }
-
   .login-card {
     padding: 28px;
-  }
-
-  .login-intro__break {
-    display: none;
   }
 }
 
@@ -305,31 +199,6 @@
   .app-main--auth {
     justify-content: flex-start;
     padding: 32px 20px 40px;
-  }
-
-  .login-layout {
-    max-width: 420px;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-  }
-
-  .login-intro__eyebrow {
-    margin-bottom: 12px;
-    font-size: 10px;
-  }
-
-  .login-intro h1 {
-    font-size: 30px;
-  }
-
-  .login-intro__description {
-    margin-top: 12px;
-    font-size: 13px;
-  }
-
-  .login-intro__illustration,
-  .login-intro__benefit {
-    display: none;
   }
 
   .login-card {
@@ -341,10 +210,6 @@
 @media (max-width: 360px) {
   .app-main--auth {
     padding-inline: 16px;
-  }
-
-  .login-intro h1 {
-    font-size: 27px;
   }
 
   .login-card {

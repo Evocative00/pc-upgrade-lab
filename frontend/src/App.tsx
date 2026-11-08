@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { BackendStatus } from './components/BackendStatus.tsx'
 import { authKey, logout, refreshAuth, useAuth } from './features/auth/authStore.ts'
-import { saveActiveDraft } from './features/auth/draftBridge.ts'
-import { LoginFailurePage, LoginPage, LoginSuccessPage } from './features/auth/pages/LoginPages.tsx'
+import { closeLogin, openLogin, useLoginDialog } from './features/auth/loginDialog.ts'
+import { LoginDialog, LoginFailurePage, LoginSuccessPage } from './features/auth/pages/LoginPages.tsx'
 import { BootScreen } from './features/landing/BootScreen.tsx'
 import { hasSeenBoot, markBootSeen } from './features/landing/bootScript.ts'
 import { LandingPage, LandingTabs } from './features/landing/LandingPage.tsx'
@@ -23,7 +23,7 @@ function Page({ route }: { route: Route }) {
   }
   // 통신 장애는 로그아웃이 아니다. 회원을 재확인하기 전까지 개인 임시 입력을 표시하거나 지우지 않는다.
   if (auth.status === 'unavailable' && pageStateStore().getOwner() !== 'guest' &&
-    !['login', 'loginSuccess', 'loginFailure'].includes(route.name)) {
+    !['loginSuccess', 'loginFailure'].includes(route.name)) {
     return <div className="empty">
       <p role="status">로그인 상태를 확인하지 못했습니다. 임시 입력은 이 탭에 보관되어 있습니다.</p>
       <button type="button" className="button" onClick={() => void refreshAuth()}>로그인 상태 다시 확인</button>
@@ -32,6 +32,7 @@ function Page({ route }: { route: Route }) {
   switch (route.name) {
     // 랜딩 화면은 App에서 머리말 없이 따로 그린다.
     case 'home':
+    case 'login':
       return null
     case 'list':
       return <PcListPage />
@@ -45,8 +46,6 @@ function Page({ route }: { route: Route }) {
       return <UpgradeEntryPage />
     case 'upgradePc':
       return <UpgradeSavedPcPage key={route.id} id={route.id} />
-    case 'login':
-      return <LoginPage />
     case 'loginSuccess':
       return <LoginSuccessPage />
     case 'loginFailure':
@@ -102,20 +101,9 @@ function AuthStatus() {
   if (auth.status === 'signedOut') {
     return (
       <div className="auth-status">
-        <a
-          href={paths.login()}
-          onClick={(event) => {
-            if (saveActiveDraft()) {
-              setError(null)
-              return
-            }
-            event.preventDefault()
-            setError('작성 중인 구성을 임시 보관하지 못했습니다. 부품 용량·수량과 브라우저 저장소 설정을 확인한 뒤 다시 시도해 주세요.')
-          }}
-        >
+        <button type="button" className="link-button" aria-haspopup="dialog" onClick={openLogin}>
           로그인
-        </a>
-        {error !== null && <span role="alert" className="error">{error}</span>}
+        </button>
       </div>
     )
   }
@@ -126,7 +114,13 @@ function AuthStatus() {
 function App() {
   const route = useRoute()
   const auth = useAuth()
-  const isAuthPage = route.name === 'login' || route.name === 'loginSuccess' || route.name === 'loginFailure'
+  const loginOpen = useLoginDialog()
+  const loginRoute = route.name === 'login'
+  const isAuthPage = route.name === 'loginSuccess' || route.name === 'loginFailure'
+  const loginDialog = (loginOpen || loginRoute) && <LoginDialog onDismiss={() => {
+    closeLogin()
+    if (loginRoute) window.location.replace(paths.home())
+  }} />
   // 홈으로 처음 들어온 세션에서만 로딩 화면을 한 번 보여 준다.
   const [booting, setBooting] = useState(() => parseRoute(window.location.hash).name === 'home' && !hasSeenBoot())
   usePageScroll(`${authKey(auth)}:${booting}`)
@@ -138,7 +132,7 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  if (route.name === 'home') {
+  if (route.name === 'home' || loginRoute) {
     if (booting) {
       return (
         <BootScreen
@@ -149,7 +143,7 @@ function App() {
         />
       )
     }
-    return <LandingPage />
+    return <><LandingPage />{loginDialog}</>
   }
 
   // PC 구성 화면은 랜딩과 같은 왼쪽 탭 바를 쓰고, 메뉴·로그인이 겹치는 머리말은 숨긴다.
@@ -169,6 +163,7 @@ function App() {
         <footer className="app-footer">
           <BackendStatus />
         </footer>
+        {loginDialog}
       </>
     )
   }
@@ -192,6 +187,7 @@ function App() {
       <footer className="app-footer">
         <BackendStatus />
       </footer>
+      {loginDialog}
     </>
   )
 }

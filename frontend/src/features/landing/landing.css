@@ -254,6 +254,7 @@
 
 .landing__account {
   margin-top: auto;
+  min-width: 0;
 
   @media (max-width: 640px) {
     margin-top: 0;
@@ -295,10 +296,12 @@
   padding: 0 16px;
   border: 1px solid var(--landing-border-strong);
   border-radius: 6px;
+  background: transparent;
   color: var(--landing-title);
+  font-family: inherit;
   font-size: 15px;
   font-weight: 500;
-  text-decoration: none;
+  cursor: pointer;
 
   &:hover,
   &:focus-visible {
@@ -317,45 +320,45 @@
   text-align: center;
 }
 
-.landing-account--member {
-  flex-direction: row;
-  flex-wrap: wrap;
+.landing-account-bar {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
   align-items: center;
-  gap: 12px;
-  padding: 12px 8px 12px 12px;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--landing-border);
+  line-height: 1.4;
 }
 
 .landing-account__avatar {
-  flex: none;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  border: 1px solid var(--landing-border-strong);
-  background: var(--nav-active);
-  color: var(--landing-title);
-  font-size: 15px;
+  display: grid;
+  place-items: center;
+  height: 32px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--ice) 16%, var(--bg));
+  color: var(--ice);
+  font-size: 14px;
   font-weight: 700;
-  box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--ice);
 }
 
 .landing-account__who {
-  flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.landing-account__name {
+.landing-account__name,
+.landing-account__provider {
   overflow: hidden;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--landing-title);
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.landing-account__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--landing-title);
 }
 
 .landing-account__provider {
@@ -364,26 +367,25 @@
 }
 
 .landing-account__logout {
-  flex: none;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid transparent;
-  border-radius: 8px;
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 6px;
   background: transparent;
   color: var(--landing-body);
+  font: inherit;
+  font-size: 12px;
+  white-space: nowrap;
   cursor: pointer;
 
-  &:hover,
-  &:focus-visible {
-    border-color: var(--ice);
+  &:hover:enabled {
+    background: var(--nav-hover);
     color: var(--landing-title);
   }
 
   &:focus-visible {
-    outline: none;
+    outline: 2px solid var(--ice);
+    outline-offset: -2px;
   }
 
   &:disabled {
@@ -393,7 +395,7 @@
 }
 
 .landing-account__error {
-  flex-basis: 100%;
+  grid-column: 1 / -1;
   font-size: 12px;
   line-height: 1.5;
   color: #f87171;

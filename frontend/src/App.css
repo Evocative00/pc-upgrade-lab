@@ -757,24 +757,6 @@ ul.error {
     flex: none;
   }
 
-  @media (min-width: 641px) {
-    /* 220px 탭 바에서도 계정 안내가 한 글자씩 꺾이지 않게 한다. */
-    .landing-account--member {
-      display: grid;
-      grid-template-columns: 42px minmax(0, 1fr);
-      gap: 8px;
-    }
-
-    .landing-account__logout {
-      grid-column: 2;
-      justify-self: end;
-    }
-
-    .landing-account__error {
-      grid-column: 1 / -1;
-    }
-  }
-
   @media (max-width: 360px) {
     .landing__nav a {
       gap: 4px;

@@ -11,6 +11,7 @@ export interface PcRepository {
 }
 
 type FieldError = { field: string; message: string }
+type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
 export class PcApiError extends Error {
   readonly status: number | null
@@ -104,11 +105,11 @@ export function createHttpPcRepository(
   fetcher: typeof fetch = globalThis.fetch,
   baseUrl = '/api/pcs',
   timeoutMs = 10_000,
-  onUnauthorized: () => void = () => {},
+  onUnauthorized: (method: RequestMethod) => void = () => {},
 ): PcRepository {
   async function request<T>(
     path: string,
-    method: 'GET' | 'POST' | 'PUT' | 'DELETE',
+    method: RequestMethod,
     expectedStatus: number,
     isValid: (value: unknown) => value is T,
     payload?: PcRequest,
@@ -132,7 +133,7 @@ export function createHttpPcRepository(
       const body: unknown = await response.json().catch(() => null)
       // 헤더를 받은 뒤 본문 읽기가 지연된 경우도 시간 초과로 구분한다.
       if (controller.signal.aborted) throw new DOMException('Request timed out', 'AbortError')
-      if (response.status === 401) onUnauthorized()
+      if (response.status === 401) onUnauthorized(method)
       if (!response.ok) throw responseError(response.status, body)
       if (response.status !== expectedStatus || !isValid(body)) {
         throw new PcApiError(

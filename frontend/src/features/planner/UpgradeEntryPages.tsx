@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { authKey, useAuth } from '../auth/authStore.ts'
+import { openLogin } from '../auth/loginDialog.ts'
 import { pcRepository } from '../pc/pcApi.ts'
 import type { PcSummary } from '../pc/types.ts'
 import { usePcQuery } from '../pc/usePcQuery.ts'
@@ -61,7 +62,7 @@ export function UpgradeEntryPage() {
       </section>
       <section className="panel planner-card"><h2>저장한 PC로 시작</h2>
         {auth.status === 'loading' && <p className="muted">로그인 상태를 확인하는 중…</p>}
-        {auth.status === 'signedOut' && <p className="muted">저장한 PC를 사용하려면 <a href={paths.login()}>로그인</a>해 주세요.</p>}
+        {auth.status === 'signedOut' && <p className="muted">저장한 PC를 사용하려면 <button type="button" className="link-button" aria-haspopup="dialog" onClick={openLogin}>로그인</button>해 주세요.</p>}
         {(auth.status === 'signedIn' || auth.status === 'unavailable') &&
           <SavedPcList key={authKey(auth)} page={page} onPageChange={setPage} />}
       </section>

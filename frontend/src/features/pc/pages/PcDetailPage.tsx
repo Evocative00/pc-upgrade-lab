@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { navigate, paths } from '../../../lib/router.ts'
 import { pageStateStore, pcStateKey } from '../../../lib/pageState.ts'
 import { clearDraftFor } from '../../auth/draftBridge.ts'
+import { openLogin } from '../../auth/loginDialog.ts'
 import { PartStatusBadge, PartStatusLegend } from '../components/PartStatusBadge.tsx'
 import { PART_TYPES } from '../partCategories.ts'
 import {
@@ -47,7 +48,8 @@ function DeletePcButton({ id, name }: { id: number; name: string }) {
         return
       }
       if (deleteError instanceof PcApiError && deleteError.status === 401) {
-        navigate(paths.login())
+        setDeleting(false)
+        openLogin()
         return
       }
       setError(deleteError instanceof Error ? deleteError.message : '삭제 중 알 수 없는 오류가 발생했습니다.')

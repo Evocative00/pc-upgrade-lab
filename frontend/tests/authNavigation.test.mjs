@@ -49,7 +49,15 @@ function harness({ blockedStorage = false, detail = null, user = null, logoutSta
     },
     removeItem: (key) => values.delete(key),
   }
-  const window = { location: { hash: '#/pcs/new' }, confirm: () => true, alert() {}, addEventListener() {}, removeEventListener() {} }
+  const replacements = []
+  const window = {
+    location: { hash: '#/pcs/new', href: '', replace(href) {
+      replacements.push(href)
+      if (href.startsWith('#')) this.hash = href
+      else this.href = href
+    } },
+    confirm: () => true, alert() {}, addEventListener() {}, removeEventListener() {},
+  }
   const calls = []
   const fetcher = async (url, init) => {
     calls.push({ url, method: init?.method ?? 'GET' })
@@ -105,7 +113,7 @@ function harness({ blockedStorage = false, detail = null, user = null, logoutSta
   function unmount({ owner }) {
     owner.values.forEach((value) => value?.cleanup?.())
   }
-  return { load, render, unmount, window, calls, storage }
+  return { load, render, unmount, window, calls, storage, replacements }
 }
 
 function elements(node) {
@@ -122,26 +130,47 @@ const nameInput = (tree) => find(tree, (e) => e.type === 'input' && e.props.plac
 
 function clickLink(h, link) {
   let prevented = false
-  link.props.onClick?.({ preventDefault: () => { prevented = true } })
-  if (!prevented) h.window.location.hash = link.props.href
+  link.props.onClick?.({ get defaultPrevented() { return prevented }, preventDefault: () => { prevented = true } })
+  if (!prevented) h.window.location.href = link.props.href
   return prevented
 }
 
-test('인증 API가 없어도 저장 401 후 상단 로그인 왕복은 최신 이름과 부품을 복원하며 자동 저장하지 않는다', async () => {
+const isLoginDialog = (element) => element.type?.name === 'LoginDialog'
+const loginTrigger = (tree) => find(tree, (e) => e.type === 'button' && e.props['aria-haspopup'] === 'dialog')
+const nextTurn = () => new Promise((resolve) => setImmediate(resolve))
+
+async function renderLoginDialog(h, app) {
+  const dialog = find(app.tree, isLoginDialog)
+  const first = h.render(dialog.type, dialog.props)
+  await nextTurn()
+  return h.render(dialog.type, dialog.props, first.owner)
+}
+
+function googleLink(h, dialog) {
+  const provider = find(dialog.tree, (e) => e.type?.name === 'SocialLoginButton' && e.props.provider === 'google')
+  return find(h.render(provider.type, provider.props).tree, (e) => e.type === 'a')
+}
+
+function dismissLoginDialog(dialog) {
+  find(dialog.tree, (e) => e.type === 'button' && e.props['aria-label'] === '로그인 닫기').props.onClick()
+}
+
+test('저장 401과 상단 로그인은 작성 화면에서 모달을 열고 소셜 로그인 직전에 최신 초안을 보관한다', async () => {
   const h = harness()
   const pages = h.load('features/pc/pages/PcFormPages.tsx')
   const { PcForm } = h.load('features/pc/components/PcForm.tsx')
   const auth = h.load('features/auth/authStore.ts')
   const bridge = h.load('features/auth/draftBridge.ts')
-  const { LoginPage } = h.load('features/auth/pages/LoginPages.tsx')
-  // PC 구성 화면은 랜딩과 같은 왼쪽 탭 바를 쓰므로 로그인 링크는 탭 바의 LandingAccount에 있다.
-  const app = h.render(h.load('App.tsx').default)
-  find(app.tree, (e) => e.type?.name === 'LandingTabs')
   const { LandingAccount } = h.load('features/landing/LandingAccount.tsx')
+  const App = h.load('App.tsx').default
+  const route = '#/pcs/new?view=all'
+  h.window.location.hash = route
+  let app = h.render(App)
+  find(app.tree, (e) => e.type?.name === 'LandingTabs')
   await auth.refreshAuth()
   assert.equal(auth.getAuthState().status, 'unavailable')
-  let page = h.render(pages.PcNewPage)
-  let props = find(page.tree, (e) => e.type === PcForm).props
+  const page = h.render(pages.PcNewPage)
+  const props = find(page.tree, (e) => e.type === PcForm).props
   let form = h.render(PcForm, props)
   nameInput(form.tree).props.onChange({ target: { value: 'v1 original' } })
   const row = find(form.tree, (e) => e.type?.displayName === 'PartRow' && e.props.draft.type === 'CPU')
@@ -149,50 +178,126 @@ test('인증 API가 없어도 저장 401 후 상단 로그인 왕복은 최신 �
   form = h.render(PcForm, props, form.owner)
   await form.tree.props.onSubmit({ preventDefault() {} })
   assert.equal(auth.getAuthState().status, 'signedOut')
-  assert.equal(h.window.location.hash, '#/login')
+  assert.equal(h.window.location.hash, route)
   assert.equal(bridge.loadDraft().request.name, 'v1 original')
-  h.unmount(form)
-  h.unmount(page)
-  const firstLogin = h.render(LoginPage)
-  clickLink(h, find(firstLogin.tree, (e) => e.type === 'a' && e.props.className === 'back-link'))
-  page = h.render(pages.PcNewPage)
-  props = find(page.tree, (e) => e.type === PcForm).props
-  form = h.render(PcForm, props)
-  nameInput(form.tree).props.onChange({ target: { value: 'v2 latest' } })
-  const restoredRow = find(form.tree, (e) => e.type?.displayName === 'PartRow' && e.props.draft.type === 'CPU')
-  restoredRow.props.onChange({ ...restoredRow.props.draft, displayName: 'Ryzen 7 7700' })
+  app = h.render(App, {}, app.owner)
+  const firstDialog = await renderLoginDialog(h, app)
+  dismissLoginDialog(firstDialog)
+  h.unmount(firstDialog)
+  app = h.render(App, {}, app.owner)
+  assert.equal(elements(app.tree).some(isLoginDialog), false)
+  assert.equal(h.window.location.hash, route)
   form = h.render(PcForm, props, form.owner)
-  const header = h.render(LandingAccount)
-  clickLink(h, find(header.tree, (e) => e.type === 'a'))
-  assert.equal(h.window.location.hash, '#/login')
+  assert.equal(nameInput(form.tree).props.value, 'v1 original')
+
+  nameInput(form.tree).props.onChange({ target: { value: 'v2 latest' } })
+  const currentRow = find(form.tree, (e) => e.type?.displayName === 'PartRow' && e.props.draft.type === 'CPU')
+  currentRow.props.onChange({ ...currentRow.props.draft, displayName: 'Ryzen 7 7700' })
+  form = h.render(PcForm, props, form.owner)
+  loginTrigger(h.render(LandingAccount).tree).props.onClick()
+  assert.equal(h.window.location.hash, route)
+  assert.equal(bridge.loadDraft().request.name, 'v1 original')
+  app = h.render(App, {}, app.owner)
+  find(app.tree, (e) => e.type?.name === 'Page' && e.props.route.name === 'new')
+  const dialog = await renderLoginDialog(h, app)
+  assert.equal(clickLink(h, googleLink(h, dialog)), false)
+  assert.equal(h.window.location.href, '/oauth2/authorization/google')
+  assert.equal(bridge.loadDraft().request.name, 'v2 latest')
+  assert.equal(bridge.loadDraft().request.parts[0].displayName, 'Ryzen 7 7700')
   h.unmount(form)
   h.unmount(page)
-  const secondLogin = h.render(LoginPage)
-  clickLink(h, find(secondLogin.tree, (e) => e.type === 'a' && e.props.className === 'back-link'))
-  const restored = find(h.render(pages.PcNewPage).tree, (e) => e.type === PcForm).props.initial
-  assert.equal(restored.name, 'v2 latest')
-  assert.equal(restored.parts[0].displayName, 'Ryzen 7 7700')
-  assert.equal(h.calls.filter((call) => call.url === '/api/pcs').length, 1)
+  h.unmount(dialog)
+  assert.deepEqual(h.calls.filter((call) => call.method !== 'GET'), [{ url: '/api/pcs', method: 'POST' }])
 })
 
-test('임시 보관 실패는 상단 로그인 이동을 막고 오류를 표시하며 입력을 남긴다', () => {
+test('임시 보관이 막혀도 모달은 열고 닫을 수 있으며 소셜 로그인 이동만 막는다', async () => {
   const h = harness({ blockedStorage: true })
   const { PcForm } = h.load('features/pc/components/PcForm.tsx')
   const { PcNewPage } = h.load('features/pc/pages/PcFormPages.tsx')
-  const app = h.render(h.load('App.tsx').default)
-  find(app.tree, (e) => e.type?.name === 'LandingTabs')
+  const App = h.load('App.tsx').default
   const { LandingAccount } = h.load('features/landing/LandingAccount.tsx')
+  let app = h.render(App)
   h.load('features/auth/authStore.ts').markSignedOut()
   const props = find(h.render(PcNewPage).tree, (e) => e.type === PcForm).props
   let form = h.render(PcForm, props)
   nameInput(form.tree).props.onChange({ target: { value: '보존할 이름' } })
   form = h.render(PcForm, props, form.owner)
-  let header = h.render(LandingAccount)
-  assert.equal(clickLink(h, find(header.tree, (e) => e.type === 'a')), true)
-  header = h.render(LandingAccount, {}, header.owner)
-  assert.match(find(header.tree, (e) => e.props?.role === 'alert').props.children, /임시 보관하지 못했습니다/)
+  loginTrigger(h.render(LandingAccount).tree).props.onClick()
+  app = h.render(App, {}, app.owner)
+  const modal = find(app.tree, isLoginDialog)
+  let dialog = await renderLoginDialog(h, app)
+  assert.equal(clickLink(h, googleLink(h, dialog)), true)
+  assert.equal(h.window.location.href, '')
+  dialog = h.render(modal.type, modal.props, dialog.owner)
+  assert.match(find(dialog.tree, (e) => e.props?.role === 'alert').props.children, /임시 보관하지 못했습니다/)
+  dismissLoginDialog(dialog)
+  h.unmount(dialog)
+  app = h.render(App, {}, app.owner)
+  assert.equal(elements(app.tree).some(isLoginDialog), false)
   assert.equal(h.window.location.hash, '#/pcs/new')
-  assert.equal(nameInput(form.tree).props.value, '보존할 이름')
+  assert.equal(nameInput(h.render(PcForm, props, form.owner).tree).props.value, '보존할 이름')
+  assert.equal(h.calls.filter((call) => call.method !== 'GET').length, 0)
+})
+
+test('예전 로그인 주소를 직접 열면 홈 위에서 모달을 보여 주고 닫을 때 홈 주소로 바꾼다', async () => {
+  const h = harness()
+  h.window.location.hash = '#/login'
+  const App = h.load('App.tsx').default
+  let app = h.render(App)
+  find(app.tree, (e) => e.type?.name === 'LandingPage')
+  const dialog = await renderLoginDialog(h, app)
+  dismissLoginDialog(dialog)
+  h.unmount(dialog)
+  assert.deepEqual(h.replacements, ['#/'])
+  assert.equal(h.window.location.hash, '#/')
+  app = h.render(App, {}, app.owner)
+  assert.equal(elements(app.tree).some(isLoginDialog), false)
+  find(app.tree, (e) => e.type?.name === 'LandingPage')
+})
+
+test('회원 편집 저장의 401은 소유자 전환 전에 초안을 보관하고 로그인 성공 후 같은 PC로 돌아온다', async () => {
+  const detail = { id: 17, name: '회원 PC', createdAt: '2026-10-04', updatedAt: '2026-10-04', parts: [] }
+  const h = harness({ detail, user: { id: 1, name: '회원', email: null, provider: 'google' } })
+  const { PcEditPage } = h.load('features/pc/pages/PcFormPages.tsx')
+  const { PcForm } = h.load('features/pc/components/PcForm.tsx')
+  const { LoginSuccessPage } = h.load('features/auth/pages/LoginPages.tsx')
+  const auth = h.load('features/auth/authStore.ts')
+  const bridge = h.load('features/auth/draftBridge.ts')
+  const cache = h.load('lib/pageState.ts').pageStateStore()
+  const origin = '#/pcs/17/edit'
+  h.window.location.hash = origin
+  await auth.refreshAuth()
+  assert.equal(cache.getOwner(), 'user-1')
+  let page = h.render(PcEditPage, { id: 17 })
+  await nextTurn()
+  page = h.render(PcEditPage, { id: 17 }, page.owner)
+  const props = find(page.tree, (e) => e.type === PcForm).props
+  let form = h.render(PcForm, props)
+  nameInput(form.tree).props.onChange({ target: { value: '만료 전에 편집한 PC' } })
+  const row = find(form.tree, (e) => e.type?.displayName === 'PartRow' && e.props.draft.type === 'CPU')
+  row.props.onChange({ ...row.props.draft, displayName: 'Ryzen 7 7700' })
+  form = h.render(PcForm, props, form.owner)
+  const observedDrafts = []
+  const unsubscribe = cache.subscribe(() => {
+    if (cache.getOwner() === 'guest') observedDrafts.push(bridge.loadDraft())
+  })
+  await form.tree.props.onSubmit({ preventDefault() {} })
+  unsubscribe()
+  assert.equal(cache.getOwner(), 'guest')
+  assert.equal(observedDrafts[0]?.pcId, 17)
+  assert.equal(observedDrafts[0]?.request.name, '만료 전에 편집한 PC')
+  assert.equal(h.window.location.hash, origin)
+  assert.equal(h.render(h.load('features/auth/loginDialog.ts').useLoginDialog).tree, true)
+  h.unmount(form)
+  h.unmount(page)
+
+  h.window.location.hash = '#/login/success'
+  const success = h.render(LoginSuccessPage)
+  await nextTurn()
+  assert.deepEqual(h.replacements, [origin])
+  assert.equal(bridge.loadDraft().request.parts[0].displayName, 'Ryzen 7 7700')
+  assert.deepEqual(h.calls.filter((call) => call.method !== 'GET'), [{ url: '/api/pcs/17', method: 'PUT' }])
+  h.unmount(success)
 })
 
 test('회원 PC 편집 초안은 원래 PC ID를 유지하고 로그인 이동으로 서버에 저장하지 않는다', async () => {
