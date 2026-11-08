@@ -46,23 +46,29 @@ function Icon({ children, size = 20 }: { children: ReactNode; size?: number }) {
   )
 }
 
-function HeroTitle() {
+function HeroTitle({ headingHidden = false }: { headingHidden?: boolean }) {
   return (
     <>
-      <h1 className="hero-copy__title">조립은 편하게,<br />정보는 확실하게</h1>
+      <h1 className="hero-copy__title" aria-hidden={headingHidden}>조립은 편하게,<br />정보는 확실하게</h1>
       <a href={paths.new()} className="landing-cta">PC 구성하기 <span aria-hidden="true">→</span></a>
     </>
   )
 }
 
-// 첫 화면 왼쪽 문구. 진행도 → 전원 켜는 중 → 캐치프레이즈 순서로 스크롤에 맞춰 바뀐다.
+// 첫 화면 왼쪽 문구. 인트로 → 진행도 → 전원 켜는 중 → 캐치프레이즈 순서로 바뀐다.
 function HeroCopy({ percent, onScrollHint }: { percent: number; onScrollHint: () => void }) {
   const copy = heroCopyAt(percent)
   const hint = Math.max(0, 1 - percent / 3)
   return (
     <div className="hero-copy">
-      <div className="hero-copy__progress" aria-hidden="true" style={{ '--reveal': copy.progress } as CSSProperties}>
+      <div className="hero-copy__intro" aria-hidden={copy.intro === 0} style={{ '--reveal': copy.intro } as CSSProperties}>
+        <p className="hero-copy__intro-label">PC 업그레이드 실험실</p>
+        <h1 className="hero-copy__intro-title">내 PC, 어디부터 업그레이드할까?</h1>
+        <p className="hero-copy__intro-lead">부품 호환성과 예상 비용을 한눈에 확인해 보세요.</p>
+      </div>
+      <div className="hero-copy__progress" aria-hidden="true" style={{ '--reveal': copy.progress, '--fill': copy.percent / 100 } as CSSProperties}>
         <p className="hero-copy__meter"><span>진행도</span><span className="hero-copy__dots">....</span><span>{copy.percent}%</span></p>
+        <div className="hero-copy__meter-line" />
         <div className="hero-copy__quips">
           {heroQuips.map((quip, index) => (
             <p className={`hero-copy__quip${index === copy.quip ? ' is-active' : index < copy.quip ? ' is-before' : ''}`} key={quip}>{quip}</p>
@@ -71,12 +77,12 @@ function HeroCopy({ percent, onScrollHint }: { percent: number; onScrollHint: ()
       </div>
       <p className="hero-copy__power" aria-hidden="true" style={{ '--reveal': copy.power } as CSSProperties}>전원 켜는 중…</p>
       <div className={`hero-copy__final${copy.final > 0.5 ? ' is-shown' : ''}`} style={{ '--reveal': copy.final } as CSSProperties}>
-        <HeroTitle />
+        <HeroTitle headingHidden={copy.intro > 0} />
       </div>
       <button type="button" className={`hero-copy__scroll${hint > 0 ? '' : ' is-hidden'}`} style={{ '--reveal': hint } as CSSProperties} onClick={onScrollHint}>
         <span className="hero-copy__scroll-label">SCROLL</span>
         <svg className="hero-copy__scroll-arrow" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v14" /><path d="M6 12l6 6 6-6" /></svg>
-        <span className="hero-copy__scroll-hint">내리면 조립됩니다</span>
+        <span className="hero-copy__scroll-hint">스크롤해서 조립 보기</span>
       </button>
     </div>
   )

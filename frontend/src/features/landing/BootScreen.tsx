@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { bootCountdownSeconds, bootTimeline, finalBootLines, type BootLine } from './bootScript.ts'
-import { compactLandingQuery } from './landingContent.ts'
+import { assemblyStills, compactLandingQuery } from './landingContent.ts'
 import './boot.css'
 
 type Props = {
@@ -9,9 +9,6 @@ type Props = {
 }
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-// 기다리는 동안 랜딩 첫 화면 이미지를 미리 받아 둔다.
-const heroImage = '/pc-assembly/poster-desktop.webp'
 
 // 첫 진입 때 cmd처럼 서비스 소개를 출력한 뒤 랜딩으로 넘어가는 화면.
 export function BootScreen({ onDone }: Props) {
@@ -37,9 +34,10 @@ export function BootScreen({ onDone }: Props) {
   useEffect(() => {
     // 모바일 랜딩에는 조립 장면이 없으므로 시작 화면에서도 이미지를 요청하지 않는다.
     if (window.matchMedia(compactLandingQuery).matches) return
+    const firstCut = assemblyStills[reduced ? 2 : 0]
     const image = new Image()
-    image.src = heroImage
-  }, [])
+    image.src = firstCut.hdImage ?? firstCut.image
+  }, [reduced])
 
   // 로그 출력. 모션 감소 설정이면 처음부터 전체 로그를 보여 준다.
   useEffect(() => {

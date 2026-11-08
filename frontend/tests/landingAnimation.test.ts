@@ -76,13 +76,18 @@ test('실제 그림 영역의 픽셀을 확보하고 큰 letterbox에서도 DPR�
 })
 
 test('큰 화면에서는 원본 크기와 디코딩 메모리 예산 안에서 기준 포즈 수를 줄인다', () => {
-  for (const source of [[1600, 1200], [4096, 4096]]) {
+  for (const source of [[1600, 1200], [2560, 1920], [4096, 4096]]) {
     const plan = desktopFramePlan(3840, 2160, 3, source[0], source[1])
     assert.ok(plan.width <= source[0] && plan.height <= source[1])
     assert.ok(plan.width * plan.height * 4 * (plan.anchorLimit + plan.nearbyLimit) <= 320 * 1024 * 1024)
     assert.ok(plan.anchorLimit >= 2 && plan.anchorLimit < 64)
     assert.equal(anchorPoseIndexes(240, plan.anchorLimit).length, plan.anchorLimit)
   }
+})
+
+test('넓은 고밀도 화면에서 2560px 조립 원본을 디코딩한다', () => {
+  const plan = desktopFramePlan(1333, 1000, 2, 2560, 1920)
+  assert.deepEqual([plan.width, plan.height], [2560, 1920])
 })
 
 test('목표 이미지가 로딩 중이면 준비된 포즈로 진행하고 이전 표시보다 후퇴하지 않는다', () => {

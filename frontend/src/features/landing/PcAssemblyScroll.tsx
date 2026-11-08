@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState, type ReactNode, type RefObject } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react'
 import { advanceProgress, anchorPoseIndexes, assembleSequence, clampProgress, desktopFramePlan, frameAtProgress, FrameCache, parseAnimationManifest, poseWindow, readyFrame, type AnimationManifest, type DesktopFramePlan } from './landingAnimation.ts'
-import { assemblyStepAt, assemblyStills, heroEnd } from './landingContent.ts'
+import { assemblyStepAt, assemblyStills, heroCopyAt, heroEnd } from './landingContent.ts'
 import './pc-assembly-scroll.css'
 
 const assetBase = '/pc-assembly/'
@@ -23,11 +23,12 @@ export function PcAssemblyScroll({ scrollRoot, renderCopy }: Props) {
   const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   const [motionOptIn, setMotionOptIn] = useState(false)
   const [percent, setPercent] = useState(0)
+  const [unavailableStills, setUnavailableStills] = useState<string[]>([])
   const motionPaused = reduced && !motionOptIn
 
   useEffect(() => {
     const controller = new AbortController()
-    fetch(`${assetBase}manifest.json`, { signal: controller.signal }).then(response => response.ok ? response.json() : null)
+    fetch(`${assetBase}manifest.json`, { signal: controller.signal, cache: 'no-cache' }).then(response => response.ok ? response.json() : null)
       .then(value => { if (!controller.signal.aborted) setManifest(parseAnimationManifest(value)) }).catch(() => {})
     return () => controller.abort()
   }, [])
@@ -116,7 +117,9 @@ export function PcAssemblyScroll({ scrollRoot, renderCopy }: Props) {
       const key = pose.id
       if (pending.size >= 2 || pool.has(pose.id) || pending.has(pose.id) || (failures.get(key) ?? 0) > performance.now()) return
       const controller = new AbortController(); pending.set(pose.id, controller)
-      void fetch(assetBase + pose.desktop, { signal: controller.signal }).then(async response => {
+      // 같은 경로의 이전 해상도 WebP가 브라우저 캐시에서 재사용되지 않게 한다.
+      const url = `${assetBase}${pose.desktop}?v=${manifest.version}-${specification.width}`
+      void fetch(url, { signal: controller.signal }).then(async response => {
           if (!response.ok) throw new Error('Image unavailable')
           const blob = await response.blob()
           if (controller.signal.aborted || !active()) return
@@ -177,6 +180,9 @@ export function PcAssemblyScroll({ scrollRoot, renderCopy }: Props) {
         stage!.dataset.buffer = anchorSet.has(frames[drawn]) ? 'anchor' : 'nearby'
         stage!.dataset.ready = 'true'; stage!.dataset.renderMs = (performance.now() - begin).toFixed(2)
       }
+      // 스크롤 위치가 아닌 실제로 그려진 포즈와 맞춰서 컷을 바꾼다.
+      const endpoint = target === 0 && drawn === 0 ? 'intro' : target === 1 && drawn === frameCount - 1 ? 'finished' : 'motion'
+      if (stage!.dataset.endpoint !== endpoint) stage!.dataset.endpoint = endpoint
       pump()
       if (Math.abs(progress - target) > 0.00001) wake(true)
     }
@@ -234,6 +240,13 @@ export function PcAssemblyScroll({ scrollRoot, renderCopy }: Props) {
   )
 
   const step = assemblyStepAt(Math.min(1, percent / 100))
+  const renderStill = (index: number, active: boolean, priority: 'high' | 'low') => {
+    const cut = assemblyStills[index]
+    const hd = cut.hdImage && !unavailableStills.includes(cut.hdImage) ? cut.hdImage : null
+    return <img className={`assembly-frame__cut${active ? ' is-active' : ''}`} data-cut={cut.endpoint} key={cut.image}
+      src={hd ?? cut.image} alt={active ? cut.alt : ''} fetchPriority={priority}
+      onError={hd ? () => setUnavailableStills(previous => [...previous, hd]) : undefined} />
+  }
 
   return (
     <>
@@ -244,20 +257,19 @@ export function PcAssemblyScroll({ scrollRoot, renderCopy }: Props) {
               {renderCopy(heroEnd)}
               {motionToggle}
             </div>
-            <div className="assembly-frame"><img src={assemblyStills[2].image} alt={assemblyStills[2].alt} /></div>
+            <div className="assembly-frame">{renderStill(2, true, 'high')}</div>
           </div>
         </section>
       ) : (
         <section className="assembly-scroll" ref={sectionRef}>
-          <div className="assembly-stage" ref={stageRef} data-ready="false">
+          <div className="assembly-stage" ref={stageRef} data-ready="false"
+            style={{ '--assembly-power': heroCopyAt(percent).power } as CSSProperties}>
             <div className="assembly-copy">
               {renderCopy(percent)}
               {motionToggle}
             </div>
             <div className="assembly-frame">
-              {assemblyStills.map((item, index) => (
-                <img className={`assembly-frame__cut${index === step ? ' is-active' : ''}`} key={item.image} src={item.image} alt={index === step ? item.alt : ''} fetchPriority={index === 0 ? 'high' : 'low'} />
-              ))}
+              {assemblyStills.map((_, index) => renderStill(index, index === step, index === 0 ? 'high' : 'low'))}
               <canvas ref={canvasRef} aria-hidden="true" />
             </div>
           </div>

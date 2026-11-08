@@ -4,11 +4,12 @@ const assetBase = '/pc-assembly/'
 // 시작 화면의 미리받기와 랜딩 본문에 같은 모바일 경계를 적용한다.
 export const compactLandingQuery = '(max-width: 640px)'
 
-// 캔버스가 준비되기 전과 모션 감소 화면에서 보여 줄 정지 컷. 진행도 0 = 분해(pose-0239), 1 = 완성(포스터).
-export const assemblyStills = [
-  { image: `${assetBase}desktop/pose-0239.webp`, alt: '부품별로 분해된 PC' },
+// 캔버스의 처음과 끝은 고해상도 정지 컷을 사용한다. 요청에 실패하면 기존 이미지로 대체한다.
+type AssemblyStill = { image: string; hdImage?: string; endpoint?: 'intro' | 'finished'; alt: string }
+export const assemblyStills: AssemblyStill[] = [
+  { image: `${assetBase}desktop/pose-0239.webp`, hdImage: `${assetBase}intro-desktop-hd.webp`, endpoint: 'intro', alt: '부품별로 분해된 PC' },
   { image: `${assetBase}desktop/pose-0040.webp`, alt: '옆 패널이 열린 채 부품이 장착된 PC' },
-  { image: `${assetBase}poster-desktop.webp`, alt: '조립이 끝난 PC' },
+  { image: `${assetBase}poster-desktop.webp`, hdImage: `${assetBase}finished-desktop-hd.webp`, endpoint: 'finished', alt: '조립이 끝난 PC' },
 ]
 
 // 진행도 0–1/3, 1/3–2/3, 2/3–1을 정지 컷 1~3으로 나눈다.
@@ -51,18 +52,21 @@ export type HeroCopy = {
   percent: number
   quip: number
   // 각 문구 묶음의 불투명도(0–1)
+  intro: number
   progress: number
   power: number
   final: number
 }
 
-// 0–100 진행도와 문구, 100–103 진행도 퇴장, 103–110 "전원 켜는 중", 111–120 캐치프레이즈.
+// 0–2 인트로에서 진행도로 전환, 100–103 진행도 퇴장, 103–110 전원, 111–120 캐치프레이즈.
 export function heroCopyAt(percent: number): HeroCopy {
   const value = Number.isFinite(percent) ? Math.min(heroEnd, Math.max(0, percent)) : 0
+  const start = ramp(value, 0, 2)
   return {
     percent: Math.min(100, Math.floor(value)),
     quip: Math.min(heroQuips.length - 1, Math.floor(value / 5)),
-    progress: 1 - ramp(value, 100, 103),
+    intro: 1 - start,
+    progress: Math.min(start, 1 - ramp(value, 100, 103)),
     power: Math.min(ramp(value, 103, 105), 1 - ramp(value, 108, 110)),
     final: ramp(value, 111, 114),
   }
