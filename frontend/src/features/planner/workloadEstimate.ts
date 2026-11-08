@@ -1,4 +1,5 @@
 import type { PartInput } from '../pc-scan/types.ts'
+import { resolveVram } from '../pc/gpuVram.ts'
 import { findDatasetModel, findPartModel } from './benchmarkComparison.ts'
 import { CPU_BLENDER_DATASET } from './cpuBlenderScores.ts'
 import { GPU_BLENDER_DATASET } from './gpuBlenderScores.ts'
@@ -43,13 +44,6 @@ function validCount(part: PartInput): boolean {
   return Number.isSafeInteger(part.quantity) && part.quantity >= 1 && part.quantity <= 64
 }
 
-// 판매명이나 Windows 이름에 적힌 VRAM(예: '16G', '12GB')을 읽는다. 제원에 VRAM이 없을 때만 쓴다.
-function vramFromName(name: string): number | null {
-  const match = name.match(/\b(\d{1,2})\s*G(?:B)?\b/i)
-  const value = match ? Number(match[1]) : NaN
-  return value >= 1 && value <= 48 ? value : null
-}
-
 export function pcFacts(parts: PartInput[]): PcFacts {
   const rams = parts.filter((part) => part.type === 'RAM' && part.displayName.trim())
   const ramBytes = rams.map((part) => {
@@ -60,9 +54,8 @@ export function pcFacts(parts: PartInput[]): PcFacts {
     ? ramBytes.reduce((sum: number, value) => sum + Number(value), 0) / GIB : null
 
   const gpu = parts.find((part) => part.type === 'GPU' && part.displayName.trim())
-  const vramSpec = gpu?.specs.vramBytes
-  const vramFromSpec = typeof vramSpec === 'number' && vramSpec > 0 ? vramSpec / GIB : null
-  const vramGuess = gpu && vramFromSpec === null ? vramFromName(gpu.displayName) : null
+  // 사용자가 고른 VRAM → 이름에 적힌 VRAM → 선택지가 하나뿐인 모델의 VRAM(gpuVram.ts)
+  const vram = gpu ? resolveVram(gpu) : null
 
   const cpu = parts.find((part) => part.type === 'CPU' && part.displayName.trim())
   const cores = typeof cpu?.specs.cores === 'number' && cpu.specs.cores > 0 ? cpu.specs.cores : null
@@ -72,7 +65,7 @@ export function pcFacts(parts: PartInput[]): PcFacts {
   const gpuModel = gpu ? findPartModel(gpu.displayName, GPU_BLENDER_DATASET) : null
   const relativeModel = gpu ? findPartModel(gpu.displayName, GPU_RELATIVE_DATASET) : null
   return {
-    ramGiB, vramGiB: vramFromSpec ?? vramGuess, vramInferred: vramFromSpec === null && vramGuess !== null, cores, threads,
+    ramGiB, vramGiB: vram?.gib ?? null, vramInferred: vram?.source === 'NAME' || vram?.source === 'MODEL', cores, threads,
     cpuModel, cpuScore: cpuModel ? CPU_BLENDER_DATASET.scores[cpuModel] ?? null : null,
     gpuModel, gpuRenderScore: gpuModel ? GPU_BLENDER_DATASET.scores[gpuModel] ?? null : null,
     gpuRelative: relativeModel ? GPU_RELATIVE_DATASET.scores[relativeModel] ?? null : null,
@@ -89,7 +82,7 @@ function checkLevel(level: string, requirement: Requirement, facts: PcFacts): { 
       verdict: actual === null ? 'UNKNOWN' : actual >= required ? 'PASS' : 'FAIL' })
   }
   add('RAM', requirement.ramGiB, facts.ramGiB, 'GB')
-  add('VRAM', requirement.vramGiB, facts.vramGiB, 'GB', facts.vramInferred ? ' (이름에서 추정)' : '')
+  add('VRAM', requirement.vramGiB, facts.vramGiB, 'GB', facts.vramInferred ? ' (모델명 기준)' : '')
   add('CPU 코어', requirement.cores, facts.cores, '개')
   const verdict: Verdict = checks.some((check) => check.verdict === 'FAIL') ? 'FAIL'
     : checks.length && checks.every((check) => check.verdict === 'PASS') ? 'PASS' : 'UNKNOWN'

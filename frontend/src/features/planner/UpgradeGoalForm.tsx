@@ -6,7 +6,8 @@ import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { estimateGameFrames, frameText } from './frameEstimate.ts'
 import { diagnoseProgram } from './workloadEstimate.ts'
 import {
-  changePurpose, frameEstimateGames, GAME_SUGGESTIONS, goalIsReady, goalSummary, PROGRAMS, PURPOSES,
+  budgetFromSlider, BUDGET_SLIDER_STEPS, changePurpose, frameEstimateGames, GAME_SUGGESTIONS, goalIsReady, goalSummary,
+  isBudgetInRange, MAX_BUDGET_WON, MIN_BUDGET_WON, PROGRAMS, PURPOSES, sliderFromBudget,
   TARGET_FPS_OPTIONS, toggleChoice, type Purpose, type Resolution, type UpgradeGoal, type VideoResolution, type Workload,
 } from './plannerGoal.ts'
 import { PlannerStepper } from './PlannerStepper.tsx'
@@ -24,7 +25,7 @@ type Props = {
   onStep: (step: 3 | 4) => void
 }
 
-const PRESETS = [300_000, 500_000, 800_000, 1_200_000, 1_800_000]
+const PRESETS = [300_000, 500_000, 800_000, 1_200_000, 2_000_000, 3_000_000]
 const WORKLOADS: { value: Workload; label: string; help: string }[] = [
   { value: 'LIGHT', label: '가벼움', help: '한두 프로그램 위주' },
   { value: 'MEDIUM', label: '보통', help: '여러 작업을 함께 사용' },
@@ -63,7 +64,7 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
 
   function setBudget(value: number) {
     if (Number.isFinite(value)) {
-      const budgetWon = Math.min(2_000_000, Math.max(100_000, Math.round(value / 10_000) * 10_000))
+      const budgetWon = Math.min(MAX_BUDGET_WON, Math.max(MIN_BUDGET_WON, Math.round(value / 10_000) * 10_000))
       onChange({ ...goal, budgetWon })
       setBudgetText(String(budgetWon))
     }
@@ -83,19 +84,25 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
         <section className="planner-card" aria-labelledby="planner-budget-title">
           <div className="planner-card-head">
             <h2 id="planner-budget-title">업그레이드 예산</h2>
-            <label className="planner-money">₩ <input aria-label="업그레이드 예산" type="number" min="100000" max="2000000"
+            <label className="planner-money">₩ <input aria-label="업그레이드 예산" type="number" min={MIN_BUDGET_WON} max={MAX_BUDGET_WON}
               step="10000" value={budgetText} onChange={(event) => {
                 const next = event.target.value
                 setBudgetText(next)
                 const value = Number(next)
-                if (next !== '' && Number.isInteger(value) && value >= 100_000 && value <= 2_000_000) {
+                if (next !== '' && isBudgetInRange(value)) {
                   onChange({ ...goal, budgetWon: value })
                 }
               }} onBlur={() => setBudgetText(String(goal.budgetWon))} /></label>
           </div>
-          <input className="planner-range" aria-label="예산 슬라이더" type="range" min="100000" max="2000000"
-            step="10000" value={goal.budgetWon} onChange={(event) => setBudget(Number(event.target.value))} />
-          <div className="planner-range-labels"><span>10만 원</span><span>200만 원</span></div>
+          {/* 100만 원까지는 1만 원, 그 위는 10만 원 단위로 움직인다(plannerGoal.ts). */}
+          <input className="planner-range" aria-label="예산 슬라이더" type="range" min="0" max={BUDGET_SLIDER_STEPS}
+            step="1" value={sliderFromBudget(goal.budgetWon)} aria-valuetext={`${goal.budgetWon / 10_000}만 원`}
+            onChange={(event) => setBudget(budgetFromSlider(Number(event.target.value)))} />
+          <div className="planner-range-labels">
+            <span>10만 원</span>
+            <span className="planner-range-mid" style={{ left: `${sliderFromBudget(1_000_000) / BUDGET_SLIDER_STEPS * 100}%` }}>100만</span>
+            <span>500만 원</span>
+          </div>
           <div className="planner-presets" aria-label="예산 빠른 선택">
             {PRESETS.map((amount) => <button type="button" key={amount} aria-pressed={goal.budgetWon === amount}
               onClick={() => setBudget(amount)}>{amount / 10_000}만</button>)}
