@@ -49,3 +49,18 @@ test('모델을 바꿔 예전 선택이 새 모델 선택지에 없으면 지운
   // 같은 모델의 이름만 바꾸면 고른 값을 유지한다.
   assert.equal(clearStaleVram(before, { ...before, displayName: 'MSI GeForce RTX 3060 VENTUS' }).specs.vramBytes, 12 * GIB)
 })
+
+test('같은 칩셋의 다른 판매 용량을 연결하면 이전 VRAM만 지우고 수집 원문과 다른 제원은 보존한다', () => {
+  const before: PartInput = { ...gpu('GeForce RTX 3060 12GB', { vramBytes: 12 * GIB, driverVersion: '1.2.3' }),
+    rawName: 'NVIDIA GeForce RTX 3060', source: 'AUTO', quantity: 2, catalogProductId: '3060-12', matchStatus: 'MATCHED' }
+  const next = clearStaleVram(before, { ...before, displayName: 'GeForce RTX 3060 VENTUS 8G', catalogProductId: '3060-8' })
+  assert.deepEqual(resolveVram(next), { gib: 8, source: 'NAME', options: [8, 12] })
+  assert.deepEqual(next.specs, { vramBytes: null, driverVersion: '1.2.3' })
+  assert.equal(next.rawName, before.rawName)
+  assert.equal(next.source, before.source)
+  assert.equal(next.quantity, before.quantity)
+  assert.equal(next.catalogProductId, '3060-8')
+  assert.equal(before.specs.vramBytes, 12 * GIB)
+  const sameCapacity = clearStaleVram(before, { ...before, displayName: 'GeForce RTX 3060 VENTUS 12G', catalogProductId: '3060-other-12' })
+  assert.equal(sameCapacity.specs.vramBytes, 12 * GIB)
+})

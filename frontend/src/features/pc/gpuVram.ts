@@ -80,13 +80,18 @@ export function resolveVram(part: Pick<PartInput, 'displayName' | 'specs'>): Res
 }
 
 /**
- * 그래픽카드 모델을 바꿨을 때 예전에 고른 VRAM이 새 모델 선택지에 없으면 지운다(예: RTX 3060 12GB → GTX 1060).
- * 같은 모델이거나 새 모델의 VRAM을 모르면 그대로 둔다.
+ * 다른 용량이 명시된 판매 상품을 고르거나 이름의 용량을 바꾸면 이전 장치의 VRAM을 지운다.
+ * 같은 모델의 이름만 정리하거나 용량이 일치하면 기존 제원을 보존한다.
  */
 export function clearStaleVram<T extends PartInput>(previous: PartInput, next: T): T {
   const input = next.specs.vramBytes
-  if (next.type !== 'GPU' || typeof input !== 'number' || gpuModelKey(previous.displayName) === gpuModelKey(next.displayName)) return next
+  if (next.type !== 'GPU' || typeof input !== 'number') return next
   const options = vramOptions(next.displayName)
+  const named = vramInName(next.displayName, options)
+  const previousNamed = vramInName(previous.displayName, vramOptions(previous.displayName))
+  const newProduct = next.catalogProductId !== null && next.catalogProductId !== previous.catalogProductId
+  if (named !== null && named * GIB !== input && (newProduct || named !== previousNamed)) return withVramInput(next, null)
+  if (gpuModelKey(previous.displayName) === gpuModelKey(next.displayName)) return next
   return options && !options.includes(input / GIB) ? withVramInput(next, null) : next
 }
 

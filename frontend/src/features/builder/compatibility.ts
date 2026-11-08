@@ -4,7 +4,9 @@ import type { PartDraft } from '../pc/types.ts'
 
 // 백엔드 POST /api/compatibility/check 계약. 새 부품 존재 여부는 미연결과 빈 자리를 구분한다.
 export type CompatibilityStatus = 'COMPATIBLE' | 'NEEDS_CHECK' | 'INCOMPATIBLE'
-export type CompatibilityCheck = { code: string; status: CompatibilityStatus; message: string; affectedFields: string[] }
+export type CompatibilityCheck = {
+  code: string; status: CompatibilityStatus; message: string; affectedFields: string[]; requiredInformation?: string[]
+}
 export type CompatibilityResult = { status: CompatibilityStatus; checks: CompatibilityCheck[]; scope?: string; fullPcCompatibilityChecked?: boolean }
 export type CompatibilityRequest = {
   cpuProductId: string | null
@@ -133,7 +135,9 @@ function isResult(value: unknown): value is CompatibilityResult {
     const item = check as Record<string, unknown>
     return typeof item.code === 'string' && typeof item.status === 'string' && STATUSES.includes(item.status) &&
       typeof item.message === 'string' && Array.isArray(item.affectedFields) &&
-      item.affectedFields.every((field) => typeof field === 'string')
+      item.affectedFields.every((field) => typeof field === 'string') &&
+      (item.requiredInformation === undefined || Array.isArray(item.requiredInformation) &&
+        item.requiredInformation.every((field) => typeof field === 'string'))
   })
   return validChecks && body.status === overallStatus((body.checks as CompatibilityCheck[]).map((check) => check.status))
 }

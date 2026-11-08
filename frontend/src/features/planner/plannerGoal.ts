@@ -64,15 +64,16 @@ export function sliderFromBudget(budgetWon: number): number {
     : FINE_STEPS + Math.round((budgetWon - FINE_LIMIT_WON) / 100_000)
 }
 
-export function isBudgetInRange(budgetWon: number): boolean {
-  return Number.isInteger(budgetWon) && budgetWon >= MIN_BUDGET_WON && budgetWon <= MAX_BUDGET_WON
+export function isBudgetInRange(budgetWon: unknown): budgetWon is number {
+  return typeof budgetWon === 'number' && Number.isInteger(budgetWon) &&
+    budgetWon >= MIN_BUDGET_WON && budgetWon <= MAX_BUDGET_WON
 }
 
 export function isUpgradeGoal(value: unknown): value is UpgradeGoal {
   if (!isRecord(value)) return false
   const choices = (items: unknown) => Array.isArray(items) && items.length <= 3 &&
     items.every((item: unknown) => typeof item === 'string' && item.trim().length > 0 && item.length <= 40)
-  return isBudgetInRange(Number(value.budgetWon)) &&
+  return isBudgetInRange(value.budgetWon) &&
     (value.purpose === null || PURPOSES.some((purpose) => purpose.value === value.purpose)) &&
     choices(value.games) && choices(value.programs) && ['FHD', 'QHD', '4K'].includes(String(value.resolution)) &&
     TARGET_FPS_OPTIONS.some((fps) => fps === value.targetFps) && ['LIGHT', 'MEDIUM', 'HEAVY'].includes(String(value.workload)) &&

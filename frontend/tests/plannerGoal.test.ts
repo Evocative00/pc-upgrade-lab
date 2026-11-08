@@ -32,6 +32,9 @@ test('예산은 범위 밖이면 진단을 시작하지 않고 목적 요약에 
   assert.equal(goalIsReady({ ...game, budgetWon: 5_000_000 }), true)
   assert.equal(goalIsReady({ ...game, budgetWon: 5_100_000 }), false)
   assert.equal(isUpgradeGoal({ ...game, budgetWon: 5_000_000 }), true)
+  for (const invalid of ['5000000', [5_000_000], 5_000_000.5]) {
+    assert.equal(isUpgradeGoal({ ...game, budgetWon: invalid }), false)
+  }
   assert.match(goalSummary(game), /FHD · 60fps 목표/)
   assert.doesNotMatch(goalSummary(game), /예상|원/)
 })

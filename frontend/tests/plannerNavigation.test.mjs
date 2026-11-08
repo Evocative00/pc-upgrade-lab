@@ -10,6 +10,19 @@ import ts from 'typescript'
 const sourceRoot = fileURLToPath(new URL('../src/', import.meta.url))
 const GIB = 1024 ** 3
 
+test('추천 행에서 현재가, 지난 판매가와 참고 추정가가 서로 구분된다', () => {
+  const h = harness()
+  const { PriceLine } = h.load('features/planner/UpgradeRecommendationPanel.tsx')
+  const product = { priceKrw: 200000, priceSource: '판매처 예시', priceUrl: 'https://example.com/product' }
+  const current = text(h.paint(PriceLine, { product: { ...product, priceKind: 'CURRENT' } }))
+  const past = text(h.paint(PriceLine, { product: { ...product, priceKind: 'PAST', observedAt: '2026-10-11T00:00:00Z' } }))
+  const estimate = text(h.paint(PriceLine, { product: { ...product, priceKind: 'ESTIMATE' } }))
+  assert.match(current, /현재가 · 판매처 예시/)
+  assert.match(past, /지난 판매가 · 10\/11 관측 · 판매처 예시/)
+  assert.match(estimate, /참고 추정가/)
+  assert.doesNotMatch(estimate, /판매처 예시/)
+})
+
 test('추천 목록 조회 실패 후 다시 불러오면 현재 플랜을 복구한다', async () => {
   let fail = true
   const h = harness({ searchCatalog: async () => {

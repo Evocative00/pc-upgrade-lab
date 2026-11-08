@@ -10,9 +10,9 @@ import type { PartDraft } from '../src/features/pc/types.ts'
 import { compatCounts, compatibilityPairs, summarizePlanCompatibility } from '../src/features/planner/planCompatibility.ts'
 import type { ScoredProduct, UpgradePlan } from '../src/features/planner/upgradeRecommendation.ts'
 
-const result = (checks: [string, 'COMPATIBLE' | 'NEEDS_CHECK' | 'INCOMPATIBLE', string][]): CompatibilityResult => ({
+const result = (checks: [string, 'COMPATIBLE' | 'NEEDS_CHECK' | 'INCOMPATIBLE', string, string[]?][]): CompatibilityResult => ({
   status: checks.some(([, s]) => s === 'INCOMPATIBLE') ? 'INCOMPATIBLE' : checks.some(([, s]) => s === 'NEEDS_CHECK') ? 'NEEDS_CHECK' : 'COMPATIBLE',
-  checks: checks.map(([code, status, message]) => ({ code, status, message, affectedFields: [] })),
+  checks: checks.map(([code, status, message, requiredInformation]) => ({ code, status, message, affectedFields: [], requiredInformation })),
 })
 
 const sample = result([
@@ -23,8 +23,8 @@ const sample = result([
   ['GPU_PAIR_SELECTION', 'NEEDS_CHECK', '파워 또는 케이스를 선택하면 그래픽카드의 전원·장착 조건을 함께 검사할 수 있습니다.'],
 ])
 
-test('검사 항목을 상태별로 세고, 자료 부족(BIOS 등)은 확인 필요가 아닌 참고로 센다', () => {
-  assert.deepEqual(compatCounts(sample), { COMPATIBLE: 3, INFO: 1, NEEDS_CHECK: 1, INCOMPATIBLE: 0 })
+test('서버가 필요한 정보의 종류를 주지 않으면 BIOS 확인 필요를 유지한다', () => {
+  assert.deepEqual(compatCounts(sample), { COMPATIBLE: 3, INFO: 0, NEEDS_CHECK: 2, INCOMPATIBLE: 0 })
   assert.deepEqual(compatCounts(null), { COMPATIBLE: 0, INFO: 0, NEEDS_CHECK: 0, INCOMPATIBLE: 0 })
 })
 
@@ -32,7 +32,7 @@ test('검사 항목을 부품 조합별 한 줄로 묶고, 파워·케이스 미
   const pairs = compatibilityPairs(sample, ['PSU', 'CASE'], true)
   assert.deepEqual(pairs.map((pair) => [pair.label, pair.status, pair.reason]), [
     ['CPU ↔ 메인보드', 'COMPATIBLE', 'AM4 일치'],
-    ['CPU ↔ 메인보드 BIOS', 'INFO', '구매 전 보드 BIOS 지원 목록 확인 권장'],
+    ['CPU ↔ 메인보드 BIOS', 'NEEDS_CHECK', 'CPU·보드 리비전·스테핑의 지원 항목을 확인한 뒤 BIOS 조건을 검사해야 합니다.'],
     ['메모리 ↔ 메인보드', 'COMPATIBLE', 'DDR4 일치'],
     ['그래픽카드 ↔ 파워', 'NEEDS_CHECK', '파워 미입력'],
     ['그래픽카드 ↔ 케이스', 'NEEDS_CHECK', '케이스 미입력'],
@@ -51,12 +51,29 @@ test('조합 안에 비호환이 있으면 그 줄은 비호환이고 원문 이
 
 test('조합 안에 참고와 확인 필요가 섞이면 확인 필요를 따른다', () => {
   const mixed = result([
-    ['CPU_RAM_CAPACITY', 'NEEDS_CHECK', '총 RAM 용량 또는 CPU의 공표 최대 메모리 용량을 확인해야 합니다.'],
+    ['CPU_RAM_CAPACITY', 'NEEDS_CHECK', '총 RAM 용량 또는 CPU의 공표 최대 메모리 용량을 확인해야 합니다.', ['cpuMemorySupport.maxMemoryBytes']],
     ['CPU_RAM_TYPE_0', 'NEEDS_CHECK', 'RAM 종류를 확인해야 합니다.'],
   ])
   assert.equal(compatibilityPairs(mixed, [], false)[0].status, 'NEEDS_CHECK')
-  const infoOnly = result([['CPU_RAM_CAPACITY', 'NEEDS_CHECK', '총 RAM 용량 또는 CPU의 공표 최대 메모리 용량을 확인해야 합니다.']])
+  const infoOnly = result([['CPU_RAM_CAPACITY', 'NEEDS_CHECK', '총 RAM 용량 또는 CPU의 공표 최대 메모리 용량을 확인해야 합니다.',
+    ['cpuMemorySupport.maxMemoryBytes']]])
   assert.deepEqual(compatibilityPairs(infoOnly, [], false)[0], { label: '메모리 ↔ CPU', status: 'INFO', reason: '최대 메모리 정보 없음' })
+})
+
+test('실제 BIOS·보드 리비전·장착 RAM 확인은 제조사 자료 부재와 구분한다', () => {
+  const checks = result([
+    ['CPU_BIOS', 'NEEDS_CHECK', '현재 BIOS를 확인해 주세요.', ['currentBiosVersion', 'manufacturerBiosVersionHistory']],
+    ['CPU_MANUFACTURER_SUPPORT', 'NEEDS_CHECK', '메인보드 리비전을 확인해 주세요.', ['motherboardRevision', 'manufacturerCpuSupport']],
+    ['RAM_MODULE_FEATURES_0', 'NEEDS_CHECK', 'ECC·레지스터 메모리 지원 조건을 확인해 주세요.', ['ram[0]', 'manufacturerMemoryModuleSupport']],
+    ['CPU_RAM_CAPACITY', 'NEEDS_CHECK', '총 RAM 용량을 확인해 주세요.', ['ram[0]', 'cpuMemorySupport.maxMemoryBytes']],
+    ['MOTHERBOARD_RAM_CAPACITY', 'NEEDS_CHECK', '메인보드 최대 용량 자료 없음.', ['motherboardSpecification.maxMemoryBytes']],
+  ])
+  assert.deepEqual(compatCounts(checks), { COMPATIBLE: 0, INFO: 1, NEEDS_CHECK: 4, INCOMPATIBLE: 0 })
+  assert.deepEqual(compatibilityPairs(checks, [], false), [
+    { label: 'CPU ↔ 메인보드 BIOS', status: 'NEEDS_CHECK', reason: '현재 BIOS를 확인해 주세요.' },
+    { label: '메모리 ↔ CPU', status: 'NEEDS_CHECK', reason: '총 RAM 용량을 확인해 주세요.' },
+    { label: '메모리 ↔ 메인보드', status: 'NEEDS_CHECK', reason: 'ECC·레지스터 메모리 지원 조건을 확인해 주세요.' },
+  ])
 })
 
 const plan: UpgradePlan = {

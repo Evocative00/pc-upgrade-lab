@@ -12,8 +12,8 @@ import type { UpgradePlan } from './upgradeRecommendation.ts'
  * 추천 플랜의 최종 구성을 기존 호환성 검사 API로 검사하고, 결과를 최종 구성 목록의 부품 행마다 붙일 수 있게 정리한다.
  * 부품 목록은 추천 플랜의 '최종 구성' 한 곳에서만 보여 준다.
  *
- * 화면 상태는 API의 3단계에 '참고'를 더한 4단계다. API가 '확인 필요'로 준 항목 중 카탈로그에 자료가 없어서 판단하지 못한 것
- * (BIOS 지원 목록, CPU·보드 최대 메모리, 메모리 모듈 세부 규격)은 실제로 맞지 않는다는 뜻이 아니라 '참고'로 낮춰 보여 준다.
+ * 화면 상태는 API의 3단계에 '참고'를 더한 4단계다. 필요한 정보가 제조사 자료 하나뿐이라고
+ * 서버가 명시한 경우에만 '참고'로 표시하고, 장착 부품이나 BIOS 확인이 필요한 판정은 유지한다.
  */
 export type CompatStatus = 'COMPATIBLE' | 'INFO' | 'NEEDS_CHECK' | 'INCOMPATIBLE'
 
@@ -30,13 +30,18 @@ const SINGLE_FIELDS: Record<string, PartType> = {
 }
 const RANK: Record<CompatStatus, number> = { COMPATIBLE: 0, INFO: 1, NEEDS_CHECK: 2, INCOMPATIBLE: 3 }
 
-// 카탈로그 자료가 없어 '확인 필요'가 된 항목. 사용자가 고칠 문제가 아니라 구매 전 참고할 내용이다.
-const isDataGap = (code: string) => code === 'CPU_BIOS' || code === 'CPU_MANUFACTURER_SUPPORT' ||
-  code.endsWith('_CAPACITY') || code.startsWith('RAM_MODULE_FEATURES')
+// 같은 검사 코드도 사용자 입력이나 장착 조건 확인을 요구할 수 있다.
+const DOCUMENTATION_GAPS: Readonly<Record<string, string>> = {
+  CPU_MANUFACTURER_SUPPORT: 'manufacturerCpuSupport',
+  CPU_RAM_CAPACITY: 'cpuMemorySupport.maxMemoryBytes',
+  MOTHERBOARD_RAM_CAPACITY: 'motherboardSpecification.maxMemoryBytes',
+}
 
 /** 검사 항목 하나의 화면 상태 */
 export function displayStatus(check: CompatibilityCheck): CompatStatus {
-  return check.status === 'NEEDS_CHECK' && isDataGap(check.code) ? 'INFO' : check.status
+  const required = check.requiredInformation
+  return check.status === 'NEEDS_CHECK' && required?.length === 1 &&
+    required[0] === DOCUMENTATION_GAPS[check.code] ? 'INFO' : check.status
 }
 
 // 최종 구성 부품 하나의 검사 상태. 검사 대상이 아니거나 검사 중이면 null.
@@ -79,9 +84,7 @@ const PAIR_GROUPS: { label: string; match: (code: string) => boolean }[] = [
 function shortReason(status: CompatStatus, code: string, message: string): string {
   if (status === 'INCOMPATIBLE') return message
   if (status === 'INFO') {
-    if (code === 'CPU_BIOS' || code === 'CPU_MANUFACTURER_SUPPORT') return '구매 전 보드 BIOS 지원 목록 확인 권장'
-    if (code.endsWith('_CAPACITY')) return '최대 메모리 정보 없음'
-    return '모듈 세부 규격 정보 없음'
+    return code === 'CPU_MANUFACTURER_SUPPORT' ? '제조사 CPU 지원 자료 없음' : '최대 메모리 정보 없음'
   }
   if (status === 'NEEDS_CHECK') return code.startsWith('CATALOG_LINK') ? '카탈로그 연결 필요' : message
   const value = message.split(':').slice(1).join(':').trim()

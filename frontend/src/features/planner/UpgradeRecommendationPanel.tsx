@@ -23,10 +23,12 @@ const won = (amount: number) => `₩${amount.toLocaleString('ko-KR')}`
 export function PriceLine({ product }: { product: PricedProduct }) {
   return <span className="planner-price-line">
     <strong>{won(product.priceKrw)}</strong>
-    <small>{product.priceKind === 'ESTIMATE' ? '추정가'
-      : <>{product.priceUrl ? <a href={product.priceUrl} target="_blank" rel="noreferrer">{product.priceSource ?? '판매처'}</a> : product.priceSource}
-        {product.priceKind === 'PAST' && product.observedAt
-          && ` · ${Number(product.observedAt.slice(5, 7))}/${Number(product.observedAt.slice(8, 10))}`}</>}</small>
+    <small>{product.priceKind === 'ESTIMATE' ? '참고 추정가'
+      : <>{product.priceKind === 'PAST'
+        ? `지난 판매가 · ${product.observedAt ? `${Number(product.observedAt.slice(5, 7))}/${Number(product.observedAt.slice(8, 10))} 관측` : '관측일 미상'}`
+        : '현재가'}
+        {(product.priceUrl || product.priceSource) && ' · '}
+        {product.priceUrl ? <a href={product.priceUrl} target="_blank" rel="noreferrer">{product.priceSource ?? '판매처'}</a> : product.priceSource}</>}</small>
   </span>
 }
 
@@ -77,7 +79,8 @@ function Diagnosis({ state, metric }: { state: UpgradePlanState; metric: KeyMetr
   const short = state.selected.filter((kind) => state.targets[kind]?.needed === true)
   const unknown = UPGRADE_PART_KINDS.filter((kind) => state.targets[kind]?.needed == null)
   return <p className="planner-diagnosis-line">
-    {short.length ? <>부족: <strong>{short.map((kind) => UPGRADE_PART_LABEL[kind]).join(', ')}</strong></>
+    {short.length ? <>부족: <strong>{short.map((kind) => UPGRADE_PART_LABEL[kind]).join(', ')}</strong>
+      {unknown.length > 0 && <> · 확인 필요: <strong>{unknown.map((kind) => UPGRADE_PART_LABEL[kind]).join(', ')}</strong></>}</>
       : unknown.length ? <>확인 필요: <strong>{unknown.map((kind) => UPGRADE_PART_LABEL[kind]).join(', ')}</strong></>
       : <strong>지금 구성으로 충분합니다</strong>}
     {metric?.target && <span> · {metric.target}</span>}
@@ -146,7 +149,7 @@ function FinalBuild({ parts, plan, state, overrides, onOverride, onExclude, onLi
           <strong>{part.displayName}{part.quantity > 1 && ` · 모듈 ${part.quantity}개`}</strong>
           {choice && item
             ? <small>{shortName(item.currentLabel)} → {choice.ratio ? `약 ${choice.ratio.toFixed(1)}배` : '교체'}
-              {item.meets === false && ' · 목표 미달'}</small>
+              {item.meets === false ? ' · 목표 미달' : item.meets === null ? ' · 목표 충족 확인 필요' : ''}</small>
             : item?.note && <small>{item.note}</small>}
           {partCompat?.status === 'INCOMPATIBLE' && partCompat.messages.map((message) =>
             <small key={message} className="planner-compat-warning">{message}</small>)}
@@ -241,7 +244,7 @@ export function UpgradeRecommendationPanel({ parts, goal, state, option, onOptio
       {goal.purpose === 'GAME' && <FrameChange parts={parts} plan={plan} goal={goal} />}
       <details className="planner-details"><summary>계산 기준·주의</summary>
         <p>가격·성능은 추정치입니다. 메인보드는 그대로 두고 소켓·DDR이 맞는 제품만 고릅니다.
-          '추정가'는 비슷한 제품으로 계산한 참고 가격이고, 날짜가 붙은 가격은 그날 관측한 판매가입니다.</p>
+          '참고 추정가'는 비슷한 제품으로 계산한 가격이고, '지난 판매가'는 표시된 날짜의 관측값입니다.</p>
         <p>CPU 게임 점수에는 실측 외 단일 스레드·클럭·구조로 환산한 팀 추정이 포함됩니다.
           작업 CPU는 Blender, GPU는 게임 점수를 사용하며 실제 프로그램 성능 향상 배율을 보장하지 않습니다.</p>
         <a href={CPU_GAMING_DATASET.sourceUrl} target="_blank" rel="noreferrer">CPU 게임 점수 기준 자료</a>
