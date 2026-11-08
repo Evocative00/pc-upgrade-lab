@@ -592,6 +592,64 @@
   p { margin: 4px 0 0; }
 }
 
+.price-insight {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+
+  h4 { margin: 0; color: var(--text-h); }
+  ul { margin: 6px 0 0; padding-left: 18px; }
+}
+
+.price-insight__verdict {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-h);
+  background: var(--code-bg);
+}
+.price-insight__verdict--good-price { color: var(--linked); background: var(--linked-bg); }
+.price-insight__verdict--wait { color: var(--manual); background: var(--manual-bg); }
+.price-insight__verdict--fair { color: var(--detected); background: var(--detected-bg); }
+
+.price-insight__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+
+  .price-insight__verdict { margin-right: 0; }
+}
+
+.price-insight__flag {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--code-bg);
+}
+.price-insight__flag--stale { color: var(--manual); border-color: transparent; background: var(--manual-bg); }
+
+.price-insight__flags { font-size: 13px; }
+
+.price-insight__chart {
+  width: 100%;
+  margin: 0;
+
+  svg { display: block; width: 100%; height: auto; max-height: 220px; }
+  figcaption { margin-top: 6px; font-size: 13px; }
+}
+
+.price-insight__note { font-size: 12px; }
+
 .actions {
   display: flex;
   flex-wrap: wrap;

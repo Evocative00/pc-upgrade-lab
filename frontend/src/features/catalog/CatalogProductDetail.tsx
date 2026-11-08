@@ -2,6 +2,7 @@ import { useId } from 'react'
 import { formatProjectPrice, ramKitLabel, specificationRows } from './catalogPresentation.ts'
 import { MotherboardStorageDetail } from './MotherboardStorageDetail.tsx'
 import { CatalogLinkedModel } from './CatalogLinkedModel.tsx'
+import { PriceInsightSection } from './PriceInsightSection.tsx'
 import type { CatalogAttribution, CatalogDetail, CatalogModel, CatalogProduct } from './catalogTypes.ts'
 
 export function CatalogAttributions({ items }: { items: CatalogAttribution[] }) {
@@ -37,6 +38,8 @@ export function CatalogProductDetail({ detail, onSelect, onRefresh, onSelectMode
         <p>가격: {formatProjectPrice(product)}</p>
         <button type="button" className="button button--ghost" onClick={onRefresh}>가격·제원 새로고침</button>
       </div>
+
+      <PriceInsightSection key={product.id} productId={product.id} />
 
       <CatalogLinkedModel key={`${product.id}:${product.modelId ?? ''}`} product={product} onSelectModel={onSelectModel} />
 
