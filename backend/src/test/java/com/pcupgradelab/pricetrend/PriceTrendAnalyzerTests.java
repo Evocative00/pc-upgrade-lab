@@ -125,6 +125,21 @@ class PriceTrendAnalyzerTests {
     }
 
     @Test
+    void differentSkuUnderTheSameExternalIdCannotChangeTheOlderSkuSeries() {
+        var points = new ArrayList<>(daily("A", 14, NOW.minus(Duration.ofHours(2)), 100_000));
+        var last = points.getLast();
+        points.add(new PricePoint(last.sourceName(), last.externalId(), last.sourceUrl(), "Different SKU",
+                last.saleUnit(), last.moduleCount(), 50_000, NOW.minus(Duration.ofHours(1)), last.evidenceUrl(),
+                PricePoint.Origin.HISTORY));
+
+        var analysis = PriceTrendAnalyzer.analyze(points, NOW);
+
+        assertThat(analysis.latest().saleSku()).isEqualTo("Different SKU");
+        assertThat(analysis.verdict()).isEqualTo(PriceTrendAnalyzer.Verdict.INSUFFICIENT_DATA);
+        assertThat(analysis.sampleCount()).isEqualTo(1);
+    }
+
+    @Test
     void multipleObservationsPerDayUseTheLastAndChangeRateComparesSevenDaysEarlier() {
         var points = new ArrayList<>(daily("A", 20, NOW.minus(Duration.ofHours(1)).minus(Duration.ofDays(1)), 100_000));
         points.add(point("A", 90_000, NOW.minus(Duration.ofHours(3)).toString()));

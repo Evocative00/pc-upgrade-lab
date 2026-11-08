@@ -49,6 +49,12 @@ public class PriceHistoryImportService {
                         CatalogPriceImportBatch.Price price, String file) { }
     private record OfferId(String sourceName, String externalId) { }
 
+    private record OfferOwner(String productId, PricePoint.OfferKey configuration) {
+        boolean matches(PriceHistoryObservation stored) {
+            return productId.equals(stored.getProductId()) && configuration.equals(stored.toPoint().offerKey());
+        }
+    }
+
     @Transactional(readOnly = true)
     public Result preview(List<NamedBatch> batches) {
         return databaseTimeZone.read(() -> process(batches, true, null));
@@ -62,8 +68,8 @@ public class PriceHistoryImportService {
 
     private Result process(List<NamedBatch> batches, boolean dryRun, Instant importedAt) {
         if (batches == null || batches.isEmpty()) throw new IllegalArgumentException("At least one price file is required");
-        var seen = new HashMap<PricePoint.ObservationKey, Long>();
-        var offerOwners = new HashMap<OfferId, String>();
+        var seen = new HashMap<PricePoint.ObservationKey, CatalogPriceImportBatch.Price>();
+        var offerOwners = new HashMap<OfferId, OfferOwner>();
         var plans = new ArrayList<Plan>();
         var skipped = new ArrayList<String>();
         int checked = 0, inCatalog = 0, inHistory = 0, duplicates = 0, unknown = 0, mismatch = 0;
@@ -83,9 +89,13 @@ public class PriceHistoryImportService {
                 }
                 var product = source.get().getProduct();
                 String problem = identityProblem(product, identity, offer);
-                var mappedTo = existing.findMappedProductIds(offer.sourceName(), offer.externalId());
-                if (problem == null && !mappedTo.isEmpty() && !mappedTo.contains(product.getId())) {
-                    problem = "OFFER_MAPPED_TO_OTHER_PRODUCT";
+                var mapping = existing.findMapping(offer.sourceName(), offer.externalId()).orElse(null);
+                if (problem == null && mapping != null) {
+                    if (!mapping.getProduct().getId().equals(product.getId())) {
+                        problem = "OFFER_MAPPED_TO_OTHER_PRODUCT";
+                    } else if (!mapping.toOffer().equals(offer)) {
+                        problem = "OFFER_CONFIGURATION_MISMATCH";
+                    }
                 }
                 if (problem != null) {
                     mismatch++;
@@ -93,30 +103,46 @@ public class PriceHistoryImportService {
                     continue;
                 }
                 var offerId = new OfferId(offer.sourceName(), offer.externalId());
-                var owner = offerOwners.putIfAbsent(offerId, product.getId());
-                if (owner != null && !owner.equals(product.getId())) {
-                    throw new IllegalArgumentException("The same provider offer is linked to different products: "
-                            + offer.sourceName() + "/" + offer.externalId());
+                var candidate = new OfferOwner(product.getId(), PricePoint.OfferKey.from(offer));
+                var owner = offerOwners.putIfAbsent(offerId, candidate);
+                if (owner == null) {
+                    var firstStored = history.findFirstBySourceNameAndExternalIdOrderByObservedAtAsc(
+                            offer.sourceName(), offer.externalId());
+                    if (firstStored.isPresent() && !candidate.matches(firstStored.get())) {
+                        throw new IllegalArgumentException("An existing history offer differs in product or sale configuration: "
+                                + offerId);
+                    }
+                } else if (!owner.equals(candidate)) {
+                    throw new IllegalArgumentException("The same provider offer is linked to different products or sale configurations: "
+                            + offerId);
                 }
 
                 var key = new PricePoint.ObservationKey(offer.sourceName(), offer.externalId(), price.observedAt());
-                var earlier = seen.putIfAbsent(key, price.amountKrw());
+                var earlier = seen.putIfAbsent(key, price);
                 if (earlier != null) {
-                    if (!earlier.equals(price.amountKrw())) {
-                        throw new IllegalArgumentException("Conflicting prices for the same offer and timestamp: " + key);
+                    if (!earlier.equals(price)) {
+                        throw new IllegalArgumentException("Conflicting price or evidence for the same offer and timestamp: " + key);
                     }
                     duplicates++;
                     continue;
                 }
-                if (existing.existsObservation(offer.sourceName(), offer.externalId(), price.observedAt())) {
-                    inCatalog++;
-                    continue;
+                if (mapping != null) {
+                    var catalogObservation = existing.findObservation(mapping.getId(), price.observedAt());
+                    if (catalogObservation.isPresent()) {
+                        if (!catalogObservation.get().matches(price)) {
+                            throw new IllegalArgumentException("An existing catalog observation differs at the same offer and timestamp: "
+                                    + key);
+                        }
+                        inCatalog++;
+                        continue;
+                    }
                 }
                 var stored = history.findBySourceNameAndExternalIdAndObservedAt(
                         offer.sourceName(), offer.externalId(), price.observedAt());
                 if (stored.isPresent()) {
-                    if (stored.get().getAmountKrw() != price.amountKrw()
-                            || !stored.get().getProductId().equals(product.getId())) {
+                    var row = stored.get();
+                    if (!candidate.matches(row) || row.getAmountKrw() != price.amountKrw()
+                            || !row.toPoint().evidenceUrl().equals(price.evidenceUrl())) {
                         throw new IllegalArgumentException("An imported history row differs at the same offer and timestamp: " + key);
                     }
                     inHistory++;
@@ -127,7 +153,7 @@ public class PriceHistoryImportService {
         }
         if (!dryRun) {
             for (var plan : plans) {
-                // UNIQUE 제약이 동시 실행을 막는다. 실패하면 이번 실행 전체가 롤백된다.
+                // 같은 관측의 동시 삽입은 UNIQUE 제약으로 막고, 실패하면 이번 실행 전체가 롤백된다.
                 history.saveAndFlush(new PriceHistoryObservation(plan.productId(), plan.offer(), plan.price(),
                         plan.file(), importedAt));
             }

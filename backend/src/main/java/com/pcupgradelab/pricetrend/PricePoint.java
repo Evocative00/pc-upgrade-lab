@@ -15,8 +15,13 @@ public record PricePoint(String sourceName, String externalId, String sourceUrl,
     public enum Origin { CATALOG, HISTORY }
 
     /** 같은 판매처 상품·판매 단위끼리만 비교한다. 다른 판매 구성은 한 시계열로 섞지 않는다. */
-    public record OfferKey(String sourceName, String externalId,
-                           CatalogPriceImportBatch.SaleUnit saleUnit, Integer moduleCount) { }
+    public record OfferKey(String sourceName, String externalId, String sourceUrl, String saleSku,
+                           CatalogPriceImportBatch.SaleUnit saleUnit, Integer moduleCount) {
+        static OfferKey from(CatalogPriceImportBatch.Offer offer) {
+            return new OfferKey(offer.sourceName(), offer.externalId(), offer.sourceUrl(), offer.saleSku(),
+                    offer.saleUnit(), offer.moduleCount());
+        }
+    }
 
     /** 동일 관측 판정 키. 두 테이블에 같은 관측이 있으면 한 건으로 본다. */
     public record ObservationKey(String sourceName, String externalId, Instant observedAt) { }
@@ -30,7 +35,7 @@ public record PricePoint(String sourceName, String externalId, String sourceUrl,
     }
 
     public OfferKey offerKey() {
-        return new OfferKey(sourceName, externalId, saleUnit, moduleCount);
+        return new OfferKey(sourceName, externalId, sourceUrl, saleSku, saleUnit, moduleCount);
     }
 
     public ObservationKey observationKey() {

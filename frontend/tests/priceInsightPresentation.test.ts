@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import type { PriceHistorySeries, PriceInsight } from '../src/features/catalog/priceInsightClient.ts'
 import {
-  chartGeometry, formatChangeRate, formatKst, insightFlags, reasonText, saleConfigurationLabel,
+  chartGeometry, formatChangeRate, formatKst, insightFlags, insightOffer, reasonText, saleConfigurationLabel,
 } from '../src/features/catalog/priceInsightPresentation.ts'
 
 function series(externalId: string, points: [string, number][], saleUnit: 'PRODUCT' | 'RAM_KIT' = 'PRODUCT'): PriceHistorySeries {
@@ -41,6 +41,19 @@ test('labels RAM kits by module count so kit prices are not read as per-module p
     'DANAWA 1 · SKU-1 · 2개 모듈 키트')
 })
 
+test('shows the judged sale configuration and links only evidence for that exact observation', () => {
+  const chosen = series('1', [['2026-10-08T00:00:00Z', 22_000]], 'RAM_KIT')
+  const other = { ...chosen, sourceName: 'OTHER', points: [{ ...chosen.points[0], evidenceUrl: 'https://example.com/other' }] }
+  const history = { productId: 'ram-1', canonicalId: null, series: [other, chosen] }
+  const latest = { ...chosen.points[0], sourceName: chosen.sourceName, externalId: chosen.externalId, saleSku: chosen.saleSku }
+  assert.deepEqual(insightOffer(latest, history), {
+    label: 'DANAWA 1 · SKU-1 · 2개 모듈 키트', evidenceUrl: 'https://example.com',
+  })
+  // 이력 조회 실패 또는 새 관측이 두 조회 사이에 들어온 경우에도 판정 대상은 남는다.
+  assert.deepEqual(insightOffer(latest, null), { label: 'DANAWA 1 · SKU-1', evidenceUrl: null })
+  assert.equal(insightOffer({ ...latest, amountKrw: 21_000 }, history)?.evidenceUrl, null)
+})
+
 test('chart breaks lines across missing days and keeps sale configurations separate', () => {
   const geometry = chartGeometry([
     series('A', [['2026-10-08T00:00:00Z', 100], ['2026-10-09T00:00:00Z', 110], ['2026-10-12T00:00:00Z', 120],
@@ -61,4 +74,22 @@ test('chart breaks lines across missing days and keeps sale configurations separ
     assert.ok(dot.x >= 0 && dot.x <= geometry.width && dot.y >= 0 && dot.y <= geometry.height)
   }
   assert.equal(chartGeometry([]), null)
+})
+
+test('chart leaves an unobserved Korean calendar date empty even when the gap is under 36 hours', () => {
+  const geometry = chartGeometry([series('A', [
+    ['2026-10-01T14:59:00Z', 20_000], // 10-01 23:59 KST
+    ['2026-10-03T00:00:00Z', 18_000], // 10-03 09:00 KST
+  ])])
+  assert.ok(geometry)
+  assert.equal(geometry.lines[0].dots.length, 2)
+  assert.deepEqual(geometry.lines[0].segments, [])
+})
+
+test('does not generate a chart from a large otherwise valid history response', () => {
+  const row = series('A', [['2026-10-01T14:59:00Z', 20_000]])
+  const history = Array.from({ length: 32 }, (_, index) => ({ ...row,
+    externalId: String(index), points: Array(5_000).fill(row.points[0]),
+  }))
+  assert.equal(chartGeometry(history), null)
 })

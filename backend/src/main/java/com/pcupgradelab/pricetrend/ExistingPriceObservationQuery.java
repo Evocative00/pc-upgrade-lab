@@ -1,8 +1,10 @@
 package com.pcupgradelab.pricetrend;
 
+import com.pcupgradelab.catalog.price.CatalogPriceMapping;
 import com.pcupgradelab.catalog.price.CatalogPriceObservation;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
@@ -24,18 +26,19 @@ public interface ExistingPriceObservationQuery extends Repository<CatalogPriceOb
     List<PricePoint> findPointsForProduct(@Param("productId") String productId);
 
     @Query("""
-            select count(o) > 0 from CatalogPriceObservation o join o.mapping m
-            where m.sourceName = :sourceName and m.externalId = :externalId and o.observedAt = :observedAt
+            select o from CatalogPriceObservation o
+            where o.mapping.id = :mappingId and o.observedAt = :observedAt
             """)
-    boolean existsObservation(@Param("sourceName") String sourceName, @Param("externalId") String externalId,
-                              @Param("observedAt") Instant observedAt);
+    Optional<CatalogPriceObservation> findObservation(@Param("mappingId") Long mappingId,
+                                                       @Param("observedAt") Instant observedAt);
 
-    /** 기존 판매처 매핑이 있으면 그 상품 ID를 돌려준다. 다른 상품에 연결된 판매처 상품은 가져오지 않는다. */
+    /** 상품 ID뿐 아니라 이미 검토한 판매 구성 전체를 대조한다. */
     @Query("""
-            select m.product.id from CatalogPriceMapping m
+            select m from CatalogPriceMapping m
             where m.sourceName = :sourceName and m.externalId = :externalId
             """)
-    List<String> findMappedProductIds(@Param("sourceName") String sourceName, @Param("externalId") String externalId);
+    Optional<CatalogPriceMapping> findMapping(@Param("sourceName") String sourceName,
+                                              @Param("externalId") String externalId);
 
     @Query("select distinct o.product.id from CatalogPriceObservation o")
     List<String> findProductIdsWithObservations();

@@ -174,6 +174,80 @@ class PriceTrendIntegrationTests {
     }
 
     @Test
+    void existingCatalogOfferCannotChangeSkuOrUrl() {
+        var cpu = fixture(PartType.CPU, "F");
+        var original = item(cpu, "910", 100_000, "2026-10-08T00:00:00Z");
+        catalogPrices.apply(new CatalogPriceImportBatch(1, List.of(original)));
+        var later = item(cpu, "910", 50_000, "2026-10-09T00:00:00Z");
+        var files = batches(withOffer(later, original.offer().sourceUrl(), "Different SKU"),
+                withOffer(later, "https://example.com/different-offer", original.offer().saleSku()));
+
+        var result = historyImport.apply(files, Instant.parse("2026-11-07T00:00:00Z"));
+
+        assertThat(result.created()).isZero();
+        assertThat(result.skippedMismatch()).isEqualTo(2);
+        assertThat(result.skipped()).allMatch(line -> line.startsWith("OFFER_CONFIGURATION_MISMATCH"));
+        assertThat(count("price_history_observation")).isZero();
+    }
+
+    @Test
+    void existingCatalogObservationConflictsAreNotSilentlySkipped() {
+        var cpu = fixture(PartType.CPU, "G");
+        var original = item(cpu, "920", 100_000, "2026-10-08T00:00:00Z");
+        catalogPrices.apply(new CatalogPriceImportBatch(1, List.of(original)));
+        var before = snapshot();
+        var unrelatedNewObservation = item(cpu, "920", 99_000, "2026-10-07T00:00:00Z");
+        var conflicts = List.of(item(cpu, "920", 90_000, "2026-10-08T00:00:00Z"),
+                withEvidence(original, "https://example.com/different-evidence"));
+
+        for (var conflict : conflicts) {
+            assertThatThrownBy(() -> historyImport.apply(batches(unrelatedNewObservation, conflict),
+                    Instant.parse("2026-11-07T00:00:00Z")))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("existing catalog observation differs");
+            assertThat(count("price_history_observation")).isZero();
+            assertThat(snapshot()).isEqualTo(before);
+        }
+    }
+
+    @Test
+    void historyOnlyOfferRetainsProductAndSkuAcrossSeparateImports() {
+        var cpu = fixture(PartType.CPU, "H");
+        var otherCpu = fixture(PartType.CPU, "I");
+        var original = item(cpu, "930", 100_000, "2026-10-08T00:00:00Z");
+        historyImport.apply(batches(original), Instant.parse("2026-11-07T00:00:00Z"));
+        var later = item(cpu, "930", 50_000, "2026-10-09T00:00:00Z");
+        var conflicts = List.of(item(otherCpu, "930", 50_000, "2026-10-09T00:00:00Z"),
+                withOffer(later, original.offer().sourceUrl(), "Different SKU"));
+
+        for (var conflict : conflicts) {
+            assertThatThrownBy(() -> historyImport.apply(batches(conflict), Instant.parse("2026-11-07T01:00:00Z")))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("existing history offer differs");
+            assertThat(count("price_history_observation")).isEqualTo(1);
+        }
+    }
+
+    @Test
+    void identicalAmountButDifferentEvidenceIsNotTheSameObservation() {
+        var cpu = fixture(PartType.CPU, "J");
+        var original = item(cpu, "940", 100_000, "2026-10-08T00:00:00Z");
+        var differentEvidence = withEvidence(original, "https://example.com/different-evidence");
+        var importedAt = Instant.parse("2026-11-07T00:00:00Z");
+
+        assertThatThrownBy(() -> historyImport.apply(batches(original, differentEvidence), importedAt))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Conflicting price or evidence");
+        assertThat(count("price_history_observation")).isZero();
+
+        historyImport.apply(batches(original), importedAt);
+        assertThatThrownBy(() -> historyImport.apply(batches(differentEvidence), importedAt))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("imported history row differs");
+        assertThat(count("price_history_observation")).isEqualTo(1);
+    }
+
+    @Test
     void deletingACatalogProductIsNotBlockedByHistoryRows() {
         var cpu = fixture(PartType.CPU, "E");
         historyImport.apply(List.of(new PriceHistoryImportService.NamedBatch("cascade.json",
@@ -243,6 +317,23 @@ class PriceTrendIntegrationTests {
         var price = new CatalogPriceImportBatch.Price(amount, Instant.parse(observedAt),
                 "https://example.com/evidence", "NEW", true);
         return new CatalogPriceImportBatch.Item(product, offer, price);
+    }
+
+    private static List<PriceHistoryImportService.NamedBatch> batches(CatalogPriceImportBatch.Item... items) {
+        return List.of(new PriceHistoryImportService.NamedBatch("data/price-history/observations-test.json",
+                new CatalogPriceImportBatch(1, List.of(items))));
+    }
+
+    private static CatalogPriceImportBatch.Item withOffer(CatalogPriceImportBatch.Item item, String url, String sku) {
+        var offer = item.offer();
+        return new CatalogPriceImportBatch.Item(item.product(), new CatalogPriceImportBatch.Offer(offer.sourceName(),
+                offer.externalId(), url, sku, offer.saleUnit(), offer.moduleCount(), offer.verifiedAt()), item.price());
+    }
+
+    private static CatalogPriceImportBatch.Item withEvidence(CatalogPriceImportBatch.Item item, String url) {
+        var price = item.price();
+        return new CatalogPriceImportBatch.Item(item.product(), item.offer(), new CatalogPriceImportBatch.Price(
+                price.amountKrw(), price.observedAt(), url, price.condition(), price.inStock()));
     }
 
     private int count(String table) {

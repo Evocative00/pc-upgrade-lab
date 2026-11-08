@@ -12,6 +12,9 @@ public interface PriceHistoryObservationRepository extends JpaRepository<PriceHi
     Optional<PriceHistoryObservation> findBySourceNameAndExternalIdAndObservedAt(
             String sourceName, String externalId, Instant observedAt);
 
+    Optional<PriceHistoryObservation> findFirstBySourceNameAndExternalIdOrderByObservedAtAsc(
+            String sourceName, String externalId);
+
     @Query("select distinct h.productId from PriceHistoryObservation h")
     List<String> findProductIdsWithHistory();
 }

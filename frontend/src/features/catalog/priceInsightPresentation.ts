@@ -1,4 +1,4 @@
-import type { PriceHistorySeries, PriceInsight, PriceVerdict, PriceVerdictReason } from './priceInsightClient.ts'
+import type { PriceHistory, PriceHistorySeries, PriceInsight, PriceVerdict, PriceVerdictReason } from './priceInsightClient.ts'
 
 export const VERDICT_LABELS: Record<PriceVerdict, string> = {
   GOOD_PRICE: '좋은 가격',
@@ -28,7 +28,7 @@ export function insightFlags(insight: PriceInsight): InsightFlag[] {
   if (insight.stale && insight.latest) {
     const days = Math.max(0, Math.floor((Date.parse(insight.analyzedAt) - Date.parse(insight.latest.observedAt)) / 86_400_000))
     flags.push({ kind: 'stale', label: '최신화되지 않음',
-      detail: `마지막 관측 ${days}일 전 · 최신화되지 않은 가격 기준입니다. 지금 판매가는 다를 수 있습니다.` })
+      detail: `마지막 관측 ${days}일 전 · 과거 관측을 비교한 결과입니다. 현재 구매가는 판매처에서 다시 확인해 주세요.` })
   }
   if (insight.lowConfidence) {
     flags.push({ kind: 'low-confidence', label: '관측일 부족',
@@ -63,6 +63,18 @@ export function saleConfigurationLabel(series: PriceHistorySeries): string {
   return `${series.sourceName} ${series.externalId} · ${series.saleSku}${unit}`
 }
 
+/** 판정에 쓰인 정확한 관측만 이력에서 찾아 판매 단위와 출처 링크를 붙인다. */
+export function insightOffer(latest: PriceInsight['latest'], history: PriceHistory | null) {
+  if (!latest) return null
+  for (const series of history?.series ?? []) {
+    if (series.sourceName !== latest.sourceName || series.externalId !== latest.externalId || series.saleSku !== latest.saleSku) continue
+    const point = series.points.find((candidate) =>
+      candidate.observedAt === latest.observedAt && candidate.amountKrw === latest.amountKrw)
+    if (point) return { label: saleConfigurationLabel(series), evidenceUrl: point.evidenceUrl }
+  }
+  return { label: `${latest.sourceName} ${latest.externalId} · ${latest.saleSku}`, evidenceUrl: null }
+}
+
 export type ChartLine = { key: string; label: string; segments: string[]; dots: { x: number; y: number }[] }
 export type ChartGeometry = {
   width: number; height: number; lines: ChartLine[]
@@ -70,20 +82,24 @@ export type ChartGeometry = {
 }
 
 const DAY_MS = 86_400_000
+const KST_OFFSET_MS = 9 * 60 * 60 * 1000
+const MAX_CHART_POINTS = 5_000
 
 /**
- * 판매 구성별 선을 만든다. 관측이 하루보다 길게 비면 선을 끊어 빈 날을 이은 것처럼 보이지 않게 한다.
- * 관측이 하나도 없으면 null이다.
+ * 판매 구성별 선을 만든다. 표시하는 한국 날짜에 관측이 없는 날이 끼면 선을 끊는다.
+ * 관측이 없거나 화면에 그릴 수 있는 점 수를 넘으면 null이다.
  */
 export function chartGeometry(series: PriceHistorySeries[], width = 560, height = 180, padding = 16): ChartGeometry | null {
-  const all = series.flatMap((item) => item.points)
-  if (all.length === 0) return null
-  const times = all.map((point) => Date.parse(point.observedAt))
-  const amounts = all.map((point) => point.amountKrw)
-  const start = Math.min(...times)
-  const end = Math.max(...times)
-  const low = Math.min(...amounts)
-  const high = Math.max(...amounts)
+  const count = series.reduce((sum, item) => sum + item.points.length, 0)
+  if (count === 0 || count > MAX_CHART_POINTS) return null
+  let start = Infinity, end = -Infinity, low = Infinity, high = -Infinity
+  for (const { points } of series) for (const point of points) {
+    const time = Date.parse(point.observedAt)
+    start = Math.min(start, time)
+    end = Math.max(end, time)
+    low = Math.min(low, point.amountKrw)
+    high = Math.max(high, point.amountKrw)
+  }
   const spanX = Math.max(end - start, DAY_MS)
   const spanY = Math.max(high - low, Math.max(1, Math.round(high * 0.02)))
   const x = (time: number) => Math.round((padding + (time - start) / spanX * (width - padding * 2)) * 10) / 10
@@ -92,15 +108,16 @@ export function chartGeometry(series: PriceHistorySeries[], width = 560, height 
     const points = [...item.points].sort((a, b) => Date.parse(a.observedAt) - Date.parse(b.observedAt))
     const segments: string[] = []
     let current: string[] = []
-    let previous: number | null = null
+    let previousDay: number | null = null
     for (const point of points) {
       const time = Date.parse(point.observedAt)
-      if (previous !== null && time - previous > DAY_MS * 1.5) {
+      const day = Math.floor((time + KST_OFFSET_MS) / DAY_MS)
+      if (previousDay !== null && day - previousDay > 1) {
         if (current.length > 1) segments.push(current.join(' '))
         current = []
       }
       current.push(`${x(time)},${y(point.amountKrw)}`)
-      previous = time
+      previousDay = day
     }
     if (current.length > 1) segments.push(current.join(' '))
     return {
