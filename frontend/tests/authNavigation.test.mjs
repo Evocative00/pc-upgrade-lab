@@ -9,7 +9,7 @@ import ts from 'typescript'
 // React 훅과 JSX 렌더링, 수집기 등 관련 없는 하위 화면만 대체한다.
 const sourceRoot = fileURLToPath(new URL('../src/', import.meta.url))
 
-function harness({ blockedStorage = false, detail = null, user = null, logoutStatus = 404, createResponse = null, deleteStatus = 204 } = {}) {
+function harness({ blockedStorage = false, detail = null, detailResponse = null, user = null, logoutStatus = 404, createResponse = null, deleteStatus = 204 } = {}) {
   let active = null
   const hook = () => active.index++
   const effect = (callback, deps) => {
@@ -66,6 +66,7 @@ function harness({ blockedStorage = false, detail = null, user = null, logoutSta
     if (url === '/api/pcs' && init?.method === 'POST' && createResponse) return createResponse()
     if (detail && url === `/api/pcs/${detail.id}` && init?.method === 'DELETE') return new Response(null, { status: deleteStatus })
     if (detail && url === `/api/pcs/${detail.id}` && (!init?.method || init.method === 'GET')) {
+      if (detailResponse) return detailResponse()
       return new Response(JSON.stringify(detail), { status: 200 })
     }
     return new Response(JSON.stringify({ code: 'UNAUTHORIZED', message: '로그인이 필요합니다.' }), {
@@ -442,6 +443,40 @@ for (const deleteStatus of [204, 404]) {
     assert.equal(cache.has('pc:17:gameInput'), false)
     assert.equal(cache.has('pc:18:name'), true)
     assert.equal(h.window.location.hash, '#/pcs')
+  })
+}
+
+for (const pageName of ['PcDetailPage', 'PcEditPage']) {
+  test(`${pageName}의 조회 실패는 현재 주소에서 재시도하고 수정 초안을 보존한다`, async () => {
+    const detail = { id: 17, name: '저장된 PC', parts: [], createdAt: '2026-10-30', updatedAt: '2026-10-30' }
+    let attempts = 0
+    const h = harness({ detail, detailResponse: () => ++attempts === 1
+      ? new Response(null, { status: 503 }) : new Response(JSON.stringify(detail), { status: 200 }) })
+    const editing = pageName === 'PcEditPage'
+    const pageModule = editing ? 'PcFormPages' : 'PcDetailPage'
+    const Page = h.load(`features/pc/pages/${pageModule}.tsx`)[pageName]
+    const origin = editing ? '#/pcs/17/edit' : '#/pcs/17'
+    h.window.location.hash = origin
+    if (editing) h.load('features/auth/draftBridge.ts').saveDraft({ name: '편집 중인 PC', parts: [] }, 17)
+
+    const props = { id: 17 }
+    let page = h.render(Page, props)
+    await nextTurn()
+    page = h.render(Page, props, page.owner)
+    find(page.tree, (node) => node.type === 'button' && node.props.children === '다시 시도').props.onClick()
+    page = h.render(Page, props, page.owner)
+    find(page.tree, (node) => node.props.role === 'status')
+    await nextTurn()
+    page = h.render(Page, props, page.owner)
+
+    assert.equal(h.window.location.hash, origin)
+    assert.equal(attempts, 2)
+    if (editing) {
+      const { PcForm } = h.load('features/pc/components/PcForm.tsx')
+      assert.equal(find(page.tree, (node) => node.type === PcForm).props.initial.name, '편집 중인 PC')
+    } else {
+      find(page.tree, (node) => node.type === 'a' && node.props.href === '#/upgrade/pcs/17')
+    }
   })
 }
 

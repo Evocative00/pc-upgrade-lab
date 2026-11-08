@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { isString } from '../../lib/pageState.ts'
 import { usePageState } from '../../lib/usePageState.ts'
 import type { PartInput } from '../pc-scan/types.ts'
@@ -18,6 +18,8 @@ type Props = {
   pcName: string
   parts: PartInput[]
   goal: UpgradeGoal
+  budgetText: string
+  onBudgetTextChange: (value: string) => void
   onChange: (goal: UpgradeGoal) => void
   onBack: () => void
   onNext: () => void
@@ -45,19 +47,38 @@ function Choice<T extends string | number>({ options, value, onChange, label }: 
   </div>
 }
 
-export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBack, onNext, onStep }: Props) {
+export function UpgradeGoalForm({ stateKey, pcName, parts, goal, budgetText, onBudgetTextChange, onChange, onBack, onNext, onStep }: Props) {
   const [gameInput, setGameInput] = usePageState(`${stateKey}gameInput`, '', isString)
   const [gameLimitNotice, setGameLimitNotice] = useState(false)
-  const [budgetText, setBudgetText] = usePageState(`${stateKey}budgetText`, String(goal.budgetWon), isString)
+  const budgetErrorId = useId()
+  const validBudget = isBudgetInRange(Number(budgetText))
+  const canContinue = validBudget && goalIsReady(goal)
   const pcSummary = parts.slice(0, 5).map((part) => `${getPartTypeInfo(part.type).label} ${part.displayName}`)
   const frameGames = frameEstimateGames(goal.games)
+  const customGames = goal.games.filter((game) => !GAME_SUGGESTIONS.includes(game))
 
   function chooseGame(game: string) {
-    if (goal.games.length >= 3 && !goal.games.includes(game.trim())) {
+    const games = toggleChoice(goal.games, game)
+    if (games === goal.games) {
       setGameLimitNotice(true)
       return
     }
-    onChange({ ...goal, games: toggleChoice(goal.games, game) })
+    onChange({ ...goal, games })
+    setGameLimitNotice(false)
+  }
+
+  function addCustomGame() {
+    const game = gameInput.trim()
+    if (!game) return
+    const gameKey = game.toLocaleLowerCase()
+    if (!goal.games.some((name) => name.toLocaleLowerCase() === gameKey)) {
+      const games = toggleChoice(goal.games, game)
+      if (games === goal.games) {
+        setGameLimitNotice(true)
+        return
+      }
+      onChange({ ...goal, games })
+    }
     setGameLimitNotice(false)
     setGameInput('')
   }
@@ -65,13 +86,12 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
   function setBudget(value: number) {
     if (Number.isFinite(value)) {
       const budgetWon = Math.min(MAX_BUDGET_WON, Math.max(MIN_BUDGET_WON, Math.round(value / 10_000) * 10_000))
-      onChange({ ...goal, budgetWon })
-      setBudgetText(String(budgetWon))
+      onBudgetTextChange(String(budgetWon))
     }
   }
 
   return <div className="planner-shell">
-    <PlannerStepper current={2} canGo={(step) => step === 1 || goalIsReady(goal)}
+    <PlannerStepper current={2} canGo={(step) => step === 1 || canContinue}
       onGo={(step) => step === 1 ? onBack() : step === 3 || step === 4 ? onStep(step) : undefined} />
     <div className="planner-layout">
       <div className="planner-main">
@@ -85,15 +105,12 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
           <div className="planner-card-head">
             <h2 id="planner-budget-title">업그레이드 예산</h2>
             <label className="planner-money">₩ <input aria-label="업그레이드 예산" type="number" min={MIN_BUDGET_WON} max={MAX_BUDGET_WON}
-              step="10000" value={budgetText} onChange={(event) => {
-                const next = event.target.value
-                setBudgetText(next)
-                const value = Number(next)
-                if (next !== '' && isBudgetInRange(value)) {
-                  onChange({ ...goal, budgetWon: value })
-                }
-              }} onBlur={() => setBudgetText(String(goal.budgetWon))} /></label>
+              step="1" value={budgetText} aria-invalid={!validBudget} aria-describedby={!validBudget ? budgetErrorId : undefined}
+              onChange={(event) => onBudgetTextChange(event.target.value)} /></label>
           </div>
+          {!validBudget && <p id={budgetErrorId} className="error" role="status">
+            예산은 {MIN_BUDGET_WON / 10_000}만 원부터 {MAX_BUDGET_WON / 10_000}만 원까지 원 단위로 입력해 주세요.
+          </p>}
           {/* 100만 원까지는 1만 원, 그 위는 10만 원 단위로 움직인다(plannerGoal.ts). */}
           <input className="planner-range" aria-label="예산 슬라이더" type="range" min="0" max={BUDGET_SLIDER_STEPS}
             step="1" value={sliderFromBudget(goal.budgetWon)} aria-valuetext={`${goal.budgetWon / 10_000}만 원`}
@@ -124,12 +141,19 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
               {GAME_SUGGESTIONS.map((game) => <button type="button" key={game}
                 className={goal.games.includes(game) ? 'is-selected' : ''}
                 aria-pressed={goal.games.includes(game)} onClick={() => chooseGame(game)}>{game}</button>)}
+              {customGames.map((game) => <button type="button" key={game} className="is-selected"
+                aria-label={`${game} 선택 해제`} onClick={() => chooseGame(game)}>{game} <span aria-hidden="true">×</span></button>)}
             </div>
             <div className="planner-inline-input">
               <label htmlFor="planner-custom-game">목록에 없는 게임</label>
               <input id="planner-custom-game" value={gameInput} maxLength={40} placeholder="게임 이름 직접 입력"
-                onChange={(event) => setGameInput(event.target.value)} />
-              <button type="button" onClick={() => chooseGame(gameInput)} disabled={!gameInput.trim()}>추가</button>
+                onChange={(event) => setGameInput(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key !== 'Enter' || event.nativeEvent.isComposing) return
+                  event.preventDefault()
+                  addCustomGame()
+                }} />
+              <button type="button" onClick={addCustomGame} disabled={!gameInput.trim()}>추가</button>
             </div>
             {gameLimitNotice && <p role="status" className="planner-warning">게임은 최대 3개까지 선택할 수 있어요.</p>}
             {frameGames.length > 0 && <>
@@ -183,12 +207,12 @@ export function UpgradeGoalForm({ stateKey, pcName, parts, goal, onChange, onBac
               <p className="planner-caveat">작업 규모: 가벼움 1080p · 보통 4K · 무거움 6K~8K</p>}
           </div>}
         </section>
-        <div className="planner-actions"><button type="button" className="button button--primary button--lg" disabled={!goalIsReady(goal)}
+        <div className="planner-actions"><button type="button" className="button button--primary button--lg" disabled={!canContinue}
           onClick={onNext}>진단 결과 보기 →</button></div>
       </div>
       <aside className="planner-card planner-aside" aria-label="진단 기준">
         <h2>진단 기준</h2>
-        <dl><div><dt>예산</dt><dd>₩{goal.budgetWon.toLocaleString('ko-KR')}</dd></div>
+        <dl><div><dt>예산</dt><dd>{validBudget ? `₩${goal.budgetWon.toLocaleString('ko-KR')}` : '입력 확인 필요'}</dd></div>
           <div><dt>용도·목표</dt><dd>{goalSummary(goal)}</dd></div></dl>
         <hr /><h3>기존 구성 · {pcName.trim() || '이름 없는 PC'}</h3>
         {pcSummary.length > 0 ? <ul>{pcSummary.map((part, index) => <li key={`${index}-${part}`}>{part}</li>)}</ul>

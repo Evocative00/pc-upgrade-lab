@@ -8,8 +8,8 @@ const labels = {
   PREPARING: '검사를 준비하고 있습니다.',
   CREATED: '보조 프로그램을 여는 중입니다. 브라우저의 프로그램 열기 확인 창에서 실행을 허용해 주세요.',
   RUNNING: 'PC 사양을 읽고 있습니다.',
-  COMPLETED: 'PC 사양을 불러와 입력란에 반영했습니다.',
-  COMPLETED_WITH_WARNINGS: 'PC 사양을 불러와 입력란에 반영했습니다. 확인하지 못한 정보는 직접 보완해 주세요.',
+  COMPLETED: 'PC 사양을 읽었습니다.',
+  COMPLETED_WITH_WARNINGS: 'PC 사양을 읽었습니다. 확인하지 못한 정보는 직접 보완해 주세요.',
   FAILED: '사양을 불러오지 못했습니다.',
   EXPIRED: '2분 안에 검사가 완료되지 않았습니다. 설치와 실행 여부를 확인하고 다시 시도해 주세요.',
   CONNECTION_ERROR: '서버와 연결하지 못했습니다.',
@@ -130,7 +130,7 @@ export function PcScanPanel({ onApply }: { onApply?: (result: ScanResult) => voi
 
       {dialog === 'installed' && (
         <ScanDialog title="보조 프로그램이 설치되어 있습니다" onClose={() => setClosedDialog('installed')}>
-          <p>{busy ? '보조 프로그램이 실행되어 PC 사양을 읽고 있습니다. 완료되면 입력란에 자동으로 반영됩니다.' : labels[scan.status]}</p>
+          <p>{busy ? '보조 프로그램이 실행되어 PC 사양을 읽고 있습니다. 완료되면 읽은 부품을 확인할 수 있습니다.' : labels[scan.status]}</p>
         </ScanDialog>
       )}
       {dialog === 'install' && (

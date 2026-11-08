@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { CatalogPickerDialog } from './CatalogPickerDialog.tsx'
 import { formatProjectPrice, specificationRows } from '../catalog/catalogPresentation.ts'
-import type { CatalogDetail, CatalogModel, CatalogProduct } from '../catalog/catalogTypes.ts'
+import type { CatalogModel, CatalogProduct } from '../catalog/catalogTypes.ts'
 import { MotherboardStorageDetail } from '../catalog/MotherboardStorageDetail.tsx'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { getPartStatus } from '../pc/partDraft.ts'
@@ -11,7 +11,7 @@ import {
 } from './buildSlots.ts'
 import { CaseView, type SlotView } from './CaseView.tsx'
 import type { CompatibilityStatus } from './compatibility.ts'
-import { useCatalogDetails } from './useCatalogDetails.ts'
+import { useCatalogDetails, type DetailEntry } from './useCatalogDetails.ts'
 import type { CompatibilityState } from './useCompatibility.ts'
 import './pc-builder.css'
 
@@ -80,21 +80,33 @@ function CompatibilityPanel({ state }: { state: CompatibilityState }) {
 }
 
 // 메인보드 기준 포트·슬롯 정보. 카탈로그에 있는 제원만 보여 주고, 자료가 없는 항목은 미확인으로 둔다.
-function BoardPorts({ board, linked }: { board: CatalogDetail | null; linked: boolean }) {
+function BoardPorts({ productId, entry, onRetry }: {
+  productId: string | null
+  entry: DetailEntry | undefined
+  onRetry: (id: string) => void
+}) {
+  const board = entry?.status === 'done' && entry.detail.product.type === 'MOTHERBOARD' ? entry.detail : null
+  const error = entry?.status === 'error' ? entry.message
+    : entry?.status === 'done' && !board ? '연결된 제품의 부품 종류를 확인해 주세요.' : null
+
   return (
     <section className="board-ports" aria-label="메인보드 포트·슬롯">
       <h3>메인보드 포트·슬롯</h3>
-      {!board
-        ? <p className="muted">{linked ? '메인보드 제원을 불러오는 중…' : '카탈로그에서 메인보드를 고르면 슬롯 정보를 볼 수 있습니다.'}</p>
-        : <>
-          <dl className="catalog-specs">
-            {specificationRows('MOTHERBOARD', board.specification).map(([label, value]) => (
-              <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
-            ))}
-            <div><dt>USB 포트·허브·팬 헤더</dt><dd>미확인 (카탈로그 자료 없음)</dd></div>
-          </dl>
-          <MotherboardStorageDetail key={board.product.id} productId={board.product.id} />
-        </>}
+      {!productId && <p className="muted">카탈로그에서 메인보드를 고르면 슬롯 정보를 볼 수 있습니다.</p>}
+      {productId && (!entry || entry.status === 'loading') && <p className="muted" role="status">메인보드 제원을 불러오는 중…</p>}
+      {productId && error !== null && <>
+        <p className="error" role="alert">메인보드 제원을 불러오지 못했습니다. {error}</p>
+        <button type="button" className="button button--ghost" onClick={() => onRetry(productId)}>메인보드 제원 다시 조회</button>
+      </>}
+      {board && <>
+        <dl className="catalog-specs">
+          {specificationRows('MOTHERBOARD', board.specification).map(([label, value]) => (
+            <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+          ))}
+          <div><dt>USB 포트·허브·팬 헤더</dt><dd>미확인 (카탈로그 자료 없음)</dd></div>
+        </dl>
+        <MotherboardStorageDetail key={board.product.id} productId={board.product.id} />
+      </>}
     </section>
   )
 }
@@ -105,6 +117,7 @@ export function PcBuilder({ stateKey, drafts, updateDrafts, target, onTarget, co
   const named = drafts.filter((draft) => getPartStatus(draft) !== 'empty')
   const catalogIds = named.flatMap((draft) => draft.catalogProductId ?? [])
   const { entries: details, retry, refreshAll } = useCatalogDetails(catalogIds)
+  const boardProductId = slots.MOTHERBOARD?.catalogProductId ?? null
   const detailOf = (draft: PartDraft) => draft.catalogProductId ? details[draft.catalogProductId] : undefined
   const productOf = (draft: PartDraft) => {
     const entry = detailOf(draft)
@@ -153,8 +166,7 @@ export function PcBuilder({ stateKey, drafts, updateDrafts, target, onTarget, co
           </div>
           <p className="muted">구성 이해를 위한 예시 그림입니다. 실제 크기·위치·장착 가능 수를 뜻하지 않습니다.
             {ram.installedCount > 0 && ` RAM 장착 ${ram.installedCount}개 중 첫 ${ram.modules.length}개를 표시합니다.`}</p>
-          <BoardPorts board={slots.MOTHERBOARD ? productOf(slots.MOTHERBOARD) : null}
-            linked={Boolean(slots.MOTHERBOARD?.catalogProductId)} />
+          <BoardPorts productId={boardProductId} entry={boardProductId ? details[boardProductId] : undefined} onRetry={retry} />
         </div>
 
         <aside className="builder__summary" aria-label="구성 요약">

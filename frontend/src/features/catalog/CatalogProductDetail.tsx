@@ -36,8 +36,12 @@ export function CatalogProductDetail({ detail, onSelect, onRefresh, onSelectMode
         <h3 id={headingId}>{product.modelName}</h3>
         <p className="muted">부품번호: {product.partNumber ?? '미확인'}</p>
         <p>가격: {formatProjectPrice(product)}</p>
+      </div>
+      <div className="catalog-picker__bar">
+        <button type="button" className="button button--primary" onClick={() => onSelect(product)}>이 부품 연결</button>
         <button type="button" className="button button--ghost" onClick={onRefresh}>가격·제원 새로고침</button>
       </div>
+      <p className="muted">모델명과 상품을 연결합니다. 입력한 장착 수량·제원과 자동 인식 원문은 유지됩니다.</p>
 
       <PriceInsightSection key={product.id} productId={product.id} />
 
@@ -70,8 +74,6 @@ export function CatalogProductDetail({ detail, onSelect, onRefresh, onSelectMode
           </a>
         ))}
       </div>
-      <p className="muted">연결하면 모델명과 제품 ID가 반영됩니다. 현재 입력한 장착 수량·제원과 자동 인식 원문은 유지됩니다.</p>
-      <button type="button" className="button button--primary" onClick={() => onSelect(product)}>이 부품 연결</button>
     </section>
   )
 }

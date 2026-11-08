@@ -175,7 +175,11 @@ export function CatalogPicker({ stateKey, type, initialQuery, onSelect, onSelect
       {search.status === 'idle' && <p className="muted">검색어를 입력하거나 ‘전체 보기’로 이 종류의 등록 부품을 확인해 주세요.</p>}
       {search.status === 'loading' && <p role="status" className="muted">검색 중…</p>}
       {search.status === 'error' && (
-        <p role="alert" className="error">검색 실패: {search.message}</p>
+        <>
+          <p role="alert" className="error">검색 실패: {search.message}</p>
+          {request && <button type="button" className="button button--ghost"
+            onClick={() => runSearch(request.page, request.keyword)}>다시 검색</button>}
+        </>
       )}
       {search.status === 'done' && <>
         <p role="status" className="muted">{search.keyword ? `‘${search.keyword}’ 검색 결과` : '등록 부품'} {search.result.totalElements}개</p>

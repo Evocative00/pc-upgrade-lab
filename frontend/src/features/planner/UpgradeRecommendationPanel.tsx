@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 import type { PartInput } from '../pc-scan/types.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { CPU_GAMING_DATASET } from './cpuGamingScores.ts'
@@ -103,17 +103,21 @@ function OptionCards({ metrics, state, option, onOptionChange }: {
         className={`planner-option${value === 'BALANCED' ? ' is-recommended' : ''}`} onClick={() => onOptionChange(value)}>
         <span className="planner-option-head"><strong>{PLAN_OPTION_LABEL[value]}</strong><small>{OPTION_HINT[value]}</small></span>
         <span className="planner-option-price">{won(plan.totalKrw)}</span>
-        {changed.some((item) => item.choice?.priceKind === 'PAST') && <small>지난 판매가 포함 · 실제 구매가 확인 필요</small>}
-        {changed.some((item) => item.choice?.priceKind === 'ESTIMATE') && <small>참고 추정가 포함</small>}
-        {plan.totalKrw > plan.budgetWon && <span className="planner-option-over">예산 {won(plan.totalKrw - plan.budgetWon)} 초과</span>}
-        <span className="planner-option-parts">{changed.length
-          ? changed.map((item) => shortName(item.choice!.name)).join(' + ')
-          : plan.items.some((item) => item.target.needed === true)
-            ? `예산 부족${state.options?.cheapestFixKrw ? ` · ${won(state.options.cheapestFixKrw)}부터` : ''}`
-            : state.options?.hasUnknownTargets ? '목표 충족 확인 필요' : '바꿀 필요 없음'}</span>
-        {metric && <span className={`planner-option-metric${metric.meets === true ? ' is-meets' : metric.meets === false ? ' is-below' : ''}`}>
-          {metric.label.split(' · ').at(-1)} {metric.after}{metric.meets === false && ' · 목표 미달'}</span>}
-        {sameAs && <small className="muted">{SAME_AS[sameAs]}</small>}
+        <span className="planner-option-details">
+          {changed.some((item) => item.choice?.priceKind === 'PAST') && <small>지난 판매가 포함 · 실제 구매가 확인 필요</small>}
+          {changed.some((item) => item.choice?.priceKind === 'ESTIMATE') && <small>참고 추정가 포함</small>}
+          {plan.totalKrw > plan.budgetWon && <span className="planner-option-over">예산 {won(plan.totalKrw - plan.budgetWon)} 초과</span>}
+          <span className="planner-option-parts">{changed.length
+            ? changed.map((item) => shortName(item.choice!.name)).join(' + ')
+            : plan.items.some((item) => item.target.needed === true)
+              ? state.options?.cheapestFixKrw == null ? '목표를 충족하는 상품 없음' : `예산 부족 · ${won(state.options.cheapestFixKrw)}부터`
+              : state.options?.hasUnknownTargets ? '목표 충족 확인 필요' : '바꿀 필요 없음'}</span>
+        </span>
+        {(metric || sameAs) && <span className="planner-option-result">
+          {metric && <span className={`planner-option-metric${metric.meets === true ? ' is-meets' : metric.meets === false ? ' is-below' : ''}`}>
+            {metric.label.split(' · ').at(-1)} {metric.after}{metric.meets === false && ' · 목표 미달'}</span>}
+          {sameAs && <small className="muted">{SAME_AS[sameAs]}</small>}
+        </span>}
       </button>
     })}
   </div>
@@ -128,12 +132,14 @@ function FinalBuild({ parts, plan, state, overrides, onOverride, onExclude, onLi
 }) {
   const finalParts = applyPlan(parts, plan)
   const compat = usePlanCompatibility(finalParts, plan)
+  const heading = useRef<HTMLHeadingElement>(null)
   // 지금 구성에 없는 부품을 새로 추가하는 경우도 목록에 나오도록 최종 구성 기준으로 그린다.
   return <div className="planner-final">
     <div className="planner-final-head">
-      <h3>최종 구성 <small>교체 {plan.items.filter((item) => item.choice).length}개{plan.custom && ' · 직접 바꾼 구성'}</small></h3>
+      <h3 ref={heading} tabIndex={-1}>최종 구성 <small>교체 {plan.items.filter((item) => item.choice).length}개{plan.custom && ' · 직접 바꾼 구성'}</small></h3>
     </div>
-    <CompatibilitySummary compat={compat} hasGpu={finalParts.some((part) => part.type === 'GPU' && part.displayName.trim())} />
+    <CompatibilitySummary compat={compat} hasGpu={finalParts.some((part) => part.type === 'GPU' && part.displayName.trim())}
+      onExclude={(ids) => { heading.current?.focus({ preventScroll: true }); onExclude(ids) }} />
     <ul>{finalParts.map((part, index) => {
       const partCompat = compat.byIndex[index]
       const item = plan.items.find((candidate) => candidate.kind === part.type)
@@ -147,7 +153,7 @@ function FinalBuild({ parts, plan, state, overrides, onOverride, onExclude, onLi
             title={partCompat ? COMPAT_TEXT[partCompat.status] : undefined} aria-label={partCompat ? COMPAT_TEXT[partCompat.status] : undefined} />
           {getPartTypeInfo(part.type).label}</span>
         <div className="planner-final-name">
-          <strong>{part.displayName}{part.quantity > 1 && ` · 모듈 ${part.quantity}개`}</strong>
+          <strong>{part.displayName}{part.quantity > 1 && ` · ${part.type === 'RAM' ? '모듈 ' : ''}${part.quantity}개`}</strong>
           {choice && item
             ? <small>{shortName(item.currentLabel)} → {choice.ratio ? `약 ${choice.ratio.toFixed(1)}배` : '교체'}
               {item.meets === false ? ' · 목표 미달' : item.meets === null ? ' · 목표 충족 확인 필요' : ''}</small>
@@ -156,11 +162,11 @@ function FinalBuild({ parts, plan, state, overrides, onOverride, onExclude, onLi
             <small key={message} className="planner-compat-warning">{message}</small>)}
           {item && candidates.length > 0 && <label className="planner-swap">
             <span>변경</span>
-            <select value={overrides[item.kind] ?? (item.choice?.id ?? KEEP)}
+            <select aria-label={`${UPGRADE_PART_LABEL[item.kind]} 변경`} value={overrides[item.kind] ?? (item.choice?.id ?? KEEP)}
               onChange={(event) => onOverride(item.kind, event.target.value)}>
               <option value={KEEP}>지금 부품 유지</option>
               {candidates.map((product) => <option key={product.id} value={product.id}>
-                {shortName(product.name)} · {won(product.priceKrw)}{product.ratio ? ` · 약 ${product.ratio.toFixed(1)}배` : ''}
+                {product.name} · {won(product.priceKrw)}{product.ratio ? ` · 약 ${product.ratio.toFixed(1)}배` : ''}
                 {product.meetsTarget === false ? ' · 목표 미달' : ''}
               </option>)}
             </select>
@@ -170,7 +176,7 @@ function FinalBuild({ parts, plan, state, overrides, onOverride, onExclude, onLi
           : <span className="badge badge--empty">유지</span>}</span>
       </li>
     })}</ul>
-    <CompatibilityFooter compat={compat} onExclude={onExclude} onLinkParts={onLinkParts} />
+    <CompatibilityFooter compat={compat} onLinkParts={onLinkParts} />
   </div>
 }
 
@@ -196,7 +202,7 @@ function FrameChange({ parts, plan, goal }: { parts: PartInput[]; plan: UpgradeP
   </details>
 }
 
-export function UpgradeRecommendationPanel({ parts, goal, state, option, onOptionChange, overrides, onOverride,
+export function UpgradeRecommendationPanel({ parts, goal, state, option, onOptionChange, overrides, onOverride, onResetOverrides,
   excludedCount, onResetExcluded, onExclude, onLinkParts }: {
   parts: PartInput[]
   goal: UpgradeGoal
@@ -206,6 +212,7 @@ export function UpgradeRecommendationPanel({ parts, goal, state, option, onOptio
   overrides: PlanOverrides
   // value가 null이면 직접 바꾼 내용을 지운다.
   onOverride: (kind: UpgradePartKind, value: string | null) => void
+  onResetOverrides: () => void
   // 호환성 검사에서 맞지 않아 뺀 제품 수
   excludedCount: number
   onResetExcluded: () => void
@@ -239,7 +246,7 @@ export function UpgradeRecommendationPanel({ parts, goal, state, option, onOptio
           ? <>{metric.label} {metric.before} → <strong>{metric.after}</strong></> : plan.reason}
           {plan.fullFixKrw !== null && plan.items.some((item) => item.target.needed === true && item.meets !== true)
             && ` · 전부 바꾸려면 ${won(plan.fullFixKrw)}`}
-          {plan.custom && <>{' '}<button type="button" className="link-button" onClick={() => onOptionChange(plan.option)}>추천대로 되돌리기</button></>}</p>
+          {plan.custom && <>{' '}<button type="button" className="link-button" onClick={onResetOverrides}>추천대로 되돌리기</button></>}</p>
       </div>
       {excludedCount > 0 && <p className="planner-warning">호환되지 않는 제품 {excludedCount}개 제외{' '}
         <button type="button" className="button button--ghost" onClick={onResetExcluded}>초기화</button></p>}

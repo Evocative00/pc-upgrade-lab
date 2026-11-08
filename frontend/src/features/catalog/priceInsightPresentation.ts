@@ -121,7 +121,7 @@ export function chartGeometry(series: PriceHistorySeries[], width = 560, height 
     }
     if (current.length > 1) segments.push(current.join(' '))
     return {
-      key: `${item.sourceName}:${item.externalId}:${item.saleUnit}:${item.moduleCount ?? ''}`,
+      key: JSON.stringify([item.sourceName, item.externalId, item.sourceUrl, item.saleSku, item.saleUnit, item.moduleCount]),
       label: saleConfigurationLabel(item),
       segments,
       dots: points.map((point) => ({ x: x(Date.parse(point.observedAt)), y: y(point.amountKrw) })),

@@ -55,7 +55,11 @@ export function CatalogModelPicker({ stateKey, type, initialQuery, onSelect, onC
       <button type="button" className="button button--ghost" onClick={onClose}>닫기</button>
     </div>
     {loading && <p className="muted" role="status">모델 조회 중…</p>}
-    {error && <p className="error" role="alert">{error}</p>}
+    {error && <>
+      <p className="error" role="alert">{error}</p>
+      {request && <button type="button" className="button button--ghost"
+        onClick={() => search(request.page, request.keyword)}>다시 검색</button>}
+    </>}
     {result && <>
       <p className="muted" role="status">확인 모델 {result.totalElements}개</p>
       {result.items.length === 0 && <>

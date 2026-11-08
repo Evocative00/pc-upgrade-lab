@@ -11,7 +11,9 @@ const ORDER: CompatStatus[] = ['COMPATIBLE', 'NEEDS_CHECK', 'INCOMPATIBLE', 'INF
  * 최종 구성 목록 위에 붙는 호환성 요약: 상태별 개수 3칸과 부품 조합별 한 줄 목록.
  * 개수가 0인 칸은 흐리게 두어 문제가 있는 칸만 색이 보이게 한다.
  */
-export function CompatibilitySummary({ compat, hasGpu }: { compat: PlanCompatibility; hasGpu: boolean }) {
+export function CompatibilitySummary({ compat, hasGpu, onExclude }: {
+  compat: PlanCompatibility; hasGpu: boolean; onExclude: (productIds: string[]) => void
+}) {
   const { state, result, missing, badReplacedIds } = compat
   if (state.status === 'loading') return <p className="muted planner-compat-loading" role="status">호환성 검사 중…</p>
   if (state.status === 'error') return <p className="error" role="alert">{state.message}</p>
@@ -34,20 +36,19 @@ export function CompatibilitySummary({ compat, hasGpu }: { compat: PlanCompatibi
     </ul>}
     {badReplacedIds.length > 0 && <div className="planner-compat-action">
       <p>교체 부품 {badReplacedIds.length}개가 맞지 않습니다.</p>
+      <button type="button" className="button button--primary button--lg"
+        onClick={() => onExclude(badReplacedIds)}>다른 제품으로 다시 추천</button>
     </div>}
   </div>
 }
 
-/** 최종 구성 목록 아래: 맞지 않는 교체 제품 다시 추천, 검사 범위, 세부 검사 항목 원문. */
-export function CompatibilityFooter({ compat, onExclude, onLinkParts }: {
+/** 최종 구성 목록 아래에 검사 범위와 항목별 원문을 보여 준다. */
+export function CompatibilityFooter({ compat, onLinkParts }: {
   compat: PlanCompatibility
-  onExclude: (productIds: string[]) => void
   onLinkParts: () => void
 }) {
-  const { result, unlinked, missing, badReplacedIds } = compat
+  const { result, unlinked, missing } = compat
   return <div className="planner-compat">
-    {badReplacedIds.length > 0 && <button type="button" className="button button--primary button--lg planner-compat-retry"
-      onClick={() => onExclude(badReplacedIds)}>다른 제품으로 다시 추천</button>}
     {(unlinked.length > 0 || missing.length > 0) && <ul className="planner-compat-scope">
       {unlinked.length > 0 && <li>검사 제외(카탈로그 미연결): {unlinked.map((type) => getPartTypeInfo(type).label).join(', ')}{' '}
         <button type="button" className="link-button" onClick={onLinkParts}>내 PC에서 연결하기</button></li>}
