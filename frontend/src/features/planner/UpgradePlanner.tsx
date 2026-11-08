@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { usePlannerStep, type PlannerStep } from '../../lib/router.ts'
 import { usePageState } from '../../lib/usePageState.ts'
 import type { PartInput } from '../pc-scan/types.ts'
@@ -43,7 +44,7 @@ function CurrentPc({ pcName, parts }: Pick<Props, 'pcName' | 'parts'>) {
 export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
   const [requestedStep, setStep] = usePlannerStep(2)
   const [storedGoal, setGoal] = usePageState(`${stateKey}goal`, defaultGoal, isUpgradeGoal)
-  const goal = withGoalDefaults(storedGoal)
+  const goal = useMemo(() => withGoalDefaults(storedGoal), [storedGoal])
   // 임시 상태가 없는 직접 주소·초기화 후 방문 기록에서는 조건부터 다시 입력한다.
   // 예전 주소의 5단계(호환성)는 이제 추천 플랜에 포함되어 4단계로 연다.
   const step: Step = requestedStep < 2 || !goalIsReady(goal) ? 2 : Math.min(requestedStep, 4) as Step
@@ -52,8 +53,12 @@ export function UpgradePlanner({ stateKey, pcName, parts, onBackToPc }: Props) {
   const [overrides, setOverrides] = usePageState<PlanOverrides>(`${stateKey}planOverrides`, {}, isPlanOverrides)
   // 호환성 검사에서 맞지 않아 후보에서 뺀 카탈로그 상품
   const [excludedIds, setExcludedIds] = usePageState<string[]>(`${stateKey}excludedProducts`, [], isIdList)
-  const planState = useUpgradePlan({ parts, goal, option, overrides, excludedIds, enabled: step >= 4 })
-  const chooseOption = (next: PlanOption) => { setOption(next); setOverrides({}) }
+  // 진단을 보는 동안 추천에 필요한 상품과 가격을 준비한다.
+  const planState = useUpgradePlan({ parts, goal, option, overrides, excludedIds, enabled: step >= 3 })
+  const chooseOption = (next: PlanOption) => {
+    if (next !== option) setOption(next)
+    if (Object.keys(overrides).length > 0) setOverrides({})
+  }
   const override = (kind: UpgradePartKind, value: string | null) => {
     const next = { ...overrides }
     if (value === null) delete next[kind]

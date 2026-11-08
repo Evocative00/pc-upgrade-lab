@@ -1,8 +1,8 @@
 import type { PartType } from '../pc-scan/types.ts'
 import { PART_TYPES } from '../pc/partCategories.ts'
-import type { CatalogAttribution, CatalogDetail, CatalogPage, CatalogProduct } from './catalogTypes.ts'
+import type { CatalogAttribution, CatalogDetail, CatalogPage, CatalogProduct, CatalogSpecification } from './catalogTypes.ts'
 
-type SearchOptions = { page?: number; size?: number; signal?: AbortSignal }
+type SearchOptions = { page?: number; size?: number; signal?: AbortSignal; includeSpecifications?: boolean }
 export interface CatalogClient {
   search(type: PartType, query: string, options?: SearchOptions): Promise<CatalogPage>
   get(id: string, signal?: AbortSignal): Promise<CatalogDetail>
@@ -152,29 +152,50 @@ function isAttributions(value: unknown): value is CatalogAttribution[] {
 }
 
 function isPage(value: unknown): value is CatalogPage {
-  return isObject(value) && Array.isArray(value.items) && value.items.every(isProduct) &&
+  if (!(isObject(value) && Array.isArray(value.items) && value.items.every(isProduct) &&
     Number.isSafeInteger(value.page) && Number(value.page) >= 0 &&
     Number.isSafeInteger(value.size) && Number(value.size) >= 1 && Number(value.size) <= 100 &&
     value.items.length <= Number(value.size) &&
     Number.isSafeInteger(value.totalElements) && Number(value.totalElements) >= 0 &&
     Number.isSafeInteger(value.totalPages) && Number(value.totalPages) >= 0 &&
-    isAttributions(value.attributions)
+    isAttributions(value.attributions))) return false
+  // 이전 서버는 제원 요청 옵션을 무시한다. 제원 맵을 보냈다면 누락·초과·중복 ID를 허용하지 않는다.
+  const specs = value.specifications
+  return specs === undefined || isObject(specs) && Object.keys(specs).length === value.items.length &&
+    new Set(value.items.map((product) => product.id)).size === value.items.length &&
+    value.items.every((product) => Object.hasOwn(specs, product.id) &&
+      isRecommendationSpecification(product.type, specs[product.id]))
 }
 
-function isDetail(value: unknown): value is CatalogDetail {
-  if (!isObject(value) || !isProduct(value.product) || !isObject(value.specification)) return false
-  const type = value.product.type
+function isSpecification(type: PartType, value: unknown): value is CatalogSpecification {
+  if (!isObject(value)) return false
   // 배열은 해당 부품의 검증한 전원 단자와 장착 규격 목록만 받는다.
-  const validSpecs = Object.keys(value.specification).length > 0 &&
-    Object.entries(value.specification).every(([key, item]) =>
+  return Object.keys(value).length > 0 &&
+    Object.entries(value).every(([key, item]) =>
       item === null || typeof item === 'string' || typeof item === 'boolean' ||
       (typeof item === 'number' && Number.isFinite(item)) ||
       (['GPU', 'PSU'].includes(type) && key === 'powerConnectors' && Array.isArray(item) && item.every((connector: unknown) =>
         isObject(connector) && isText(connector.connectorType) &&
         Number.isSafeInteger(connector.connectorCount) && Number(connector.connectorCount) > 0)) ||
       (type === 'CASE' && ['motherboardFormFactors', 'psuFormFactors'].includes(key)
-        && Array.isArray(item) && item.every((factor) => typeof factor === 'string')))
-  return validSpecs && validHardwareSpecification(value.product.type, value.specification) && Array.isArray(value.sources) && value.sources.length > 0 &&
+        && Array.isArray(item) && item.every((factor) => typeof factor === 'string'))) &&
+    validHardwareSpecification(type, value)
+}
+
+function isRecommendationSpecification(type: PartType, value: unknown): boolean {
+  if (!isSpecification(type, value)) return false
+  // null은 미확인 값이다. 추천에 필요한 필드 자체가 없거나 다른 단위의 값이면 응답을 거절한다.
+  const quantity = (item: unknown) => item === null || typeof item === 'number' && Number.isInteger(item) && item > 0
+  if (type === 'CPU') return (value.socketCode === null || isText(value.socketCode, 32)) && quantity(value.coreCount)
+  if (type === 'GPU') return quantity(value.vramBytes)
+  if (type === 'RAM') return (value.memoryType === null || isText(value.memoryType, 10)) &&
+    quantity(value.moduleCount) && quantity(value.moduleCapacityBytes)
+  return false
+}
+
+function isDetail(value: unknown): value is CatalogDetail {
+  if (!isObject(value) || !isProduct(value.product) || !isSpecification(value.product.type, value.specification)) return false
+  return Array.isArray(value.sources) && value.sources.length > 0 &&
     value.sources.every((source: unknown) => isObject(source) &&
       ['BUILDCORES', 'MANUFACTURER', 'MANUAL'].includes(String(source.sourceName)) &&
       nullableText(source.externalId) && nullableText(source.sourceRevision) &&
@@ -265,8 +286,9 @@ export function createHttpCatalogClient(
   }
 
   return {
-    async search(type, query, { page = 0, size = 20, signal } = {}) {
+    async search(type, query, { page = 0, size = 20, signal, includeSpecifications = false } = {}) {
       const params = new URLSearchParams({ type, q: query.trim(), page: String(page), size: String(size) })
+      if (includeSpecifications) params.set('includeSpecifications', 'true')
       const result = await request(`?${params}`, isPage, signal)
       if (result.page !== page || result.size !== size || result.items.some((product) => product.type !== type)) {
         throw new CatalogApiError('검색 조건과 다른 부품 응답을 받았습니다.', 200, 'INVALID_RESPONSE')

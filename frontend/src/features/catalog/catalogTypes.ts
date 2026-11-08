@@ -74,6 +74,7 @@ export type CatalogPage = {
   totalElements: number
   totalPages: number
   attributions: CatalogAttribution[]
+  specifications?: Record<string, CatalogSpecification>
 }
 
 export type CatalogSource = {

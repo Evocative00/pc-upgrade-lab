@@ -11,7 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -43,6 +46,14 @@ public class CatalogQueryService {
 
     /** type 생략 = 전체 종류, q 생략/공백 = 해당 종류 전체. 검색어는 대소문자를 구분하지 않는다. */
     public CatalogDtos.PageResponse search(PartType type, String q, int page, int size) {
+        return search(type, q, page, size, false);
+    }
+
+    public CatalogDtos.PageResponse search(PartType type, String q, int page, int size, boolean includeSpecifications) {
+        if (includeSpecifications && type != PartType.CPU && type != PartType.GPU && type != PartType.RAM) {
+            throw new ApiException(HttpStatus.BAD_REQUEST, "INVALID_INPUT",
+                    "제원을 함께 조회하려면 type을 CPU, GPU 또는 RAM으로 지정해 주세요.");
+        }
         if (page < 0 || size < 1 || size > 100 || (long) page * size > Integer.MAX_VALUE) {
             throw new ApiException(HttpStatus.BAD_REQUEST, "INVALID_INPUT",
                     "page는 0 이상, size는 1~100이어야 하며 조회 범위가 너무 크면 안 됩니다.");
@@ -70,8 +81,19 @@ public class CatalogQueryService {
             }
             return CatalogProductView.from(product, price, currentPricesById.get(product.getId()));
         }).toList();
-        return new CatalogDtos.PageResponse(sharedPrices.enrich(items), result.getNumber(), result.getSize(),
-                result.getTotalElements(), result.getTotalPages(), CatalogDtos.ATTRIBUTIONS);
+        var specifications = includeSpecifications ? entries.findPageSpecifications(type, ids) : null;
+        var pricedItems = specifications == null ? sharedPrices.enrich(items) : enrichWithSpecifications(items, specifications);
+        return new CatalogDtos.PageResponse(pricedItems, result.getNumber(), result.getSize(),
+                result.getTotalElements(), result.getTotalPages(), CatalogDtos.ATTRIBUTIONS, specifications);
+    }
+
+    private List<CatalogProductView> enrichWithSpecifications(List<CatalogProductView> items,
+            Map<String, CatalogSpecification> specifications) {
+        var counts = new LinkedHashMap<String, Integer>();
+        specifications.forEach((id, specification) -> {
+            if (specification instanceof CatalogSpecification.Ram ram) counts.put(id, ram.moduleCount());
+        });
+        return sharedPrices.enrich(items, counts);
     }
 
     public CatalogDtos.Detail findById(String id) {

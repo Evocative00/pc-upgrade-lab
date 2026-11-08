@@ -177,6 +177,6 @@ export function summarizePlanCompatibility(drafts: PartDraft[], plan: UpgradePla
 
 export function usePlanCompatibility(finalParts: PartInput[], plan: UpgradePlan): PlanCompatibility {
   const drafts: PartDraft[] = finalParts.map((part, index) => ({ ...part, key: `${part.type}-${index}`, edited: false, persisted: false }))
-  const state = useCompatibility(drafts, true)
+  const state = useCompatibility(drafts, true, { delayMs: 0, reuseSuccess: true })
   return summarizePlanCompatibility(drafts, plan, state)
 }

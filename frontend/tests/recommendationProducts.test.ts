@@ -47,21 +47,68 @@ test('유효한 중앙 가격과 참고 추정가를 구분하고 RAM 판매 단
 
 test('같은 이름의 다른 상품 ID·가격도 잃지 않고 상세 제원을 가져온다', async () => {
   const records = [detail('expensive', 400_000), detail('cheap', 200_000)]
+  const detailCalls: string[] = []
   const result = await loadUpgradeProducts({
-    async search(type) { return { items: type === 'GPU' ? records.map((item) => item.product) : [],
-      page: 0, size: 100, totalElements: 2, totalPages: 1, attributions: [] } },
-    async get(id) { return records.find((item) => item.product.id === id)! },
+    async search(type, _query, options) {
+      assert.equal(options?.includeSpecifications, true)
+      return { items: type === 'GPU' ? records.map((item) => item.product) : [],
+        page: 0, size: 100, totalElements: 2, totalPages: 1, attributions: [] }
+    },
+    async get(id) { detailCalls.push(id); return records.find((item) => item.product.id === id)! },
   }, new AbortController().signal)
+  assert.deepEqual(detailCalls, ['expensive', 'cheap'])
   assert.deepEqual(result.GPU?.map((item) => item.id), ['expensive', 'cheap'])
   assert.equal(result.GPU?.[1].specification?.vramBytes, 12 * 1024 ** 3)
 })
 
-test('취소 이후 도착한 목록은 추천 자료로 확정하지 않는다', async () => {
+test('선택한 종류의 묶음 제원은 상세 조회 없이 목록 가격·출처로 추천한다', async () => {
+  const current = detail('current', 400_000)
+  const past = detail('past', 200_000)
+  const local = detail('local', 100_000)
+  Object.assign(past.product.priceStatus!, { freshness: 'EXPIRED', includedInTotal: false })
+  Object.assign(local.product.priceStatus!, { origin: 'LOCAL', lookupStatus: 'NOT_IN_SCOPE', freshness: null,
+    catalogVersion: null, checkedAt: null, lastSuccessAt: null })
+  const attributions = [{ name: 'Example', notice: 'Example source', url: 'https://example.com',
+    license: 'Example license', licenseUrl: 'https://example.com/license' }]
+  const requested: string[] = []
+  const result = await loadUpgradeProducts({
+    async search(type, query, options) {
+      assert.equal(query, '')
+      assert.equal(options?.includeSpecifications, true)
+      const page = options?.page ?? 0
+      requested.push(`${type}:${page}`)
+      const records = page === 0 ? [current, local] : [past]
+      return { items: records.map(({ product }) => product),
+        specifications: Object.fromEntries(records.map(({ product, specification }) => [product.id, specification])),
+        page, size: 100, totalElements: 3, totalPages: 2, attributions }
+    },
+    async get() { assert.fail('batched products must not request details') },
+  }, new AbortController().signal, ['GPU'])
+  assert.deepEqual(requested, ['GPU:0', 'GPU:1'])
+  assert.deepEqual(result.GPU, [current, past].map((entry) => toPricedProduct({ ...entry, attributions })))
+  assert.deepEqual(result.CPU, [])
+  assert.deepEqual(result.RAM, [])
+})
+
+test('묶음 제원 일부가 누락되면 상세 조회로 숨기지 않는다', async () => {
+  await assert.rejects(loadUpgradeProducts({
+    async search() { return { items: [detail().product], specifications: {},
+      page: 0, size: 100, totalElements: 1, totalPages: 1, attributions: [] } },
+    async get() { assert.fail('partial batched specifications must not fall back') },
+  }, new AbortController().signal, ['GPU']), /추천 상품과 일치하는 제원 자료가 없습니다/)
+})
+
+test('취소 이후 도착한 묶음 목록은 추천 자료로 확정하지 않는다', async () => {
   const controller = new AbortController()
+  const entry = detail()
   const request = loadUpgradeProducts({
-    async search() { controller.abort(); return { items: [], page: 0, size: 100, totalElements: 0, totalPages: 0, attributions: [] } },
-    async get() { return detail() },
-  }, controller.signal)
+    async search() {
+      controller.abort()
+      return { items: [entry.product], specifications: { [entry.product.id]: entry.specification },
+        page: 0, size: 100, totalElements: 1, totalPages: 1, attributions: [] }
+    },
+    async get() { assert.fail('cancelled request must not fetch details') },
+  }, controller.signal, ['GPU'])
   await assert.rejects(request, { name: 'AbortError' })
 })
 

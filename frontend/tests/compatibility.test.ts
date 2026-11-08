@@ -8,7 +8,7 @@ import {
 } from '../src/features/builder/compatibility.ts'
 import { createManualDraft } from '../src/features/pc/partDraft.ts'
 import type { PartDraft } from '../src/features/pc/types.ts'
-import type { CompatibilityState } from '../src/features/builder/useCompatibility.ts'
+import type { CompatibilityOptions, CompatibilityState } from '../src/features/builder/useCompatibility.ts'
 
 const named = (type: PartDraft['type'], id: string, extra: Partial<PartDraft> = {}): PartDraft => ({
   ...createManualDraft(type), displayName: id, catalogProductId: id, matchStatus: 'MATCHED', ...extra,
@@ -192,7 +192,7 @@ function hookHarness() {
     useState(initial: unknown) {
       const slot = index++
       if (!(slot in values)) values[slot] = initial
-      return [values[slot], (next: unknown) => { values[slot] = next }]
+      return [values[slot], (next: unknown) => { values[slot] = typeof next === 'function' ? next(values[slot]) : next }]
     },
     useEffect(callback: Effect['callback'], deps: unknown[]) {
       const slot = index++
@@ -215,10 +215,10 @@ function hookHarness() {
   }
   new Function('require', 'exports', 'module', 'setTimeout', 'clearTimeout', code)(require, module.exports, module,
     (callback: () => void) => { const id = ++nextTimer; timers.set(id, callback); return id }, (id: number) => timers.delete(id))
-  const hook = module.exports.useCompatibility as (drafts: PartDraft[], enabled: boolean) => CompatibilityState
-  function render(drafts: PartDraft[], enabled = true) {
+  const hook = module.exports.useCompatibility as (drafts: PartDraft[], enabled: boolean, options?: CompatibilityOptions) => CompatibilityState
+  function render(drafts: PartDraft[], enabled = true, options?: CompatibilityOptions) {
     index = 0
-    const value = hook(drafts, enabled)
+    const value = hook(drafts, enabled, options)
     for (const slot of scheduled) {
       const effect = effects.get(slot)!
       effect.cleanup?.()
@@ -313,4 +313,98 @@ test('GPU·파워·케이스 재선택은 재검사하며 취소된 응답을 �
     assert.equal(value.status, 'done')
     if (value.status === 'done') assert.equal(value.result.status, 'NEEDS_CHECK')
   }
+})
+
+const planOptions = { delayMs: 0, reuseSuccess: true }
+
+test('최종 플랜은 타이머 없이 검사하고 같은 입력으로 돌아오면 완료된 결과를 재사용한다', async () => {
+  const h = hookHarness()
+  const first = selection()
+  const second = [named('CPU', 'other-cpu'), ...first.slice(1)]
+  assert.equal(h.render(first, true, planOptions).status, 'loading')
+  await Promise.resolve()
+  assert.equal(h.requests.length, 1)
+  h.requests[0].resolve(result('COMPATIBLE'))
+  await tick()
+  assert.equal(h.render(first, true, planOptions).status, 'done')
+
+  assert.equal(h.render(second, true, planOptions).status, 'loading')
+  await Promise.resolve()
+  assert.equal(h.requests.length, 2)
+  const restored = h.render(first, true, planOptions)
+  assert.equal(h.requests.length, 2)
+  assert.equal(h.requests[1].signal.aborted, true)
+  assert.equal(restored.status, 'done')
+  if (restored.status === 'done') assert.equal(restored.result.status, 'COMPATIBLE')
+})
+
+test('같은 서버 요청이어도 로컬 검사 항목이 달라지면 플랜 성공 결과를 재사용하지 않는다', async () => {
+  const h = hookHarness()
+  const drafts = selection()
+  h.render(drafts, true, planOptions)
+  await Promise.resolve()
+  h.requests[0].resolve(result('COMPATIBLE'))
+  await tick()
+  const incomplete = [...drafts, named('RAM', 'invalid', { quantity: NaN })]
+  assert.equal(h.render(incomplete, true, planOptions).status, 'loading')
+  await Promise.resolve()
+  assert.equal(h.requests.length, 2)
+  assert.deepEqual(h.requests[1].request, h.requests[0].request)
+  h.requests[1].resolve(result('COMPATIBLE'))
+  await tick()
+  const checked = h.render(incomplete, true, planOptions)
+  assert.equal(checked.status, 'done')
+  if (checked.status === 'done') assert.equal(checked.result.status, 'NEEDS_CHECK')
+})
+
+test('취소된 성공이나 실패한 플랜 검사는 같은 입력에 돌아와도 다시 요청한다', async () => {
+  for (const outcome of ['cancelled', 'failed']) {
+    const h = hookHarness()
+    const first = selection()
+    const second = [named('CPU', 'other-cpu'), ...first.slice(1)]
+    h.render(first, true, planOptions)
+    await Promise.resolve()
+    if (outcome === 'failed') {
+      h.requests[0].reject(new Error('network error'))
+      await tick()
+      assert.equal(h.render(first, true, planOptions).status, 'error')
+    }
+    h.render(second, true, planOptions)
+    await Promise.resolve()
+    assert.equal(h.requests[0].signal.aborted, true)
+    if (outcome === 'cancelled') {
+      h.requests[0].resolve(result('COMPATIBLE'))
+      await tick()
+    }
+    assert.equal(h.render(first, true, planOptions).status, 'loading')
+    await Promise.resolve()
+    assert.equal(h.requests.length, 3)
+  }
+})
+
+test('완료된 플랜 검사는 오래된 구성을 무한히 보관하지 않는다', async () => {
+  const h = hookHarness()
+  const boardAndRam = selection().slice(1)
+  const builds = Array.from({ length: 9 }, (_, index) => [named('CPU', `cpu-${index}`), ...boardAndRam])
+  for (const build of builds) {
+    h.render(build, true, planOptions)
+    await Promise.resolve()
+    h.requests.at(-1)!.resolve(result('COMPATIBLE'))
+    await tick()
+  }
+  assert.equal(h.render(builds[1], true, planOptions).status, 'done')
+  assert.equal(h.requests.length, 9)
+  assert.equal(h.render(builds[0], true, planOptions).status, 'loading')
+  await Promise.resolve()
+  assert.equal(h.requests.length, 10)
+})
+
+test('플랜 검사 효과를 곧바로 정리하면 중복 요청을 보내지 않는다', async () => {
+  const h = hookHarness()
+  const drafts = selection()
+  h.render(drafts, true, planOptions)
+  h.render(drafts, false, planOptions)
+  h.render(drafts, true, planOptions)
+  await Promise.resolve()
+  assert.equal(h.requests.length, 1)
 })

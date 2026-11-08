@@ -95,6 +95,46 @@ test('목록 규격·페이지·검색어 인코딩을 API와 맞춘다', async 
   assert.equal(calls[0].init.body, undefined)
 })
 
+test('추천 목록은 요청할 때만 CPU·GPU·RAM의 실제 제원을 상품 ID로 받는다', async () => {
+  for (const type of ['CPU', 'GPU', 'RAM'] as const) {
+    const entry = details.find(({ product }) => product.type === type)!
+    const expected = page([entry.product], { specifications: { [entry.product.id]: entry.specification } })
+    const client = createHttpCatalogClient(async (url, init) => {
+      const params = new URL(String(url), 'http://test.invalid').searchParams
+      assert.equal(params.get('includeSpecifications'), 'true')
+      assert.equal(params.get('type'), type)
+      assert.equal(init?.method, 'GET')
+      return json(expected)
+    })
+    assert.deepEqual(await client.search(type, '', { includeSpecifications: true }), expected)
+  }
+  const empty = page([], { specifications: {} })
+  const client = createHttpCatalogClient(async () => json(empty))
+  assert.deepEqual(await client.search('GPU', '', { includeSpecifications: true }), empty)
+})
+
+test('추천 제원 맵이 누락·과잉·중복 ID이거나 GPU 용량이 잘못되면 거절한다', async () => {
+  const [a, b] = details.filter(({ product }) => product.type === 'GPU')
+  const [first, second] = [a.product.id, b.product.id]
+  const invalid = [
+    null,
+    [a.specification, b.specification],
+    { [first]: a.specification },
+    { [first]: a.specification, unknown: b.specification },
+    { [first]: a.specification, [second]: b.specification, unknown: b.specification },
+    { [first]: a.specification, [second]: { chipset: 'VRAM 필드 누락' } },
+    { [first]: a.specification, [second]: { ...b.specification, vramBytes: '12GB' } },
+    { [first]: a.specification, [second]: { ...b.specification, vramBytes: -1 } },
+  ]
+  for (const specifications of invalid) {
+    const client = createHttpCatalogClient(async () => json({ ...page([a.product, b.product]), specifications }))
+    await assert.rejects(() => client.search('GPU', '', { includeSpecifications: true }), hasCode('INVALID_RESPONSE'))
+  }
+  const duplicate = createHttpCatalogClient(async () => json({ ...page([a.product, a.product]),
+    specifications: { [first]: a.specification, [second]: b.specification } }))
+  await assert.rejects(() => duplicate.search('GPU', '', { includeSpecifications: true }), hasCode('INVALID_RESPONSE'))
+})
+
 test('18종 제원과 null 가격·출처를 상세로 읽는다', async () => {
   assert.equal(details.length, 18)
   for (const detail of details) {

@@ -49,6 +49,42 @@ test('추천 목록 조회 실패 후 다시 불러오면 현재 플랜을 복�
   assert.ok(state.plan)
 })
 
+test('진단에서 먼저 시작한 상품 조회를 추천 단계와 세 가지 추천 안에서 이어 쓴다', async () => {
+  let release
+  const pending = new Promise((resolve) => { release = resolve })
+  const h = harness({ realPlanner: true, initialHash: '#/upgrade/pcs/1?step=3', searchCatalog: async () => {
+    await pending
+    return { items: [], page: 0, size: 100, totalElements: 0, totalPages: 0, attributions: [] }
+  } })
+  const { UpgradePlanner } = h.load('features/planner/UpgradePlanner.tsx')
+  const { defaultGoal, isUpgradeGoal } = h.load('features/planner/plannerGoal.ts')
+  const { pageStateStore } = h.load('lib/pageState.ts')
+  const stateKey = 'pc:1:'
+  pageStateStore().write(`${stateKey}goal`, { ...defaultGoal(), purpose: 'OFFICE', programs: ['브라우저 탭'] }, defaultGoal, isUpgradeGoal)
+  const recommendations = h.load('features/planner/upgradeRecommendation.ts')
+  const buildOptions = recommendations.buildUpgradeOptions
+  let calculations = 0
+  recommendations.buildUpgradeOptions = (input) => { calculations++; return buildOptions(input) }
+
+  const props = { stateKey, pcName: '내 PC', parts: [part('CPU', 'Ryzen 5 5600')], onBackToPc() {} }
+  let tree = h.paint(UpgradePlanner, props)
+  assert.match(text(tree), /현재 구성 진단/)
+  await Promise.resolve()
+  assert.deepEqual(h.calls.map((call) => call.type), ['CPU', 'GPU'])
+  button(tree, '추천 플랜 보기 →').props.onClick()
+  assert.match(text(h.paint(UpgradePlanner, props)), /제품과 가격을 불러오는 중/)
+  release()
+  await new Promise(setImmediate)
+  tree = h.paint(UpgradePlanner, props)
+  for (const label of ['가성비', '최고 성능', '추천']) {
+    find(tree, (node) => node.props?.role === 'radio' && text(node).startsWith(label)).props.onClick()
+    tree = h.paint(UpgradePlanner, props)
+    assert.ok(text(find(tree, (node) => node.props?.role === 'radio' && node.props['aria-checked'])).startsWith(label))
+  }
+  assert.equal(calculations, 1)
+  assert.deepEqual(h.calls.map((call) => call.type), ['CPU', 'GPU'])
+})
+
 for (const status of ['loading', 'error']) {
   test(`추천 ${status}에서는 기존 부품을 최종 구성 검사 결과로 표시하지 않는다`, () => {
     const h = harness()
@@ -167,6 +203,14 @@ function harness({ list = async () => ({ items: [], page: 0, size: 20, totalElem
       const i = active.index++
       if (!(i in active.values)) active.values[i] = { current: initial }
       return active.values[i]
+    },
+    useMemo(compute, deps) {
+      const i = active.index++
+      const previous = active.values[i]
+      if (!previous || deps.some((value, index) => value !== previous.deps[index])) {
+        active.values[i] = { value: compute(), deps }
+      }
+      return active.values[i].value
     },
     useId: () => `id-${active.id}-${active.index++}`,
     useEffect: effect,

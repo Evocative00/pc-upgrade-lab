@@ -4,10 +4,16 @@ import com.pcupgradelab.catalog.storage.StorageSpec;
 import com.pcupgradelab.catalog.storage.StorageSpecRepository;
 import com.pcupgradelab.catalog.shared.SharedPriceAdapter;
 import com.pcupgradelab.catalog.price.CatalogPriceDatabaseTimeZone;
+import com.pcupgradelab.common.ApiException;
+import com.pcupgradelab.pc.PartType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -115,6 +121,24 @@ public class CatalogEntryService {
 
     public Optional<CatalogEntryView> findById(String id) {
         return productService.findById(id).map(product -> loadEntry(product, true));
+    }
+
+    /** 종류가 정해진 목록의 제원만 묶어서 읽는다. 상세 조회와 달리 상품별 가격·출처를 다시 읽지 않는다. */
+    Map<String, CatalogSpecification> findPageSpecifications(PartType type, List<String> ids) {
+        if (ids.isEmpty()) return Map.of();
+        var specifications = new LinkedHashMap<String, CatalogSpecification>();
+        switch (type) {
+            case CPU -> cpus.findAllById(ids).forEach(spec -> specifications.put(spec.getProductId(), spec.toSpecification()));
+            case GPU -> gpus.findAllWithPowerConnectors(ids).forEach(spec -> specifications.put(spec.getProductId(), spec.toSpecification()));
+            case RAM -> ram.findAllById(ids).forEach(spec -> specifications.put(spec.getProductId(), spec.toSpecification()));
+            default -> throw new IllegalArgumentException("Unsupported page specification type");
+        }
+        if (specifications.size() != ids.size() || !specifications.keySet().containsAll(ids)
+                || specifications.values().stream().anyMatch(specification -> specification.type() != type)) {
+            throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "CATALOG_SPECIFICATION_MISSING",
+                    "목록의 부품 제원을 모두 확인할 수 없습니다.");
+        }
+        return specifications;
     }
 
     private CatalogEntryView loadEntry(CatalogProductView product, boolean sharedLookup) {

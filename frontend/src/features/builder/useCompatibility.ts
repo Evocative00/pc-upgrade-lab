@@ -11,44 +11,61 @@ export type CompatibilityState =
   | { status: 'done'; result: CompatibilityResult }
   | { status: 'error'; message: string }
 
-// 부품이 바뀌면 잠시 기다렸다가 다시 검사한다. 취소된 이전 성공·실패 응답은 반영하지 않는다.
-export function useCompatibility(drafts: PartDraft[], enabled: boolean): CompatibilityState {
+export type CompatibilityOptions = { delayMs?: number; reuseSuccess?: boolean }
+const MAX_SUCCESS_RESULTS = 8
+
+// 편집 중에는 입력이 멈출 때까지 기다리고, 추천 플랜처럼 선택한 구성은 바로 검사할 수 있다.
+export function useCompatibility(drafts: PartDraft[], enabled: boolean,
+  { delayMs = 300, reuseSuccess = false }: CompatibilityOptions = {}): CompatibilityState {
   const request = enabled ? buildCompatibilityRequest(drafts) : null
   const localChecks = enabled ? localCompatibilityChecks(drafts) : []
   const inputKey = request || localChecks.length > 0 ? JSON.stringify({ request, localChecks }) : null
-  const [state, setState] = useState<{ key: string | null; value: CompatibilityState }>({ key: null, value: { status: 'idle' } })
+  const [state, setState] = useState<{
+    key: string | null; value: CompatibilityState; successes: { key: string; result: CompatibilityResult }[]
+  }>({ key: null, value: { status: 'idle' }, successes: [] })
+  const cached = reuseSuccess ? state.successes.find((entry) => entry.key === inputKey)?.result : undefined
   const generation = useRef(0)
 
   useEffect(() => {
-    if (!inputKey) return
+    if (!inputKey || cached) return
     const input = JSON.parse(inputKey) as { request: CompatibilityRequest | null; localChecks: CompatibilityCheck[] }
     if (!input.request) return
     const currentGeneration = ++generation.current
     const controller = new AbortController()
-    const timer = setTimeout(() => {
+    const run = () => {
+      if (controller.signal.aborted) return
       checkCompatibility(input.request!, controller.signal).then(
         (result) => {
-          if (!controller.signal.aborted && generation.current === currentGeneration) setState({
-            key: inputKey, value: { status: 'done', result: mergeCompatibilityChecks(result, input.localChecks) },
-          })
+          if (controller.signal.aborted || generation.current !== currentGeneration) return
+          const merged = mergeCompatibilityChecks(result, input.localChecks)
+          setState((previous) => previous.key === inputKey ? {
+            key: inputKey, value: { status: 'done', result: merged },
+            successes: reuseSuccess ? [...previous.successes.filter((entry) => entry.key !== inputKey)
+              .slice(-(MAX_SUCCESS_RESULTS - 1)), { key: inputKey, result: merged }] : previous.successes,
+          } : previous)
         },
         (error: unknown) => {
-          if (!controller.signal.aborted && generation.current === currentGeneration) setState({ key: inputKey, value: { status: 'error',
-            message: error instanceof Error ? error.message : '호환성 검사에 실패했습니다.' } })
+          if (controller.signal.aborted || generation.current !== currentGeneration) return
+          setState((previous) => previous.key === inputKey ? { ...previous, value: { status: 'error',
+            message: error instanceof Error ? error.message : '호환성 검사에 실패했습니다.' } } : previous)
         },
       )
-    }, 300)
+    }
+    const timer = delayMs > 0 ? setTimeout(run, delayMs) : undefined
+    // Strict Mode가 곧바로 정리한 효과는 서버에 요청을 보내지 않는다.
+    if (timer === undefined) queueMicrotask(run)
     return () => {
-      clearTimeout(timer)
+      if (timer !== undefined) clearTimeout(timer)
       controller.abort()
     }
-  }, [inputKey])
+  }, [inputKey, cached, delayMs, reuseSuccess])
 
-  // 같은 구성에 돌아와도 재검사가 끝나기 전에는 지난 성공·오류를 표시하지 않는다.
+  // 새 구성에는 이전 오류나 다른 구성의 성공을 보여 주지 않는다.
   if (state.key !== inputKey) {
-    setState({ key: inputKey, value: { status: inputKey ? 'loading' : 'idle' } })
+    setState({ ...state, key: inputKey, value: { status: inputKey ? 'loading' : 'idle' } })
   }
   if (!inputKey) return { status: 'idle' }
   if (!request) return { status: 'done', result: mergeCompatibilityChecks({ status: 'COMPATIBLE', checks: [] }, localChecks) }
+  if (cached) return { status: 'done', result: cached }
   return state.key === inputKey ? state.value : { status: 'loading' }
 }

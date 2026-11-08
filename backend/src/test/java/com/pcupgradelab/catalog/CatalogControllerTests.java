@@ -34,7 +34,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(properties = {
         "spring.datasource.url=jdbc:h2:mem:catalog-api-test;MODE=MySQL;DB_CLOSE_DELAY=-1",
         "spring.datasource.username=sa", "spring.datasource.password=",
-        "spring.datasource.driver-class-name=org.h2.Driver", "catalog.seed.enabled=false"
+        "spring.datasource.driver-class-name=org.h2.Driver", "catalog.seed.enabled=false",
+        "catalog.shared-prices.enabled=false"
 })
 @ActiveProfiles({"local", "test"})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
@@ -92,6 +93,56 @@ class CatalogControllerTests {
         assertThat(jdbc.queryForObject("""
                 SELECT COUNT(*) FROM catalog_reference_price WHERE amount_krw IS NULL AND status = 'UNCONFIRMED'
                 """, Integer.class)).isEqualTo(18);
+    }
+
+    @Test
+    void optInPagesIncludeExactDetailSpecificationsWithoutChangingTheRegularPage() throws Exception {
+        for (String type : List.of("CPU", "GPU", "RAM")) {
+            var regular = body(mvc.perform(get(URL).param("type", type).param("size", "2"))
+                    .andExpect(status().isOk()).andReturn());
+            var disabled = body(mvc.perform(get(URL).param("type", type).param("size", "2")
+                            .param("includeSpecifications", "false"))
+                    .andExpect(status().isOk()).andReturn());
+            var enriched = body(mvc.perform(get(URL).param("type", type).param("size", "2")
+                            .param("includeSpecifications", "true"))
+                    .andExpect(status().isOk()).andReturn());
+            assertThat(regular.has("specifications")).isFalse();
+            assertThat(disabled).isEqualTo(regular);
+            for (String field : List.of("items", "page", "size", "totalElements", "totalPages", "attributions")) {
+                assertThat(enriched.get(field)).isEqualTo(regular.get(field));
+            }
+            var specifications = enriched.get("specifications");
+            assertThat(specifications.isObject()).isTrue();
+            assertThat(specifications.size()).isEqualTo(2);
+            for (String id : ids(enriched)) {
+                var detail = body(mvc.perform(get(URL + "/{id}", id)).andExpect(status().isOk()).andReturn());
+                assertThat(specifications.get(id)).isEqualTo(detail.get("specification"));
+                assertThat(specifications.get(id).has("sources")).isFalse();
+            }
+        }
+    }
+
+    @Test
+    void optInRequiresASupportedTypeAndReturnsAnEmptySpecificationObjectOnAnEmptyPage() throws Exception {
+        mvc.perform(get(URL).param("includeSpecifications", "true"))
+                .andExpect(status().isBadRequest()).andExpect(jsonPath("$.code").value("INVALID_INPUT"));
+        mvc.perform(get(URL).param("type", "MONITOR").param("includeSpecifications", "true"))
+                .andExpect(status().isBadRequest()).andExpect(jsonPath("$.code").value("INVALID_INPUT"));
+        var empty = body(mvc.perform(get(URL).param("type", "RAM").param("q", "no-such-product")
+                        .param("includeSpecifications", "true"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.items", hasSize(0))).andReturn());
+        assertThat(empty.get("specifications").isObject()).isTrue();
+        assertThat(empty.get("specifications").size()).isZero();
+    }
+
+    @Test
+    void optInFailsClosedWhenAPageProductHasNoSpecification() throws Exception {
+        products.create(new CatalogProductCreateRequest(PartType.CPU, "Missing Spec Fixture", "Unspecified CPU", null));
+        assertSearch("CPU", "Missing Spec Fixture", 1);
+        mvc.perform(get(URL).param("type", "CPU").param("q", "Missing Spec Fixture")
+                        .param("includeSpecifications", "true"))
+                .andExpect(status().isInternalServerError())
+                .andExpect(jsonPath("$.code").value("CATALOG_SPECIFICATION_MISSING"));
     }
 
     @Test

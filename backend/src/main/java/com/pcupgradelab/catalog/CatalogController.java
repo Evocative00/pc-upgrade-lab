@@ -27,8 +27,9 @@ public class CatalogController {
             @RequestParam(required = false) PartType type,
             @RequestParam(defaultValue = "") String q,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size) {
-        return service.search(type, q, page, size);
+            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(defaultValue = "false") boolean includeSpecifications) {
+        return service.search(type, q, page, size, includeSpecifications);
     }
 
     @GetMapping("/{id}")

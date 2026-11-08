@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import type { PartInput } from '../pc-scan/types.ts'
 import { getPartTypeInfo } from '../pc/partCategories.ts'
 import { CPU_GAMING_DATASET } from './cpuGamingScores.ts'
@@ -47,7 +48,7 @@ function keyMetric(parts: PartInput[], plan: UpgradePlan | null, goal: UpgradeGo
     const game = goal.games.find(supportsFrameEstimate)
     if (!game) return null
     const before = estimateGameFrames(parts, game, goal.resolution, goal.targetFps)
-    const next = estimateGameFrames(after, game, goal.resolution, goal.targetFps)
+    const next = plan ? estimateGameFrames(after, game, goal.resolution, goal.targetFps) : before
     const meeting = next.map((estimate, index) => ({ estimate, index })).filter(({ estimate }) => estimate.target === 'MEETS')
     const index = meeting.length ? meeting[meeting.length - 1].index : 0
     if (!before[index] || !next[index]) return null
@@ -57,7 +58,7 @@ function keyMetric(parts: PartInput[], plan: UpgradePlan | null, goal: UpgradeGo
   if (goal.purpose === 'CREATION' || goal.purpose === 'DEVELOPMENT') {
     const program = goal.programs[0]
     const before = program ? diagnoseProgram(program, parts, goal.workload, goal.videoResolution)?.estimates[0] : undefined
-    const next = program ? diagnoseProgram(program, after, goal.workload, goal.videoResolution)?.estimates[0] : undefined
+    const next = plan && program ? diagnoseProgram(program, after, goal.workload, goal.videoResolution)?.estimates[0] : before
     if (!before || !next) return null
     return { label: `${program} · ${before.title}`, before: before.value, after: next.value, meets: null, target: null }
   }
@@ -87,15 +88,15 @@ function Diagnosis({ state, metric }: { state: UpgradePlanState; metric: KeyMetr
   </p>
 }
 
-function OptionCards({ parts, goal, state, option, onOptionChange }: {
-  parts: PartInput[]; goal: UpgradeGoal; state: UpgradePlanState; option: PlanOption; onOptionChange: (option: PlanOption) => void
+function OptionCards({ metrics, state, option, onOptionChange }: {
+  metrics: ReadonlyMap<PlanOption, KeyMetric | null>; state: UpgradePlanState; option: PlanOption; onOptionChange: (option: PlanOption) => void
 }) {
   const plans = state.options?.plans
   if (!plans) return null
   return <div className="planner-option-cards" role="radiogroup" aria-label="추천 안">
     {PLAN_OPTIONS.map((value, index) => {
       const plan = plans[value]
-      const metric = keyMetric(parts, plan, goal)
+      const metric = metrics.get(value)
       const changed = plan.items.filter((item) => item.choice)
       const sameAs = PLAN_OPTIONS.slice(0, index).find((other) => planKey(plans[other]) === planKey(plan))
       return <button key={value} type="button" role="radio" aria-checked={option === value}
@@ -213,9 +214,12 @@ export function UpgradeRecommendationPanel({ parts, goal, state, option, onOptio
   onLinkParts: () => void
 }) {
   const { load, plan } = state
-  const nowMetric = keyMetric(parts, null, goal)
+  const plans = state.options?.plans
+  const nowMetric = useMemo(() => keyMetric(parts, null, goal), [parts, goal])
+  const metrics = useMemo(() => new Map(plans ? PLAN_OPTIONS.map((value) => [value, keyMetric(parts, plans[value], goal)]) : []),
+    [parts, plans, goal])
   const over = plan ? plan.totalKrw - plan.budgetWon : 0
-  const metric = plan ? keyMetric(parts, plan, goal) : null
+  const metric = !plan ? null : plan.custom ? keyMetric(parts, plan, goal) : metrics.get(plan.option)
   const attributions = [...new Map((plan?.items.flatMap((item) => item.choice?.attributions ?? []) ?? [])
     .map((entry) => [entry.url, entry])).values()]
 
@@ -224,7 +228,7 @@ export function UpgradeRecommendationPanel({ parts, goal, state, option, onOptio
     {load.status === 'loading' && <p className="muted" role="status">제품과 가격을 불러오는 중…</p>}
     {load.status === 'error' && <div role="alert"><p className="error">제품 목록을 불러오지 못했습니다: {load.message}</p>
       <button type="button" className="button button--ghost" onClick={state.retry}>다시 불러오기</button></div>}
-    <OptionCards parts={parts} goal={goal} state={state} option={option} onOptionChange={onOptionChange} />
+    <OptionCards metrics={metrics} state={state} option={option} onOptionChange={onOptionChange} />
 
     {plan && <>
       <div className="planner-plan-summary">

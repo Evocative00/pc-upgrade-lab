@@ -1,7 +1,9 @@
 package com.pcupgradelab.catalog;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.time.Instant;
 import java.util.List;
+import java.util.Map;
 
 /** 개발용 조회 API의 응답. 상세 제원은 product.type으로 구분하고 미확인 값은 null로 유지한다. */
 public final class CatalogDtos {
@@ -16,12 +18,14 @@ public final class CatalogDtos {
     public record Attribution(String name, String notice, String url,
                               String license, String licenseUrl) { }
 
-    /** 목록에는 공통 정보·기준가격·현재 상품가를 포함한다. 상세 제원과 출처는 상세 API에서 조회한다. */
+    /** 기본 목록은 공통 정보와 가격만 반환한다. 요청한 CPU·GPU·RAM 목록에는 제원을 함께 반환한다. */
     public record PageResponse(List<CatalogProductView> items, int page, int size,
-                               long totalElements, int totalPages, List<Attribution> attributions) {
+                               long totalElements, int totalPages, List<Attribution> attributions,
+                               @JsonInclude(JsonInclude.Include.NON_NULL) Map<String, CatalogSpecification> specifications) {
         public PageResponse {
             items = List.copyOf(items);
             attributions = List.copyOf(attributions);
+            if (specifications != null) specifications = Map.copyOf(specifications);
         }
     }
 
