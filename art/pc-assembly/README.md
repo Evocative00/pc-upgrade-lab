@@ -57,9 +57,28 @@ if ($LASTEXITCODE -ne 0) { throw 'Web asset preparation failed' }
 
 - `desktop/pose-*.webp`: 1600×1200, `mobile/pose-*.webp`: 960×720. 각각 240장.
 - `poster-desktop.webp`, `poster-mobile.webp`: 완성 장면의 기본 이미지.
+- `intro-desktop-hd.webp`, `finished-desktop-hd.webp`: 분해·완성 원본에서 만든 2560×1920 첫 장면과 마지막 장면.
 - `motherboard-detail-v4.webp`, `cooler-detail-v4.webp`: 근접 PNG가 있을 때 변환하는 1600×1200 이미지.
 - `manifest.json`: variant 규격, 고유 포즈 경로, `[0…239, 239…0]`의 480단계 매핑, 공식 형태 참고 링크. 변환 마지막에 교체한다.
 
 `art/pc-assembly/web-delivery-v4.json`은 전달 용량·원본 렌더 설정·검사 결과를 기록한다. 홈페이지는 `/pc-assembly/manifest.json`을 읽어 스크롤 위치에 해당하는 이미지를 그린다. `fps: 60`과 8초는 자료의 명목상 시간 기준이며, 480단계라는 수가 기기에서 고정 60fps나 매끄러운 재생을 보장하지는 않는다. 렌더 완료·이미지 품질·실제 브라우저 성능은 산출물과 실행 결과로 별도 확인한다.
 
 렌더를 이미 실행 중이라면 변환 명령에 `--follow-render`를 추가해 저장 완료된 PNG부터 병렬로 변환할 수 있다. 원본 설정이 도중에 바뀌면 중단하며, 240장 전체의 완료를 확인하기 전에는 홈페이지 manifest를 발행하지 않는다.
+
+## 4. 데스크톱 조립 프레임 고해상도 갱신
+
+정지 컷과 모바일 자료를 그대로 두고 데스크톱의 조립 프레임만 교체하려면 별도 폴더에 원본을 렌더한 뒤 변환한다.
+
+```powershell
+$hdMaster = '.\backend\build\pc-assembly-runtime\web-v4-hd-2560-128'
+$hdStage = '.\backend\build\pc-assembly-runtime\web-v4-hd-web-stage'
+$publicAssembly = '.\frontend\public\pc-assembly'
+
+& $blender --background "$artDir\pc-assembly-v4.blend" --python-exit-code 1 --python "$artDir\render_web_sequence.py" -- --output-dir $hdMaster --resolution 2560 --samples 128 --steps 480
+if ($LASTEXITCODE -ne 0) { throw 'HD sequence render failed' }
+
+& $python "$artDir\prepare_web_assets.py" --master-dir $hdMaster --public-dir $hdStage --desktop-only-from $publicAssembly
+if ($LASTEXITCODE -ne 0) { throw 'HD web asset preparation failed' }
+```
+
+렌더가 중단되면 같은 `.blend`, 폴더와 설정으로 `--resume`을 추가해 이어서 실행할 수 있다. 변환기에 `--follow-render`를 추가하면 완성된 원본부터 변환한다. 원본 240장과 WebP 240장이 모두 2560×1920으로 확인된 후에만 변환 폴더에 manifest가 작성된다. 검증 후 `desktop/`의 240장과 `manifest.json`을 홈페이지 폴더에 함께 반영하고, 변환 폴더의 `web-delivery-v4.json`을 이 문서와 같은 폴더에 반영한다.

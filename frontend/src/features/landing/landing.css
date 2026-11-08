@@ -524,11 +524,12 @@
 }
 
 /* ── 섹션 1. 첫 화면 문구 ──
-   진행도·전원·캐치프레이즈 세 묶음을 한 칸에 겹쳐 두고, 스크롤로 정한 --reveal(0–1)로 나타나고 사라진다. */
+   인트로·진행도·전원·캐치프레이즈를 한 칸에 겹쳐 두고, 스크롤로 정한 --reveal(0–1)로 전환한다. */
 .hero-copy {
   display: grid;
   align-items: center;
 
+  > .hero-copy__intro,
   > .hero-copy__progress,
   > .hero-copy__power,
   > .hero-copy__final {
@@ -539,15 +540,54 @@
 
   /* 키보드로 구성 버튼을 드러낸 동안 진행 문구가 같은 자리에 겹치지 않게 한다. */
   &:has(.hero-copy__final:focus-within) {
+    > .hero-copy__intro,
     > .hero-copy__progress,
     > .hero-copy__power {
       opacity: 0;
+      transition: none;
     }
   }
 }
 
+.hero-copy__intro {
+  /* 인트로의 길이가 기존 무대의 행 높이를 바꾸지 않게 한다. */
+  contain: size;
+  align-self: stretch;
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  word-break: keep-all;
+  transition: opacity 120ms ease-out;
+
+  > p { margin: 0; }
+}
+
+.hero-copy__intro-label {
+  color: var(--ice);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.hero-copy__intro-title {
+  margin: 0;
+  max-width: 11em;
+  color: var(--landing-title);
+  font-size: clamp(34px, 3.35vw, 56px);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+.hero-copy__intro-lead {
+  color: var(--landing-body);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
 .hero-copy__progress {
   transform: translateY(calc((1 - var(--reveal, 0)) * -16px));
+  transition: opacity 120ms ease-out;
 }
 
 .hero-copy__meter {
@@ -565,6 +605,24 @@
 
 .hero-copy__dots {
   color: var(--ice);
+}
+
+.hero-copy__meter-line {
+  width: min(100%, 16rem);
+  height: 2px;
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--landing-border-strong);
+
+  &::before {
+    content: '';
+    display: block;
+    height: 100%;
+    background: var(--ice);
+    transform: scaleX(var(--fill));
+    transform-origin: left;
+  }
 }
 
 /* 재치 문구도 같은 칸에 겹쳐 두고 현재 것만 보인다. */
@@ -679,6 +737,9 @@
 }
 
 @media (max-width: 900px) {
+  .hero-copy__intro { gap: 8px; }
+  .hero-copy__intro-title { font-size: clamp(32px, 4.6vw, 42px); }
+  .hero-copy__intro-lead { font-size: 14px; }
   .hero-copy__meter { font-size: 28px; }
   .hero-copy__quips { margin-top: 10px; }
   .hero-copy__quip { font-size: 15px; }
@@ -686,6 +747,10 @@
   .hero-copy__final { gap: 24px; }
   .hero-copy__title { font-size: clamp(32px, 5vw, 44px); }
   .hero-copy__scroll { display: none; }
+}
+
+@media (min-width: 641px) and (max-width: 900px) and (max-height: 500px) {
+  .hero-copy__intro-title { font-size: clamp(20px, 3.4vw, 30px); }
 }
 
 /* 좁은 화면: 조립 장면 없이 캐치프레이즈와 버튼만 */
@@ -941,6 +1006,8 @@
   }
 
   .landing-reveal,
+  .hero-copy__intro,
+  .hero-copy__progress,
   .hero-copy__quip,
   .assembly-frame__cut {
     transition: none;

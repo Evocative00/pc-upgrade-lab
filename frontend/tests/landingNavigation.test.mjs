@@ -78,10 +78,17 @@ for (const width of [320, 375, 640, 641, 1440]) {
   test(`시작 화면 ${width}px에서 모바일은 이미지 미리받기를 생략하고 데스크톱은 유지한다`, () => {
     const h = harness({ width })
     h.render(h.load('features/landing/BootScreen.tsx').BootScreen, { onDone() {} })
-    assert.deepEqual(h.images, width <= 640 ? [] : ['/pc-assembly/poster-desktop.webp'])
+    assert.deepEqual(h.images, width <= 640 ? [] : ['/pc-assembly/intro-desktop-hd.webp'])
     h.dispose()
   })
 }
+
+test('동작 줄이기 데스크톱은 조립이 끝난 고해상도 장면을 미리 받는다', () => {
+  const h = harness({ reduced: true })
+  h.render(h.load('features/landing/BootScreen.tsx').BootScreen, { onDone() {} })
+  assert.deepEqual(h.images, ['/pc-assembly/finished-desktop-hd.webp'])
+  h.dispose()
+})
 
 test('모바일 랜딩은 조립 컴포넌트를 마운트하지 않고 구성 시작 화면을 바로 제공한다', () => {
   const h = harness({ width: 375 })
@@ -99,7 +106,8 @@ test('동작 줄이기는 완성 장면을 바로 보여 주고 명시적으로 
   const props = { scrollRoot: { current: null }, renderCopy: (percent) => { copies.push(percent); return null } }
   let tree = h.render(PcAssemblyScroll, props)
   assert.equal(copies.at(-1), 120)
-  assert.ok(elements(tree).some((node) => node.type === 'img' && node.props.alt === '조립이 끝난 PC'))
+  assert.ok(elements(tree).some((node) => node.type === 'img' && node.props.alt === '조립이 끝난 PC'
+    && node.props.src === '/pc-assembly/finished-desktop-hd.webp'))
   assert.equal(elements(tree).some((node) => node.type === 'canvas'), false)
   elements(tree).find((node) => node.type === 'button' && node.props.children === '조립 애니메이션 보기').props.onClick()
   tree = h.render(PcAssemblyScroll, props)
@@ -109,5 +117,17 @@ test('동작 줄이기는 완성 장면을 바로 보여 주고 명시적으로 
   tree = h.render(PcAssemblyScroll, props)
   assert.equal(elements(tree).some((node) => node.type === 'canvas'), false)
   assert.equal(copies.at(-1), 120)
+  h.dispose()
+})
+
+test('첫 고해상도 컷 요청이 실패해도 원래 조립 컷을 표시한다', () => {
+  const h = harness()
+  const { PcAssemblyScroll } = h.load('features/landing/PcAssemblyScroll.tsx')
+  const props = { scrollRoot: { current: null }, renderCopy: () => null }
+  const intro = () => elements(h.render(PcAssemblyScroll, props)).find((node) => node.type === 'img' && node.props['data-cut'] === 'intro')
+  const first = intro()
+  assert.equal(first.props.src, '/pc-assembly/intro-desktop-hd.webp')
+  first.props.onError()
+  assert.equal(intro().props.src, '/pc-assembly/desktop/pose-0239.webp')
   h.dispose()
 })

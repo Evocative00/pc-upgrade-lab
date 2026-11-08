@@ -62,9 +62,12 @@ test('스크롤 진행도를 STEP 1~3으로 나눈다', () => {
   assert.equal(assemblyStepAt(Number.NaN), 0)
 })
 
-test('첫 화면 문구는 진행도 → 전원 켜는 중 → 캐치프레이즈 구간을 따른다', () => {
+test('첫 화면 문구는 인트로 → 진행도 → 전원 켜는 중 → 캐치프레이즈 구간을 따른다', () => {
   assert.equal(heroQuips.length, 20)
-  assert.deepEqual(heroCopyAt(0), { percent: 0, quip: 0, progress: 1, power: 0, final: 0 })
+  assert.deepEqual(heroCopyAt(0), { percent: 0, quip: 0, intro: 1, progress: 0, power: 0, final: 0 })
+  assert.deepEqual(heroCopyAt(1), { percent: 1, quip: 0, intro: 0.5, progress: 0.5, power: 0, final: 0 })
+  assert.equal(heroCopyAt(2).intro, 0)
+  assert.equal(heroCopyAt(2).progress, 1)
   assert.equal(heroCopyAt(4.9).quip, 0)
   assert.equal(heroCopyAt(5).quip, 1)
   assert.equal(heroCopyAt(99.9).quip, 19)
