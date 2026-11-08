@@ -8,14 +8,14 @@ import {
   type PlanOption, type PlanOverrides, type PricedProduct, type UpgradePartKind, type UpgradePlan,
 } from './upgradeRecommendation.ts'
 import { COMPAT_CLASS, COMPAT_TEXT, usePlanCompatibility } from './planCompatibility.ts'
-import { CompatibilityFooter } from './UpgradeCompatibilityPanel.tsx'
+import { CompatibilityFooter, CompatibilitySummary } from './UpgradeCompatibilityPanel.tsx'
 import type { UpgradePlanState } from './useUpgradePlan.ts'
 import { diagnoseProgram } from './workloadEstimate.ts'
 
 const OPTION_HINT: Record<PlanOption, string> = {
-  VALUE: '예산 안에서 가격 대비 성능이 가장 좋은',
-  BALANCED: '예산 안에서 가장 빠르게',
-  BEST: '예산의 1.5배 안에서 가장 빠르게',
+  VALUE: '가격 대비 성능',
+  BALANCED: '예산 안 최고 성능',
+  BEST: '예산 +50%까지',
 }
 
 const won = (amount: number) => `₩${amount.toLocaleString('ko-KR')}`
@@ -23,14 +23,12 @@ const won = (amount: number) => `₩${amount.toLocaleString('ko-KR')}`
 export function PriceLine({ product }: { product: PricedProduct }) {
   return <span className="planner-price-line">
     <strong>{won(product.priceKrw)}</strong>
-    <small>{product.priceKind === 'PAST'
-      ? <>지난 판매가 · {product.observedAt ? `${Number(product.observedAt.slice(5, 7))}/${Number(product.observedAt.slice(8, 10))} 관측` : '관측일 미상'}
-        {product.priceSource && ' · '}{product.priceUrl
-          ? <a href={product.priceUrl} target="_blank" rel="noreferrer">{product.priceSource}</a> : product.priceSource}</>
-      : product.priceKind === 'CURRENT'
-      ? <>현재가{product.priceSource && ' · '}{product.priceUrl
-        ? <a href={product.priceUrl} target="_blank" rel="noreferrer">{product.priceSource}</a> : product.priceSource}</>
-      : '참고 추정가'}</small>
+    <small>{product.priceKind === 'ESTIMATE' ? '참고 추정가'
+      : <>{product.priceKind === 'PAST'
+        ? `지난 판매가 · ${product.observedAt ? `${Number(product.observedAt.slice(5, 7))}/${Number(product.observedAt.slice(8, 10))} 관측` : '관측일 미상'}`
+        : '현재가'}
+        {(product.priceUrl || product.priceSource) && ' · '}
+        {product.priceUrl ? <a href={product.priceUrl} target="_blank" rel="noreferrer">{product.priceSource ?? '판매처'}</a> : product.priceSource}</>}</small>
   </span>
 }
 
@@ -72,18 +70,20 @@ const SAME_AS: Record<PlanOption, string> = { VALUE: '가성비와 같은 구성
 // 같은 제품을 고른 안인지(카드에 '같은 구성' 표시용)
 const planKey = (plan: UpgradePlan) => plan.items.map((item) => item.choice?.id ?? '-').join('|')
 // 카드에 보일 짧은 이름: 제조사·쿨러 이름을 줄여 칩셋 위주로 보여 준다.
-const shortName = (name: string) => name.replace(/^(AMD|Intel|NVIDIA|MSI|Sapphire|Gigabyte|ASUS|ASRock|Corsair|G\.SKILL|Kingston|Samsung)\s+/i, '')
-  .replace(/\s+(VENTUS|WINDFORCE|PULSE|EAGLE|GAMING|Challenger|Phantom|TUF|DUAL).*$/i, '')
+const shortName = (name: string) => name
+  .replace(/^(AMD|Intel|NVIDIA|MSI|Sapphire|Gigabyte|ASUS|ASRock|Corsair|G\.SKILL|Kingston|Samsung)\s+/i, '')
+  .replace(/\b(PULSE|VENTUS|WINDFORCE|EAGLE|GAMING|Challenger|Phantom|TUF|DUAL|SFF|OC|PLUS|LHR|OCV1|2X|3X|X)\b/gi, '')
+  .replace(/\s+/g, ' ').trim()
 
 function Diagnosis({ state, metric }: { state: UpgradePlanState; metric: KeyMetric | null }) {
   const short = state.selected.filter((kind) => state.targets[kind]?.needed === true)
   const unknown = UPGRADE_PART_KINDS.filter((kind) => state.targets[kind]?.needed == null)
   return <p className="planner-diagnosis-line">
-    {short.length ? <><strong>{short.map((kind) => UPGRADE_PART_LABEL[kind]).join('·')}</strong>가 목표에 못 미칩니다.</>
-      : unknown.length ? <><strong>목표 충족 여부를 확인할 수 없습니다.</strong> 부품 사양과 목표 자료를 확인해 주세요.</>
-      : <><strong>지금 구성으로 목표를 충족합니다.</strong> 더 빠르게 하려면 아래 안을 참고하세요.</>}
-    {unknown.length > 0 && <span> 확인 필요: {unknown.map((kind) => UPGRADE_PART_LABEL[kind]).join('·')}</span>}
-    {metric && <span> {metric.label} 지금 {metric.before}{metric.target && ` (${metric.target})`}</span>}
+    {short.length ? <>부족: <strong>{short.map((kind) => UPGRADE_PART_LABEL[kind]).join(', ')}</strong>
+      {unknown.length > 0 && <> · 확인 필요: <strong>{unknown.map((kind) => UPGRADE_PART_LABEL[kind]).join(', ')}</strong></>}</>
+      : unknown.length ? <>확인 필요: <strong>{unknown.map((kind) => UPGRADE_PART_LABEL[kind]).join(', ')}</strong></>
+      : <strong>지금 구성으로 충분합니다</strong>}
+    {metric?.target && <span> · {metric.target}</span>}
   </p>
 }
 
@@ -106,10 +106,10 @@ function OptionCards({ parts, goal, state, option, onOptionChange }: {
         {changed.some((item) => item.choice?.priceKind === 'ESTIMATE') && <small>참고 추정가 포함</small>}
         {plan.totalKrw > plan.budgetWon && <span className="planner-option-over">예산 {won(plan.totalKrw - plan.budgetWon)} 초과</span>}
         <span className="planner-option-parts">{changed.length
-          ? changed.map((item) => `${UPGRADE_PART_LABEL[item.kind]} ${shortName(item.choice!.name)}`).join(' + ')
+          ? changed.map((item) => shortName(item.choice!.name)).join(' + ')
           : plan.items.some((item) => item.target.needed === true)
-            ? `바꾸지 않음 · 예산 부족${state.options?.cheapestFixKrw ? ` (${won(state.options.cheapestFixKrw)}부터 해결 가능)` : ''}`
-            : state.options?.hasUnknownTargets ? '바꾸지 않음 · 목표 충족 확인 필요' : '바꾸지 않음 · 지금 구성으로 충분'}</span>
+            ? `예산 부족${state.options?.cheapestFixKrw ? ` · ${won(state.options.cheapestFixKrw)}부터` : ''}`
+            : state.options?.hasUnknownTargets ? '목표 충족 확인 필요' : '바꿀 필요 없음'}</span>
         {metric && <span className={`planner-option-metric${metric.meets === true ? ' is-meets' : metric.meets === false ? ' is-below' : ''}`}>
           {metric.label.split(' · ').at(-1)} {metric.after}{metric.meets === false && ' · 목표 미달'}</span>}
         {sameAs && <small className="muted">{SAME_AS[sameAs]}</small>}
@@ -127,14 +127,12 @@ function FinalBuild({ parts, plan, state, overrides, onOverride, onExclude, onLi
 }) {
   const finalParts = applyPlan(parts, plan)
   const compat = usePlanCompatibility(finalParts, plan)
-  const overall = compat.result?.status
   // 지금 구성에 없는 부품을 새로 추가하는 경우도 목록에 나오도록 최종 구성 기준으로 그린다.
   return <div className="planner-final">
     <div className="planner-final-head">
       <h3>최종 구성 <small>교체 {plan.items.filter((item) => item.choice).length}개{plan.custom && ' · 직접 바꾼 구성'}</small></h3>
-      {compat.state.status === 'loading' ? <span className="muted" role="status">호환성 검사 중…</span>
-        : overall && <span className={`planner-verdict planner-verdict--${COMPAT_CLASS[overall]}`}>호환성 {COMPAT_TEXT[overall]}</span>}
     </div>
+    <CompatibilitySummary compat={compat} hasGpu={finalParts.some((part) => part.type === 'GPU' && part.displayName.trim())} />
     <ul>{finalParts.map((part, index) => {
       const partCompat = compat.byIndex[index]
       const item = plan.items.find((candidate) => candidate.kind === part.type)
@@ -142,19 +140,21 @@ function FinalBuild({ parts, plan, state, overrides, onOverride, onExclude, onLi
       const candidates = item ? state.options?.candidates[item.kind] ?? [] : []
       const rowClass = [choice && 'is-replaced', partCompat?.status === 'INCOMPATIBLE' && 'is-bad'].filter(Boolean).join(' ')
       return <li key={`${part.type}-${index}`} className={rowClass || undefined}>
-        <span className="planner-final-type">{getPartTypeInfo(part.type).label}
-          {partCompat && <span className={`planner-verdict planner-verdict--${COMPAT_CLASS[partCompat.status]}`}>
-            {COMPAT_TEXT[partCompat.status]}</span>}</span>
+        <span className="planner-final-type">
+          {/* 부품마다 호환성 상태 점: 초록 호환 · 노랑 확인 필요 · 빨강 비호환 · 회색 검사 제외 */}
+          <span className={`planner-compat-dot${partCompat ? ` is-${partCompat.status === 'UNCHECKED' ? 'unchecked' : COMPAT_CLASS[partCompat.status]}` : ''}`}
+            title={partCompat ? COMPAT_TEXT[partCompat.status] : undefined} aria-label={partCompat ? COMPAT_TEXT[partCompat.status] : undefined} />
+          {getPartTypeInfo(part.type).label}</span>
         <div className="planner-final-name">
           <strong>{part.displayName}{part.quantity > 1 && ` · 모듈 ${part.quantity}개`}</strong>
           {choice && item
-            ? <small>기존 {item.currentLabel}{choice.ratio && ` · ${item.kind === 'RAM' ? '용량' : '점수'} 약 ${choice.ratio.toFixed(1)}배`}
-              {item.meets === false ? ' · 목표 미달' : item.meets === null ? ' · 목표 충족 확인 필요' : ' · 목표 충족'}</small>
+            ? <small>{shortName(item.currentLabel)} → {choice.ratio ? `약 ${choice.ratio.toFixed(1)}배` : '교체'}
+              {item.meets === false ? ' · 목표 미달' : item.meets === null ? ' · 목표 충족 확인 필요' : ''}</small>
             : item?.note && <small>{item.note}</small>}
           {partCompat?.status === 'INCOMPATIBLE' && partCompat.messages.map((message) =>
             <small key={message} className="planner-compat-warning">{message}</small>)}
           {item && candidates.length > 0 && <label className="planner-swap">
-            <span>다른 제품</span>
+            <span>변경</span>
             <select value={overrides[item.kind] ?? (item.choice?.id ?? KEEP)}
               onChange={(event) => onOverride(item.kind, event.target.value)}>
               <option value={KEEP}>지금 부품 유지</option>
@@ -231,9 +231,10 @@ export function UpgradeRecommendationPanel({ parts, goal, state, option, onOptio
         <div><span>{PLAN_OPTION_LABEL[plan.option]}{plan.custom && ' (직접 수정)'}</span><strong>{won(plan.totalKrw)}</strong>
           <small className={over > 0 ? 'planner-over' : undefined}>
             {over > 0 ? `예산 ${won(over)} 초과` : `남는 예산 ${won(plan.budgetWon - plan.totalKrw)}`}</small></div>
-        <p>{plan.reason}{metric && plan.items.some((item) => item.choice) && <> · {metric.label} {metric.before} → <strong>{metric.after}</strong></>}
+        <p>{metric && plan.items.some((item) => item.choice)
+          ? <>{metric.label} {metric.before} → <strong>{metric.after}</strong></> : plan.reason}
           {plan.fullFixKrw !== null && plan.items.some((item) => item.target.needed === true && item.meets !== true)
-            && ` · 모두 바꾸려면 약 ${won(plan.fullFixKrw)}`}
+            && ` · 전부 바꾸려면 ${won(plan.fullFixKrw)}`}
           {plan.custom && <>{' '}<button type="button" className="link-button" onClick={() => onOptionChange(plan.option)}>추천대로 되돌리기</button></>}</p>
       </div>
       {excludedCount > 0 && <p className="planner-warning">호환되지 않는 제품 {excludedCount}개 제외{' '}
@@ -241,9 +242,9 @@ export function UpgradeRecommendationPanel({ parts, goal, state, option, onOptio
       <FinalBuild parts={parts} plan={plan} state={state} overrides={overrides} onOverride={onOverride}
         onExclude={onExclude} onLinkParts={onLinkParts} />
       {goal.purpose === 'GAME' && <FrameChange parts={parts} plan={plan} goal={goal} />}
-      <p className="planner-caveat">가격·성능은 추정치입니다. 메인보드는 그대로 두고 소켓·DDR이 맞는 제품만 고르며,
-        BIOS·파워·케이스 등은 위 최종 구성의 호환성 검사 결과와 확인 범위를 살펴보세요.</p>
-      <details className="planner-details"><summary>계산 기준 보기</summary>
+      <details className="planner-details"><summary>계산 기준·주의</summary>
+        <p>가격·성능은 추정치입니다. 메인보드는 그대로 두고 소켓·DDR이 맞는 제품만 고릅니다.
+          '참고 추정가'는 비슷한 제품으로 계산한 가격이고, '지난 판매가'는 표시된 날짜의 관측값입니다.</p>
         <p>CPU 게임 점수에는 실측 외 단일 스레드·클럭·구조로 환산한 팀 추정이 포함됩니다.
           작업 CPU는 Blender, GPU는 게임 점수를 사용하며 실제 프로그램 성능 향상 배율을 보장하지 않습니다.</p>
         <a href={CPU_GAMING_DATASET.sourceUrl} target="_blank" rel="noreferrer">CPU 게임 점수 기준 자료</a>

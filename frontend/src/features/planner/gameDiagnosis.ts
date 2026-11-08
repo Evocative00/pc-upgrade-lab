@@ -1,4 +1,5 @@
 import type { PartInput, PartType } from '../pc-scan/types.ts'
+import { resolveVram } from '../pc/gpuVram.ts'
 import { isSpecificHardwareModel, normalizeHardwareModel } from './benchmarkComparison.ts'
 import type { GameRequirements, RequirementTier } from './gameRequirements.ts'
 import { comparePartScore, formatRatio } from './partScores.ts'
@@ -15,6 +16,12 @@ function partsOf(parts: PartInput[], type: PartType): PartInput[] {
 
 function validQuantity(part: PartInput): boolean {
   return Number.isSafeInteger(part.quantity) && part.quantity >= 1 && part.quantity <= 64
+}
+
+// 사용자가 고른 VRAM, 이름에 적힌 VRAM, 선택지가 하나뿐인 모델의 VRAM 순서로 쓴다(gpuVram.ts).
+function vramBytes(part: PartInput): number | null {
+  const gib = resolveVram(part).gib
+  return validQuantity(part) && gib !== null ? Math.round(gib * GIB) : null
 }
 
 function knownBytes(part: PartInput, key: string): number | null {
@@ -40,7 +47,7 @@ function deviceMemoryVerdict(part: PartInput, requirement: RequirementTier): Ver
   if (!validQuantity(part) || threshold === null) return 'UNKNOWN'
   // 공식 예시 내장 GPU의 예외는 용량 측정이나 추정을 뜻하지 않는다.
   if (threshold === 0) return 'PASS'
-  const bytes = knownBytes(part, 'vramBytes')
+  const bytes = vramBytes(part)
   if (bytes === null) return 'UNKNOWN'
   return bytes >= threshold * GIB ? 'PASS' : 'FAIL'
 }
@@ -112,8 +119,9 @@ function gpuMemoryCheck(available: PartInput[], requirement: RequirementTier): C
     : `${requirement.vramGiB}GiB 이상`
   const actual = available.map((part) => {
     if (memoryThreshold(part, requirement) === 0 && validQuantity(part)) return `${part.displayName}: 별도 전용 VRAM 조건 없음`
-    const bytes = knownBytes(part, 'vramBytes')
-    return `${part.displayName}: ${bytes === null ? '용량·개수 미확인' : `${(bytes / GIB).toFixed(1)}GiB`}`
+    const bytes = vramBytes(part)
+    const auto = resolveVram(part).source
+    return `${part.displayName}: ${bytes === null ? '용량·개수 미확인' : `${(bytes / GIB).toFixed(1)}GiB${auto === 'MODEL' ? ' (모델 기준)' : ''}`}`
   }).join(', ') || '미입력'
   const verdict: Verdict = results.includes('PASS') ? 'PASS' : results.length > 0 && results.every((value) => value === 'FAIL') ? 'FAIL' : 'UNKNOWN'
   const exempt = available.find((part, index) => results[index] === 'PASS' && memoryThreshold(part, requirement) === 0)

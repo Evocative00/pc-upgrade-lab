@@ -84,7 +84,9 @@
 .planner-money { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--planner-line); border-radius: 8px; font-family: var(--mono); }
 .planner-money input { width: 130px; border: 0; background: transparent; color: var(--planner-ink); font: 700 20px var(--mono); text-align: right; }
 .planner-range { width: 100%; margin: 28px 0 8px; accent-color: var(--planner-blue); }
-.planner-range-labels { display: flex; justify-content: space-between; color: var(--text); font: 12px var(--mono); }
+.planner-range-labels { position: relative; display: flex; justify-content: space-between; color: var(--text); font: 12px var(--mono); }
+/* 슬라이더 간격이 100만 원에서 바뀌므로 그 위치를 표시한다. */
+.planner-range-mid { position: absolute; transform: translateX(-50%); color: var(--muted, #8b95a7); }
 .planner-presets, .planner-chip-list, .planner-purpose-options, .planner-choice { display: flex; flex-wrap: wrap; gap: 8px; }
 .planner-presets { margin-top: 18px; }
 .planner-shell button { cursor: pointer; font: inherit; }
@@ -252,7 +254,47 @@
 /* 최종 구성 + 호환성: 부품 행마다 호환성 판정을 붙인다. */
 .planner-final-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .planner-final-head h3 { margin: 0; }
-.planner-final .planner-final-type { display: grid; gap: 6px; justify-items: start; }
 .planner-final .planner-final-type .planner-verdict { font-family: inherit; font-size: 11px; }
 .planner-final > ul > li.is-bad { border-color: var(--danger); box-shadow: inset 4px 0 0 var(--danger); }
 .planner-final > ul { margin-top: 12px; }
+
+/* 호환성 요약: 상태별 개수 3칸 · 부품 조합 목록 · 부품 줄 상태 점 */
+.planner-compat-loading { margin: 12px 0; }
+.planner-compat-summary { display: grid; gap: 12px; margin: 12px 0; padding: 14px; border: 1px solid var(--border); border-radius: 12px; }
+.planner-compat-summary.is-bad { border-color: var(--danger); }
+.planner-compat-counts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 0.7fr); gap: 8px; }
+.planner-compat-count { display: grid; gap: 2px; padding: 10px 12px; border-radius: 10px; }
+.planner-compat-count span { font-size: 12px; }
+.planner-compat-count strong { font: 800 24px var(--mono); }
+.planner-compat-count--pass { background: var(--linked-bg); color: var(--linked); }
+.planner-compat-count--unknown { background: var(--manual-bg); color: var(--manual); }
+.planner-compat-count--fail { background: rgba(248, 113, 113, 0.14); color: var(--danger); }
+.planner-compat-count.is-zero { background: var(--code-bg); color: var(--text); opacity: 0.7; }
+.planner-compat-pairs { list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: 10px; }
+.planner-compat-pairs li { display: grid; grid-template-columns: 22px 170px minmax(0, 1fr); gap: 8px; align-items: center; padding: 8px 12px; font-size: 14px; color: var(--text-h); }
+.planner-compat-pairs li + li { border-top: 1px solid var(--border); }
+.planner-compat-pairs small { color: var(--text); font-size: 13px; overflow-wrap: anywhere; }
+.planner-compat-icon { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; font-weight: 800; }
+.planner-compat-pairs .is-pass .planner-compat-icon { background: var(--linked-bg); color: var(--linked); }
+.planner-compat-pairs .is-unknown .planner-compat-icon { background: var(--manual-bg); color: var(--manual); }
+.planner-compat-pairs .is-fail { background: rgba(248, 113, 113, 0.1); }
+.planner-compat-pairs .is-fail .planner-compat-icon { background: var(--danger); color: #fff; }
+.planner-compat-pairs .is-fail small, .planner-compat-pairs .is-fail span { color: var(--danger); }
+.planner-compat-dot { display: inline-block; width: 9px; height: 9px; margin-right: 6px; border-radius: 50%; background: transparent; vertical-align: 1px; }
+.planner-compat-dot.is-pass { background: var(--linked); }
+.planner-compat-dot.is-unknown { background: var(--manual); }
+.planner-compat-dot.is-fail { background: var(--danger); }
+.planner-compat-dot.is-unchecked { background: var(--text); opacity: 0.45; }
+.planner-final .planner-final-type { display: block; }
+.planner-compat-retry { margin: 10px 0 4px; }
+@container (max-width: 720px) {
+  .planner-compat-pairs li { grid-template-columns: 22px minmax(0, 1fr); }
+  .planner-compat-pairs small { grid-column: 2; }
+}
+/* 참고: 카탈로그 자료가 없어 판단하지 못한 항목. 문제가 아니므로 차분한 회색으로 둔다. */
+.planner-compat-count--info { background: var(--code-bg); color: var(--text); }
+.planner-compat-pairs .is-info .planner-compat-icon { background: var(--code-bg); color: var(--text); font-style: italic; }
+.planner-compat-dot.is-info { background: var(--text); opacity: 0.6; }
+.planner-compat-dot.is-unchecked { background: transparent; border: 1.5px solid var(--text); opacity: 0.6; box-sizing: border-box; }
+.planner-verdict--info { color: var(--text); background: var(--code-bg); }
+@container (max-width: 580px) { .planner-compat-counts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

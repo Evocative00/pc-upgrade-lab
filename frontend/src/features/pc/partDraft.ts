@@ -158,7 +158,8 @@ export function formatCapacity(part: PartInput): string | null {
 // 용량 이외의 제원을 "키: 값" 목록으로. 미확인(null)은 그대로 알린다.
 export function formatOtherSpecs(part: PartInput): string[] {
   return Object.entries(part.specs)
-    .filter(([key]) => key !== 'capacityBytes')
+    // 용량·VRAM은 행의 입력칸에서 따로 보여 준다.
+    .filter(([key]) => key !== 'capacityBytes' && key !== 'vramBytes')
     .map(([key, value]) => `${key}: ${value === null ? '미확인' : String(value)}`)
 }
 

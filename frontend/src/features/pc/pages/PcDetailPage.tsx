@@ -13,6 +13,7 @@ import {
 import { pcRepository } from '../pcApi.ts'
 import { PcApiError } from '../pcRepository.ts'
 import { usePcQuery } from '../usePcQuery.ts'
+import { resolveVram } from '../gpuVram.ts'
 
 // 계정에 저장된 PC 삭제. 작성 중인 구성 초기화(폼)와 다른 동작임을 문구로 구분한다.
 // 재훈 님의 삭제 확인 모달이 준비되면 window.confirm 대신 연결한다.
@@ -151,6 +152,11 @@ export function PcDetailPage({ id }: { id: number }) {
                         {info.capacityUnit !== null && (
                           <span className="muted"> · 1개당 {capacity ?? '용량 미확인'}</span>
                         )}
+                        {part.type === 'GPU' && (() => {
+                          const vram = resolveVram(part)
+                          return <span className="muted"> · VRAM {vram.gib === null ? '미확인' : `${vram.gib}GB`}
+                            {vram.source === 'NAME' || vram.source === 'MODEL' ? ' (자동)' : ''}</span>
+                        })()}
                         {part.rawName !== null && part.rawName !== part.displayName && (
                           <div className="muted">검출 원문: {part.rawName}</div>
                         )}
